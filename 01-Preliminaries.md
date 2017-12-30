@@ -4,6 +4,8 @@
     title: Hilbert's 10th problem in rings of algebraic integers
 ---
 
+<!-- @import "00-Preambula.md" -->
+
 # Preliminaries
 
 Before stating Hilbert's 10th problem and proving its undecidability in certain rings of algebraic integers, we remind the reader on some notions of theoretical computer science and number theory, as well as fix some notations.
@@ -21,7 +23,7 @@ We usually do not concern our selves with the details of this encoding other tha
 <div class="Definition">
 A _Turing machine_ $\mathbb A$ on the _alphabet_ $A =  \lbrace \sta, \emp, \zer, \one \rbrace$ is a tuple $(S, δ)$, where $\sstart, \shalt ∈ S$ is a finite non-empty set, called _set of states_, and
 
-$$δ: S \times A \to S \times A \times \lbrace -1, 0, 1 \rbrace$$
+$$δ: S × A ↦ S × A × \lbrace -1, 0, 1 \rbrace$$
 
 is called _transition function_. If $δ(s, a) = (s', b, m)$, we demand that the following axioms are satisfied.
 
@@ -31,13 +33,15 @@ is called _transition function_. If $δ(s, a) = (s', b, m)$, we demand that the 
 </div>
 
 <div class="Definition">
-Let $\mathbb A = (S, δ)$ be a Turing machine. A _configuration_ of $\mathbb A$ is a triple $(s, j, c) ∈ S \times ℕ \times A^ℕ$. It reflects the current state of $\mathbb A$ the current position of its _head_ and the content of its _work-tape_.
+Let $\mathbb A = (S, δ)$ be a Turing machine. A _configuration_ of $\mathbb A$ is a triple $(s, j, c) ∈ S × ℕ × A^ℕ$. It reflects the current state of $\mathbb A$ the current position of its _head_ and the content of its _work-tape_.
 
 A configuration of the form $(\shalt, 0, c)$ is called _halting_.
 A _start configuration_ is of the form $(\sstart, 0, c)$ such that $c(0) = \sta$ and it exists an $n ∈ ℕ$ such that $c(i) = \square$ if and only if $i > n$.
 This means that in a start configuration the work-tape reads
 
 $$\sta x_1 x_2 … x_n \square \square …$$
+
+It will be very convenient to identify the finite string $x_1…x_n$ with this tape content.
 
 We write $(s, j, c) \vdash_1 (s', j', c')$ and call $(s', j', c')$ a _successor configuration_ of $(s, j, c)$ if there exists an $m ∈ \lbrace -1, 0, 1 \rbrace$ such that
 
@@ -71,27 +75,48 @@ add1 "overflow" '1' = ("overflow", '0', 1   )
 -- and enter the "return" state to move the head to the first cell
 add1 "overflow" '0' = ("return",   '1', (-1))
 add1 "overflow" '□' = ("return",   '1', (-1))
--- we finish if we read '§' again
+-- we finish if we read '§' again or ...
 add1 "return"   '§' = ("halt",     '§', 0   )
--- continue to move to the right and don't change the cell contents
+-- ... continue to move to the right and don't change the cell
+-- contents. Here `b` matches '0' or '1'
 add1 "return"   b   = ("return",   b  , (-1))
 
 ```
 
-The following series of figures shows a grahpic representation of the run of $\mathbb A_\text{add1}$ on $\sta\one\one\zer\one\square…$
+[@fig:add1] shows the complete run of $\mathbb A_\text{add1}$ on $\one\one\zer\one$.
+
+<div id="fig:add1">
+
+![$δ(\sstart, \sta) = (s_\text{overflow}, \sta, 1)$](res/turing_add1_1.svg)
+
+![$δ(s_\text{overflow}, \one) = (s_\text{overflow}, \one, 1)$](res/turing_add1_2.svg)
+
+![$δ(s_\text{overflow}, \one) = (s_\text{overflow}, \one, 1)$](res/turing_add1_3.svg)
+
+![$δ(s_\text{overflow}, \zer) = (s_\text{return}, \one, -1)$](res/turing_add1_4.svg)
+
+![$δ(s_\text{return}, \one) = (s_\text{return}, \one, -1)$](res/turing_add1_5.svg)
+
+![$δ(s_\text{return}, \one) = (s_\text{return}, \one, -1)$](res/turing_add1_6.svg)
+
+![$δ(s_\text{return}, \sta) = (s_\text{halt}, \sta, 0)$](res/turing_add1_7.svg)
+
+![$δ(s_\text{halt}, \sta) = (s_\text{halt}, \sta, 0)$](res/turing_add1_8.svg)
+
+The complete run of $\mathbb A_\text{add1}$ on $\one\one\zer\one$
 </div>
 
 <div class="Example">
 We can encode a natural number $n$
 
 1. in tally notation
-   $$n \mapsto \underbrace{\one…\one}_{n\text{-times}},$$
+   $$n ↦ \underbrace{\one…\one}_{n\text{-times}},$$
 2. by its binary representation
-   $$n = 2^k + \sum_{i = 0}^{k-1} b_i 2^i \mapsto b_0…b_{k-1}\one,$$
-   $$0 \mapsto \zer \text{, or}$$
+   $$n = 2^k + \sum_{i = 0}^{k-1} b_i 2^i ↦ b_0…b_{k-1}\one,$$
+   $$0 ↦ \zer \text{, or}$$
 3. by a shifted and truncated form of its binary representation
-   $$n = 1 + \sum_{i = 0}^k b_i 2^i \mapsto b_0…b_{k-1},$$
-   $$0 \mapsto λ$$
+   $$n = 1 + \sum_{i = 0}^k b_i 2^i ↦ b_0…b_{k-1},$$
+   $$0 ↦ λ$$
 
 In either case the set obtained by encoding $ℕ$ is easily seen to be decidable. In the first case, check that the string contains only copies of the bit $\one$:
 

@@ -1,3 +1,16 @@
-*.DS_Store
+.DS_Store
+*.aux
+*.log
+*.nav
+*.out
+*.pdf
+*.snm
+*.synctex.gz
+*.toc
 *.bib
 *.html
+*.lb
+*.fdb_latexmk
+*.fls
+*.tex-e
+*.xdv
