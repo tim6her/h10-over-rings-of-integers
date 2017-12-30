@@ -4,8 +4,6 @@
     title: Hilbert's 10th problem in rings of algebraic integers
 ---
 
-$\newcommand{\sta}{\mathtt §} \newcommand{\emp}{\square} \newcommand{\zer}{\mathtt 0} \newcommand{\one}{\mathtt 1} \newcommand{\sstart}{s_{\text{start}}} \newcommand{\shalt}{s_{\text{halt}}} \newcommand{\scheck}{s_{\text{check}}}$
-
 # Preliminaries
 
 Before stating Hilbert's 10th problem and proving its undecidability in certain rings of algebraic integers, we remind the reader on some notions of theoretical computer science and number theory, as well as fix some notations.
@@ -13,7 +11,6 @@ Before stating Hilbert's 10th problem and proving its undecidability in certain 
 ## Preliminaries from theoretical computer science
 
 <div class="Definition">
-#### Definiton
 A _(decision) problem_ is a subset of the set of finite $\zer$-$\one$-strings $\lbrace \zer, \one \rbrace^*$ including the empty string $λ$. We call $\lbrace \zer, \one \rbrace$ _alphabet_ and its elements _bits._
 </div>
 
@@ -22,7 +19,6 @@ However, we can refute this objection by saying that all elements of the sets in
 We usually do not concern our selves with the details of this encoding other than that we demand, that it is _decidable_ whether a given string belongs to a given set—a notion that will be made precise in the following.
 
 <div class="Definition">
-#### Definition
 A _Turing machine_ $\mathbb A$ on the _alphabet_ $A =  \lbrace \sta, \emp, \zer, \one \rbrace$ is a tuple $(S, δ)$, where $\sstart, \shalt ∈ S$ is a finite non-empty set, called _set of states_, and
 
 $$δ: S \times A \to S \times A \times \lbrace -1, 0, 1 \rbrace$$
@@ -35,8 +31,7 @@ is called _transition function_. If $δ(s, a) = (s', b, m)$, we demand that the 
 </div>
 
 <div class="Definition">
-#### Definition
-(-1)et $\mathbb A = (S, δ)$ be a Turing machine. A _configuration_ of $\mathbb A$ is a triple $(s, j, c) ∈ S \times ℕ \times A^ℕ$. It reflects the current state of $\mathbb A$ the current position of its _head_ and the content of its _work-tape_.
+Let $\mathbb A = (S, δ)$ be a Turing machine. A _configuration_ of $\mathbb A$ is a triple $(s, j, c) ∈ S \times ℕ \times A^ℕ$. It reflects the current state of $\mathbb A$ the current position of its _head_ and the content of its _work-tape_.
 
 A configuration of the form $(\shalt, 0, c)$ is called _halting_.
 A _start configuration_ is of the form $(\sstart, 0, c)$ such that $c(0) = \sta$ and it exists an $n ∈ ℕ$ such that $c(i) = \square$ if and only if $i > n$.
@@ -58,13 +53,12 @@ In this case we write $\mathbb A (x) = y$.
 We will denote Turing machines using listings, where the fact that $δ_\text{a} (s_\text{state}, b) = (s_\text{state'}, c, m)$ is encoded by
 
 ``` haskell
-a "state" 'b' = ("state'", 'c' , m)
+a "state" b = ("state'", c, m)
 ```
 
 See the Appendix of this thesis on how to simulate these Turing machines using the _Haskell_ programming language.
 
 <div class="Example">
-#### Example
 Consider the Turing machine $\mathbb A_\text{add1} = (\lbrace \sstart, \shalt, s_\text{overflow}, s_\text{return} \rbrace, δ_\text{add1})$ that adds $1$ to a (possible zero-patched) binary representation of a natural number $n$.
 
 
