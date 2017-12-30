@@ -10,6 +10,8 @@ Before stating Hilbert's 10th problem and proving its undecidability in certain 
 
 ## Preliminaries from theoretical computer science
 
+In this section we closely follow the lecture notes on the subject by @Mueller2016.
+
 <div class="Definition">
 A _(decision) problem_ is a subset of the set of finite $\zer$-$\one$-strings $\lbrace \zer, \one \rbrace^*$ including the empty string $λ$. We call $\lbrace \zer, \one \rbrace$ _alphabet_ and its elements _bits._
 </div>
