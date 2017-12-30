@@ -14,7 +14,7 @@ Let $R$ be a Dedekind domain, whose quotient field is not algebraically closed. 
 \[ S_1 ∩ S_2 \text{ and } S_1 ∪ S_2 \]
 </div>
 
-<div class="Proof">
+<div class="proof">
 Let $f(X, Y_1,…, Y_n)$ and $g(X, Y_1,…, Y_n)$ give diophantine definitions[^8cee5683] of $S_1$ and $S_2$ resp. then
 
 $$ h := fg $$
