@@ -10,20 +10,36 @@ Before stating Hilbert's 10th problem and proving its undecidability in certain 
 
 ## Preliminaries from theoretical computer science
 
+### Problems and Turing machines
+
 In this section we closely follow the lecture notes on the subject by @Mueller2016.
 
 <div class="Definition">
-A _(decision) problem_ is a subset of the set of finite $\zer$-$\one$-strings $\lbrace \zer, \one \rbrace^*$ including the empty string $λ$. We call $\lbrace \zer, \one \rbrace$ _alphabet_ and its elements _bits._
+A _(decision) problem_ is a subset of the set of finite $\zer$-$\one$-strings $\lbrace \zer, \one \rbrace^*$ including the empty string $λ$.
+We call $\lbrace \zer, \one \rbrace$ _alphabet_ and its elements _bits._
 </div>
 
 One immediate objection against this definition is that not all problems arise as subsets of these strings.
-However, we can refute this objection by saying that all elements of the sets involved in problems we are interested in can be encoded into such strings.
-We usually do not concern our selves with the details of this encoding other than that we demand, that it is _decidable_ whether a given string belongs to a given set—a notion that will be made precise in the following.
+However, such problems $Q$ are captured up to an encoding.
+
+$$ \ulcorner . \urcorner : Q → \lbrace \zer, \one \rbrace^*$$
+
+We usually do not concern ourselves with the details of this encoding.
+However, the encoding should capture the structure of the problem.
+
+<div class="Example">
+Consider the problem of deciding wether a finite simple graph is connected or not.
+If we fix each vertex set to be of the form $\lbrace 0, 1, …, n\rbrace$, then the set of all graphs can be encoded as the set of the respective adjacency matrices written as a string
+
+$$b_{00}b_{01} …b_{0n}b_{10}…b_{nn}$$
+
+of length $(n + 1)^2$, where $b_{ij} = \one$ if and only if the vertices $i$ and $j$ are connected.
+</div>
 
 <div class="Definition">
 A _Turing machine_ $\mathbb A$ on the _alphabet_ $A =  \lbrace \sta, \emp, \zer, \one \rbrace$ is a tuple $(S, δ)$, where $\sstart, \shalt ∈ S$ is a finite non-empty set, called _set of states_, and
 
-$$δ: S × A ↦ S × A × \lbrace -1, 0, 1 \rbrace$$
+$$δ: S × A → S × A × \lbrace -1, 0, 1 \rbrace$$
 
 is called _transition function_. If $δ(s, a) = (s', b, m)$, we demand that the following axioms are satisfied.
 
@@ -32,7 +48,6 @@ is called _transition function_. If $δ(s, a) = (s', b, m)$, we demand that the 
 3. If $s = \shalt$, then $s' = \shalt$, $a = b$ and $m = 0$.
 </div>
 
-<div class="Definition">
 Let $\mathbb A = (S, δ)$ be a Turing machine. A _configuration_ of $\mathbb A$ is a triple $(s, j, c) ∈ S × ℕ × A^ℕ$. It reflects the current state of $\mathbb A$ the current position of its _head_ and the content of its _work-tape_.
 
 A configuration of the form $(\shalt, 0, c)$ is called _halting_.
@@ -49,10 +64,10 @@ We write $(s, j, c) \vdash_1 (s', j', c')$ and call $(s', j', c')$ a _successor 
 2. $j' = j + m$, and
 3. $c'(ℓ) = c(ℓ)$ for all $ℓ ≠ j$.
 
-This relation makes the set of all configurations of $\mathbb A$ into a directed graph. A _run_ of $\mathbb A$ on $x$ is a path in this directed graph starting in the start configuration $(\sstart, 0, x)$.
+This relation makes the set of all configurations of $\mathbb A$ into a directed graph.
+A _run_ of $\mathbb A$ on $x$ is a path in this directed graph starting in the start configuration $(\sstart, 0, x)$.
 A run of $\mathbb A$ on $x$ is _halting_ or _complete_ if it reaches a halting configuration $(\shalt, 0, y)$.
 In this case we write $\mathbb A (x) = y$.
-</div>
 
 We will denote Turing machines using listings, where the fact that $δ_\text{a} (s_\text{state}, b) = (s_\text{state'}, c, m)$ is encoded by
 
@@ -61,6 +76,7 @@ a "state" b = ("state'", c, m)
 ```
 
 See the Appendix of this thesis on how to simulate these Turing machines using the _Haskell_ programming language.
+We actually use valid syntax of the _glorious Glasgow Haskell compiler_ in the listings.
 
 <div class="Example">
 Consider the Turing machine $\mathbb A_\text{add1} = (\lbrace \sstart, \shalt, s_\text{overflow}, s_\text{return} \rbrace, δ_\text{add1})$ that adds $1$ to a (possible zero-patched) binary representation of a natural number $n$.
@@ -105,6 +121,7 @@ The complete run of $\mathbb A_\text{add1}$ on $\one\one\zer\one$ cas be seen in
 
 The complete run of $\mathbb A_\text{add1}$ on $\one\one\zer\one$
 </div>
+</div>
 
 <div class="Definition">
 Let $\mathbb A$ be a Turing machine.
@@ -116,7 +133,7 @@ Let $\mathbb A$ be a Turing machine.
 5. A problem is called _semi-decidable_ or _computably enumerable_ if there is a Turing machine accepting precisely the elements of the problem.
 </div>
 
-The last postulate of the definiton above means that a problem is semi-decidable if there is a Turing machine affirming membership of the corresponding set but it might not be able to refute membership.
+The last postulate of the definition above means that a problem is semi-decidable if there is a Turing machine affirming membership of the corresponding set but it might not be able to refute membership.
 
 <div class="Example">
 We can encode a natural number $n$
@@ -130,7 +147,8 @@ We can encode a natural number $n$
    $$n = 1 + \sum_{i = 0}^k b_i 2^i ↦ b_0…b_{k-1},$$
    $$0 ↦ λ$$
 
-In either case the set obtained by encoding $ℕ$ is easily seen to be decidable. In the first case, check that the string contains only copies of the bit $\one$.
+In either case the set obtained by encoding $ℕ$ is easily seen to be decidable.
+In the first case, check that the string contains only copies of the bit $\one$.
 
 This can be achieved by the Turing machine $\mathbb A_\text{tally} = ( \lbrace \sstart, \shalt, \scheck, s_\text{accept}, s_\text{reject},  s_\text{rejectMR}\rbrace, δ)$ with
 
@@ -159,3 +177,58 @@ tally "reject"   b      = ("reject",   '□', (-1)) -- `b` is '0' or '1'
 
 In the second case it suffices to check that the string has length $1$ or ends in a $\one$, and in the third case every string is accepted.
 </div>
+
+### Halting problem
+
+One can extend the alphabet of Turing machines by encoding characters i.e. assigning bit sequences to them.
+Very common encodings are _ASCII_ and _UTF-8_[^dee0aaaa].
+Using either one of these encodings the string 'haskell' is encoded as
+
+```
+h         a         s         k         e         l         l
+0110 1000 0110 0001 0111 0011 0110 1011 0110 0101 0110 1100 0110 1100
+```
+
+In this way we can encode a Turing machine as the UTF-8–encoding of their transition function $δ$ written as a string as above.
+Note that the set of states can implicitly be deduced from the transition function as the set of acceptable first arguments of $δ$.
+
+One of the fundamental theorems of theoretical computer science is the existence of a universal Turing machine.
+
+<div class="Theorem">
+There exists a Turing machine $\mathbb U$ that computes upon receiving the tuple $(\ulcorner \mathbb A \urcorner, x)$ as input, the output of Turing machine $\mathbb A$ on $x$ i.e.
+$$ \mathbb U(\ulcorner \mathbb A \urcorner, x) = y \Leftrightarrow \mathbb A (x) = y$$
+</div>
+
+A natural question is:
+
+<div class="Example" title="Halting problem">
+Given a machine $\mathbb A$ and a string $x$.
+Does $\mathbb A$ halt on $x$?
+</div>
+
+It is one of the most fundamental results of theoretical computer science that the halting problem is unsolvable.
+
+<div class="Theorem">
+The halting problem is undecidable.
+</div>
+
+<div class="proof">
+Assume there exists a Turing machine $\mathbb B$ that decides the halting problem i.e. for all Turing machines $\mathbb A$ and all strings $x$
+
+$$ \mathbb B(\mathbb A, x) =
+\begin{cases}
+  \one  & \text{if } \mathbb A \text{ halts on } x\\
+  \zer  & \text{if } \mathbb A \text{ does not halt on } x
+\end{cases}$$
+
+Now using $\mathbb B$ construct a Turing machine $\mathbb B'$ such that
+
+$$ \mathbb B'(\mathbb A) = \one \Leftrightarrow \mathbb A \text{ does not halt on } \ulcorner \mathbb A\urcorner $$
+
+Now if $\mathbb B'(\mathbb B, \ulcorner \mathbb B\urcorner) = \one$ then by definition of $\mathbb B'$ we find that $\mathbb B  does not halt on  \ulcorner \mathbb B\urcorner$.
+But by definiton of $\mathbb B$ this means that $\mathbb B(\mathbb B, \ulcorner \mathbb B \urcorner) = \zer$
+</div>
+
+<!-- TODO: A section on computable rings -->
+
+[^dee0aaaa]: See the Appendix for an _ASCII_ encoding table and details on _UTF-8_.

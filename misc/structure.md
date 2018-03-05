@@ -5,6 +5,17 @@
 
 # Structure
 
+## Introduction
+
+- Formulation and history of H10
+- Table describing central notions as algebraic object and model theoretic ones
+
+| Algebraic          | Language of rings |
+| ------------------ | ----------------- |
+| polynomial         | relation          |
+| root of polynomial | diophantine set   |
+| etc.               |                   |
+
 ## Prerequisites and central notions
 
 ### Prerequisites from theoretical computer science

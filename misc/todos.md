@@ -1,3 +1,8 @@
-# TODOs
+# TODOs :scream:
 
-- [] Composition of Turing machines!
+## Preliminaries
+
+### Preliminaries from TCS
+
+- [ ] Composition of Turing machines!
+- [ ] There are enumerable but not decidable sets
