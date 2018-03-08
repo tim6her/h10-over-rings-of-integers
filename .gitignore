@@ -1,11 +1,16 @@
 .DS_Store
 *.aux
+*.bbl
+*.bcf
+*.blg
 *.log
 *.nav
 *.out
 *.pdf
+*.run.xml
 *.snm
 *.synctex.gz
+*.tdo
 *.toc
 *.bib
 *.html

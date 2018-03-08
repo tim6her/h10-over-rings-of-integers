@@ -1,0 +1,287 @@
+\documentclass[10pt,a4paper]{scrbook}
+
+% Input Type and AMS-Packages 
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{unicode-math}
+
+% Typography
+\usepackage{fontspec}
+\setmainfont{EB Garamond}
+\newfontfamily\headingfont[RawFeature={+c2sc,+scmp},
+                           Letters=SmallCaps]{EB Garamond}
+\setsansfont[Scale=MatchLowercase]{Open Sans}
+\setmonofont[Scale=MatchUppercase]{Fira Mono}
+\setmathtt[Scale=MatchUppercase]{Fira Mono}
+
+\renewcommand{\scshape}{\headingfont}
+
+\usepackage{polyglossia}
+\setdefaultlanguage[variant=british]{english}
+\setotherlanguage{german}
+\usepackage{floatrow}
+\usepackage{booktabs}
+
+\usepackage{csquotes}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{subcaption}
+
+\usepackage{letltxmacro}
+
+\newlist{thmlist}{enumerate}{1}			% thmlist-s may only be used in theorem environments
+\setlist[thmlist]{label=(\roman{thmlisti}), ref=\thethm.(\roman{thmlisti}),noitemsep}
+\newlist{exlist}{enumerate}{1}
+\setlist[exlist]{label=(\arabic{exlisti}), ref=(\arabic{exlisti}),noitemsep,leftmargin=0pt,itemindent=2\parindent}
+\newlist{plist}{enumerate}{1}
+\setlist[plist]{label=(\roman{plisti}), ref=(\roman{plisti}),noitemsep,leftmargin=0pt,itemindent=2\parindent}
+\newlist{clist}{enumerate}{2}
+\setlist[clist]{label*=(\alph*), ref=(\alph*),noitemsep,leftmargin=0pt,itemindent=2\parindent}
+
+\usepackage{setspace}
+\renewcommand{\arraystretch}{1.5}
+
+\usepackage[symbol]{footmisc}		% Use symbols for footnotes
+\usepackage{perpage}				% Package to reset counters at the end of each page.
+\MakePerPage{footnote}				% Reset footnote-counter at the end of each page
+
+\usepackage{listingsutf8}	% Typeset code.
+\lstset{extendedchars=true,
+        basicstyle=\ttfamily,
+        commentstyle=\color{gray},
+        stringstyle=\color{darkgray},
+        xleftmargin=\parindent,
+        language=haskell}
+
+% BibLaTex
+\usepackage[style=numeric,backend=biber]{biblatex}
+\addbibresource{./references.bib}
+
+
+% Math, Operators and Theorems
+\usepackage{thmtools}	% More Flexibility in Theorem Styles + Provides in Combination with ref-Packages the 
+						% Possibility to Refer to Theorem Style in Reference.
+\usepackage{faktor}		% Displays factor groups
+
+\numberwithin{equation}{section}
+
+\DeclareMathOperator{\N}{\mathbb{N}}
+\DeclareMathOperator{\Z}{\mathbb{Z}}
+\DeclareMathOperator{\Q}{\mathbb{Q}}
+\DeclareMathOperator{\R}{\mathbb{R}}
+\DeclareMathOperator{\C}{\mathbb{C}}
+\DeclareMathOperator{\F}{\mathbb{F}}
+
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\id}{id}
+
+\DeclareMathOperator{\kernel}{ker}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\End}{\mathrm{End}}
+\DeclareMathOperator{\Hom}{\mathrm{Hom}}
+\DeclareMathOperator{\Mod}{\mathrm{mod}}
+\DeclareMathOperator{\D}{\mathrm{D}}
+\DeclareMathOperator{\lcm}{\mathrm{lcm}}
+\DeclareMathOperator{\ord}{\mathrm{ord}}
+
+\newcommand{\sta}{\texttt{§}}
+\newcommand{\emp}{\texttt{\_}}
+\newcommand{\zer}{\mathtt 0}
+\newcommand{\one}{\mathtt 1} 
+\newcommand{\sstart}{s_{\text{start}}}
+\newcommand{\shalt}{s_{\text{halt}}}
+\newcommand{\scheck}{s_{\text{check}}}
+\newcommand{\enc}[1]{\ulcorner #1 \urcorner}
+
+
+\declaretheoremstyle[
+    spaceabove=6pt, spacebelow=6pt,
+    headfont=\headingfont,
+    notefont=\mdseries, notebraces={(}{)},
+    bodyfont=\itshape,
+    postheadspace=1em
+    ]{mythm}
+\declaretheoremstyle[
+    spaceabove=6pt, spacebelow=6pt,
+    headfont=\headingfont,
+    notefont=\mdseries, notebraces={(}{)},
+    bodyfont=\normalfont,
+    postheadspace=1em
+    ]{mydef}
+
+\declaretheorem[
+	name=Theorem,
+    style=mythm,
+  	refname={theorem,theorems},		%Lower Case Versions of Theorem Type
+  	Refname={Theorem,Theorems},
+  	numberwithin=section]{thm}
+\declaretheorem[
+	name=Lemma,
+    style=mythm,
+	refname={lemma,lemmas},
+	Refname={Lemma,Lemmas},
+	sibling=thm]{lem}
+\declaretheorem[
+	name=Proposition,
+    style=mythm,
+	refname={proposition,propositions},
+	Refname={Proposition,Propositions},
+	sibling=thm]{pro}
+\declaretheorem[
+	name=Corollary,
+    style=mythm,
+	refname={corollary,corollarys},
+	Refname={Corollary,Corollarys},
+	sibling=thm]{cor}
+
+\declaretheorem[
+	name=Definition,
+	style=mydef,
+	numbered=no]{defin}
+\declaretheorem[
+	name=Example,
+	style=mydef,
+	numbered=no]{exam}
+	
+\declaretheorem[
+	name=remark,
+	style=remark,
+	numbered=no]{rem}
+\renewcommand*{\proofname}{proof}
+
+
+
+%\newtheorem{theo}{Theorem}[section]
+%\newtheorem{lemma}[theo]{Lemma}
+%\newtheorem{prop}[theo]{Proposition}
+%\newtheorem{cor}[theo]{Corollary}
+%\theoremstyle{definition}
+%\newtheorem*{defin}{Definition}
+%\newtheorem*{exam}{Example}
+%\theoremstyle{remark}
+%\newtheorem*{rem}{Remark}
+
+%TikZ and TikZ-Styles
+\usepackage{tikz}
+
+\usepackage{pgfcore}
+\usetikzlibrary{arrows}
+
+\tikzstyle{every node}=[circle,draw=black,font=\small,text=black,inner sep=1pt, minimum size=5mm]
+\tikzstyle{edge from parent}=[draw=black]
+\tikzstyle{st}=[black!20, line join=round, line width=2mm]
+\tikzstyle{st1}=[black!40, line join=round, line width=2mm]
+
+\tikzstyle{bgn}=[node distance=6mm, font=normal]
+\tikzstyle{hlarrow}=[<->, shorten <=1pt, shorten >=1pt, draw, thick]
+
+\tikzstyle{level 1}=[sibling distance=60mm]
+\tikzstyle{level 2}=[sibling distance=30mm]
+\tikzstyle{level 3}=[sibling distance=15mm]
+\tikzstyle{level 4}=[sibling distance=7.5mm]
+\tikzstyle{level 5}=[sibling distance=3.75mm, level distance=5mm]
+
+
+% New- and Renewcommands
+
+\newcommand{\seq}[2][n]{#2_{1},\ldots,#2_{#1}}
+\newcommand{\nicefrac}[2]{#1/#2}
+
+
+
+
+% ----------------------------------------------------------
+% Only for drafts!
+\usepackage{todonotes}
+\usepackage{showlabels}	%Used in Drafts to Print references.
+%-----------------------------------------------------------
+
+
+
+% References
+\usepackage{hyperref}
+\usepackage[capitalize]{cleveref}
+
+\hypersetup{
+	pdftitle={Unbounded Burnside Problem for Groups},
+	pdfauthor={Tim Benedikt Herbstrith}}
+
+%\Crefname{thm}{Theorem}{Theorems}
+%\Crefname{lem}{Lemma}{Lemmas}
+%\Crefname{pro}{Proposition}{Propositions}
+%\Crefname{cor}{Corollary}{Corollaries}
+
+%\crefname{thm}{thm.}{thms.}
+%\crefname{lem}{lemma}{lemmas.}
+%\crefname{pro}{prop.}{props.}
+%\crefname{cor}{cor.}{cors.}
+
+\Crefname{thm}{Thm.}{Thms.}
+\Crefname{lem}{Lemma}{Lemmas.}
+\Crefname{pro}{Prop.}{Props.}
+\Crefname{cor}{Cor.}{Cors.}
+
+\addtotheorempostheadhook[thm]{\crefalias{thmlisti}{thm}}
+\addtotheorempostheadhook[lem]{\crefalias{thmlisti}{lem}}
+\addtotheorempostheadhook[pro]{\crefalias{thmlisti}{pro}}
+\addtotheorempostheadhook[cor]{\crefalias{thmlisti}{cor}}
+
+% Author and Title (Not in Use)
+\author{Tim Benedikt Herbstrith}
+\title{Unbounded Burnside Problem for Groups}
+%------------------------------------------------------------------------------------------------------------------
+
+\begin{document}
+
+% Using Layers in TikZ
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+% Page Breaks for Displayed Formulas
+\allowdisplaybreaks
+
+\frontmatter
+
+\input{./contents/00_frontmatter}
+
+\mainmatter
+\onehalfspacing
+
+\chapter{Prerequisites and central notions}
+
+Before stating Hilbert's 10th problem and proving its undecidability in
+certain rings of algebraic integers, we remind the reader on some
+notions of theoretical computer science and number theory, as well as
+fix some notations.
+
+\section{Different perspectives on an old problem}
+\input{./contents/01-01_different_perspectives}
+
+\section{Prerequisites from theoretical computer science}
+\input{./contents/01-02_preliminaries_from_tcs}
+
+\section{Binary Trees and Their Automorphism Group}
+%\input{./Inhalt/BinaryTrees}
+
+\section{Definition and Elementary Properties of the First Grigorchuk Group}
+%\input{./Inhalt/FirstGrigorchukGroup}
+
+\chapter{Burnside's Problems}
+%\input{./Inhalt/HistoryOfBurnsidesProblems}
+
+\section{A Counterexample to the Unbounded Burnside Problem}
+%\input{./Inhalt/BurnsidesProblem}
+
+\section{Growth of the First Grigorchuk Group}
+%\input{./Inhalt/Growth}
+
+\clearpage
+\appendix
+\chapter{Appendix}\label{sec:Appendix}
+%\input{./Inhalt/Appendix}
+
+\backmatter
+\vspace{\fill}
+\printbibliography
+
+\listoftodos
+\end{document}

@@ -1,0 +1,311 @@
+
+\subsubsection{Problems and Turing
+machines}
+
+In this section we closely follow the lecture notes on the subject by
+\textcite{Mueller2016}.
+
+\begin{defin}
+    A \emph{(decision) problem} is a subset of the set of finite
+    $\zer$-$\one$-strings $\lbrace \zer, \one \rbrace^*$ including the
+    empty string $λ$. We call $\lbrace \zer, \one \rbrace$
+    \emph{alphabet} and its elements \emph{bits.}
+\end{defin}
+
+One immediate objection against this definition is that not all problems
+arise as subsets of these strings. However, such problems $Q$ are
+captured up to an encoding.
+
+\[ \enc{\cdot} : Q → \lbrace \zer, \one \rbrace^*\]
+
+We usually do not concern ourselves with the details of this encoding.
+However, the encoding should capture the structure of the problem.
+
+\begin{exam}
+    Consider the problem of deciding whether a finite simple graph is
+    connected or not. If we fix each vertex set to be of the form
+    $\lbrace 0, 1, …, n\rbrace$, then the set of all graphs can be encoded
+    as the set of the respective adjacency matrices written as a string
+    
+    \[b_{00}b_{01} …b_{0n}b_{10}…b_{nn}\]
+    
+    of length $(n + 1)^2$, where $b_{ij} = \one$ if and only if the
+    vertices $i$ and $j$ are connected.
+\end{exam}
+
+\begin{defin}
+    A \emph{Turing machine} $\mathbb A$ on the \emph{alphabet}
+    $A = \lbrace \sta, \emp, \zer, \one \rbrace$ is a tuple $(S, δ)$,
+    where $\sstart, \shalt ∈ S$ is a finite non-empty set, called
+    \emph{set of states}, and
+    
+    \[δ: S × A → S × A × \lbrace -1, 0, 1 \rbrace\]
+    
+    is called \emph{transition function}. If $δ(s, a) = (s', b, m)$, we
+    demand that the following axioms are satisfied.
+    
+    \begin{thmlist}
+    \item
+      $a = \sta$ if and only if $b = \sta$.
+    \item
+      If $a = \sta$, then $m ≠ -1$.
+    \item
+      If $s = \shalt$, then $s' = \shalt$, $a = b$ and $m = 0$.
+    \end{thmlist}
+\end{defin}
+
+Let $\mathbb A = (S, δ)$ be a Turing machine. A \emph{configuration}
+of $\mathbb A$ is a triple $(s, j, c) ∈ S × ℕ × A^ℕ$. It reflects
+the current state of $\mathbb A$ the current position of its
+\emph{head} and the content of its \emph{work-tape}.
+
+A configuration of the form $(\shalt, 0, c)$ is called \emph{halting}.
+A \emph{start configuration} is of the form $(\sstart, 0, c)$ such
+that $c(0) = \sta$ and there exists an $n ∈ ℕ$ such that
+$c(i) = \emp$ if and only if $i > n$. This means that in a start
+configuration the work-tape reads
+
+\[\sta x_1 x_2 … x_n \emp \emp …\]
+
+It will be very convenient to identify the finite string $x_1…x_n$
+with this tape content.
+
+We write $(s, j, c) \vdash_1 (s', j', c')$ and call $(s', j', c')$ a
+\emph{successor configuration} of $(s, j, c)$ if there exists an
+$m ∈ \lbrace -1, 0, 1 \rbrace$ such that
+
+\begin{itemize}
+\item
+  $δ(s, c) = (s', c', m)$,
+\item
+  $j' = j + m$, and
+\item
+  $c'(ℓ) = c(ℓ)$ for all $ℓ ≠ j$.
+\end{itemize}
+
+This relation makes the set of all configurations of $\mathbb A$ into
+a directed graph. A \emph{run} of $\mathbb A$ on $x$ is a path in
+this directed graph starting in the start configuration
+$(\sstart, 0, x)$. A run of $\mathbb A$ on $x$ is \emph{halting}
+or \emph{complete} if it reaches a halting configuration
+$(\shalt, 0, y)$. In this case we write $\mathbb A (x) = y$.
+
+We will denote Turing machines using listings, where the fact that
+$δ_\text{a} (s_\text{state}, b) = (s_\text{state'}, c, m)$ is encoded
+by
+
+\begin{lstlisting}
+a "state" b = ("state'", c, m)
+\end{lstlisting}
+
+See the Appendix of this thesis on how to simulate these Turing machines
+using the \emph{Haskell} programming language. We actually use valid
+syntax of the \emph{glorious Glasgow Haskell compiler} in the listings.
+
+\begin{exam}
+    Consider the Turing machine
+    $\mathbb A_\text{add1} = (\lbrace \sstart, \shalt, s_\text{overflow}, s_\text{return} \rbrace, δ_\text{add1})$
+    that adds $1$ to a (possible zero-patched) binary representation of a
+    natural number $n$.
+\end{exam}
+
+\begin{lstlisting}
+-- start by entering the "overflow" state ...
+add1 "start"    '§' = ("overflow", '§', 1   )
+-- ... and stay in this state, as long as you read only '1'-s
+add1 "overflow" '1' = ("overflow", '0', 1   )
+-- if you read the first '0' or an empty cell replace it by '1'
+-- and enter the "return" state to move the head to the first cell
+add1 "overflow" '0' = ("return",   '1', (-1))
+add1 "overflow" '_' = ("return",   '1', (-1))
+-- we finish if we read '§' again or ...
+add1 "return"   '§' = ("halt",     '§', 0   )
+-- ... continue to move to the right and don't change the cell
+-- content. Here `b` matches '0' or '1'
+add1 "return"   b   = ("return",   b  , (-1))
+\end{lstlisting}
+
+The complete run of $\mathbb A_\text{add1}$ on $\one\one\zer\one$
+can be seen in \cref{fig:complete run}.
+
+\begin{figure*}
+    \centering
+    
+    \begin{subfigure}{.5\textwidth}
+        \includegraphics{res/turing_add1_1}
+        \caption{$δ(\sstart, \sta) = (s_\text{overflow}, \sta, 1)$}
+    \end{subfigure}
+    
+    \begin{subfigure}{.5\textwidth}
+        \includegraphics{res/turing_add1_2}
+        \caption{$δ(s_\text{overflow}, \one) = (s_\text{overflow}, \one, 1)$}
+    \end{subfigure}
+    
+    \begin{subfigure}{.5\textwidth}
+        \includegraphics{res/turing_add1_3}
+        \caption{$δ(s_\text{overflow}, \one) = (s_\text{overflow}, \one, 1)$}
+    \end{subfigure}
+    
+    \begin{subfigure}{.5\textwidth}
+        \includegraphics{res/turing_add1_4}
+        \caption{$δ(s_\text{overflow}, \zer) = (s_\text{return}, \one, -1)$}
+    \end{subfigure}
+    
+    \begin{subfigure}{.5\textwidth}
+        \includegraphics{res/turing_add1_5}
+        \caption{$δ(s_\text{return}, \one) = (s_\text{return}, \one, -1)$}
+    \end{subfigure}
+    
+    \begin{subfigure}{.5\textwidth}
+        \includegraphics{res/turing_add1_6}
+        \caption{$δ(s_\text{return}, \one) = (s_\text{return}, \one, -1)$}
+    \end{subfigure}
+    
+    \begin{subfigure}{.5\textwidth}
+        \includegraphics{res/turing_add1_7}
+        \caption{$δ(s_\text{return}, \sta) = (s_\text{halt}, \sta, 0)$}
+    \end{subfigure}
+    
+    \begin{subfigure}{.5\textwidth}
+        \includegraphics{res/turing_add1_8}
+        \caption{$δ(s_\text{halt}, \sta) = (s_\text{halt}, \sta, 0)$}
+    \end{subfigure}
+    
+    \caption{The complete run of $\mathbb A_\text{add1}$ on $\one\one\zer\one$}
+    \label{fig:complete run}
+\end{figure*}
+
+\begin{defin}
+    Let $\mathbb A$ be a Turing machine.
+    
+    \begin{enumerate}
+        \item
+          $\mathbb A$ \emph{computes} the partial function that maps each
+          $x$ with a complete run to $\mathbb A(x)$ and is undefined for all
+          other strings.
+        \item
+          $\mathbb A$ \emph{accepts} all $x$ such that
+          $\mathbb A(x) = \one$ and \emph{rejects} them if
+          $\mathbb A(x) = \zer$.
+        \item
+          A partial function on $\lbrace \sta, \emp, \zer, \one \rbrace^*$ is
+          \emph{computable} if there is a Turing machine computing it.
+        \item
+          A subset of $\lbrace \sta, \emp, \zer, \one \rbrace^*$, i.e.~a
+          problem, is \emph{decidable} if there is a Turing machine computing
+          its characteristic function.
+        \item
+          A problem is called \emph{semi-decidable} or \emph{computably
+          enumerable} if there is a Turing machine accepting precisely the
+          elements of the problem.
+    \end{enumerate}
+\end{defin}
+
+The last postulate of the definition above means that a problem is
+semi-decidable if there is a Turing machine affirming membership of the
+corresponding set but it might not be able to refute membership.
+
+\begin{exam}
+    We can encode a natural number $n$
+    
+    \begin{exlist}
+    \item
+      in tally notation
+      \begin{align*}
+        n & ↦ \underbrace{\one…\one}_{n\text{-times}}, \quad \text{if } n > 0 \\
+        0 & ↦ λ
+      \end{align*}
+    \item
+      by its binary representation
+      \begin{align*}
+          n = 2^k + \sum_{i = 0}^{k-1} b_i 2^i & ↦ b_0…b_{k-1}\one, \quad
+              \text{if } n > 0\\
+                                             0 & ↦ \zer,
+      \end{align*}
+      or
+    \item
+      by a shifted and truncated form of its binary representation
+      \begin{align*}
+        n = 1 + \sum_{i = 0}^k b_i 2^i & ↦ b_0…b_k, \quad \text{if } n > 0\\
+                                     0 & ↦ λ
+      \end{align*}
+    \end{exlist}
+    
+    In either case the set obtained by encoding $ℕ$ is easily seen to be
+    decidable. In the first case, check that the string contains only copies
+    of the bit $\one$. Indeed, this can be achieved by the Turing machine
+    
+    \[\mathbb A_\text{tally} = ( \lbrace \sstart, \shalt, \scheck, s_\text{accept}, s_\text{reject}, s_\text{rejectMR}\rbrace, δ)\]
+    
+    whose transition function is displayed in \cref{lst:tally encoding}.
+    
+    \lstinputlisting[float,
+                     caption=A Turing machine checking whether the input is tally-encoded,
+                     label=lst:tally encoding]{./listings/tally.hs}
+    
+    
+    In the second case it suffices to check that the string has length $1$
+    or ends in a $\one$, and in the third case every string is accepted.
+\end{exam}
+
+\subsubsection{Halting problem}
+
+One can extend the alphabet of Turing machines by encoding characters
+i.e.~assigning bit sequences to them. Very common encodings are
+\textsc{ASCII} and \textsc{UTF-8}\footnote{See the Appendix for an
+  \textsc{ASCII} encoding table and details on \textsc{UTF-8}.}. Using
+either one of these encodings the string `haskell' is encoded as
+
+\begin{lstlisting}
+h         a         s         k         e         l         l
+0110 1000 0110 0001 0111 0011 0110 1011 0110 0101 0110 1100 0110 1100
+\end{lstlisting}
+
+In this way we can encode a Turing machine as the \textsc{UTF-8}--encoding of
+their transition function $δ$ written as a string as above. Note that
+the set of states can implicitly be deduced from the transition function
+as the set of acceptable first arguments of $δ$.
+
+One of the fundamental theorems of theoretical computer science is the
+existence of a universal Turing machine.
+
+\begin{thm}
+    There exists a Turing machine $\mathbb U$ that computes upon receiving
+    the tuple $(\ulcorner \mathbb A \urcorner, x)$ as input, the output of
+    Turing machine $\mathbb A$ on $x$ i.e.
+    \[ \mathbb U(\ulcorner \mathbb A \urcorner, x) = y \Leftrightarrow \mathbb A (x) = y\]
+\end{thm}
+
+A natural question is:
+
+Given a machine $\mathbb A$ and a string $x$. Does $\mathbb A$
+halt on $x$?
+
+It is one of the most fundamental results of theoretical computer
+science that the halting problem is unsolvable.
+
+\begin{thm}
+    The halting problem is undecidable.
+\end{thm}
+\begin{proof}
+    Assume there exists a Turing machine $\mathbb B$ that decides the
+    halting problem i.e.~for all Turing machines $\mathbb A$ and all
+    strings $x$
+    
+    \[ \mathbb B(\mathbb A, x) =
+    \begin{cases}
+      \one  & \text{if } \mathbb A \text{ halts on } x\\
+      \zer  & \text{if } \mathbb A \text{ does not halt on } x
+    \end{cases}\]
+    
+    Now using $\mathbb B$ construct a Turing machine $\mathbb B'$ such
+    that
+    
+    \[ \mathbb B'(\mathbb A) = \one \Leftrightarrow \mathbb A \text{ does not halt on } \ulcorner \mathbb A\urcorner \]
+    
+    Now if $\mathbb B'(\mathbb B, \ulcorner \mathbb B\urcorner) = \one$
+    then by definition of $\mathbb B'$ we find that
+    $\mathbb B does not halt on \ulcorner \mathbb B\urcorner$. But by
+    definiton of $\mathbb B$ this means that
+    $\mathbb B(\mathbb B, \ulcorner \mathbb B \urcorner) = \zer$
+\end{proof}
