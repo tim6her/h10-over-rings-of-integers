@@ -11,8 +11,13 @@
                            Ligatures=TeX,
                            Letters=SmallCaps]{EB Garamond}
 \setsansfont[Ligatures=TeX, Scale=MatchLowercase]{Open Sans}
-\setmonofont[Scale=MatchUppercase]{Fira Mono}
+\setmonofont[Scale=MatchLowercase]{Fira Mono}
+\setmathfont[Scale=MatchUppercase]{STIX Two Math}
 \setmathtt[Scale=MatchUppercase]{Fira Mono}
+\setmathfont[range=bfup/{Latin,latin},
+             NFSSFamily=StixBF,
+             Scale=MatchLowercase]{STIX Two Text Bold}
+\DeclareMathAlphabet{\mathbf}{TU}{StixBF}{bx}{n}
 
 \renewcommand{\scshape}{\headingfont}
 
@@ -22,7 +27,7 @@
 \usepackage{floatrow}
 \usepackage{booktabs}
 
-\usepackage{csquotes}
+\usepackage[autostyle]{csquotes}
 \usepackage{microtype}
 \usepackage{enumitem}
 \usepackage{subcaption}
@@ -47,7 +52,7 @@
 
 \usepackage{listingsutf8}	% Typeset code.
 \lstset{extendedchars=true,
-        basicstyle=\ttfamily\small,
+        basicstyle=\ttfamily,
         commentstyle=\color{gray},
         stringstyle=\color{darkgray},
         xleftmargin=\parindent,
@@ -92,6 +97,7 @@
 \newcommand{\shalt}{s_{\text{halt}}}
 \newcommand{\scheck}{s_{\text{check}}}
 \newcommand{\enc}[1]{\ulcorner #1 \urcorner}
+\newcommand{\rel}[1]{\mathrel{\MakeUppercase #1}}
 
 
 \declaretheoremstyle[
@@ -99,14 +105,14 @@
     headfont=\headingfont,
     notefont=\mdseries, notebraces={(}{)},
     bodyfont=\itshape,
-    postheadspace=1em
+    postheadspace=0.5\parindent
     ]{mythm}
 \declaretheoremstyle[
     spaceabove=6pt, spacebelow=6pt,
     headfont=\headingfont,
     notefont=\mdseries, notebraces={(}{)},
     bodyfont=\normalfont,
-    postheadspace=1em
+    postheadspace=0.5\parindent
     ]{mydef}
 
 \declaretheorem[
@@ -245,7 +251,7 @@
 \input{./contents/00_frontmatter}
 
 \mainmatter
-\onehalfspacing
+%\onehalfspacing
 
 \chapter{Prerequisites and central notions}
 
