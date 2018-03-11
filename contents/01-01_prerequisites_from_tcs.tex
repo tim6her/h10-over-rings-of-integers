@@ -1,3 +1,7 @@
+% !TeX encoding = UTF-8
+% !TeX TS-program = xelatex
+% !TeX spellcheck = en_GB
+% !TeX root = ../Herbstrith-H10_over_AI.tex
 
 \subsubsection{Problems and Turing
 machines}
@@ -107,26 +111,14 @@ syntax of the \emph{glorious Glasgow Haskell compiler} in the listings.
     $\mathbb A_\text{add1} = (\lbrace \sstart, \shalt, s_\text{overflow}, s_\text{return} \rbrace, δ_\text{add1})$
     that adds $1$ to a (possible zero-patched) binary representation of a
     natural number $n$.
+    Its transition function is described in \cref{lst:add1}.
+    The complete run of $\mathbb A_\text{add1}$ on $\one\one\zer\one$
+    can be seen in \cref{fig:complete run}.
 \end{exam}
 
-\begin{lstlisting}
--- start by entering the "overflow" state ...
-add1 "start"    '§' = ("overflow", '§', 1   )
--- ... and stay in this state, as long as you read only '1'-s
-add1 "overflow" '1' = ("overflow", '0', 1   )
--- if you read the first '0' or an empty cell replace it by '1'
--- and enter the "return" state to move the head to the first cell
-add1 "overflow" '0' = ("return",   '1', (-1))
-add1 "overflow" '_' = ("return",   '1', (-1))
--- we finish if we read '§' again or ...
-add1 "return"   '§' = ("halt",     '§', 0   )
--- ... continue to move to the right and don't change the cell
--- content. Here `b` matches '0' or '1'
-add1 "return"   b   = ("return",   b  , (-1))
-\end{lstlisting}
-
-The complete run of $\mathbb A_\text{add1}$ on $\one\one\zer\one$
-can be seen in \cref{fig:complete run}.
+\lstinputlisting[float,
+                 caption=A Turing machine adding one to the input string,
+                 label=lst:add1]{./listings/add1.hs}
 
 \begin{figure*}
     \centering
@@ -261,8 +253,8 @@ h         a         s         k         e         l         l
 0110 1000 0110 0001 0111 0011 0110 1011 0110 0101 0110 1100 0110 1100
 \end{lstlisting}
 
-In this way we can encode a Turing machine as the \textsc{UTF-8}--encoding of
-their transition function $δ$ written as a string as above. Note that
+In this way we can encode a Turing machine as the \textsc{UTF-8}-encoding of
+its transition function $δ$ written as a string as above. Note that
 the set of states can implicitly be deduced from the transition function
 as the set of acceptable first arguments of $δ$.
 

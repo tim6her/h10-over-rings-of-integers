@@ -1,0 +1,100 @@
+% !TeX encoding = UTF-8
+% !TeX TS-program = xelatex
+% !TeX spellcheck = en_GB
+% !TeX root = ../Herbstrith-H10_over_AI.tex
+
+Before tackling \textsc{H10} in selected number fields, we list some
+structural results and methods used within the subsequent proofs. For
+further structural results see \cite{Shlapentokh2000}.
+
+\begin{lem}\label{lem:intersections and unions}
+    Let $R$ be an integral domain, whose quotient field is not
+    algebraically closed. Then if $S_1, S_2 \subseteq R$ are diophantine so are
+    
+    \[ S_1 ∩ S_2 \quad \text{and} \quad S_1 ∪ S_2 \]
+\end{lem}
+
+\begin{proof}
+Let $f(X, Y_1, …, Y_n)$ and $g(X, Y_1, …, Y_n)$ give diophantine
+definitions\footnote{By inserting dummy indeterminates we may whish that
+both polynomials have the same number of indeterminates.} of $S_1$
+and $S_2$ resp. then
+
+\[ h := fg \]
+
+vanishes if and only if $f$ or $g$ vanishes. As a consequence, the
+following set gives a diophantine definition of the union.
+
+\[ S_1 ∪ S_2 = \lbrace x \mid ∃ y_1, … , ∃ y_n \; h(x, y_1, … , y_n) = 0 \rbrace. \]
+
+To prove the claim for intersections of diophantine sets, let
+
+\[h(X) = a_m X^m + … + a_1 X + a_0 ∈ R[X, Y_1, …, Y_n]\]
+
+be a polynomial of degree $m > 0$ without roots in $R$. Then
+$\bar h(X) = X^m h(X^{-1})$ does not have roots in $R$ either. As if
+$α ∈ R$ is a root of $\bar h$ then
+
+\[ 0 = \bar h(α) = a_m + a_{m-1} α + a_1 α^{,-1} + a_0 α^m\]
+
+and $α = 0$ implies $a_m = 0$. Otherwise, $α^{-1}$ is a root of
+$α^m h$ and therefore of $h$.
+
+Now consider
+
+\[ H(X, Y_1, …, Y_n) = \sum_{i=0}^m a_i f(X, Y_1, …, Y_n)^i g(X, Y_1, …, Y_n)^{m - i}.\]
+
+We will prove for all $α_0, α_1, …, α_n ∈ R$ the following
+equivalence, showing that $H$ witnesses that $S_1 ∩ S_2$ is
+diophantine.
+
+\[ H(α_0, α_1, …, α_n) = 0 \Leftrightarrow f(α_0, α_1, …, α_n) = 0 ∧ g(α_0, α_1, …, α_n) = 0 \]
+
+If there are $α_0, α_1, …, α_n ∈ R$ such that
+$H(α_0, α_1, …, α_n) = 0$ but $f(α_0, α_1, …, α_n) ≠ 0$ then
+
+\[ 0 = \frac H {f^n} (α_0, α_1, …, α_n) = \bar h \left(\frac gf (α_0, α_1, …, α_n) \right), \]
+
+which is a contradiction to $\bar h$ not having roots. If, on the
+other hand, $H(α_0, α_1, …, α_n) = 0$ but $g(α_0, α_1, …, α_n) ≠ 0$
+we find
+
+\[ 0 = \frac H {g^n}(α_0, α_1, …, α_n) = \bar h \left( \frac fg (α_0, α_1, …, α_n) \right). \]
+
+The converse direction is clear as the powers of $f$ and $g$ sum up
+to $n$ for each summand in the definition of $H$.
+\end{proof}
+
+Using induction and the lemma above, one immediately obtains that
+arbitrary finite unions and intersections of diophantine sets are
+diophantine. The lemma can also easily be extended to diophantine sets
+contained in $R^n$ as the existential quantorisation is nowhere used
+in the proof.
+
+\textcite{Shlapentokh2000} notes that the following lemma and its corollary are
+`the only tool successfully used to show the undecidability of \textsc{H10}
+for various subrings of the number fields' They explain the usefulness
+of diopahtine definitions.
+
+\begin{lem}
+Let $R_1 \subseteq R_2$ be recursive rings and integral domains such
+that the quotient field of $R_2$ is not algebraically closed. If H10
+is undecidable over $R_1$ and $R_1$ has a diophantine definition over
+$R_2$, then H10 in undecidable over $R_2$.
+\end{lem}
+
+\begin{proof}
+Let $f(X, Y_1, …, Y_n)$ be a diophantine definition of $R_1$ over
+$R_2$ and assume that H10 is decidable over $R_2$. We prove that H10
+is decidable over $R_1$ as well, contradicting our assumption.
+
+Let $p ∈ R_1[T_1, …, T_m]$ be diophantine definition of $S$ over
+$R_1$. Then
+
+\[ S = \left\lbrace ∃α_1,…,α_m, β_{1,1}, …, β_{m,n} ∈ R_2 \middle| P(α_1, …, α_m) = 0 ∧ \bigwedge_{i=1}^m f(α_i, β_{i,1},…,β_{i,n}) = 0 \right\rbrace\]
+
+is a diophantine defition of $S$ over $R_2$. Firstly, note that the
+defining relation of $S$ can be rewritten as a single polynomial
+relation by \cref{lem:intersections and unions}. Since there is
+a Turing machine deciding \textsc{H10} in $R_2$
+\end{proof}

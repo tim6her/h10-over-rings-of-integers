@@ -6,10 +6,11 @@
 
 % Typography
 \usepackage{fontspec}
-\setmainfont{EB Garamond}
+\setmainfont[Ligatures=TeX]{EB Garamond}
 \newfontfamily\headingfont[RawFeature={+c2sc,+scmp},
+                           Ligatures=TeX,
                            Letters=SmallCaps]{EB Garamond}
-\setsansfont[Scale=MatchLowercase]{Open Sans}
+\setsansfont[Ligatures=TeX, Scale=MatchLowercase]{Open Sans}
 \setmonofont[Scale=MatchUppercase]{Fira Mono}
 \setmathtt[Scale=MatchUppercase]{Fira Mono}
 
@@ -29,7 +30,7 @@
 \usepackage{letltxmacro}
 
 \newlist{thmlist}{enumerate}{1}			% thmlist-s may only be used in theorem environments
-\setlist[thmlist]{label=(\roman{thmlisti}), ref=\thethm.(\roman{thmlisti}),noitemsep}
+\setlist[thmlist]{label=(\roman{thmlisti}), ref=\thethm.(\roman{thmlisti})noitemsep}
 \newlist{exlist}{enumerate}{1}
 \setlist[exlist]{label=(\arabic{exlisti}), ref=(\arabic{exlisti}),noitemsep,leftmargin=0pt,itemindent=2\parindent}
 \newlist{plist}{enumerate}{1}
@@ -46,7 +47,7 @@
 
 \usepackage{listingsutf8}	% Typeset code.
 \lstset{extendedchars=true,
-        basicstyle=\ttfamily,
+        basicstyle=\ttfamily\small,
         commentstyle=\color{gray},
         stringstyle=\color{darkgray},
         xleftmargin=\parindent,
@@ -250,29 +251,31 @@
 
 Before stating Hilbert's 10th problem and proving its undecidability in
 certain rings of algebraic integers, we remind the reader on some
-notions of theoretical computer science and number theory, as well as
+notions from theoretical computer science and number theory, as well as
 fix some notations.
 
-\section{Different perspectives on an old problem}
-\input{./contents/01-01_different_perspectives}
-
 \section{Prerequisites from theoretical computer science}
-\input{./contents/01-02_preliminaries_from_tcs}
+\input{./contents/01-01_prerequisites_from_tcs}
 
-\section{Binary Trees and Their Automorphism Group}
-%\input{./Inhalt/BinaryTrees}
+\section{Prerequisites from number theory}
+\input{./contents/01-02_prerequisites_from_nt}
 
-\section{Definition and Elementary Properties of the First Grigorchuk Group}
-%\input{./Inhalt/FirstGrigorchukGroup}
+\chapter{Hilbert's tenth problem}
 
-\chapter{Burnside's Problems}
-%\input{./Inhalt/HistoryOfBurnsidesProblems}
+\section{Different perspectives on an old problem}
+\input{./contents/02-01_different_perspectives}
 
-\section{A Counterexample to the Unbounded Burnside Problem}
-%\input{./Inhalt/BurnsidesProblem}
+\section{Some structural results}
+\input{./contents/02-02_structural_results}
 
-\section{Growth of the First Grigorchuk Group}
-%\input{./Inhalt/Growth}
+\section{Hilbert's 10th problem over totally real number fields and number fields with one pair of non-real embeddings}
+\input{./contents/02-03_h10_over_totally_real_nf}
+
+\section{Hilbert's 10th problem quadratic extensions of a totally real number fields}
+\input{./contents/02-04_h10_over_quadratic_extensions}
+
+\section{Hilbert's 10th problem over some more rings}
+\input{./contents/02-05_h10_over_more_rings}
 
 \clearpage
 \appendix
