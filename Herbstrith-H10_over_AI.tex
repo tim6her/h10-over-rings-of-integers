@@ -1,6 +1,6 @@
 \documentclass[10pt,a4paper]{scrbook}
 
-% Input Type and AMS-Packages 
+% Input Type and AMS-Packages
 \usepackage{amsmath,amsfonts,amssymb,amsthm}
 \usepackage{unicode-math}
 
@@ -13,11 +13,9 @@
 \setsansfont[Ligatures=TeX, Scale=MatchLowercase]{Open Sans}
 \setmonofont[Scale=MatchLowercase]{Fira Mono}
 \setmathfont[Scale=MatchUppercase]{STIX Two Math}
+\setmathrm[Scale=MatchUppercase]{STIX Two Math}
 \setmathtt[Scale=MatchUppercase]{Fira Mono}
-\setmathfont[range=bfup/{Latin,latin},
-             NFSSFamily=StixBF,
-             Scale=MatchLowercase]{STIX Two Text Bold}
-\DeclareMathAlphabet{\mathbf}{TU}{StixBF}{bx}{n}
+
 
 \renewcommand{\scshape}{\headingfont}
 
@@ -64,7 +62,7 @@
 
 
 % Math, Operators and Theorems
-\usepackage{thmtools}	% More Flexibility in Theorem Styles + Provides in Combination with ref-Packages the 
+\usepackage{thmtools}	% More Flexibility in Theorem Styles + Provides in Combination with ref-Packages the
 						% Possibility to Refer to Theorem Style in Reference.
 \usepackage{faktor}		% Displays factor groups
 
@@ -92,12 +90,14 @@
 \newcommand{\sta}{\texttt{§}}
 \newcommand{\emp}{\texttt{\_}}
 \newcommand{\zer}{\mathtt 0}
-\newcommand{\one}{\mathtt 1} 
-\newcommand{\sstart}{s_{\text{start}}}
-\newcommand{\shalt}{s_{\text{halt}}}
+\newcommand{\one}{\mathtt 1}
+\newcommand{\state}[1]{s_{\text{#1}}}
+\newcommand{\sstart}{\state{start}}
+\newcommand{\shalt}{\state{halt}}
 \newcommand{\scheck}{s_{\text{check}}}
 \newcommand{\enc}[1]{\ulcorner #1 \urcorner}
 \newcommand{\rel}[1]{\mathrel{\MakeUppercase #1}}
+\newcommand{\algint}[1][K]{\mathcal{O}_{#1}}
 
 
 \declaretheoremstyle[
@@ -148,7 +148,7 @@
 	name=Example,
 	style=mydef,
 	numbered=no]{exam}
-	
+
 \declaretheorem[
 	name=remark,
 	style=remark,
@@ -274,13 +274,13 @@ fix some notations.
 \section{Some structural results}
 \input{./contents/02-02_structural_results}
 
-\section{Hilbert's 10th problem over totally real number fields and number fields with one pair of non-real embeddings}
+\section[H10 in totally real number fields or one pair of conjugate embeddings]{Hilbert's tenth problem over totally real number fields and number fields with one pair of non-real embeddings}
 \input{./contents/02-03_h10_over_totally_real_nf}
 
-\section{Hilbert's 10th problem quadratic extensions of a totally real number fields}
+\section{Hilbert's tenth problem quadratic extensions of a totally real number fields}
 \input{./contents/02-04_h10_over_quadratic_extensions}
 
-\section{Hilbert's 10th problem over some more rings}
+\section{Hilbert's tenth problem over some more rings}
 \input{./contents/02-05_h10_over_more_rings}
 
 \clearpage

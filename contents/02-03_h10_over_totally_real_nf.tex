@@ -1,6 +1,111 @@
-% !TeX encoding = UTF-8
+% !TeA encoding = UTF-8
 % !TeX TS-program = xelatex
 % !TeX spellcheck = en_GB
 % !TeX root = ../Herbstrith-H10_over_AI.tex
 
-We closely follow the papers of \textcite{Denef1980} and \textcite{Pheidas1988}, who in term follow the structure of \cite{Davis1973}.
+We closely follow the papers of \textcite{Denef1980} and \textcite{Pheidas1988},
+who in term follow the structure of the original paper \citetitle{Davis1973} by
+\textcite{Davis1973}. This way, we can prove the undecidability of Hilbert's
+tenth problem over rings of algebraic integers in totally real number fields and
+number fields with one pair of non-real embeddings in one go.
+
+\subsection{Finitely many easy lemmas}
+
+We start by defining two sequences, that satisfy the Pell equation stated below.
+
+\begin{equation} \label{eq:Pell}
+    x^2 - d y^2 = 1
+\end{equation}
+
+\begin{defin}
+  Let $K$ be an algebraic number field and $\algint$ its ring of algebraic
+  integers and fix $a ∈ \algint$. We define $δ(a) = \sqrt{a^2 - 1}$ and $ε(a) =
+  a + δ(a)$. If $δ(a) \not\in K$ we define $x_m(a), y_m(a) ∈ \algint$ for $m ∈
+  ℕ$ by
+
+  \[
+    x_m(a) + δ(a) y_m(a) = (ε(a))^m.
+  \]
+\end{defin}
+
+This definition includes the case $K = ℚ$ with $\algint = ℤ$ of
+\cite{Davis1973}. However, we are using the slightly modified notation of
+\cite{Denef1980,Pheidas1988}. Note that the sequences $x_m(a)$ and $y_m(a)$ are
+well defined for each $m ∈ ℕ$ as they correspond to the coefficients of
+$(ε(a))^m$ in $K[δ(a)]/K$ with respect to the basis $\lbrace 1, δ(a)\rbrace$. If
+the reference is clear we will omit the dependency on $a$ writing $δ, ε, x_m$
+and $y_m$.
+
+\begin{rem}
+  As $K[δ]/K$ has degree two, there is exactly one pair of field
+  embeddings\footnote{A field extension of degree two is necessarily normal.}
+  $K → K[δ]$ preserving $K$ point-wise, namely $σ_1(δ) = δ$ and $σ_2(δ) = -δ$.
+\end{rem}
+
+We will now collect some properties of these sequences. The proofs are
+generalised versions of the ones given in \cite{Davis1973}.
+
+\begin{lem}
+  Let $K$ be an algebraic number field and $a ∈ \algint$ such that $δ(a) \not\in K$. Then
+  \begin{thmlist}
+    \item $ε$ is a unit in $\algint[K(δ(a))]$, its inverse is given by $ε^{-1} = a - δ = σ_2(ε)$, and
+    \item $x_m, y_m$ satisfy the Pell equation~\eqref{eq:Pell} for all $m ∈ ℕ$, using $d = δ(a)^2$ as parameter.
+  \end{thmlist}
+\end{lem}
+\begin{proof}
+  \begin{plist}
+    \item We have $ε (a - δ) = (a + δ) (a - δ) = a^2 - δ^2 = 1$ as desired.
+    \item We use induction on $m$. If $m = 0$, the pair $x_0 = 1$ and $y_0 = 0$
+    yields a trivial solution to equation~\eqref{eq:Pell}. Let the claim be
+    proven for all pairs $x_n, y_n$ with $n ≤ m$. Then rewriting the definition
+    of $x_{m + 1}, y_{m + 1}$ we obtain
+
+    \[
+      x_{m + 1} + δ y_{m + 1} = ε^{m + 1} = (x_m + δ y_m)ε.
+    \]
+
+    Applying $σ_2$ we obtain
+
+    \[
+      σ_2(x_{m + 1} + δ y_{m + 1}) = x_{m + 1} - δ y_{m + 1} = (x_m - δ y_m) ε^{-1}
+    \]
+
+    and multiplication of both equations yields
+
+    \[
+      x_{m + 1}^2 - d y_{m + 1}^2 = σ_2(x_{m + 1} + δ y_{m + 1}) (x_{m + 1} - δ y_{m + 1}) = 1
+    \]
+
+    as claimed.
+  \end{plist}
+\end{proof}
+
+The defining equation
+
+\[
+  x_m + δ y_m = ε^m = (x_1 + δ y_1)^m
+\]
+
+Can be seen as an analogue of the trigonometric identity
+
+\[
+  \cos m + i \sin m = e^{im} = (\cos 1 + i \sin 1)^m,
+\]
+
+where $x_m$ plays the role of $\cos m$, $y_m$ the one of $\sin m$, and $i$ is replaced by $δ$. In this view the Pell equation~\eqref{eq:Pell} is the analogon of the Pythagorean identity
+
+\[
+  \cos (m) ^2 + \sin (m) ^2 = 1.
+\]
+
+The next lemma proves the identities corresponding to $\cos m = \Re e^m$, $\sin
+m = \Im e^m$, and the addition formulas.
+
+\begin{lem}
+  Let $K$ be an algebraic number field and $a ∈ \algint$ such that $δ(a) \not\in K$. Then
+  \begin{thmlist}
+    \item $x_m = (ε^m + ε^m) / 2$ and $y_m = (ε^m - ε^m) / (2 δ)$ and
+    \item $x_{m±k} = x_m x_k ± (a^2 - 1) y_m y_k$ and
+    $y_{m ± k} = x_k y_m ± x_m y_k$
+  \end{thmlist}
+\end{lem}
