@@ -1,4 +1,4 @@
-% !TeA encoding = UTF-8
+% !TeX encoding = UTF-8
 % !TeX TS-program = xelatex
 % !TeX spellcheck = en_GB
 % !TeX root = ../Herbstrith-H10_over_AI.tex
@@ -18,7 +18,7 @@ We start by defining two sequences, that satisfy the Pell equation stated below.
 \end{equation}
 
 \begin{defin}
-  Let $K$ be an algebraic number field and $\algint$ its ring of algebraic
+  Let $K$ be an algebraic number field, $\algint$ its ring of algebraic
   integers and fix $a ∈ \algint$. We define $δ(a) = \sqrt{a^2 - 1}$ and $ε(a) =
   a + δ(a)$. If $δ(a) \not\in K$ we define $x_m(a), y_m(a) ∈ \algint$ for $m ∈
   ℕ$ by
@@ -38,8 +38,10 @@ and $y_m$.
 
 \begin{rem}
   As $K[δ]/K$ has degree two, there is exactly one pair of field
-  embeddings\footnote{A field extension of degree two is necessarily normal.}
-  $K → K[δ]$ preserving $K$ point-wise, namely $σ_1(δ) = δ$ and $σ_2(δ) = -δ$.
+  automorphisms\footnote{A field extension of degree two is necessarily normal.}
+  on $K[δ]$ preserving $K$ point-wise, namely $σ_1(δ) = δ$ and $σ_2(δ) = -δ$.
+  The latter will be denoted by $\overline{α} = σ_2(α)$ to emphasise the analogy
+  of complex conjugation.
 \end{rem}
 
 We will now collect some properties of these sequences. The proofs are
@@ -48,7 +50,8 @@ generalised versions of the ones given in \cite{Davis1973}.
 \begin{lem}
   Let $K$ be an algebraic number field and $a ∈ \algint$ such that $δ(a) \not\in K$. Then
   \begin{thmlist}
-    \item $ε$ is a unit in $\algint[K(δ(a))]$, its inverse is given by $ε^{-1} = a - δ = σ_2(ε)$, and
+    \item \label{lem:epsilon is unit}
+    $ε$ is a unit in $\algint[K(δ(a))]$, its inverse is given by $ε^{-1} = a - δ = \overline{ε}$, and
     \item $x_m, y_m$ satisfy the Pell equation~\eqref{eq:Pell} for all $m ∈ ℕ$, using $d = δ(a)^2$ as parameter.
   \end{thmlist}
 \end{lem}
@@ -64,16 +67,16 @@ generalised versions of the ones given in \cite{Davis1973}.
       x_{m + 1} + δ y_{m + 1} = ε^{m + 1} = (x_m + δ y_m)ε.
     \]
 
-    Applying $σ_2$ we obtain
+    Applying the automorphism $\overline \cdot$ we obtain
 
     \[
-      σ_2(x_{m + 1} + δ y_{m + 1}) = x_{m + 1} - δ y_{m + 1} = (x_m - δ y_m) ε^{-1}
+      \overline{x_{m + 1} + δ y_{m + 1}} = x_{m + 1} - δ y_{m + 1} = (x_m - δ y_m) ε^{-1}
     \]
 
     and multiplication of both equations yields
 
     \[
-      x_{m + 1}^2 - d y_{m + 1}^2 = σ_2(x_{m + 1} + δ y_{m + 1}) (x_{m + 1} - δ y_{m + 1}) = 1
+      x_{m + 1}^2 - d y_{m + 1}^2 = \overline{x_{m + 1} + δ y_{m + 1}} (x_{m + 1} - δ y_{m + 1}) = 1
     \]
 
     as claimed.
@@ -92,7 +95,7 @@ Can be seen as an analogue of the trigonometric identity
   \cos m + i \sin m = e^{im} = (\cos 1 + i \sin 1)^m,
 \]
 
-where $x_m$ plays the role of $\cos m$, $y_m$ the one of $\sin m$, and $i$ is replaced by $δ$. In this view the Pell equation~\eqref{eq:Pell} is the analogon of the Pythagorean identity
+where $x_m$ plays the role of $\cos m$, $y_m$ the one of $\sin m$, and $i$ is replaced by $δ$. In this view the Pell equation~\eqref{eq:Pell} is the analogue of the Pythagorean identity
 
 \[
   \cos (m) ^2 + \sin (m) ^2 = 1.
@@ -102,10 +105,80 @@ The next lemma proves the identities corresponding to $\cos m = \Re e^m$, $\sin
 m = \Im e^m$, and the addition formulas.
 
 \begin{lem}
-  Let $K$ be an algebraic number field and $a ∈ \algint$ such that $δ(a) \not\in K$. Then
+  Let $K$ be an algebraic number field and $a ∈ \algint$ such that $δ = δ(a) \not\in K$. Then for all $m, k ∈ ℕ$ we have
   \begin{thmlist}
-    \item $x_m = (ε^m + ε^m) / 2$ and $y_m = (ε^m - ε^m) / (2 δ)$ and
-    \item $x_{m±k} = x_m x_k ± (a^2 - 1) y_m y_k$ and
+    \item $x_m = (ε^m + ε^{-m}) / 2$ and $y_m = (ε^m - ε^{-m}) / (2 δ)$,
+    \item \label{lem:addition formulas}
+    $x_{m ± k} = x_m x_k ± δ^2 y_m y_k$, and
     $y_{m ± k} = x_k y_m ± x_m y_k$
   \end{thmlist}
 \end{lem}
+\begin{proof}
+  \begin{plist}
+    \item In \cref{lem:epsilon is unit} we have seen that $ε^{-1} =
+    \overline{ε}$ and therefore $ε^{-m} = \left(\overline{ε}\right)^m$. Observe that for arbitrary $x, y ∈ \algint$ we have
+
+    \[
+      x + δ y + \overline{x + δ y} = 2x \quad \text{and} \quad
+      x + δ y - \overline{x - δ y} = 2δ y.
+    \]
+
+     Setting $x + δ y = ε^m$ yields the claim.
+    \item By the defining equation for $x_m$ and $y_m$ we have
+
+    \begin{align*}
+      x_{m + k} + δ y_{m + k} &= ε^{m + k} = (x_m + δ y_m) (x_k + δ y_k) =\\
+                            &= (x_m x_k + δ^2 y_m y_k) + δ (x_m y_k + x_k y_m)
+    \end{align*}
+
+    and thusly
+
+    \begin{align*}
+      x_{m + k} &= x_m x_k + δ^2 y_m y_k, \\
+      y_{m + k} &= x_m y_k + x_k y_m.
+    \end{align*}
+
+    The identities for $x_{m - k}$ and $y_{m - k}$ follow analogously.
+  \end{plist}
+\end{proof}
+
+Setting $k = 1$ in the lemma above, we obtain $x_{m ± 1} = a x_m ± δ^2 y_m$ and
+$y_{m ± 1} = a y_m ± x_m$. A further immediate consequence of this lemma is the
+subsequent one, which brings divisibility into play.
+
+\begin{lem}
+  Let $K$ be a number field and $a ∈ \algint$ such that $δ = δ(a) \not\in K$.
+  Then for all $m, k ∈ ℕ$, $k ≠ 0$ we have
+  \begin{thmlist}
+    \item $y_m$ divides $y_{mk}$ in $\algint$ and
+    \item $y_{mk} \equiv k x_m^{k - 1} y_m \mod \left(y_m^3\right)$ in
+    $\algint$ i.e. $y_{mk} - k x_m^{k - 1} y_m$ is contained in the principal
+    ideal generated by $y_m^3$ in $\algint$.
+  \end{thmlist}
+\end{lem}
+\begin{proof}
+  \begin{plist}
+    \item We argue by induction on $k$. The identity is trivial if $k = 1$ and
+    \cref{lem:addition formulas} implies that
+
+    \[
+      y_{m(k + 1)} = x_m y_{mk} + x{mk} y_m.
+    \]
+
+    If the claim is proven for all factors lower than $k + 1$, we find that
+    $y_m | y_{mk}$ and $y_m | y_m$ trivially. As a consequence, $y_m |
+    y_{m(k + 1)}.$
+
+    \item Again the defining equation yields
+    \begin{align*}
+      x_{mk} + δ y_{mk} &= ε^{mk} = (x_m + δ y_m)^k = \\
+                        &= \sum_{j = 0}^k \binom k j x_m^{k - j} y_m^j δ^j \\
+      \intertext{and}
+      y_{mk} &= \sum_{\substack{j=0\\ j \text{ odd}}}^k
+                \binom k j x_m^{k - j} y_m^j δ^{j -1}.
+    \end{align*}
+    In the equation above all terms for $j > 1$ are divisible by $y_m^3$ and
+    thus vanish modulo $\left(y_m^3\right)$. The only term remaining is $k
+    x_m^{k - 1} y_m$ as claimed.
+  \end{plist}
+\end{proof}
