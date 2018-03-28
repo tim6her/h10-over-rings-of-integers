@@ -182,3 +182,96 @@ subsequent one, which brings divisibility into play.
     x_m^{k - 1} y_m$ as claimed.
   \end{plist}
 \end{proof}
+
+The next lemma even though being easy to prove provides a valuable tool in
+studying the sequences $x_m$ and $y_m$. It derives an recursive definition and
+lets us prove properties of the sequences, by proving them for $m ∈ \lbrace
+0, 1 \rbrace$ and inferring the properties for $m + 1$ from $m$ and $m - 1$.
+
+\begin{lem} \label{lem:recursion for x_m and y_m}
+  Let $K$ be a number field and $a ∈ \algint$ such that $δ = δ(a) \not\in K$.
+  For $m > 1$ the following recursive conditions hold.
+
+  \begin{align*}
+    x_{m + 1} &= 2 a x_m - x_{m - 1}, & x_1 = a, \;& x_0 = 1 \\
+    y_{m + 1} &= 2 a y_m - y_{m - 1}, & y_1 = 1, \;& y_0 = 0 \\
+  \end{align*}
+\end{lem}
+\begin{proof}
+  The initial conditions follow from $ε = a + δ$ and $ε^0 = 1$. To prove the
+  the difference equations we use \cref{lem:addition formulas} and obtain
+
+  \begin{align*}
+    x_{m + 1} &= a x_m + δ^2 y_m,  &  y_{m + 1} &= a y_m + x_m, \\
+    x_{m - 1} &= a x_m - δ^2 y_m,  &  y_{m + 1} &= a y_m - x_m.
+  \end{align*}
+
+  Summation yields $x_{m + 1} + x_{m - 1} = 2 a x_m$ and $y_{m + 1} + y_{m - 1}
+  = 2 a y_m$.
+\end{proof}
+
+We use the previous lemma to prove some congruence conditions.
+
+\begin{lem}
+  Let $K$ be a number field and $a, b, c ∈ \algint$ such that $δ(a), δ(b)
+  \not\in K$. Then for all $m ∈ ℕ$ the following congruences hold.
+  \begin{plist}
+    \item $y_m (a) \equiv m \mod (a - 1)$
+    \item If $a \equiv b \mod (c)$, then $x_m (a) \equiv x_m (b) \mod (c)$ and
+    $y_m(a) \equiv y_m(b) \mod (c)$.
+  \end{plist}
+\end{lem}
+\begin{proof}
+  The first and second congruence become equalities if $m = 0$. As for $m = 1$,
+  the first congruence is again an equality as $y_1 (a) = 1$ independently of
+  $a$. The second claim is trivial since $x_1 (α) = α$ and $y_1 (α) = 1$ for $α
+  ∈ \lbrace a, b \rbrace$. At this point we proceed inductively and assume the
+  claims to be proven for all indices lower than $m + 1$.
+
+  \begin{plist}
+    \item Note that $a \equiv 1 \mod (a - 1)$ and thusly by
+    \cref{lem:recursion for x_m and y_m}
+
+    \[
+      y_{m + 1} = 2 a y_m - y_{m - 1} \equiv 2 m - (m - 1) = m + 1 \mod (a - 1)
+    \]
+
+    as claimed.
+
+    \item Using \cref{lem:recursion for x_m and y_m} we see that for fixed $m$
+    the coefficients $x_m (α)$ and $y_m (α)$ can be expressed as some fixed
+    polynomial in $α$. For the congruence this means
+
+    \begin{align*}
+      x_{m + 1} (a) &= 2 a x_m (a) - x_{m - 1} (a)
+                     \equiv 2 b x_m (b) - x_m{m - 1} (b) = x_{m + 1} (b)
+                     \mod (c)
+    \end{align*}
+    and for $y_{m + 1}$ completely analogously.
+  \end{plist}
+\end{proof}
+
+\begin{lem}
+  Let $K$ be a number field and $a ∈ \algint$ such that $δ = δ(a) \not\in K$.
+  Then for $m, k ∈ ℕ$ such that $m ± k ≥ 0$ the following congruence holds.
+
+  \[
+    x_{2 m ± k} \equiv - x_k(a) \mod (x_m)
+  \]
+\end{lem}
+\begin{proof}
+  By applying the addition formulas of \cref{lem:addition formulas} twice and
+  using that $x_m$ and $y_m$ solve the Pell equation \eqref{eq:Pell} one obtains
+
+  \begin{align*}
+    x_{2m ± k} &= x_m x_{m ± k} + δ^2 y_m y_{m ± k}
+                \equiv δ^2 y_m (y_m x_j ± x_m y_j) \\
+               &\equiv δ^2 y_m^2 x_j = (x_m^2 - 1) x_j \\
+               &\equiv -x_j \mod (x_n).
+  \end{align*}
+\end{proof}
+
+At this point for the first time in this section we state a result that is no
+direct generalisation of a result in \cite{Davis1973} and present a prove given
+in \cite{Denef1980}. Note however that the result is also true for the case
+$\algint = ℤ$.
