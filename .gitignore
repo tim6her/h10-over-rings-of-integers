@@ -1,4 +1,5 @@
 .DS_Store
+res/
 *.aux
 *.bbl
 *.bcf
