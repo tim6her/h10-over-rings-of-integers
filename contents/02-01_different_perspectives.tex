@@ -15,14 +15,14 @@ The lecture entitled \begin{german}\enquote{Mathematische Probleme}\end{german} 
 A \emph{Diophantine equation} is of the form
 %
 \[ p(x_1, …, x_n) = 0 \]
-%   
+%
 for some polynomial $p ∈ ℤ[X_1, …, X_n]$, allowing only solutions $x_1,…,x_n ∈ ℤ$.
 
 
 \begin{defin}
     Let $R$ be a commutative ring with unit.
     A set $S \subseteq R^n$ is said to be \emph{Diophantine} if there exists a polynomial $p ∈ R[X_1,…,X_n, Y_1,…,Y_m]$ ($m ≥ 0$\footnote{If $m = 0$ we interpret this as $p ∈ R[X_1,…,X_n]$}) such that
-    
+
     \[ (x_1,…,x_n) ∈ S \Leftrightarrow ∃y_1,…,y_m ∈ R: p(x_1,…,x_n,y_1,…,y_m) = 0 \]
 \end{defin}
 
@@ -36,37 +36,41 @@ In this sense a set $S \subseteq R^n$ is Diophantine if there exists a polynomia
 Viewing $n$-ary relations as subsets of $R^n$, we will sometimes refer to Diophantine sets as \emph{Diophantine relations.}
 
 \begin{exam}
-    \begin{exlist}
-        \item Let $R$ be an integral domain.
-        Then every finite subset $S$ of $R$ is Diophantine, because the roots of 
-        
-        \[ p(X) := \prod_{s ∈ S} (X - s) \]
-        
-        are precisely the elements of $S$.
-        
-        \item The set of composite numbers is Diophantine over $ℕ$, as $x ∈ ℕ$ is composite if and only if
-        
-        \[ ∃ y_1, y_2 ∈ ℕ : x = (y_1 + 2) (y_2 + 2). \]
-        
-        Here adding $2$ to $y_1$ and $y_2$ ensures, that both factors are greater than $1$.
-        Choosing
-        
-        \[ p (X, Y_1, Y_2) := X - (Y_1 + 2)(Y_2 + 2) \]
-        
-        yields the claim.
-        
-        \item The usual order relation $≤$ on $ℕ$ is Diophantine over $ℕ$.
-        Indeed $x_1 ≤ x_2$ in $ℕ$ if and only if
-        
-        \[ ∃ y ∈ ℕ : x_1 + y  = x_2. \]
-        
-        \item Let $R$ be a commutative ring with unit.
-        Then divisibility in $R$ is Diophantine.
-        Indeed $x_1 | x_2$ in $R$ precisely if
-       
-        \[ ∃ y ∈ R : x_1 y = x_2. \]
-        
-    \end{exlist}
+  \begin{exlist}
+    \item Let $R$ be an integral domain.
+    Then every finite subset $S$ of $R$ is Diophantine, because the roots of
+
+    \[ p(X) := \prod_{s ∈ S} (X - s) \]
+
+    are precisely the elements of $S$.
+
+    \item The set of composite numbers is Diophantine over $ℕ$, as $x ∈ ℕ$ is composite if and only if
+
+    \[ ∃ y_1, y_2 ∈ ℕ : x = (y_1 + 2) (y_2 + 2). \]
+
+    Here adding $2$ to $y_1$ and $y_2$ ensures, that both factors are greater than $1$.
+    Choosing
+
+    \[ p (X, Y_1, Y_2) := X - (Y_1 + 2)(Y_2 + 2) \]
+
+    yields the claim.
+
+    \item The usual order relation $≤$ on $ℕ$ is Diophantine over $ℕ$.
+    Indeed $x_1 ≤ x_2$ in $ℕ$ if and only if
+
+    \[ ∃ y ∈ ℕ : x_1 + y  = x_2. \]
+
+    \item Let $R$ be a commutative ring with unit.
+    Then divisibility in $R$ is Diophantine.
+    Indeed $x_1 \mid x_2$ in $R$ precisely if
+
+    \[ ∃ y ∈ R : x_1 y = x_2. \]
+
+    \item Let $R$ be a commutative ring with unit. Then $R \setminus \set{0}$ is
+    Diophantine over $R$.
+    \item \label{ex:N is Diophantine over Z}
+    $ℕ$ is Diophantine over $ℤ$
+  \end{exlist}
 \end{exam}
 
 \todo{Here should be an introduction and the subsequent table should be continued.}

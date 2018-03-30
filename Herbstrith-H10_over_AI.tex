@@ -5,6 +5,7 @@
 
 % Input Type and AMS-Packages
 \usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{MnSymbol}
 \usepackage{unicode-math}
 
 % Typography
@@ -36,13 +37,27 @@
 \usepackage{letltxmacro}
 
 \newlist{thmlist}{enumerate}{1}			% thmlist-s may only be used in theorem environments
-\setlist[thmlist]{label=(\roman{thmlisti}), ref=\thethm.(\roman{thmlisti}),noitemsep}
+\setlist[thmlist]{label=(\roman{thmlisti}),
+                  ref=\thethm.(\roman{thmlisti}),
+                  noitemsep}
 \newlist{exlist}{enumerate}{1}
-\setlist[exlist]{label=(\arabic{exlisti}), ref=(\arabic{exlisti}),noitemsep,leftmargin=0pt,itemindent=2\parindent}
+\setlist[exlist]{label=(\arabic{exlisti}),
+                 ref=\thethm.(\arabic{exlisti}),
+                 noitemsep,
+                 leftmargin=0pt,
+                 itemindent=2\parindent}
 \newlist{plist}{enumerate}{1}
-\setlist[plist]{label=(\roman{plisti}), ref=(\roman{plisti}),noitemsep,leftmargin=0pt,itemindent=2\parindent}
+\setlist[plist]{label=(\roman{plisti}),
+                ref=(\roman{plisti}),
+                noitemsep,
+                leftmargin=0pt,
+                itemindent=2\parindent}
 \newlist{clist}{enumerate}{2}
-\setlist[clist]{label*=(\alph*), ref=(\alph*),noitemsep,leftmargin=0pt,itemindent=2\parindent}
+\setlist[clist]{label*=(\alph*),
+                ref=(\alph*),
+                noitemsep,
+                leftmargin=0pt,
+                itemindent=2\parindent}
 
 \usepackage{setspace}
 \renewcommand{\arraystretch}{1.5}
@@ -150,7 +165,7 @@
 \declaretheorem[
 	name=Example,
 	style=mydef,
-	numbered=no]{exam}
+	sibling=thm]{exam}
 
 \declaretheorem[
 	name=Remark,
@@ -172,28 +187,12 @@
 %TikZ and TikZ-Styles
 \usepackage{tikz}
 
-\usepackage{pgfcore}
-\usetikzlibrary{arrows}
-
-\tikzstyle{every node}=[circle,draw=black,font=\small,text=black,inner sep=1pt, minimum size=5mm]
-\tikzstyle{edge from parent}=[draw=black]
-\tikzstyle{st}=[black!20, line join=round, line width=2mm]
-\tikzstyle{st1}=[black!40, line join=round, line width=2mm]
-
-\tikzstyle{bgn}=[node distance=6mm, font=normal]
-\tikzstyle{hlarrow}=[<->, shorten <=1pt, shorten >=1pt, draw, thick]
-
-\tikzstyle{level 1}=[sibling distance=60mm]
-\tikzstyle{level 2}=[sibling distance=30mm]
-\tikzstyle{level 3}=[sibling distance=15mm]
-\tikzstyle{level 4}=[sibling distance=7.5mm]
-\tikzstyle{level 5}=[sibling distance=3.75mm, level distance=5mm]
-
 
 % New- and Renewcommands
 
 \newcommand{\seq}[2][n]{#2_{1},\ldots,#2_{#1}}
 \newcommand{\nicefrac}[2]{#1/#2}
+\newcommand{\set}[1]{\left\lbrace #1 \right\rbrace}
 
 
 
@@ -224,15 +223,17 @@
 %\crefname{pro}{prop.}{props.}
 %\crefname{cor}{cor.}{cors.}
 
-\Crefname{thm}{Thm.}{Thms.}
-\Crefname{lem}{Lemma}{Lemmas.}
-\Crefname{pro}{Prop.}{Props.}
-\Crefname{cor}{Cor.}{Cors.}
+\Crefname{thm}{Thm}{Thms}
+\Crefname{lem}{Lem.}{Lem.}
+\Crefname{pro}{Prop.}{Props}
+\Crefname{cor}{Cor.}{Cors}
+\Crefname{exam}{Example}{Examples}
 
 \addtotheorempostheadhook[thm]{\crefalias{thmlisti}{thm}}
 \addtotheorempostheadhook[lem]{\crefalias{thmlisti}{lem}}
 \addtotheorempostheadhook[pro]{\crefalias{thmlisti}{pro}}
 \addtotheorempostheadhook[cor]{\crefalias{thmlisti}{cor}}
+\addtotheorempostheadhook[exam]{\crefalias{exlisti}{exam}}
 
 %------------------------------------------------------------------------------------------------------------------
 
