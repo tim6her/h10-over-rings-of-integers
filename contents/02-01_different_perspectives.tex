@@ -77,8 +77,8 @@ Viewing $n$-ary relations as subsets of $R^n$, we will sometimes refer to Diopha
   \end{exlist}
 \end{exam}
 
-Let $\mathcal{L}_{ring} = \set{+,-,\cdot; 0, 1}$ be the language of rings and
-let $\mathfrak{Z} = ⟨ℤ; +^\mathfrak{Z}, -^\mathfrak{Z}, \cdot^\mathfrak{Z};
+Let $\mathcal{L}_{ring} = \set{+,\cdot; 0, 1}$ be the language of rings and
+let $\mathfrak{Z} = ⟨ℤ; +^\mathfrak{Z}, \cdot^\mathfrak{Z};
 0^\mathfrak{Z}, 1^\mathfrak{Z}⟩$ denote the integers as
 $\mathcal{L}_{ring}$-structure. Then \textsc{H10} asks whether the existential
 positive theory $\mathtt{Th}_{∃+}(\mathfrak{Z})$ is decidable. That is the
@@ -92,7 +92,7 @@ be expressed as
 \]
 So the question whether $X_1 - (X_2 + 2) (X_3 + 2)$ has integral roots is equivalent to asking whether
 \[
-  \mathfrak Z \models ∃ x_1 ∃ x_2 ∃ x_3\; x_1 - (x_2 + 1 + 1) \cdot (x_3 + 1 + 1) \doteq 0.
+  \mathfrak Z \models ∃ x_1 ∃ x_2 ∃ x_3\; x_1 \doteq (x_2 + 1 + 1) \cdot (x_3 + 1 + 1).
 \]
 We will see in \cref{lem:intersections and unions} that for certain rings
 including $\mathfrak Z$ conjunctions of multiple polynomial equations can be
@@ -101,7 +101,7 @@ effectively translated to a single polynomial equation.
 The beauty of this approach is that it directly gives rise to generalisations of
 Hilbert's tenth problem. For example one can exchange the ring structure
 $\mathfrak Z$ by some other ring. Even uncountable rings like $\mathfrak C = ⟨ℂ;
-+^{\mathfrak C}, -^{\mathfrak C}, \cdot^{\mathfrak C}; 0^{\mathfrak C},
++^{\mathfrak C}, \cdot^{\mathfrak C}; 0^{\mathfrak C},
 1^{\mathfrak C}⟩$ are possible, as $\mathcal{L}_{ring}$ is finite and therefore
 each sentence in $\mathtt{Th}_{∃+}(\mathfrak{C})$ can be encoded by its
 Gödelisation or---as it was done when typesetting this thesis---by the
@@ -112,14 +112,14 @@ problems. Or one could consider the full first order theory of $\mathfrak Z$.
 Then Gödel's first incompleteness theorem gives a negative answer to the
 question, whether $\mathtt{Th}(\mathfrak Z)$ is decidable.
 
-I will use the second approach and replace $\mathcal{L}_{ring}=\set{+, -, \cdot;
-0, 1}$ by the language $\mathcal{L}_{ring}^* = \set{+, -, \cdot; 0, 1, η \mid η
+I will use the second approach and replace $\mathcal{L}_{ring}=\set{+, \cdot;
+0, 1}$ by the language $\mathcal{L}_{ring}^* = \set{+, \cdot; 0, 1, η \mid η
 ∈ ℕ}$ where one adds countably many constants representing the elements unequal
 to $0$ and $1$ of a countable ring with unit $R$.
 
 Throughout this thesis I will mostly concern myself with the case where $K$ is
 an algebraic number field and $\algint$ is its ring of integers over $ℤ$.
-Setting $\mathfrak{O} = ⟨\algint; +^{\mathfrak{O}}, -^{\mathfrak{O}},
+Setting $\mathfrak{O} = ⟨\algint; +^{\mathfrak{O}},
 \cdot^{\mathfrak{O}}; η \mid η ∈ \algint⟩$, I understand by Hilbert's tenth
 problem (\textsc{H10}) over $\algint$ the following problem.
 
@@ -136,20 +136,20 @@ problem (\textsc{H10}) over $\algint$ the following problem.
 
 Using the notion of computable rings it will be easy to see that
 $\mathtt{Th}_{∃+}(\mathfrak O)$ is semi-decidable for all number fields $K$.
-However, it is not known for all number fields, whetter the existential positive
+However, it is not known for all number fields, whether the existential positive
 theory is undecidable. In the subsequent sections I will prove the unsolvability
 of \textsc{H10} over selected number fields $K$.
 
 Considering the full first order theory of $\mathfrak O$ it is a result of
-Robinson\todo{Find reference, see Königsmann Sec. 3.3}{} that
-$\mathtt{Th}(\mathfrak O)$ is undecidable. However, Rumley\todo{Find
-reference}{} proved that \textsc{H10} is solvable for $\overset{ℤ}$ the ring of
-all algebraic integers. Van den Dries\todo{find reference}{} extended this
-result to the full first order theory of $\overset{ℤ}$.
+\textcite{Robinson1959} that $\mathtt{Th}(\mathfrak O)$ is undecidable. However,
+\textcite{Rumely1986} proved that \textsc{H10} is solvable over $\mathcal
+O$ the ring of all algebraic integers. \Textcite{Dries1988}
+extended this result to the full first order theory of $\mathcal O$.
 
 Probably the most prominent open problem in this area is the case of $ℚ$. A
 positive answer to \textsc{H10} over $ℚ$ would imply that there is a universal
 algorithm deciding whether a variety over $ℚ$ has a rational point. By giving a
 first order definition of $ℤ$ over $ℚ$, \textcite{Robinson1949} could derive the
 undecidability of the full first order theory $\mathtt{Th}(ℚ)$ from the
-undecidability of the theory of $ℤ$. But Robinson's definition involves universal quantifiers and can not be used for invering to \textsc{H10}.
+undecidability of the theory of $ℤ$. But Robinson's definition involves universal quantifiers and can not be used for inferring to \textsc{H10}.
+\Textcite{Park2013} generalises this result by providing a universal first order definition for $\algint$ over an arbitrary number field $K$.

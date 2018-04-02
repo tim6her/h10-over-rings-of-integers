@@ -25,7 +25,7 @@ captured up to an encoding.
 
 We usually do not concern ourselves with the details of this encoding.
 However, the encoding should capture the structure of the problem. A notion that
-will be made precise in ???.\todo{Reference}
+will be made precise in \cref{sec:computable structures}.
 
 \begin{exam}
   Consider the problem of deciding whether a finite simple graph is
@@ -272,7 +272,7 @@ corresponding set but it might not be able to refute membership.
   %
   Then $\mathbb A_{f_2 \circ f_1} = (S, δ)$ computes $f_1 \circ f_2$ because $δ$
   is defined to first run the program of $\mathbb A_1$ and if this machine would
-  reach a halting state run $\mathbb B_2$.
+  reach a halting state run $\mathbb A_2$.
 \end{proof}
 
 \todo{Maybe: A semi-decidable set is decidable iff its complement is semi-decidable}
@@ -281,7 +281,7 @@ corresponding set but it might not be able to refute membership.
     We can encode a natural number $n$
 
     \begin{exlist}
-    \item
+    \item \label{ex:tally encoding}
       in tally notation
       \begin{align*}
         n & ↦ \underbrace{\one…\one}_{n\text{-times}}, \quad \text{if } n > 0 \\
@@ -337,7 +337,8 @@ by composing with the encoding function.
 
 \begin{exam}[Pairing functions]
   \begin{exlist}
-    \item Using tally notation on can encode $(n, m) ∈ ℕ^2$ by
+    \item\label{ex:tally pairing}
+    Using tally notation on can encode $(n, m) ∈ ℕ^2$ by
     \[
       ⟨\enc{n}, \enc{m}⟩ = \underbrace{\one … \one}_{n\text{-times}} \zer \underbrace{\one … \one}_{m\text{-times}}
     \]

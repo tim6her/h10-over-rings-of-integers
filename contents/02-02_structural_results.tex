@@ -3,8 +3,129 @@
 % !TeX spellcheck = en_GB
 % !TeX root = ../Herbstrith-H10_over_AI.tex
 
-Before tackling \textsc{H10} in selected number fields, we list some
-structural results and methods used within the subsequent proofs. For
+\subsection{Computable structures} \label{sec:computable structures}
+
+Up to this point the encoding of problems was treated as some kind of black-box.
+This subsection takes a categorical view on computability and ensures us,
+that---up to a sensible definition---encodings of the rings we concern ourselves
+with do not matter.
+
+\begin{defin}
+  Let $\mathcal{L} = \set{f_1, f_2, …}$ be an at most countable language.
+  \begin{thmlist}
+    \item An algebraic structure $\mathfrak A = ⟨A; f_1^{\mathfrak A},
+    f_2^{\mathfrak A}, …⟩$, with $A \subseteq ω$, is called \emph{computable
+    structure} if $A$ is decidable and all operations $f_i^{\mathfrak A}$ are
+    universally computable.
+
+    \item An algebraic structure $\mathfrak A = ⟨A; f_1^{\mathfrak A},
+    f_2^{\mathfrak A}, …⟩$ is called \emph{efficiently presentable} if there
+    is an $\mathcal L$-isomorphism $A → B$, where $\mathfrak B = ⟨B;
+    f_1^{\mathfrak B}, f_2^{\mathfrak B}, …⟩$ is a computable structure.
+
+    \item An computable $\mathcal L$-morphism between computable $\mathcal
+    L$-structures is called \emph{computable morphism}.
+  \end{thmlist}
+\end{defin}
+
+An efficient presentation of say a ring $R$ is an encoding of $R$ that preserves the ring structure of $R$.
+
+\begin{exam}
+  \begin{exlist}
+    \item In \cref{ex:tally encoding} we have encoded the non-negative integer
+    $n$ by a string of $n$ consecutive $\one$-s. We have also already
+    presented the algorithm deciding $\enc{ℕ} \subseteq ω$. under this encoding.
+    Considering $ℕ$ as $\mathcal L_{ring}$-structure, one finds that the tally
+    encoding gives rise to a efficient presentation of $ℕ$.
+
+    The constants $0$ and $1$ are trivially computable, by clearing the tape in
+    the first case and writing a single $\one$ in the second case. Using the
+    pairing function of \cref{ex:tally pairing} the binary operations $+$ and
+    $\cdot$ are also easily seen to be computable. As for $+$ the algorithm
+    takes the input
+    \[
+      \one … \one \zer \one … \one
+    \]
+    and replaces the $\zer$-symbol by an $\one$ and deletes the rightmost
+    $\one$.
+
+    \item In general $ℤ$ and $\algint$ viewed as $\mathcal L_{ring}^*$ structures are efficiently representable. For the integers this is proven by each programming language allowing arbitrarily large integer arithmetic---like \emph{Haskell} or \emph{Python}.
+
+    To present algebraic integers one uses an integral basis say $ζ_1, …, ζ_n$. Then any integer $η$ can be encoded as an $n$-tuple of integers. Addition and subtraction are defined coordinate-wise. To implement the multiplication one stores the finite multiplication table of the basis elements
+    \[
+      \begin{array}{r | r r r r}
+            & ζ_1   & ζ_2     & … & ζ_n     \\
+        \hline
+        ζ_1 & ζ_1^2 & ζ_1 ζ_2 & … & ζ_1 ζ_n \\
+        ζ_2 &       & ζ_2^2   & … & ζ_2 ζ_n \\
+        \vdots &    &   & \ddots  & \vdots  \\
+        ζ_n &       &         &   & ζ_n^2
+      \end{array}
+    \]
+    in memory and extends to all of $\algint$ linearly. A full implementation can be found in the Appendix.\todo{Write the appendix}
+
+    \item $⟨ℕ, ≤⟩$ is efficiently presentable using the tally encoding and $n ≤
+    m$ if and only if $\max(n - m, 0) = 0$. So deciding $n ≤ m$ boils down to
+    applying floor subtraction and checking whether the tape is empty. Both
+    operations are clearly computable.
+  \end{exlist}
+\end{exam}
+
+It is a natural question whether two efficient presentations of the same
+structure are computably isomorphic i.e. if there exists a computable
+isomporphism between them. We will see that the last example differs from the
+others in this regard.
+
+\begin{defin}
+  Let $\mathcal{L} = \set{f_1, f_2, …}$ be an at most countable language. An
+  algebraic structure $\mathfrak A = ⟨A; f_1^{\mathfrak A}, f_2^{\mathfrak A},
+  …⟩$ is called \emph{computably categorical} if it is efficiently
+  representable and every pair of efficient representations is computably
+  isomorphic.
+\end{defin}
+
+In the case of rings of algebraic integers the following theorem comes to our
+rescue, assuring us that the decidability of \textsc{H10} does in fact not
+depend on the encoding chosen.
+
+\begin{thm}
+  Let $R$ be a finitely generated, efficiently representable ring with unit.
+  Then $R$ is computably categorical.
+\end{thm}
+
+I will not give a proof here but sketch how one proceeds in proving the
+theorem.
+
+Let $ζ_1, …, ζ_n ∈ R$ be a set of generators of $R$ over $R$ and let $φ_1: R →
+R_1, φ_2: R → R_2$ be the efficient representations of $R$ together with the
+respective ring isomorphisms. Then $φ_1(ζ_1), …, φ_1(ζ_n)$ generate $R_1$ over
+$R_1$ and $φ_2(ζ_1), …, φ_2(ζ_n)$ generate $R_2$ over $R_2$. Storing these
+finitely many values of the isomorphism $φ_2 \circ φ_1^{-1}$ in memory one can
+use the computabilty of $R_1$ and $R_2$ respectively to extend the partial
+mapping in the obvious way.
+
+For a more detailed discussion of computable rings see \cite{Stoltenberg1999}.
+
+With this technicallity out of the way, from now on I will not differentiate
+between $\algint$ and its efficient representation. However, there are
+structures where the choice of representation matters. In fact, $⟨ℕ, ≤⟩$ is not
+computably categorical. A proof using the undecidability of the halting problem
+can be found in \cite[Prob. 1.6]{Shore}.
+
+Using that $\algint$ is computably categorical for each algebraic number field
+$K$ we observe that \textsc{H10} is semi-decidable over $\algint$. An algorithm
+affirming the existence of roots for a given polynomial $p ∈ \algint{[X_1, …,
+X_n]}$ starts by trying whether the empty string is the encoding of $n$
+algebraic integers $x_1, …, x_n$ and if this is the case evaluates $p(x_1, …,
+x_n)$. Both operations are computable as $\algint$ is efficiently presentable. If $p(x_1, …, x_n) = 0$ the algorithm finishes, otherwise it writes the next
+string on the tape and starts over.
+
+\subsection{Important techniques}
+
+\todo{Diophantine predicates}
+
+Before tackling \textsc{H10} over selected rings of algebraic integers, we list
+some structural results and methods used within the subsequent proofs. For
 further structural results see \cite{Shlapentokh2000}.
 
 \begin{lem}\label{lem:intersections and unions}
