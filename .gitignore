@@ -1,5 +1,6 @@
 .DS_Store
 res/
+old_versions/
 *.aux
 *.bbl
 *.bcf

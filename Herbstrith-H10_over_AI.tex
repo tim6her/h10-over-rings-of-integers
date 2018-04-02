@@ -16,6 +16,7 @@
                            Letters=SmallCaps]{EB Garamond}
 \setsansfont[Ligatures=TeX, Scale=MatchLowercase]{Open Sans}
 \setmonofont[Scale=MatchLowercase]{Fira Mono}
+\newfontfamily\monomath[Scale=MatchUppercase]{Fira Mono}
 \setmathfont[Scale=MatchUppercase]{STIX Two Math}
 \setmathrm[Scale=MatchUppercase]{STIX Two Math}
 \setmathtt[Scale=MatchUppercase]{Fira Mono}
@@ -29,7 +30,8 @@
 \usepackage{floatrow}
 \usepackage{booktabs}
 
-\usepackage[autostyle]{csquotes}
+\usepackage[autostyle,
+            english=british]{csquotes}
 \usepackage{microtype}
 \usepackage{enumitem}
 \usepackage{subcaption}
@@ -105,8 +107,8 @@
 \DeclareMathOperator{\lcm}{\mathrm{lcm}}
 \DeclareMathOperator{\ord}{\mathrm{ord}}
 
-\newcommand{\sta}{\texttt{§}}
-\newcommand{\emp}{\texttt{\_}}
+\newcommand{\sta}{{\monomath §}}
+\newcommand{\emp}{{\monomath \_}}
 \newcommand{\zer}{\mathtt 0}
 \newcommand{\one}{\mathtt 1}
 \newcommand{\state}[1]{s_{\text{#1}}}
@@ -255,7 +257,7 @@
 
 \chapter{Prerequisites and central notions}
 
-Before stating Hilbert's 10th problem and proving its undecidability in
+Before stating Hilbert's tenth problem and proving its undecidability in
 certain rings of algebraic integers, we remind the reader on some
 notions from theoretical computer science and number theory, as well as
 fix some notations.

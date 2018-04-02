@@ -24,12 +24,13 @@ captured up to an encoding.
 \[ \enc{\cdot} : Q → \lbrace \zer, \one \rbrace^*\]
 
 We usually do not concern ourselves with the details of this encoding.
-However, the encoding should capture the structure of the problem.
+However, the encoding should capture the structure of the problem. A notion that
+will be made precise in ???.\todo{Reference}
 
 \begin{exam}
   Consider the problem of deciding whether a finite simple graph is
-  connected or not. If we fix each vertex set to be of the form
-  $\lbrace 0, 1, …, n\rbrace$, then the set of all graphs can be encoded
+  connected or not. If we demand the vertex set to be of the form
+  $\set{0, 1, …, n}$, then the set of all graphs can be encoded
   as the set of the respective adjacency matrices written as a string
 
   \[b_{00}b_{01} …b_{0n}b_{10}…b_{nn}\]
@@ -114,14 +115,14 @@ with this tape content.
   \item
     $c'(ℓ) = c(ℓ)$ for all $ℓ ≠ j$.
   \end{itemize}
-\end{defin}
 
-This relation makes the set of all configurations of $\mathbb A$ into
-a directed graph. A \emph{run} of $\mathbb A$ on $x$ is a path in
-this directed graph starting in the start configuration
-$(\sstart, 0, x)$. A run of $\mathbb A$ on $x$ is \emph{halting}
-or \emph{complete} if it reaches a halting configuration
-$(\shalt, 0, y)$. In this case we write $\mathbb A (x) = y$.
+  This relation makes the set of all configurations of $\mathbb A$ into
+  a directed graph. A \emph{run} of $\mathbb A$ on $x$ is a path in
+  this directed graph starting in the start configuration
+  $(\sstart, 0, x)$. A run of $\mathbb A$ on $x$ is \emph{halting}
+  or \emph{complete} if it reaches a halting configuration
+  $(\shalt, 0, y)$. In this case we write $\mathbb A (x) = y$.
+\end{defin}
 
 We will denote Turing machines using listings, where the fact that
 $δ_\text{delta} (\state{state}, b) = (\state{state'}, c, m)$ is encoded
@@ -150,8 +151,8 @@ should be interpreted as
   \end{cases}.
 \]
 
-See the Appendix of this thesis on how to simulate these Turing machines
-using the \emph{Haskell} programming language.
+See the appendix of this thesis on how to simulate these Turing machines
+using the \emph{Haskell} programming language.\todo{Write Appendix}
 
 \begin{exam}
     Consider the Turing machine $\mathbb A_\text{add1} = (\lbrace \sstart,
@@ -160,10 +161,9 @@ using the \emph{Haskell} programming language.
     representation of a natural number $n$. Its transition function is described
     in \cref{lst:add1}. The last line of the program ensures, that $δ$ is a
     complete function, as it matches all remaining pairs of states and
-    characters and lets the machine enter the state $\state{error}$.
-
-    The complete run of $\mathbb A_\text{add1}$ on $\one\one\zer\one$ can be
-    seen in \cref{fig:complete run}.
+    characters and lets the machine enter the state $\state{error}$. The
+    complete run of $\mathbb A_\text{add1}$ on $\one\one\zer\one$ can be seen in
+    \cref{fig:complete run}.
 \end{exam}
 
 \lstinputlisting[float, frame=tb,
@@ -245,6 +245,38 @@ The last item of the definition above means that a problem is
 semi-decidable if there is a Turing machine affirming membership of the
 corresponding set but it might not be able to refute membership.
 
+\begin{lem} \label{lem:composition of Turing machines}
+  Let $\mathbb A_1 = (S_1, δ_1)$ and $\mathbb A_2 = (S_2, δ_2)$ be Turing
+  machines computing $f_1: D_1 → \set{\zer, \one}^*$ and $f_2: D_2 → \set{\zer,
+  \one}^*$ respectively ($D_1, D_2 \subseteq \set{\zer, \one}^*$). Then there
+  exists a Turing machine $\mathbb A_{f_2 \circ f_1}$ computing the partial
+  function $f_2 \circ f_1: D_1 ∩ f_1^{-1}(D_2) → \set{\zer, \one}^*$ obtained by
+  composing $f_1$ and $f_2$.
+\end{lem}
+\begin{proof}
+  One constructs $\mathbb A_{f_2 \circ f_1}$ from $\mathbb A_1$ and $\mathbb
+  A_2$ as follows. Let $S_1 = \set{\sstart, \shalt} \sqcup S_1'$ and $S_2 =
+  \set{\sstart, \shalt} \sqcup S_2'$, then set $S = \set{\sstart, \shalt} \sqcup
+  S_1' \sqcup S_2' \sqcup \set{\state{compose}}$, where $\sqcup$ denotes the
+  disjoint union. Now set for $c ∈ A$
+  %
+  \begin{align*}
+    δ (s, c) &=
+      \begin{cases}
+        δ_1 (s, c) & \text{if } s ∈ S_1' ∪ \set\sstart \\
+        (\state{compose}, c', m) & \text{if } s ∈ S_1 \text{ and } δ_1(s, c) = (\shalt, c', m)\\
+        δ_2 (s, c) & \text{if } s ∈ S_2' ∪ \set\shalt \\
+      \end{cases}, \\
+    δ (\state{compose}, c) &= δ_2 (\sstart, c).
+  \end{align*}
+  %
+  Then $\mathbb A_{f_2 \circ f_1} = (S, δ)$ computes $f_1 \circ f_2$ because $δ$
+  is defined to first run the program of $\mathbb A_1$ and if this machine would
+  reach a halting state run $\mathbb B_2$.
+\end{proof}
+
+\todo{Maybe: A semi-decidable set is decidable iff its complement is semi-decidable}
+
 \begin{exam}
     We can encode a natural number $n$
 
@@ -278,11 +310,11 @@ corresponding set but it might not be able to refute membership.
     In either case the set obtained by encoding $ℕ$ is easily seen to be
     decidable. In the first case, check that the string contains only copies
     of the bit $\one$. Indeed, this can be achieved by the Turing machine
-
+    %
     \[\mathbb A_\text{tally} =
       ( \lbrace \sstart, \shalt, \scheck, \state{accept}, \state{reject},
-        \state{rejectMR}, \state{error} \rbrace, δ)\]
-
+        \state{rejectMR}, \state{error} \rbrace, δ),\]
+    %
     whose transition function is displayed in \cref{lst:tally encoding}.
 
     In the second case it suffices to check that the string has length $1$
@@ -297,41 +329,55 @@ Taking another look at the definition of computability, we see that only unary
 functions defined on subsets of $ω$, mapping to subsets of $ω$ can be
 computable. However, we can easily extend this to functions on multiple
 variables, by encoding tuples in $ω \times ω$ by elements of $ω$ in such a way,
-that the projections $p_i: \enc{(x_1, x_2)} ↦ x_i$ ($i ∈ \lbrace 0, 1 \rbrace$)
-are uniformly computable. This means, we have a bijective pairing function $ω
-\times ω → ω$ and Turing machines $\mathbb P_1, \mathbb P_2$ computing $p_1$ or
-$p_2$ respectively.
+that the projections $p_i: \enc{(x_1, x_2)} ↦ x_i$  for $i ∈ \lbrace 0, 1
+\rbrace$ are uniformly computable. This means, we have an injective pairing
+function $ω^2 → ω$ and Turing machines $\mathbb P_1, \mathbb P_2$
+computing $p_1$ or $p_2$ respectively. Clearly if one has a pairing function $ℕ^2 → ℕ$ then one immediately obtains a pairing function $ω^2 → ω$
+by composing with the encoding function.
 
 \begin{exam}[Pairing functions]
   \begin{exlist}
-    \item A simple pairing function encodes the pair
+    \item Using tally notation on can encode $(n, m) ∈ ℕ^2$ by
+    \[
+      ⟨\enc{n}, \enc{m}⟩ = \underbrace{\one … \one}_{n\text{-times}} \zer \underbrace{\one … \one}_{m\text{-times}}
+    \]
 
-    \[ (b_1b_2…b_n, c_1c_2…c_m) ∈ ω \times ω\]
+    \item A simple pairing function encodes the pair $(b_1b_2…b_n, c_1c_2…c_m) ∈ ω^2$
 
-    by
-
-    \[ b_1b_1b_2b_2…b_nb_n \zer\one c_1c_2…c_m. \]
-
+    \[ ⟨b_1b_2…b_n, c_1c_2…c_m⟩ = b_1b_1b_2b_2…b_nb_n \zer\one c_1c_2…c_m. \]
   \end{exlist}
 \end{exam}
 
+Of course by applying a pairing function iteratively one obtains an $n$-ary pairing function. The projections need to be composed accordingly. For example
+\[
+  (x_1, x_2, x_3) ↦ ⟨x_1, ⟨x_2, x_3⟩⟩
+\]
+yields a ternary pairing function and $π_1\circ π_2$ is the projection on $x_2$.
+Using any of the pairing functions above one can consider $n$-ary computable
+functions by providing the encoded pair $⟨x_1, x_2, …, x_n⟩$ as the single
+argument of a Turing machine $\mathbb A$. If the context is clear, I will write
+$\mathbb A(\seq{x})$ in this situation.
+
+\todo{Partial recursive functions}
+\todo{Church--Turing thesis}
+
 \subsubsection{Halting problem}
 
-One can extend the alphabet of Turing machines by encoding characters
-i.e.~assigning bit sequences to them. Very common encodings are
-\textsc{ASCII} and \textsc{UTF-8}\footnote{See the Appendix for an
-  \textsc{ASCII} encoding table and details on \textsc{UTF-8}.}. Using
-either one of these encodings the string `haskell' is encoded as
-
-\begin{lstlisting}
-h         a         s         k         e         l         l
-0110 1000 0110 0001 0111 0011 0110 1011 0110 0101 0110 1100 0110 1100
-\end{lstlisting}
-
-In this way we can encode a Turing machine as the \textsc{UTF-8}-encoding of
-its transition function $δ$ written as a string as above. Note that
-the set of states can implicitly be deduced from the transition function
-as the set of acceptable first arguments of $δ$.
+%One can extend the alphabet of Turing machines by encoding characters
+%i.e.~assigning bit sequences to them. Very common encodings are \textsc{ASCII}
+%and \textsc{UTF-8}\footnote{See the Appendix for an \textsc{ASCII} encoding
+%table and details on \textsc{UTF-8}.}. Using either one of these encodings the
+%string `haskell' is encoded as
+%
+%\begin{lstlisting}
+%h         a         s         k         e         l         l
+%0110 1000 0110 0001 0111 0011 0110 1011 0110 0101 0110 1100 0110 1100
+%\end{lstlisting}
+%
+%In this way we can encode a Turing machine as the \textsc{UTF-8}-encoding of
+%its transition function $δ$ written as a string as above. Note that
+%the set of states can implicitly be deduced from the transition function
+%as the set of acceptable first arguments of $δ$.
 
 One of the fundamental theorems of theoretical computer science is the
 existence of a universal Turing machine.
@@ -345,8 +391,10 @@ existence of a universal Turing machine.
 
 A natural question is:
 
-Given a machine $\mathbb A$ and a string $x$. Does $\mathbb A$
-halt on $x$?
+\begin{quote}
+  Given a machine $\mathbb A$ and a string $x$. Does $\mathbb A$
+  halt on $x$?
+\end{quote}
 
 It is one of the most fundamental results of theoretical computer
 science that the halting problem is undecidable. The contradiction to the existence of a Turing machine deciding this problem is obtained by a diagonalisation technique that is also present in Cantor's proof that the power set of the integers is uncountable or Russel's paradox. However, the idea is best encapsulated by the illustration of Carlo Chiostri, based on Carlo Collodi's fairy tale novel ‘The Adventures of Pinocchio’, displayed in \cref{fig:Pinocchio}.

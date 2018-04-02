@@ -9,13 +9,13 @@ further structural results see \cite{Shlapentokh2000}.
 
 \begin{lem}\label{lem:intersections and unions}
     Let $R$ be an integral domain, whose quotient field is not
-    algebraically closed. Then if $S_1, S_2 \subseteq R$ are diophantine so are
+    algebraically closed. Then if $S_1, S_2 \subseteq R$ are Diophantine so are
 
     \[ S_1 ∩ S_2 \quad \text{and} \quad S_1 ∪ S_2 \]
 \end{lem}
 
 \begin{proof}
-Let $f(X, Y_1, …, Y_n)$ and $g(X, Y_1, …, Y_n)$ give diophantine
+Let $f(X, Y_1, …, Y_n)$ and $g(X, Y_1, …, Y_n)$ give Diophantine
 definitions\footnote{By inserting dummy indeterminates we may whish that
 both polynomials have the same number of indeterminates.} of $S_1$
 and $S_2$ resp. then
@@ -23,11 +23,11 @@ and $S_2$ resp. then
 \[ h := fg \]
 
 vanishes if and only if $f$ or $g$ vanishes. As a consequence, the
-following set gives a diophantine definition of the union.
+following set gives a Diophantine definition of the union.
 
 \[ S_1 ∪ S_2 = \lbrace x \mid ∃ y_1, … , ∃ y_n \; h(x, y_1, … , y_n) = 0 \rbrace. \]
 
-To prove the claim for intersections of diophantine sets, let
+To prove the claim for intersections of Diophantine sets, let
 
 \[h(X) = a_m X^m + … + a_1 X + a_0 ∈ R[X, Y_1, …, Y_n]\]
 
@@ -46,7 +46,7 @@ Now consider
 
 We will prove for all $α_0, α_1, …, α_n ∈ R$ the following
 equivalence, showing that $H$ witnesses that $S_1 ∩ S_2$ is
-diophantine.
+Diophantine.
 
 \[ H(α_0, α_1, …, α_n) = 0 \Leftrightarrow f(α_0, α_1, …, α_n) = 0 ∧ g(α_0, α_1, …, α_n) = 0 \]
 
@@ -66,8 +66,8 @@ to $n$ for each summand in the definition of $H$.
 \end{proof}
 
 Using induction and the lemma above, one immediately obtains that
-arbitrary finite unions and intersections of diophantine sets are
-diophantine. The lemma can also easily be extended to diophantine sets
+arbitrary finite unions and intersections of Diophantine sets are
+Diophantine. The lemma can also easily be extended to Diophantine sets
 contained in $R^n$ as the existential quantorisation is nowhere used
 in the proof.
 
@@ -79,21 +79,21 @@ of diopahtine definitions.
 \begin{lem} \label{lem:moving up}
 Let $R_1 \subseteq R_2$ be recursive rings and integral domains such
 that the quotient field of $R_2$ is not algebraically closed. If H10
-is undecidable over $R_1$ and $R_1$ has a diophantine definition over
+is undecidable over $R_1$ and $R_1$ has a Diophantine definition over
 $R_2$, then H10 in undecidable over $R_2$.
 \end{lem}
 
 \begin{proof}
-Let $f(X, Y_1, …, Y_n)$ be a diophantine definition of $R_1$ over
+Let $f(X, Y_1, …, Y_n)$ be a Diophantine definition of $R_1$ over
 $R_2$ and assume that H10 is decidable over $R_2$. We prove that H10
 is decidable over $R_1$ as well, contradicting our assumption.
 
-Let $p ∈ R_1[T_1, …, T_m]$ be diophantine definition of $S$ over
+Let $p ∈ R_1[T_1, …, T_m]$ be Diophantine definition of $S$ over
 $R_1$. Then
 
 \[ S = \left\lbrace ∃α_1,…,α_m, β_{1,1}, …, β_{m,n} ∈ R_2 \middle| P(α_1, …, α_m) = 0 ∧ \bigwedge_{i=1}^m f(α_i, β_{i,1},…,β_{i,n}) = 0 \right\rbrace\]
 
-is a diophantine defition of $S$ over $R_2$. Firstly, note that the
+is a Diophantine defition of $S$ over $R_2$. Firstly, note that the
 defining relation of $S$ can be rewritten as a single polynomial
 relation by \cref{lem:intersections and unions}. Since there is
 a Turing machine deciding \textsc{H10} in $R_2$
