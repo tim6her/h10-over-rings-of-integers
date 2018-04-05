@@ -27,15 +27,28 @@ with do not matter. The interested reader may whish to read the excellent survey
 
 \begin{rem}
   \begin{exlist}
-    \item An efficient presentation of a ring $R$ is a ring-homomorphism $\enc{\cdot}: R → Ω_R$ of $R$, where $Ω_R \subseteq ω$ is decidable and all operations of $Ω_R$ are computable functions.
-    \item \Textcite{Stoltenberg1999} use a slightly modified definition of computable algebraic rings. They consider \emph{effective enumberations} $α_R : Ω_R → R$, where $Ω_R \subseteq ω$ is a computable $Σ_{ring}^*$-structure in the sense of the definiton above and $α_R$ is a $Σ_{ring}^*$-epimorphism. Then the ring $R$ is called computable if the equivalence relation
+    \item An efficient presentation of a ring $R$ is a ring-homomorphism
+    $\enc{\cdot}: R → Ω_R$ of $R$, where $Ω_R \subseteq ω$ is decidable and all
+    operations of $Ω_R$ are computable functions.
+    \item \Textcite{Stoltenberg1999} use a slightly modified definition of
+    computable rings. They consider \emph{effective enumerations} $α_R : Ω_R →
+    R$, where $Ω_R \subseteq ω$ is a computable $Σ_{ring}^*$-structure in the
+    sense of the definiton above and $α_R$ is a $Σ_{ring}^*$-epimorphism. Then
+    the ring $R$ is called computable if the equivalence relation
     \[
-      x_1 \cong_{α_R} y_1  ⇔ α_R(x_1) = α_R(x_2)
+      x_1 \equiv_{α_R} y_1  ⇔ α_R(x_1) = α_R(x_2)
     \]
     on $Ω_R$ is decidable.
 
-    This definition can have slight technical advantages but note that in this case $Ω_R$ need not be a ring in the sense of abstract algebra, a $Σ_{ring}^*$ structure in the sense of universal algebra suffices.
-    By setting $\enc{η} = [α_R^{-1}(\set{η})] ∈ Ω_R / \cong_{α_R}$ for each $η ∈ R$ one obtains a ring-isomorphism $R → Ω_R / \cong_{α_R}$ that gives rise to an efficient presentation as defined in this thesis. So ring $R$ is computable in the sense of \textcite{Stoltenberg1999} if and only if it is efficiently presentable.
+    This definition can have slight technical advantages but note that in this
+    case $Ω_R$ need not be a ring in the sense of abstract algebra, a
+    $Σ_{ring}^*$ structure in the sense of universal algebra suffices.  Let
+    $\lfloor α_R^{-1}(\set{η}) \rfloor ∈ Ω_R$ denote the smallest element of
+    $α_R^{-1}(\set{η})$ in lexicographic order. By setting $\enc{η} = \lfloor
+    α_R^{-1}(\set{η}) \rfloor$ for each $η ∈ R$ one obtains a ring-isomorphism
+    $R → Ω_R$ that gives rise to an efficient presentation of $R$. So $R$ is
+    computable in the sense of \textcite{Stoltenberg1999} if and only if it is
+    efficiently presentable in the sense of this thesis.
   \end{exlist}
 \end{rem}
 
