@@ -16,24 +16,30 @@ A \emph{Diophantine equation} is of the form
 %
 \[ p(x_1, …, x_n) = 0 \]
 %
-for some polynomial $p ∈ ℤ[X_1, …, X_n]$, allowing only solutions $x_1,…,x_n ∈ ℤ$.
+for some polynomial $p ∈ ℤ[X_1, …, X_n]$, allowing only solutions $α_1,…,α_n ∈ ℤ$.
 
 
 \begin{defin}
     Let $R$ be a commutative ring with unit.
     A set $S \subseteq R^n$ is said to be \emph{Diophantine} if there exists a polynomial $p ∈ R[X_1,…,X_n, Y_1,…,Y_m]$ ($m ≥ 0$\footnote{If $m = 0$ we interpret this as $p ∈ R[X_1,…,X_n]$}) such that
 
-    \[ (x_1,…,x_n) ∈ S \Leftrightarrow ∃y_1,…,y_m ∈ R: p(x_1,…,x_n,y_1,…,y_m) = 0 \]
+    \[ (α_1,…,α_n) ∈ S \Leftrightarrow ∃ β_1,…,β_m ∈ R: p(α_1,…,α_n,β_1,…,β_m) = 0 \]
 \end{defin}
 
-A polynomial $p$ as above defines a relation $\rel{p}$ on $R^n \times R^m$ by
-%
-\[ \mathbf{x} \rel{p} \mathbf{y} \Leftrightarrow
-   p(\mathbf{x}, \mathbf{y}) = 0. \]
-%
-In this sense a set $S \subseteq R^n$ is Diophantine if there exists a polynomial $p$ such that for each $\mathbf x ∈ S$ there exists a $\mathbf y ∈ R^m$ that is related to $\mathbf x$ via $\rel p$.
+A polynomial $p ∈ R[X_1, …, X_n]$ as above defines $n$ relations $\rel{p}_i$ by
+\[
+  \rel{p}(α_1, …, α_i)  \Leftrightarrow
+   ∃ β_1, …, β_{n - i} ∈ R : p(α_1, …, α_i, β_1, …, β_{i - n}) = 0 \quad
+   1 ≤ i ≤ n.
+\]
+In this sense a set $S \subseteq R^i$ is Diophantine if there exists a
+polynomial $p ∈ R[X_1, …, X_n]$ such that for each $\mathbf α ∈ S$ there exists
+a $\mathbf β ∈ R^{n - i}$ that is related to $\mathbf x$ via $\rel p_i$.
 
-Viewing $n$-ary relations as subsets of $R^n$, we will sometimes refer to Diophantine sets as \emph{Diophantine relations.}
+Viewing $n$-ary relations as subsets of $R^n$, we will sometimes refer to
+Diophantine sets as \emph{Diophantine relations} or \emph{Diophantine
+predicates.} A function $R^n → R^m$ is called Diophantine if it is Diophantine
+viewed as a relation.
 
 \begin{exam}
   \begin{exlist}
@@ -67,7 +73,7 @@ Viewing $n$-ary relations as subsets of $R^n$, we will sometimes refer to Diopha
     \[ ∃ y ∈ R : x_1 y = x_2. \]
 
     \item Let $R$ be a commutative ring with unit. Then $R \setminus \set{0}$ is
-    Diophantine over $R$.
+    Diophantine over $R$. \todo{Write this example}
     \item \label{ex:N is Diophantine over Z}
     Each non-negative integer $x$ is the sum of four squares and as a consequence
     \[
@@ -76,6 +82,8 @@ Viewing $n$-ary relations as subsets of $R^n$, we will sometimes refer to Diopha
     is a Diophantine definition of $ℕ$ over $ℤ$. A full proof of the claim using \cref{thm:Minkowski} is given in \cite[Remark 4.20]{Milne2017}.
   \end{exlist}
 \end{exam}
+
+\todo{Short explaination why H10/ℕ is undecidable.}
 
 Let $Σ_{ring} = \set{+,\cdot; 0, 1}$ be the signature of rings and
 let $\mathfrak{Z} = ⟨ℤ; +^\mathfrak{Z}, \cdot^\mathfrak{Z};
@@ -95,7 +103,7 @@ So the question whether $X_1 - (X_2 + 2) (X_3 + 2)$ has integral roots is equiva
   \mathfrak Z \models ∃ x_1 ∃ x_2 ∃ x_3\; x_1 \doteq (x_2 + 1 + 1) \cdot (x_3 + 1 + 1).
 \]
 We will see in \cref{lem:intersections and unions} that for certain integral
-domains  including $\mathfrak Z$ conjunctions of multiple polynomial equations
+domains including $\mathfrak Z$ conjunctions of multiple polynomial equations
 can be effectively translated to a single polynomial equation.
 
 The beauty of this approach is that it directly gives rise to generalisations of
