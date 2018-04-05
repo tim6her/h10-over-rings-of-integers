@@ -58,6 +58,17 @@ with do not matter. The interested reader may whish to read the excellent survey
     and replaces the $\zer$-symbol by an $\one$ and deletes the rightmost
     $\one$.
 
+    \item \label{ex:polynomials are computable}
+    If $R$ is a computable integral domain, then the polynomial algebras
+    $R[X_1, …, X_n]$ in arbitrary many indeterminates ($n ∈ ℕ^*$) and $R[X_1,
+    X_2, …]$ in countably many indeterminates are computable $R$-algebras.
+
+    A possible implementation starts by implementing the monoid $⟨M; \cdot; X_i \mid i ∈ ℕ⟩$ and extends it to the $R$-algebra
+    $R[X_1, X_2, …]$. Within $R[X_1, X_2, …]$ every subalgebra $R[X_1, …, X_n]$
+    is decidable ($n ∈ ℕ^*$) and as a consequence is computable. See
+    \cite{Stoltenberg1999} for a more detailed discussion and \cref{app:polynomials} for a
+    sample implementation based on this idea.
+
     \item In general $ℤ$ and $\algint$ viewed as $Σ_{ring}^*$ structures are efficiently presentable. For the integers this is proven by each programming language allowing arbitrarily large integer arithmetic---like \emph{Haskell} or \emph{Python}.
 
     To present algebraic integers one uses an integral basis say $ζ_1, …, ζ_n$. Then any integer $η$ can be encoded as an $n$-tuple of integers. Addition and subtraction are defined coordinate-wise. To implement the multiplication one stores the finite multiplication table of the basis elements
@@ -71,19 +82,7 @@ with do not matter. The interested reader may whish to read the excellent survey
         ζ_n &       &         &   & ζ_n^2
       \end{array}
     \]
-    in memory and extends to all of $\algint$ linearly. A full implementation
-    can be found in the Appendix.\todo{Write the appendix}
-
-    \item \label{ex:polynomials are computable}
-    If $R$ is a computable integral domain, then the polynomial algebras
-    $R[X_1, …, X_n]$ in arbitrary many indeterminates ($n ∈ ℕ^*$) and $R[X_1,
-    X_2, …]$ in countably many indeterminates are computable $R$-algebras.
-
-    A possible implementation starts by implementing the monoid $⟨M; \cdot; X_i \mid i ∈ ℕ⟩$ and extends it to the $R$-algebra
-    $R[X_1, X_2, …]$. Within $R[X_1, X_2, …]$ every subalgebra $R[X_1, …, X_n]$
-    is decidable ($n ∈ ℕ^*$) and as a consequence is computable. See
-    \cite{Stoltenberg1999} for a more detailed discussion and \cref{app:polynomials} for a
-    sample implementation based on this idea.
+    in memory and extends to all of $\algint$ linearly.
 
     \item $⟨ℕ, ≤⟩$ is efficiently presentable using the tally encoding and $n ≤
     m$ if and only if $\max(n - m, 0) = 0$. So deciding $n ≤ m$ boils down to
@@ -126,7 +125,7 @@ finitely many values of the isomorphism $φ_2 \circ φ_1^{-1}$ in memory one can
 use the computabilty of $R_1$ and $R_2$ respectively to extend the partial
 mapping in the obvious way.
 
-With this technicality out of the way, from now on I will not differentiate
+With this technicality out of the way, I will from now on not distinguish
 between $\algint$ and its efficient representations. However, there are
 structures where the choice of representation matters. In fact, $⟨ℕ, ≤⟩$ is not
 computably categorical. A proof using the undecidability of the halting problem
@@ -141,8 +140,6 @@ x_n)$. Both operations are computable as $\algint$ is efficiently presentable. I
 string on the tape and starts over.
 
 \subsection{Important techniques}
-
-\todo{Diophantine predicates}
 
 Before tackling \textsc{H10} over selected rings of algebraic integers, we list
 some structural results and methods used within the subsequent proofs. For
