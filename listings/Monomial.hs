@@ -12,7 +12,7 @@ import Test.Tasty.QuickCheck as QC
 
 
 -- | Monomials are mappings from ZZ to ZZ with finite support
-newtype Monomial = Monomial (Map Int Int) deriving (Eq)
+newtype Monomial = Monomial (Map Integer Integer) deriving (Eq, Ord)
 
 instance Show Monomial where
   show (Monomial m)
@@ -29,7 +29,7 @@ instance Show Monomial where
 -- === Example
 -- >>> mfromList [(1, 2), (0, 3), (4, 7)]
 -- X0^3 X1^2 X4^7
-mfromList :: [(Int, Int)] -> Monomial
+mfromList :: [(Integer, Integer)] -> Monomial
 mfromList l = Monomial $ fromList l
 
 -- | Multiplies two monomials
@@ -62,15 +62,15 @@ properties = testGroup "Properties" [qcProps]
 
 qcProps = testGroup "(checked by QuickCheck)"
   [ QC.testProperty "left multiplication by identity" $
-    \x -> (let m = mfromList (x :: [(Int, Int)])
+    \x -> (let m = mfromList (x :: [(Integer, Integer)])
            in mempty `mappend` m == m)
   , QC.testProperty "right multiplication by identity" $
-    \x -> (let m = mfromList (x :: [(Int, Int)])
+    \x -> (let m = mfromList (x :: [(Integer, Integer)])
            in m `mmul` mempty == m)
   , QC.testProperty "associativity" $
-    \x y z -> (let m1 = mfromList (x :: [(Int, Int)])
-                   m2 = mfromList (y :: [(Int, Int)])
-                   m3 = mfromList (z :: [(Int, Int)])
+    \x y z -> (let m1 = mfromList (x :: [(Integer, Integer)])
+                   m2 = mfromList (y :: [(Integer, Integer)])
+                   m3 = mfromList (z :: [(Integer, Integer)])
            in (m1 `mmul` m2) `mmul` m3 == m1 `mmul` (m2 `mmul` m3))
   ]
 
