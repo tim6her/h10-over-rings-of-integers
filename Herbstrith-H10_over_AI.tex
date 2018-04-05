@@ -70,10 +70,11 @@
 
 \usepackage{listingsutf8}	% Typeset code.
 \lstset{extendedchars=true,
-        basicstyle=\ttfamily,
+        basicstyle=\ttfamily\small,
         commentstyle=\color{gray},
         stringstyle=\color{darkgray},
         xleftmargin=\parindent,
+        showstringspaces=false,
         language=haskell}
 
 % BibLaTex
@@ -288,7 +289,7 @@ fix some notations.
 \clearpage
 \appendix
 \chapter{Appendix}\label{sec:Appendix}
-%\input{./Inhalt/Appendix}
+\input{./contents/99-99-appendix}
 
 \backmatter
 \vspace{\fill}
