@@ -10,7 +10,7 @@ This subsection takes a categorical view on computability and ensures us,
 that---up to a sensible definition---encodings of the rings we concern ourselves
 with do not matter.
 
-\begin{defin}
+\begin{defin} \todo{use definition 1.1.1 of \cite{Stoltenberg1999}}
   Let $\mathcal{L} = \set{f_1, f_2, …}$ be an at most countable language.
   \begin{thmlist}
     \item An algebraic structure $\mathfrak A = ⟨A; f_1^{\mathfrak A},
@@ -49,7 +49,7 @@ An efficient presentation of say a ring $R$ is an encoding of $R$ that preserves
     and replaces the $\zer$-symbol by an $\one$ and deletes the rightmost
     $\one$.
 
-    \item In general $ℤ$ and $\algint$ viewed as $\mathcal L_{ring}^*$ structures are efficiently representable. For the integers this is proven by each programming language allowing arbitrarily large integer arithmetic---like \emph{Haskell} or \emph{Python}.
+    \item In general $ℤ$ and $\algint$ viewed as $\mathcal L_{ring}^*$ structures are efficiently presentable. For the integers this is proven by each programming language allowing arbitrarily large integer arithmetic---like \emph{Haskell} or \emph{Python}.
 
     To present algebraic integers one uses an integral basis say $ζ_1, …, ζ_n$. Then any integer $η$ can be encoded as an $n$-tuple of integers. Addition and subtraction are defined coordinate-wise. To implement the multiplication one stores the finite multiplication table of the basis elements
     \[
@@ -62,7 +62,19 @@ An efficient presentation of say a ring $R$ is an encoding of $R$ that preserves
         ζ_n &       &         &   & ζ_n^2
       \end{array}
     \]
-    in memory and extends to all of $\algint$ linearly. A full implementation can be found in the Appendix.\todo{Write the appendix}
+    in memory and extends to all of $\algint$ linearly. A full implementation
+    can be found in the Appendix.\todo{Write the appendix}
+
+    \item \label{ex:polynomials are computable}
+    If $R$ is a computable integral domain, then the polynomial algebras
+    $R[X_1, …, X_n]$ in arbitrary many indeterminates ($n ∈ ℕ^*$) and $R[X_1,
+    X_2, …]$ in countably many indeterminates are computable $R$-algebras.
+
+    A possible implementation starts by implementing the monoid $⟨M; \cdot; X_i \mid i ∈ ℕ⟩$ and extends it to the $R$-algebra
+    $R[X_1, X_2, …]$. Within $R[X_1, X_2, …]$ every subalgebra $R[X_1, …, X_n]$
+    is decidable ($n ∈ ℕ^*$) and as a consequence is computable. See
+    \cite{Stoltenberg1999} for a more detailed discussion and the appendix for a
+    sample implementation based on this idea.
 
     \item $⟨ℕ, ≤⟩$ is efficiently presentable using the tally encoding and $n ≤
     m$ if and only if $\max(n - m, 0) = 0$. So deciding $n ≤ m$ boils down to
@@ -73,7 +85,7 @@ An efficient presentation of say a ring $R$ is an encoding of $R$ that preserves
 
 It is a natural question whether two efficient presentations of the same
 structure are computably isomorphic i.e. if there exists a computable
-isomporphism between them. We will see that the last example differs from the
+isomorphism between them. We will see that the last example differs from the
 others in this regard.
 
 \begin{defin}
@@ -86,7 +98,8 @@ others in this regard.
 
 In the case of rings of algebraic integers the following theorem comes to our
 rescue, assuring us that the decidability of \textsc{H10} does in fact not
-depend on the encoding chosen.
+depend on the encoding chosen. For a more detailed discussion of efficient
+representations of rings see \cite{Stoltenberg1999}.
 
 \begin{thm}
   Let $R$ be a finitely generated, efficiently representable ring with unit.
@@ -104,10 +117,8 @@ finitely many values of the isomorphism $φ_2 \circ φ_1^{-1}$ in memory one can
 use the computabilty of $R_1$ and $R_2$ respectively to extend the partial
 mapping in the obvious way.
 
-For a more detailed discussion of computable rings see \cite{Stoltenberg1999}.
-
-With this technicallity out of the way, from now on I will not differentiate
-between $\algint$ and its efficient representation. However, there are
+With this technicality out of the way, from now on I will not differentiate
+between $\algint$ and its efficient representations. However, there are
 structures where the choice of representation matters. In fact, $⟨ℕ, ≤⟩$ is not
 computably categorical. A proof using the undecidability of the halting problem
 can be found in \cite[Prob. 1.6]{Shore}.
@@ -131,91 +142,133 @@ further structural results see \cite{Shlapentokh2000}.
 \begin{lem}\label{lem:intersections and unions}
     Let $R$ be an integral domain, whose quotient field is not
     algebraically closed. Then if $S_1, S_2 \subseteq R$ are Diophantine so are
+    \[
+      S_1 ∩ S_2 \quad \text{and} \quad S_1 ∪ S_2.
+    \]
 
-    \[ S_1 ∩ S_2 \quad \text{and} \quad S_1 ∪ S_2 \]
+    If $R$ is computable, then there is an algorithm that finds the defining
+    polynomial equations for union and intersection efficiently.
 \end{lem}
 
+In other words, conjunctions and disjunctions of existentially quantified atomic
+formulas can be replaced by a single existentially quantified atomic formula. Or
+again put differently, conjunction $∧$ and disjunction $∨$ are
+$\mathcal{L}_{ring}^*$ definable.
+
 \begin{proof}
-Let $f(X, Y_1, …, Y_n)$ and $g(X, Y_1, …, Y_n)$ give Diophantine
-definitions\footnote{By inserting dummy indeterminates we may whish that
-both polynomials have the same number of indeterminates.} of $S_1$
-and $S_2$ resp. then
-
-\[ h := fg \]
-
+Let $f(\mathbf{X}, \mathbf{Y}) ∈ R[X_1, …, X_{n_1}, Y_1, …, Y_{n_2}]$ and
+$g(\mathbf{X}, \mathbf{Y}) ∈ R[X_1, …, X_{n_1}, Y_1, …, Y_{n_2}]$ give
+Diophantine definitions\footnote{By inserting dummy indeterminates we may whish
+that both polynomials have the same number of indeterminates.} of $S_1$ and
+$S_2$ resp. then
+\[
+  h := f g
+\]
 vanishes if and only if $f$ or $g$ vanishes. As a consequence, the
-following set gives a Diophantine definition of the union.
+following identity gives a Diophantine definition of the union.
 
-\[ S_1 ∪ S_2 = \lbrace x \mid ∃ y_1, … , ∃ y_n \; h(x, y_1, … , y_n) = 0 \rbrace. \]
+\[ S_1 ∪ S_2 = \lbrace \mathbf{x} \mid \mathbf{y} \; h(\mathbf{x}, \mathbf{y}) = 0 \rbrace. \]
 
 To prove the claim for intersections of Diophantine sets, let
-
-\[h(X) = a_m X^m + … + a_1 X + a_0 ∈ R[X, Y_1, …, Y_n]\]
-
+\[
+  h(X) = a_m T^m + … + a_1 T + a_0 ∈ R[T]
+\]
 be a polynomial of degree $m > 0$ without roots in $R$. Then
-$\bar h(X) = X^m h(X^{-1})$ does not have roots in $R$ either. As if
-$α ∈ R$ is a root of $\bar h$ then
-
-\[ 0 = \bar h(α) = a_m + a_{m-1} α + a_1 α^{,-1} + a_0 α^m\]
-
+$\overline h(X) = X^m h(X^{-1})$ does not have roots in $R$ either. As if
+$α ∈ R$ is a root of $\overline h$ then
+\[
+  0 = \bar h(α) = a_m + a_{m-1} α + a_1 α^{,-1} + a_0 α^m
+\]
 and $α = 0$ implies $a_m = 0$. Otherwise, $α^{-1}$ is a root of
 $α^m h$ and therefore of $h$.
 
 Now consider
-
-\[ H(X, Y_1, …, Y_n) = \sum_{i=0}^m a_i f(X, Y_1, …, Y_n)^i g(X, Y_1, …, Y_n)^{m - i}.\]
-
-We will prove for all $α_0, α_1, …, α_n ∈ R$ the following
-equivalence, showing that $H$ witnesses that $S_1 ∩ S_2$ is
+\[
+  H(\mathbf{X}, \mathbf{Y}) = \sum_{i=0}^m a_i f(\mathbf{X}, \mathbf{Y})^i g(\mathbf{X}, \mathbf{Y})^{m - i}.
+\]
+We will prove for all $\mathbf{α} ∈ R^{n_1}$ and $\mathbf{β} ∈ R^{n_2}$ the
+following equivalence, showing that $H$ witnesses that $S_1 ∩ S_2$ is
 Diophantine.
 
-\[ H(α_0, α_1, …, α_n) = 0 \Leftrightarrow f(α_0, α_1, …, α_n) = 0 ∧ g(α_0, α_1, …, α_n) = 0 \]
+\[ H(\mathbf α, \mathbf β) = 0 \Leftrightarrow f(\mathbf α, \mathbf β) = 0 ∧ g(\mathbf α, \mathbf β) = 0 \]
 
-If there are $α_0, α_1, …, α_n ∈ R$ such that
-$H(α_0, α_1, …, α_n) = 0$ but $f(α_0, α_1, …, α_n) ≠ 0$ then
-
-\[ 0 = \frac H {f^n} (α_0, α_1, …, α_n) = \bar h \left(\frac gf (α_0, α_1, …, α_n) \right), \]
-
-which is a contradiction to $\bar h$ not having roots. If, on the
-other hand, $H(α_0, α_1, …, α_n) = 0$ but $g(α_0, α_1, …, α_n) ≠ 0$
+If $H(\mathbf α, \mathbf β) = 0$ but $f(\mathbf α, \mathbf β) ≠ 0$ then
+\[
+  0 = \frac H {f^n} (\mathbf α, \mathbf β) = \overline h \left(\frac gf (\mathbf α, \mathbf β) \right),
+\]
+which is a contradiction to $\overline h$ not having roots. If, on the
+other hand, $H(\mathbf α, \mathbf β) = 0$ but $g(\mathbf α, \mathbf β) ≠ 0$
 we find
-
-\[ 0 = \frac H {g^n}(α_0, α_1, …, α_n) = \bar h \left( \frac fg (α_0, α_1, …, α_n) \right). \]
+\[
+  0 = \frac H {g^n}(\mathbf α, \mathbf β) = \overline h \left( \frac fg (\mathbf α, \mathbf β) \right).
+\]
 
 The converse direction is clear as the powers of $f$ and $g$ sum up
 to $n$ for each summand in the definition of $H$.
+
+To prove the effectiveness of these methods one observes, that the defining
+equations contain only polynomials in $f$ and $g$. Interpreting $f$ and $g$ as
+polynomials in countably many indeterminates \cref{ex:polynomials are
+computable} implies that the polynomial equations for union and intersection of
+Diophantine sets can be computed from the polynomials $f$ and $g$.
 \end{proof}
 
-Using induction and the lemma above, one immediately obtains that
-arbitrary finite unions and intersections of Diophantine sets are
-Diophantine. The lemma can also easily be extended to Diophantine sets
-contained in $R^n$ as the existential quantorisation is nowhere used
-in the proof.
+Using induction and the lemma above, one immediately obtains that arbitrary
+finite unions and intersections of Diophantine sets are Diophantine.
+
+An important corollary of the lemma above is---as was remarked before---that
+\textsc{H10} over $\algint$ is decidable if and only if $\mathtt{Th}_{∃+}
+(\mathfrak O)$ is decidable. Indeed, if one has a Turing machine that decides
+whether a single polynomial over $\algint$ has roots in $\algint$. Then upon
+using the algorithm described in \cref{lem:intersections and unions} the same
+Turing machine can decide whether a collection of polynomial equations can be
+satisfied simultaneously.
+
+Note that the algorithm presented above does not depend on the initial equations
+$f$ and $g$ but it does depend on the integral domain $R$. As we might need
+different polynomials $h$ without roots for each ring $R$ in the case of
+conjunctions.
 
 \textcite{Shlapentokh2000} notes that the following lemma and its corollary are
 `the only tool successfully used to show the undecidability of \textsc{H10}
 for various subrings of the number fields' They explain the usefulness
-of diopahtine definitions.
+of Diopahtine definitions.
 
 \begin{lem} \label{lem:moving up}
-Let $R_1 \subseteq R_2$ be recursive rings and integral domains such
-that the quotient field of $R_2$ is not algebraically closed. If H10
+Let $R_1 \subseteq R_2$ be computable rings and integral domains such
+that the quotient field of $R_2$ is not algebraically closed. If \textsc{H10}
 is undecidable over $R_1$ and $R_1$ has a Diophantine definition over
-$R_2$, then H10 in undecidable over $R_2$.
+$R_2$, then \textsc{H10} in undecidable over $R_2$.
 \end{lem}
-
 \begin{proof}
-Let $f(X, Y_1, …, Y_n)$ be a Diophantine definition of $R_1$ over
-$R_2$ and assume that H10 is decidable over $R_2$. We prove that H10
-is decidable over $R_1$ as well, contradicting our assumption.
+Let $f(X, Y_1, …, Y_n)$ be a Diophantine definition of $R_1$ over $R_2$ and
+assume that \textsc{H10} is decidable over $R_2$. We prove that \textsc{H10} is
+decidable over $R_1$ as well, contradicting our assumption.
 
-Let $p ∈ R_1[T_1, …, T_m]$ be Diophantine definition of $S$ over
+Let $p ∈ R_1[T_1, …, T_m]$ be a Diophantine definition of $S$ over
 $R_1$. Then
-
-\[ S = \left\lbrace ∃α_1,…,α_m, β_{1,1}, …, β_{m,n} ∈ R_2 \middle| P(α_1, …, α_m) = 0 ∧ \bigwedge_{i=1}^m f(α_i, β_{i,1},…,β_{i,n}) = 0 \right\rbrace\]
-
-is a Diophantine defition of $S$ over $R_2$. Firstly, note that the
-defining relation of $S$ can be rewritten as a single polynomial
-relation by \cref{lem:intersections and unions}. Since there is
-a Turing machine deciding \textsc{H10} in $R_2$
+\[
+  S = \left\lbrace ∃α_1,…,α_m, β_{1,1}, …, β_{m,n} ∈ R_2 \;\middle|\; p(α_1, …, α_m) = 0 ∧ \bigwedge_{i=1}^m f(α_i, β_{i,1},…,β_{i,n}) = 0 \right\rbrace
+\]
+is a Diophantine definition of $S$ over $R_2$. If $\mathfrak R_1$ is the
+$\mathcal{L}_{ring}^*$-structure of $R_1$ and $\mathfrak R_2$ the respective
+structure of $R_2$ this equation can be restated as
+\begin{align*}
+  \mathfrak R_1 &\models ∃ α_1 … ∃ y_m \; p(α_1, …, α_m) \doteq 0 ⇔ \\
+  \mathfrak R_2 &\models ∃α_1 … ∃ α_m ∃ β_{1,1} … ∃ β_{m,n} \; p(α_1, …, α_m) \doteq 0 ∧ \bigwedge_{i=1}^m f(α_i, β_{i,1},…,β_{i,n}) \doteq 0,
+\end{align*}
+where the latter sentence can clearly be obtained efficiently from the first one
+again by an algorithm depending on $R_1$ and $R_2$ but not on $p$. Therefore,
+the decidability of $\mathtt{Th}_{∃+}(\mathfrak R_2)$ implies the decidability
+of $\mathtt{Th}_{∃+}(\mathfrak R_1)$ by first applying the transformation of
+sentences and then the deciding algorithm in $R_2$.
 \end{proof}
+
+The following corollary follows directly from the lemma above and the
+undecidability of Hilbert's tenth problem over $ℤ$.
+
+\begin{cor}
+  Let $ℤ \subseteq R$ be a computable integral domain, whose quotient field is
+  not algebraically closed. If $ℤ$ has a Diophantine definition over $R$ then
+  \textsc{H10} is not decidable over $R$.
+\end{cor}
