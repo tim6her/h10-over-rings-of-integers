@@ -77,10 +77,10 @@ Viewing $n$-ary relations as subsets of $R^n$, we will sometimes refer to Diopha
   \end{exlist}
 \end{exam}
 
-Let $\mathcal{L}_{ring} = \set{+,\cdot; 0, 1}$ be the language of rings and
+Let $Σ_{ring} = \set{+,\cdot; 0, 1}$ be the signature of rings and
 let $\mathfrak{Z} = ⟨ℤ; +^\mathfrak{Z}, \cdot^\mathfrak{Z};
 0^\mathfrak{Z}, 1^\mathfrak{Z}⟩$ denote the integers as
-$\mathcal{L}_{ring}$-structure. Then \textsc{H10} asks whether the existential
+$Σ_{ring}$-structure. Then \textsc{H10} asks whether the existential
 positive theory $\mathtt{Th}_{∃+}(\mathfrak{Z})$ is decidable. That is the
 theory of $\mathfrak{Z}$ containing only fully existentially quantified atomic
 formulas or conjunctions---no negations, disjunctions or universal quantifiers.
@@ -94,26 +94,26 @@ So the question whether $X_1 - (X_2 + 2) (X_3 + 2)$ has integral roots is equiva
 \[
   \mathfrak Z \models ∃ x_1 ∃ x_2 ∃ x_3\; x_1 \doteq (x_2 + 1 + 1) \cdot (x_3 + 1 + 1).
 \]
-We will see in \cref{lem:intersections and unions} that for certain rings
-including $\mathfrak Z$ conjunctions of multiple polynomial equations can be
-effectively translated to a single polynomial equation.
+We will see in \cref{lem:intersections and unions} that for certain integral
+domains  including $\mathfrak Z$ conjunctions of multiple polynomial equations
+can be effectively translated to a single polynomial equation.
 
 The beauty of this approach is that it directly gives rise to generalisations of
 Hilbert's tenth problem. For example one can exchange the ring structure
 $\mathfrak Z$ by some other ring. Even uncountable rings like $\mathfrak C = ⟨ℂ;
 +^{\mathfrak C}, \cdot^{\mathfrak C}; 0^{\mathfrak C},
-1^{\mathfrak C}⟩$ are possible, as $\mathcal{L}_{ring}$ is finite and therefore
+1^{\mathfrak C}⟩$ are possible, as $Σ_{ring}$ is finite and therefore
 each sentence in $\mathtt{Th}_{∃+}(\mathfrak{C})$ can be encoded by its
 Gödelisation or---as it was done when typesetting this thesis---by the
 concatenation of the \textsc{UTF-8} encodings of the symbols. A second approach
-for generalisation is exchanging $\mathcal{L}_{ring}$ by some other at most
-countable language. Then one is in the realm of constraint satisfaction
+for generalisation is exchanging $Σ_{ring}$ by some other at most
+countable signature. Then one is in the realm of constraint satisfaction
 problems. Or one could consider the full first order theory of $\mathfrak Z$.
 Then Gödel's first incompleteness theorem gives a negative answer to the
 question, whether $\mathtt{Th}(\mathfrak Z)$ is decidable.
 
-I will use the second approach and replace $\mathcal{L}_{ring}=\set{+, \cdot;
-0, 1}$ by the language $\mathcal{L}_{ring}^* = \set{+, \cdot; 0, 1, η \mid η
+I will use the second approach and replace $Σ_{ring}=\set{+, \cdot;
+0, 1}$ by the signature $Σ_{ring}^* = \set{+, \cdot; 0, 1, η \mid η
 ∈ ℕ}$ where one adds countably many constants representing the elements unequal
 to $0$ and $1$ of a countable ring with unit $R$.
 
