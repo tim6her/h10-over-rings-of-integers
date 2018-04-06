@@ -1,11 +1,15 @@
+{-# LANGUAGE RebindableSyntax #-}
 module Monomial
 ( Monomial
 , mmul
 , mfromList
 ) where
 
+import NumericPrelude
 import Data.Map (Map, empty, foldrWithKey, fromList, member, insert,
                  insertWith, (!))
+import Algebra.Monoid as Monoid
+
 import Test.Tasty
 import Test.Tasty.HUnit
 import Test.Tasty.QuickCheck as QC
@@ -13,6 +17,10 @@ import Test.Tasty.QuickCheck as QC
 
 -- | Monomials are mappings from ZZ to ZZ with finite support
 newtype Monomial = Monomial (Map Integer Integer) deriving (Eq, Ord)
+
+instance Monoid.C Monomial where
+  idt = Monomial empty
+  (<*>) = mmul
 
 instance Show Monomial where
   show (Monomial m)
@@ -47,9 +55,7 @@ mmul xx@(Monomial m1) yy@(Monomial m2)
                              else insert x e m)
                   m2 m1
 
-instance Monoid Monomial where
-  mempty = Monomial empty
-  mappend = mmul
+-- * Testing
 
 main :: IO ()
 main = defaultMain tests
@@ -60,18 +66,22 @@ tests = testGroup "Tests" [properties, unitTests]
 properties :: TestTree
 properties = testGroup "Properties" [qcProps]
 
-qcProps = testGroup "(checked by QuickCheck)"
+qcProps = testGroup "Axioms of monoids"
   [ QC.testProperty "left multiplication by identity" $
     \x -> (let m = mfromList (x :: [(Integer, Integer)])
-           in mempty `mappend` m == m)
+           in idt <*> m == m)
   , QC.testProperty "right multiplication by identity" $
     \x -> (let m = mfromList (x :: [(Integer, Integer)])
-           in m `mmul` mempty == m)
+           in m <*> idt == m)
   , QC.testProperty "associativity" $
     \x y z -> (let m1 = mfromList (x :: [(Integer, Integer)])
                    m2 = mfromList (y :: [(Integer, Integer)])
                    m3 = mfromList (z :: [(Integer, Integer)])
-           in (m1 `mmul` m2) `mmul` m3 == m1 `mmul` (m2 `mmul` m3))
+               in (m1 <*> m2) <*> m3 == m1 <*> (m2 <*> m3))
+  , QC.testProperty "commutativity" $
+    \x y -> (let m1 = mfromList (x :: [(Integer, Integer)])
+                 m2 = mfromList (y :: [(Integer, Integer)])
+             in m1 <*> m2 == m2 <*> m1)
   ]
 
 unitTests = testGroup "Unit tests"
