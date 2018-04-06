@@ -3,10 +3,11 @@ module Monomial
 ( Monomial
 , mmul
 , mfromList
+, clean
 ) where
 
 import NumericPrelude
-import Data.Map (Map, empty, foldrWithKey, fromList, member, insert,
+import Data.Map (Map, delete, empty, foldrWithKey, fromList, member, insert,
                  insertWith, (!))
 import Algebra.Monoid as Monoid
 
@@ -15,7 +16,7 @@ import Test.Tasty.HUnit
 import Test.Tasty.QuickCheck as QC
 
 
--- | Monomials are mappings from ZZ to ZZ with finite support
+-- | Monomials are mappings from ZZ to NN with finite support
 newtype Monomial = Monomial (Map Integer Integer) deriving (Eq, Ord)
 
 instance Monoid.C Monomial where
@@ -38,7 +39,7 @@ instance Show Monomial where
 -- >>> mfromList [(1, 2), (0, 3), (4, 7)]
 -- X0^3 X1^2 X4^7
 mfromList :: [(Integer, Integer)] -> Monomial
-mfromList l = Monomial $ fromList l
+mfromList l = clean $ Monomial $ fromList l
 
 -- | Multiplies two monomials
 --
@@ -49,11 +50,20 @@ mmul :: Monomial -> Monomial -> Monomial
 mmul xx@(Monomial m1) yy@(Monomial m2)
   | m1 == empty = yy
   | m2 == empty = xx
-  | otherwise = Monomial $ foldrWithKey
+  | otherwise = clean $ Monomial $ foldrWithKey
                   (\x e m -> if x `member` m
                              then insertWith (+) x e m
                              else insert x e m)
                   m2 m1
+
+clean :: Monomial -> Monomial
+clean (Monomial m)
+  | m == empty = (Monomial m)
+  | otherwise = Monomial $ foldrWithKey
+                  (\x e m -> if e <= 0
+                             then delete x m
+                             else m)
+                  m m
 
 -- * Testing
 
@@ -90,4 +100,6 @@ unitTests = testGroup "Unit tests"
   , testCase "sample multiplication" $
       show (mmul (mfromList [(1, 2), (2, 4)]) (mfromList [(2, 1), (3, 2)])) @?=
       "X1^2 X2^5 X3^2 "
+  , testCase "test clean" $
+      mfromList [(1, 0), (2, 0), (3, 1)] @?= mfromList [(3, 1)]
   ]

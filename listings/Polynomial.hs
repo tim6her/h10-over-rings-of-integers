@@ -3,7 +3,7 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
 import NumericPrelude
 
-import Monomial
+import qualified Monomial
 
 import qualified Data.Map as Map
 import Algebra.Monoid as Monoid
@@ -17,28 +17,20 @@ import Test.Tasty.QuickCheck as QC
 
 -- | Polynomials over a ring R are finitely supported functions
 -- from the set of monomials to R
-newtype Polynomial a = Polynomial (Map.Map Monomial a)
+newtype Polynomial a = Polynomial (Map.Map Monomial.Monomial a)
 
 -- | Polynomials form an additive (abelian) group
 instance (Ring.C a, Eq a) => Additive.C (Polynomial a) where
   zero = Polynomial Map.empty
   (+) = padd
-  negate (Polynomial m) = Polynomial $ Map.foldrWithKey
-                            (\mono coeff poly ->
-                              Map.insert mono (-coeff) poly)
-                            m m
+  negate (Polynomial m) = Polynomial $ Map.map negate m
 
 -- | Polynomials from an R-module
-instance (Ring.C a, Additive.C a, Eq a) => Module.C a (Polynomial a) where
-  (*>) a (Polynomial m) = Polynomial $ Map.foldrWithKey
-                            (\mono coeff poly ->
-                              let coeff' = a * (poly Map.! mono)
-                              in if coeff' == zero
-                                 then Map.delete mono poly
-                                 else Map.insert mono coeff' poly)
-                            m m
+instance (Ring.C a, Eq a) => Module.C a (Polynomial a) where
+  (*>) 0 _ = zero
+  (*>) a (Polynomial m) = Polynomial $ Map.map (a*) m
 
--- | Two polynomials are equal if there difference is zero
+-- | Two polynomials are equal if their difference is zero
 instance (Ring.C a, Eq a) => Eq (Polynomial a) where
   (==) p q = let (Polynomial m) = p - q in m == Map.empty
 
@@ -56,22 +48,31 @@ padd :: (Ring.C a, Eq a) => Polynomial a -> Polynomial a -> Polynomial a
 padd p@(Polynomial m1) q@(Polynomial m2)
   | m1 == Map.empty = q
   | m2 == Map.empty = p
-  | otherwise = Polynomial $ Map.foldrWithKey
+  | otherwise = clean $ Polynomial $ Map.foldrWithKey
                   (\mono coeff poly -> if mono `Map.member` poly
-                             then let coeff' = coeff + (poly Map.! mono)
-                                  in if coeff' == 0
-                                     then Map.delete mono poly
-                                     else Map.insert mono coeff' poly
+                             then Map.insertWith (+) mono coeff poly
                              else Map.insert mono coeff poly)
                   m2 m1
 
 -- | Generate polynomials from lists
 pfromList :: (Ring.C a, Eq a) => [(a, [(Integer, Integer)])] -> Polynomial a
 pfromList [] = zero
-pfromList ((a, m):l) = if a == 0
-                       then pfromList l
-                       else (Polynomial $ Map.singleton (mfromList m) a) +
-                            pfromList l
+pfromList ((a, m):l) = deepClean . clean  $ (Polynomial $ Map.singleton
+                         (Monomial.mfromList m) a) + pfromList l
+
+-- | Remove monoids with coefficient zero from support
+clean :: (Ring.C a, Eq a) => Polynomial a -> Polynomial a
+clean (Polynomial m) = Polynomial $ Map.foldrWithKey
+                         (\mono coeff poly -> if coeff == 0
+                                              then Map.delete mono poly
+                                              else poly)
+                          m m
+
+-- | Remove variables with power zero from monomials
+--
+-- This function runs in O(n log(n)) so use it sparsely
+deepClean :: (Ring.C a, Eq a) => Polynomial a -> Polynomial a
+deepClean (Polynomial m) = Polynomial $ Map.mapKeys Monomial.clean m
 
 -- * Testing
 
