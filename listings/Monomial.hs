@@ -1,7 +1,8 @@
 {-# LANGUAGE RebindableSyntax #-}
 module Monomial
 ( Monomial
-, mmul
+, (<*>)
+, idt
 , mfromList
 , clean
 ) where

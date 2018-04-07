@@ -30,6 +30,18 @@ instance (Ring.C a, Eq a) => Module.C a (Polynomial a) where
   (*>) 0 _ = zero
   (*>) a (Polynomial m) = Polynomial $ Map.map (a*) m
 
+-- | Polynomials form a ring with unit
+instance (Ring.C a, Eq a) => Ring.C (Polynomial a) where
+  one = pfromList [(1, [])]
+  (*) p@(Polynomial m1) q
+    | p == zero = zero
+    | q == zero = zero
+    | p == one = q
+    | q == one = p
+    | otherwise = Map.foldrWithKey
+                    (\mono coeff poly -> (coeff *> mono `mmul` q) + poly)
+                    0 m1
+
 -- | Two polynomials are equal if their difference is zero
 instance (Ring.C a, Eq a) => Eq (Polynomial a) where
   (==) p q = let (Polynomial m) = p - q in m == Map.empty
@@ -54,11 +66,26 @@ padd p@(Polynomial m1) q@(Polynomial m2)
                              else Map.insert mono coeff poly)
                   m2 m1
 
+mmul :: (Ring.C a, Eq a) => Monomial.Monomial -> Polynomial a -> Polynomial a
+mmul mono poly@(Polynomial mp)
+  | mono == Monomial.idt = Polynomial mp
+  | poly == zero = zero
+  | otherwise = Polynomial $ Map.mapKeys (mono Monomial.<*>) mp
+
+
 -- | Generate polynomials from lists
 pfromList :: (Ring.C a, Eq a) => [(a, [(Integer, Integer)])] -> Polynomial a
 pfromList [] = zero
 pfromList ((a, m):l) = deepClean . clean  $ (Polynomial $ Map.singleton
                          (Monomial.mfromList m) a) + pfromList l
+
+-- | Comfort function for creating polynomials
+--
+-- === Example
+-- >>> 2 *> ((x 1 + x 2) * (x 1 - x 2)) == 2 *> x 1 ^ 2 - 2 *> x 2 ^ 2
+-- True
+x :: (Ring.C a, Eq a) => Integer -> Polynomial a
+x i = pfromList [(1, [(i, 1)])]
 
 -- | Remove monoids with coefficient zero from support
 clean :: (Ring.C a, Eq a) => Polynomial a -> Polynomial a
@@ -83,7 +110,8 @@ tests :: TestTree
 tests = testGroup "Tests" [properties, unitTests]
 
 properties :: TestTree
-properties = testGroup "Properties" [qcAddProps, qcModProps]
+properties = testGroup "Properties" [qcAddProps, qcModProps,
+               localOption (QuickCheckTests 5) qcRingProps]
 
 qcAddProps = testGroup "Group axioms for addition"
   [ QC.testProperty "addition is commutative" $
@@ -95,7 +123,7 @@ qcAddProps = testGroup "Group axioms for addition"
                    p2 = pfromList (y :: [(Int, [(Integer, Integer)])])
                    p3 = pfromList (z :: [(Int, [(Integer, Integer)])])
            in (p1 + p2) + p3 == p1 + (p2 + p3))
-  , QC.testProperty "addition with zero" $
+  , QC.testProperty "addition by zero" $
     \x -> (let p = pfromList (x :: [(Int, [(Integer, Integer)])])
            in p + zero == p)
   , QC.testProperty "addition with inverse" $
@@ -117,6 +145,25 @@ qcModProps = testGroup "Module axioms"
   , QC.testProperty "multiplication by one" $
     \x -> (let p = pfromList (x :: [(Int, [(Integer, Integer)])])
            in (one :: Int) *> p == p)
+  ]
+
+qcRingProps = testGroup "Ring axioms"
+  [ QC.testProperty "multiplication is associative" $
+    \x y z -> (let p1 = pfromList (x :: [(Int, [(Integer, Integer)])])
+                   p2 = pfromList (y :: [(Int, [(Integer, Integer)])])
+                   p3 = pfromList (z :: [(Int, [(Integer, Integer)])])
+           in (p1 * p2) * p3 == p1 * (p2 * p3))
+  , QC.testProperty "left multiplication by one" $
+    \x -> (let p = pfromList (x :: [(Int, [(Integer, Integer)])])
+           in one * p == p)
+  , QC.testProperty "right multiplication by one" $
+    \x -> (let p = pfromList (x :: [(Int, [(Integer, Integer)])])
+           in p * one == p)
+  , QC.testProperty "distributive law" $
+    \x y z -> (let p1 = pfromList (x :: [(Int, [(Integer, Integer)])])
+                   p2 = pfromList (y :: [(Int, [(Integer, Integer)])])
+                   p3 = pfromList (z :: [(Int, [(Integer, Integer)])])
+               in p1 * (p2 + p3) == p1 * p2 + p1 * p3)
   ]
 
 unitTests = testGroup "Unit tests"

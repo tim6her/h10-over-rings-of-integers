@@ -21,3 +21,6 @@ old_versions/
 *.fls
 *.tex-e
 *.xdv
+listings/bin/
+*.hi
+*.o
