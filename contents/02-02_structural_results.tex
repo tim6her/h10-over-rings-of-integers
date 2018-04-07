@@ -54,11 +54,16 @@ with do not matter. The interested reader may whish to read the excellent survey
 
 \begin{exam}
   \begin{exlist}
-    \item In \cref{ex:tally encoding} we have encoded the non-negative integer
-    $n$ by a string of $n$ consecutive $\one$-s. We have also already
+    \item Every finite structure $⟨S; f_1, …, f_n⟩$ with $S \subseteq ω$ is
+    computable. The set $S$ is decidable as it is finite. As the domain of each
+    operation $f_i$ for $1 ≤ i ≤ n$ is finite as well. A Turing machine
+    computing $f_i$ can just store the images of all elements in the domain in
+    memory.
+    \item In \cref{ex:tally encoding} the non-negative integer $n$ was encoded
+    by a string of $n$ consecutive $\one$-s. I have also already
     presented the algorithm deciding $\enc{ℕ} \subseteq ω$. under this encoding.
     Considering $ℕ$ as $Σ_{ring}$-structure, one finds that the tally
-    encoding gives rise to a efficient presentation of $ℕ$.
+    encoding gives rise to an efficient presentation of $ℕ$.
 
     The constants $0$ and $1$ are trivially computable, by clearing the tape in
     the first case and writing a single $\one$ in the second case. Using the
@@ -76,15 +81,17 @@ with do not matter. The interested reader may whish to read the excellent survey
     $R[X_1, …, X_n]$ in arbitrary many indeterminates ($n ∈ ℕ^*$) and $R[X_1,
     X_2, …]$ in countably many indeterminates are computable $R$-algebras.
 
-    A possible implementation starts by implementing the monoid $⟨M; \cdot; X_i \mid i ∈ ℕ⟩$ and extends it to the $R$-algebra
-    $R[X_1, X_2, …]$. Within $R[X_1, X_2, …]$ every subalgebra $R[X_1, …, X_n]$
-    is decidable ($n ∈ ℕ^*$) and as a consequence is computable. See
-    \cite{Stoltenberg1999} for a more detailed discussion and \cref{app:polynomials} for a
-    sample implementation based on this idea.
+    A possible implementation starts by implementing the monoid $⟨M; \cdot; X_i
+    \mid i ∈ ℕ⟩$ and extends it to the $R$-algebra $R[X_1, X_2, …]$. Within
+    $R[X_1, X_2, …]$ every subalgebra $R[X_1, …, X_n]$ is decidable ($n ∈ ℕ^*$)
+    and as a consequence is computable. See \cite{Stoltenberg1999} for a more
+    detailed discussion and \cref{app:polynomials} for a sample implementation
+    based on this idea.
 
     \item In general $ℤ$ and $\algint$ viewed as $Σ_{ring}^*$ structures are efficiently presentable. For the integers this is proven by each programming language allowing arbitrarily large integer arithmetic---like \emph{Haskell} or \emph{Python}.
 
-    To present algebraic integers one uses an integral basis say $ζ_1, …, ζ_n$. Then any integer $η$ can be encoded as an $n$-tuple of integers. Addition and subtraction are defined coordinate-wise. To implement the multiplication one stores the finite multiplication table of the basis elements
+    To present algebraic integers one uses an integral basis say $ζ_1, …, ζ_n$.
+    Then any integer $η$ can be encoded as an $n$-tuple of integers. Addition and subtraction are defined coordinate-wise. To implement the multiplication one stores the finite multiplication table of the basis elements
     \[
       \begin{array}{r | r r r r}
             & ζ_1   & ζ_2     & … & ζ_n     \\

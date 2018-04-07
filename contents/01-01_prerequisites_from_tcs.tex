@@ -245,6 +245,12 @@ The last item of the definition above means that a problem is
 semi-decidable if there is a Turing machine affirming membership of the
 corresponding set but it might not be able to refute membership.
 
+Note that every finite problem is decidable by a Turing machine that reads the
+tape content and checks at every step whether there are elements in the problem
+that start with the tape content the machine has read. After $n + 1$ steps,
+where $n$ denotes the length of the longest string in the problem, the machine
+stops at the latest.
+
 \begin{lem} \label{lem:composition of Turing machines}
   Let $\mathbb A_1 = (S_1, δ_1)$ and $\mathbb A_2 = (S_2, δ_2)$ be Turing
   machines computing $f_1: D_1 → \set{\zer, \one}^*$ and $f_2: D_2 → \set{\zer,
