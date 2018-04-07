@@ -15,7 +15,6 @@ old_versions/
 *.tdo
 *.toc
 *.bib
-*.html
 *.lb
 *.fdb_latexmk
 *.fls
