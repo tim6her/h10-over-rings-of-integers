@@ -1,5 +1,37 @@
 \section{Collected \emph{Haskell} implementations}
 
+\subsection{Simulating Turing machines using \emph{Haskell}}%
+\label{app:turing}%
+
+I have published a simulator of Turing machines implemeted in \emph{Haskell}
+at \url{https://github.com/tim6her/h10-turing-machines}. To obtain a copy of
+the source code and build it using \emph{GHC} and \emph{cabal} run
+
+\begin{lstlisting}[language=bash]
+  git clone https://github.com/tim6her/h10-turing-machines.git
+  cd h10-turing-machines
+  cabal setup && cabal build && cabal install
+\end{lstlisting}
+
+To run the example codes for Turing machines enter the folder ‘listings’ and
+start \verb+ghci+. The following listing shows how to run the Turing machine
+deciding the tally encoding of non-negative integers. It might be necessary to
+turn on unicode printing in your \emph{GHC} installation.
+
+\begin{lstlisting}
+  >>> import Automaton.TuringMachine
+  >>> :l tally
+  >>> let d = toTransition tally "error" -- mark the errornous state
+  >>> let turing = TuringMachine "start" '_' "halt" d
+  >>> "§1111" >>> turing -- Tally encoding of 4
+  Just "§1"
+  >>> "§1011" >>> turing -- Not tally encoded
+  Just "§0"
+\end{lstlisting}
+
+A full documentation of the Turing machine simulator is available on the
+\emph{GitHub} repository.
+
 \subsection{Polynomials} \label{app:polynomials}
 
 The following listings show a \emph{Haskell} implemantation of the monoid of
