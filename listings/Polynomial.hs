@@ -111,7 +111,8 @@ tests = testGroup "Tests" [properties, unitTests]
 
 properties :: TestTree
 properties = testGroup "Properties" [qcAddProps, qcModProps,
-               localOption (QuickCheckTests 5) qcRingProps]
+               localOption (QuickCheckTests 5) qcRingProps,
+               qcAlgebraProps]
 
 qcAddProps = testGroup "Group axioms for addition"
   [ QC.testProperty "addition is commutative" $
@@ -164,6 +165,13 @@ qcRingProps = testGroup "Ring axioms"
                    p2 = pfromList (y :: [(Int, [(Integer, Integer)])])
                    p3 = pfromList (z :: [(Int, [(Integer, Integer)])])
                in p1 * (p2 + p3) == p1 * p2 + p1 * p3)
+  ]
+
+qcAlgebraProps = testGroup "Algebra axioms"
+  [ QC.testProperty "multiplications commute" $
+    \x y a -> (let p1 = pfromList (x :: [(Int, [(Integer, Integer)])])
+                   p2 = pfromList (y :: [(Int, [(Integer, Integer)])])
+           in (a :: Int) *> (p1 * p2) == (a *> p1) * p2)
   ]
 
 unitTests = testGroup "Unit tests"
