@@ -3,40 +3,39 @@
 % !TeX spellcheck = en_GB
 % !TeX root = ../Herbstrith-H10_over_AI.tex
 
-We closely follow the papers of \textcite{Denef1980} and \textcite{Pheidas1988},
+I closely follow the papers of \textcite{Denef1980} and \textcite{Pheidas1988},
 whose structure in term heavily depend on the original paper
-\citetitle{Davis1973} by \textcite{Davis1973}. This way, we can prove the
+\citetitle{Davis1973} by \textcite{Davis1973}. This way, one can prove the
 undecidability of Hilbert's tenth problem over rings of algebraic integers in
 totally real number fields and number fields with one pair of non-real
 embeddings in one go.
 
 \subsection{Finitely many easy lemmas}
 
-We start by defining two sequences, that satisfy Pell's equation stated below.
+I start by defining two sequences, that satisfy Pell's equation stated below.
 
 \begin{equation} \label{eq:Pell}
     x^2 - d y^2 = 1
 \end{equation}
 
 \begin{defin}
-  Let $K$ be an algebraic number field, $\algint$ its ring of algebraic
-  integers and fix $a ∈ \algint$. We define $δ(a) = \sqrt{a^2 - 1}$ and $ε(a) =
-  a + δ(a)$. If $δ(a) \not\in K$ we define $x_m(a), y_m(a) ∈ \algint$ for $m ∈
-  ℕ$ by
-
+  Let $K$ be an algebraic number field, $\algint$ its ring of algebraic integers
+  and fix $a ∈ \algint$. One defines $δ(a) = \sqrt{a^2 - 1}$ and $ε(a) = a +
+  δ(a)$. If $δ(a) \not\in K$ one defines $x_m(a), y_m(a) ∈ \algint$ for $m ∈ ℕ$
+  by
   \[
     x_m(a) + δ(a) y_m(a) = (ε(a))^m.
   \]
 \end{defin}
 
 This definition includes the case $K = ℚ$ with $\algint = ℤ$ of
-\cite{Davis1973}. However, we are using the slightly modified notation of
+\cite{Davis1973}. However, I am using the slightly modified notation of
 \cite{Denef1980,Pheidas1988}. Note that the sequences $x_m(a)$ and $y_m(a)$ are
 well defined for each $m ∈ ℕ$ as they correspond to the coefficients of
 $(ε(a))^m$ in $K[δ(a)]/K$ with respect to the basis $\lbrace 1, δ(a)\rbrace$. If
-the reference is clear we will omit the dependency on $a$ writing $δ, ε, x_m$
+the reference is clear I will omit the dependency on $a$ writing $δ, ε, x_m$
 and $y_m$.
-
+% QUESTION
 \todo{Why does every number field contain such an element $a$?}
 
 \begin{rem}
@@ -47,7 +46,7 @@ and $y_m$.
   of complex conjugation.
 \end{rem}
 
-We will now collect some properties of these sequences. The proofs are
+Let me now collect some properties of these sequences. The proofs are
 generalised versions of the ones given in \cite{Davis1973}.
 
 \begin{lem}
@@ -61,45 +60,34 @@ generalised versions of the ones given in \cite{Davis1973}.
 \begin{proof}
   \begin{plist}
     \item We have $ε (a - δ) = (a + δ) (a - δ) = a^2 - δ^2 = 1$ as desired.
-    \item We use induction on $m$. If $m = 0$, the pair $x_0 = 1$ and $y_0 = 0$
-    yields a trivial solution to equation~\eqref{eq:Pell}. Let the claim be
+    \item One uses induction on $m$. If $m = 0$, the pair $x_0 = 1$ and $y_0 =
+    0$ yields a trivial solution to equation~\eqref{eq:Pell}. Let the claim be
     proven for all pairs $x_n, y_n$ with $n ≤ m$. Then rewriting the definition
-    of $x_{m + 1}, y_{m + 1}$ we obtain
-
+    of $x_{m + 1}, y_{m + 1}$ one obtains
     \[
       x_{m + 1} + δ y_{m + 1} = ε^{m + 1} = (x_m + δ y_m)ε.
     \]
-
-    Applying the automorphism $\overline \cdot$ we obtain
-
+    Applying the automorphism $\overline \cdot$ one obtains
     \[
       \overline{x_{m + 1} + δ y_{m + 1}} = x_{m + 1} - δ y_{m + 1} = (x_m - δ y_m) ε^{-1}
     \]
-
     and multiplication of both equations yields
-
     \[
       x_{m + 1}^2 - d y_{m + 1}^2 = \overline{x_{m + 1} + δ y_{m + 1}} (x_{m + 1} - δ y_{m + 1}) = 1
     \]
-
     as claimed.
   \end{plist}
 \end{proof}
 
 The defining equation
-
 \[
   x_m + δ y_m = ε^m = (x_1 + δ y_1)^m
 \]
-
 can be seen as an analogue of the trigonometric identity
-
 \[
   \cos m + i \sin m = e^{im} = (\cos 1 + i \sin 1)^m,
 \]
-
 where $x_m$ plays the role of $\cos m$, $y_m$ the one of $\sin m$, and $i$ is replaced by $δ$. In this view Pell's equation~\eqref{eq:Pell} is the analogue of the Pythagorean identity
-
 \[
   \cos (m) ^2 + \sin (m) ^2 = 1.
 \]
@@ -108,7 +96,7 @@ The next lemma proves the identities corresponding to $\cos m = \Re e^m$, $\sin
 m = \Im e^m$, and the addition formulas.
 
 \begin{lem}
-  Let $K$ be an algebraic number field and $a ∈ \algint$ such that $δ = δ(a) \not\in K$. Then for all $m, k ∈ ℕ$ we have
+  Let $K$ be an algebraic number field and $a ∈ \algint$ such that $δ = δ(a) \not\in K$. Then for all $m, k ∈ ℕ$ one has
   \begin{thmlist}
     \item \label{lem:real part of epsilon}
     $x_m = (ε^m + ε^{-m}) / 2$ and $y_m = (ε^m - ε^{-m}) / (2 δ)$,
@@ -121,34 +109,28 @@ m = \Im e^m$, and the addition formulas.
   \begin{plist}
     \item In \cref{lem:epsilon is unit} we have seen that $ε^{-1} =
     \overline{ε}$ and therefore $ε^{-m} = \left(\overline{ε}\right)^m$. Observe that for arbitrary $x, y ∈ \algint$ we have
-
     \[
       x + δ y + \overline{x + δ y} = 2x \quad \text{and} \quad
       x + δ y - \overline{x - δ y} = 2δ y.
     \]
-
-     Setting $x + δ y = ε^m$ yields the claim.
+    Now, setting $x + δ y = ε^m$ yields the claim.
     \item By the defining equation for $x_m$ and $y_m$ we have
-
     \begin{align*}
       x_{m + k} + δ y_{m + k} &= ε^{m + k} = (x_m + δ y_m) (x_k + δ y_k) =\\
                             &= (x_m x_k + δ^2 y_m y_k) + δ (x_m y_k + x_k y_m)
     \end{align*}
-
     and thusly
-
     \begin{align*}
       x_{m + k} &= x_m x_k + δ^2 y_m y_k, \\
       y_{m + k} &= x_m y_k + x_k y_m.
     \end{align*}
-
     The identities for $x_{m - k}$ and $y_{m - k}$ follow analogously.
   \end{plist}
 \end{proof}
 
-Setting $k = 1$ in the lemma above, we obtain $x_{m ± 1} = a x_m ± δ^2 y_m$ and
-$y_{m ± 1} = a y_m ± x_m$. A further immediate consequence of this lemma is the
-subsequent one, which brings divisibility into play.
+Setting $k = 1$ in the lemma above, one obtains $x_{m ± 1} = a x_m ± δ^2 y_m$
+and $y_{m ± 1} = a y_m ± x_m$. A further immediate consequence of this lemma is
+the subsequent one, which brings divisibility into play.
 
 \begin{lem}
   Let $K$ be a number field and $a ∈ \algint$ such that $δ = δ(a) \not\in K$.
@@ -162,14 +144,13 @@ subsequent one, which brings divisibility into play.
 \end{lem}
 \begin{proof}
   \begin{plist}
-    \item We argue by induction on $k$. The identity is trivial if $k = 1$ and
+    \item I argue by induction on $k$. The identity is trivial if $k = 1$ and
     \cref{lem:addition formulas} implies that
-
     \[
       y_{m(k + 1)} = x_m y_{mk} + x{mk} y_m.
     \]
 
-    If the claim is proven for all factors lower than $k + 1$, we find that
+    If the claim is proven for all factors lower than $k + 1$, one finds that
     $y_m \mid y_{mk}$ and $y_m \mid y_m$ trivially. As a consequence, $y_m \mid
     y_{m(k + 1)}.$
 
@@ -195,7 +176,6 @@ lets us prove properties of the sequences, by proving them for $m ∈ \lbrace
 \begin{lem} \label{lem:recursion for x_m and y_m}
   Let $K$ be a number field and $a ∈ \algint$ such that $δ = δ(a) \not\in K$.
   For $m > 1$ the following recursive conditions hold.
-
   \begin{align*}
     x_{m + 1} &= 2 a x_m - x_{m - 1}, & x_1 = a, \;& x_0 = 1 \\
     y_{m + 1} &= 2 a y_m - y_{m - 1}, & y_1 = 1, \;& y_0 = 0 \\
@@ -203,18 +183,16 @@ lets us prove properties of the sequences, by proving them for $m ∈ \lbrace
 \end{lem}
 \begin{proof}
   The initial conditions follow from $ε = a + δ$ and $ε^0 = 1$. To prove the
-  the difference equations we use \cref{lem:addition formulas} and obtain
-
+  the difference equations one uses \cref{lem:addition formulas} and obtain
   \begin{align*}
     x_{m + 1} &= a x_m + δ^2 y_m,  &  y_{m + 1} &= a y_m + x_m, \\
     x_{m - 1} &= a x_m - δ^2 y_m,  &  y_{m + 1} &= a y_m - x_m.
   \end{align*}
-
   Summation yields $x_{m + 1} + x_{m - 1} = 2 a x_m$ and $y_{m + 1} + y_{m - 1}
   = 2 a y_m$.
 \end{proof}
 
-We use the previous lemma to prove some congruence conditions.
+I use the previous lemma to prove some congruence conditions.
 
 \begin{lem}
   Let $K$ be a number field and $a, b, c ∈ \algint$ such that $δ(a), δ(b)
@@ -229,23 +207,20 @@ We use the previous lemma to prove some congruence conditions.
   The first and second congruence become equalities if $m = 0$. As for $m = 1$,
   the first congruence is again an equality as $y_1 (a) = 1$ independently of
   $a$. The second claim is trivial since $x_1 (η) = η$ and $y_1 (η) = 1$ for $η
-  ∈ \lbrace a, b \rbrace$. At this point we proceed inductively and assume the
-  claims to be proven for all indices lower than $m + 1$.
+  ∈ \lbrace a, b \rbrace$. At this point one proceeds inductively and assumes
+  the claims to be proven for all indices lower than $m + 1$.
 
   \begin{plist}
     \item Note that $a \equiv 1 \mod (a - 1)$ and thusly by
     \cref{lem:recursion for x_m and y_m}
-
     \[
       y_{m + 1} = 2 a y_m - y_{m - 1} \equiv 2 m - (m - 1) = m + 1 \mod (a - 1)
     \]
-
     as claimed.
 
     \item Using \cref{lem:recursion for x_m and y_m} we see that for fixed $m$
     the coefficients $x_m (η)$ and $y_m (η)$ can be expressed as some fixed
     polynomial in $η$. For the congruence this means
-
     \begin{align*}
       x_{m + 1} (a) &= 2 a x_m (a) - x_{m - 1} (a)
                      \equiv 2 b x_m (b) - x_m{m - 1} (b) = x_{m + 1} (b)
@@ -258,7 +233,6 @@ We use the previous lemma to prove some congruence conditions.
 \begin{lem}
   Let $K$ be a number field and $a ∈ \algint$ such that $δ = δ(a) \not\in K$.
   Then for $m, k ∈ ℕ$ such that $m ± k ≥ 0$ the following congruence holds.
-
   \[
     x_{2 m ± k} \equiv - x_k(a) \mod (x_m)
   \]
@@ -266,7 +240,6 @@ We use the previous lemma to prove some congruence conditions.
 \begin{proof}
   By applying the addition formulas of \cref{lem:addition formulas} twice and
   using that $x_m$ and $y_m$ solve Pell's equation \eqref{eq:Pell} one obtains
-
   \begin{align*}
     x_{2m ± k} &= x_m x_{m ± k} + δ^2 y_m y_{m ± k}
                 \equiv δ^2 y_m (y_m x_j ± x_m y_j) \\
@@ -275,7 +248,7 @@ We use the previous lemma to prove some congruence conditions.
   \end{align*}
 \end{proof}
 
-At this point for the first time in this section we state a result that is no
+At this point for the first time in this section I state a result that is no
 direct generalisation of a result in \cite{Davis1973} and present a prove given
 in \cite{Denef1980}. Note however that the result is nevertheless true for the
 case $K = ℚ$ and $\algint = ℤ$.
@@ -284,9 +257,11 @@ case $K = ℚ$ and $\algint = ℤ$.
   Let $K$ be a number field and $a ∈ \algint$ such that $δ = δ(a) \not\in K$.
   Then for all $η ∈ \algint \setminus \set{0}$ there exists an $m ∈ ℕ$ such that
   $η \mid y_m$ in $\algint[{K[δ]}]$.
+  % QUESTION
   \todo{Can we divide in $\algint$?}
 \end{lem}
 \begin{proof}
+  % QUESTION
   Let $m$ be the order of the group of units in the finite\todo{Why?}{} ring
   $\algint[{K[δ]}]/(2 δ η)$, where $(2 δ η)$ denotes the principal ideal
   generated by $2 δ η$ in $\algint[{K[δ]}]$. Then $ε^{±m} \equiv 1 \mod (2 δ
@@ -296,6 +271,26 @@ case $K = ℚ$ and $\algint = ℤ$.
   \cref{lem:real part of epsilon}.
 \end{proof}
 
+% TODO
 Before proving the main theorems of this section (\todo{reference them}) I
 sketch how \textcite{Davis1973} proceeds in proving that \textsc{H10} is
-undecidable over $ℕ^*$ and as a consequence of \cref{ex:N is Diophantine over Z} and \cref{lem:moving up} over $ℤ$.
+undecidable over $ℤ$.
+
+First he proves using the sequences above that the exponential function is
+Diophantine \cite[Thm 3.3]{Davis1973}. Then he is able to extend the language of
+Diophantine predicates by \emph{bounded existential} and \emph{bounded universal
+qantifiers} i.e. by
+\begin{align*}
+  (∃y)_{≤x}ϕ(x, y) &⇔ ∃y\; (y ≤ x ∧ ϕ(x, y)),\\
+  (∀y)_{≤x}ϕ(x, y) &⇔ ∀y\; (y > x ∨ ϕ(x, y))
+\end{align*}
+where $ϕ$ is a positive existential formula \cite[Thm 5.1]{Davis1973}. The first
+one is easily seen to be Diophantine as the order relation on $ℕ^{*}$ is
+Diophantine. Proving the second claim takes the rest of the section. Now using
+this result together with the sequence number theorem \cite[Thm 1.3]{Davis1973}
+Davis proofs that a function is Diophantine if and only if it is computable
+\cite[Thm 6.1]{Davis1973}.
+% TODO
+\todo{Finish the exposition why \textsc{H10} is undecidable}
+
+\subsection{Hilbert's tenth problem over totally real number fields}

@@ -33,7 +33,7 @@ with do not matter. The interested reader may whish to read the excellent survey
     \item \Textcite{Stoltenberg1999} use a slightly modified definition of
     computable rings. They consider \emph{effective enumerations} $α_R : Ω_R →
     R$, where $Ω_R \subseteq ω$ is a computable $Σ_{ring}^*$-structure in the
-    sense of the definiton above and $α_R$ is a $Σ_{ring}^*$-epimorphism. Then
+    sense of the definition above and $α_R$ is a $Σ_{ring}^*$-epimorphism. Then
     the ring $R$ is called computable if the equivalence relation
     \[
       x_1 \equiv_{α_R} y_1  ⇔ α_R(x_1) = α_R(x_2)
@@ -55,7 +55,7 @@ with do not matter. The interested reader may whish to read the excellent survey
 \begin{exam}
   \begin{exlist}
     \item Every finite structure $⟨S; f_1, …, f_n⟩$ with $S \subseteq ω$ is
-    computable. The set $S$ is decidable as it is finite. As the domain of each
+    computable. The set $S$ is decidable as it is finite and the domain of each
     operation $f_i$ for $1 ≤ i ≤ n$ is finite as well. A Turing machine
     computing $f_i$ can just store the images of all elements in the domain in
     memory.
@@ -156,12 +156,13 @@ $K$ we observe that \textsc{H10} is semi-decidable over $\algint$. An algorithm
 affirming the existence of roots for a given polynomial $p ∈ \algint{[X_1, …,
 X_n]}$ starts by trying whether the empty string is the encoding of $n$
 algebraic integers $x_1, …, x_n$ and if this is the case evaluates $p(x_1, …,
-x_n)$. Both operations are computable as $\algint$ is efficiently presentable. If $p(x_1, …, x_n) = 0$ the algorithm finishes, otherwise it writes the next
-string on the tape and starts over.
+x_n)$. Both operations are computable as $\algint$ is computable. If $p(x_1, …,
+x_n) = 0$ the algorithm finishes, otherwise it writes the next string on the
+tape and starts over.
 
 \subsection{Important techniques}
 
-Before tackling \textsc{H10} over selected rings of algebraic integers, we list
+Before tackling \textsc{H10} over selected rings of algebraic integers, I list
 some structural results and methods used within the subsequent proofs. For
 further structural results see \cite{Shlapentokh2000}.
 
@@ -179,7 +180,7 @@ further structural results see \cite{Shlapentokh2000}.
 In other words, conjunctions and disjunctions of existentially quantified atomic
 formulas can be replaced by a single existentially quantified atomic formula. Or
 again put differently, conjunction $∧$ and disjunction $∨$ are
-$Σ_{ring}^*$ definable.
+$Σ_{ring}^*$ definable predicates.
 
 \begin{proof}
 Let $f(\mathbf{X}, \mathbf{Y}) ∈ R[X_1, …, X_{n_1}, Y_1, …, Y_{n_2}]$ and
@@ -193,7 +194,7 @@ $S_2$ resp. then
 vanishes if and only if $f$ or $g$ vanishes. As a consequence, the
 following identity gives a Diophantine definition of the union.
 
-\[ S_1 ∪ S_2 = \lbrace \mathbf{x} \mid \mathbf{y} \; h(\mathbf{x}, \mathbf{y}) = 0 \rbrace. \]
+\[ S_1 ∪ S_2 = \lbrace \mathbf{α} \mid \mathbf{β} \; h(\mathbf{x}, \mathbf{y}) = 0 \rbrace. \]
 
 To prove the claim for intersections of Diophantine sets, let
 \[
@@ -212,7 +213,7 @@ Now consider
 \[
   H(\mathbf{X}, \mathbf{Y}) = \sum_{i=0}^m a_i f(\mathbf{X}, \mathbf{Y})^i g(\mathbf{X}, \mathbf{Y})^{m - i}.
 \]
-We will prove for all $\mathbf{α} ∈ R^{n_1}$ and $\mathbf{β} ∈ R^{n_2}$ the
+I will prove for all $\mathbf{α} ∈ R^{n_1}$ and $\mathbf{β} ∈ R^{n_2}$ the
 following equivalence, showing that $H$ witnesses that $S_1 ∩ S_2$ is
 Diophantine.
 
@@ -224,7 +225,7 @@ If $H(\mathbf α, \mathbf β) = 0$ but $f(\mathbf α, \mathbf β) ≠ 0$ then
 \]
 which is a contradiction to $\overline h$ not having roots. If, on the
 other hand, $H(\mathbf α, \mathbf β) = 0$ but $g(\mathbf α, \mathbf β) ≠ 0$
-we find
+one finds
 \[
   0 = \frac H {g^n}(\mathbf α, \mathbf β) = \overline h \left( \frac fg (\mathbf α, \mathbf β) \right).
 \]
@@ -294,7 +295,10 @@ The following corollary follows directly from the lemma above and the
 undecidability of Hilbert's tenth problem over $ℤ$.
 
 \begin{cor}
-  Let $ℤ \subseteq R$ be a computable integral domain, whose quotient field is
+  Let $R \supseteq ℤ$ be a computable integral domain, whose quotient field is
   not algebraically closed. If $ℤ$ has a Diophantine definition over $R$ then
   \textsc{H10} is not decidable over $R$.
 \end{cor}
+
+Note that this corollary applies to $\algint$ for each algebraic number field
+$K$ since the quotient field of $\algint$ is (isomorphic to) $K$.

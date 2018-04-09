@@ -7,13 +7,13 @@
 \subsubsection{Problems and Turing
 machines}
 
-In this section we closely follow the lecture notes on the subject by
+In this section I closely follow the lecture notes on the subject by
 \textcite{Mueller2016}.
 
 \begin{defin}
   A \emph{(decision) problem} is a subset of the set of finite
   $\zer$-$\one$-strings $\lbrace \zer, \one \rbrace^*$ including the
-  empty string $λ$. We call $\lbrace \zer, \one \rbrace$
+  empty string $λ$. One calls $\lbrace \zer, \one \rbrace$
   \emph{alphabet} and its elements \emph{bits.}
 \end{defin}
 
@@ -23,13 +23,13 @@ captured up to an encoding.
 
 \[ \enc{\cdot} : Q → \lbrace \zer, \one \rbrace^*\]
 
-We usually do not concern ourselves with the details of this encoding.
+One usually does not concern oneself with the details of this encoding.
 However, the encoding should capture the structure of the problem. A notion that
 will be made precise in \cref{sec:computable structures}.
 
 \begin{exam}
   Consider the problem of deciding whether a finite simple graph is
-  connected or not. If we demand the vertex set to be of the form
+  connected or not. If one demands the vertex set to be of the form
   $\set{0, 1, …, n}$, then the set of all graphs can be encoded
   as the set of the respective adjacency matrices written as a string
 
@@ -47,8 +47,8 @@ will be made precise in \cref{sec:computable structures}.
 
   \[δ: S × A → S × A × \lbrace -1, 0, 1 \rbrace\]
 
-  is called \emph{transition function}. If $δ(s, a) = (s', b, m)$, we
-  demand that the following axioms are satisfied.
+  is called \emph{transition function}. If $δ(s, a) = (s', b, m)$, one
+  demands that the following axioms are satisfied.
 
   \begin{thmlist}
   \item
@@ -60,7 +60,7 @@ will be made precise in \cref{sec:computable structures}.
   \end{thmlist}
 \end{defin}
 
-Informally, we can think of a Turing machine as a device, consisting of a
+Informally, one can think of a Turing machine as a device, consisting of a
 \emph{work-tape} and a \emph{head}. The work-tape stores all the information in
 cells arranged in a consecutive order. Each of these cells contains a letter
 from the alphabet.
@@ -72,9 +72,9 @@ current state $\state{overflow}$. Now assume that
 
 \[ δ(\state{overflow}, \zer) = (\state{return}, \one, -1). \]
 
-We interpret this in the following way. The Turing machine changes its state to
-$\state{return}$, the head writes $\one$ in the current cell and moves one cell
-to the left. The movement is determined by the last item of the triple
+One interprets this in the following way. The Turing machine changes its state
+to $\state{return}$, the head writes $\one$ in the current cell and moves one
+cell to the left. The movement is determined by the last item of the triple
 $δ(\state{overflow}, \zer)$, where $-1$ indicates moving to the left, $1$
 indicates moving to the right, and $0$ indicates not moving at all.
 
@@ -91,21 +91,20 @@ indicates moving to the right, and $0$ indicates not moving at all.
   head and the content of its work-tape.
 \end{defin}
 
-A configuration of the form $(\shalt, 0, c)$ is called \emph{halting}.
-A \emph{start configuration} is of the form $(\sstart, 0, c)$ such
-that $c(0) = \sta$ and there exists an $n ∈ ℕ$ such that
-$c(i) = \emp$ if and only if $i > n$. This means that in a start
-configuration the work-tape reads
+A configuration of the form $(\shalt, 0, c)$ is called \emph{halting}. A
+\emph{start configuration} is of the form $(\sstart, 0, c)$ such that $c(0) =
+\sta$ and there exists an $n ∈ ℕ$ such that $c(i) = \emp$ if and only if $i >
+n$. This means that in a start configuration the work-tape reads
 
 \[\sta x_1 x_2 … x_n \emp \emp …\]
 
-It will be very convenient to identify the finite string $x_1…x_n$
-with this tape content.
+It will be very convenient to identify the finite string $x_1…x_n$ with this
+tape content.
 
 \begin{defin}
-  We write $(s, j, c) \vdash_1 (s', j', c')$ and call $(s', j', c')$ a
-  \emph{successor configuration} of $(s, j, c)$ if there exists an
-  $m ∈ \lbrace -1, 0, 1 \rbrace$ such that
+  One writes $(s, j, c) \vdash_1 (s', j', c')$ and calls $(s', j', c')$ a
+  \emph{successor configuration} of $(s, j, c)$ if there exists an $m ∈ \lbrace
+  -1, 0, 1 \rbrace$ such that
 
   \begin{itemize}
   \item
@@ -116,24 +115,22 @@ with this tape content.
     $c'(ℓ) = c(ℓ)$ for all $ℓ ≠ j$.
   \end{itemize}
 
-  This relation makes the set of all configurations of $\mathbb A$ into
-  a directed graph. A \emph{run} of $\mathbb A$ on $x$ is a path in
-  this directed graph starting in the start configuration
-  $(\sstart, 0, x)$. A run of $\mathbb A$ on $x$ is \emph{halting}
-  or \emph{complete} if it reaches a halting configuration
-  $(\shalt, 0, y)$. In this case we write $\mathbb A (x) = y$.
+  This relation makes the set of all configurations of $\mathbb A$ into a
+  directed graph. A \emph{run} of $\mathbb A$ on $x$ is a path in this directed
+  graph starting in the start configuration $(\sstart, 0, x)$. A run of $\mathbb
+  A$ on $x$ is \emph{halting} or \emph{complete} if it reaches a halting
+  configuration $(\shalt, 0, y)$. In this case I write $\mathbb A (x) = y$.
 \end{defin}
 
-We will denote Turing machines using listings, where the fact that
-$δ_\text{delta} (\state{state}, b) = (\state{state'}, c, m)$ is encoded
-by
+I will denote Turing machines using listings, where the fact that
+$δ_\text{delta} (\state{state}, b) = (\state{state'}, c, m)$ is encoded by
 
 \begin{lstlisting}
 delta "state" c = ("state'", c', m)
 \end{lstlisting}
 
 Variables \verb+c+ match all possible states or characters in the alphabet
-respectively. However, we follow the convention that if an assignment of
+respectively. However, I follow the convention that if an assignment of
 variables matches more than one pattern, the first matching pattern is chosen.
 This means that
 %
@@ -229,7 +226,9 @@ using the \emph{Haskell} programming language.
           $\mathbb A(x) = \zer$.
         \item
           A partial function on $\lbrace \zer, \one \rbrace^*$ is
-          \emph{computable} if there is a Turing machine computing it. Somtimes computable functions are refred to as \emph{recursive} or \emph{efficient} functions.
+          \emph{computable} if there is a Turing machine computing it. Sometimes
+          computable functions are referred to as \emph{recursive} or
+          \emph{efficient} functions.
         \item
           A subset of $\lbrace \zer, \one \rbrace^*$, i.e. a
           problem, is \emph{decidable} if there is a Turing machine computing
@@ -280,11 +279,11 @@ stops at the latest.
   is defined to first run the program of $\mathbb A_1$ and if this machine would
   reach a halting state run $\mathbb A_2$.
 \end{proof}
-
+% IDEA
 \todo{Maybe: A semi-decidable set is decidable iff its complement is semi-decidable}
 
 \begin{exam}
-    We can encode a natural number $n$
+    One can encode a natural number $n$
 
     \begin{exlist}
     \item \label{ex:tally encoding}
@@ -308,9 +307,9 @@ stops at the latest.
                                      0 & ↦ λ
       \end{align*}
 
-      In other words, $n$ is mapped to the $n$-th string if we order $\lbrace
+      In other words, $n$ is mapped to the $n$-th string if one orders $\lbrace
       \zer, \one \rbrace ^ ℕ$ lexicographically. Following an tradition in
-      logics we denote $ℕ$ under this last encoding by $ω$.
+      logics I denote $ℕ$ under this last encoding by $ω$.
     \end{exlist}
 
     In either case the set obtained by encoding $ℕ$ is easily seen to be
@@ -331,13 +330,13 @@ stops at the latest.
                  caption=A Turing machine checking whether the input is tally-encoded,
                  label=lst:tally encoding]{./listings/tally.hs}
 
-Taking another look at the definition of computability, we see that only unary
+Taking another look at the definition of computability, one sees that only unary
 functions defined on subsets of $ω$, mapping to subsets of $ω$ can be
-computable. However, we can easily extend this to functions on multiple
+computable. However, one can easily extend this to functions on multiple
 variables, by encoding tuples in $ω \times ω$ by elements of $ω$ in such a way,
 that the projections $p_i: \enc{(x_1, x_2)} ↦ x_i$  for $i ∈ \lbrace 0, 1
-\rbrace$ are uniformly computable. This means, we have an injective pairing
-function $ω^2 → ω$ and Turing machines $\mathbb P_1, \mathbb P_2$
+\rbrace$ are uniformly computable. This means, there are injective pairing
+functions $ω^2 → ω$ and Turing machines $\mathbb P_1, \mathbb P_2$
 computing $p_1$ or $p_2$ respectively. Clearly if one has a pairing function $ℕ^2 → ℕ$ then one immediately obtains a pairing function $ω^2 → ω$
 by composing with the encoding function.
 
@@ -359,32 +358,23 @@ Of course by applying a pairing function iteratively one obtains an $n$-ary pair
 \[
   (x_1, x_2, x_3) ↦ ⟨x_1, ⟨x_2, x_3⟩⟩
 \]
-yields a ternary pairing function and $π_1\circ π_2$ is the projection on $x_2$.
-Using any of the pairing functions above one can consider $n$-ary computable
-functions by providing the encoded pair $⟨x_1, x_2, …, x_n⟩$ as the single
-argument of a Turing machine $\mathbb A$. If the context is clear, I will write
-$\mathbb A(\seq{x})$ in this situation.
+yields a ternary pairing function and $π_1\circ π_2$ is the projection onto
+$x_2$. Using any of the pairing functions above one can consider $n$-ary
+computable functions by providing the encoded pair $⟨x_1, x_2, …, x_n⟩$ as the
+single argument of a Turing machine $\mathbb A$. If the context is clear, I will
+write $\mathbb A(\seq{x})$ in this situation.
 
-\todo{Partial recursive functions}
-\todo{Church--Turing thesis}
+In the remainder of this thesis I will make use of the following
+meta-mathematical thesis. That cannot be mathematically proven but has been
+heuristically justified for all of the generally accepted\footnote{The
+interested reader should find the comment \cite{Davis2006} on hyper-computation
+by Davis quite revealing.} formalisations of computation. It allows one to state
+properties of computation without referring to a specific model.
+
+\textsc{Church-Turing thesis}\quad The class of intuitively computable
+functions coincides with the class of all Turing computable functions.
 
 \subsubsection{Halting problem}
-
-%One can extend the alphabet of Turing machines by encoding characters
-%i.e.~assigning bit sequences to them. Very common encodings are \textsc{ASCII}
-%and \textsc{UTF-8}\footnote{See the Appendix for an \textsc{ASCII} encoding
-%table and details on \textsc{UTF-8}.}. Using either one of these encodings the
-%string `haskell' is encoded as
-%
-%\begin{lstlisting}
-%h         a         s         k         e         l         l
-%0110 1000 0110 0001 0111 0011 0110 1011 0110 0101 0110 1100 0110 1100
-%\end{lstlisting}
-%
-%In this way we can encode a Turing machine as the \textsc{UTF-8}-encoding of
-%its transition function $δ$ written as a string as above. Note that
-%the set of states can implicitly be deduced from the transition function
-%as the set of acceptable first arguments of $δ$.
 
 One of the fundamental theorems of theoretical computer science is the
 existence of a universal Turing machine.
@@ -403,8 +393,13 @@ A natural question is:
   halt on $x$?
 \end{quote}
 
-It is one of the most fundamental results of theoretical computer
-science that the halting problem is undecidable. The contradiction to the existence of a Turing machine deciding this problem is obtained by a diagonalisation technique that is also present in Cantor's proof that the power set of the integers is uncountable or Russel's paradox. However, the idea is best encapsulated by the illustration of Carlo Chiostri, based on Carlo Collodi's fairy tale novel ‘The Adventures of Pinocchio’, displayed in \cref{fig:Pinocchio}.
+It is one of the most fundamental results of theoretical computer science that
+the halting problem is undecidable. The contradiction to the existence of a
+Turing machine deciding this problem is obtained by a diagonalisation technique
+that is also present in Cantor's proof that the power set of the integers is
+uncountable or Russel's paradox. However, the idea is best encapsulated by the
+illustration of Carlo Chiostri, based on Carlo Collodi's fairy tale novel ‘The
+Adventures of Pinocchio’, displayed in \cref{fig:Pinocchio}.
 
 \begin{figure}
   \includegraphics[height=30ex]{res/Pinocchio_paradox.png}
@@ -440,4 +435,11 @@ science that the halting problem is undecidable. The contradiction to the existe
     Setting $\mathbb A = \mathbb B'$ yields the desired contradiction.
 \end{proof}
 
-For a more detailed proof of this fact and lot more information on computability see \cite{Cooper2004}.
+For a more detailed proof of this fact and lot more information on computability
+see \cite{Cooper2004}. As the halting problem is undecidable the halting set
+defined by
+\[
+ K = \set{⟨\enc{\mathbb A}, x⟩ \mid \mathbb A \text{ halts on } x}
+\]
+is undecidable. However using the universal Turing machine it is clearly
+semi-decidable.
