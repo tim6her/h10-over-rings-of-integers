@@ -4,9 +4,6 @@
 % !TeX spellcheck = en_GB
 % !TeX root = ../Herbstrith-H10_over_AI.tex
 
-\subsubsection{Problems and Turing
-machines}
-
 In this section I closely follow the lecture notes on the subject by
 \textcite{Mueller2016}.
 
@@ -24,8 +21,8 @@ captured up to an encoding.
 \[ \enc{\cdot} : Q → \lbrace \zer, \one \rbrace^*\]
 
 One usually does not concern oneself with the details of this encoding.
-However, the encoding should capture the structure of the problem. A notion that
-will be made precise in \cref{sec:computable structures}.
+However, the encoding should capture the structure of the problem---a notion
+that will be made precise in \cref{sec:computable structures}.
 
 \begin{exam}
   Consider the problem of deciding whether a finite simple graph is
@@ -48,13 +45,13 @@ will be made precise in \cref{sec:computable structures}.
   \[δ: S × A → S × A × \lbrace -1, 0, 1 \rbrace\]
 
   is called \emph{transition function}. If $δ(s, a) = (s', b, m)$, one
-  demands that the following axioms are satisfied.
+  demands that the following axioms are satisfied
 
   \begin{thmlist}
   \item
-    $a = \sta$ if and only if $b = \sta$.
+    $a = \sta$ if and only if $b = \sta$,
   \item
-    If $a = \sta$, then $m ≠ -1$.
+    If $a = \sta$, then $m ≠ -1$, and
   \item
     If $s = \shalt$, then $s' = \shalt$, $a = b$ and $m = 0$.
   \end{thmlist}
@@ -65,7 +62,7 @@ Informally, one can think of a Turing machine as a device, consisting of a
 cells arranged in a consecutive order. Each of these cells contains a letter
 from the alphabet.
 
-Let us look at the example of a Turing machine in \cref{fig:Turing machine}.
+Let us look at the example of the Turing machine in \cref{fig:Turing machine}.
 During the run of the machine the head reads the symbol $\zer$ at the current
 position and the machine evaluates the transition function $δ$ at $\zer$ and the
 current state $\state{overflow}$. Now assume that
@@ -87,8 +84,8 @@ indicates moving to the right, and $0$ indicates not moving at all.
 \begin{defin}
   Let $\mathbb A = (S, δ)$ be a Turing machine. A \emph{configuration}
   of $\mathbb A$ is a triple $(s, j, c) ∈ S × ℕ × A^ℕ$. It reflects
-  the current state of $\mathbb A$ the current position of its
-  head and the content of its work-tape.
+  the current state of $\mathbb A$, the current position of its
+  head, and the content of its work-tape.
 \end{defin}
 
 A configuration of the form $(\shalt, 0, c)$ is called \emph{halting}. A
@@ -117,9 +114,10 @@ tape content.
 
   This relation makes the set of all configurations of $\mathbb A$ into a
   directed graph. A \emph{run} of $\mathbb A$ on $x$ is a path in this directed
-  graph starting in the start configuration $(\sstart, 0, x)$. A run of $\mathbb
-  A$ on $x$ is \emph{halting} or \emph{complete} if it reaches a halting
-  configuration $(\shalt, 0, y)$. In this case I write $\mathbb A (x) = y$.
+  graph starting at the start configuration $(\sstart, 0, x)$. A run of
+  $\mathbb A$ on $x$ is \emph{halting} or \emph{complete} if it reaches a
+  halting configuration $(\shalt, 0, y)$. In this case I write $\mathbb A (x) =
+  y$.
 \end{defin}
 
 I will denote Turing machines using listings, where the fact that
@@ -371,10 +369,10 @@ interested reader should find the comment \cite{Davis2006} on hyper-computation
 by Davis quite revealing.} formalisations of computation. It allows one to state
 properties of computation without referring to a specific model.
 
-\textsc{Church-Turing thesis}\quad The class of intuitively computable
-functions coincides with the class of all Turing computable functions.
-
-\subsubsection{Halting problem}
+\begin{churchturing}
+  The class of intuitively computable
+  functions coincides with the class of all Turing computable functions.
+\end{churchturing}
 
 One of the fundamental theorems of theoretical computer science is the
 existence of a universal Turing machine.

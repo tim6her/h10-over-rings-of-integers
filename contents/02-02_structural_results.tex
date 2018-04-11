@@ -8,7 +8,9 @@
 Up to this point the encoding of problems was treated as some kind of black-box.
 This subsection takes a categorical view on computability and ensures us,
 that---up to a sensible definition---encodings of the rings we concern ourselves
-with do not matter. The interested reader may whish to read the excellent survey by \textcite{Stoltenberg1999} on this subject.
+with do not matter. The interested reader may whish to read the excellent survey
+by \textcite{Stoltenberg1999} on this subject. However, I am using the notation
+of \cite{Khoussainov2000}.
 
 \begin{defin}
   Let $Σ = \set{f_1, f_2, …}$ be an at most countable signature.
@@ -36,9 +38,9 @@ with do not matter. The interested reader may whish to read the excellent survey
     sense of the definition above and $α_R$ is a $Σ_{ring}^*$-epimorphism. Then
     the ring $R$ is called computable if the equivalence relation
     \[
-      x_1 \equiv_{α_R} y_1  ⇔ α_R(x_1) = α_R(x_2)
+      x_1 \equiv_{α_R} x_2  ⇔ α_R(x_1) = α_R(x_2)
     \]
-    on $Ω_R$ is decidable.
+    on $Ω_R$ is decidable for all pairs $x_1, x_2 ∈ R$.
 
     This definition can have slight technical advantages but note that in this
     case $Ω_R$ need not be a ring in the sense of abstract algebra, a
@@ -84,11 +86,13 @@ with do not matter. The interested reader may whish to read the excellent survey
     A possible implementation starts by implementing the monoid $⟨M; \cdot; X_i
     \mid i ∈ ℕ⟩$ and extends it to the $R$-algebra $R[X_1, X_2, …]$. Within
     $R[X_1, X_2, …]$ every subalgebra $R[X_1, …, X_n]$ is decidable ($n ∈ ℕ^*$)
-    and as a consequence is computable. See \cite{Stoltenberg1999} for a more
-    detailed discussion and \cref{app:polynomials} for a sample implementation
-    based on this idea.
+    and as a consequence is computable. See \cite[Sec.~4.4]{Stoltenberg1999} for
+    a more detailed discussion and \cref{app:polynomials} for a sample
+    implementation based on this idea.
 
-    \item In general $ℤ$ and $\algint$ viewed as $Σ_{ring}^*$ structures are efficiently presentable. For the integers this is proven by each programming language allowing arbitrarily large integer arithmetic---like \emph{Haskell} or \emph{Python}.
+    \item In general $ℤ$ and $\algint$ viewed as $Σ_{ring}^*$ structures are
+    efficiently presentable. As for integers, one extends the presentation of
+    $ℕ$ by a sign-bit.
 
     To present algebraic integers one uses an integral basis say $ζ_1, …, ζ_n$.
     Then any integer $η$ can be encoded as an $n$-tuple of integers. Addition and subtraction are defined coordinate-wise. To implement the multiplication one stores the finite multiplication table of the basis elements
@@ -155,9 +159,9 @@ Using that $\algint$ is computably categorical for each algebraic number field
 $K$ we observe that \textsc{H10} is semi-decidable over $\algint$. An algorithm
 affirming the existence of roots for a given polynomial $p ∈ \algint{[X_1, …,
 X_n]}$ starts by trying whether the empty string is the encoding of $n$
-algebraic integers $x_1, …, x_n$ and if this is the case evaluates $p(x_1, …,
-x_n)$. Both operations are computable as $\algint$ is computable. If $p(x_1, …,
-x_n) = 0$ the algorithm finishes, otherwise it writes the next string on the
+algebraic integers $α_1, …, α_n$ and if this is the case evaluates $p(α_1, …,
+α_n)$. Both operations are computable as $\algint$ is computable. If $p(α_1, …,
+α_n) = 0$ the algorithm finishes, otherwise it writes the next string on the
 tape and starts over.
 
 \subsection{Important techniques}
@@ -167,77 +171,77 @@ some structural results and methods used within the subsequent proofs. For
 further structural results see \cite{Shlapentokh2000}.
 
 \begin{lem}\label{lem:intersections and unions}
-    Let $R$ be an integral domain, whose quotient field is not
+    Let $R$ be an integral domain, whose quotient field $\Quot R$ is not
     algebraically closed. Then if $S_1, S_2 \subseteq R$ are Diophantine so are
     \[
       S_1 ∩ S_2 \quad \text{and} \quad S_1 ∪ S_2.
     \]
 
-    If $R$ is computable, then there is an algorithm that finds the defining
-    polynomial equations for union and intersection efficiently.
+    If $R$ is computable, then there is an algorithm that derives the defining
+    polynomial equations for union and intersection efficiently from the
+    equations of $S_1$ and $S_2$.
 \end{lem}
 
 In other words, conjunctions and disjunctions of existentially quantified atomic
 formulas can be replaced by a single existentially quantified atomic formula. Or
 again put differently, conjunction $∧$ and disjunction $∨$ are
-$Σ_{ring}^*$ definable predicates.
+$Σ_{ring}^*$-definable, efficiently computable predicates.
 
 \begin{proof}
-Let $f(\mathbf{X}, \mathbf{Y}) ∈ R[X_1, …, X_{n_1}, Y_1, …, Y_{n_2}]$ and
-$g(\mathbf{X}, \mathbf{Y}) ∈ R[X_1, …, X_{n_1}, Y_1, …, Y_{n_2}]$ give
+Let $p(\mathbf{X}, \mathbf{Y}) ∈ R[X_1, …, X_{n_1}, Y_1, …, Y_{n_2}]$ and
+$q(\mathbf{X}, \mathbf{Y}) ∈ R[X_1, …, X_{n_1}, Y_1, …, Y_{n_2}]$ give
 Diophantine definitions\footnote{By inserting dummy indeterminates we may whish
 that both polynomials have the same number of indeterminates.} of $S_1$ and
 $S_2$ resp. then
 \[
-  h := f g
+  h := p q
 \]
-vanishes if and only if $f$ or $g$ vanishes. As a consequence, the
+vanishes if and only if $p$ or $q$ vanishes. As a consequence, the
 following identity gives a Diophantine definition of the union.
 
-\[ S_1 ∪ S_2 = \lbrace \mathbf{α} \mid \mathbf{β} \; h(\mathbf{x}, \mathbf{y}) = 0 \rbrace. \]
+\[ S_1 ∪ S_2 = \lbrace \mathbf{α} \mid ∃ \mathbf{β} \; h(\mathbf{α}, \mathbf{β}) = 0 \rbrace. \]
 
 To prove the claim for intersections of Diophantine sets, let
 \[
-  h(X) = a_m T^m + … + a_1 T + a_0 ∈ R[T]
+  h(T) = a_m T^m + … + a_1 T + a_0 ∈ R[T]
 \]
-be a polynomial of degree $m > 0$ without roots in $R$. Then
-$\overline h(X) = X^m h(X^{-1})$ does not have roots in $R$ either. As if
-$α ∈ R$ is a root of $\overline h$ then
+be a polynomial of degree $m > 0$ without roots in $\Quot R$. Then
+$\overline h(X) = X^m h(X^{-1})$ does not have roots in $\Quot R$ either. As if
+$α ∈ \Quot R$ is a root of $\overline h$ then
 \[
-  0 = \bar h(α) = a_m + a_{m-1} α + a_1 α^{,-1} + a_0 α^m
+  0 = \overline h(α) = a_m + a_{m-1} α + a_1 α^{,-1} + a_0 α^m
 \]
 and $α = 0$ implies $a_m = 0$. Otherwise, $α^{-1}$ is a root of
 $α^m h$ and therefore of $h$.
 
 Now consider
 \[
-  H(\mathbf{X}, \mathbf{Y}) = \sum_{i=0}^m a_i f(\mathbf{X}, \mathbf{Y})^i g(\mathbf{X}, \mathbf{Y})^{m - i}.
+  H(\mathbf{X}, \mathbf{Y}) = \sum_{i=0}^m a_i p(\mathbf{X}, \mathbf{Y})^i q(\mathbf{X}, \mathbf{Y})^{m - i}.
 \]
 I will prove for all $\mathbf{α} ∈ R^{n_1}$ and $\mathbf{β} ∈ R^{n_2}$ the
 following equivalence, showing that $H$ witnesses that $S_1 ∩ S_2$ is
 Diophantine.
 
-\[ H(\mathbf α, \mathbf β) = 0 \Leftrightarrow f(\mathbf α, \mathbf β) = 0 ∧ g(\mathbf α, \mathbf β) = 0 \]
+\[ H(\mathbf α, \mathbf β) = 0 \Leftrightarrow p(\mathbf α, \mathbf β) = 0 ∧ q(\mathbf α, \mathbf β) = 0 \]
 
-If $H(\mathbf α, \mathbf β) = 0$ but $f(\mathbf α, \mathbf β) ≠ 0$ then
+If $H(\mathbf α, \mathbf β) = 0$ but $p(\mathbf α, \mathbf β) ≠ 0$ then
 \[
-  0 = \frac H {f^n} (\mathbf α, \mathbf β) = \overline h \left(\frac gf (\mathbf α, \mathbf β) \right),
+  0 = \frac H {f^n} (\mathbf α, \mathbf β) = \overline h \left(\frac qp (\mathbf α, \mathbf β) \right),
 \]
 which is a contradiction to $\overline h$ not having roots. If, on the
-other hand, $H(\mathbf α, \mathbf β) = 0$ but $g(\mathbf α, \mathbf β) ≠ 0$
+other hand, $H(\mathbf α, \mathbf β) = 0$ but $q(\mathbf α, \mathbf β) ≠ 0$
 one finds
 \[
-  0 = \frac H {g^n}(\mathbf α, \mathbf β) = \overline h \left( \frac fg (\mathbf α, \mathbf β) \right).
+  0 = \frac H {g^n}(\mathbf α, \mathbf β) = h \left( \frac qp (\mathbf α, \mathbf β) \right).
 \]
 
-The converse direction is clear as the powers of $f$ and $g$ sum up
+The converse direction is clear as the powers of $p$ and $q$ sum up
 to $n$ for each summand in the definition of $H$.
 
 To prove the effectiveness of these methods one observes, that the defining
-equations contain only polynomials in $f$ and $g$. Interpreting $f$ and $g$ as
-polynomials in countably many indeterminates \cref{ex:polynomials are
+equations contain only polynomials in $p$ and $q$. \Cref{ex:polynomials are
 computable} implies that the polynomial equations for union and intersection of
-Diophantine sets can be computed from the polynomials $f$ and $g$.
+Diophantine sets can be computed from the polynomials $p$ and $q$.
 \end{proof}
 
 Using induction and the lemma above, one immediately obtains that arbitrary
@@ -245,14 +249,14 @@ finite unions and intersections of Diophantine sets are Diophantine.
 
 An important corollary of the lemma above is---as was remarked before---that
 \textsc{H10} over $\algint$ is decidable if and only if $\mathtt{Th}_{∃+}
-(\mathfrak O)$ is decidable. Indeed, if one has a Turing machine that decides
+(\modalgint)$ is decidable. Indeed, if one has a Turing machine that decides
 whether a single polynomial over $\algint$ has roots in $\algint$. Then upon
 using the algorithm described in \cref{lem:intersections and unions} the same
 Turing machine can decide whether a collection of polynomial equations can be
 satisfied simultaneously.
 
 Note that the algorithm presented above does not depend on the initial equations
-$f$ and $g$ but it does depend on the integral domain $R$. As we might need
+$p$ and $q$ but it does depend on the integral domain $R$. As we might need
 different polynomials $h$ without roots for each ring $R$ in the case of
 conjunctions.
 
@@ -279,10 +283,10 @@ $R_1$. Then
 \]
 is a Diophantine definition of $S$ over $R_2$. If $\mathfrak R_1$ is the
 $Σ_{ring}^*$-structure of $R_1$ and $\mathfrak R_2$ the respective
-structure of $R_2$ this equation can be restated as
+structure of $R_2$, this equation can be restated as
 \begin{align*}
-  \mathfrak R_1 &\models ∃ α_1 … ∃ y_m \; p(α_1, …, α_m) \doteq 0 ⇔ \\
-  \mathfrak R_2 &\models ∃α_1 … ∃ α_m ∃ β_{1,1} … ∃ β_{m,n} \; p(α_1, …, α_m) \doteq 0 ∧ \bigwedge_{i=1}^m f(α_i, β_{i,1},…,β_{i,n}) \doteq 0,
+  \mathfrak R_1 &\models \mathtt{∃ α_1 … ∃ α_m \; p(α_1, …, α_m) \doteq 0} ⇔ \\
+  \mathfrak R_2 &\models \mathtt{∃ α_1 … ∃ α_m ∃ β_{1,1} … ∃ β_{m,n} \; p(α_1, …, α_m) \doteq 0 ∧ \bigwedge_{i=1}^m f(α_i, β_{i,1},…,β_{i,n})} \doteq 0,
 \end{align*}
 where the latter sentence can clearly be obtained efficiently from the first one
 again by an algorithm depending on $R_1$ and $R_2$ but not on $p$. Therefore,

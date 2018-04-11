@@ -18,7 +18,8 @@
 \setmonofont[Scale=MatchLowercase]{Fira Mono}
 \newfontfamily\monomath[Scale=MatchUppercase]{Fira Mono}
 \setmathfont[Scale=MatchUppercase]{STIX Two Math}
-\setmathrm[Scale=MatchUppercase]{STIX Two Math}
+\setmathrm[Scale=MatchUppercase,
+           BoldFont=STIX Two Text Bold]{STIX Two Math}
 \setmathtt[Scale=MatchUppercase]{Fira Mono}
 
 
@@ -46,20 +47,20 @@
 \setlist[exlist]{label=(\arabic{exlisti}),
                  ref=\thethm.(\arabic{exlisti}),
                  noitemsep,
-                 leftmargin=0pt,
-                 itemindent=2\parindent}
+                 wide=\parindent,
+                 listparindent=\parindent}
 \newlist{plist}{enumerate}{1}
 \setlist[plist]{label=(\roman{plisti}),
                 ref=(\roman{plisti}),
                 noitemsep,
-                leftmargin=0pt,
-                itemindent=2\parindent}
+                wide=\parindent,
+                listparindent=\parindent}
 \newlist{clist}{enumerate}{2}
 \setlist[clist]{label*=(\alph*),
                 ref=(\alph*),
                 noitemsep,
-                leftmargin=0pt,
-                itemindent=2\parindent}
+                wide=\parindent,
+                listparindent=\parindent}
 
 \usepackage{setspace}
 \renewcommand{\arraystretch}{1.5}
@@ -107,6 +108,7 @@
 \DeclareMathOperator{\D}{\mathrm{D}}
 \DeclareMathOperator{\lcm}{\mathrm{lcm}}
 \DeclareMathOperator{\ord}{\mathrm{ord}}
+\DeclareMathOperator{\Quot}{Quot}
 
 \newcommand{\sta}{{\monomath §}}
 \newcommand{\emp}{{\monomath \_}}
@@ -119,6 +121,7 @@
 \newcommand{\enc}[1]{\ulcorner #1 \urcorner}
 \newcommand{\rel}[1]{\mathrel{\MakeUppercase #1}}
 \newcommand{\algint}[1][K]{\mathcal{O}_{#1}}
+\newcommand{\modalgint}[1][K]{\mathfrak{O}_{#1}}
 
 
 \declaretheoremstyle[
@@ -169,6 +172,15 @@
 	name=Example,
 	style=mydef,
 	sibling=thm]{exam}
+
+\declaretheorem[
+  name=Problem,
+  style=mydef,
+  numbered=no]{problem}
+\declaretheorem[
+  name=Church-Turing thesis,
+  style=mydef,
+  numbered=no]{churchturing}
 
 \declaretheorem[
 	name=Remark,
@@ -255,12 +267,11 @@
 
 \mainmatter
 %\onehalfspacing
-\todo{Indent in exlist}
 
 \chapter{Prerequisites and central notions}
 
 Before stating Hilbert's tenth problem and proving its undecidability in
-certain rings of algebraic integers, we remind the reader on some
+certain rings of algebraic integers, I remind the reader of some
 notions from theoretical computer science and number theory, as well as
 fix some notations.
 
@@ -285,7 +296,7 @@ $\set{1, 2, …}$.
 \section[\textsc{H10} over totally real number fields or fields with one  pair of conjugate embeddings]{Hilbert's tenth problem over totally real number fields and number fields with one pair of non-real embeddings}
 \input{./contents/02-03_h10_over_totally_real_nf}
 
-\section{Hilbert's tenth problem quadratic extensions of a totally real number fields}
+\section{Hilbert's tenth problem over quadratic extensions of a totally real number fields}
 \input{./contents/02-04_h10_over_quadratic_extensions}
 
 \section{Hilbert's tenth problem over some more rings}
