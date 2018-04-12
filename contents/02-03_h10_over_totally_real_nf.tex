@@ -290,7 +290,20 @@ Diophantine. Proving the second claim takes the rest of the section. Now using
 this result together with the sequence number theorem \cite[Thm 1.3]{Davis1973}
 Davis proofs that a function is Diophantine if and only if it is computable
 \cite[Thm 6.1]{Davis1973}.
-% TODO
-\todo{Finish the exposition why \textsc{H10} is undecidable}
+
+This already implies the undecidability of \textsc{H10} over $ℤ$ as Davis
+introduced Diophantine pairing functions in \cite[Thm 1.1]{Davis1973} and
+therefore all domains of Diophantine and therefore all computable functions are
+Diophantine. But the domains of computable functions are exactly the
+semi-decidable subsets of $ω$ and we have already met a semi-decidable set that
+is not decidable, namely the halting set $K$. As a consequence, there is a
+Diophantine set that is not decidable, or put differently there exists a
+polynomial $p_K ∈ ℤ[X, \seq{Y}]$, such that for every Turing machine $\mathbb
+A$, that can decide some polynomial identities, there exists an $α ∈ ℤ$ such
+that $\mathbb A$ cannot correctly decide
+\[
+  ∃\seq{β}: p_K(α, \seq{β}) = 0.
+\]
 
 \subsection{Hilbert's tenth problem over totally real number fields}
+ 
