@@ -79,10 +79,19 @@ called Diophantine if it is Diophantine viewed as a relation.
       ∃ β ∈ R : α_1 β = α_2.
     \]
 
-    \item Let $R$ be a commutative ring with unit. Then $R \setminus \set{0}$ is
-    Diophantine over $R$.
+    \item Let $K$ be a number field and $\algint$ its ring of algebraic integers. Then $\algint \setminus \set{0}$ is
+    Diophantine over $R$. I extend the hint stated in \cite[Prop. 1]{Denef1978} and claim that
+    \[
+      α ≠ 0 ⇔ ∃ β_1, β_2 : α β_1 = (2 β_2 - 1)(3 β_3 - 1).
+    \]
+
+    Firstly, note that the polynomial on the right hand side has the roots $1/2$
+    and $1/3$ in $ℚ$. As the intersection $\algint ∩ ℚ $ equals $ℤ$ for all
+    number fields $K$, one obtains that the polynomial identity can only be
+    satisfied for $α ≠ 0$.
     % TODO
-    \todo{Write this example}
+    \todo{Use the Chinese Remainder Theorem to prove the converse direction.}
+
     \item \label{ex:N is Diophantine over Z}
     Each non-negative integer $α$ is the sum of four squares and as a consequence
     \[

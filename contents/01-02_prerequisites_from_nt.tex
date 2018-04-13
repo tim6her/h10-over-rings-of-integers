@@ -17,9 +17,36 @@
 
 \subsection{Theorems}
 
+Let $V$ be an $n$-dimensional vector space over the reals $ℝ$. If $\seq[k]{e} ∈
+V$ ($k ≤ n$) are linearly independent over $ℝ$, then the free Abelian group
+\[
+  Λ = ℤ e_1 + … + ℤ e_k
+\]
+is called a \emph{lattice}. Note that $ℤ + \sqrt{2} ℤ$ is not a lattice in this
+sense, because $1$ and $\sqrt{2}$ are linearly dependent over $ℝ$.
+
+Let $μ$ be the measure corresponding to the usual Euclidean volume%
+\footnote{I.e. $μ$ is the Lebesgue measure on $ℝ^n$ and therefore the Haar
+measure with respect to the locally compact, Abelian group $⟨Λ, +⟩$.}
+on $ℝ^n$. Then the \emph{fundamental parallelepiped}
+\[
+  D = \set{\sum_{i=1}^n α_i e_i \;\middle\vert\; α_i ∈ [0, 1]}
+\]
+has the volume
+\[
+  μ(D) = |\det \left( \seq{e} \right)|
+\]
+for a fixed lattice $Λ = ℤ e_1 + … + ℤ e_n$ in $ℝ^n$. One calls such a lattice whose rank coincides with the dimension of the vector space $ℝ^n$ a \emph{full} lattice.
+
 \begin{thm}[Minkowski's theorem] \label{thm:Minkowski}
-    see \cite[Thm.~4.19]{Milne2017}
+  Let $Λ = ℤ e_1 + … + ℤ e_n$ be a full lattice in the $n$-dimensional $ℝ$-vector space $V$ and let $D$ denote its fundamental parallelepiped. If $T \subseteq V$ is compact, convex and symmetric in the origin, i.e. if $α ∈ T$ so is $-α ∈ T$, and
+  \[
+    μ(T) ≥ 2^n μ(D).
+  \]
+  Then $T$ contains a non-zero lattice point $α ∈ Λ \setminus \set{0}$.
 \end{thm}
+
+For a proof of Minkowski's theorem and further details on lattices see \cite[4.4, p.~28, German]{Neukirch2006} or \cite[Thm.~4.19]{Milne2017}.
 
 \begin{thm}[Dirichlet's unit theorem]
     see \cite[Thm.~5.1]{Milne2017}
