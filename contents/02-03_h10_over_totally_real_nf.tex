@@ -18,6 +18,11 @@ I start by defining two sequences, that satisfy Pell's equation stated below.
     x^2 - d y^2 = 1
 \end{equation}
 
+Using modified versions of the techniques presented in
+\cite[Russian]{Matijasevic1970} it will be shown that the index $m$ can be
+obtained in a Diophantine way from $y_m(a)$ for certain subsequences of the
+sequences defined below.
+
 \begin{defin}
   Let $K$ be an algebraic number field, $\algint$ its ring of algebraic integers
   and fix $a ∈ \algint$. One defines $δ(a) = \sqrt{a^2 - 1}$ and $ε(a) = a +
@@ -30,20 +35,26 @@ I start by defining two sequences, that satisfy Pell's equation stated below.
 
 This definition includes the case $K = ℚ$ with $\algint = ℤ$ of
 \cite{Davis1973}. However, I am using the slightly modified notation of
-\cite{Denef1980,Pheidas1988}. Note that the sequences $x_m(a)$ and $y_m(a)$ are
-well defined for each $m ∈ ℕ$ as they correspond to the coefficients of
-$(ε(a))^m$ in $K[δ(a)]/K$ with respect to the basis $\lbrace 1, δ(a)\rbrace$. If
-the reference is clear I will omit the dependency on $a$ writing $δ, ε, x_m$
-and $y_m$.
+\cite{Denef1980,Pheidas1988}.
+
+As $δ(a)$ is a root of the monic quadratic polynomial
+\[
+  X^2 - a^2 + 1 ∈ \algint {[X]}
+\]
+the extension $K[δ(a)] / K$ is quadratic and $δ(a) ∈ \algint[{K[δ(a)]}]$. The
+sequences $x_m(a)$ and $y_m(a)$ are well defined for each $m ∈ ℕ$ as they
+correspond to the coefficients of $(ε(a))^m$ in $K[δ(a)]/K$ with respect to the
+basis $\lbrace 1, δ(a)\rbrace$. If the reference is clear I will omit the
+dependency on $a$ writing $δ, ε, x_m$ and $y_m$.
 % QUESTION
 \todo{Why does every number field contain such an element $a$?}
 
 \begin{rem}
   As $K[δ]/K$ has degree two, there is exactly one pair of field
   automorphisms\footnote{A field extension of degree two is necessarily normal.}
-  on $K[δ]$ preserving $K$ point-wise, namely $σ_1(α + δβ) = α + δβ$ and $σ_2(α
+  on $K[δ]$ preserving $K$ point-wise, namely $σ_1^{K}(α + δβ) = α + δβ$ and $σ_2^K(α
   + δβ) = α - δβ$ for $α, β ∈ \algint$. The latter will be denoted by
-  $\overline{η} = σ_2(η)$ to emphasise the analogy of complex conjugation.
+  $\overline{η} = σ_2^K(η)$ to emphasise the analogy of complex conjugation.
 \end{rem}
 
 Let me now collect some properties of these sequences. The proofs are
@@ -306,3 +317,77 @@ that $\mathbb A$ cannot correctly decide
 \]
 
 \subsection{Hilbert's tenth problem over totally real number fields}
+% QUESTION
+\todo{Do I need to cite Denef1980 again?}
+
+For the remainder of this section let $K$ be a totally real number field of
+degree $n > 1$ over the rationals $ℚ$, and let $\seq{σ}$ denote the embeddings
+of $K$ into the reals $ℝ$. Assume $a ∈ \algint$ satisfies $δ = δ(a) \not\in
+\algint$ as above and additionally
+\begin{equation} \label{eq:embeddings of a into reals v1}
+  σ_1(a) ≥ 2^{2n}, \quad |σ_i(a)| ≤ \frac 12, \quad \text{for } 2 ≤ i ≤ n.
+\end{equation}
+% QUESTION
+\todo{Does this imply that delta is not in O K?}
+
+Then note firstly that $a$ cannot be a rational integer as they are preserved
+point-wise by each embedding $σ_i$ for $1 ≤ i ≤ n$. Set $L = K[δ] ≠ K$. As the
+extension $L/K$ is quadratic, every $σ_i$ can be extended to exactly two
+embeddings $σ_{i1}$ and $σ_{i2}$ of $L$ into the complex plane $ℂ$ by
+‘composing’ with $σ_1^K$ or $σ_2^K$. This yields
+\[
+  σ_{i1}(α + δb) = σ_i(α) + \sqrt{σ_i(a)^2 - 1} σ_i(b) \quad \text{and} \quad
+  σ_{i1}(α + δb) = σ_i(α) - \sqrt{σ_i(a)^2 - 1} σ_i(b)
+\]
+for all $α, β ∈ \algint$. As $|σ_i(a)| ≤ 1/2$ for $2 ≤ i ≤ n$ the radicands
+in the equation above are both negative and as a consequence all $σ_{i1},
+σ_{i2}$ are conjugate pairs of non-real embeddings of $L$. Only $σ_{11}$ and
+$σ_{12}$ embed $L$ into the reals $ℝ$. I will identify $L$ with the image of its
+embedding $σ_{11}(L) \subseteq ℝ$ and write $η$ instead of $σ_{11}(η)$ for all
+$η ∈ L$.
+
+\begin{lem}
+  Suppose $K$ is a totally real number field and $a ∈ \algint$ satisfies $δ =
+  δ(a) \not\in \algint$ as well as \eqref{eq:embeddings of a into reals v1}.
+  Then for all positive integers $m$, and all pairs $(i, j) ∈ \set{2, …, n}
+  \times \set{1, 2}$ the following inequalities hold
+  \begin{thmlist}
+    \item $a / 2 < δ < a$;
+    \item $\Re (σ_{ij}(δ))= 0$, i.e. the image of $δ$ is imaginary, and $1 / 2 < | σ_{ij}(δ) | < 1$;
+    \item $a < ε < 2a$ and $| σ_{ij}(ε) | = 1$;
+    \item $ε^m / (4a) < y_m < ε^m / a$ and $|σ_i(y_m)| < 2$;
+    \item $ε^m / 2 < x_m < ε^m$ and $|σ_i(x_m)| < 1$.
+  \end{thmlist}
+\end{lem}
+\begin{proof}
+  As $a ∈ \algint$ the images $σ_{11}(a) = a$ and $σ_1(a)$ coincide. Therefore, $a ≥ 2^{2n}$ by \eqref{eq:embeddings of a into reals v1}.
+  \begin{plist}
+    \item We have
+      \[
+        \frac{a^2}{4} = a^2 - \frac{3a^2}{4} ≤ a^2 - \frac{3}{4} 2^{4n} < a^2 - 1 < a^2
+      \]
+      As $a > 0$ and $δ = \sqrt{a^2 - 1} ≥ 0$ one can take square roots in the inequality above and obtain the claim.
+    \item As was mentioned above, by \eqref{eq:embeddings of a into reals v1}
+      the radicand in $σ_i(δ) = \sqrt{σ_i(a)^2 - 1}$ is negative yielding the
+      first claim. To approximate the absolute value of $σ_i(δ)$, one notes
+      \[
+        |σ_i(δ)|^2 = \Im(σ_i(δ))^2 = 1 - σ_i(a)^2 ≥ 1 - \frac{1}{4} ≥ \frac{1}{4}
+      \]
+      and, since $σ_i(a)^2 ≥ 0$,
+      \[
+        |σ_i(δ)|^2 ≤ 1
+      \]
+      as well. Again taking square roots yields the claim.
+    \item By (i) $0 < δ < a$ and therefore
+      \[
+        a < a + δ = ε < 2a.
+      \]
+      The other claim follows from
+      \[
+        |σ_{ij}(ε)|^2 = σ_{ij}(ε) \; \overline{σ_{ij}(ε)} =
+        \left(σ_i(a) + σ_{i1}(δ)\right) \; \left(σ_i(a) - σ_{i1}(δ)\right) =
+        σ_i(a)^2 - (σ_i(a)^2 - 1) = 1,
+      \]
+      where the second identity is a consequence of (ii).
+  \end{plist}
+\end{proof}
