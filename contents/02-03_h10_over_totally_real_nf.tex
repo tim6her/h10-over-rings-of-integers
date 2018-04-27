@@ -18,8 +18,7 @@ I start by defining two sequences, that satisfy Pell's equation stated below.
     x^2 - d y^2 = 1
 \end{equation}
 
-Using modified versions of the techniques presented in
-\cite[Russian]{Matijasevic1970} it will be shown that the index $m$ can be
+Using modified versions of the techniques presented in~\cite[Russian]{Matijasevic1970} it will be shown that the index $m$ can be
 obtained in a Diophantine way from $y_m(a)$ for certain subsequences of the
 sequences defined below.
 
@@ -29,13 +28,11 @@ sequences defined below.
   δ(a)$. If $δ(a) \not\in K$ one defines $x_m(a), y_m(a) ∈ \algint$ for $m ∈ ℕ$
   by
   \[
-    x_m(a) + δ(a) y_m(a) = (ε(a))^m.
+    x_m(a) + δ(a) y_m(a) = {(ε(a))}^m.
   \]
 \end{defin}
 
-This definition includes the case $K = ℚ$ with $\algint = ℤ$ of
-\cite{Davis1973}. However, I am using the slightly modified notation of
-\cite{Denef1980,Pheidas1988}.
+This definition includes the case $K = ℚ$ with $\algint = ℤ$ of~\cite{Davis1973}. However, I am using the slightly modified notation of~\cite{Denef1980,Pheidas1988}.
 
 As $δ(a)$ is a root of the monic quadratic polynomial
 \[
@@ -43,29 +40,30 @@ As $δ(a)$ is a root of the monic quadratic polynomial
 \]
 the extension $K[δ(a)] / K$ is quadratic and $δ(a) ∈ \algint[{K[δ(a)]}]$. The
 sequences $x_m(a)$ and $y_m(a)$ are well defined for each $m ∈ ℕ$ as they
-correspond to the coefficients of $(ε(a))^m$ in $K[δ(a)]/K$ with respect to the
+correspond to the coefficients of ${(ε(a))}^m$ in $K[δ(a)]/K$ with respect to the
 basis $\lbrace 1, δ(a)\rbrace$. If the reference is clear I will omit the
 dependency on $a$ writing $δ, ε, x_m$ and $y_m$.
 % QUESTION
 \todo{Why does every number field contain such an element $a$?}
+In the following the number field $K[δ(a)]$ will denoted by $L$.
 
 \begin{rem}
-  As $K[δ]/K$ has degree two, there is exactly one pair of field
+  As $L/K$ has degree two, there is exactly one pair of field
   automorphisms\footnote{A field extension of degree two is necessarily normal.}
-  on $K[δ]$ preserving $K$ point-wise, namely $σ_1^{K}(α + δβ) = α + δβ$ and $σ_2^K(α
+  on $L$ preserving $K$ point-wise, namely $σ_1^{K}(α + δβ) = α + δβ$ and $σ_2^K(α
   + δβ) = α - δβ$ for $α, β ∈ \algint$. The latter will be denoted by
   $\overline{η} = σ_2^K(η)$ to emphasise the analogy of complex conjugation.
 \end{rem}
 
 Let me now collect some properties of these sequences. The proofs are
-generalised versions of the ones given in \cite{Davis1973}.
+generalised versions of the ones given in~\cite{Davis1973}.
 
 \begin{lem}
   Let $K$ be an algebraic number field and $a ∈ \algint$ such that $δ(a) \not\in K$. Then
   \begin{thmlist}
-    \item \label{lem:epsilon is unit}
+    \item\label{lem:epsilon is unit}
     $ε$ is a unit in $\algint[K(δ(a))]$, its inverse is given by $ε^{-1} = a - δ = \overline{ε}$, and
-    \item $x_m, y_m$ satisfy Pell's equation~\eqref{eq:Pell} for all $m ∈ ℕ$, using $d = δ(a)^2$ as parameter.
+    \item $x_m, y_m$ satisfy Pell's equation~\eqref{eq:Pell} for all $m ∈ ℕ$, using $d = {δ(a)}^2$ as parameter.
   \end{thmlist}
 \end{lem}
 \begin{proof}
@@ -92,15 +90,15 @@ generalised versions of the ones given in \cite{Davis1973}.
 
 The defining equation
 \[
-  x_m + δ y_m = ε^m = (x_1 + δ y_1)^m
+  x_m + δ y_m = ε^m = {(x_1 + δ y_1)}^m
 \]
 can be seen as an analogue of the trigonometric identity
 \[
-  \cos m + i \sin m = e^{im} = (\cos 1 + i \sin 1)^m,
+  \cos m + i \sin m = e^{im} = {(\cos 1 + i \sin 1)}^m,
 \]
 where $x_m$ plays the role of $\cos m$, $y_m$ the one of $\sin m$, and $i$ is replaced by $δ$. In this view Pell's equation~\eqref{eq:Pell} is the analogue of the Pythagorean identity
 \[
-  \cos (m) ^2 + \sin (m) ^2 = 1.
+  {\cos (m)}^2 + {\sin (m)}^2 = 1.
 \]
 
 The next lemma proves the identities corresponding to $\cos m = \Re e^m$, $\sin
@@ -109,9 +107,9 @@ m = \Im e^m$, and the addition formulas.
 \begin{lem}
   Let $K$ be an algebraic number field and $a ∈ \algint$ such that $δ = δ(a) \not\in K$. Then for all $m, k ∈ ℕ$ one has
   \begin{thmlist}
-    \item \label{lem:real part of epsilon}
+    \item\label{lem:real part of epsilon}
     $x_m = (ε^m + ε^{-m}) / 2$ and $y_m = (ε^m - ε^{-m}) / (2 δ)$, as well as,
-    \item \label{lem:addition formulas}
+    \item\label{lem:addition formulas}
     $x_{m ± k} = x_m x_k ± δ^2 y_m y_k$, and
     $y_{m ± k} = x_k y_m ± x_m y_k$.
   \end{thmlist}
@@ -119,7 +117,7 @@ m = \Im e^m$, and the addition formulas.
 \begin{proof}
   \begin{plist}
     \item In \cref{lem:epsilon is unit} we have seen that $ε^{-1} =
-    \overline{ε}$ and therefore $ε^{-m} = \left(\overline{ε}\right)^m$. Observe that for arbitrary $α, β ∈ \algint$ we have
+    \overline{ε}$ and therefore $ε^{-m} = {\left(\overline{ε}\right)}^m$. Observe that for arbitrary $α, β ∈ \algint$ we have
     \[
       α + β y + \overline{α + δ β} = 2α \quad \text{and} \quad
       α + β y - \overline{α - δ β} = 2δ β.
@@ -163,11 +161,11 @@ the subsequent one, which brings divisibility into play.
 
     If the claim is proven for all factors lower than $k + 1$, one finds that
     $y_m \mid y_{mk}$ and $y_m \mid y_m$ trivially. As a consequence, $y_m \mid
-    y_{m(k + 1)}.$
+    y_{m(k + 1)}$.
 
     \item Again the defining equation yields
     \begin{align*}
-      x_{mk} + δ y_{mk} &= ε^{mk} = (x_m + δ y_m)^k = \\
+      x_{mk} + δ y_{mk} &= ε^{mk} = {(x_m + δ y_m)}^k = \\
                         &= \sum_{j = 0}^k \binom k j x_m^{k - j} y_m^j δ^j \\
       \intertext{and}
       y_{mk} &= \sum_{\substack{j=0\\ j \text{ odd}}}^k
@@ -184,7 +182,7 @@ studying the sequences $x_m$ and $y_m$. It derives an recursive definition and
 lets one prove properties of the sequences, by proving them for $m ∈ \lbrace
 0, 1 \rbrace$ and inferring the properties for $m + 1$ from $m$ and $m - 1$.
 
-\begin{lem} \label{lem:recursion for x_m and y_m}
+\begin{lem}\label{lem:recursion for x_m and y_m}
   Let $K$ be a number field and $a ∈ \algint$ such that $δ = δ(a) \not\in K$.
   For $m > 1$ the following recursive conditions hold.
   \begin{align*}
@@ -250,7 +248,7 @@ One applies the previous lemma to prove some congruence conditions.
 \end{lem}
 \begin{proof}
   By applying the addition formulas of \cref{lem:addition formulas} twice and
-  using that $x_m$ and $y_m$ solve Pell's equation \eqref{eq:Pell} one obtains
+  using that $x_m$ and $y_m$ solve Pell's equation~\eqref{eq:Pell} one obtains
   \begin{align*}
     x_{2m ± k} &= x_m x_{m ± k} + δ^2 y_m y_{m ± k}
                 \equiv δ^2 y_m (y_m x_j ± x_m y_j) \\
@@ -260,60 +258,84 @@ One applies the previous lemma to prove some congruence conditions.
 \end{proof}
 
 At this point for the first time in this section I state a result that is no
-direct generalisation of a result in \cite{Davis1973} and present a prove given
-in \cite{Denef1980}. Note however that the result is nevertheless true for the
+direct generalisation of a result in~\cite{Davis1973} and present a prove given
+in~\cite{Denef1980}. Note however that the result is nevertheless true for the
 case $K = ℚ$ and $\algint = ℤ$.
 
 \begin{lem}
   Let $K$ be a number field and $a ∈ \algint$ such that $δ = δ(a) \not\in K$.
   Then for all $η ∈ \algint \setminus \set{0}$ there exists an $m ∈ ℕ$ such that
-  $η \mid y_m$ in $\algint[{K[δ]}]$.
+  $η \mid y_m$ in $\algint[{L}]$.
   % QUESTION
-  \todo{Can we divide in $\algint$?}
+  \todo{Is $η \mid y$ in  $\algint$?}
 \end{lem}
 \begin{proof}
   % QUESTION
   Let $m$ be the order of the group of units in the finite\todo{Why?}{} ring
-  $\algint[{K[δ]}]/(2 δ η)$, where $(2 δ η)$ denotes the principal ideal
-  generated by $2 δ η$ in $\algint[{K[δ]}]$. Then $ε^{±m} \equiv 1 \mod (2 δ
-  η)$. Hence, $2 δ η \mid ε^m - ε^{-m}$ in $\algint[{K[δ]}]$ and therefore
+  $\algint[{L}]/(2 δ η)$, where $(2 δ η)$ denotes the principal ideal
+  generated by $2 δ η$ in $\algint[{L}]$. Then $ε^{±m} \equiv 1 \mod (2 δ
+  η)$. Hence, $2 δ η \mid ε^m - ε^{-m}$ in $\algint[{L}]$ and therefore
   \[\left. η \;\middle\vert\; \frac{ε^m - ε^{-m}}{2 δ} \right. \]
-  in $\algint[{K[δ]}]$, where the right hand side equals $y_m$ by
+  in $\algint[{L}]$, where the right hand side equals $y_m$ by
   \cref{lem:real part of epsilon}.
 \end{proof}
 
-% TODO
+\begin{lem}
+  Let $K$ be a number field and $a ∈ \algint$ such that $δ = δ(a) \not\in K$. Then the set
+  \[
+    S = \set{α + δ β \mid (α, β) \text{ is a solution to~\eqref{eq:Pell} with parameter } d = δ^2}
+  \]
+  is a subgroup of the kernel of the norm map $N_{L/K}: {\algint[L]}^* → \algint^*$, where $\algint^*$ and ${\algint[L]}^*$ denote the group of units in $\algint$ and $\algint[L]$ respectively.
+\end{lem}
+\begin{proof}
+  First of all, note that if $α + δ β ∈ S$, so is $\overline{α + δ β} = α - δ β$ because
+  \[
+    α^2 - d {(-β)}^2 = α^2 - d β^2 = 0.
+  \]
+  Now let $α + δ β$ be an arbitrary element of $S$, then
+  \[
+    N_{L/K}(α + δ β) = (α + δ β) \left(\overline α + δ β \right) = α^2 - d β^2 = 1.
+  \]
+  This implies that $α + δ β ∈ \ker N_{L / K}$ but also that $α + δ β$ is a unit as $α - δ β$ is its inverse.
+
+  It remains to show that $S$ is closed under multiplication. For this purpose let $α_1 + δ β_1, α_2 + δ β_2 ∈ S$ then
+  \[
+    (α_1 + δ β_1)(α_2 + δ β_2) = \underbrace{(α_1 α_2 + δ^2 β_1 β_2)}_{∈ \algint} + δ (α_1 β_2 + α_2 β_1)
+  \]
+\end{proof}
+
+
+
 Before proving the main theorems of this section (\todo{reference them}) I
 sketch how \textcite{Davis1973} proceeds in proving that \textsc{H10} is
 undecidable over $ℤ$.
 
 First he proves using the sequences above that the exponential function is
-Diophantine \cite[Thm 3.3]{Davis1973}. Then he is able to extend the language of
+Diophantine~\cite[Thm 3.3]{Davis1973}. Then he is able to extend the language of
 Diophantine predicates by \emph{bounded existential} and \emph{bounded universal
-qantifiers} i.e. by
+quantifiers} i.e.\ by
 \begin{align*}
-  (∃y)_{≤x}ϕ(x, y) &⇔ ∃y\; (y ≤ x ∧ ϕ(x, y)),\\
-  (∀y)_{≤x}ϕ(x, y) &⇔ ∀y\; (y > x ∨ ϕ(x, y))
+  {(∃y)}_{≤x}ϕ(x, y) &⇔ ∃y\; (y ≤ x ∧ ϕ(x, y)),\\
+  {(∀y)}_{≤x}ϕ(x, y) &⇔ ∀y\; (y > x ∨ ϕ(x, y))
 \end{align*}
-where $ϕ$ is a positive existential formula \cite[Thm 5.1]{Davis1973}. The first
+where $ϕ$ is a positive existential formula~\cite[Thm 5.1]{Davis1973}. The first
 one is easily seen to be Diophantine as the order relation on $ℕ^{*}$ is
 Diophantine. Proving the second claim takes the rest of the section. Now using
-this result together with the sequence number theorem \cite[Thm 1.3]{Davis1973}
-Davis proofs that a function is Diophantine if and only if it is computable
-\cite[Thm 6.1]{Davis1973}.
+this result together with the sequence number theorem~\cite[Thm 1.3]{Davis1973}
+Davis proofs that a function is Diophantine if and only if it is computable~\cite[Thm 6.1]{Davis1973}.
 
 This already implies the undecidability of \textsc{H10} over $ℤ$ as Davis
-introduced Diophantine pairing functions in \cite[Thm 1.1]{Davis1973} and
+introduced Diophantine pairing functions in~\cite[Thm 1.1]{Davis1973} and
 therefore all domains of Diophantine and therefore all computable functions are
 Diophantine. But the domains of computable functions are exactly the
 semi-decidable subsets of $ω$ and we have already met a semi-decidable set that
-is not decidable, namely the halting set $K$. As a consequence, there is a
+is not decidable, namely the halting set $\mathcal{K}$. As a consequence, there is a
 Diophantine set that is not decidable, or put differently there exists a
-polynomial $p_K ∈ ℤ[X, \seq{Y}]$, such that for every Turing machine $\mathbb
+polynomial $p_{\mathcal{K}} ∈ ℤ[X, \seq{Y}]$, such that for every Turing machine $\mathbb
 A$, that can decide some polynomial identities, there exists an $α ∈ ℤ$ such
 that $\mathbb A$ cannot correctly decide
 \[
-  ∃\seq{β}: p_K(α, \seq{β}) = 0.
+  ∃\seq{β}: p_{\mathcal{K}}(α, \seq{β}) = 0.
 \]
 
 \subsection{Hilbert's tenth problem over totally real number fields}
@@ -331,13 +353,13 @@ of $K$ into the reals $ℝ$. Assume $a ∈ \algint$ satisfies $δ = δ(a) \not\i
 \todo{Does this imply that delta is not in O K?}
 
 Then note firstly that $a$ cannot be a rational integer as they are preserved
-point-wise by each embedding $σ_i$ for $1 ≤ i ≤ n$. Set $L = K[δ] ≠ K$. As the
+point-wise by each embedding $σ_i$ for $1 ≤ i ≤ n$. As the
 extension $L/K$ is quadratic, every $σ_i$ can be extended to exactly two
 embeddings $σ_{i1}$ and $σ_{i2}$ of $L$ into the complex plane $ℂ$ by
 ‘composing’ with $σ_1^K$ or $σ_2^K$. This yields
 \[
-  σ_{i1}(α + δb) = σ_i(α) + \sqrt{σ_i(a)^2 - 1} σ_i(b) \quad \text{and} \quad
-  σ_{i1}(α + δb) = σ_i(α) - \sqrt{σ_i(a)^2 - 1} σ_i(b)
+  σ_{i1}(α + δb) = σ_i(α) + \sqrt{{σ_i(a)}^2 - 1} σ_i(b) \quad \text{and} \quad
+  σ_{i1}(α + δb) = σ_i(α) - \sqrt{{σ_i(a)}^2 - 1} σ_i(b)
 \]
 for all $α, β ∈ \algint$. As $|σ_i(a)| ≤ 1/2$ for $2 ≤ i ≤ n$ the radicands
 in the equation above are both negative and as a consequence all $σ_{i1},
@@ -348,32 +370,32 @@ $η ∈ L$.
 
 \begin{lem}
   Suppose $K$ is a totally real number field and $a ∈ \algint$ satisfies $δ =
-  δ(a) \not\in \algint$ as well as \eqref{eq:embeddings of a into reals v1}.
+  δ(a) \not\in \algint$ as well as~\eqref{eq:embeddings of a into reals v1}.
   Then for all positive integers $m$, and all pairs $(i, j) ∈ \set{2, …, n}
   \times \set{1, 2}$ the following inequalities hold
   \begin{thmlist}
     \item $a / 2 < δ < a$;
-    \item $\Re (σ_{ij}(δ))= 0$, i.e. the image of $δ$ is imaginary, and $1 / 2 < | σ_{ij}(δ) | < 1$;
+    \item $\Re (σ_{ij}(δ))= 0$, i.e.\ the image of $δ$ is imaginary, and $1 / 2 < | σ_{ij}(δ) | < 1$;
     \item $a < ε < 2a$ and $| σ_{ij}(ε) | = 1$;
     \item $ε^m / (4a) < y_m < ε^m / a$ and $|σ_i(y_m)| < 2$;
     \item $ε^m / 2 < x_m < ε^m$ and $|σ_i(x_m)| < 1$.
   \end{thmlist}
 \end{lem}
 \begin{proof}
-  As $a ∈ \algint$ the images $σ_{11}(a) = a$ and $σ_1(a)$ coincide. Therefore, $a ≥ 2^{2n}$ by \eqref{eq:embeddings of a into reals v1}.
+  As $a ∈ \algint$ the images $σ_{11}(a) = a$ and $σ_1(a)$ coincide. Therefore, $a ≥ 2^{2n}$ by~\eqref{eq:embeddings of a into reals v1}.
   \begin{plist}
     \item We have
       \[
         \frac{a^2}{4} = a^2 - \frac{3a^2}{4} ≤ a^2 - \frac{3}{4} 2^{4n} < a^2 - 1 < a^2
       \]
       As $a > 0$ and $δ = \sqrt{a^2 - 1} ≥ 0$ one can take square roots in the inequality above and obtain the claim.
-    \item As was mentioned above, by \eqref{eq:embeddings of a into reals v1}
-      the radicand in $σ_i(δ) = \sqrt{σ_i(a)^2 - 1}$ is negative yielding the
+    \item As was mentioned above, by~\eqref{eq:embeddings of a into reals v1}
+      the radicand in $σ_i(δ) = \sqrt{{σ_i(a)}^2 - 1}$ is negative yielding the
       first claim. To approximate the absolute value of $σ_i(δ)$, one notes
       \[
-        |σ_i(δ)|^2 = \Im(σ_i(δ))^2 = 1 - σ_i(a)^2 ≥ 1 - \frac{1}{4} ≥ \frac{1}{4}
+        |σ_i(δ)|^2 = {\Im(σ_i(δ))}^2 = 1 - {σ_i(a)}^2 ≥ 1 - \frac{1}{4} ≥ \frac{1}{4}
       \]
-      and, since $σ_i(a)^2 ≥ 0$,
+      and, since ${σ_i(a)}^2 ≥ 0$,
       \[
         |σ_i(δ)|^2 ≤ 1
       \]
@@ -386,8 +408,16 @@ $η ∈ L$.
       \[
         |σ_{ij}(ε)|^2 = σ_{ij}(ε) \; \overline{σ_{ij}(ε)} =
         \left(σ_i(a) + σ_{i1}(δ)\right) \; \left(σ_i(a) - σ_{i1}(δ)\right) =
-        σ_i(a)^2 - (σ_i(a)^2 - 1) = 1,
+        {σ_i(a)}^2 - ({σ_i(a)}^2 - 1) = 1,
       \]
       where the second identity is a consequence of (ii).
+    \item This should follow from \cref{lem:real part of epsilon}.
+      % TODO
+      \todo{write me}
+    \item % TODO
+      \todo{write me}
   \end{plist}
 \end{proof}
+
+As a next step, we want to show that we have already found all solutions of
+Pell's equation~\eqref{eq:Pell}. For this we need some lemmas.
