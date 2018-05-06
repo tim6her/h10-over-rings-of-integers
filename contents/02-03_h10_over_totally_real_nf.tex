@@ -4,31 +4,33 @@
 % !TeX root = ../Herbstrith-H10_over_AI.tex
 
 I closely follow the papers of \textcite{Denef1980} and \textcite{Pheidas1988},
-whose structure in term heavily depends on the original paper
+whose structure in term heavily depends on the article
 \citetitle{Davis1973} by \textcite{Davis1973}. This way, one can prove the
 undecidability of Hilbert's tenth problem over rings of algebraic integers in
 totally real number fields and number fields with one pair of non-real
-embeddings in one go.
+embeddings in one go. Compare this approach to Sections 6.3 and 7.2 of the
+study~\cite{Shlapentokh2007} by Shlapentokh.
 
 \subsection{Finitely many easy lemmas}
 
-I start by defining two sequences, that satisfy Pell's equation stated below.
+We start by defining two sequences, that satisfy Pell's equation stated below.
 
 \begin{equation} \label{eq:Pell}
     x^2 - d y^2 = 1
 \end{equation}
 
-Using modified versions of the techniques presented in~\cite[Russian]{Matijasevic1970} it will be shown that the index $m$ can be
-obtained in a Diophantine way from $y_m(a)$ for certain subsequences of the
+Using modified versions of the techniques presented
+by~\textcite{Matijasevic1970}, it will be shown that the index $m$ can be
+obtained in a Diophantine way from $\py_m(a)$ for certain subsequences of the
 sequences defined below.
 
 \begin{defin}
   Let $K$ be an algebraic number field, $\algint$ its ring of algebraic integers
   and fix $a ∈ \algint$. One defines $δ(a) = \sqrt{a^2 - 1}$ and $ε(a) = a +
-  δ(a)$. If $δ(a) \not\in K$ one defines $x_m(a), y_m(a) ∈ \algint$ for $m ∈ ℕ$
+  δ(a)$. If $δ(a) \not\in K$ one defines $\px_m(a), \py_m(a) ∈ \algint$ for $m ∈ ℕ$
   by
   \[
-    x_m(a) + δ(a) y_m(a) = {(ε(a))}^m.
+    \px_m(a) + δ(a) \py_m(a) = {(ε(a))}^m.
   \]
 \end{defin}
 
@@ -39,10 +41,10 @@ As $δ(a)$ is a root of the monic quadratic polynomial
   X^2 - a^2 + 1 ∈ \algint {[X]}
 \]
 the extension $K[δ(a)] / K$ is quadratic and $δ(a) ∈ \algint[{K[δ(a)]}]$. The
-sequences $x_m(a)$ and $y_m(a)$ are well defined for each $m ∈ ℕ$ as they
+sequences $\px_m(a)$ and $\py_m(a)$ are well defined for each $m ∈ ℕ$ as they
 correspond to the coefficients of ${(ε(a))}^m$ in $K[δ(a)]/K$ with respect to the
-basis $\lbrace 1, δ(a)\rbrace$. If the reference is clear I will omit the
-dependency on $a$ writing $δ, ε, x_m$ and $y_m$.
+basis $\lbrace 1, δ(a)\rbrace$. If the reference is clear, I will omit the
+dependency on $a$ writing $δ, ε, \px_m$ and $\py_m$.
 % QUESTION
 \todo{Why does every number field contain such an element $a$?}
 In the following the number field $K[δ(a)]$ will denoted by $L$.
@@ -63,26 +65,26 @@ generalised versions of the ones given in~\cite{Davis1973}.
   \begin{thmlist}
     \item\label{lem:epsilon is unit}
     $ε$ is a unit in $\algint[K(δ(a))]$, its inverse is given by $ε^{-1} = a - δ = \overline{ε}$, and
-    \item $x_m, y_m$ satisfy Pell's equation~\eqref{eq:Pell} for all $m ∈ ℕ$, using $d = {δ(a)}^2$ as parameter.
+    \item $\px_m, \py_m$ satisfy Pell's equation~\eqref{eq:Pell} for all $m ∈ ℕ$, using $d = {δ(a)}^2$ as parameter.
   \end{thmlist}
 \end{lem}
 \begin{proof}
   \begin{plist}
     \item We have $ε \; (a - δ) = (a + δ) (a - δ) = a^2 - δ^2 = 1$ as desired.
-    \item One uses induction on $m$. If $m = 0$, the pair $x_0 = 1$ and $y_0 =
+    \item One uses induction on $m$. If $m = 0$, the pair $\px_0 = 1$ and $\py_0 =
     0$ yields a trivial solution to equation~\eqref{eq:Pell}. Let the claim be
-    proven for all pairs $x_n, y_n$ with $n ≤ m$. Then rewriting the definition
-    of $x_{m + 1}, y_{m + 1}$ one obtains
+    proven for all pairs $\px_n, \py_n$ with $n ≤ m$. Then rewriting the definition
+    of $\px_{m + 1}, \py_{m + 1}$ one obtains
     \[
-      x_{m + 1} + δ y_{m + 1} = ε^{m + 1} = (x_m + δ y_m)ε.
+      \px_{m + 1} + δ \py_{m + 1} = ε^{m + 1} = (\px_m + δ \py_m)ε.
     \]
     Applying the automorphism $\overline \cdot$ implies
     \[
-      \overline{x_{m + 1} + δ y_{m + 1}} = x_{m + 1} - δ y_{m + 1} = (x_m - δ y_m) ε^{-1}
+      \overline{\px_{m + 1} + δ \py_{m + 1}} = \px_{m + 1} - δ \py_{m + 1} = (\px_m - δ \py_m) ε^{-1}
     \]
     and multiplication of both equations yields
     \[
-      x_{m + 1}^2 - d y_{m + 1}^2 = \overline{x_{m + 1} + δ y_{m + 1}} (x_{m + 1} - δ y_{m + 1}) = 1
+      \px_{m + 1}^2 - d \py_{m + 1}^2 = \overline{\px_{m + 1} + δ \py_{m + 1}} (\px_{m + 1} - δ \py_{m + 1}) = 1
     \]
     as claimed.
   \end{plist}
@@ -90,13 +92,13 @@ generalised versions of the ones given in~\cite{Davis1973}.
 
 The defining equation
 \[
-  x_m + δ y_m = ε^m = {(x_1 + δ y_1)}^m
+  \px_m + δ \py_m = ε^m = {(\px_1 + δ \py_1)}^m
 \]
 can be seen as an analogue of the trigonometric identity
 \[
   \cos m + i \sin m = e^{im} = {(\cos 1 + i \sin 1)}^m,
 \]
-where $x_m$ plays the role of $\cos m$, $y_m$ the one of $\sin m$, and $i$ is replaced by $δ$. In this view Pell's equation~\eqref{eq:Pell} is the analogue of the Pythagorean identity
+where $\px_m$ plays the role of $\cos m$, $\py_m$ the one of $\sin m$, and $i$ is replaced by $δ$. In this view Pell's equation~\eqref{eq:Pell} is the analogue of the Pythagorean identity
 \[
   {\cos (m)}^2 + {\sin (m)}^2 = 1.
 \]
@@ -108,10 +110,10 @@ m = \Im e^m$, and the addition formulas.
   Let $K$ be an algebraic number field and $a ∈ \algint$ such that $δ = δ(a) \not\in K$. Then for all $m, k ∈ ℕ$ one has
   \begin{thmlist}
     \item\label{lem:real part of epsilon}
-    $x_m = (ε^m + ε^{-m}) / 2$ and $y_m = (ε^m - ε^{-m}) / (2 δ)$, as well as,
+    $\px_m = (ε^m + ε^{-m}) / 2$ and $\py_m = (ε^m - ε^{-m}) / (2 δ)$, as well as,
     \item\label{lem:addition formulas}
-    $x_{m ± k} = x_m x_k ± δ^2 y_m y_k$, and
-    $y_{m ± k} = x_k y_m ± x_m y_k$.
+    $\px_{m ± k} = \px_m \px_k ± δ^2 \py_m \py_k$, and
+    $\py_{m ± k} = \px_k \py_m ± \px_m \py_k$.
   \end{thmlist}
 \end{lem}
 \begin{proof}
@@ -123,32 +125,32 @@ m = \Im e^m$, and the addition formulas.
       α + β y - \overline{α - δ β} = 2δ β.
     \]
     Now, setting $α + δ β = ε^m$ yields the claim.
-    \item By the defining equation for $x_m$ and $y_m$ we have
+    \item By the defining equation for $\px_m$ and $\py_m$ we have
     \begin{align*}
-      x_{m + k} + δ y_{m + k} &= ε^{m + k} = (x_m + δ y_m) (x_k + δ y_k) =\\
-                            &= (x_m x_k + δ^2 y_m y_k) + δ (x_m y_k + x_k y_m)
+      \px_{m + k} + δ \py_{m + k} &= ε^{m + k} = (\px_m + δ \py_m) (\px_k + δ \py_k) =\\
+                            &= (\px_m \px_k + δ^2 \py_m \py_k) + δ (\px_m \py_k + \px_k \py_m)
     \end{align*}
     and thusly
     \begin{align*}
-      x_{m + k} &= x_m x_k + δ^2 y_m y_k, \\
-      y_{m + k} &= x_m y_k + x_k y_m.
+      \px_{m + k} &= \px_m \px_k + δ^2 \py_m \py_k, \\
+      \py_{m + k} &= \px_m \py_k + \px_k \py_m.
     \end{align*}
-    The identities for $x_{m - k}$ and $y_{m - k}$ follow analogously.
+    The identities for $\px_{m - k}$ and $\py_{m - k}$ follow analogously.
   \end{plist}
 \end{proof}
 
-Setting $k = 1$ in the lemma above, one obtains $x_{m ± 1} = a x_m ± δ^2 y_m$
-and $y_{m ± 1} = a y_m ± x_m$. A further immediate consequence of this lemma is
+Setting $k = 1$ in the lemma above, one obtains $\px_{m ± 1} = a \px_m ± δ^2 \py_m$
+and $\py_{m ± 1} = a \py_m ± \px_m$. A further immediate consequence of this lemma is
 the subsequent one, which brings divisibility into play.
 
 \begin{lem}
   Let $K$ be a number field and $a ∈ \algint$ such that $δ = δ(a) \not\in K$.
   Then for all $m, k ∈ ℕ$, $k ≠ 0$ we have
   \begin{thmlist}
-    \item $y_m$ divides $y_{mk}$ in $\algint$ and
-    \item $y_{mk} \equiv k x_m^{k - 1} y_m \mod \left(y_m^3\right)$ in
-    $\algint$ i.e. $y_{mk} - k x_m^{k - 1} y_m$ is contained in the principal
-    ideal generated by $y_m^3$ in $\algint$.
+    \item $\py_m$ divides $\py_{mk}$ in $\algint$ and
+    \item $\py_{mk} \equiv k \px_m^{k - 1} \py_m \mod \left(\py_m^3\right)$ in
+    $\algint$ i.e. $\py_{mk} - k \px_m^{k - 1} \py_m$ is contained in the principal
+    ideal generated by $\py_m^3$ in $\algint$.
   \end{thmlist}
 \end{lem}
 \begin{proof}
@@ -156,29 +158,29 @@ the subsequent one, which brings divisibility into play.
     \item I argue by induction on $k$. The claim is trivial if $k = 1$ and
     \cref{lem:addition formulas} implies that
     \[
-      y_{m(k + 1)} = x_m y_{mk} + x{mk} y_m.
+      \py_{m(k + 1)} = \px_m \py_{mk} + x{mk} \py_m.
     \]
 
     If the claim is proven for all factors lower than $k + 1$, one finds that
-    $y_m \mid y_{mk}$ and $y_m \mid y_m$ trivially. As a consequence, $y_m \mid
-    y_{m(k + 1)}$.
+    $\py_m \mid \py_{mk}$ and $\py_m \mid \py_m$ trivially. As a consequence, $\py_m \mid
+    \py_{m(k + 1)}$.
 
     \item Again the defining equation yields
     \begin{align*}
-      x_{mk} + δ y_{mk} &= ε^{mk} = {(x_m + δ y_m)}^k = \\
-                        &= \sum_{j = 0}^k \binom k j x_m^{k - j} y_m^j δ^j \\
+      \px_{mk} + δ \py_{mk} &= ε^{mk} = {(\px_m + δ \py_m)}^k = \\
+                        &= \sum_{j = 0}^k \binom k j \px_m^{k - j} \py_m^j δ^j \\
       \intertext{and}
-      y_{mk} &= \sum_{\substack{j=0\\ j \text{ odd}}}^k
-                \binom k j x_m^{k - j} y_m^j δ^{j -1}.
+      \py_{mk} &= \sum_{\substack{j=0\\ j \text{ odd}}}^k
+                \binom k j \px_m^{k - j} \py_m^j δ^{j -1}.
     \end{align*}
-    In the equation above all terms for $j > 1$ are divisible by $y_m^3$ and
-    thus vanish modulo $\left(y_m^3\right)$. The only term remaining is $k
-    x_m^{k - 1} y_m$ as claimed.
+    In the equation above all terms for $j > 1$ are divisible by $\py_m^3$ and
+    thus vanish modulo $\left(\py_m^3\right)$. The only term remaining is $k
+    \px_m^{k - 1} \py_m$ as claimed.
   \end{plist}
 \end{proof}
 
 The next lemma even though being easy to prove provides a valuable tool in
-studying the sequences $x_m$ and $y_m$. It derives an recursive definition and
+studying the sequences $\px_m$ and $\py_m$. It derives an recursive definition and
 lets one prove properties of the sequences, by proving them for $m ∈ \lbrace
 0, 1 \rbrace$ and inferring the properties for $m + 1$ from $m$ and $m - 1$.
 
@@ -186,19 +188,19 @@ lets one prove properties of the sequences, by proving them for $m ∈ \lbrace
   Let $K$ be a number field and $a ∈ \algint$ such that $δ = δ(a) \not\in K$.
   For $m > 1$ the following recursive conditions hold.
   \begin{align*}
-    x_{m + 1} &= 2 a x_m - x_{m - 1}, & x_1 = a, \;& x_0 = 1 \\
-    y_{m + 1} &= 2 a y_m - y_{m - 1}, & y_1 = 1, \;& y_0 = 0 \\
+    \px_{m + 1} &= 2 a \px_m - \px_{m - 1}, & \px_1 = a, \;& \px_0 = 1 \\
+    \py_{m + 1} &= 2 a \py_m - \py_{m - 1}, & \py_1 = 1, \;& \py_0 = 0 \\
   \end{align*}
 \end{lem}
 \begin{proof}
   The initial conditions follow from $ε = a + δ$ and $ε^0 = 1$. To prove the
   the difference equations one uses \cref{lem:addition formulas} and obtains
   \begin{align*}
-    x_{m + 1} &= a x_m + δ^2 y_m,  &  y_{m + 1} &= a y_m + x_m, \\
-    x_{m - 1} &= a x_m - δ^2 y_m,  &  y_{m + 1} &= a y_m - x_m.
+    \px_{m + 1} &= a \px_m + δ^2 \py_m,  &  \py_{m + 1} &= a \py_m + \px_m, \\
+    \px_{m - 1} &= a \px_m - δ^2 \py_m,  &  \py_{m + 1} &= a \py_m - \px_m.
   \end{align*}
-  Summation yields $x_{m + 1} + x_{m - 1} = 2 a x_m$ and $y_{m + 1} + y_{m - 1}
-  = 2 a y_m$.
+  Summation yields $\px_{m + 1} + \px_{m - 1} = 2 a \px_m$ and $\py_{m + 1} + \py_{m - 1}
+  = 2 a \py_m$.
 \end{proof}
 
 One applies the previous lemma to prove some congruence conditions.
@@ -207,15 +209,15 @@ One applies the previous lemma to prove some congruence conditions.
   Let $K$ be a number field and $a, b, c ∈ \algint$ such that $δ(a), δ(b)
   \not\in K$. Then for all $m ∈ ℕ$ the following congruences hold.
   \begin{plist}
-    \item $y_m (a) \equiv m \mod (a - 1)$
-    \item If $a \equiv b \mod (c)$, then $x_m (a) \equiv x_m (b) \mod (c)$ and
-    $y_m(a) \equiv y_m(b) \mod (c)$.
+    \item $\py_m (a) \equiv m \mod (a - 1)$
+    \item If $a \equiv b \mod (c)$, then $\px_m (a) \equiv \px_m (b) \mod (c)$ and
+    $\py_m(a) \equiv \py_m(b) \mod (c)$.
   \end{plist}
 \end{lem}
 \begin{proof}
   The first and second congruence become equalities if $m = 0$. As for $m = 1$,
-  the first congruence is again an equality as $y_1 (a) = 1$ independently of
-  $a$. The second claim is trivial since $x_1 (η) = η$ and $y_1 (η) = 1$ for $η
+  the first congruence is again an equality as $\py_1 (a) = 1$ independently of
+  $a$. The second claim is trivial since $x_1 (η) = η$ and $\py_1 (η) = 1$ for $η
   ∈ \lbrace a, b \rbrace$. At this point one proceeds inductively and assumes
   the claims to be proven for all indices lower than $m + 1$.
 
@@ -223,19 +225,19 @@ One applies the previous lemma to prove some congruence conditions.
     \item Note that $a \equiv 1 \mod (a - 1)$ and thusly by
     \cref{lem:recursion for x_m and y_m}
     \[
-      y_{m + 1} = 2 a y_m - y_{m - 1} \equiv 2 m - (m - 1) = m + 1 \mod (a - 1)
+      \py_{m + 1} = 2 a \py_m - \py_{m - 1} \equiv 2 m - (m - 1) = m + 1 \mod (a - 1)
     \]
     as claimed.
 
     \item Using \cref{lem:recursion for x_m and y_m} we see that for fixed $m$
-    the coefficients $x_m (η)$ and $y_m (η)$ can be expressed as some fixed
+    the coefficients $\px_m (η)$ and $\py_m (η)$ can be expressed as some fixed
     polynomial in $η$. For the congruence this means
     \begin{align*}
-      x_{m + 1} (a) &= 2 a x_m (a) - x_{m - 1} (a)
-                     \equiv 2 b x_m (b) - x_m{m - 1} (b) = x_{m + 1} (b)
+      \px_{m + 1} (a) &= 2 a \px_m (a) - \px_{m - 1} (a)
+                     \equiv 2 b \px_m (b) - \px_m{m - 1} (b) = \px_{m + 1} (b)
                      \mod (c)
     \end{align*}
-    and for $y_{m + 1}$ completely analogously.
+    and for $\py_{m + 1}$ completely analogously.
   \end{plist}
 \end{proof}
 
@@ -243,17 +245,17 @@ One applies the previous lemma to prove some congruence conditions.
   Let $K$ be a number field and $a ∈ \algint$ such that $δ = δ(a) \not\in K$.
   Then for $m, k ∈ ℕ$ such that $m ± k ≥ 0$ the following congruence holds.
   \[
-    x_{2 m ± k} \equiv - x_k(a) \mod (x_m)
+    \px_{2 m ± k} \equiv - \px_k(a) \mod (\px_m)
   \]
 \end{lem}
 \begin{proof}
   By applying the addition formulas of \cref{lem:addition formulas} twice and
-  using that $x_m$ and $y_m$ solve Pell's equation~\eqref{eq:Pell} one obtains
+  using that $\px_m$ and $\py_m$ solve Pell's equation~\eqref{eq:Pell} one obtains
   \begin{align*}
-    x_{2m ± k} &= x_m x_{m ± k} + δ^2 y_m y_{m ± k}
-                \equiv δ^2 y_m (y_m x_j ± x_m y_j) \\
-               &\equiv δ^2 y_m^2 x_j = (x_m^2 - 1) x_j \\
-               &\equiv -x_j \mod (x_n).
+    \px_{2m ± k} &= \px_m \px_{m ± k} + δ^2 \py_m \py_{m ± k}
+                \equiv δ^2 \py_m (\py_m \px_j ± \px_m \py_j) \\
+               &\equiv δ^2 \py_m^2 \px_j = (\px_m^2 - 1) \px_j \\
+               &\equiv -\px_j \mod (\px_n).
   \end{align*}
 \end{proof}
 
@@ -265,46 +267,86 @@ case $K = ℚ$ and $\algint = ℤ$.
 \begin{lem}
   Let $K$ be a number field and $a ∈ \algint$ such that $δ = δ(a) \not\in K$.
   Then for all $η ∈ \algint \setminus \set{0}$ there exists an $m ∈ ℕ$ such that
-  $η \mid y_m$ in $\algint[{L}]$.
+  $η \mid \py_m$ in $\algint[{L}]$.
   % QUESTION
   \todo{Is $η \mid y$ in  $\algint$?}
 \end{lem}
 \begin{proof}
-  % QUESTION
-  Let $m$ be the order of the group of units in the finite\todo{Why?}{} ring
-  $\algint[{L}]/(2 δ η)$, where $(2 δ η)$ denotes the principal ideal
+  The quotient of the non-trivial, finitely generated $\algint$-modules $\algint[L]$ and $(2 δ η)$
+
+  Let $m$ be the order of the group of units in the finite ring
+  $\algint[L]/(2 δ η)$, where $(2 δ η)$ denotes the principal ideal
   generated by $2 δ η$ in $\algint[{L}]$. Then $ε^{±m} \equiv 1 \mod (2 δ
   η)$. Hence, $2 δ η \mid ε^m - ε^{-m}$ in $\algint[{L}]$ and therefore
-  \[\left. η \;\middle\vert\; \frac{ε^m - ε^{-m}}{2 δ} \right. \]
-  in $\algint[{L}]$, where the right hand side equals $y_m$ by
+  \[
+    \left. η \;\middle\vert\; \frac{ε^m - ε^{-m}}{2 δ} \right.
+  \]
+  in $\algint[{L}]$, where the right hand side equals $\py_m$ by
   \cref{lem:real part of epsilon}.
 \end{proof}
 
-\begin{lem}
+\begin{lem}\label{lem:subgroup of ker N L/K}
   Let $K$ be a number field and $a ∈ \algint$ such that $δ = δ(a) \not\in K$. Then the set
   \[
-    S = \set{α + δ β \mid (α, β) \text{ is a solution to~\eqref{eq:Pell} with parameter } d = δ^2}
+    S = \set{α + δ β \mid (α, β) ∈ \algint^2 \text{ is a solution to~\eqref{eq:Pell} with parameter } d = δ^2}
   \]
-  is a subgroup of the kernel of the norm map $N_{L/K}: {\algint[L]}^* → \algint^*$, where $\algint^*$ and ${\algint[L]}^*$ denote the group of units in $\algint$ and $\algint[L]$ respectively.
+  is a subgroup of the kernel of the norm map $N_{L/K}: U_L → U_K$, where $U_K$ and $U_L$ denote the group of units in $\algint$ and $\algint[L]$ respectively.
 \end{lem}
 \begin{proof}
-  First of all, note that if $α + δ β ∈ S$, so is $\overline{α + δ β} = α - δ β$ because
+  First of all, note that, if $α + δ β ∈ S$, so is $\overline{α + δ β} = α - δ
+  β ∈ S$ because
   \[
-    α^2 - d {(-β)}^2 = α^2 - d β^2 = 0.
+    α^2 - d {(-β)}^2 = α^2 - d β^2 = 1.
   \]
   Now let $α + δ β$ be an arbitrary element of $S$, then
   \[
     N_{L/K}(α + δ β) = (α + δ β) \left(\overline α + δ β \right) = α^2 - d β^2 = 1.
   \]
-  This implies that $α + δ β ∈ \ker N_{L / K}$ but also that $α + δ β$ is a unit as $α - δ β$ is its inverse.
-
-  It remains to show that $S$ is closed under multiplication. For this purpose let $α_1 + δ β_1, α_2 + δ β_2 ∈ S$ then
+  This implies that $α + δ β ∈ \ker N_{L / K}$ but also that $α + δ β$ is a
+  unit, as $α - δ β$ is its inverse. The product of to arbitrary elements $α_1 + δ β_1, α_2 + δ β_2 ∈ S$ is
   \[
-    (α_1 + δ β_1)(α_2 + δ β_2) = \underbrace{(α_1 α_2 + δ^2 β_1 β_2)}_{∈ \algint} + δ (α_1 β_2 + α_2 β_1)
+    (α_1 + δ β_1)(α_2 + δ β_2) = \underbrace{(α_1 α_2 + δ^2 β_1 β_2)}_{∈ \algint} + δ \underbrace{(α_1 β_2 + α_2 β_1)}_{∈ \algint}
+  \]
+  again of the desired form and as $\ker N_{L / K}$ is closed under multiplication, $(α_1 + δ β_1)(α_2 + δ β_2)$ is contained in $S$.
+\end{proof}
+
+\begin{lem}\label{lem:rank of N_L/K U_L}
+  Let $L$ and $K$ be number fields as defined above.
+  The image $N_{L / K}\left(U_L\right) ≤ U_K$ has finite index in $U_K$.
+\end{lem}
+\begin{proof}
+  I claim that $N_{L / K}\left(U_L\right)$ contains $α^2$ for every $α ∈ U_K$.
+  This is because the restriction $σ_i^K|_{\algint}$ is just the identity on
+  $\algint$ for $i ∈ \set{1, 2}$ and therefore, $N_{L / K}(α) = α^2$ for all
+  $α ∈ U_K \subseteq U_L$.
+
+  Let now $k := \rk K$ and identify $U_K = ℤ_ℓ \times ℤ^{k}$, where $ℤ_ℓ =
+  μ(K)$ is the finite cyclic group of roots of unity in $K$
+  (cf.~\cref{thm:Dirichlet}). Consider the following $k$ elements
+  \[
+    (\overline 0,1,0,…,0), \; (\overline 0,0,1,0,…,0), \; …, \; (\overline 0, 0, …, 0, 1)
+  \]
+  contained in $U_K$. By the claim their ‘squares’ are contained in $N_{L / K}\left(U_L\right)$ i.e.
+  \[
+    (\overline 0,2,0,…,0), \; (\overline 0,0,2,0,…,0), \; …, \; (\overline 0, 0, …, 0, 2) ∈ N_{L / K}\left(U_L\right).
+  \]
+  As a consequence, the direct product
+  \[
+    G := \set{\overline 0} \times \underbrace{2 ℤ \times … \times 2 Z}_{k\text{-times}}
+  \]
+  is a subgroup of $N_{L / K}\left(U_L\right)$ and therefore
+  \[
+    [U_K : N_{L / K}\left(U_L\right)] ≤ [U : G] ≤ ℓ\, 2^k < ∞.
   \]
 \end{proof}
 
-
+As for the free ranks of $U_K$, $U_L$, $N_{L / K}\left(U_L\right)$ and $S$ the
+lemma above implies that $\rk N_{L / K}\left(U_L\right) = \rk U_K$ and
+therefore, as an immediate consequence of the first isomorphism theorem
+\cite[see][II~§1, p.~89]{Lang2002} the following inequality holds
+\begin{equation}\label{eq:rank of S}
+  \rk S ≤ \rk \ker N_{L / K} = \rk U_L - \rk U_K.
+\end{equation}
 
 Before proving the main theorems of this section (\todo{reference them}) I
 sketch how \textcite{Davis1973} proceeds in proving that \textsc{H10} is
@@ -358,8 +400,8 @@ extension $L/K$ is quadratic, every $σ_i$ can be extended to exactly two
 embeddings $σ_{i1}$ and $σ_{i2}$ of $L$ into the complex plane $ℂ$ by
 ‘composing’ with $σ_1^K$ or $σ_2^K$. This yields
 \[
-  σ_{i1}(α + δb) = σ_i(α) + \sqrt{{σ_i(a)}^2 - 1} σ_i(b) \quad \text{and} \quad
-  σ_{i1}(α + δb) = σ_i(α) - \sqrt{{σ_i(a)}^2 - 1} σ_i(b)
+  σ_{i1}(α + δβ) = σ_i(α) + \sqrt{{σ_i(a)}^2 - 1} σ_i(β) \quad \text{and} \quad
+  σ_{i1}(α + δβ) = σ_i(α) - \sqrt{{σ_i(a)}^2 - 1} σ_i(β)
 \]
 for all $α, β ∈ \algint$. As $|σ_i(a)| ≤ 1/2$ for $2 ≤ i ≤ n$ the radicands
 in the equation above are both negative and as a consequence all $σ_{i1},
@@ -377,8 +419,8 @@ $η ∈ L$.
     \item $a / 2 < δ < a$;
     \item $\Re (σ_{ij}(δ))= 0$, i.e.\ the image of $δ$ is imaginary, and $1 / 2 < | σ_{ij}(δ) | < 1$;
     \item $a < ε < 2a$ and $| σ_{ij}(ε) | = 1$;
-    \item $ε^m / (4a) < y_m < ε^m / a$ and $|σ_i(y_m)| < 2$;
-    \item $ε^m / 2 < x_m < ε^m$ and $|σ_i(x_m)| < 1$.
+    \item $ε^m / (4a) < \py_m < ε^m / a$ and $|σ_i(\py_m)| < 2$;
+    \item $ε^m / 2 < \px_m < ε^m$ and $|σ_i(\px_m)| < 1$.
   \end{thmlist}
 \end{lem}
 \begin{proof}
@@ -414,10 +456,36 @@ $η ∈ L$.
     \item This should follow from \cref{lem:real part of epsilon}.
       % TODO
       \todo{write me}
-    \item % TODO
+    \item This should follow from \cref{lem:real part of epsilon}.
+      % TODO
       \todo{write me}
   \end{plist}
 \end{proof}
 
 As a next step, we want to show that we have already found all solutions of
 Pell's equation~\eqref{eq:Pell}. For this we need some lemmas.
+
+Recall the group $S ≤ \ker N_{L / K}$ defined in \cref{lem:subgroup of ker N
+L/K}. We have seen in \cref{lem:rank of N_L/K U_L} and the subsequent
+inequality~\eqref{eq:rank of S} that the free rank of $S$ can be bound from
+above. Note that $ε$ is contained in $S$. Therefore, the following lemma implies
+that $\rk S$ can be bound from below by $1$.
+
+\begin{lem}\label{lem:rank of S is greater 0}
+  Let $K$ be a totally real number field and $a ∈ \algint$ satisfies $δ =
+  δ(a) \not\in \algint$ as well as~\eqref{eq:embeddings of a into reals v1}.
+  Then $ε(a) = ε$ is torsion free i.e.\ there is a group isomorphism $⟨ε⟩ \cong
+  ℤ$.
+\end{lem}
+\begin{proof}
+  Assume otherwise that $ε^m = 1$ for some positive integer $m$ i.e. $ε$ is an
+  $m$-th root of unity. As we have identified $L$ with a subset of $ℝ$, this
+  leaves $±1$ as values for $ε = 1 + δ$. This is impossible as $δ \not\in
+  \algint$.
+\end{proof}
+
+As a consequence, of \cref{thm:Dirichlet} we find that
+\[
+  1 ≤ \rk S ≤ \rk U_L - \rk U_K ≤ (n + 1) - n = 1.
+\]
+In other words, we can write every $η$ in $S$ as a product $ζ ε_0^k$, where $ζ ∈ U_L$ is a root of unity and $ε_0
