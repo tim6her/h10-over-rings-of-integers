@@ -87,15 +87,40 @@ called Diophantine if it is Diophantine viewed as a relation.
     and $1/3$ in $ℚ$. As the intersection $\algint ∩ ℚ $ equals $ℤ$ for all
     number fields $K$, one obtains that the polynomial identity can only be
     satisfied for $α ≠ 0$.
-    % QUESTION
-    \todo{How to use the Chinese Remainder Theorem to prove the converse direction?}
 
-    \item \label{ex:N is Diophantine over Z}
-    Each non-negative integer $α$ is the sum of four squares and as a consequence
+    Let now \(α ≠ 0\). We can find ideals \(\mathfrak x_2, \mathfrak x_3\) such
+    that \((α) = \mathfrak x_2 \mathfrak x_3\) and \((2) + \mathfrak x_2 =
+    \algint\), \((3) + \mathfrak x_3 = \algint\) as well as \(\mathfrak x_2 +
+    \mathfrak x_3 = \algint\). This is because \(2\) and \(3\) are rational
+    primes and therefore \((2)\) and \((3)\) are relative prime.
+    % see Baxa Thm 120
+     As a consequence of the Chinese remainder
+     theorem~\cite[see][3.6]{Neukirch2006} the congruences
+    \[
+      2 β_2 \equiv 1 \mod \mathfrak x_2 \quad \text{and} \quad
+      3 β_2 \equiv 1 \mod \mathfrak x_3
+    \]
+    are simultaneously solvable. Therefore there exists an algebraic integer
+    \(β_2 ∈ \algint\) such that
+    \[
+      2 β_2 - 1 ∈ \mathfrak x_2  \quad \text{and} \quad
+      3 β_2 - 1 ∈ \mathfrak x_3.
+    \]
+    As a consequence, \((2 β_2 - 1)(3 β_2 - 1)\) is contained in \(\mathfrak x_2
+    \mathfrak x_3 = (α)\), or put differently, there exists a \(β_2 ∈ \algint\)
+    such that
+    \[
+      α β_1 = (2 β_2 - 1)(3 β_3 - 1)
+    \]
+
+    \item\label{ex:N is Diophantine over Z}
+    Each non-negative integer $α$ is the sum of four squares and as a
+    consequence
     \[
       x ∈ ℕ ⇔ ∃β_1,β_2,β_3,β_4∈ℤ: β_1^2 + β_2^2 + β_3^2 + β_4^2 = α.
     \]
-    is a Diophantine definition of $ℕ$ over $ℤ$. A full proof of the claim using \cref{thm:Minkowski} is given in \cite[Remark 4.20]{Milne2017}.
+    is a Diophantine definition of $ℕ$ over $ℤ$. A full proof of the claim using
+    \cref{thm:Minkowski} is given in \cite[Remark 4.20]{Milne2017}.
   \end{exlist}
 \end{exam}
 
