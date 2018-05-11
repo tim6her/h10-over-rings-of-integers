@@ -25,9 +25,10 @@ obtained in a Diophantine way from \(\py_m(a)\) for certain subsequences of the
 sequences defined below.
 
 \begin{defin}
-  Let \(K\) be an algebraic number field, \(\algint\) its ring of algebraic integers
-  and fix \(a ∈ \algint\). One defines \(δ(a) = \sqrt{a^2 - 1}\) and \(ε(a) = a +
-  δ(a)\). If \(δ(a) \not\in K\) one defines \(\px_m(a), \py_m(a) ∈ \algint\) for \(m ∈ ℕ\)
+  Let \(K\) be an algebraic number field, \(\algint\) its ring of algebraic
+  integers and fix \(a ∈ \algint\). One defines \(δ(a) := \sqrt{a^2 - 1}\) and
+  \(ε(a) := a + δ(a)\), where we demand that \(-π/2 < \arg δ(a) ≤ π/2\). If
+  \(δ(a) \not\in K\) one defines \(\px_m(a), \py_m(a) ∈ \algint\) for \(m ∈ ℕ\)
   by
   \[
     \px_m(a) + δ(a) \py_m(a) = {(ε(a))}^m.
@@ -36,15 +37,17 @@ sequences defined below.
 
 This definition includes the case \(K = ℚ\) with \(\algint = ℤ\) of~\cite{Davis1973}. However, I am using the slightly modified notation of~\cite{Denef1980,Pheidas1988}.
 
-As \(δ(a)\) is a root of the monic quadratic polynomial
+Under the assumptions of the definition \(δ(a)\) is a root of the monic
+quadratic polynomial
 \[
-  X^2 - a^2 + 1 ∈ \algint {[X]}
+  X^2 - a^2 + 1 ∈ \algint {[X]}.
 \]
-the extension \(K[δ(a)] / K\) is quadratic and \(δ(a) ∈ \algint[{K[δ(a)]}]\). The
-sequences \(\px_m(a)\) and \(\py_m(a)\) are well defined for each \(m ∈ ℕ\) as they
-correspond to the coefficients of \({(ε(a))}^m\) in \(K[δ(a)]/K\) with respect to the
-basis \(\lbrace 1, δ(a)\rbrace\). If the reference is clear, I will omit the
-dependency on \(a\) writing \(δ, ε, \px_m\) and \(\py_m\).
+Therefore, the extension \(K[δ(a)] / K\) is quadratic and \(δ(a) ∈
+\algint[{K[δ(a)]}]\). The sequences \(\px_m(a)\) and \(\py_m(a)\) are well
+defined for each \(m ∈ ℕ\) as they correspond to the coefficients of
+\({(ε(a))}^m\) in \(K[δ(a)]/K\) with respect to the basis \(\lbrace 1,
+δ(a)\rbrace\). If the reference is clear, I will omit the dependency on \(a\)
+writing \(δ, ε, \px_m\) and \(\py_m\).
 % QUESTION
 \todo{Why does every number field contain such an element \(a\)?}
 In the following the number field \(K[δ(a)]\) will denoted by \(L\).
@@ -52,20 +55,22 @@ In the following the number field \(K[δ(a)]\) will denoted by \(L\).
 \begin{rem}
   As \(L/K\) has degree two, there is exactly one pair of field
   automorphisms\footnote{A field extension of degree two is necessarily normal.}
-  on \(L\) preserving \(K\) point-wise, namely \(σ_1^{K}(α + δβ) = α + δβ\) and \(σ_2^K(α
-  + δβ) = α - δβ\) for \(α, β ∈ \algint\). The latter will be denoted by
-  \(\overline{η} = σ_2^K(η)\) to emphasise the analogy of complex conjugation.
+  on \(L\) preserving \(K\) point-wise, namely \(σ_1^{K}(α + δβ) = α + δβ\) and
+  \(σ_2^K(α + δβ) = α - δβ\) for \(α, β ∈ \algint\). The latter will be denoted
+  by \(\overline{η} = σ_2^K(η)\) to emphasize the analogy of complex
+  conjugation.
 \end{rem}
 
 Let me now collect some properties of these sequences. The proofs are
-generalised versions of the ones given in~\cite{Davis1973}.
+generalized versions of the ones given in~\cite{Davis1973}.
 
 \begin{lem}
   Let \(K\) be an algebraic number field and \(a ∈ \algint\) such that \(δ(a) \not\in K\). Then
   \begin{thmlist}
-    \item\label{lem:epsilon is unit}
-    \(ε\) is a unit in \(\algint[K(δ(a))]\), its inverse is given by \(ε^{-1} = a - δ = \overline{ε}\), and
-    \item \(\px_m, \py_m\) satisfy Pell's equation~\eqref{eq:Pell} for all \(m ∈ ℕ\), using \(d = {δ(a)}^2\) as parameter.
+    \item\label{lem:epsilon is unit} \(ε\) is a unit in \(\algint[L]\), its
+    inverse is given by \(ε^{-1} = a - δ = \overline{ε}\), and
+    \item \(\px_m, \py_m\) satisfy Pell's equation~\eqref{eq:Pell} for all \(m
+    ∈ ℕ\), using \(d = {δ(a)}^2\) as parameter.
   \end{thmlist}
 \end{lem}
 \begin{proof}
@@ -185,8 +190,8 @@ lets one prove properties of the sequences, by proving them for \(m ∈ \lbrace
 0, 1 \rbrace\) and inferring the properties for \(m + 1\) from \(m\) and \(m - 1\).
 
 \begin{lem}\label{lem:recursion for x_m and y_m}
-  Let \(K\) be a number field and \(a ∈ \algint\) such that \(δ = δ(a) \not\in K\).
-  For \(m > 1\) the following recursive conditions hold.
+  Let \(K\) be a number field and \(a ∈ \algint\) such that \(δ = δ(a) \not\in
+  K\). For \(m > 1\) the following recursive conditions hold in $\algint$.
   \begin{align*}
     \px_{m + 1} &= 2 a \px_m - \px_{m - 1}, & \px_1 = a, \;& \px_0 = 1 \\
     \py_{m + 1} &= 2 a \py_m - \py_{m - 1}, & \py_1 = 1, \;& \py_0 = 0 \\
@@ -207,7 +212,8 @@ One applies the previous lemma to prove some congruence conditions.
 
 \begin{lem}
   Let \(K\) be a number field and \(a, b, c ∈ \algint\) such that \(δ(a), δ(b)
-  \not\in K\). Then for all \(m ∈ ℕ\) the following congruences hold.
+  \not\in K\). Then for all \(m ∈ ℕ\) the following congruences hold in
+  $\algint$.
   \begin{plist}
     \item \(\py_m (a) \equiv m \mod (a - 1)\)
     \item If \(a \equiv b \mod (c)\), then \(\px_m (a) \equiv \px_m (b) \mod (c)\) and
@@ -241,11 +247,12 @@ One applies the previous lemma to prove some congruence conditions.
   \end{plist}
 \end{proof}
 
-\begin{lem}
-  Let \(K\) be a number field and \(a ∈ \algint\) such that \(δ = δ(a) \not\in K\).
-  Then for \(m, k ∈ ℕ\) such that \(m ± k ≥ 0\) the following congruence holds.
+\begin{lem}\label{lem:congruence x_2m+k}
+  Let \(K\) be a number field and \(a ∈ \algint\) such that \(δ = δ(a) \not\in
+  K\). Then for \(m, k ∈ ℕ\) such that \(m ± k ≥ 0\) the following congruence
+  holds in $\algint$.
   \[
-    \px_{2 m ± k} \equiv - \px_k(a) \mod (\px_m)
+    \px_{2 m ± k} \equiv - \px_k \mod (\px_m)
   \]
 \end{lem}
 \begin{proof}
@@ -253,16 +260,37 @@ One applies the previous lemma to prove some congruence conditions.
   using that \(\px_m\) and \(\py_m\) solve Pell's equation~\eqref{eq:Pell} one obtains
   \begin{align*}
     \px_{2m ± k} &= \px_m \px_{m ± k} + δ^2 \py_m \py_{m ± k}
-                \equiv δ^2 \py_m (\py_m \px_j ± \px_m \py_j) \\
-               &\equiv δ^2 \py_m^2 \px_j = (\px_m^2 - 1) \px_j \\
-               &\equiv -\px_j \mod (\px_n).
+                \equiv δ^2 \py_m (\py_m \px_k ± \px_m \py_k) \equiv\\
+               &\equiv δ^2 \py_m^2 \px_k = (\px_m^2 - 1) \px_k
+                \equiv -\px_k \mod (\px_m).
   \end{align*}
 \end{proof}
 
 At this point for the first time in this section I state a result that is no
-direct generalisation of a result in~\cite{Davis1973} and present a prove given
-in~\cite{Denef1980}. Note however that the result is nevertheless true for the
+direct generalization of a result in~\cite{Davis1973} and present a proofs given
+in~\cite{Denef1980}. Note however that the results are nevertheless true for the
 case \(K = ℚ\) and \(\algint = ℤ\).
+
+\begin{lem}
+  Let \(K\) be a number field and \(a ∈ \algint\) such that \(δ = δ(a) \not\in
+  K\). Then for all non-negative integers \(k, m ∈ ℕ\) the following congruence
+  holds in \(\algint\).~\cite[cf.][Lem.~6.3.2.(2)]{Shlapentokh2007}
+  \[
+    \px_{2km} \equiv (-1)^k \mod (\px_m)
+  \]
+\end{lem}
+\begin{proof}
+  If \(k = 0\) the congruence becomes and identity and if \(k = 1\) the claim
+  follows directly from the lemma above. Assuming the claim to be proven for all
+  integers lower than \(k\), we find---by applying \cref{lem:addition formulas}
+  twice---that
+  \begin{align*}
+    \px_{2km} &= \px_{2(k-1)m}\px_{2m} + δ^2 \py_{2 (k-1) m}\py_{2m} \equiv
+               (-1)^k + δ^2 \py_{2 (k-1) m}\py_{2m} = \\
+              &= (-1)^k + δ^2 \py_{2 (k-1) m} \; 2 \px_m\py_m \equiv
+               (-1)^k \mod (\px_m)
+  \end{align*}
+\end{proof}
 
 \begin{lem}
   Let \(K\) be a number field and \(a ∈ \algint\) such that \(δ = δ(a) \not\in K\).
@@ -286,7 +314,8 @@ case \(K = ℚ\) and \(\algint = ℤ\).
 \end{proof}
 
 \begin{lem}\label{lem:subgroup of ker N L/K}
-  Let \(K\) be a number field and \(a ∈ \algint\) such that \(δ = δ(a) \not\in K\). Then the set
+  Let \(K\) be a number field and \(a ∈ \algint\) such that \(δ = δ(a) \not\in
+  K\). Then the set
   \[
     S = \set{α + δ β \mid (α, β) ∈ \algint^2 \text{ is a solution to~\eqref{eq:Pell} with parameter } d = δ^2}
   \]
@@ -303,7 +332,7 @@ case \(K = ℚ\) and \(\algint = ℤ\).
     N_{L/K}(α + δ β) = (α + δ β) \left(\overline α + δ β \right) = α^2 - d β^2 = 1.
   \]
   This implies that \(α + δ β ∈ \ker N_{L / K}\) but also that \(α + δ β\) is a
-  unit, as \(α - δ β\) is its inverse. The product of to arbitrary elements \(α_1 + δ β_1, α_2 + δ β_2 ∈ S\) is
+  unit, as \(α - δ β\) is its inverse. The product of two arbitrary elements \(α_1 + δ β_1, α_2 + δ β_2 ∈ S\) is
   \[
     (α_1 + δ β_1)(α_2 + δ β_2) = \underbrace{(α_1 α_2 + δ^2 β_1 β_2)}_{∈ \algint} + δ \underbrace{(α_1 β_2 + α_2 β_1)}_{∈ \algint}
   \]
@@ -342,8 +371,7 @@ case \(K = ℚ\) and \(\algint = ℤ\).
 
 As for the free ranks of \(U_K\), \(U_L\), \(N_{L / K}\left(U_L\right)\) and \(S\) the
 lemma above implies that \(\rk N_{L / K}\left(U_L\right) = \rk U_K\) and
-therefore, as an immediate consequence of the first isomorphism theorem
-\cite[see][II~§1, p.~89]{Lang2002} the following inequality holds
+therefore, as an immediate consequence of the first isomorphism theorem~\cite[see][II~§1, p.~89]{Lang2002} the following inequality holds
 \begin{equation}\label{eq:rank of S}
   \rk S ≤ \rk \ker N_{L / K} = \rk U_L - \rk U_K.
 \end{equation}
@@ -380,11 +408,85 @@ that \(\mathbb A\) cannot correctly decide
   ∃\seq{β}: p_{\mathcal{K}}(α, \seq{β}) = 0.
 \]
 
-\subsection{Hilbert's tenth problem over totally real number fields}
-% QUESTION
-\todo{Do I need to cite Denef1980 again?}
+\subsection{Diophantine definition of \(ℤ\) over \(K\)}
 
-For the remainder of this section let \(K\) be a totally real number field of
+For the remainder of this section let \(K\) be a totally real number field or a
+number field with exactly one pair of non-real embeddings of degree \(n := [K :
+ℚ] ≥ 3\) over the rationals \(ℚ\). In the notation of \cref{thm:Dirichlet} this
+means that either \(r = n > 1\), or \(r = n - 2 > 0\) and \(s = 1\).
+
+Furthermore, let us assume that \(σ_1 = \id_K, σ_2, …, σ_n: K → ℂ\) are all
+embeddings of \(K\) into the complex pane \(ℂ\). If \(s = 1\) we demand without
+loss of generality that $K, σ_2(K) \not\subset ℝ$ and that $σ_2(α) = α$ for all
+\(α ∈ K\). In other words, \((σ_1, σ_2)\) is the pair of complex embeddings and
+all other morphisms embed \(K\) into the reals \(ℝ\).
+
+\begin{lem}\label{lem:L over K is quadratic}
+  Let \(K\) be a number field of degree \(n > 1\) over \(ℚ\). If \(a ∈ \algint\) satisfies
+  \begin{equation}\label{eq:approximations of a}
+    \begin{cases}
+      r = n\\
+      a > 2^{2(n + 1)}\\
+      0 < σ_i(a) < \frac{1}{2} &\text{for } 1 < i ≤ n
+    \end{cases}
+    \quad \text{or} \quad
+    \begin{cases}
+      r = n - 2\\
+      |σ_i(a)| > 2^{2(n + 1)} &\text{for } i ∈ \set{1, 2}\\
+      0 < σ_i(a) < \frac{1}{2} &\text{for } 2 < i ≤ n
+    \end{cases},
+  \end{equation}
+  then \(δ(a) = \sqrt{a^2 - 1}\) is not contained in \(K\).
+\end{lem}
+\begin{proof}
+  By assumption we have \(0 < σ_n(a) < 1/2\) and therefore
+  \(a^2 - 1 < 0\) cannot be a square in \(σ_i(K)\). But then \(δ(a) = \sqrt{a^2 - 1}\) cannot be in \(K\).
+\end{proof}
+
+We will prove later using Minkowski's theorem on convex bodies
+(\cref{thm:Minkowski}), that an algebraic integer $a ∈ \algint$ satisfying
+\eqref{eq:approximations of a} exists and therefore the condition on \(a\) from
+the previous section holds.
+
+\begin{rem}
+  As the expansion \(L = K[δ] / K\) is quadratic by \cref{lem:L over K is
+  quadratic}, every \(σ_i\) can be extended to exactly two embeddings \(σ_{i1}\)
+  and \(σ_{i2}\) of \(L\) into the complex plane \(ℂ\) by ‘composing’ with
+  \(σ_1^K\) or \(σ_2^K\). This yields
+  \begin{equation}\label{eq:def of sigma ij}
+    \begin{aligned}
+      σ_{i1}(α + δβ) &= σ_i(α) + \sqrt{{σ_i(a)}^2 - 1}\, σ_i(β) \quad \text{and} \\
+      σ_{i1}(α + δβ) &= σ_i(α) - \sqrt{{σ_i(a)}^2 - 1}\, σ_i(β)
+    \end{aligned}
+  \end{equation}
+  for all \(α, β ∈ \algint\) and all \(1 ≤ i ≤ n\).
+\end{rem}
+
+I will identify the field \(L\) with its embedding \(σ_{11}(L)\) and write \(η\)
+instead of \(σ_{11}(η)\) for its elements.
+
+\begin{lem}
+  Let \(K\) be a number field of degree \(n > 1\) over \(ℚ\) and let \(a ∈
+  \algint\) be such that \eqref{eq:approximations of a} is satisfied. Then
+  \begin{thmlist}
+    \item if \(r = n\), only \(σ_{11}\) and \(σ_{12}\) embed \(L\) into the
+    reals, and
+    \item if \(r = n - 2\), the field \(L\) is totally complex.
+  \end{thmlist}
+\end{lem}
+\begin{proof}
+  \begin{plist}
+    \item If \(K\) is totally real and \(i > 1\), then \(0 < σ_i(a) < 1/2\) and
+    therefore the radicands in \eqref{eq:def of sigma ij} are both negative. As
+    a consequence, \((σ_{i1}, σ_{i2})\) is a pair of non-real embeddings.
+
+    On the other hand, if \(i = 1\) then \(a > 2^{2(n + 1)} > 1\) and the
+    radicands are both positive. We deduce that \(σ_{11}\) and \(σ_{12}\) are
+    both real embeddings and \(L\) is a subfield of the reals by our
+    identification.
+  \end{plist}
+\end{proof}
+
 degree \(n > 1\) over the rationals \(ℚ\), and let \(\seq{σ}\) denote the embeddings
 of \(K\) into the reals \(ℝ\). Assume \(a ∈ \algint\) satisfies \(δ = δ(a) \not\in
 \algint\) as above and additionally
