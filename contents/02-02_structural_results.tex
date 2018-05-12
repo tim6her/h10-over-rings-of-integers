@@ -3,7 +3,7 @@
 % !TeX spellcheck = en_GB
 % !TeX root = ../Herbstrith-H10_over_AI.tex
 
-\subsection{Computable structures} \label{sec:computable structures}
+\subsection{Computable structures}\label{sec:computable structures}
 
 Up to this point the encoding of problems was treated as some kind of black-box.
 This subsection takes a categorical view on computability and ensures us,
@@ -11,6 +11,29 @@ that---up to a sensible definition---encodings of the rings we concern ourselves
 with do not matter. The interested reader may whish to read the excellent survey
 by \textcite{Stoltenberg1999} on this subject. However, I am using the notation
 of \cite{Khoussainov2000}.
+
+\begin{defin}
+  Let \(Σ = \set{f_i}_{i ∈ I}\) be a signature with an at most countable index
+  set \(I\).
+  \begin{thmlist}
+    \item The \emph{arity-function} \(\mathrm{ar}: I → ℕ\) assigns to each index
+    \(i\) the arity of \(f_i\).
+    \item The signature \(Σ\) is \emph{computable} if \(I \subseteq ℕ\) is
+    decidable and \(\mathrm{ar}\) is computable.
+  \end{thmlist}
+\end{defin}
+
+Of course, all signatures we will consider---and have considered so far---are
+computable. In fact, they are all either finite, or contain only finitely many
+non-constant symbols. However, in principal one could consider the signature
+\(Σ_{\mathcal K} = \set{f_1, f_2, …}\) where
+\[
+  \mathrm{ar}(i) = \begin{cases}
+                      0 & \text{if } i \not\in \mathcal{K}\\
+                      1 & \text{if } i ∈ \mathcal{K}
+                   \end{cases}
+\]
+is the characteristic function of the halting set.
 
 \begin{defin}
   Let $Σ = \set{f_1, f_2, …}$ be a computable signature.

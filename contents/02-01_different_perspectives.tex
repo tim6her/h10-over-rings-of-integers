@@ -169,19 +169,18 @@ was done when typesetting this thesis---by the concatenation of the
 \textsc{UTF-8} encodings of the symbols.
 % QUESTION
 \todo{One can show that the \(Σ_{ring}\)-theory of \(ℂ\) is complete (Vaught's test) and therefore decidable. Should I present this? cf.~\url{https://math.stackexchange.com/a/103187/422444}}
-A second approach for generalisation is
-exchanging $Σ_{ring}$ by some other at computable\footnote{This means that the
-set of codes of symbols in the signature is decidable and the function, mapping
-each symbol to its arity is computable} signature. Then one is in
-the realm of constraint satisfaction problems. Or one could consider the full
-first order theory of $\mathfrak Z$. Then Gödel's first incompleteness theorem
-gives a negative answer to the question, whether $\mathtt{Th}(\mathfrak Z)$ is
-decidable.\footnote{Actually, Gödel's first incompleteness theorem implies---under the assumption that Peano arithmetic is consistent---that
-the full first order theory of $\mathfrak N = ⟨ℕ; +^{\mathfrak N},
-\cdot^{\mathfrak N}; 0^{\mathfrak N}, 1^{\mathfrak N}⟩$ is undecidable, but by
-\cref{ex:N is Diophantine over Z} we can transform any first order sentence
-$\mathtt{ϕ(x_1, …, x_n)}$ to a first order sentence where $\mathtt ϕ$ is
-appended by a conjunction of formulas
+A second approach for generalisation is exchanging $Σ_{ring}$ by some other
+computable signature (see \cref{sec:computable structures}). Then one is in the
+realm of constraint satisfaction problems. Or one could consider the full first
+order theory of $\mathfrak Z$. Then Gödel's first incompleteness theorem gives a
+negative answer to the question, whether $\mathtt{Th}(\mathfrak Z)$ is
+decidable.\footnote{Actually, Gödel's first incompleteness theorem
+implies---under the assumption that Peano arithmetic is consistent---that the
+full first order theory of $\mathfrak N = ⟨ℕ; +^{\mathfrak N}, \cdot^{\mathfrak
+N}; 0^{\mathfrak N}, 1^{\mathfrak N}⟩$ is undecidable, but by \cref{ex:N is
+Diophantine over Z} we can transform any first order sentence $\mathtt{ϕ(x_1, …,
+x_n)}$ to a first order sentence where $\mathtt ϕ$ is appended by a conjunction
+of formulas
 \[
   \mathtt{ ∃ x_{i1} ∃x_{i2} ∃x_{i3} ∃x_{i4} \; x_i \doteq x_{i1} \cdot x_{i1} +
   x_{i2} \cdot x_{i2} + x_{i3} \cdot x_{i3} + x_{i4} \cdot x_{i4}}
