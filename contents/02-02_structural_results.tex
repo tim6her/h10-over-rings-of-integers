@@ -340,4 +340,56 @@ undecidability of Hilbert's tenth problem over $ℤ$.
 \end{cor}
 
 Note that this corollary applies to $\algint$ for each algebraic number field
-$K$ since the quotient field of $\algint$ is (isomorphic to) $K$.
+$K$ since the quotient field of $\algint$ is (isomorphic to) $K$. In fact, one
+can even strengthen the result of the corollary in this case \cite[cf.][§~11]{Davis1976}.
+
+\begin{thm}\label{thm:CE sets are Diophantine}
+  Let \(K ≠ ℚ\) be an algebraic number field and \(\algint\) its ring of
+  algebraic integers. Then every semi-decidable subset of \(\algint\) is
+  Diophantine if and only if the rational integers \(ℤ\) are Diophantine over
+  \(\algint\).
+\end{thm}
+\begin{proof}
+  As the \(Σ_{ring}^*\)-structure of \(\algint\) is computable, the
+  interpretations of the constants \(\mathtt{-1, 0, 1}\) and addition are
+  computable. As a consequence, the surjective function \(f: ω → ℤ \subseteq
+  \algint\) defined by
+  \[
+    f(n) = \Bigg\lbrace\begin{array}{l l}
+             0 \overbrace{+ 1 … + 1}^{k\text{-times}} & \text{if } n = 2k\\
+             0 \underbrace{+ (-1) … + (-1)}_{k\text{-times}} & \text{if } n = 2k + 1
+           \end{array}
+  \]
+  is computable and \(ℤ\) is semi-decidable. Thus, it suffices to prove that if
+  \(ℤ\) is Diophantine over \(\algint\), then every semi-decidable set is
+  Diophantine over \(\algint\).
+
+  Let \(A \subseteq \algint^k\) be semi-decidable and let \(\set{ζ_1, …, ζ_n}\)
+  be an integral basis for \(\algint\) over \(ℤ\). We define the set of all
+  coefficients of elements in \(A\) by
+  \[
+    R := \set{a_{11}, …, a_{1n}, …, a_{k1}, …, a_{kn} ∈ ℤ \,\middle\vert\,
+              \left(\sum_{i=1}^n a_{ij} ζ_i\right)_{1 ≤ j ≤ k} ∈ A}.
+  \]
+  As \(A\) is semi-decidable so is \(R\). By assumption there exists a polynomial \(p\) with coefficients in \(\algint\) such that
+  \begin{align*}
+    &a_{11}, …, a_{1n}, …, a_{k1}, …, a_{kn} ∈ R ⇔\\
+    &\quad ∃ \seq[m]{β} ∈ \algint: p(a_{11}, …, a_{1n}, …, a_{k1}, …, a_{kn}, \seq[m]{β}) = 0.
+  \end{align*}
+  It immediately follows that
+  \begin{align*}
+    &\seq[k]{α} ∈ A ⇔\\
+    & \quad ∃ a_{11}, …, a_{1n}, …, a_{k1}, …, a_{kn} ∈ ℤ\,
+      ∃ \seq[m]{β} ∈ \algint :\\
+    & \quad \begin{cases}
+              p(a_{11}, …, a_{1n}, …, a_{k1}, …, a_{kn}, \seq[m]{y}) = 0\\
+              α_1 = a_{11} ζ_1 + … + a_{1n} ζ_n\\
+              \vdots\\
+              α_k = a_{k1} ζ_1 + … + a_{kn} ζ_n
+            \end{cases}
+  \end{align*}
+  By the same argument as in the proof of \cref{lem:moving up} one can translate
+  the above conditions into a Diophantine definition of \(A\) over \(\algint\),
+  by appending the system with polynomial equations stating that \(a_{ij} ∈ ℤ\)
+  for \(1 ≤ i ≤ n\) and \(1 ≤ j ≤ k\).
+\end{proof}
