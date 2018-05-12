@@ -13,7 +13,7 @@ by \textcite{Stoltenberg1999} on this subject. However, I am using the notation
 of \cite{Khoussainov2000}.
 
 \begin{defin}
-  Let $Σ = \set{f_1, f_2, …}$ be an at most countable signature.
+  Let $Σ = \set{f_1, f_2, …}$ be a computable signature.
   \begin{thmlist}
     \item An algebraic structure $\mathfrak A = ⟨A; f_1^{\mathfrak A},
     f_2^{\mathfrak A}, …⟩$, with $A \subseteq ω$, is called \emph{computable
@@ -80,15 +80,15 @@ of \cite{Khoussainov2000}.
 
     \item \label{ex:polynomials are computable}
     If $R$ is a computable integral domain, then the polynomial algebras
-    $R[X_1, …, X_n]$ in arbitrary many indeterminates ($n ∈ ℕ^*$) and $R[X_1,
+    $R[X_1, …, X_n]$ in arbitrary many indeterminates and $R[X_1,
     X_2, …]$ in countably many indeterminates are computable $R$-algebras.
 
     A possible implementation starts by implementing the monoid $⟨M; \cdot; X_i
     \mid i ∈ ℕ⟩$ and extends it to the $R$-algebra $R[X_1, X_2, …]$. Within
-    $R[X_1, X_2, …]$ every subalgebra $R[X_1, …, X_n]$ is decidable ($n ∈ ℕ^*$)
-    and as a consequence is computable. See \cite[Sec.~4.4]{Stoltenberg1999} for
-    a more detailed discussion and \cref{app:polynomials} for a sample
-    implementation based on this idea.
+    $R[X_1, X_2, …]$ the domain of every subalgebra $R[X_1, …, X_n]$ is
+    decidable and therefore the structure is computable. See
+    \cite[Sec.~4.4]{Stoltenberg1999} for a more detailed discussion and
+    \cref{app:polynomials} for a sample implementation based on this idea.
 
     \item In general $ℤ$ and $\algint$ viewed as $Σ_{ring}^*$ structures are
     efficiently presentable. As for integers, one extends the presentation of
@@ -121,7 +121,7 @@ isomorphism between them. We will see that the last example differs from the
 others in this regard.
 
 \begin{defin}
-  Let $Σ = \set{f_1, f_2, …}$ be an at most countable signature. An
+  Let $Σ = \set{f_1, f_2, …}$ be a computable signature. An
   algebraic structure $\mathfrak A = ⟨A; f_1^{\mathfrak A}, f_2^{\mathfrak A},
   …⟩$ is called \emph{computably categorical} if it is efficiently
   representable and every pair of efficient representations is computably
@@ -149,11 +149,17 @@ finitely many values of the isomorphism $φ_2 \circ φ_1^{-1}$ in memory one can
 use the computabilty of $R_1$ and $R_2$ respectively to extend the partial
 mapping in the obvious way.
 
-With this technicality out of the way, I will from now on not distinguish
-between $\algint$ and its efficient representations. However, there are
-structures where the choice of representation matters. In fact, $⟨ℕ, ≤⟩$ is not
-computably categorical. A proof using the undecidability of the halting problem
-can be found in \cite[Prob. 1.6]{Shore}.
+As for the decidability of \textsc{H10} over some ring of algebraic integers
+\(\algint\) this means, that if we have two encodings of \(\algint\) then the
+set, obtained by encoding all polynomials with roots under the first encoding,
+can be efficiently translated to the respective set under the second encoding,
+as long as both encodings allow us to evaluate polynomial expressions. With this
+technicality out of the way I will from now on not differentiate between
+\(\algint\) and its effective representation.
+
+However, there are structures where the choice of representation matters. In
+fact, $⟨ℕ, ≤⟩$ is not computably categorical. A proof using the undecidability
+of the halting problem can be found in \cite[Prob. 1.6]{Shore}.
 
 Using that $\algint$ is computably categorical for each algebraic number field
 $K$ we observe that \textsc{H10} is semi-decidable over $\algint$. An algorithm
@@ -276,17 +282,23 @@ Let $f(X, Y_1, …, Y_n)$ be a Diophantine definition of $R_1$ over $R_2$ and
 assume that \textsc{H10} is decidable over $R_2$. We prove that \textsc{H10} is
 decidable over $R_1$ as well, contradicting our assumption.
 
-Let $p ∈ R_1[T_1, …, T_m]$ be a Diophantine definition of $S$ over
-$R_1$. Then
+Let \(S \subseteq R_1^m\) be Diophantine over \(R_1\). Then there exists some
+polynomial
 \[
-  S = \left\lbrace ∃α_1,…,α_m, β_{1,1}, …, β_{m,n} ∈ R_2 \;\middle|\; p(α_1, …, α_m) = 0 ∧ \bigwedge_{i=1}^m f(α_i, β_{i,1},…,β_{i,n}) = 0 \right\rbrace
+  p ∈ R_1[X_1, …, X_m, Y_1, …, Y_ℓ]
+\]
+witnessing that \(S\) is
+Diophantine. To make notation clearer, I assume \(ℓ = m = n = 1\). The general
+case follows completely analogously. Then
+\[
+  S = \left\lbrace  α ∈ R_2 \;\middle|\; ∃β, γ_1, γ_2 ∈ R_2 p(α, β) = 0 ∧ f(α, γ_1) = 0 ∧ f(β, γ_2) = 0\right\rbrace
 \]
 is a Diophantine definition of $S$ over $R_2$. If $\mathfrak R_1$ is the
 $Σ_{ring}^*$-structure of $R_1$ and $\mathfrak R_2$ the respective
 structure of $R_2$, this equation can be restated as
 \begin{align*}
-  \mathfrak R_1 &\models \mathtt{∃ α_1 … ∃ α_m \; p(α_1, …, α_m) \doteq 0} ⇔ \\
-  \mathfrak R_2 &\models \mathtt{∃ α_1 … ∃ α_m ∃ β_{1,1} … ∃ β_{m,n} \; p(α_1, …, α_m) \doteq 0 ∧ \bigwedge_{i=1}^m f(α_i, β_{i,1},…,β_{i,n})} \doteq 0,
+  α ∈ S &⇔ \mathfrak R_1 \models \mathtt{∃ x \; p(α, x) \doteq 0} ⇔ \\
+  &⇔\mathfrak R_2 \models \mathtt{∃ x ∃ y_1 ∃ y_2 \; p(α, x) \doteq 0 ∧ f(α, y_1) \doteq 0 ∧ f(x, y_2) \doteq 0},
 \end{align*}
 where the latter sentence can clearly be obtained efficiently from the first one
 again by an algorithm depending on $R_1$ and $R_2$ but not on $p$. Therefore,

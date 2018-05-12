@@ -50,7 +50,7 @@ defined for each \(m ∈ ℕ\) as they correspond to the coefficients of
 writing \(δ, ε, \px_m\) and \(\py_m\).
 % QUESTION
 \todo{Why does every number field contain such an element \(a\)?}
-In the following the number field \(K[δ(a)]\) will denoted by \(L\).
+In the following the number field \(K[δ(a)]\) will be denoted by \(L\).
 
 \begin{rem}
   As \(L/K\) has degree two, there is exactly one pair of field
@@ -108,8 +108,8 @@ where \(\px_m\) plays the role of \(\cos m\), \(\py_m\) the one of \(\sin m\), a
   {\cos (m)}^2 + {\sin (m)}^2 = 1.
 \]
 
-The next lemma proves the identities corresponding to \(\cos m = \Re e^m\), \(\sin
-m = \Im e^m\), and the addition formulas.
+The next lemma proves the identities corresponding to \(\cos m = \Re e^{im}\),
+\(\sin m = \Im e^{im}\), and the addition formulas.
 
 \begin{lem}
   Let \(K\) be an algebraic number field and \(a ∈ \algint\) such that \(δ = δ(a) \not\in K\). Then for all \(m, k ∈ ℕ\) one has
@@ -202,7 +202,7 @@ lets one prove properties of the sequences, by proving them for \(m ∈ \lbrace
   the difference equations one uses \cref{lem:addition formulas} and obtains
   \begin{align*}
     \px_{m + 1} &= a \px_m + δ^2 \py_m,  &  \py_{m + 1} &= a \py_m + \px_m, \\
-    \px_{m - 1} &= a \px_m - δ^2 \py_m,  &  \py_{m + 1} &= a \py_m - \px_m.
+    \px_{m - 1} &= a \px_m - δ^2 \py_m,  &  \py_{m - 1} &= a \py_m - \px_m.
   \end{align*}
   Summation yields \(\px_{m + 1} + \px_{m - 1} = 2 a \px_m\) and \(\py_{m + 1} + \py_{m - 1}
   = 2 a \py_m\).
@@ -221,7 +221,7 @@ One applies the previous lemma to prove some congruence conditions.
   \end{plist}
 \end{lem}
 \begin{proof}
-  The first and second congruence become equalities if \(m = 0\). As for \(m = 1\),
+  Both congruences become equalities if \(m = 0\). As for \(m = 1\),
   the first congruence is again an equality as \(\py_1 (a) = 1\) independently of
   \(a\). The second claim is trivial since \(x_1 (η) = η\) and \(\py_1 (η) = 1\) for \(η
   ∈ \lbrace a, b \rbrace\). At this point one proceeds inductively and assumes
@@ -267,7 +267,7 @@ One applies the previous lemma to prove some congruence conditions.
 \end{proof}
 
 At this point for the first time in this section I state a result that is no
-direct generalization of a result in~\cite{Davis1973} and present a proofs given
+direct generalization of a result in~\cite{Davis1973} and present proofs given
 in~\cite{Denef1980}. Note however that the results are nevertheless true for the
 case \(K = ℚ\) and \(\algint = ℤ\).
 
@@ -301,6 +301,8 @@ case \(K = ℚ\) and \(\algint = ℤ\).
 \end{lem}
 \begin{proof}
   The quotient of the non-trivial, finitely generated \(\algint\)-modules \(\algint[L]\) and \((2 δ η)\)
+  % TODO
+  \todo{Do I need this lemma?}
 
   Let \(m\) be the order of the group of units in the finite ring
   \(\algint[L]/(2 δ η)\), where \((2 δ η)\) denotes the principal ideal
@@ -319,7 +321,7 @@ case \(K = ℚ\) and \(\algint = ℤ\).
   \[
     S = \set{α + δ β \mid (α, β) ∈ \algint^2 \text{ is a solution to~\eqref{eq:Pell} with parameter } d = δ^2}
   \]
-  is a subgroup of the kernel of the norm map \(N_{L/K}: U_L → U_K\), where \(U_K\) and \(U_L\) denote the group of units in \(\algint\) and \(\algint[L]\) respectively.
+  is a subgroup of the kernel of the norm map \(N_{L/K}: U_L → U_K\), where \(U_K\) and \(U_L\) denote the groups of units in \(\algint\) and \(\algint[L]\) respectively.
 \end{lem}
 \begin{proof}
   First of all, note that, if \(α + δ β ∈ S\), so is \(\overline{α + δ β} = α - δ
@@ -334,9 +336,15 @@ case \(K = ℚ\) and \(\algint = ℤ\).
   This implies that \(α + δ β ∈ \ker N_{L / K}\) but also that \(α + δ β\) is a
   unit, as \(α - δ β\) is its inverse. The product of two arbitrary elements \(α_1 + δ β_1, α_2 + δ β_2 ∈ S\) is
   \[
-    (α_1 + δ β_1)(α_2 + δ β_2) = \underbrace{(α_1 α_2 + δ^2 β_1 β_2)}_{∈ \algint} + δ \underbrace{(α_1 β_2 + α_2 β_1)}_{∈ \algint}
+    (α_1 + δ β_1)(α_2 + δ β_2) = (α_1 α_2 + δ^2 β_1 β_2) + δ (α_1 β_2 + α_2 β_1).
   \]
-  again of the desired form and as \(\ker N_{L / K}\) is closed under multiplication, \((α_1 + δ β_1)(α_2 + δ β_2)\) is contained in \(S\).
+  We apply the automorphism \(\overline\cdot\) and multiply to obtain
+  \[
+    (α_1 + δ β_1)(α_2 + δ β_2)\,\overline{(α_1 + δ β_1)(α_2 + δ β_2)} =
+    (α_1 + δ β_1)\overline{(α_1 + δ β_1)}(α_2 + δ β_2)\overline{(α_2 + δ β_2)} = 1.
+  \]
+  As a consequence, \(S\) is closed under multiplication and the claim is
+  proven.
 \end{proof}
 
 \begin{lem}\label{lem:rank of N_L/K U_L}

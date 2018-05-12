@@ -29,9 +29,9 @@ that will be made precise in \cref{sec:computable structures}.
   connected or not. If one demands the vertex set to be of the form
   $\set{0, 1, …, n}$, then the set of all graphs can be encoded
   as the set of the respective adjacency matrices written as a string
-
-  \[b_{00}b_{01} …b_{0n}b_{10}…b_{nn}\]
-
+  \[
+    b_{00}b_{01} …b_{0n}b_{10}…b_{nn}
+  \]
   of length $(n + 1)^2$, where $b_{ij} = \one$ if and only if the
   vertices $i$ and $j$ are connected.
 \end{exam}
@@ -41,9 +41,9 @@ that will be made precise in \cref{sec:computable structures}.
   $A = \lbrace \sta, \emp, \zer, \one \rbrace$ is a tuple $(S, δ)$,
   where $\sstart, \shalt ∈ S$ is a finite non-empty set, called
   \emph{set of states}, and
-
-  \[δ: S × A → S × A × \lbrace -1, 0, 1 \rbrace\]
-
+  \[
+    δ: S × A → S × A × \lbrace -1, 0, 1 \rbrace
+  \]
   is called \emph{transition function}. If $δ(s, a) = (s', b, m)$, one
   demands that the following axioms are satisfied
 
@@ -66,9 +66,9 @@ Let us look at the example of the Turing machine in \cref{fig:Turing machine}.
 During the run of the machine the head reads the symbol $\zer$ at the current
 position and the machine evaluates the transition function $δ$ at $\zer$ and the
 current state $\state{overflow}$. Now assume that
-
-\[ δ(\state{overflow}, \zer) = (\state{return}, \one, -1). \]
-
+\[
+  δ(\state{overflow}, \zer) = (\state{return}, \one, -1).
+\]
 One interprets this in the following way. The Turing machine changes its state
 to $\state{return}$, the head writes $\one$ in the current cell and moves one
 cell to the left. The movement is determined by the last item of the triple
@@ -92,9 +92,9 @@ A configuration of the form $(\shalt, 0, c)$ is called \emph{halting}. A
 \emph{start configuration} is of the form $(\sstart, 0, c)$ such that $c(0) =
 \sta$ and there exists an $n ∈ ℕ$ such that $c(i) = \emp$ if and only if $i >
 n$. This means that in a start configuration the work-tape reads
-
-\[\sta x_1 x_2 … x_n \emp \emp …\]
-
+\[
+  \sta x_1 x_2 … x_n \emp \emp …
+\]
 It will be very convenient to identify the finite string $x_1…x_n$ with this
 tape content.
 
@@ -155,7 +155,7 @@ using the \emph{Haskell} programming language.
     δ_\text{add1})$ that adds $1$ to a (possibly zero-patched) binary
     representation of a natural number $n$. Its transition function is described
     in \cref{lst:add1}. The last line of the program ensures, that $δ$ is a
-    complete function, as it matches all remaining pairs of states and
+    total function, as it matches all remaining pairs of states and
     characters and lets the machine enter the state $\state{error}$. The
     complete run of $\mathbb A_\text{add1}$ on $\one\one\zer\one$ can be seen in
     \cref{fig:complete run}.
@@ -306,7 +306,7 @@ stops at the latest.
       \end{align*}
 
       In other words, $n$ is mapped to the $n$-th string if one orders $\lbrace
-      \zer, \one \rbrace ^ ℕ$ lexicographically. Following an tradition in
+      \zer, \one \rbrace ^ ℕ$ lexicographically. Following a tradition in
       logics I denote $ℕ$ under this last encoding by $ω$.
     \end{exlist}
 
@@ -357,7 +357,7 @@ Of course by applying a pairing function iteratively one obtains an $n$-ary pair
   (x_1, x_2, x_3) ↦ ⟨x_1, ⟨x_2, x_3⟩⟩
 \]
 yields a ternary pairing function and $π_1\circ π_2$ is the projection onto
-$x_2$. Using any of the pairing functions above one can consider $n$-ary
+$x_2$. Using any of the pairing functions above, one can consider $n$-ary
 computable functions by providing the encoded pair $⟨x_1, x_2, …, x_n⟩$ as the
 single argument of a Turing machine $\mathbb A$. If the context is clear, I will
 write $\mathbb A(\seq{x})$ in this situation.

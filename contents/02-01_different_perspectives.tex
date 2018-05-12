@@ -80,7 +80,7 @@ called Diophantine if it is Diophantine viewed as a relation.
     \item Let $K$ be a number field and $\algint$ its ring of algebraic integers. Then $\algint \setminus \set{0}$ is
     Diophantine over $R$. I extend the hint stated in \cite[Prop. 1]{Denef1978} and claim that
     \[
-      α ≠ 0 ⇔ ∃ β_1, β_2 : α β_1 = (2 β_2 - 1)(3 β_3 - 1).
+      α ≠ 0 ⇔ ∃ β, γ ∈ \algint : α β = (2 γ - 1)(3 γ - 1).
     \]
 
     Firstly, note that the polynomial on the right hand side has the roots $1/2$
@@ -88,29 +88,42 @@ called Diophantine if it is Diophantine viewed as a relation.
     number fields $K$, one obtains that the polynomial identity can only be
     satisfied for $α ≠ 0$.
 
-    Let now \(α ≠ 0\). We can find ideals \(\mathfrak x_2, \mathfrak x_3\) such
-    that \((α) = \mathfrak x_2 \mathfrak x_3\) and \((2) + \mathfrak x_2 =
-    \algint\), \((3) + \mathfrak x_3 = \algint\) as well as \(\mathfrak x_2 +
-    \mathfrak x_3 = \algint\). This is because \(2\) and \(3\) are rational
-    primes and therefore \((2)\) and \((3)\) are relative prime.
+    Let now \(α ≠ 0\). We can decompose the ideal \((α) = \mathfrak x_2
+    \mathfrak x_3\) such that
+    \[
+    (2) + \mathfrak x_2 =
+    \algint, \; (3) + \mathfrak x_3 = \algint \, \text{and } \, \mathfrak x_2 +
+    \mathfrak x_3 = \algint.
+    \]
+    This is because \(2\) and \(3\) are rational primes and therefore \((2)\)
+    and \((3)\) are relative prime.
     % see Baxa Thm 120
-     As a consequence of the Chinese remainder
-     theorem~\cite[see][3.6]{Neukirch2006} the congruences
+    In other words, we find
     \[
-      2 β_2 \equiv 1 \mod \mathfrak x_2 \quad \text{and} \quad
-      3 β_2 \equiv 1 \mod \mathfrak x_3
+      ∃ x_2 ∈ \mathfrak x_2, ∃ y_2 ∈ \algint : 2 y_2 + x_2 = 1 \quad \text{and} \quad
+      ∃ x_3 ∈ \mathfrak x_3, ∃ y_3 ∈ \algint : 3 y_3 + x_3 = 1
     \]
-    are simultaneously solvable. Therefore there exists an algebraic integer
-    \(β_2 ∈ \algint\) such that
+     As a consequence of the Chinese remainder theorem~\cite[see][Chap.~I,
+     Thm~3.6]{Neukirch2006} the congruences
     \[
-      2 β_2 - 1 ∈ \mathfrak x_2  \quad \text{and} \quad
-      3 β_2 - 1 ∈ \mathfrak x_3.
+      γ \equiv y_2 \mod \mathfrak x_2 \quad \text{and} \quad
+      γ \equiv y_3 \mod \mathfrak x_3
     \]
-    As a consequence, \((2 β_2 - 1)(3 β_2 - 1)\) is contained in \(\mathfrak x_2
-    \mathfrak x_3 = (α)\), or put differently, there exists a \(β_2 ∈ \algint\)
+    are simultaneously solvable. This implies that
+    \[
+      2 γ \equiv 2 y_2 \equiv 1 \mod \mathfrak x_2 \quad \text{and} \quad
+      3 γ \equiv 3 y_3 \equiv 1 \mod \mathfrak x_3.
+    \]
+    Which can be rewritten as
+    \[
+      2 γ - 1 ∈ \mathfrak x_2  \quad \text{and} \quad
+      3 γ - 1 ∈ \mathfrak x_3.
+    \]
+    As a consequence, \((2 γ - 1)(3 γ - 1)\) is contained in \(\mathfrak x_2
+    \mathfrak x_3 = (α)\), or put differently, there exists a \(β ∈ \algint\)
     such that
     \[
-      α β_1 = (2 β_2 - 1)(3 β_3 - 1)
+      α β = (2 γ - 1)(3 γ - 1)
     \]
 
     \item\label{ex:N is Diophantine over Z}
@@ -125,14 +138,14 @@ called Diophantine if it is Diophantine viewed as a relation.
 \end{exam}
 
 Let $Σ_{ring} = \set{+,\cdot; 0, 1}$ be the signature of rings and let
-$\mathfrak{Z} = ⟨ℤ; +^\mathfrak{Z}, \cdot^\mathfrak{Z}; 0^\mathfrak{Z},
-1^\mathfrak{Z}⟩$ denote the integers as $Σ_{ring}$-structure. Then \textsc{H10}
+$\mathfrak{Z} = ⟨ℤ; +^{\mathfrak{Z}}, \cdot^{\mathfrak{Z}}; 0^{\mathfrak{Z}},
+1^{\mathfrak{Z}}⟩$ denote the integers as $Σ_{ring}$-structure. Then \textsc{H10}
 asks whether the existential positive theory $\mathtt{Th}_{∃+}(\mathfrak{Z})$ is
 decidable. That is the theory of $\mathfrak{Z}$ containing only fully
 existentially quantified atomic formulas or conjunctions---no negations,
 disjunctions or universal quantifiers.
 
-This claim can be justified by observing that each non-negative integer $n$ can
+This claim can be justified by observing that each positive integer $n$ can
 be expressed as
 \[
   \underbrace{\mathtt{1 + 1 + … + 1}}_{n\text{-times}}.
@@ -140,7 +153,7 @@ be expressed as
 So the question whether $X_1 - (X_2 + 2) (X_3 + 2)$ has integral roots is
 equivalent to asking whether
 \[
-  \mathfrak Z \models \mathtt{∃ α_1 ∃ α_2 ∃ α_3 \; α_1 \doteq (α_2 + 1 + 1) \cdot (α_3 + 1 + 1)}.
+  \mathfrak Z \models \mathtt{∃ x_1 ∃ x_2 ∃ x_3 \; x_1 \doteq (x_2 + 1 + 1) \cdot (x_3 + 1 + 1)}.
 \]
 We will see in \cref{lem:intersections and unions} that for certain integral
 domains including $\mathfrak Z$ conjunctions of multiple polynomial equations
@@ -153,22 +166,27 @@ $\mathfrak Z$ by some other ring. Even uncountable rings like $\mathfrak C = ⟨
 possible, as $Σ_{ring}$ is finite and therefore each sentence in
 $\mathtt{Th}_{∃+}(\mathfrak{C})$ can be encoded by its Gödelisation or---as it
 was done when typesetting this thesis---by the concatenation of the
-\textsc{UTF-8} encodings of the symbols. A second approach for generalisation is
-exchanging $Σ_{ring}$ by some other at most countable signature. Then one is in
+\textsc{UTF-8} encodings of the symbols.
+% QUESTION
+\todo{One can show that the \(Σ_{ring}\)-theory of \(ℂ\) is complete (Vaught's test) and therefore decidable. Should I present this? cf.~\url{https://math.stackexchange.com/a/103187/422444}}
+A second approach for generalisation is
+exchanging $Σ_{ring}$ by some other at computable\footnote{This means that the
+set of codes of symbols in the signature is decidable and the function, mapping
+each symbol to its arity is computable} signature. Then one is in
 the realm of constraint satisfaction problems. Or one could consider the full
 first order theory of $\mathfrak Z$. Then Gödel's first incompleteness theorem
 gives a negative answer to the question, whether $\mathtt{Th}(\mathfrak Z)$ is
-decidable.\footnote{Actually, Gödel's first incompleteness theorem implies that
+decidable.\footnote{Actually, Gödel's first incompleteness theorem implies---under the assumption that Peano arithmetic is consistent---that
 the full first order theory of $\mathfrak N = ⟨ℕ; +^{\mathfrak N},
 \cdot^{\mathfrak N}; 0^{\mathfrak N}, 1^{\mathfrak N}⟩$ is undecidable, but by
 \cref{ex:N is Diophantine over Z} we can transform any first order sentence
-$\mathtt{ϕ(α_1, …, α_n)}$ to a first order sentence where $\mathtt ϕ$ is
+$\mathtt{ϕ(x_1, …, x_n)}$ to a first order sentence where $\mathtt ϕ$ is
 appended by a conjunction of formulas
 \[
-  \mathtt{ ∃ α_{i1} ∃α_{i2} ∃α_{i3} ∃α_{i4} \; α_i \doteq α_{i1} \cdot α_{i1} +
-  α_{i2} \cdot α_{i2} + α_{i3} \cdot α_{i3} + α_{i4} \cdot α_{i4}}
+  \mathtt{ ∃ x_{i1} ∃x_{i2} ∃x_{i3} ∃x_{i4} \; x_i \doteq x_{i1} \cdot x_{i1} +
+  x_{i2} \cdot x_{i2} + x_{i3} \cdot x_{i3} + x_{i4} \cdot x_{i4}}
 \]
-for $1 ≤ i ≤ n$, stating that $\mathtt{\seq α}$ are non-negative integers.
+for $1 ≤ i ≤ n$, stating that $\mathtt{\seq x}$ are non-negative integers.
 }
 
 I will use the second approach and replace $Σ_{ring}=\set{+, \cdot;
