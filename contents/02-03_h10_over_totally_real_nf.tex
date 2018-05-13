@@ -185,7 +185,7 @@ the subsequent one, which brings divisibility into play.
 \end{proof}
 
 The next lemma even though being easy to prove provides a valuable tool in
-studying the sequences \(\px_m\) and \(\py_m\). It derives an recursive definition and
+studying the sequences \(\px_m\) and \(\py_m\). It derives a recursive definition and
 lets one prove properties of the sequences, by proving them for \(m ∈ \lbrace
 0, 1 \rbrace\) and inferring the properties for \(m + 1\) from \(m\) and \(m - 1\).
 
@@ -339,10 +339,12 @@ nevertheless true for the case \(K = ℚ\) and \(\algint = ℤ\).
     (α_1 + δ β_1)(α_2 + δ β_2) = (α_1 α_2 + δ^2 β_1 β_2) + δ (α_1 β_2 + α_2 β_1).
   \]
   We apply the automorphism \(\overline\cdot\) and multiply to obtain
-  \[
-    (α_1 + δ β_1)(α_2 + δ β_2)\,\overline{(α_1 + δ β_1)(α_2 + δ β_2)} =
+  \begin{align*}
+    (α_1 α_2 + δ^2 β_1 β_2)^2 - δ^2 (α_1 β_2 + α_2 β_1)^2 &=
+    (α_1 + δ β_1)(α_2 + δ β_2)\,\overline{(α_1 + δ β_1)(α_2 + δ β_2)} =\\
+    &=
     (α_1 + δ β_1)\overline{(α_1 + δ β_1)}(α_2 + δ β_2)\overline{(α_2 + δ β_2)} = 1.
-  \]
+  \end{align*}
   As a consequence, \(S\) is closed under multiplication and the claim is
   proven.
 \end{proof}
@@ -522,7 +524,7 @@ Before we can start proving some approximations for the complex moduli of \(ε,
 
 \begin{rem}
   \begin{exlist}
-    \item Since \(ε\) is a unit [cf.~\cref{lem:epsilon is unit}] and \(σ_{12}(ε)\) is its inverse. The same holds true for all pairs of embeddings \((σ_i1)_{j ∈ \set{1, 2}}\). As a consequence,
+    \item Since \(ε\) is a unit [cf.~\cref{lem:epsilon is unit}] and \(σ_{12}(ε)\) is its inverse. The same holds true for all pairs of embeddings \((σ_{i1}, σ_{i2})\). As a consequence,
     \[
       |σ_{i1}(ε)| |σ_{i2}(ε)| = 1,
     \]
@@ -539,8 +541,8 @@ Before we can start proving some approximations for the complex moduli of \(ε,
   \begin{thmlist}
     \item \(|a_i|/2 < |δ_i| < |a_i| + 1\) for \(0 ≤ i ≤ s + 1\).
     \item \(1/2 < | δ_i | < 1\) for \(s + 1 < i ≤ n\).
-    \item If \(η ∈ \ker N_{L/K}\) then \(|σ_{ij}(η)| = 1\) for \(s + 1 < i ≤ n\) and \(j ∈ \set{1, 2}\). Furthermore, if \(|η| = 1\) then  \(η\) is a root of unity.
-    \item \(|a| - \sqrt{|a^2 - 1|} < 1\).
+    \item If \(η ∈ \ker N_{L/K}\) then \(|σ_{ij}(η)| = 1\) for \(s + 1 < i ≤ n\) and \(j ∈ \set{1, 2}\). Furthermore, \(|η| = 1\) if and only if  \(η\) is a root of unity.
+    \item \(\left\vert |a| - \sqrt{|a^2 - 1|} \right\vert < 1\).
     \item \(|a| < |ε_1| < 2|a| + 1\).
     \item \(ε\) is not a root of unity.
   \end{thmlist}
@@ -557,7 +559,7 @@ Before we can start proving some approximations for the complex moduli of \(ε,
     \]
     \item By assumption all embeddings \((σ_i)_{s + 1 < i ≤ n}\) are real
     embeddings. Thus, in the equation \(σ_{ij}(δ) = ± \sqrt{σ_i(a)^2 - 1}\) the
-    radicand is negative real number, as \(σ_i(a)^2 < 1/4\) by assumption. This
+    radicand is a negative real number, as \(σ_i(a)^2 < 1/4\) by assumption. This
     implies that \(σ_{i1}(δ)\) and \(σ_{i2}(δ)\) are complex conjugate, purely
     imaginary numbers. As a consequence, we find for \(η = α + δβ ∈ \ker
     N_{L/K}\) that
@@ -574,7 +576,8 @@ Before we can start proving some approximations for the complex moduli of \(ε,
     To prove the second part of the claim, we need a fact from number theory:
     \textit{If an algebraic integer \(η\) and all its conjugates have complex
     modulus \(1\), then \(η\) is a root of unity.} A proof of this fact can be
-    found in \cite[§~34, Lemma~(a)]{Hecke1981}.
+    found in \cite[§~34, Lemma~(a)]{Hecke1981}. Furthermore, note that all roots
+    of unity have complex modulus \(1\), so one direction is trivial.
 
     Let now \(η = α + δ β ∈ \ker N_{L / K}\) and additionally \(|η| = 1\), we
     differentiate two cases. If \(K\) is totally real, then all embeddings of
@@ -586,26 +589,26 @@ Before we can start proving some approximations for the complex moduli of \(ε,
     \[
       X^2 - \overline{a}^2 + 1 = X^2 - σ_2(a) + 1.
     \]
-    As a consequence, \(σ_{2j}(δ) = ± \overline{δ}\) for \(j ∈ \set{1, 2}\). We deduce that
+    As a consequence, \(σ_{2j}(δ) = (-1)^{1 + j} \overline{δ}\) for \(j ∈ \set{1, 2}\). We deduce that
     \[
       \overline{σ_{11}(η)} = \overline{η} = \overline{α + δ β} = σ_2(α) +
-      σ_{2j_1}(δ) σ_{2}(β) = σ_{2j_1}(η)
+      σ_{21}(δ) σ_{2}(β) = σ_{21}(η)
     \]
-    for some \(j_1 ∈ \set{1, 2}\) and
+    and
     \[
-      \overline{σ_{12}(η)} = \overline{α - δ β} = σ_2(α) - σ_{2j_1}(δ) σ_{2}(β)
-      = σ_{2j_1}(η) = σ_2(α) + σ_{2j_2}(δ) σ_{2}(β) = σ_{2j_2}(η),
+      \overline{σ_{12}(η)} = \overline{α - δ β} = σ_2(α) - σ_{21}(δ) σ_{2}(β)
+      = σ_{21}(η) = σ_2(α) + σ_{22}(δ) σ_{2}(β) = σ_{22}(η).
     \]
-    where \(j_2 = 3 - j_1\). This implies that \(|σ_{2j_1}(η)| = |η| = 1\) and
-    \(|σ_{2j_2}(η)| = |σ_{12}(η)|\). Finally, note that \(N_{L / ℚ} = N_{K / ℚ}
+    This implies that \(|σ_{21}(η)| = |η| = 1\) and
+    \(|σ_{22}(η)| = |σ_{12}(η)|\). Finally, note that \(N_{L / ℚ} = N_{K / ℚ}
     \circ N_{L / K}\) and therefore
     \[
-      1 = |N_{K / ℚ}(1)| = |N_{K / ℚ} \circ N_{L / K} (η)| = \left\vert \prod_{\substack{1 ≤ i ≤ n\\ 1 ≤ j ≤ 2}} σ_{ij}(η) \right\vert = |σ_{12}(η)| |σ_{1j_2}(η)| = |σ_{12}(η)|^2.
+      1 = |N_{K / ℚ}(1)| = |N_{K / ℚ} \circ N_{L / K} (η)| = \left\vert \prod_{\substack{1 ≤ i ≤ n\\ 1 ≤ j ≤ 2}} σ_{ij}(η) \right\vert = |σ_{12}(η)| |σ_{22}(η)| = |σ_{12}(η)|^2.
     \]
 
-    \item Given our assumption, that \(|a| > 2^{2(n + 1)} > 1\), the inequality
+    \item The inequality
     \[
-      |a| - \sqrt{a^2 - 1} < 1
+      0 ≤ \left\vert |a| - \sqrt{|a^2 - 1|} \right\vert < 1
     \]
     is equivalent to \(|a|^2 - 2 |a| + 1 < |a^2 - 1|\). But this equality can easily seen to be satisfied, as
     \[
@@ -633,7 +636,7 @@ Before we can start proving some approximations for the complex moduli of \(ε,
     % QUESTION
     \todo{Can one get rid of the \(+ 1\)? I doubt the proof of Shlapentokh, but will check, if the stronger estimate is needed.}
 
-    \item Note that by (v), \(|ε_1| > |a| > 2^{2(n + 1)} > 1\) and therefore th
+    \item Note that by (v), \(|ε_1| > |a| > 2^{2(n + 1)} > 1\) and therefore the
     complex modulus of \(ε\) cannot be equal to \(1\). The claim follows from
     (iii).
   \end{plist}

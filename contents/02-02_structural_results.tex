@@ -330,7 +330,7 @@ of $\mathtt{Th}_{∃+}(\mathfrak R_1)$ by first applying the transformation of
 sentences and then the deciding algorithm in $R_2$.
 \end{proof}
 
-The following corollary follows directly from the lemma above and the
+The subsequent corollary follows directly from the lemma above and the
 undecidability of Hilbert's tenth problem over $ℤ$.
 
 \begin{cor}
@@ -344,7 +344,7 @@ $K$ since the quotient field of $\algint$ is (isomorphic to) $K$. In fact, one
 can even strengthen the result of the corollary in this case \cite[cf.][§~11]{Davis1976}.
 
 \begin{thm}\label{thm:CE sets are Diophantine}
-  Let \(K ≠ ℚ\) be an algebraic number field and \(\algint\) its ring of
+  Let \(K\) be an algebraic number field and \(\algint\) its ring of
   algebraic integers. Then every semi-decidable subset of \(\algint\) is
   Diophantine if and only if the rational integers \(ℤ\) are Diophantine over
   \(\algint\).
@@ -371,16 +371,16 @@ can even strengthen the result of the corollary in this case \cite[cf.][§~11]{D
     R := \set{a_{11}, …, a_{1n}, …, a_{k1}, …, a_{kn} ∈ ℤ \,\middle\vert\,
               \left(\sum_{i=1}^n a_{ij} ζ_i\right)_{1 ≤ j ≤ k} ∈ A}.
   \]
-  As \(A\) is semi-decidable so is \(R\). By assumption there exists a polynomial \(p\) with coefficients in \(\algint\) such that
+  As \(A\) is semi-decidable so is \(R\). By the DPRM theorem\todo{reference it} \(R\) is Diophantine over \(ℤ\) i.e.\ there exists a polynomial \(p\) with coefficients in \(ℤ\) such that
   \begin{align*}
     &a_{11}, …, a_{1n}, …, a_{k1}, …, a_{kn} ∈ R ⇔\\
-    &\quad ∃ \seq[m]{β} ∈ \algint: p(a_{11}, …, a_{1n}, …, a_{k1}, …, a_{kn}, \seq[m]{β}) = 0.
+    &\quad ∃ \seq[m]{β} ∈ ℤ: p(a_{11}, …, a_{1n}, …, a_{k1}, …, a_{kn}, \seq[m]{β}) = 0.
   \end{align*}
   It immediately follows that
   \begin{align*}
     &\seq[k]{α} ∈ A ⇔\\
     & \quad ∃ a_{11}, …, a_{1n}, …, a_{k1}, …, a_{kn} ∈ ℤ\,
-      ∃ \seq[m]{β} ∈ \algint :\\
+      ∃ \seq[m]{β} ∈ ℤ :\\
     & \quad \begin{cases}
               p(a_{11}, …, a_{1n}, …, a_{k1}, …, a_{kn}, \seq[m]{y}) = 0\\
               α_1 = a_{11} ζ_1 + … + a_{1n} ζ_n\\
@@ -388,8 +388,8 @@ can even strengthen the result of the corollary in this case \cite[cf.][§~11]{D
               α_k = a_{k1} ζ_1 + … + a_{kn} ζ_n
             \end{cases}
   \end{align*}
-  By the same argument as in the proof of \cref{lem:moving up} one can translate
-  the above conditions into a Diophantine definition of \(A\) over \(\algint\),
-  by appending the system with polynomial equations stating that \(a_{ij} ∈ ℤ\)
-  for \(1 ≤ i ≤ n\) and \(1 ≤ j ≤ k\).
+  By assumption there exists a Diophantine definiton of \(ℤ\) over \(\algint\).
+  So by the procedure described in the proof of \cref{lem:moving up}, one can
+  translate the above conditions into a Diophantine definition of \(A\) over
+  \(\algint\).
 \end{proof}
