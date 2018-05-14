@@ -18,10 +18,15 @@ of \cite{Khoussainov2000}.
   \begin{thmlist}
     \item The \emph{arity-function} \(\mathrm{ar}: I → ℕ\) assigns to each index
     \(i\) the arity of \(f_i\).
-    \item The signature \(Σ\) is \emph{computable} if \(I \subseteq ℕ\) is
+    \item The signature \(Σ\) is \emph{computable} if \(I \subseteq ω\) is
     decidable and \(\mathrm{ar}\) is computable.
   \end{thmlist}
 \end{defin}
+
+We identify constant symbols with \(0\)-ary function symbols. This means that in a structure \(\mathfrak A = ⟨A, Σ⟩\) the constant \(\mathtt{c}\) is interpreted as
+\[
+  \mathtt{c}^{\mathfrak A}: A^0 = \set{∅} → A.
+\]
 
 Of course, all signatures we will consider---and have considered so far---are
 computable. In fact, they are all either finite, or contain only finitely many
@@ -40,8 +45,10 @@ is the characteristic function of the halting set.
   \begin{thmlist}
     \item An algebraic structure $\mathfrak A = ⟨A; f_1^{\mathfrak A},
     f_2^{\mathfrak A}, …⟩$, with $A \subseteq ω$, is called \emph{computable
-    structure} if $A$ is decidable and all operations $f_i^{\mathfrak A}$ are
-    computable.
+    structure} if $A$ is decidable and all operations \(f_i^{\mathfrak A}\) are \emph{universally computable} i.e.\ for every arity \(n\) ther exists a computable function \(Φ_n : I \times A^n → A\) such that for all \(n\)-ary operations \(f_i\) and all values \(\seq{a} ∈ A\)
+    \[
+      Φ_n(i, \seq{a}) = f_i(\seq{a}).
+    \]
 
     \item An algebraic structure $\mathfrak A = ⟨A; f_1^{\mathfrak A},
     f_2^{\mathfrak A}, …⟩$ is called \emph{efficiently presentable} if there exists a computable $Σ$-structure $⟨Ω_A; φ_1, φ_2, …⟩$ and a $Σ$-isomorphism $\enc{\cdot}: A → Ω_A$.
@@ -55,6 +62,14 @@ is the characteristic function of the halting set.
     \item An efficient presentation of a ring $R$ is a ring-homomorphism
     $\enc{\cdot}: R → Ω_R$ of $R$, where $Ω_R \subseteq ω$ is decidable and all
     operations of $Ω_R$ are computable functions.
+
+    Adding constant symbols for all elements of \(R\), the structure remains
+    computable. Note that \(Σ_{ring}^*\) contains only \(2\) function symbols.
+    Since the universe \(Ω_R\) of the presentation of \(R\) is decidable, there
+    exists a computable surjection \(f: ω → Ω_R\), that can easily be translated
+    to a computable bijection \(\tilde{I} → Ω_R\), where \(\tilde{I}\) denotes
+    the index set \(I\) without the indices of the function symbols.
+
     \item \Textcite{Stoltenberg1999} use a slightly modified definition of
     computable rings. They consider \emph{effective enumerations} $α_R : Ω_R →
     R$, where $Ω_R \subseteq ω$ is a computable $Σ_{ring}^*$-structure in the
