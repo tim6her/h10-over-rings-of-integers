@@ -8,8 +8,9 @@ whose structure in term heavily depends on the article \citetitle{Davis1973} by
 \textcite{Davis1973}. This way, one can prove the undecidability of Hilbert's
 tenth problem over rings of algebraic integers in totally real number fields and
 number fields with one pair of non-real embeddings and at least one real
-embedding in one go. Compare this approach to Sections 6.3 and 7.2 of the
-study~\cite{Shlapentokh2007} by Shlapentokh.
+embedding in one go. This approach is also present in Sections 6.3 and 7.2 of
+the study~\cite{Shlapentokh2007} by Shlapentokh. The same author has proven thes
+second result independently of Pheidas in her thesis~\cite{Shlapentokh1989}.
 
 \subsection{Finitely many easy lemmas}
 
@@ -59,6 +60,8 @@ In the following the number field \(K[δ(a)]\) will be denoted by \(L\).
   \(σ_2^K(α + δβ) = α - δβ\) for \(α, β ∈ \algint\). The latter will be denoted
   by \(\overline{η} = σ_2^K(η)\) to emphasize the analogy of complex
   conjugation.
+  % TODO
+  \todo{Think of some other notation for \(σ_1^{K}\)}
 \end{rem}
 
 Let me now collect some properties of these sequences. The proofs are
@@ -367,11 +370,11 @@ nevertheless true for the case \(K = ℚ\) and \(\algint = ℤ\).
   \]
   contained in \(U_K\). By the claim their ‘squares’ are contained in \(N_{L / K}\left(U_L\right)\) i.e.
   \[
-    (\overline 0,2,0,…,0), \; (\overline 0,0,2,0,…,0), \; …, \; (\overline 0, 0, …, 0, 2) ∈ N_{L / K}\left(U_L\right).
+    ([0],2,0,…,0), \; ([0],0,2,0,…,0), \; …, \; ([0], 0, …, 0, 2) ∈ N_{L / K}\left(U_L\right).
   \]
   As a consequence, the direct product
   \[
-    G := \set{\overline 0} \times \underbrace{2 ℤ \times … \times 2 Z}_{k\text{-times}}
+    G := \set{[0]} \times \underbrace{2 ℤ \times … \times 2 Z}_{k\text{-times}}
   \]
   is a subgroup of \(N_{L / K}\left(U_L\right)\) and therefore
   \[
@@ -427,13 +430,13 @@ or a number field with exactly one pair of non-real embeddings of degree \(n :=
 [K : ℚ] ≥ 3\) over the rationals \(ℚ\). In the notation of \cref{thm:Dirichlet}
 this means that either \(r = n > 1\), or \(r = n - 2 > 0\) and \(s = 1\). As
 before we set \(L = K[{δ(a)}]\), where \(δ(a) \not\in \algint\) is a root of
-\(X^2 - a^2 + 1\).
+\(X^2 - a^2 + 1\) and \(-π/2 < \arg δ(a) ≤ π/2\).
 
 Furthermore, let us assume that \(σ_1 = \id_K, σ_2, …, σ_n: K → ℂ\) are all
 embeddings of \(K\) into the complex pane \(ℂ\). If \(s = 1\) we demand without
-loss of generality that $K, σ_2(K) \not\subset ℝ$ and that $σ_2(α) = α$ for all
-\(α ∈ K\). In other words, \((σ_1, σ_2)\) is the pair of complex embeddings and
-all other morphisms embed \(K\) into the reals \(ℝ\).
+loss of generality that $K, σ_2(K) \not\subset ℝ$ and that $σ_2(α) =
+\overline{α}$ for all \(α ∈ K\). In other words, \((σ_1, σ_2)\) is the pair of
+complex embeddings and all other morphisms embed \(K\) into the reals \(ℝ\).
 
 \begin{lem}\label{lem:L over K is quadratic}
   Let \(K ≠ ℚ\) be a number field of degree \(n\) over \(ℚ\). If \(a ∈ \algint\)
@@ -482,7 +485,7 @@ the previous section holds.
 I will identify the field \(L\) with its embedding \(σ_{11}(L)\) and write \(η\)
 instead of \(σ_{11}(η)\) for its elements.
 
-\begin{lem}
+\begin{lem}\label{lem:r and s for tr and opnr}
   Let \(K ≠ ℚ\) be a number field of degree \(n\) over \(ℚ\) and let \(a ∈
   \algint\) be such that \eqref{eq:approximations of a} is satisfied. Then
   \begin{thmlist}
@@ -539,12 +542,16 @@ Before we can start proving some approximations for the complex moduli of \(ε,
   \algint\) be such that \eqref{eq:approximations of a} is satisfied.
   Then the following inequalities hold.
   \begin{thmlist}
-    \item \(|a_i|/2 < |δ_i| < |a_i| + 1\) for \(0 ≤ i ≤ s + 1\).
-    \item \(1/2 < | δ_i | < 1\) for \(s + 1 < i ≤ n\).
+    \item\label{lem:approx for delta i 1}
+    \(|a_i|/2 < |δ_i| < |a_i| + 1\) for \(1 ≤ i ≤ s + 1\).
+    \item\label{lem:approx for delta i 2}
+     \(1/2 < | δ_i | < 1\) for \(s + 1 < i ≤ n\).
     \item If \(η ∈ \ker N_{L/K}\) then \(|σ_{ij}(η)| = 1\) for \(s + 1 < i ≤ n\) and \(j ∈ \set{1, 2}\). Furthermore, \(|η| = 1\) if and only if  \(η\) is a root of unity.
     \item \(\left\vert |a| - \sqrt{|a^2 - 1|} \right\vert < 1\).
     \item \(|a| < |ε_1| < 2|a| + 1\).
-    \item \(ε\) is not a root of unity.
+    \item \(|ε_i| = 1\) for all \(s + 1 < i ≤ n\).
+    \item\label{lem:epsilon is not a root of unity}
+    \(ε\) is not a root of unity.
   \end{thmlist}
 \end{lem}
 \begin{proof}
@@ -642,14 +649,120 @@ Before we can start proving some approximations for the complex moduli of \(ε,
   \end{plist}
 \end{proof}
 
-% As a next step, we want to show that we have already found all solutions of
-% Pell's equation~\eqref{eq:Pell}. For this we need some lemmas.
-%
-% Recall the group \(S ≤ \ker N_{L / K}\) defined in \cref{lem:subgroup of ker N
-% L/K}. We have seen in \cref{lem:rank of N_L/K U_L} and the subsequent
-% inequality~\eqref{eq:rank of S} that the free rank of \(S\) can be bound from
-% above. Note that \(ε\) is contained in \(S\). Therefore, the following lemma implies
-% that \(\rk S\) can be bound from below by \(1\).
+As a next step, we want to show that we have already found all solutions of
+Pell's equation~\eqref{eq:Pell}. For this we need some lemmas.
+
+Recall the group \(S ≤ \ker N_{L / K}\) defined in \cref{lem:subgroup of ker N
+L/K}. We have seen in \cref{lem:rank of N_L/K U_L} and the subsequent
+inequality~\eqref{eq:rank of S} that the free rank of \(S\) can be bound from
+above by \(\rk U_L - \rk U_K\). I claim that this difference of ranks is equal
+to \(1\) in both cases of algebraic number fields we are considering.
+
+If \(K ≠ ℚ\) is totally real, then by Dirichlet's unit theorem
+(\cref{thm:Dirichlet}) we find \(\rk U_K = n\). By \cref{lem:r and s for tr and
+opnr} we find that \(\rk U_L = 1 + n\). If on the other hand, \(K\) satisfies
+\(r = n - 2 > 0\) then \(\rk U_K = n - 1\) and by \cref{lem:r and s for tr and
+opnr} we have \(\rk U_L = n\).
+
+Note that \(ε\) is contained in \(S\) and by the previous lemma, \(ε\) is not a
+root of unity. Thus the group \(⟨ε⟩ ≤ S\) has free rank at least equal to \(1\). We deduce that
+\[
+  \rk ⟨ε⟩ = \rk S = 1.
+\]
+Thus, there exists a unit \(ε_0 ∈ S\) such that for all \(η ∈ S\)  there exists
+a root of unity \(ζ\) and an integer \(k\), such that \(η = ζ ε_0^k\). However,
+even more is true, as \(ε\) one can set \(ε = ε_0\), but before we can prove
+this, we need a lemma.
+
+\begin{lem}
+  Let \(K ≠ ℚ\) be a number field and let \(a ∈ \algint\) satisfy
+  \eqref{eq:approximations of a}. Furthermore, let \(ε_0\) be a generator of the torsion free part of \(S\). Then \(2δ | (ε_0 - ε_0^{-1})\) and
+  \begin{thmlist}
+    \item if \(K\) is totally real, then
+    \[
+      |N_{L/ℚ} (2 δ)| > a^2 \quad \text{ and } \quad
+      |N_{L/ℚ} (ε_0 - ε_0^{-1})| < 2^{2n} |ε_0|^2;
+    \]
+
+    \item if \([K: ℚ] ≥ 3\) and \(K\) has exactly one pair of non-real embeddings, then
+    \[
+      |N_{L/ℚ} (2 δ)| > a^4 \quad \text{ and } \quad
+      |N_{L/ℚ} (ε_0 - ε_0^{-1})| < 2^{2n} |ε_0|^4.
+    \]
+  \end{thmlist}
+\end{lem}
+\begin{proof}
+  Let \(ε_0 = α + δβ\) for some \(α, β ∈ \algint\), then \(ε_0^{-1} = α - δ β\)
+  (cf.~\cref{lem:subgroup of ker N L/K}) and
+  \[
+    ε_0 - ε_0^{-1} = 2δ\, β,
+  \]
+  proving that \(2δ | (ε_0 - ε_0^{-1})\).
+
+  We assert without loss of generality that \(ε = ζε_0^k\), where \(k\) is a
+  positive integer. Then for all \(1 ≤ i ≤ n\) and all \(1 ≤ j ≤ 2\), we have
+  \[
+    |σ_{ij}(ε)| = |σ_{ij}(ζε_0^k)| = |σ_{ij}(ε_0)|^k.
+  \]
+  Furthermore, note that \(σ_{i1}(ε_0^{-1}) = σ_{i2}(ε_0)\) for all \(1 ≤ i ≤
+  n\).
+
+  \begin{plist}
+    \item If \(K ≠ ℚ\) is totally real, then by \cref{lem:approx for delta i 1}
+    and (ii) we find that
+    \[
+      |N_{L/ℚ}(2δ)| = 2^{2n} \prod_{i = 1}^n |δ_i|^2 > \frac{2^{2n}}{2^{2n - 2}} \frac{|a|^2}{4} = a^2.
+    \]
+
+    To see the second inequality, we notice that
+    \[
+      |σ_{ij_0}(ε_0) - σ_{ij_0}(ε_0^{-1})| =
+      |σ_{ij_0}(ε_0)^{-1}| |σ_{ij_0} (ε)^2 - 1| < 2,
+    \]
+    where \(j_0 ∈ \set{1, 2}\) is chosen in such a way that \(|σ_{ij_0}(ε)| ≤
+    1\).
+  \end{plist}
+\end{proof}
+
+\begin{lem}
+  Let \(K ≠ ℚ\) be a number field and let \(a ∈ \algint\) satisfy
+  \eqref{eq:approximations of a}. Then for every \(η ∈ S\) there exists an
+  integer \(k\) and a root of unity \(ζ ∈ L\) such that \(η = ζ ε^k\).
+\end{lem}
+\begin{proof}
+  By the discussion above the torsion free part of \(S\) is a free \(ℤ\)-module
+  of rank \(1\). Thus there exists an \(ε_0 ∈ S\) and a root of unity \(ζ\) such
+  that \(η = ζ ε_0^k\) for some integer \(k\). Furthermore, since the unit
+  \(ε_0\) cannot be a root of unity, we may demand \(|ε_0| > 0\), for otherwise
+  we replace \(ε_0\) by its inverse.
+
+  We apply this observation to \(ε\) and find \(ε = ζ ε_0^k\), where \(k ≠ 0\).
+  I claim that \(|k| = 1\). Then \(ε_0 = ζ^{-k} ε^{k}\) and the lemma is proven.
+
+  Before proving the claim we make another observation. Let \(ε_0 = α + δ β\)
+  for some algebraic integers \(α, β ∈ \algint\), then \(2δ | (ε_0 - ε_0^{-1})\)
+  in \(algint\). This is because \(ε_0^{-1} = α - δ β\) (cf.~\cref{lem:subgroup
+  of ker N L/K}) and
+  \[
+    ε_0 - ε_0^{-1} = 2δ\, β.
+  \]
+
+  From the observation it follows that
+  \[
+    |N_{L/ℚ}(2δ)| ≤ |N_{L/ℚ}(ε_0 - ε_0^{-1})|.
+  \]
+  We will derive some approximations for the modulus of \(a\) from this. For
+  this purpose we distinguish two cases. If \(K ≠ ℚ\) is totally real, then by
+  \cref{lem:approx for delta i 1} and (ii) we find that
+  \[
+    |N_{L/ℚ}(2δ)| = 2^{2n} \prod_{i = 1}^n |δ_i|^2 > \frac{2^{2n}}{2^{2n - 2}} \frac{|a|^2}{4} = a^2
+  \]
+  and
+  \[
+    |N_{L/ℚ}(ε_0 - ε_0^{-1})| =
+  \]
+\end{proof}
+
 %
 % \begin{lem}\label{lem:rank of S is greater 0}
 %   Let \(K\) be a totally real number field and \(a ∈ \algint\) satisfies \(δ =
