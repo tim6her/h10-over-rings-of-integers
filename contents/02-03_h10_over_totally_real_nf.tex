@@ -70,9 +70,11 @@ generalized versions of the ones given in~\cite{Davis1973}.
 \begin{lem}
   Let \(K\) be an algebraic number field and \(a ∈ \algint\) such that \(δ(a) \not\in K\). Then
   \begin{thmlist}
-    \item\label{lem:epsilon is unit} \(ε\) is a unit in \(\algint[L]\), its
+    \item\label{lem:epsilon is unit}
+    \(ε\) is a unit in \(\algint[L]\), its
     inverse is given by \(ε^{-1} = a - δ = \overline{ε}\), and
-    \item \(\px_m, \py_m\) satisfy Pell's equation~\eqref{eq:Pell} for all \(m
+    \item\label{lem:x and y solve Pells equation}
+    \(\px_m, \py_m\) satisfy Pell's equation~\eqref{eq:Pell} for all \(m
     ∈ ℕ\), using \(d = {δ(a)}^2\) as parameter.
   \end{thmlist}
 \end{lem}
@@ -510,6 +512,33 @@ instead of \(σ_{11}(η)\) for its elements.
   \end{plist}
 \end{proof}
 
+\begin{lem}\label{lem:properties of sigma epsilon}
+  Let \(K ≠ ℚ\) be a number field of degree \(n\) over \(ℚ\) and let \(a ∈
+  \algint\) be such that \eqref{eq:approximations of a} is satisfied. If \(s\) is the number of pairs of non-real embeddings of \(K\), then
+  \begin{thmlist}
+    \item \(σ_{i1}(ε)^{-1} = σ_{i2}(ε)\) for all \(1 ≤ i ≤ n\),
+    \item \(σ_{i1}(ε)\) and \(σ_{i2}(ε)\) are complex conjugates for \(s + 1 < i ≤ n\), and
+    \item\label{lem:modulus of sigma epsilon}
+    \(|σ_{i1}(ε)| = |σ_{i2}(ε)| = 1\) for \(s + 1 < i ≤ n\).
+  \end{thmlist}
+\end{lem}
+\begin{proof}
+  In \cref{lem:epsilon is unit} we have seen, that the claim holds true for \(i
+  = 1\). We extend this method to obtain the results for the other cases. For
+  all \(1 ≤ i ≤ n\) we have
+  \begin{align*}
+    σ_{i1}(ε) σ_{i2}(ε) &= (σ_i(a) + σ_{i1}(δ)) (σ_i(a) - σ_{i1}(δ)) =\\
+      &= σ_i(a)^2 - σ_{i1}(δ)^2 = σ_i(a)^2 - σ_i(a)^2 + 1 = 1.
+  \end{align*}
+
+  For all \(s + 1 < i ≤ n\) we have defined \(σ_i: K → ℂ\) to be a real
+  embedding. Thus \(σ_i(a)\) is a real number and as \(0 < σ_i(a) < 1/2\), we
+  find that \(σ_{i1}(δ)\) is purely imaginary. Hence, we deduce that
+  \(σ_{i1}(ε)\) and \(σ_{i2}(ε)\) are complex conjugates. But then the complex
+  moduli of these algebraic integers must coincide, leaving no other option than
+  \(|σ_{i1}(ε)| = |σ_{i2}(ε)| = 1\).
+\end{proof}
+
 Before we can start proving some approximations for the complex moduli of \(ε,
 δ\) and \(a\), we need to fix some notations.
 
@@ -527,11 +556,9 @@ Before we can start proving some approximations for the complex moduli of \(ε,
 
 \begin{rem}
   \begin{exlist}
-    \item Since \(ε\) is a unit [cf.~\cref{lem:epsilon is unit}] and \(σ_{12}(ε)\) is its inverse. The same holds true for all pairs of embeddings \((σ_{i1}, σ_{i2})\). As a consequence,
-    \[
-      |σ_{i1}(ε)| |σ_{i2}(ε)| = 1,
-    \]
-    and \(ε_i\) is well defined for all \(1 ≤ i ≤ n\).
+    \item In the definition above we could have equivalently defined \(ε_i :=
+    σ_{i1}(ε)\) for \(s + 1 < i ≤ n\), as by \cref{lem:modulus of sigma epsilon}
+    the complex modulus of \(σ_{i1}(ε)\) is \(1\).
     \item Note that by \eqref{eq:def of sigma ij} we have \(σ_{i2}(δ) = -δ_i\)
     and therefore \(|δ_i| = |σ_{i2}(δ)|\) for all \(1 ≤ i ≤ n\).
   \end{exlist}
@@ -546,7 +573,10 @@ Before we can start proving some approximations for the complex moduli of \(ε,
     \(|a_i|/2 < |δ_i| < |a_i| + 1\) for \(1 ≤ i ≤ s + 1\).
     \item\label{lem:approx for delta i 2}
      \(1/2 < | δ_i | < 1\) for \(s + 1 < i ≤ n\).
-    \item If \(η ∈ \ker N_{L/K}\) then \(|σ_{ij}(η)| = 1\) for \(s + 1 < i ≤ n\) and \(j ∈ \set{1, 2}\). Furthermore, \(|η| = 1\) if and only if  \(η\) is a root of unity.
+    \item\label{lem:modulus of elements in the kernel}
+     If \(η ∈ \ker N_{L/K}\) then \(|σ_{ij}(η)| = 1\) for \(s + 1 < i ≤ n\) and
+     \(j ∈ \set{1, 2}\). Furthermore, \(|η| = 1\) if and only if  \(η\) is a
+     root of unity.
     \item \(\left\vert |a| - \sqrt{|a^2 - 1|} \right\vert < 1\).
     \item \(|a| < |ε_1| < 2|a| + 1\).
     \item \(|ε_i| = 1\) for all \(s + 1 < i ≤ n\).
@@ -643,6 +673,13 @@ Before we can start proving some approximations for the complex moduli of \(ε,
     % QUESTION
     \todo{Can one get rid of the \(+ 1\)? I doubt the proof of Shlapentokh, but will check, if the stronger estimate is needed.}
 
+    \item As was observed in the proof of (iii) the images \(σ_{i1}(ε)\) and
+    \(σ_{i2}(ε)\) are complex conjugates. Thus for both \(j = 1\) or \(2\) we
+    find
+    \[
+      |σ_{ij}(ε)|^2 = σ_{i1}(ε) σ_{i2}(ε) = 1.
+    \]
+
     \item Note that by (v), \(|ε_1| > |a| > 2^{2(n + 1)} > 1\) and therefore the
     complex modulus of \(ε\) cannot be equal to \(1\). The claim follows from
     (iii).
@@ -659,8 +696,8 @@ above by \(\rk U_L - \rk U_K\). I claim that this difference of ranks is equal
 to \(1\) in both cases of algebraic number fields we are considering.
 
 If \(K ≠ ℚ\) is totally real, then by Dirichlet's unit theorem
-(\cref{thm:Dirichlet}) we find \(\rk U_K = n\). By \cref{lem:r and s for tr and
-opnr} we find that \(\rk U_L = 1 + n\). If on the other hand, \(K\) satisfies
+(\cref{thm:Dirichlet}) we find that \(\rk U_K = n\) and by \cref{lem:r and s for
+tr and opnr} that \(\rk U_L = 1 + n\). If on the other hand, \(K\) satisfies
 \(r = n - 2 > 0\) then \(\rk U_K = n - 1\) and by \cref{lem:r and s for tr and
 opnr} we have \(\rk U_L = n\).
 
@@ -671,7 +708,7 @@ root of unity. Thus the group \(⟨ε⟩ ≤ S\) has free rank at least equal to
 \]
 Thus, there exists a unit \(ε_0 ∈ S\) such that for all \(η ∈ S\)  there exists
 a root of unity \(ζ\) and an integer \(k\), such that \(η = ζ ε_0^k\). However,
-even more is true, as \(ε\) one can set \(ε = ε_0\), but before we can prove
+even more is true, as one can set \(ε = ε_0\), but before we can prove
 this, we need a lemma.
 
 \begin{lem}
@@ -681,13 +718,13 @@ this, we need a lemma.
     \item if \(K\) is totally real, then
     \[
       |N_{L/ℚ} (2 δ)| > a^2 \quad \text{ and } \quad
-      |N_{L/ℚ} (ε_0 - ε_0^{-1})| < 2^{2n} |ε_0|^2;
+      |N_{L/ℚ} (ε_0 - ε_0^{-1})| < 2^{2n} |ε_1|^2;
     \]
 
     \item if \([K: ℚ] ≥ 3\) and \(K\) has exactly one pair of non-real embeddings, then
     \[
       |N_{L/ℚ} (2 δ)| > a^4 \quad \text{ and } \quad
-      |N_{L/ℚ} (ε_0 - ε_0^{-1})| < 2^{2n} |ε_0|^4.
+      |N_{L/ℚ} (ε_0 - ε_0^{-1})| < 2^{2n} |ε_1|^4.
     \]
   \end{thmlist}
 \end{lem}
@@ -699,13 +736,17 @@ this, we need a lemma.
   \]
   proving that \(2δ | (ε_0 - ε_0^{-1})\).
 
-  We assert without loss of generality that \(ε = ζε_0^k\), where \(k\) is a
-  positive integer. Then for all \(1 ≤ i ≤ n\) and all \(1 ≤ j ≤ 2\), we have
+  We assert without loss of generality that \(ε = ζε_0^k\), where \(|ε_0| ≥ 1\).
+  Then for all \(1 ≤ i ≤ n\) and all \(1 ≤ j ≤ 2\), we have
   \[
-    |σ_{ij}(ε)| = |σ_{ij}(ζε_0^k)| = |σ_{ij}(ε_0)|^k.
+    |σ_{ij}(ε)| = |σ_{ij}(ζε_0^k)| = |σ_{ij}(ε_0)|^k,
   \]
-  Furthermore, note that \(σ_{i1}(ε_0^{-1}) = σ_{i2}(ε_0)\) for all \(1 ≤ i ≤
-  n\).
+  and thus, \(|ε_1| = |ε_0|^k ≥ |ε_0| ≥ 1\). Furthermore, by \cref{lem:modulus of elements in the kernel} the following inequality holds
+  \begin{equation}\label{eq:approximation of epsilon 0}
+    |σ_{i1}(ε_0) - σ_{i1}(ε_0^{-1})| |σ_{i2}(ε_0) - σ_{i2}(ε_0^{-1})| =
+    |σ_{i1}(ε_0) - σ_{i1}(ε_0^{-1})|^2 ≤ 2^2
+  \end{equation}
+  for all \(s + 1 < i ≤ n\).
 
   \begin{plist}
     \item If \(K ≠ ℚ\) is totally real, then by \cref{lem:approx for delta i 1}
@@ -714,13 +755,17 @@ this, we need a lemma.
       |N_{L/ℚ}(2δ)| = 2^{2n} \prod_{i = 1}^n |δ_i|^2 > \frac{2^{2n}}{2^{2n - 2}} \frac{|a|^2}{4} = a^2.
     \]
 
-    To see the second inequality, we notice that
-    \[
-      |σ_{ij_0}(ε_0) - σ_{ij_0}(ε_0^{-1})| =
-      |σ_{ij_0}(ε_0)^{-1}| |σ_{ij_0} (ε)^2 - 1| < 2,
-    \]
-    where \(j_0 ∈ \set{1, 2}\) is chosen in such a way that \(|σ_{ij_0}(ε)| ≤
-    1\).
+    To see the second inequality, we use \eqref{eq:approximation of epsilon 0} to find
+    \begin{align*}
+      |N_{L/ℚ}(ε_0 - ε_0^{-1})| &=
+        \prod_{\substack{1 ≤ i ≤ n\\1 ≤ j ≤ 2}} |σ_{ij}(ε_0) - σ_{ij}(ε_0^{-1})|
+        \prod_{i = 1}^n |σ_{i1}(ε_0) - σ_{i1}(ε_0^{-1})|^2 ≤ \\
+        &≤ 2^{2n - 2} |ε_0 - ε_0^{-1}|^2 ≤ 2^{2n - 2} (|ε_0| + 1)^2
+        < 2^{2n} |ε_0|^2,
+    \end{align*}
+    as claimed.
+
+    \item Completely analogously.
   \end{plist}
 \end{proof}
 
