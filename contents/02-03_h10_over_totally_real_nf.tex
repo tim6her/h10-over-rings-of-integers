@@ -58,10 +58,8 @@ In the following the number field \(K[δ(a)]\) will be denoted by \(L\).
   automorphisms\footnote{A field extension of degree two is necessarily normal.}
   on \(L\) preserving \(K\) point-wise, namely \(σ_1^{K}(α + δβ) = α + δβ\) and
   \(σ_2^K(α + δβ) = α - δβ\) for \(α, β ∈ \algint\). The latter will be denoted
-  by \(\overline{η} = σ_2^K(η)\) to emphasize the analogy of complex
+  by \(\sigmaK{η} = σ_2^K(η)\) to emphasize the analogy of complex
   conjugation.
-  % TODO
-  \todo{Think of some other notation for \(σ_1^{K}\)}
 \end{rem}
 
 Let me now collect some properties of these sequences. The proofs are
@@ -72,7 +70,7 @@ generalized versions of the ones given in~\cite{Davis1973}.
   \begin{thmlist}
     \item\label{lem:epsilon is unit}
     \(ε\) is a unit in \(\algint[L]\), its
-    inverse is given by \(ε^{-1} = a - δ = \overline{ε}\), and
+    inverse is given by \(ε^{-1} = a - δ = \sigmaK{ε}\), and
     \item\label{lem:x and y solve Pells equation}
     \(\px_m, \py_m\) satisfy Pell's equation~\eqref{eq:Pell} for all \(m
     ∈ ℕ\), using \(d = {δ(a)}^2\) as parameter.
@@ -88,13 +86,13 @@ generalized versions of the ones given in~\cite{Davis1973}.
     \[
       \px_{m + 1} + δ \py_{m + 1} = ε^{m + 1} = (\px_m + δ \py_m)ε.
     \]
-    Applying the automorphism \(\overline \cdot\) implies
+    Applying the automorphism \(\sigmaK{\cdot}\) implies
     \[
-      \overline{\px_{m + 1} + δ \py_{m + 1}} = \px_{m + 1} - δ \py_{m + 1} = (\px_m - δ \py_m) ε^{-1}
+      \sigmaK{\px_{m + 1} + δ \py_{m + 1}} = \px_{m + 1} - δ \py_{m + 1} = (\px_m - δ \py_m) ε^{-1}
     \]
     and multiplication of both equations yields
     \[
-      \px_{m + 1}^2 - d \py_{m + 1}^2 = \overline{\px_{m + 1} + δ \py_{m + 1}} (\px_{m + 1} - δ \py_{m + 1}) = 1
+      \px_{m + 1}^2 - d \py_{m + 1}^2 = \sigmaK{\px_{m + 1} + δ \py_{m + 1}} (\px_{m + 1} - δ \py_{m + 1}) = 1
     \]
     as claimed.
   \end{plist}
@@ -129,10 +127,10 @@ The next lemma proves the identities corresponding to \(\cos m = \Re e^{im}\),
 \begin{proof}
   \begin{plist}
     \item In \cref{lem:epsilon is unit} we have seen that \(ε^{-1} =
-    \overline{ε}\) and therefore \(ε^{-m} = {\left(\overline{ε}\right)}^m\). Observe that for arbitrary \(α, β ∈ \algint\) we have
+    \sigmaK{ε}\) and therefore \(ε^{-m} = {\left(\sigmaK{ε}\right)}^m\). Observe that for arbitrary \(α, β ∈ \algint\) we have
     \[
-      α + β y + \overline{α + δ β} = 2α \quad \text{and} \quad
-      α + β y - \overline{α - δ β} = 2δ β.
+      α + β y + \sigmaK{α + δ β} = 2α \quad \text{and} \quad
+      α + β y - \sigmaK{α - δ β} = 2δ β.
     \]
     Now, setting \(α + δ β = ε^m\) yields the claim.
     \item By the defining equation for \(\px_m\) and \(\py_m\) we have
@@ -183,9 +181,9 @@ the subsequent one, which brings divisibility into play.
       \py_{mk} &= \sum_{\substack{j=0\\ j \text{ odd}}}^k
                 \binom k j \px_m^{k - j} \py_m^j δ^{j -1}.
     \end{align*}
-    In the equation above all terms for \(j > 1\) are divisible by \(\py_m^3\) and
-    thus vanish modulo \(\left(\py_m^3\right)\). The only term remaining is \(k
-    \px_m^{k - 1} \py_m\) as claimed.
+    In the equation above all terms for \(j > 1\) are divisible by \(\py_m^3\)
+    and thusly vanish modulo \(\left(\py_m^3\right)\). The only term remaining
+    is \(k \px_m^{k - 1} \py_m\) as claimed.
   \end{plist}
 \end{proof}
 
@@ -329,26 +327,26 @@ nevertheless true for the case \(K = ℚ\) and \(\algint = ℤ\).
   is a subgroup of the kernel of the norm map \(N_{L/K}: U_L → U_K\), where \(U_K\) and \(U_L\) denote the groups of units in \(\algint\) and \(\algint[L]\) respectively.
 \end{lem}
 \begin{proof}
-  First of all, note that, if \(α + δ β ∈ S\), so is \(\overline{α + δ β} = α - δ
+  First of all, note that, if \(α + δ β ∈ S\), so is \(\sigmaK{α + δ β} = α - δ
   β ∈ S\) because
   \[
     α^2 - d {(-β)}^2 = α^2 - d β^2 = 1.
   \]
   Now let \(α + δ β\) be an arbitrary element of \(S\), then
   \[
-    N_{L/K}(α + δ β) = (α + δ β) \left(\overline α + δ β \right) = α^2 - d β^2 = 1.
+    N_{L/K}(α + δ β) = (α + δ β) \sigmaK{α + δ β} = α^2 - d β^2 = 1.
   \]
   This implies that \(α + δ β ∈ \ker N_{L / K}\) but also that \(α + δ β\) is a
   unit, as \(α - δ β\) is its inverse. The product of two arbitrary elements \(α_1 + δ β_1, α_2 + δ β_2 ∈ S\) is
   \[
     (α_1 + δ β_1)(α_2 + δ β_2) = (α_1 α_2 + δ^2 β_1 β_2) + δ (α_1 β_2 + α_2 β_1).
   \]
-  We apply the automorphism \(\overline\cdot\) and multiply to obtain
+  We apply the automorphism \(\sigmaK{\cdot}\) and multiply to obtain
   \begin{align*}
     (α_1 α_2 + δ^2 β_1 β_2)^2 - δ^2 (α_1 β_2 + α_2 β_1)^2 &=
-    (α_1 + δ β_1)(α_2 + δ β_2)\,\overline{(α_1 + δ β_1)(α_2 + δ β_2)} =\\
+    (α_1 + δ β_1)(α_2 + δ β_2)\,\sigmaK{(α_1 + δ β_1)(α_2 + δ β_2)} =\\
     &=
-    (α_1 + δ β_1)\overline{(α_1 + δ β_1)}(α_2 + δ β_2)\overline{(α_2 + δ β_2)} = 1.
+    (α_1 + δ β_1)\sigmaK{α_1 + δ β_1}(α_2 + δ β_2)\sigmaK{α_2 + δ β_2} = 1.
   \end{align*}
   As a consequence, \(S\) is closed under multiplication and the claim is
   proven.
@@ -368,7 +366,7 @@ nevertheless true for the case \(K = ℚ\) and \(\algint = ℤ\).
   μ(K)\) is the finite cyclic group of roots of unity in \(K\)
   (cf.~\cref{thm:Dirichlet}). Consider the following \(k\) elements
   \[
-    (\overline 0,1,0,…,0), \; (\overline 0,0,1,0,…,0), \; …, \; (\overline 0, 0, …, 0, 1)
+    ([0],1,0,…,0), \; ([0],0,1,0,…,0), \; …, \; ([0], 0, …, 0, 1)
   \]
   contained in \(U_K\). By the claim their ‘squares’ are contained in \(N_{L / K}\left(U_L\right)\) i.e.
   \[
@@ -380,7 +378,7 @@ nevertheless true for the case \(K = ℚ\) and \(\algint = ℤ\).
   \]
   is a subgroup of \(N_{L / K}\left(U_L\right)\) and therefore
   \[
-    [U_K : N_{L / K}\left(U_L\right)] ≤ [U : G] ≤ ℓ\, 2^k < ∞.
+    [U_K : N_{L / K}\left(U_L\right)] ≤ [U : G] = ℓ\, 2^k < ∞.
   \]
 \end{proof}
 
@@ -411,9 +409,9 @@ Davis proofs that a function is Diophantine if and only if it is computable~\cit
 
 This already implies the undecidability of \textsc{H10} over \(ℤ\) as Davis
 introduced Diophantine pairing functions in~\cite[Thm 1.1]{Davis1973} and
-therefore all domains of Diophantine and therefore all computable functions are
-Diophantine. But the domains of computable functions are exactly the
-semi-decidable subsets of \(ω\) and we have already met a semi-decidable set
+therefore all ranges of Diophantine---and therefore all computable
+functions---are Diophantine. But the ranges of computable functions are exactly
+the semi-decidable subsets of \(ω\) and we have already met a semi-decidable set
 that is not decidable, namely the halting set \(\mathcal{K}\). As a consequence,
 there is a Diophantine set that is not decidable, or put differently there
 exists a polynomial \(p_{\mathcal{K}} ∈ ℤ[X, \seq{Y}]\), such that for every
@@ -484,8 +482,8 @@ the previous section holds.
   for all \(α, β ∈ \algint\) and all \(1 ≤ i ≤ n\).
 \end{rem}
 
-I will identify the field \(L\) with its embedding \(σ_{11}(L)\) and write \(η\)
-instead of \(σ_{11}(η)\) for its elements.
+I will identify the field \(L\) with its embedding \(σ_{11}(L)\) and write \(x\)
+instead of \(σ_{11}(x)\) for its elements.
 
 \begin{lem}\label{lem:r and s for tr and opnr}
   Let \(K ≠ ℚ\) be a number field of degree \(n\) over \(ℚ\) and let \(a ∈
@@ -508,7 +506,7 @@ instead of \(σ_{11}(η)\) for its elements.
     identification.
     \item As \(σ_1\) and \(σ_2\) are already complex embeddings, so are
     \(σ_{11}, σ_{12}, σ_{21}\) and \(σ_{22}\). For the remaining embeddings one
-    argues completely analogously as in (i).
+    argues completely analogously to (i).
   \end{plist}
 \end{proof}
 
@@ -580,7 +578,6 @@ Before we can start proving some approximations for the complex moduli of \(ε,
     \item \(\left\vert |a| - \sqrt{|a^2 - 1|} \right\vert < 1\).
     \item\label{lem:approximation of epsilon with a}
      \(|a| < |ε_1| < 2|a| + 1\).
-    \item \(|ε_i| = 1\) for all \(s + 1 < i ≤ n\).
     \item\label{lem:epsilon is not a root of unity}
     \(ε\) is not a root of unity.
   \end{thmlist}
@@ -588,24 +585,22 @@ Before we can start proving some approximations for the complex moduli of \(ε,
 \begin{proof}
   \begin{plist}
     \item By assumption we have \(|a_i| > 2^{2(n + 1)}\) and therefore
-      \[
-        \frac{|a_i|^2}{4} = |a_i|^2 - \frac{3a_i^2}{4} ≤ |a_i|^2 - \frac{3}{4} 2^{4(n + 1)} < |a_i|^2 - 1 ≤ |δ_i| = |a_i^2 - 1| ≤ |a_i|^2 + 1 < (|a_i| + 1)^2
-      \]
+      \begin{align*}
+        \frac{|a_i|^2}{4} &= |a_i|^2 - \frac{3a_i^2}{4} ≤ |a_i|^2 - \frac{3}{4} 2^{4(n + 1)} < |a_i|^2 - 1 ≤\\
+        &≤ |δ_i| = |a_i^2 - 1| ≤ |a_i|^2 + 1 < (|a_i| + 1)^2
+      \end{align*}
     \item Again by our assumption \(|a_i| < 1/2\). Thus, we find
     \[
       \frac{1}{4} < \frac{3}{4} < 1 - a_i^2 = |δ_i|^2 < 1.
     \]
-    \item By assumption all embeddings \((σ_i)_{s + 1 < i ≤ n}\) are real
-    embeddings. Thus, in the equation \(σ_{ij}(δ) = ± \sqrt{σ_i(a)^2 - 1}\) the
-    radicand is a negative real number, as \(σ_i(a)^2 < 1/4\) by assumption. This
-    implies that \(σ_{i1}(δ)\) and \(σ_{i2}(δ)\) are complex conjugate, purely
-    imaginary numbers. As a consequence, we find for \(η = α + δβ ∈ \ker
-    N_{L/K}\) that
+    \item As in \cref{lem:properties of sigma epsilon} one uses that
+    \(\overline{σ_{i1}(δ)} = σ_{i2}(δ)\) for all \(s + 1 < i ≤ n\) and finds
+    for \(η = α + δ β ∈ \ker N_{L /K}\) that
     \begin{align*}
-      σ_{i1}(η) &= σ_i(α) + σ_{i1}(δ) σ_i(β)\\
+      σ_{i1}(η) &= σ_i(α) + σ_{i1}(δ) σ_i(β) \text{ and}\\
       σ_{i2}(η) &= σ_i(α) + σ_{i2}(δ) σ_i(β) = σ_i(α) - σ_{i1}(δ) σ_i(β)
     \end{align*}
-    are complex conjugates. Now on can deduce,
+    are complex conjugates. Now one can deduce,
     \[
       1 = N_{L/K}(η) = σ_{i1}(η) σ_{i2}(η) = |σ_{ij}(η)|^2
     \]
@@ -614,7 +609,7 @@ Before we can start proving some approximations for the complex moduli of \(ε,
     To prove the second part of the claim, we need a fact from number theory:
     \textit{If an algebraic integer \(η\) and all its conjugates have complex
     modulus \(1\), then \(η\) is a root of unity.} A proof of this fact can be
-    found in \cite[§~34, Lemma~(a)]{Hecke1981}. Furthermore, note that all roots
+    found in \cite[§~34, Lemma~(a)]{Hecke1981}. Notice that all roots
     of unity have complex modulus \(1\), so one direction is trivial.
 
     Let now \(η = α + δ β ∈ \ker N_{L / K}\) and additionally \(|η| = 1\), we
@@ -673,13 +668,6 @@ Before we can start proving some approximations for the complex moduli of \(ε,
     proving the first estimate. The second inequality follows from \(|ε_1| = |a + δ_1| < 2|a| + 1\) by (i).
     % QUESTION
     \todo{Can one get rid of the \(+ 1\)? I doubt the proof of Shlapentokh, but will check, if the stronger estimate is needed. It seems that it is not needed.}
-
-    \item As was observed in the proof of (iii) the images \(σ_{i1}(ε)\) and
-    \(σ_{i2}(ε)\) are complex conjugates. Thus for both \(j = 1\) or \(2\) we
-    find
-    \[
-      |σ_{ij}(ε)|^2 = σ_{i1}(ε) σ_{i2}(ε) = 1.
-    \]
 
     \item Note that by (v), \(|ε_1| > |a| > 2^{2(n + 1)} > 1\) and therefore the
     complex modulus of \(ε\) cannot be equal to \(1\). The claim follows from
@@ -784,10 +772,13 @@ this, we need a lemma.
 \begin{proof}
   By the discussion above all that is left to prove is that in the equation
   \[
-    ε = ζε_0^k
+    ε_1 = ζε_0^k
   \]
-  the integer \(k\) is \(1\). Then \(ε_0 = ζ^{-1}ε\) and the
-  proposition is proven.
+  with \(|ε_0| ≥ 1\) the integer \(k\) is \(1\). Then
+  \[
+    ε_0 = ζ^{-1}ε_1 = ζ^{-1}ε^{± 1}
+  \]
+  and the proposition is proven.
 
   Assume to the contrary, that \(k ≥ 2\), then \(|ε_1| ≥ |ε_0|^2 ≥ 1\).
   By the lemma above \(2δ | (ε_0 - ε_0^{-1})\) and therefore
@@ -795,9 +786,10 @@ this, we need a lemma.
     N_{L / K}(2δ) ≤ N_{L / K}(ε_0 - ε_0^{-1}).
   \]
   The previous lemma implies now that \(1 < |a|^{2m_0} < 2^{2n}|ε_0|^{2m_0}\),
-  where \(m_0 ∈ \set{1, 2}\) is chosen accordingly. Taking the \(m_0\)-st root and applying \cref{lem:approximation of epsilon with a} yields
+  where \(m_0 ∈ \set{1, 2}\) is chosen accordingly. Applying
+  \cref{lem:approximation of epsilon with a} yields
   \[
-    |a|^2 < 2^{2n} |ε_1| < 2^{2n + 1} (|a| + 1) < 2^{2n + 2} |a|.
+    |a|^2 < 2^{2n} |ε_0|^{2} ≤ 2^{2n} |ε_1| < 2^{2n + 1} (|a| + 1) < 2^{2n + 2} |a|.
   \]
   But this is a contradiction to the assumption \(|a| > 2^{2n + 2}\) of \eqref{eq:approximations of a}.
 \end{proof}
