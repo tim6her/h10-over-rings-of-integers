@@ -49,7 +49,7 @@ defined for each \(m ∈ ℕ\) as they correspond to the coefficients of
 \({(ε(a))}^m\) in \(K[δ(a)]/K\) with respect to the basis \(\lbrace 1,
 δ(a)\rbrace\). If the reference is clear, I will omit the dependency on \(a\)
 writing \(δ, ε, \px_m\) and \(\py_m\).
-% QUESTION
+% QUESTION Why does every number field contain such an element \(a\)?
 \todo{Why does every number field contain such an element \(a\)?}
 In the following the number field \(K[δ(a)]\) will be denoted by \(L\).
 
@@ -420,7 +420,7 @@ cannot correctly decide
 \[
   ∃\seq{β}: p_{\mathcal{K}}(α, \seq{β}) = 0.
 \]
-% TODO
+% TODO State the full DPRM-theorem
 \todo{State the full DPRM-theorem}
 
 \subsection{Diophantine definition of \(ℤ\) over \(K\)}
@@ -562,6 +562,24 @@ Before we can start proving some approximations for the complex moduli of \(ε,
   \end{exlist}
 \end{rem}
 
+We will use the following fact from number theory.
+
+\begin{lem}
+  If an algebraic integer \(η\) and all its conjugates have complex
+  modulus \(1\), then \(η\) is a root of unity.
+\end{lem}
+\begin{proof}
+  Let \(η = \seq{η}\) be all the conjugates of \(η\). Consider the polynomial
+  \[
+    f_k(X) := (X - η_1^k)…(X - η_n^k) = X^n + a_{k, n - 1} X^{n - 1} + … + a_{k, 0}
+  \]
+  for all integers \(k ∈ ℕ\). Since \(f_k ∈ ℤ[X]\) has integral coefficients and
+  all \(|η_i| = 1\), we find that \(|a_{k, s}| ≤ {n \choose s}\). This implies
+  that there can only be finitely many different \(f_k\). Now choose \(ℓ > k\)
+  with \(f_ℓ = f_k\), then \(η^ℓ = η^k\) and \(η\) is a \((ℓ - k)\)-th root of
+  unity.
+\end{proof}
+
 \begin{lem}
   Suppose \(K ≠ ℚ\) is a number field of degree \(n\) over \(ℚ\) and let \(a ∈
   \algint\) be such that \eqref{eq:approximations of a} is satisfied.
@@ -606,10 +624,7 @@ Before we can start proving some approximations for the complex moduli of \(ε,
     \]
     for both \(j = 1\) and \(2\).
 
-    To prove the second part of the claim, we need a fact from number theory:
-    \textit{If an algebraic integer \(η\) and all its conjugates have complex
-    modulus \(1\), then \(η\) is a root of unity.} A proof of this fact can be
-    found in \cite[§~34, Lemma~(a)]{Hecke1981}. Notice that all roots
+    To prove the second part of the claim, we notice that all roots
     of unity have complex modulus \(1\), so one direction is trivial.
 
     Let now \(η = α + δ β ∈ \ker N_{L / K}\) and additionally \(|η| = 1\), we
@@ -666,7 +681,9 @@ Before we can start proving some approximations for the complex moduli of \(ε,
       |ε_1| > |a| + \sqrt{|a|^2 - 1}  > |a|,
     \]
     proving the first estimate. The second inequality follows from \(|ε_1| = |a + δ_1| < 2|a| + 1\) by (i).
-    % QUESTION
+    % QUESTION Can one get rid of the \(+ 1\)? I doubt the proof of
+    % Shlapentokh, but will check, if the stronger estimate is needed. It seems
+    % that it is not needed.
     \todo{Can one get rid of the \(+ 1\)? I doubt the proof of Shlapentokh, but will check, if the stronger estimate is needed. It seems that it is not needed.}
 
     \item Note that by (v), \(|ε_1| > |a| > 2^{2(n + 1)} > 1\) and therefore the
@@ -796,13 +813,12 @@ this, we need a lemma.
 \end{proof}
 
 Recall the sequences \((\px_m)_{m ∈ ℕ}\) and \((\py_m)_{m ∈ ℕ}\) defined in
-\eqref{eq:def of x and y} in the special cases we are considering in this
-section one can derive further properties.
+\eqref{eq:def of x and y}. In the special cases of the field \(K\) we are
+considering one can derive further properties.
 
 \begin{lem}
   Let \(K ≠ ℚ\) be a number field and let \(a ∈ \algint\) satisfy
-  \eqref{eq:approximations of a}. If \(s\) is the number of pairs of non-real
-  embeddings of \(K\) into \(ℂ\) then
+  \eqref{eq:approximations of a}. Then the following inequality holds
   \[
     m < |σ_i(\px_m)|
   \]
@@ -819,6 +835,121 @@ section one can derive further properties.
   If \(s = 1\), then \(σ_2(\px_m)\) is the complex conjugate of \(σ_1(\px_m) =
   \px_m \)
   their moduli must coincide.
+\end{proof}
+
+\begin{lem}
+  Let \(K ≠ ℚ\) be a number field and let \(a ∈ \algint\) satisfy
+  \eqref{eq:approximations of a}. There exists a constant \(C\) depending on
+  \(K\) and \(a\) such that for all \(k ∈ ℕ \setminus \set{0}\) there exist \(m,
+  h ∈ ℕ\) with \(k | m\) and \(k | h\), and
+  \begin{align*}
+    |σ_i(\px_m)| &> \frac{1}{2},\\
+    |σ_i(\py_h)| &> C
+  \end{align*}
+  for \(s + 1 < i ≤ n\).
+\end{lem}
+\begin{proof}
+  By \cref{lem:modulus of sigma epsilon} we know that \(|ε_j| = 1\) for \(s + 1
+  < j ≤ n\), but in the same lemma we have proven, that \(ε\) is not a root of
+  unity. It follows that there exist arguments \(ϑ_{s + 2}, …, ϑ_n ∈ ℝ\) such
+  that
+  \[
+    ε_j = e^{i π ϑ_j}.
+  \]
+  Let \(A = \set{1, ϑ_{j_1}, … ϑ_{j_s}}\) be a maximal \(ℚ\)-linear independent
+  subset of \(\set{1, ϑ_{s + 2}, …, ϑ_{n}}\). Since \(ε\) is not a root of
+  unity, none of the \(ϑ_j\) can be rational and \(A\) contains an element
+  unequal to \(1\).
+
+  Let \(J_0\) be the set of indices of
+  elements in \(A\), then the construction implies that for all \(s + 1 < t ≤
+  n\) there exist integers \(b_t, b_{tj} ∈ ℤ\) with the property
+  \[
+    ε_r^{b_t} = \prod_{j ∈ J_0} ε_j^{b_{tj}}.
+  \]
+  We set \(b := \prod_{t = s + 2}^n b_t\) and find for all \(s + 1 < t ≤
+  n\) integers \(c_{tj} ∈ ℤ\) with
+  \[
+    ε_t^b = \prod_{j ∈ J_0} ε_j^{c_{tj}}.
+  \]
+
+  We exponent this expression by a multiple \(ℓ ∈ ℤ\) of \(k\) and rewrite it
+  to obtain
+  \begin{align}
+    \begin{split}\label{eq:approximation of sigma x and sigma y}
+    σ_t(\px_{ℓb}) + σ_{t1}(δ) σ_t(\py_{ℓb}) &= ε_t^{ℓb} = \prod_{j ∈ J_0} ε_j^{ℓ c_{tj}}\\
+      &= e^{iπ \sum_{j ∈ J_0} ℓ c_{tj} ϑ_j} =\\
+      &= \cos\left(π \sum_{j ∈ J_0} ℓ c_{tj} ϑ_j\right) +
+         i \sin\left(π \sum_{j ∈ J_0} ℓ c_{tj} ϑ_j\right).
+    \end{split}
+  \end{align}
+
+  By continuity of \(| \cos(π ϑ) |\) in \(ϑ\), we can find
+  a constant \(λ > 0\) such that \(1 - \cos(π ϑ) | < 1/2\) whenever \(|ϑ| <
+  λ\).
+
+  Let \(c_0 = max_{t,j}(|c_{tj}|)\). By Kronecker's theorem \cite[see][§~23,
+  Thm~442]{Hardy1975}
+  % TODO Kronecker's theorem should be at least stated
+  \todo{Kronecker's theorem should be at least stated}
+  we can find an integer \(ℓ ∈ ℕ\) divisible by \(k\) such that for all \(j ∈
+  J_0\) there exists an \(ℓ_j ∈ ℤ\) with the property that
+  \[
+    |ℓ ϑ_j - ℓ_j| < \frac{λ}{c_0n}.
+  \]
+   This implies that
+   \[
+    \left| \sum_{j ∈ J_0} ℓ c_{tj} ϑ_j - \sum_{j ∈ J_0} ℓ_j c_{tj} \right| < λ
+   \]
+
+  From \eqref{eq:approximation of sigma x and sigma y} and the fact that
+  \(σ_{t1}(δ)\) is pureluniformlyy we deduce that
+  \[
+    |σ_t(\px_{ℓb})| =
+    \left| \cos\left(π \sum_{j ∈ J_0} ℓ c_{tj} ϑ_j\right) \right| =
+    \left| \cos\left(π \sum_{j ∈ J_0} ℓ c_{tj} ϑ_j - π \sum_{j ∈ J_0} ℓ_j c_{tj}\right) \right| < \frac{1}{2}.
+  \]
+  % QUESTION How can I deduce that \(\sum_{j ∈ J_0} ℓ_j c_{tj}\) is divisible by 2?
+  \todo{How can I deduce that \(\sum_{j ∈ J_0} ℓ_j c_{tj}\) is divisible by 2?}
+
+  To prove the claimed bound for \(\py_h\) let \(C_t := \sum_{j ∈ J_0} c_{tj}\)
+  for all \(s + 1 < t ≤ n\) and fix a constant \(C_0 ∈ ℕ\) such that \(C_0 >
+  \max_t (|C_t|)\) and in the prime factorization of \(C_0\) appear at least as
+  many twos as in the prime factorization of \(C_t\). In other words,
+  \[
+    \ord_2 C_0 ≥ \ord_2 C_t, \quad \text{ for all } s + 1 < t ≤ n.
+  \]
+
+  As \(|\sin(π ϑ)|\) is uniformly continuous on the compact interval \([-1,
+  1]\) we can find for all positive \(λ_1 > 0\) a real number \(0 < λ_2 < 1/4\)
+  such that \(|\sin(π ϑ) - \sin(π φ)| < λ_1\) whenever \(|ϑ - φ| < λ_2\). We
+  apply Kronecker's theorem again to obtain an integer \(ℓ ∈ ℤ\) divisible by
+  \(k\) such that for all \(j ∈ J_0\) there exists an integer \(ℓ_j ∈ ℤ\) with
+  the property
+  \[
+    \left| ℓ ϑ_j - ℓ_j - \frac{1}{2 C_0} \right| < \frac{λ_2}{2 C_0}.
+  \]
+
+  Then we find that
+  \[
+    \left| \sum_{j ∈ J_0} \left( ℓ c_{tj} ϑ_j - ℓ_j c_{tj}\right) - \frac{C_t}{2 C_0}\right| =
+    \left| \sum_{j ∈ J_0} \left( ℓ c_{tj} ϑ_j - ℓ_j c_{tj} - \frac{c_{tj}}{2 C_0}\right)\right| < λ_2
+  \]
+  Set now \(λ_1 = 1/2 | \sin(π C_t / (2 C_0))\) then we can use \eqref{eq:approximation of sigma x and sigma y} to obtain
+  \begin{align*}
+    |σ_{t1} σ_t (y_{ℓb})| &=
+      \left| \sin \left(π \sum_{j ∈ J_0} ℓ c_{tj} ϑ_j \right)\right| =
+      \left| \sin \left(π \sum_{j ∈ J_0} ℓ c_{tj} ϑ_j  - ℓ_j c_{tj}\right)\right| >\\
+      &> \frac{1}{2} \left| \sin \left( \frac{π C_t}{2 C_0}\right)\right|
+  \end{align*}
+  for all \(s + 1 < t ≤ n\).
+  % QUESTION Why is \(\sum_j ℓ_j c_{tj}\) divisible by \(2\)?
+  \todo{Why is \(\sum_j ℓ_j c_{tj}\) divisible by \(2\)?}
+  Note that \(\sin(π C_t / (2 C_0)) ≠ 0\) as \(C_t / (2 C_0)\) cannot be an integer by the choice of \(C_0\). Now set
+  \[
+    C := \min_{s + 1 < t ≤ n} \frac{\left| \sin \left(π \frac{C_t}{2 C_0}\right) \right|}{2 |σ_{t1}(δ)|}
+  \]
+  then \(C\) satisfies the claim.
 \end{proof}
 
 %
