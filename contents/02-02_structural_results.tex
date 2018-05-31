@@ -403,11 +403,50 @@ can even strengthen the result of the corollary in this case \cite[cf.][§~11]{D
               α_k = a_{k1} ζ_1 + … + a_{kn} ζ_n
             \end{cases}
   \end{align*}
-  By assumption there exists a Diophantine definiton of \(ℤ\) over \(\algint\).
+  By assumption there exists a Diophantine definition of \(ℤ\) over \(\algint\).
   So by the procedure described in the proof of \cref{lem:moving up}, one can
   translate the above conditions into a Diophantine definition of \(A\) over
   \(\algint\).
 \end{proof}
 
-% TODO
-\todo{§7, Shlapentokh2007: Vertical Methods of Denef and Lipshitz}
+In the following I will present an important tool in proving that a field
+extension \(L/K\) has a Diophantine definition of \(\algint\) over
+\(\algint[L]\). This so called \emph{strong vertical method} was developed by
+Denef and Lipshitz and successfully applied over various number fields
+\cite[e.g.][]{Denef1975,Denef1978,Denef1980,Pheidas1988,Shlapentokh1989}.
+
+\begin{thm}\label{thm:strong vertical method}
+  Let \(L/K\) be an extension of number fields and \(n = [L : ℚ]\). If \(x, y ∈ \algint[L]\) and \(α ∈ \algint\) satisfy
+  \begin{align}
+    \label{eq:y is not a unit}& y \text{ is not a unit},\\
+    \label{eq:sigma x and norm of y}& |σ_i(x)| ≤ |N_{L/ℚ}(y^c)|
+    \text{ for all } 1 ≤ i ≤ n, \\
+    \label{eq:sigma x and norm of alpha}& |σ_i(α)| ≤ |N_{L/ℚ}(y^c)|
+    \text{ for all } 1 ≤ i ≤ n, \text{ and}\\
+    \label{eq:x mod alpha}& x \equiv α \mod \left(2 y^{2cn}\right) \text{ in }
+      \algint[L],
+  \end{align}
+  where \(\seq{σ}\) denote the embeddings of \(L\) into the complex pane
+  \(ℂ\) and \(c ∈ ℕ\) is a fixed constant, then
+  \[
+    x = α ∈ \algint.
+  \]
+\end{thm}
+\begin{proof}
+  By \eqref{eq:x mod alpha} we know that there exists an integer \(β ∈
+  \algint[L]\) such that \(x - α = β \, 2 y^{2cn}\). As a consequence, either
+  \(x = α\) or
+  \[
+    |N_{L/ℚ}(x - α)| = |N_{L/ℚ}(β \, 2 y^{2cn})| ≥ 2^n |N_{L/ℚ}(y^{2cn})|
+  \]
+  holds. To reach a contradiction assume the latter to be true. Then
+  \eqref{eq:sigma x and norm of y} and \eqref{eq:sigma x and norm of alpha}
+  imply that
+  \[
+    |N_{L/ℚ}(x - α)| = \prod_{i=1}^n |σ_i(x - α)| ≤
+    \prod_{i=1}^n 2 \max(|σ_i(x)|, |σ_i(α)|) ≤ 2^n |N_{L/ℚ}(y^{cn})|.
+  \]
+  Now since \(y\) is not a unit, the modulus of its norm is greater than \(1\).
+  We conlude that \(|N_{L/ℚ}(y^{cn})| < |N_{L/ℚ}(y^{2cn})|\) yielding the
+  desired contradiction.
+\end{proof}
