@@ -9,7 +9,7 @@ whose structure in term heavily depends on the article \citetitle{Davis1973} by
 tenth problem over rings of algebraic integers in totally real number fields and
 number fields with one pair of non-real embeddings and at least one real
 embedding in one go. This approach is also present in Sections 6.3 and 7.2 of
-the study~\cite{Shlapentokh2007} by Shlapentokh. The same author has proven thes
+the study~\cite{Shlapentokh2007} by Shlapentokh. The same author has proven the
 second result independently of Pheidas in her thesis~\cite{Shlapentokh1989}.
 
 \subsection{Finitely many easy lemmas}
@@ -31,9 +31,9 @@ sequences defined below.
   \(ε(a) := a + δ(a)\), where we demand that \(-π/2 < \arg δ(a) ≤ π/2\). If
   \(δ(a) \not\in K\) one defines \(\px_m(a), \py_m(a) ∈ \algint\) for \(m ∈ ℕ\)
   by
-  \[
+  \begin{equation}\label{eq:def of x and y}
     \px_m(a) + δ(a) \py_m(a) = {(ε(a))}^m.
-  \]
+  \end{equation}
 \end{defin}
 
 This definition includes the case \(K = ℚ\) with \(\algint = ℤ\) of~\cite{Davis1973}. However, I am using the slightly modified notation of~\cite{Denef1980,Pheidas1988}.
@@ -791,7 +791,34 @@ this, we need a lemma.
   \[
     |a|^2 < 2^{2n} |ε_0|^{2} ≤ 2^{2n} |ε_1| < 2^{2n + 1} (|a| + 1) < 2^{2n + 2} |a|.
   \]
-  But this is a contradiction to the assumption \(|a| > 2^{2n + 2}\) of \eqref{eq:approximations of a}.
+  But this is a contradiction to the assumption \(|a| > 2^{2n + 2}\) of
+  \eqref{eq:approximations of a}.
+\end{proof}
+
+Recall the sequences \((\px_m)_{m ∈ ℕ}\) and \((\py_m)_{m ∈ ℕ}\) defined in
+\eqref{eq:def of x and y} in the special cases we are considering in this
+section one can derive further properties.
+
+\begin{lem}
+  Let \(K ≠ ℚ\) be a number field and let \(a ∈ \algint\) satisfy
+  \eqref{eq:approximations of a}. If \(s\) is the number of pairs of non-real
+  embeddings of \(K\) into \(ℂ\) then
+  \[
+    m < |σ_i(\px_m)|
+  \]
+  for all non-negative integers \(m ∈ ℕ\) and all \(1 ≤ i ≤ s + 1\).
+\end{lem}
+\begin{proof}
+  By \cref{lem:approximation of epsilon with a} we know that \(|ε_1| > |a| > 1\)
+  and since \(ε_1 = ε^{±1}\), \cref{lem:real part of epsilon} implies
+  \[
+    |x_m| = \frac{|ε_1^m + ε_1^{-m}|}{2} ≥ \frac{|ε_1|^{m} + 1}{2}
+    > \frac{|a|^{m} + 1}{2} > \frac{2^{2(n+1)m} + 1}{2} > m
+  \]
+
+  If \(s = 1\), then \(σ_2(\px_m)\) is the complex conjugate of \(σ_1(\px_m) =
+  \px_m \)
+  their moduli must coincide.
 \end{proof}
 
 %
