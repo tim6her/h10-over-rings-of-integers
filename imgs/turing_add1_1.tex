@@ -3,6 +3,9 @@
 
 \documentclass{standalone}
 
+\usepackage{fontspec}
+\setmainfont{Fira Mono}
+
 \usepackage{tikz}
 \usetikzlibrary{chains,fit,shapes}
 
@@ -11,7 +14,7 @@
     \tikzstyle{every path}=[very thick]
 
     \edef\sizetape{0.7cm}
-    \tikzstyle{tmtape}=[draw,minimum size=\sizetape,text=\ttfamily]
+    \tikzstyle{tmtape}=[draw,minimum size=\sizetape]
     \tikzstyle{tmhead}=[arrow box,draw,minimum width =.6cm,
                         arrow box arrows={south:.25cm}]
 
@@ -27,6 +30,7 @@
         \node [on chain=1,tmtape] {};
         \node [on chain=1,tmtape,draw=none] {$\ldots$};
     \end{scope}
+    \clip (-.8, -0.2) rectangle (6.5, 1.3);
 
     % Draw TM head below (input) tape cell
     \node [tmhead,yshift=.55cm] at (input.north) (head) {start};

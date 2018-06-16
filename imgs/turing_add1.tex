@@ -3,6 +3,9 @@
 
 \documentclass{standalone}
 
+\usepackage{fontspec}
+\setmainfont{Fira Mono}
+
 \usepackage{tikz}
 \usetikzlibrary{chains,fit,shapes}
 
@@ -11,7 +14,7 @@
     \tikzstyle{every path}=[very thick]
 
     \edef\sizetape{0.7cm}
-    \tikzstyle{tmtape}=[draw,minimum size=\sizetape,text=\ttfamily]
+    \tikzstyle{tmtape}=[draw,minimum size=\sizetape]
     \tikzstyle{tmhead}=[arrow box,draw,minimum size=.5cm,
                         arrow box arrows={east:.25cm, west:0.25cm}]
 

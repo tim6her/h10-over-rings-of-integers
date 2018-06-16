@@ -973,8 +973,8 @@ considering one can derive further properties.
   \end{equation}
   holds for the constant \(C\) of the same lemma, then
   \begin{thmlist}
-    \item \(\py_{eh} | \py_{em}\) implies \(h | m\) in \(ℤ\) and
-    \item \(\py_{eh}^2 | \py_{em}\) implies \(h \py_{eh} | m\) in \(\algint\).
+    \item \(\py_{eh} | \py_{eℓ}\) implies \(h | ℓ\) in \(ℤ\) and
+    \item \(\py_{eh}^2 | \py_{eℓ}\) implies \(h \py_{eh} | ℓ\) in \(\algint\).
   \end{thmlist}
 \end{lem}
 \begin{proof}
@@ -1009,9 +1009,9 @@ considering one can derive further properties.
     |N_{K / ℚ} (\py_{eh})| > | N_{L / ℚ}(\py_{er}) |.
   \end{equation}
 
-  Let \(\py_{eh} | \py_{em}\) and  set \(m = t h + r\) for \(t, r ∈ ℕ\) with \(0 ≤ r < h\). Assume to reach a contradiction that \(r > 0\), then
+  Let \(\py_{eh} | \py_{eℓ}\) and  set \(ℓ = t h + r\) for \(t, r ∈ ℕ\) with \(0 ≤ r < h\). Assume to reach a contradiction that \(r > 0\), then
   \[
-    \py_{em} = \py_{eth + er} \overset{\text{\cref{lem:addition formulas}}}{=}
+    \py_{eℓ} = \py_{eth + er} \overset{\text{\cref{lem:addition formulas}}}{=}
     \py_{eth}\px_{er} + \px_{eth} \py_{er}.
   \]
   By \cref{lem:y m divides y mk} we know that \(\py_{eh} | \py_{eth}\) and
@@ -1020,11 +1020,11 @@ considering one can derive further properties.
   and \((\py_{eth})\) are relative prime. Now \cref{lem:y m divides y mk}
   implies that \((\px_{eth})\) and \((\py_{eh})\) are relative prime as well.
   And therefore \(y_{eh} | y_{er}\), contradicting \eqref{eq:norm of x eh and x
-  er}. Consequently, \(r = 0\) and \(h | m\) in \(ℤ\).
+  er}. Consequently, \(r = 0\) and \(h | ℓ\) in \(ℤ\).
 
-  To see the second divisibility condition we assume \(\py_{eh}^2 | \py_{em}\)
+  To see the second divisibility condition we assume \(\py_{eh}^2 | \py_{eℓ}\)
   in \(\algint\). Then by the first part of the lemma, we know that there exists
-  an integer \(t\) such that \(m = th\). Using the binomial formula we obtain
+  an integer \(t\) such that \(ℓ = th\). Using the binomial formula we obtain
   \begin{align*}
     \px_{eth} + δ\py_{eth} &= (ε^{eh})^t = (\px_{eh} + δ \py_{eh})^t =\\
       &= \sum_{\substack{0 ≤ i ≤ t\\2 \text{ even}}} \begin{pmatrix}t \\ i\end{pmatrix} \px_{eh}^{t - i} δ^i \py_{eh}^i +
@@ -1036,7 +1036,7 @@ considering one can derive further properties.
     0 \equiv \py_{eth} \equiv t \px_{eh}^{t - 1} \py_{eh} \equiv t \py_{eh} \mod (\py_{eh}^2).
   \]
   It follows that \(\py_{eh} | t\) in \(\algint\) and therefore \(h \py_{eh} |
-  m\).
+  ℓ\).
 \end{proof}
 
 %
