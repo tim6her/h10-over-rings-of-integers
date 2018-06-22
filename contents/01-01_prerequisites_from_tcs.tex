@@ -4,8 +4,33 @@
 % !TeX spellcheck = en_GB
 % !TeX root = ../Herbstrith-H10_over_AI.tex
 
-In this section I closely follow the lecture notes on the subject by
-\textcite{Mueller2016}.
+Fuelled by the task of deciding another problem stated by Hilbert---the
+so-called \begin{german}\emph{Entscheidungsproblem}\end{german}---Austrian
+mathematician \textcite{Goedel1931}, American mathematician
+\textcite{Church1936a,Church1936}, and British mathematician
+\textcite{Turing1936} (among others) developed very different formalizations of
+the intuitive notion of \emph{computation}.
+
+Gödel's approach can be seen as an algebraic one. He defines ‘[primitive]
+recursive functions’ as the smallest class of functions containing initial
+functions closed under composition and recursion. Based on a suggestion of
+Herbrand in a letter of April 1931, \textcite{Goedel1934} later extended this
+class to ‘general recursive functions’ by closing them under minimization
+(cf.~\cref{lem:minimization}) as well. Church introduced ‘\(λ\)-definable
+functions’ to capture the notion of ‘effective calculability’. His
+\emph{\(λ\)-calculus} is still used as the formal basis of functional
+programming languages like \emph{Haskell}. Turing took a ‘purely mechanical’
+approach. His ‘computability machines’ are the very foundation of the principles
+today's computers are based on. The equivalence of all three concepts was proven
+by \textcite{Church1936,Kleene1936,Turing1936}.
+
+Maybe a bit ironically for an Austrian student writing on a topic of algebra, I
+will make use of Turing's definition of computability. The three main goals for
+this section are formalizing and defining the notions of \emph{Turing machines}
+and \emph{decidability}, as well as providing a more or less natural example of
+an undecidable problem. To this end, I will loosely follow the lecture notes on
+the subject by \textcite{Mueller2016} and present some results of the
+textbook~\cite{Cooper2004}.
 
 \begin{defin}
   A \emph{(decision) problem} is a subset of the set of finite
@@ -38,21 +63,21 @@ that will be made precise in \cref{sec:computable structures}.
   Consider the set \(Q \subseteq ω\) of strings of the form
   \[
       \begin{array}{lllll}
-          \mathbf{b} := & b_{1, 2} & b_{1, 3} & …      & b_{1, n}\\
-                   &    & b_{2, 3} & …      & b_{2,n}\\
-                   &    &          & \ddots & \vdots \\
-                   &    &          &        & b_{n-1, n},
+          x := & b_{1, 2} & b_{1, 3} & …      & b_{1, n}\\
+               &    & b_{2, 3} & …      & b_{2,n}\\
+               &    &          & \ddots & \vdots \\
+               &    &          &        & b_{n-1, n},
       \end{array}
   \]
-  of length \(n (n - 1) / 2\). We can consider each \(\mathbf{b} ∈ Q\) as the
+  of length \(n (n - 1) / 2\). We can consider each \(x ∈ Q\) as the
   encoding of an undirected graph without loops on \(n\) vertices, where vertex
   \(i\) and vertex \(j\) are adjacent if and only if \(b_{i, j} = \one\) (for
-  \(1 ≤ i < j ≤ n\)). In other words, \(\mathbf{b}\) encodes the right-upper
+  \(1 ≤ i < j ≤ n\)). In other words, \(x\) encodes the right-upper
   triangle of the adjacency matrix.
 
-  Note however that two different strings \(\mathbf{b}, \mathbf{b'} ∈ Q\) can
-  encode two isomorphic graphs. For example \(\mathbf{b} := \one\zer\one\) and
-  \(\mathbf{b'} := \zer\one\one\) encode two isomorphic graphs (cf.
+  Note however that two different strings \(x, y ∈ Q\) can
+  encode two isomorphic graphs. For example \(x := \one\zer\one\) and
+  \(y := \zer\one\one\) encode two isomorphic graphs (cf.
   \cref{fig:encoding of graphs}).
 \end{exam}
 
@@ -64,16 +89,16 @@ that will be made precise in \cref{sec:computable structures}.
   \end{figure}
 \end{center}
 
-As a next step, we want to formalize the intuitive notion of ‘computation’. We
-will use a machine model introduced in the 1930s by Allen Turing. Specifically,
-our machines will consist of a \emph{read-write head} and a \emph{storage tape}.
-This storage tape consists of discrete cells stretching infinitely in one
-direction.
+As a next step, we want to formalize the intuitive notion of ‘computation’. As
+was remarked above we will use a variant of the machine model of
+\textcite{Turing1936}. Specifically, our machines will consist of a
+\emph{read-write head} and a \emph{storage tape}. This storage tape consists of
+discrete cells stretching infinitely in one direction.
 
 The head will read at every step of the computation one symbol written on the
 tape and change the state of the machine, write a new symbol to the tape, and
 move to the left, right or stay on the current cell. An end of tape symbol
-\(\sta\) will tell the head not to move too far to the left and but finitely
+\(\sta\) will tell the head not to move too far to the left and all but finitely
 many cells will contain the blank symbol \(\emp\). More formally a Turing
 machine can be described as follows.
 
@@ -125,7 +150,8 @@ One interprets this in the following way: The Turing machine changes its state
 to $\state{return}$, the head writes $\one$ in the current cell and moves one
 cell to the left. The movement is determined by the last item of the triple
 $δ(\state{overflow}, \zer)$, where $-1$ indicates moving to the left, $1$
-indicates moving to the right, and $0$ indicates not moving at all.
+indicates moving to the right, and $0$ indicates not moving at all. This notion
+of step-wise computation is formalized in the subsequent definitions.
 
 \begin{figure}
   \includegraphics{res/turing_add1_4}
@@ -145,10 +171,24 @@ A configuration of the form $(\shalt, 0, c)$ is called \emph{halting}. A
 \sta$ and there exists an $n ∈ ℕ$ such that $c(i) = \emp$ if and only if $i >
 n$. This means that in a start configuration the work-tape reads
 \[
-  \sta x_1 x_2 … x_n \emp \emp …
+  \sta c(1) c(2) … c(n) \emp \emp …
 \]
-It will be very convenient to identify the finite string $x_1…x_n$ with this
-tape content.
+It will be very convenient to identify the finite string $c(1) c(2) … c(n) ∈ ω$
+with this tape content. Note however, that albeit every string can be associated
+with a tape content, the converse is not true, e.g.
+\[
+  \sta \zer \zer \one \emp \zer \emp …
+\]
+is a valid tape content but we cannot interpret it as a finite string in the
+alphabet \(\set{\zer, \one}\). Nevertheless, if reference is clear, the symbols \(b_1b_2 … b_n ∈ ω\) shall denote both the string and the tape content
+\[
+  c(i) :=
+    \begin{cases}
+      \sta & \text{if } i = 0\\
+      b_i  & \text{if } 1 ≤ i ≤ n\\
+      \emp & \text{otherwise}
+    \end{cases}
+\]
 
 \begin{defin}
   Let \((s, j, c)\) and \((s', j', c')\) be configurations of a Turing machine
@@ -167,11 +207,11 @@ tape content.
 \end{defin}
 
 This relation makes the set of all configurations of $\mathbb A$ into a directed
-graph. A \emph{run} or \emph{computation} of $\mathbb A$ on $x$ is a path in
+graph. A \emph{run} or \emph{computation} of $\mathbb A$ on $x ∈ ω$ is a path in
 this directed graph starting at the start configuration $(\sstart, 0, x)$. A run
 of $\mathbb A$ on $x$ is \emph{halting} or \emph{complete} if it reaches a
-halting configuration $(\shalt, 0, y)$. In this case I write $\mathbb A (x) =
-y$.
+halting configuration $(\shalt, 0, y)$ with \(y ∈ ω\). In this case I write
+$\mathbb A (x) = y$.
 
 I will denote Turing machines using listings, where the fact that
 $δ_\text{delta} (\state{state}, b) = (\state{state'}, b', m)$ is encoded by
@@ -634,9 +674,9 @@ sets.
 
   \emph{(ii) \(⇒\) (iii):} Let \(\mathbb{A}\) be a Turing machine computing the
   partial computable function, whose domain is \(Q\). For each integer \(n ∈
-  ℕ\), I denote by \(\mathbb{A}_n\) the set of all strings \(\mathbf{b} :=
-  b_1…b_k ∈ ω\) such that \(k ≤ n\) and \(\mathbb{A}\) halts on \(\mathbf{b}\)
-  in at most \(n\) steps of the computation.
+  ℕ\), I denote by \(\mathbb{A}_n\) the set of all strings \(x := b_1…b_k ∈ ω\)
+  such that \(k ≤ n\) and \(\mathbb{A}\) halts on \(x\) in at most \(n\) steps
+  of the computation.
 
   As \(|\mathbb{A}_n| ≤ 2^n\) is finite for all \(n ∈ ℕ\), the sets
   \(\mathbb{A}_n\) are decidable by \cref{ex:finite problems are decidable}.
