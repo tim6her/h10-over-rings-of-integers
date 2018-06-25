@@ -14,8 +14,9 @@
 \usepackage{tikz}
 
 \begin{document}
-  \begin{tikzpicture}[shorten >=1pt]
+  \begin{tikzpicture}
   \tikzstyle{vertex}=[circle,fill=black!25,minimum size=17pt,inner sep=0pt]
+  \tikzset{edge from parent/.append style={very thick }}
 
   \node[vertex] (a) {2}
     child {node[vertex] {1}}

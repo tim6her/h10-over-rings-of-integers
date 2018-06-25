@@ -123,6 +123,14 @@
 \newcommand*{\px}{\mathrm x}
 \newcommand*{\py}{\mathrm y}
 \newcommand*{\sigmaK}[1]{{\left(#1\right)}^*}
+\newcommand*{\lang}{\mathcal{L}}
+\makeatletter
+\newcommand{\dotminus}{\mathbin{\text{\@dotminus}}}
+
+\newcommand{\@dotminus}{%
+  \ooalign{\hidewidth\raise1ex\hbox{.}\hidewidth\cr$\m@th-$\cr}%
+}
+\makeatother
 
 
 \declaretheoremstyle[
@@ -284,8 +292,11 @@ integers $\set{0, 1, 2, …}$.
 \section{Prerequisites from theoretical computer science}
 \input{./contents/01-01_prerequisites_from_tcs}
 
-\section{Prerequisites from number theory}
-\input{./contents/01-02_prerequisites_from_nt}
+\section{Prerequisites from model theory}
+\input{./contents/01-02_prerequisites_from_model_theory}
+
+\section{Prerequisites from number theory}\label{sec:number theory}
+\input{./contents/01-03_prerequisites_from_nt}
 
 \chapter{Hilbert's tenth problem}
 

@@ -1,0 +1,781 @@
+% !TeX encoding = UTF-8
+% !TeX TS-program = xelatex
+% !TeX spellcheck = en_GB
+% !TeX root = ../Herbstrith-H10_over_AI.tex
+
+The idea of model theory is to differentiate between the statements we can make
+about mathematical objects and the implementation of these mathematical objects.
+We will define \emph{languages} and their syntax and will describe what it means
+for a mathematical object to \emph{model} a \emph{theory}. In this section I will closely follow Chapter 1 of the textbook \cite{Marker2002}.
+
+\subsection{Formulae and models}
+
+Informally, a first-order formula is just a string of symbols that signify
+distinguished constants, functions, and relations. We demand that a formula is
+well-behaved according to the interpretability of constants, functions, and
+relations. We do however not make any assumptions on the implementation of these
+symbols. So a formula captures the \emph{syntax} of a collection of mathematical
+objects.
+
+A model on the other hand is describes the \emph{semantics} of an object. It
+gives concrete interpretation of the symbols of a language and tells us, how the
+formulae are to be interpreted.
+
+\begin{defin}
+  A \emph{language} \(\lang\) is a quadruple \((\mathcal{F}, \mathcal{R},
+  \mathcal{C}, ar: \mathcal{F} ∪ \mathcal{R} → ℕ)\), where \(\mathcal{F}\) is a
+  set of function symbols, \(\mathcal{R}\) is a set of relation symbols, and
+  \(\mathcal{C}\) is a set of constant symbols, such that all of these sets are
+  pair-wise disjoint. The function \(ar: \mathcal{F} ∪ \mathcal{R} → ℕ\) assigns
+  to every function symbol \(f ∈ \mathcal{F}\) and every relation symbol \(R ∈
+  \mathcal{R}\) the \emph{arity} \(n_f\) and \(n_R\) respectively.
+\end{defin}
+
+By the the arity \(n_f\) of a function symbol \(f\) we describe that \(f\)
+should eventually be interpreted as a function on \(n_f\) variables.
+Analogously, the arity \(n_R\) of an relation symbol \(R\) describes that \(R\)
+will denote an \(n_R\)-ary relation.
+
+It is customary to denote the language \(\lang = (\mathcal{F}, \mathcal{R},
+\mathcal{C}, ar: \mathcal{F} ∪ \mathcal{R} → ℕ \setminus \set{0})\) by
+\[
+  \lang = \set{f ∈ \mathcal{F}; R ∈ \mathcal{R}; c ∈ \mathcal{C}}
+\]
+and thereby drop the arity function from the notation.
+
+\begin{exam}
+  Examples of languages include
+  \begin{exlist}
+    \item the language of pure sets \(\lang = ∅\);
+
+    \item the language of (reflexive) orderings \(\lang_{≤} =
+    \set{\mathtt{≤}}\), where \(≤\) is a binary relation symbol;
+
+    \item the language of groups \(\lang_{group} = \set{\mathtt{\cdot, {}^{-1};
+    e}}\), where \(\mathtt{\cdot}\) is a binary function symbol,
+    \(\mathtt{{}^{-1}}\) is an unary function symbol, and \(\mathtt{e}\) is a
+    constant; and
+
+    \item The language of rings with one \(\lang_{ring} = \set{\mathtt{+, -,
+    \cdot; 0, 1}}\), where \(\mathtt{+, -}\) and \(\mathtt{\cdot}\) are binary function symbols and \(\mathtt{0, 1}\) are constants.
+  \end{exlist}
+\end{exam}
+
+These languages allow for various interpretations---not all of them might be the
+intended ones---and each of these interpretations is called a model. More
+formally, we have the following definition.
+
+\begin{defin}
+  Let \(\lang = \set{f ∈ \mathcal{F}; R ∈ \mathcal{R}; c ∈ \mathcal{C}}\) be a language. A \emph{model} \(\mathfrak{A}\) of \(\lang\) is a non-empty set \(A\) together with
+  \begin{thmlist}
+    \item a function \(f^{\mathfrak{A}}: A^{n_f} → A\) for every function symbols \(f ∈ \mathcal{F}\),
+
+    \item a relation \(R^{\mathfrak{A}} \subseteq A^{n_R}\) for every relation symbols \(R ∈ \mathcal{R}\), and
+
+    \item a constant \(c^{\mathfrak{A}} ∈ A\) for every constant constant \(c ∈ \mathcal{C}\).
+  \end{thmlist}
+  We will use the notation
+  \[
+    {\mathfrak{A}} = ⟨A; f^{\mathfrak{A}} ∈ \mathcal{F}; R^{\mathfrak{A}} ∈ \mathcal{R}; c^{\mathfrak{A}} ∈ \mathcal{C}⟩
+  \]
+  to denote this model.
+
+  A model in a language without relation symbols is called \emph{algebraic
+  structure}.
+\end{defin}
+
+\begin{exam}
+  We list some examples of models for the languages defined above.
+  \begin{exlist}
+    \item In the language of pure sets \(\lang = ∅\), every non-empty set \(S\)
+    gives rise to a model \(\mathfrak{S} = ⟨S⟩\).
+
+    \item An example of model in language of (reflexive) orderings \(\lang_{≤} =
+    \set{\mathtt{≤}}\) is \(\mathfrak{N}_{≤} := ⟨ℕ, ≤⟩\), where \(≤\) denotes
+    the usual ordering of the non-negative integers.
+
+    \item As for \(\lang_{group} = \set{\mathtt{\cdot, {}^{-1}; e}}\), we can
+    use any group \(G\) as a model. Indeed, consider \(\mathfrak{G} := ⟨G;
+    \cdot^{\mathfrak{G}}, {\mathtt{{}^{-1}}}^{\mathfrak{G}};
+    \mathtt{e}^{\mathfrak{G}}⟩\), where \(\cdot^{\mathfrak{G}}\) denotes the
+    binary group-operation, \({\mathtt{{}^{-1}}}^{\mathfrak{G}}\) denotes
+    inversion, and \(\mathtt{e}^{\mathfrak{G}} ∈ G\) is the neutral element of
+    \(G\). However, \(\mathfrak{N}_{sg} = ⟨ℕ; +, \mathbf{0}; 0⟩\), where
+    \(\mathbf{0}: ℕ → ℕ\) is defined by \(n ↦ 0\) for all \(n ∈ ℕ\), is an
+    \(\lang_{group}\)-structure as well.
+
+    \item Let \(R\) be a ring with one, then \(\mathfrak{R} := ⟨R;
+    \mathtt{+^{\mathfrak{R}}, -^{\mathfrak{R}}, \cdot^{\mathfrak{R}};
+    0^{\mathfrak{R}}, 1^{\mathfrak{R}}}⟩\), where \(\mathtt{+^{\mathfrak{R}},
+    -^{\mathfrak{R}}, \cdot^{\mathfrak{R}}}\) are the respective binary
+    ring-operations and \(\mathtt{0^{\mathfrak{R}}, 1^{\mathfrak{R}}}\) are the
+    neutral elements with respect to addition or multiplication respectively, is
+    a model in \(\lang_{ring}\). Of special interest to us will be the
+    \(\lang_{ring}\)-structures \(\mathfrak{Z} := ⟨ ℤ; +, -, \cdot; 0, 1⟩\)
+    denoting the structure of rational integers and \(\mathfrak{O}_K :=
+    ⟨\algint; +, -, \cdot; 0, 1⟩\) denoting the structure of algebraic integers
+    (cf.~\cref{sec:number theory}). However, we will also consider the
+    \(\lang_{ring}\)-structure \(\mathfrak{N} := ⟨ℕ; +, \dotminus, \cdot; 0,
+    1⟩\) of the non-negative integers, where \(\dotminus: ℕ \times ℕ → ℕ\) is
+    defined by \(n \dotminus m = \max(0, n - m)\).
+  \end{exlist}
+\end{exam}
+
+As a next step we want to define the syntax of formulae but at first we consider
+terms.
+
+\begin{defin}
+  Let \(\lang = \set{f ∈ \mathcal{F}; R ∈ \mathcal{R}; c ∈ \mathcal{C}}\) be a language. The set of \emph{\(\lang\)-terms} is the smallest set \(T(\lang)\), such that
+  \begin{thmlist}
+    \item every constant symbol \(c ∈ \mathcal{C}\) is a term,
+    \item every variable symbol \(\mathtt{x_i}\) is a term (\(i ∈ ℕ\)), and
+    \item if \(\seq[n_f]{t} ∈ T(\lang)\) are terms then \(f(\seq[n_f]{t})\) is a term for all function symbols \(f ∈ \mathcal{F}\).
+  \end{thmlist}
+\end{defin}
+
+For example \(\mathtt{+(+(\cdot(x_1, x_1), \cdot(x_2, x_2)), 1)}\) is an
+\(\lang_{ring}\) term. It is more conventional---and more legible---to write
+this term in infix-notation to obtain the polynomial
+\[
+  \mathtt{x_1^2 + x_2^2 + 1},
+\]
+where \(\mathtt{x_i^2}\) is a short-hand notation for \(\mathtt{x_i \cdot
+x_i}\). Using the very important technique of \emph{structural induction}, we
+can show that every term in an \(\lang_{ring}\)-structure is a polynomial
+(see~\cref{lem:terms of rings are polynomials}). In order to do this we need to
+consider terms as functions. There is just a little technicality in our way,
+that can be avoided by defining \(S^{0} := \set{∅}\) for every set \(S\) and
+interpreting a constant \(c\) as a \(0\)-ary function \(c : S^{0} → S\).
+
+\begin{defin}
+  Let \(\lang := \set{f ∈ \mathcal{F}; R ∈ \mathcal{R}; c ∈ \mathcal{C}}\) be a
+  language and let \(\mathfrak{A}\) be a model of \(\lang\) with universe \(A\).
+  For a term \(t(\mathtt{\seq{x}}) ∈ T(\lang)\) that contains at most the
+  variables \(\mathtt{\seq{x}}\) we define the \emph{term function}
+  \(t^{\mathfrak{A}}: A^n → A\) associated to \(t(\mathtt{\seq{x}})\)
+  recursively as follows:
+  \begin{thmlist}
+    \item If \(t(\mathtt{\seq{x}}) = c ∈ \mathcal{C}\), then
+    \(t^{\mathfrak{A}}(\seq{α}) = c^{\mathfrak{A}}\) for all \(\seq{α} ∈ A\).
+
+    % \item If \(t(\mathtt{\seq{x}}) = f(\mathtt{x_{i_1}, … x_{i_{n_f}}})\) for
+    % some \(f ∈ \mathcal{F}\) and some \(\set{\seq[n_f]{i}} \subseteq \set{1, …,
+    % n_f}\), then
+    % \[
+    %   t^{\mathfrak{A}}(\seq{α}) := f^{\mathfrak{A}}(α_{i_1}, …, α_{i_{n_f}})
+    % \]
+    % for all \(\seq{α} ∈ A\).
+
+    \item If \(t(\mathtt{\seq{x}}) = \mathtt{x_i}\) for \(1 ≤ i ≤ n\), then
+    \(t^{\mathfrak{A}} := π_{i}^n\) is the projection onto the \(i\)-th
+    coordinate.
+
+    \item If \(t(\mathtt{\seq{x}})\) is of the form
+    \[
+      t(\mathtt{\seq{x}}) = f(t_1(\mathtt{\seq{x}}), …,
+      t_{n_f}(\mathtt{\seq{x}}))
+    \]
+    for some basic function \(f ∈ \mathcal{F}\) and some terms
+    \(t_1(\mathtt{\seq{x}}), …, t_{n_f}(\mathtt{\seq{x}})\), then
+    \[
+      t^{\mathfrak{A}}(\seq{α}) := f^{\mathfrak{A}}(t_1^{\mathfrak{A}}(\seq{α}),
+      …, t_{n_f}^{\mathfrak{A}}(\seq{α})).
+    \]
+  \end{thmlist}
+\end{defin}
+
+In other words, the set of term functions of a given model \(\mathfrak{A}\) is
+the smallest set of functions, that contains all projections, all constants, as
+well as all basic functions of \(\mathfrak{A}\), and is closed under
+composition. If \(\mathfrak{A}\) is an algebraic structure, the set of term
+functions of \(\mathfrak{A}\) is sometimes called the \emph{function clone} of
+\(\mathfrak{A}\).
+
+\begin{lem}\label{lem:terms of rings are polynomials}
+  Let \(R\) be a ring with unit and \(\mathfrak{R}\) its associated
+  \(\lang_{ring}\)-structure. The set of term functions of \(\mathfrak{R}\) is
+  to the set of polynomials with integral coefficients \(ℤ[X_1,
+  X_2, …]\).
+\end{lem}
+\begin{proof}
+  Let \(t ∈ T(\lang_{ring})\) be a term. We argue by structural induction, that
+  is induction on the number of symbols appearing in \(t\).
+  \begin{plist}
+    \item If \(t = c\) is a constant, then \(t = 0\) or \(1\). Both are constant
+    polynomials with integral coefficients.
+
+    \item If \(t = \mathtt{x_i}\) for some \(i ∈ ℕ \setminus \set{0}\), then
+    \(t^{\mathfrak{R}} = X_i\) is a monomial.
+
+    \item Finally, if \(t = f(t_1, t_2)\), where \(f ∈ \set{+, -, \cdot}\) and
+    \(t_1, t_2\) are terms, then we can assume that \(t_1^{\mathfrak{R}}\) and
+    \(t_2^{\mathfrak{R}}\) are polynomials with integral coefficients and as
+    \(ℤ[X_1, X_2, …]\) is closed under sums, differences and products of
+    polynomials, the term functions are indeed contained in \(ℤ[X_1, X_2, …]\)
+  \end{plist}
+
+  To see the converse inclusion note that every positive integer \(n\) can be expressed as the \(\lang_{ring}\)-term
+  \[
+    \underbrace{\mathtt{1 + 1 + … + 1}}_{n\text{-times}}
+  \]
+  and every non-positive integer \(n\) can be expressed as
+  \[
+    \mathtt{0 -} \underbrace{\mathtt{1 - 1 - … - 1}}_{|n|\text{-times}}.
+  \]
+  Then a monomial \(a X_{i_1} … X_{i_d} ∈ ℤ[X_1, X_2, …]\) with \(i_1,…,i_d ∈
+  ℕ \setminus \set{0}\) not necessarily distinct can be expressed as the term
+  \[
+    \mathtt{a \cdot x_{i_1} \cdot … \cdot x_{i_d}},
+  \]
+  where \(\mathtt{a}\) is the term representing the integer \(a\). Finally,
+  since every polynomial \(p\) is a finite sum of monomials \(p = m_1 + … +
+  m_k\) we can find a term
+  \[
+    t = \mathtt{m_1 + … + m_k},
+  \]
+  where \(\mathtt{m_i}\) is the term representing \(m_i\) (\(1 ≤ i ≤ k\)), such
+  that \(t^{\mathfrak{R}} = p\).
+\end{proof}
+
+Finally, we can define formulae in a language.
+
+\begin{defin}
+  Let \(\lang := \set{f ∈ \mathcal{F}; R ∈ \mathcal{R}; c ∈ \mathcal{C}}\) be a
+  language. We call a string \(ϕ\) \emph{atomic \(\lang\)-formula} if
+  \begin{thmlist}
+    \item there exist \(\lang\)-terms \(t_1, t_2\) such that \(ϕ = t_1 \doteq
+    t_2\), or%
+    \footnote{Note the difference between the two symbols \(=\) and \(\doteq\)
+    in this equation. While \(=\) denotes a \emph{semantic} equality of strings,
+    i.e. it denotes that both strings contain the same symbols in the same
+    order, \(\doteq\) is just a \emph{syntactic} symbol contained in the
+    strings.}
+
+    \item there exist \(\lang\)-terms \(t_1, …, t_{n_R}\) and a relation symbol
+    \(R ∈ \mathcal{R}\) such that \(ϕ = R(t_1, …, t_{n_R})\).
+  \end{thmlist}
+
+  The set of \emph{formulae} in \(\lang\) is the smallest set \(Φ(\lang)\)
+  containing all atomic \(\lang\)-formulae that is closed under the following
+  constructions.
+  \begin{thmlist}[resume]
+    \item If \(ϕ ∈ Φ(\lang)\) is a formula, so is its \emph{negation} \(¬ϕ ∈
+    Φ(\lang)\).
+
+    \item If \(ϕ_1, ϕ_2 ∈ Φ(\lang)\) are formulae, then their \emph{conjunction}
+    \((ϕ_1 ∧ ϕ_2) ∈ Φ(\lang)\) is a formula.
+
+    \item If \(ϕ(\mathtt{x}) ∈ Φ(\lang) \) is a formula containing at least the
+    variable \(\mathtt{x}\) in one of its terms, then \(\mathtt{∃ x :}
+    ϕ(\mathtt{x}) ∈ Φ(\lang)\) is a formula.
+  \end{thmlist}
+
+    Just for convenience we define the following abbreviations:
+    \begin{thmlist}[resume]
+      \item If \(ϕ_1, ϕ_2 ∈ Φ(\lang)\) are formulae, we define their
+      \emph{disjunction} \((ϕ_1 ∨ ϕ_2)\) by \(¬(¬ϕ_1 ∧ ¬ϕ_2)\).
+
+      \item If \(ϕ_1, ϕ_2 ∈ Φ(\lang)\) are formulae, then \(ϕ_1 → ϕ_2\) is short
+      for \(¬(ϕ_1 ∧ ¬ ϕ_2)\).
+
+      \item If \(ϕ(\mathtt{x}) ∈ Φ(\lang)\) is a formula containing at least the
+      variable \(\mathtt{x}\), then we abbreviate \(\mathtt{¬ ∃ x: ¬}
+      ϕ(\mathtt{x})\) by \(\mathtt{∀ x:} ϕ(\mathtt{x})\).
+    \end{thmlist}
+\end{defin}
+
+Note that formulae as defined above are just strings and do not inherit any
+meaning or truthfulness. However, once we interpret a formula in a model, we
+can say whether the formula is true or false. Let us consider some examples in
+the language of rings with one.
+
+\begin{exam}
+  The following are \(\lang_{ring}\)-formulae:
+  \begin{exlist}
+    \item \(\mathtt{x_1 \cdot x_2 \doteq x_3}\)
+    \item \(\mathtt{∃ x_2 : x_1 \cdot x_2 = 1}\)
+    \item\label{ex:formula distributivity}
+     \(\mathtt{∀x_1 : ∀x_2 : ∀x_3 : (x_1 + x_2) \cdot x_3 \doteq x_1 \cdot x_3 + x_2 \cdot x_3}\)
+  \end{exlist}
+  Intuitively, the formulae above can be interpreted as
+  \begin{exlist}
+    \item \(\mathtt{x_1}\) times \(\mathtt{x_2}\) equals \(\mathtt{x_3}\),
+    \item \(\mathtt{x_1}\) is invertible with inverse \(\mathtt{x_2}\), and
+    \item the ring operations satisfy the distributivity condition.
+  \end{exlist}
+\end{exam}
+
+In the formulae of the previous example one technical obstacle becomes apparent.
+While the formula of \cref{ex:formula distributivity} is either true or false in
+a given \(\lang_{ring}\)-structure, the formulae in (1) and (2) depend on the
+choice of elements for \(\mathtt{x_1, x_2}\) and \(\mathtt{x_3}\). For this
+reason we must distinguish between two kinds of appearances of variables.
+
+\begin{defin}
+  Let \(\mathtt{x}\) be a variable and let \(ϕ\) be a formula containing
+  \(\mathtt{x}\). If \(ϕ\) contains \(\mathtt{∃ x} : ψ(\mathtt{x})\) as a
+  sub-formula for some formula \(ψ\), we call this appearance of \(\mathtt{x}\)
+  \emph{bound appearance}. All appearances of \(\mathtt{x}\) that are not of
+  this shape are called \emph{free appearances}.
+\end{defin}
+
+In \cref{ex:formula distributivity} all appearances of \(\mathtt{x_1, x_2}\) and
+\(\mathtt{x_3}\) are bound. In (2) variable \(\mathtt{x_2}\) appears bound while
+\(\mathtt{x_1}\) is free and in (1) all variables appear free. For a formula
+\(ϕ\) we will write \(ϕ(\mathtt{\seq{x}})\) to emphasize that at most the variables \(\mathtt{\seq{x}}\) appear free in \(ϕ\).
+
+\begin{defin}
+  Let \(\lang\) be a language and let \(\mathfrak{A}\) be model of \(\lang\)
+  with universe \(A\). For a formula \(ϕ = ϕ(\mathtt{\seq{x}})\) and elements
+  \(\seq{α} ∈ A\) we say \(ϕ(\seq{α})\) is \emph{true} in \(\mathfrak{A}\) or
+  \(\mathfrak{A}\) \emph{models} \(ϕ(\seq{α})\) and write
+  \[
+    \mathfrak{A} \models ϕ(\seq{α})
+  \]
+  if the following recursively defined conditions are met.
+  \begin{thmlist}
+    \item If \(ϕ = t_1 \doteq t_2\) for two terms \(t_1, t_2\), then
+    \(\mathfrak{A} \models ϕ(\seq{α})\) if
+    \[
+      t_1^{\mathfrak{A}}(\seq{α}) = t_2^{\mathfrak{A}}(\seq{α}).
+    \]
+
+    \item If \(ϕ = R(t_1, …, t_{n_R})\) for a relation symbol \(R\) and terms
+    \(t_1, …, t_{n_R}\), then \(\mathfrak{A} \models ϕ(\seq{α})\) if
+    \[
+      R^{\mathfrak{A}}(t_1^{\mathfrak{A}}(\seq{α}), …, t_{n_R}^{\mathfrak{A}}(\seq{α})).
+    \]
+
+    \item If \(ϕ = ¬ ψ\) for a formula \(ψ\), then \(\mathfrak{A} \models
+    ϕ(\seq{α})\) if \(\mathfrak{A} \models ψ(\seq{α})\) does not hold.
+
+    \item If \(ϕ = (ψ_1 ∧ ψ_2)\) for two formulae \(ψ_1, ψ_2\), then
+    \(\mathfrak{A} \models ϕ(\seq{α})\) if both \(\mathfrak{A} \models
+    ψ_1(\seq{α})\) and \(\mathfrak{A} \models ψ_2(\seq{α})\) hold.
+
+    \item If \(ϕ(\mathtt{\seq{x}}) = \mathtt{∃ x :} ψ(\mathtt{x, \seq{x}})\),
+    then \(\mathfrak{A} \models ϕ(\seq{α})\) if there exists an \(α ∈ A\) such
+    that \(\mathfrak{A} \models ψ(α, \seq{α})\).
+  \end{thmlist}
+\end{defin}
+
+\begin{rem}
+  \begin{exlist}
+    \item I leave it as an exercise to check that our abbreviations \(∨, →\)
+    and \(∀\) have their intended interpretation of \emph{disjunction},
+    \emph{implication} and \emph{universal quantification}.
+
+    \item Note that variables can appear both free \emph{and} bound in the same
+    formula, e.g. \(\mathtt{x_2}\) in
+    \[
+      \mathtt{(∃ x_2 : x_1 \cdot x_2 \doteq x_2) ∧ (x_2 + x_3 \doteq x_1)}.
+    \]
+    By the definition of what it means that a formula is true in a model, we can
+    restrict our attention to formulae, such that all variables appear
+    \emph{either} free \emph{or} bound but not both, and if a variable appears
+    bound, then it is bound by a single quantifier. It is easy to check that the
+    formula above is true in a model if and only if the following formula is
+    true
+    \[
+      \mathtt{(∃ x_2 : x_1 \cdot x_2 \doteq x_2) ∧ (x_4 + x_3 \doteq x_1)}.
+    \]
+    Variables that appear free in a formula are also called \emph{free
+    variables.}
+  \end{exlist}
+\end{rem}
+
+A formula without free variables is called a \emph{sentence}. In a fixed model a
+sentence is either true or false. This follows easily form the definition of
+truth in a model.
+
+\subsection{Morphisms, theories, and decidability}
+
+In this section I introduce some very important notions from model theory and
+universal algebra. I start with the concept of \emph{morphism}. The reader
+should already have encountered morphisms in basic lectures on abstract algebra.
+They are just mappings that respect the basic operations of structures. More
+formally, one defines a morphism as follows.
+
+\begin{defin}
+  Let \(\lang := \set{f ∈ \mathcal{F}; R ∈ \mathcal{R}; c ∈ \mathcal{C}}\) be a
+  language and \(\mathfrak{A}, \mathfrak{B}\) two models in \(\lang\) with
+  universes \(A\) or \(B\) respectively. A function \(φ : A → B\) is called
+  \emph{\(\lang\)-morphism} if
+  \begin{thmlist}
+    \item \(φ(f^{\mathfrak{A}}(\seq[n_f]{α})) = f^{\mathfrak{B}}(φ(α_1), …,
+    φ(α_{n_f}))\) holds for all \(f ∈ \mathcal{F}\) and all \(\seq[n_f]{α} ∈
+    A\);
+
+    \item \(R^{\mathfrak{A}} (\seq[n_R]{α}) ⇒ R^{\mathfrak{B}}(φ(α_1), …,
+    φ(α_{n_r}))\) holds for all \(R ∈ \mathcal{R}\) and all \(\seq[n_R]{α} ∈
+    A\); and
+
+    \item \(φ(c^{\mathfrak{A}}) = c^{\mathfrak{B}}\) for all \(c ∈
+    \mathcal{C}\).
+  \end{thmlist}
+\end{defin}
+
+\begin{rem}
+  Despite the similarity of the definition of \(\lang_{ring}\)-morphisms to
+  ring-morphisms in the sense of abstract algebra, not every
+  \(\lang_{ring}\)-morphism is ring-morphism and vice versa. Consider for
+  example the identity \(\mathrm{id}_ℕ\) on the \(\lang_{ring}\)-structure
+  \(\mathfrak{N}\). As \(ℕ\) is not a ring in the sense of abstract algbera,
+  \(\mathrm{id}_ℕ\) is not a ring-morphism, but it is clearly a
+  \(\lang_{ring}\)-morphism.
+
+  On the other hand, the mapping \(φ: ℤ → ℤ \times ℤ\) defined by
+  \[
+    φ(α) = (0, α)
+  \]
+  is a ring-morphism that is not a \(\lang_{ring}\)-morphism, as \(1\) is not
+  mapped to the neutral element \((1, 1)\) in \(ℤ \times ℤ\).
+\end{rem}
+
+\begin{defin}
+  Let \(\lang\) be a language.
+  \begin{thmlist}
+    \item A set of \(\lang\)-sentences is called an \emph{\(\lang\)-theory}.
+
+    \item Let \(\mathfrak{A}\) be a model in \(\lang\). We say \(\mathfrak{A}\)
+    satisfies a theory \(T\) and write \(\mathfrak{A} \models T\) if
+    \(\mathfrak{A} \models ϕ\) for all \(ϕ ∈ T\).
+
+    \item A class of models \(\mathcal{M}\) in is called \emph{elementary class} if there exists an \(\lang\)-theory \(T\) such that for all models \(\mathfrak{A}\) the following equivalence holds
+    \[
+      \mathfrak{A} ∈ \mathcal{M} \quad ⇔ \quad \mathfrak{A} \models T.
+    \]
+
+    \item An elementary class \(\mathcal{V}\) of algebraic structures is called
+    \emph{universal variety}, if the defining theory \(T\) does only include
+    universally quantified atomic formulae.
+  \end{thmlist}
+\end{defin}
+
+\begin{exam}
+  The class of groups forms a universal variety with respect to
+  \(\lang_{group}\). This is the case since the group axioms
+  \begin{clist}
+    \item \(\mathtt{∀ x_1 : x_1 \cdot e \doteq x_1}\),
+    \item \(\mathtt{∀ x_1 : e \cdot x_1 \doteq x_1}\),
+    \item \(\mathtt{∀ x_1 : ∀ x_2 : ∀ x_3 : (x_1 \cdot x_2) \cdot x_3 \doteq x_1 \cdot (x_2 \cdot x_3)}\), and
+    \item \(\mathtt{∀ x_1 : x_1 \cdot x_1^{-1} \doteq e}\)
+    \item \(\mathtt{∀ x_1 : x_1^{-1} \cdot x_1 \doteq e}\)
+  \end{clist}
+  characterize groups completely. Another example of a universal variety are
+  rings with one. Note however, that fields do not form a universal variety with
+  respect to \(\lang_{ring}\) as we demand that elements unequal to \(0\) are
+  invertible which can be expressed by the sentence
+  \[
+    ∀ x_1 : (¬ x_1 \doteq 0) → (∃ x_2 : x_1 \cdot x_2 \doteq 1)
+  \]
+  containing both universal and existential quantifiers.
+\end{exam}
+
+Universal varieties are useful as substructures can be characterized by
+embeddings, e.g.\ we have that a subset \(S\) of a ring with one \(R\) is a
+sub-ring, if and only if \(S\) carries a \(\lang_{ring}\)-structure
+\(\mathfrak{S}\) such that the embedding
+\[
+  ι: S → R, \quad ι(α) = α
+\]
+is an \(\lang_{ring}\)-morphism between \(\mathfrak{S}\) and the
+\(\lang_{ring}\)-structure of \(\mathfrak{R}\).
+
+Moreover, we have the following useful result.
+
+\begin{thm}\label{thm:elementary equivalence}
+  Let \(\mathfrak{A}\) and \(\mathfrak{B}\) be two \(\lang\)-structures, with
+  universe \(A\) and \(B\) respectively, and let \(φ: A → B\) be a bijective
+  \(\lang\)-morphism. Then \(\mathfrak{A}\) and \(\mathfrak{B}\) are
+  \emph{elementary equivalent} i.e.\ for all \(\lang\)-sentences
+  \(ϕ\), \(\mathfrak{A} \models ϕ\) if and only if \(\mathfrak{B} \models ϕ\).
+\end{thm}
+
+A proof of the theorem using induction on the structure of formulae can be found
+in \cite[Thm~1.1.10]{Marker2002}.
+
+To conclude this section we describe theories of special importance to our task
+of settling Hilbert's tenth problem and define what it means to decide a theory.
+
+\begin{defin}
+  Let \(\lang\) be a language and let \(\mathfrak{A}\) be a model with universe
+  \(A\) in \(\lang\).
+  \begin{thmlist}
+    \item The \emph{full theory of \(\mathfrak{A}\)} is the the set
+    \[
+      \mathtt{Th}(\mathfrak{A}) :=
+        \set{ϕ ∈ Φ(\lang) \mid \mathfrak{A} \models ϕ}
+    \]
+    of all sentences true in \(\mathfrak{A}\).
+
+    \item The \emph{purely Diophantine theory of \(\mathfrak{A}\)} is the set
+    \[
+      \mathtt{Th}_{∃}(\mathfrak{A}) :=
+        \set{ϕ ∈ Φ(\lang) \mid
+        ϕ = \mathtt{∃ x_{i_1} : … ∃ x_{i_k} : }ψ(\mathtt{x_{i_1}, …, x_{i_k}}),
+        ψ \text{ is atomic, and } \mathfrak{A} \models ϕ}
+    \]
+    of all existentially quantified atomic formulae that are satisfied by
+    \(\mathfrak{A}\).
+
+    \item The \emph{primitive positive theory of \(\mathfrak{A}\)} is the set
+    \[
+      \mathtt{Th}_{∃+}(\mathfrak{A}) :=
+        \set{ϕ ∈ Φ(\lang) \;\middle\vert \substack{
+          {ϕ = \mathtt{∃ x_{i_1} : … ∃ x_{i_k} : }
+          \bigwedge_{j = 1}^m ψ_j(\mathtt{x_{i_1}, …, x_{i_k}}),}\\
+        {ψ_j \text{ is atomic, and } \mathfrak{A} \models ϕ}}}
+    \]
+    of all existentially quantified conjunctions of atomic formulae that are
+    satisfied by \(\mathfrak{A}\).
+  \end{thmlist}
+\end{defin}
+
+Let us take a look at some examples to get a better understanding of these
+abstract definitions.
+
+\begin{exam}
+  \begin{exlist}
+    \item Let \(\mathfrak{Q} := ⟨ℚ; +, -, \cdot; 0, 1⟩\) be the
+    \(\lang_{ring}\)-structure of the rationals. Then
+    \[
+      \mathfrak{Q} \models \mathtt{∀ x_1 : (¬ x_1 \doteq 0) → (∃ x_2 : x_1 \cdot x_2 \doteq 1)}
+    \]
+    and therefore this sentence is contained in \(\mathtt{Th}(\mathfrak{Q})\).
+    However, \(2 ∈ ℤ \setminus \set{0}\) is not invertible in \(ℤ\). Thus, the
+    sentence is not in \(\mathtt{Th}(\mathfrak{Z})\).
+
+    \item Consider \(ϕ := \mathtt{∃ x_1 : x_1^2 + 1 \doteq 0}\). Then \(ϕ\) can
+    be satisfied by the witness \(i ∈ ℂ\) in \(\mathfrak{C} := ⟨ ℂ; +, -, \cdot;
+    0, 1⟩\) as \(i^2 + 1 = 0\) holds in \(\mathfrak{C}\). Thus, \(ϕ ∈
+    \mathtt{Th}_∃(\mathfrak{C})\). But the sentence is not contained in
+    \(\mathtt{Th}_{∃}(\mathfrak{Z})\).
+
+    \item Consider the directed graph \(\mathfrak{G} := ⟨\set{1, 2, 3, 4}; E⟩\)
+    below.
+    \begin{center}
+      \includegraphics{res/digraph}
+    \end{center}
+    Here \(E\) denotes the binary adjacency relation, where e.g. \(E(1,
+    2)\) holds but \(E(2, 1)\) does not. The following sentence intuitively says
+    that a graph contains a cycle of length \(3\).
+    \[
+      ϕ := \mathtt{∃ x_1 : ∃ x_2 : ∃ x_3 : (E(x_1, x_2) ∧ E(x_2, x_3) ∧ E(x_3, x_1))}
+    \]
+
+    Using \(1\) as witness for \(\mathtt{x_1}\) and \(2, 4\) as witnesses for
+    \(\mathtt{x_2}, \mathtt{x_3}\), we obtain that \(ϕ ∈
+    \mathtt{Th}_{∃+}(\mathfrak{G})\). It is not difficult to find a directed
+    graph that does not model \(ϕ\).
+  \end{exlist}
+\end{exam}
+
+While we can already state a lot of properties in the languages we have
+considered so far, we can for instance not formulate a sentence in the language
+\(\lang_{ring}\) that says a specific polynomial has a root. Take for instance
+the ring structure \(\mathfrak{C}\) of \(ℂ\), we cannot formulate a sentence
+that says the polynomial \(X^2 - i ∈ ℂ[X]\) has a root over \(ℂ\). To get around
+this limitation we define \emph{diagrams}.
+
+\begin{defin}
+  Let \(\lang\) be a language and \(\mathfrak{A}\) a model in \(\lang\) with
+  universe \(A\). We define the \(A\)-language as
+  \[
+    \lang_A := \lang ∪ \set{\mathtt{c}_α \mid α ∈ A}
+  \]
+  the union of \(\lang\) and a constant symbol for each element of \(A\).
+\end{defin}
+
+Clearly, \(\mathfrak{A}\) is also a model in \(\lang_A\) by additionally
+interpreting \(\mathtt{c}_a^{\mathfrak{A}} := a\) for all \(a ∈ A\).
+
+\begin{defin}
+  Let \(\lang\) be a language and let \(\mathfrak{A}\) be a model with universe
+  \(A\) in \(\lang\). We define the following \(\lang_A\)-theories.
+  \begin{thmlist}
+    \item The \emph{complete diagram of \(\mathfrak{A}\)} is the the set
+    \[
+      D^c(\mathfrak{A}) :=
+        \set{ϕ ∈ Φ(\lang_A) \mid \mathfrak{A} \models ϕ}
+    \]
+    of all sentences true in \(\mathfrak{A}\).
+
+    \item The \emph{Diophantine theory of \(\mathfrak{A}\)} is the set
+    \[
+      \mathtt{H10}(\mathfrak{A}) :=
+        \set{ϕ ∈ Φ(\lang_A) \mid
+        ϕ = \mathtt{∃ x_{i_1} : … ∃ x_{i_k} : }ψ(\mathtt{x_{i_1}, …, x_{i_k}}),
+        ψ \text{ is atomic, and } \mathfrak{A} \models ϕ}
+    \]
+    of all existentially quantified atomic formulae that are satisfied by
+    \(\mathfrak{A}\).
+
+    \item The \emph{primitive positive diagram of \(\mathfrak{A}\)} is the set
+    \[
+      D_{∃+}(\mathfrak{A}) :=
+        \set{ϕ ∈ Φ(\lang) \;\middle\vert \substack{
+          {ϕ = \mathtt{∃ x_{i_1} : … ∃ x_{i_k} : }
+          \bigwedge_{j = 1}^m ψ_j(\mathtt{x_{i_1}, …, x_{i_k}}),}\\
+        {ψ_j \text{ is atomic, and } \mathfrak{A} \models ϕ}}}
+    \]
+    of all existentially quantified conjunctions of atomic formulae that are
+    satisfied by \(\mathfrak{A}\).
+  \end{thmlist}
+\end{defin}
+
+Of special interest to us is the Diophantine theory of rings with one. The name
+can be justified by the following lemma.
+
+\begin{thm}\label{thm:Diophantine theory}
+  Let \(R\) be a ring with one and let \(\mathfrak{R}\) be its
+  \(\lang_{ring}\)-structure.
+  \begin{thmlist}
+    \item The set of term functions associated to \(\lang_R\)-terms is the set
+    of polynomial functions \(R[X_1, X_2, …]\)
+
+    \item Let \(\mathtt{P} \subseteq Φ(\lang_R)\) be the set of all
+    existentially quantified atomic \(\lang_R\)-formulae. There exists a
+    surjection
+    \[
+      π: \mathtt{P} → R[X_1, X_2, …]
+    \]
+    Such that for all sentences \(ϕ ∈ \mathtt{P}\) we have
+    \[
+      ϕ ∈ \mathtt{H10}(\mathfrak{R}) \quad ⇔ \quad
+      π(p) \text{ has roots over } R
+    \]
+  \end{thmlist}
+\end{thm}
+\begin{proof}
+  \begin{plist}
+    \item Let \(t\) be an \(\lang_R\)-term. One proves completely analogously as
+    in the proof of \cref{lem:terms of rings are polynomials}, that
+    \(t^{\mathfrak{R}} ∈ R[X_1, X_2, …]\) is a polynomial function. The only
+    difference is that constants now range over all of \(R\) instead of
+    \(\set{0, 1}\) thus yielding the different coefficients.
+
+    To see the converse inclusion we note that monomials \(α X_{i_1} X_{i_d} ∈
+    R[X_1, X_2]\), with \(\set{\seq[d]{i}} \subseteq ℕ \setminus \set{0}\) not
+    necessarily distinct, correspond to terms
+    \[
+      \mathtt{c}_α \cdot \mathtt{x_{i_1} \cdot … \cdot x_{i_d}}.
+    \]
+    Since every polynomial \(p\) is a finite sum of monomials we obtain a term
+    representing \(p\) by joining the terms representing the monomials by a
+    \(\mathtt{+}\) symbol.
+
+    \item Let \(ϕ ∈ \mathtt{P}\) be a sentence. By definition of \(\mathtt{P}\)
+    there exists an atomic \(\lang_{R}\)-formula \(ψ\) such that
+    \[
+      ϕ = \mathtt{∃ x_{i_1} : … ∃ x_{i_k} : } ψ(\mathtt{x_{i_1}, …, x_{i_k}}).
+    \]
+    Since \(\lang_{R}\) contains no relation symbols, all atomic
+    \(\lang_{R}\)-formulae are identities of terms. Thus, there exist terms
+    \(t_1, t_2\) such that
+    \[
+      ψ = t_1 \doteq t_2.
+    \]
+    By part (i) of the theorem the term functions \(t_1^{\mathfrak{R}}\) and
+    \(t_2^{\mathfrak{R}}\) are polynomial functions in \(R[X_1, X_2, …]\). We
+    set \(π(ϕ) := t_1^{\mathfrak{R}} - t_2^{\mathfrak{R}}\).
+
+    To see that \(π\) is surjective let \(p ∈ R[X_1, X_2, …]\) be a polynomial.
+    Then by (i) there exists a term \(t\) such that \(t^{\mathfrak{R}} = p\).
+    Now set
+    \[
+      ϕ := \mathtt{∃ x_{i_1} : … ∃ x_{i_k} : } t(\mathtt{x_{i_1}, …, x_{i_k})
+        \doteq 0},
+    \]
+    where \(\mathtt{x_{i_1}, …, x_{i_k}}\) are all variable symbols appearing in
+    \(t\). Then \(π(ϕ) = p\) as claimed.
+
+    Let now \(ϕ ∈ \mathtt{H10}(\mathfrak{R})\) be a sentence that is true in
+    \(\mathfrak{R}\). By the discussion above we find that
+    \[
+      ϕ := \mathtt{∃ x_{i_1} : … ∃ x_{i_k} : }
+        t_1(\mathtt{x_{i_1}, …, x_{i_k}}) \doteq
+        t_2(\mathtt{x_{i_1}, …, x_{i_k}}),
+    \]
+    for some \(\lang_R\)-terms \(t_1, t_2\). Using the definition of truth in a
+    model this is the case if and only if there exist elements \(α_{i_1}, …,
+    α_{i_k} ∈ R\) such that
+    \[
+      t_1^{\mathfrak{R}}(α_{i_1}, …, α_{i_k}) =
+      t_2^{\mathfrak{R}}(α_{i_1}, …, α_{i_k}).
+    \]
+    Which is the true if and only if \(π(ϕ) = t_1 - t_2\) has roots over \(R\).
+  \end{plist}
+\end{proof}
+
+To finish our last task of this section we have to overcome once more a
+technical difficulty: If we want to define what it means to \emph{decide} a
+theory, we must identify the theory with subsets of \(ω\). To this end
+\textcite{Goedel1931} introduced a method that is today commonly known as
+\emph{Gödelization}.
+
+\begin{defin}
+  Let \(\lang\) be an at most countable language and let
+  \[
+    i: \lang ∪ \set{\doteq, \mathtt{¬, ∧, ∃, :, (, ), x, '}}
+    → ℕ \setminus \set{0}
+  \]
+  be an injective function such that \(i(s) > 9\) for all \(s ∈ \lang\) and the
+  image of \(i\) is an initial segment of the usual order of \(ℕ \setminus
+  \set{0}\).
+
+  The \emph{Gödel number} \(\mathrm{gn}(ϕ)\) of a formula \(ϕ ∈ Φ(\lang)\) is
+  obtained by first replacing every variable symbol \(\mathtt{x_i}\) in \(ϕ\) by
+  the string
+  \[
+    \mathtt{x}\overbrace{\mathtt{'…'}}^{n\text{-times}}.
+  \]
+  Say the resulting string is
+  \[
+    \mathbf{s} = s_1 s_2 … s_n
+  \]
+  where \(s_i\) is a symbol contained in \(\lang ∪ \set{\doteq, \mathtt{¬, ∧,
+  ∃, (, ), x, '}}\) then
+  \[
+    \mathrm{gn}(ϕ) := p_1^{i(s_1)} p_2^{i(s_2)} … p_n^{i(s_n)},
+  \]
+  where \(p_i ∈ ℕ\) is the \(i\)-th prime.
+\end{defin}
+
+By the uniqueness of the prime factorization in \(ℕ\) two different formulae
+cannot have the same Gödel number. Finally, one obtains an encoding
+\(\enc{\cdot}: Φ(\lang) → ω\) by composing \(\mathrm{gn}\) with an encoding of
+the natural numbers (cf.~\cref{ex:omega encoding})
+
+\begin{exam}
+To get a feeling for how fast the Gödel numbers grow let us consider the Gödelization of the following \(\lang_{ring}\)-formula
+\[
+  \mathtt{∃ x_1 : x_1 \doteq 0}.
+\]
+We choose the function \(i\) as described below.
+\[
+  \begin{array}{l r r r r r r r r r r r r r r}
+    \toprule
+    s & \doteq & ¬ & ∧ & ∃ & : & ( & ) & \mathtt{x} & ' & + & - & \cdot & \mathtt{0} & \mathtt{1}\\
+    i(s) & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14\\
+    \bottomrule
+  \end{array}
+\]
+Using the notation from the definition we obtain
+\[
+  \mathbf{s} = ∃ x' : x' \doteq 0
+\]
+yielding a Gödel number
+\begin{align*}
+  \mathrm{gn}(ϕ) &= 2^4 3^8 5^9 7^5 11^8 13^9 17^1 19^{13},
+\end{align*}
+which already has \(52\) decimal digits.
+\end{exam}
+
+\begin{defin}
+  Let \(\lang\) be an at most countable language. An \(\lang\)-theory \(T\) is \emph{decidable} (\emph{semi-decidable}) if the set
+  \[
+    \set{\enc{ϕ} \mid ϕ ∈ T}
+  \]
+  is decidable (semi-decidable).
+\end{defin}
