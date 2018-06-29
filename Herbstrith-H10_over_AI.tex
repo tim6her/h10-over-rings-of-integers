@@ -5,7 +5,6 @@
 
 % Input Type and AMS-Packages
 \usepackage{amsmath,amsfonts,amssymb,amsthm}
-%\usepackage{MnSymbol}
 \usepackage{unicode-math}
 
 % Typography
@@ -107,10 +106,10 @@
 \DeclareMathOperator{\ord}{\mathrm{ord}}
 \DeclareMathOperator{\Quot}{Quot}
 
-\newcommand*{\sta}{{\monomath §}}
-\newcommand*{\emp}{{\monomath \_}}
-\newcommand*{\zer}{\mathtt 0}
-\newcommand*{\one}{\mathtt 1}
+\newcommand*{\sta}{\text{\monomath §}}
+\newcommand*{\emp}{\text{\monomath \_}}
+\newcommand*{\zer}{\mathtt{0}}
+\newcommand*{\one}{\mathtt{1}}
 \newcommand*{\state}[1]{s_{\text{#1}}}
 \newcommand*{\sstart}{\state{start}}
 \newcommand*{\shalt}{\state{halt}}
@@ -131,6 +130,8 @@
   \ooalign{\hidewidth\raise1ex\hbox{.}\hidewidth\cr$\m@th-$\cr}%
 }
 \makeatother
+
+\NewNegationCommand{∈}{\notin}
 
 
 \declaretheoremstyle[
@@ -224,7 +225,9 @@
 % ----------------------------------------------------------
 % Only for drafts!
 \usepackage{todonotes}
-\usepackage{showlabels}	%Used in Drafts to Print references.
+\usepackage[notref, notcite]{showkeys}	%Used in Drafts to Print references.
+\renewcommand*\showkeyslabelformat[1]{%
+  \fbox{\parbox[t]{1.5cm}{\raggedright\normalfont\small\ttfamily#1}}}
 %-----------------------------------------------------------
 
 
@@ -281,15 +284,24 @@
 
 \chapter{Prerequisites and central notions}
 
-Before stating Hilbert's tenth problem and proving its undecidability in
-certain rings of algebraic integers, I remind the reader of some
-notions from theoretical computer science and number theory, as well as
-fix some notations.
+To tackle Hilbert's tenth problem over some rings of algebraic integers we need
+to define three central notions. Firstly, we should formalize what we mean by a
+‘process [with] a finite number of operations’~\cite{Hilbert1900}; secondly, it
+must be defined what it means to determine the solvability of an equation; and
+thirdly, we must replace one or both occurrences of rational integers by
+elements of other rings.
 
-Throughout this thesis the symbol $ℕ$ shall denote the set of non-negative
-integers $\set{0, 1, 2, …}$.
+The first section of the preliminaries will settle our first task and give a
+definition of computability. The second section will provide the techniques
+required to view polynomials with roots as natural numbers and helps us derive
+natural variants of Hilbert's tenth problem. The third section of the
+preliminaries is devoted to defining algebraic integers and will remind the
+reader of some of their important properties.
 
-\section{Prerequisites from theoretical computer science}
+Throughout this thesis the symbol \(ℕ\) shall denote the set of non-negative
+integers \(\set{0, 1, 2, …}\).
+
+\section{Prerequisites from computability theory}
 \input{./contents/01-01_prerequisites_from_tcs}
 
 \section{Prerequisites from model theory}

@@ -8,7 +8,7 @@ add1 "overflow" '0'    = ("return",   '1', -1)
 add1 "overflow" '_'    = ("return",   '1', -1)
 -- we finish if we read '§' again or ...
 add1 "return"   '§'    = ("halt",     '§', 0 )
--- ... continue to move to the right and don't change the cell
+-- ... continue to move to the left and don't change the cell
 -- content. Here `b` matches '0' or '1'
 add1 "return"   b      = ("return",   b  , -1)
 add1 _state     _char  = ("error",    '_', 0 )
