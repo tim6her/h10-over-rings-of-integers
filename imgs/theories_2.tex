@@ -27,11 +27,11 @@
     (2, 2.5) node (cd) {\(D^c(\mathfrak{A})\)} --
     (3, 1) node (K) {\(\mathcal{K}\)};
 
-  \foreach \f/\t in {cd/cth, cd/de, cth/the, the/pdt, de/the, h10/pdt}
+  \foreach \f/\t in {cd/cth, cd/de, cth/the, de/the, h10/pdt}
     \path[draw, very thick, <-]
       (\f) edge (\t);
 
-  \foreach \f/\t in {de/h10, h10/K, K/de}
+  \foreach \f/\t in {the/pdt, de/h10, h10/K, K/de}
     \path[darw, very thick, <->]
       (\f) edge (\t);
 
