@@ -98,10 +98,10 @@
 \DeclareMathOperator{\kernel}{ker}
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\rk}{rk}
-\DeclareMathOperator{\End}{\mathrm{End}}
-\DeclareMathOperator{\Hom}{\mathrm{Hom}}
-\DeclareMathOperator{\Mod}{\mathrm{mod}}
-\DeclareMathOperator{\D}{\mathrm{D}}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Mod}{mod}
+\DeclareMathOperator{\D}{D}
 \DeclareMathOperator{\lcm}{\mathrm{lcm}}
 \DeclareMathOperator{\ord}{\mathrm{ord}}
 \DeclareMathOperator{\Quot}{Quot}
@@ -123,6 +123,11 @@
 \newcommand*{\py}{\mathrm y}
 \newcommand*{\sigmaK}[1]{{\left(#1\right)}^*}
 \newcommand*{\lang}{\mathcal{L}}
+\newcommand*{\seq}[2][n]{#2_{1},\ldots,#2_{#1}}
+\newcommand{\set}[1]{\left\lbrace #1 \right\rbrace}
+
+\usepackage{newunicodechar}
+\newunicodechar{√}{\sqrt}
 \makeatletter
 \newcommand{\dotminus}{\mathbin{\text{\@dotminus}}}
 
@@ -198,39 +203,8 @@
 	numbered=no]{rem}
 
 
-
-%\newtheorem{theo}{Theorem}[section]
-%\newtheorem{lemma}[theo]{Lemma}
-%\newtheorem{prop}[theo]{Proposition}
-%\newtheorem{cor}[theo]{Corollary}
-%\theoremstyle{definition}
-%\newtheorem*{defin}{Definition}
-%\newtheorem*{exam}{Example}
-%\theoremstyle{remark}
-%\newtheorem*{rem}{Remark}
-
 %TikZ and TikZ-Styles
 \usepackage{tikz}
-
-
-% New- and Renewcommands
-
-\newcommand{\seq}[2][n]{#2_{1},\ldots,#2_{#1}}
-\newcommand{\nicefrac}[2]{#1/#2}
-\newcommand{\set}[1]{\left\lbrace #1 \right\rbrace}
-
-
-
-
-% ----------------------------------------------------------
-% Only for drafts!
-\usepackage{todonotes}
-\usepackage[notref, notcite]{showkeys}	%Used in Drafts to Print references.
-\renewcommand*\showkeyslabelformat[1]{%
-  \fbox{\parbox[t]{1.5cm}{\raggedright\normalfont\small\ttfamily#1}}}
-%-----------------------------------------------------------
-
-
 
 % References
 \usepackage{hyperref}
@@ -241,16 +215,6 @@
 	pdfauthor={Tim Benedikt Herbstrith},
   pdflang={en-GB},
   pdfkeywords={Number Theory, Theoretical Informatics, Hilbert's 10th Problem}}
-
-%\Crefname{thm}{Theorem}{Theorems}
-%\Crefname{lem}{Lemma}{Lemmas}
-%\Crefname{pro}{Proposition}{Propositions}
-%\Crefname{cor}{Corollary}{Corollaries}
-
-%\crefname{thm}{thm.}{thms.}
-%\crefname{lem}{lemma}{lemmas.}
-%\crefname{pro}{prop.}{props.}
-%\crefname{cor}{cor.}{cors.}
 
 \Crefname{thm}{Thm}{Thms}
 \Crefname{lem}{Lem.}{Lem.}
@@ -264,9 +228,24 @@
 \addtotheorempostheadhook[cor]{\crefalias{thmlisti}{cor}}
 \addtotheorempostheadhook[exam]{\crefalias{exlisti}{exam}}
 
-%------------------------------------------------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
+% Only for drafts!
+\usepackage{todonotes}
+\usepackage{showlabels}	%Used in Drafts to Print references.
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+
 
 \begin{document}
+
+% ######## ########   #######  ##    ## ######## 
+% ##       ##     ## ##     ## ###   ##    ##
+% ##       ##     ## ##     ## ####  ##    ##
+% ######   ########  ##     ## ## ## ##    ##
+% ##       ##   ##   ##     ## ##  ####    ##
+% ##       ##    ##  ##     ## ##   ###    ##
+% ##       ##     ##  #######  ##    ##    ##
+
 
 % Using Layers in TikZ
 \pgfdeclarelayer{background}
@@ -280,7 +259,14 @@
 \input{./contents/00_frontmatter}
 
 \mainmatter
-%\onehalfspacing
+
+% ##     ##    ###    #### ##    ##
+% ###   ###   ## ##    ##  ###   ##
+% #### ####  ##   ##   ##  ####  ##
+% ## ### ## ##     ##  ##  ## ## ##
+% ##     ## #########  ##  ##  ####
+% ##     ## ##     ##  ##  ##   ###
+% ##     ## ##     ## #### ##    ##
 
 \chapter{Prerequisites and central notions}
 
@@ -329,6 +315,15 @@ integers \(\set{0, 1, 2, …}\).
 
 \clearpage
 \appendix
+
+% ########     ###     ######  ##    ##
+% ##     ##   ## ##   ##    ## ##   ##
+% ##     ##  ##   ##  ##       ##  ##
+% ########  ##     ## ##       #####
+% ##     ## ######### ##       ##  ##
+% ##     ## ##     ## ##    ## ##   ##
+% ########  ##     ##  ######  ##    ##
+
 \chapter{Appendix}\label{sec:Appendix}
 \input{./contents/99-99-appendix}
 
