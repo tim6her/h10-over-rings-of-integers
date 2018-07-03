@@ -1,11 +1,197 @@
-% !TeX encoding = UTF-8
-% !TeX TS-program = xelatex
-% !TeX spellcheck = en_GB
-% !TeX root = ../Herbstrith-H10_over_AI.tex
-% TODO Fill out these theorems and definitions
-\todo{Fill out these theorems and definitions}
+% !TEX encoding = UTF-8
+% !TEX TS-program = xelatex
+% !TEX spellcheck = en_GB
+% !TEX engine = xelatex
+% !TEX root = ../Herbstrith-H10_over_AI.tex
 
-\subsection{Definitions}
+In this section I will closely follow Chapter 1 of the German
+textbook~\cite{Neukirch2006}. However, the content is also present in the
+English reference~\cite[Chap.~2]{Milne2017}, and sometimes the presentation of
+this reference will be recited.
+
+\subsection{Number fields and rings of algebraic integers}
+
+We start with a series of definitions and remind the reader on some important
+results from algebraic number theory and commutative algebra. But at first let
+us fix an important notation.
+
+Let \(R\) and \(S\) be commutative rings with one. Let \(φ: R → S\) be a
+ring-homomorphism mapping \(1_R\) to \(1_S\), then \(S\) is called an
+\emph{\(R\)-algebra} and we write \(a α\) as a short form for \(φ(a) \cdot α\)
+(\(a ∈ R\) and \(α ∈ S\)). We are especially interested in the case
+where \(R \subseteq S\) and \(φ\) is chosen to be the embedding of \(R\) into
+\(S\). In this situation we denote  by \(R[\seq{α}]\) the smallest ring inside
+\(S\) containing \(R\) and all \(\seq{α} ∈ S\). Then \(R[\seq{α}]\) contains all
+polynomial expressions in \(\seq{α}\) with coefficients in \(R\) i.e.\ all
+elements of the form
+\[
+  \sum_{(\seq[m]{i}) ∈ ℕ^m} a_{i_1, …, i_m} α^{i_1} … α^{i_m},
+\]
+where only finitely many \(a_{i_1, …, i_m} ∈ R\) are non-zero.
+
+\begin{defin}
+  A finite field-extension \(K\) of the rationals \(ℚ\) is called
+  \emph{algebraic number field} i.e. \(K\) is a field and at the same time a
+  \(ℚ\)-algebra, that is finite-dimensional viewed as a \(ℚ\)-vector space. The
+  \emph{degree} \([K : ℚ]\) is the dimension of \(K\) viewed as a \(ℚ\)-vector
+  space.
+\end{defin}
+
+For convenience we will always assume that \(K\) is a subset of the complex
+pane \(ℂ\).
+
+\begin{exam}
+  Examples of number fields include.
+  \begin{exlist}
+    \item \(ℚ\) is (up to isomorphism) the only algebraic number field of
+    degree \(1\).
+
+    \item \(ℚ[√2] = \set{a + b √2 \mid a, b ∈ ℚ}\) is an algebraic number field
+    of degree \(2\). The inverse of \(a + b √2\), where not both \(a\) and \(b\)
+    are \(0\), is given by \(\frac{a - b √2}{a^2 - 2 b^2}\).
+
+    \item \(ℚ[√[3]{2}] = \set{a + b √[3]{2} + c √[3]{4} \mid a, b ∈ ℚ}\) is an
+    algebraic number field of degree \(3\).
+
+    \item \(ℚ[\e^{\frac{2 i π}{3}}] = \set{a + b \e^{\frac{2 i π}{3}}}\) is an
+    algebraic number field of degree \(2\).
+  \end{exlist}
+\end{exam}
+
+\begin{defin}
+  Let \(R \subseteq S\) be commutative rings with one. Then \(α ∈ S\) is called
+  \emph{integral} over \(R\) if it is the root of a monic polynomial with
+  coefficients in \(R\) i.e.\ if \(α\) satisfies an equation of the form
+  \[
+    α^n + a_{n-1}α^{n - 1} + … + a_0 = 0
+  \]
+  for some \(n ≥ 1\) and some \(\seq[n - 1]{a} ∈ R\). If all elements of \(S\)
+  are integral over \(R\), then \(S\) is called \emph{integral} over \(R\).
+\end{defin}
+
+Of course, when one wants to use tools from algebra some structure on the
+considered sets is needed. Thus, the following theorem, implying that if \(α, β
+∈ S\) are algebraic over \(S\), so are their sum and product, is very desirable.
+
+\begin{thm}\label{thm:integral closure}
+  Let \(R \subseteq S\) be commutative rings with one. Then the elements of
+  \(S\) that are integral over \(R\) form a subring of \(S\).
+\end{thm}
+
+Dedekind gave a proof of this theorem using the following proposition.
+
+\begin{pro}\label{pro:characterization of integral elements}
+  Let \(R \subseteq S\) be commutative rings with one. Then \(α ∈ S\) is
+  integral over \(R\) if and only if there exists a finitely generated
+  \(R\)-module \(M \subseteq S\) such that \(αM \subseteq M\), in fact \(M =
+  R[α]\) can be chosen.
+\end{pro}
+
+\begin{proof}[Proof of \cref{thm:integral closure}]
+  Let \(α, β ∈ S\) be integral over \(R\) and let \(M\) and \(N\) be finitely
+  generated \(R\)-modules contained in \(S\) such that \(αM \subseteq M\) and
+  \(βN \subseteq N\) hold. We define the product of the two modules as
+  \[
+    MN := \set{\sum_{i=1}^k m_i n_i \;\middle\vert\;
+     k ∈ ℕ, \seq[k]{m} ∈ M, \seq[k]{n} ∈ N}.
+  \]
+  Clearly, \(MN\) contains \(0\) as \(M\) (and \(N\)) contains \(0\).
+  Furthermore, it is closed under addition, and the inverse of an element in
+  \(MN\) can be found by inverting all \(m_i ∈ M\) (or \(n_i ∈ N\)) in the sum.
+  Thus, \(MN\) forms a subgroup of \(S\). Note that \(a m_i\) is contained in
+  \(M\) for all \(a ∈ R\) and \(m_i ∈ M\) since \(M\) is an \(R\)-module. As a
+  consequence,
+  \[
+    a \sum_{i=1}^k m_i n_i = \sum_{i=1}^k \underbrace{a m_i}_{∈ M} n_i ∈ MN
+  \]
+  for all \(a ∈ R\) and all \(\seq[k]{m} ∈ M\), \(\seq[k]{n} ∈ N\), and we can
+  deduce that \(MN\) is an \(R\)-module.
+
+  Let \(\set{\seq[m]{e}} \subseteq M\) generate \(M\) and \(\set{\seq[n]{f}}
+  \subseteq N\) generate \(N\). Then it is easily seen that the finite set
+  \[
+    \set{e_i f_j \mid 1 ≤ i ≤ m, 1 ≤ j ≤ n} \subseteq MN
+  \]
+  generates \(MN\).
+
+  We finish the proof by showing that \(αβ\) and \(α ± β\) satisfy \(αβ\, MN
+  \subseteq MN\) and \((α ± β) MN\) respectively. Then the proposition implies
+  the claim. But this is easy since
+  \[
+    αβ \sum_{i=1}^k m_i n_i = \sum_{i=1}^k \underbrace{αm_i}_{∈ M} \,
+    \underbrace{βn_i}_{∈ N} ∈ MN
+  \]
+  holds for all \(\seq[k]{m} ∈ M\) and all \(\seq[k]{n} ∈ N\), and
+  \[
+    (α ± β) \sum_{i=1}^k m_i n_i =
+    \sum_{i=1}^k \underbrace{αm_i}_{∈ M}\, n_i ±
+      \sum_{i=1}^k m_i \, \underbrace{βn_i}_{∈ N} ∈ MN
+  \]
+  holds as well.
+\end{proof}
+
+Similarly, one can deduce from \cref{pro:characterization of integral elements}
+that being integral is a transitive relation on rings. More formally, we have
+the following proposition.
+
+\begin{pro}\label{pro:being integral is transitive}
+  Let \(R \subseteq S \subseteq T\) be commutative rings with one. If \(S\) is
+  integral over \(R\) and \(α ∈ T\) is integral over \(S\), then \(α\) is
+  integral over \(R\).
+\end{pro}
+
+The set \(\overline{R}{}^S\) of all elements of \(S\) that are algebraic over
+\(R\) is called \emph{algebraic closure} of \(R\) in \(S\). By the theorem above
+\(\overline{R}{}^S\) is a subring of \(S\).
+
+We will now return our attention from the general case to our specific situation
+and consider the elements of \(ℂ\) that are integral over \(ℤ\). These elements
+are called \emph{algebraic integers} and the integral closure of \(ℤ\) in \(ℂ\)
+is denoted by \(\algint[]\). Given a number field \(K\), we denote by
+\(\algint\) the intersection of \(\algint[]\) with \(K\). In other words,
+\(\algint\) is the integral closure of \(ℤ\) in \(K\). To emphasize that we are
+considering the ring \(ℤ\) and not any \(\algint\), we call \(ℤ\) the ring of
+\emph{rational integers}.
+
+We have that \(\overline{ℤ}{}^ℚ = \algint[] ∩ ℚ = ℤ\). This follows from a more
+general result stating that factorial rings \(R\) equal their algebraic closure
+\(\overline{R}{}^{\Quot R}\) in their quotient fields \(\Quot R\). By
+\cref{pro:being integral is transitive} this property of \(ℤ\) extends to all
+rings of algebraic integers, we have \(\overline{\algint}{}^K = \algint\). To
+make the analogue complete we prove that \(K\) is the fraction field of
+\(\algint\) (see~\cref{thm:K is the quotient field of O K}). However, even more
+is true, as one can choose the denominator in the quotient to be a rational
+integer. More precisely, the following holds.
+
+\begin{pro}
+  Let \(K\) be a number field and \(\algint\) its ring of algebraic integers.
+  For all \(x ∈ K\) there exists a non-zero rational integer \(n ∈ ℤ \setminus
+  \set{0}\) such that \(nx ∈ \algint\) is an algebraic integer.
+\end{pro}
+
+\begin{thm}\label{thm:K is the quotient field of O K}
+  The quotient field of \(\algint\) is (isomorphic to) \(K\) for all number
+  fields \(K\).
+\end{thm}
+
+% TODO Fill out missing facts
+\todo{Fill out missing facts}
+Missing facts
+\begin{itemize}
+  \item Dedikind domain and factorization into prime ideals
+  \item GCD and LCM
+  \item Principal ideals of different primes are relative prime
+  \item Chinese remainder theorem
+  \item Lagrange's four-square theorem
+  \item Integral bases
+  \item normal extension/closure
+  \item Galois group acts transitively on \(μ_a\).
+\end{itemize}
+
+
+\begin{defin}[Dedekind domain]
+  pass
+\end{defin}
 
 \begin{defin}[class number $c_k$]
     pass
@@ -19,7 +205,7 @@
 
 \subsubsection{Minkowski's theorem on convex bodies}
 
-In this section I closely follow \cite[§2]{Schmidt1991}.
+In this section I closely follow \cite[Chap.~I, §2]{Schmidt1991}.
 
 Let $V$ be an $n$-dimensional vector space over the reals $ℝ$. If $\seq[k]{e} ∈
 V$ ($k ≤ n$) are linearly independent over $ℝ$, then the free Abelian group
@@ -42,7 +228,7 @@ has the volume
 \]
 for a fixed lattice $Λ = ℤ e_1 + … + ℤ e_n$ in $ℝ^n$. One calls such a lattice whose rank coincides with the dimension of the vector space $ℝ^n$ a \emph{full} lattice.
 
-\begin{thm}[Minkowski's theorem] \label{thm:Minkowski}
+\begin{thm}[Minkowski's theorem on convex bodies] \label{thm:Minkowski}
   Let $Λ = ℤ e_1 + … + ℤ e_n$ be a full lattice in the $n$-dimensional $ℝ$-vector space $V$ and let $D$ denote its fundamental parallelepiped. If $T \subseteq V$ is compact, convex and symmetric in the origin, i.e. if $α ∈ T$ so is $-α ∈ T$, and
   \[
     μ(T) ≥ 2^n μ(D).
@@ -50,12 +236,13 @@ for a fixed lattice $Λ = ℤ e_1 + … + ℤ e_n$ in $ℝ^n$. One calls such a 
   Then $T$ contains a non-zero lattice point $α ∈ Λ \setminus \set{0}$.
 \end{thm}
 
-For a proof of Minkowski's theorem and further details on lattices see \cite[4.4, p.~28]{Neukirch2006} or \cite[Thm.~4.19]{Milne2017}.
+For a proof of Minkowski's theorem and further details on lattices see
+\cite[4.4, p.~28]{Neukirch2006} or \cite[Thm.~4.19]{Milne2017}.
 
 \subsubsection{Kronecker's theorem}
 
-I will closely follow the German reference \cite[§2]{Hlawka1986}. However, the
-subject can as well be found in \cite[see][§23]{Hardy1975}.
+I will closely follow the German reference \cite[Chap.~2]{Hlawka1986}. However,
+the subject can as well be found in \cite[see][Chap.~\textsc{XXIII}]{Hardy1975}.
 
 
 \begin{thm}[Dirichlet's unit theorem]\label{thm:Dirichlet}
