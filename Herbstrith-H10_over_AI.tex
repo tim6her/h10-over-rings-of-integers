@@ -3,7 +3,7 @@
 % !TEX spellcheck = en_GB
 % !TEX engine = xelatex
 %
-% ########   #######   #######  ######## 
+% ########   #######   #######  ########
 % ##     ## ##     ## ##     ##    ##
 % ##     ## ##     ## ##     ##    ##
 % ########  ##     ## ##     ##    ##
@@ -33,6 +33,10 @@
 
 \renewcommand{\scshape}{\headingfont}
 
+\DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
+\DeclareOldFontCommand{\it}{\normalfont\itshape}{\mathit}
+\DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
+
 \usepackage{polyglossia}
 \setdefaultlanguage[variant=british]{english}
 \setotherlanguage{german}
@@ -44,6 +48,9 @@
 \usepackage{microtype}
 \usepackage{enumitem}
 \usepackage{subcaption}
+\usepackage{relsize,etoolbox}
+\AtBeginEnvironment{quote}{\smaller}
+\renewcommand{\mkbegdispquote}[2]{\smaller}
 
 \usepackage{letltxmacro}
 
@@ -138,6 +145,7 @@
 
 \usepackage{newunicodechar}
 \newunicodechar{√}{\sqrt}
+\newunicodechar{⊂}{\subseteq}
 \makeatletter
 \newcommand{\dotminus}{\mathbin{\text{\@dotminus}}}
 
@@ -297,10 +305,11 @@ reader of some of their important properties.
 Throughout this thesis the symbol \(ℕ\) shall denote the set of non-negative
 integers \(\set{0, 1, 2, …}\).
 
-\section{Prerequisites from computability theory}
+\section{Prerequisites from computability theory}%
+\label{sec:computability theory}
 \input{./contents/01-01_prerequisites_from_tcs}
 
-\section{Prerequisites from model theory}
+\section{Prerequisites from model theory}\label{sec:model theory}
 \input{./contents/01-02_prerequisites_from_model_theory}
 
 \section{Prerequisites from number theory}\label{sec:number theory}

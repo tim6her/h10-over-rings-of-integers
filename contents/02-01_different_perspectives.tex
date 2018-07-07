@@ -12,48 +12,111 @@
 % ##     ##    ##    ##   ##     ##     ##  ##  ##    ##    ##    ###
 % ##     ##  ######   #####      ##     ## ####  ######     ##    ###
 
-In 1900, David Hilbert held his famous lecture before the \emph{Second
-International Congress of Mathematicians} in Paris. The lecture entitled
-\begin{german}\enquote{Mathematische Probleme}\end{german} contained 23
-mathematical problems left for the 20th century to solve.
-% TODO Write about the history of \textsc{H10}
-\todo{Write about the history of \textsc{H10}}
+\subsection{Diophantine equations and sets}
 
-\begin{quotation}
-    Given a Diophantine equation with any number of unknown quantities and with rational integral numerical coefficients: To devise a process according to which it can be determined by a finite number of operations whether the equation is solvable in rational integers.
-\end{quotation}
+In 1900, David Hilbert held his famous lecture~\cite{Hilbert1900} before the
+\emph{Second International Congress of Mathematicians} in Paris. The lecture
+entitled \foreignquote{german}{Mathematische Probleme} contained 23
+mathematical problems left for the 20th century to solve. The tenth of these
+problems and its variants are the subject of this thesis. The problem states
 
-A \emph{Diophantine equation} is of the form
+\begin{foreigndisplayquote}{german}
+  \textsc{10. Entscheidung der Lösbarkeit einer Diophantischen Gleichung.}
+  Eine Diophantische Gleichung mit irgend welchen Unbekannten und mit
+  ganzen rationalen Zahlencoefficienten sei vorgelegt: man soll ein Verfahren
+  angeben, nach welchem sich mittelst einer endlichen Anzahl von Operationen
+  entscheiden läßt, ob die Gleichung in ganzen rationalen Zahlen lösbar ist.%
+  \footnote{
+    \begin{english}
+      \textsc{10. Determination of the solvability of a diophantine equation.}
+      Given a diophantine equation with any number of unknown quantities and
+      with rational integral numerical coefficients: To devise a process
+      according to which it can be determined by a finite number of operations
+      whether the equation is solvable in rational integers.
+      \hspace*{\fill}\cite[translation published in][]{Hilbert2000}
+    \end{english}
+  }
+  \hspace*{\fill}\cite{Hilbert1900}
+\end{foreigndisplayquote}
+
+A \emph{Diophantine equation}---in the classical sense---is of the form
 %
 \[ p(α_1, …, α_n) = 0 \]
 %
-for some polynomial $p ∈ ℤ[X_1, …, X_n]$, allowing only solutions $α_1,…,α_n ∈ ℤ$.
+for some polynomial $p ∈ ℤ[X_1, …, X_n]$, allowing only integral solutions
+$α_1,…,α_n ∈ ℤ$. Using the tools developed in \cref{sec:model theory,sec:number
+theory}, we will exchange one or both occurrences of the rational integers by
+values from other rings. It took until the 1930s to formalize what Hilbert meant
+by a \foreignquote{german}{Verfahren \textins{mit} einer endlichen Anzahl von
+Operationen%
+\footnote{\foreignquote{english}{%
+  process \textins{with} a finite number of operations}
+}}
+to the notion of \emph{computation} that was defined in \cref{sec:computability
+theory}. In the same section we have also defined what it means to \emph{decide
+a problem}, so we are left with the task of identifying Hilbert's question with
+a set of strings. In a first approach one could reformulate the tenth problem as
+\begin{quote}
+  For a fixed polynomial \(p ∈ ℤ[X_1, X_2, …]\) does there exist a Turing
+  machine \(\mathbb{A}_p\) that returns \(\one\) if \(p\) has a root and
+  \(\zer\) otherwise?
+\end{quote}
+This formalization is however trivially solvable, as the Turing machine in
+question takes no input and thus must always return either \(\one\) or \(\zer\).
+But such machines returning a constant value are easily constructable. We must
+therefore exchange the quantifiers and ask
+\begin{quote}
+  Does there exist a Turing machine \(\mathbb{A}\) and an encoding
+  \(\enc{\cdot}\) such that for all polynomials \(p ∈ ℤ[X_1, X_2, …]\) the
+  output \(\mathbb{A}(\enc{p})\) is \(\one\), if \(p\) has integral roots, and
+  \(\zer\) otherwise.
+\end{quote}
 
+We will see that if we restrict ourselves to encodings \(\enc{\cdot}\) that
+allow to efficiently obtain the evaluation \(\enc{p(\mathbf{α})}\) from
+\(\enc{p}\) and \(\enc{\mathbf{α}}\), then the answer to the question above is
+negative. In fact, for all rings of algebraic integers \(\algint\), that we will
+consider, we will find a single multivariate polynomial \(p_{\mathcal{K}}(X,
+\seq{Y}) ∈ \algint[X, \seq{Y}]\) such that for all Turing machines
+\(\mathbb{A}\) there exists an algebraic integer \(α ∈ \algint\) with the
+property that \(\mathbb{A}\) cannot correctly decide whether the partially
+evaluated polynomial
+\[
+  p_{\mathcal{K}}(α, \seq{Y})
+\]
+has roots in \(\algint\). The index \(\mathcal{K}\) of the polynomial above is
+not chosen at random. Indeed, the polynomial \(p_{\mathcal{K}}\) represents an
+encoded version of the halting set \(\mathcal{K}\) in the following sense.
 
 \begin{defin}
     Let $R$ be a commutative ring with unit. A set $S \subseteq R^n$ is said to
-    be \emph{Diophantine} if there exists a polynomial $p ∈ R[X_1,…,X_n,
-    Y_1,…,Y_m]$ ($m ≥ 0$\footnote{If $m = 0$, one interprets this as $p ∈
-    R[X_1,…,X_n]$}) such that
-
-    \[ (α_1,…,α_n) ∈ S \Leftrightarrow ∃ β_1,…,β_m ∈ R: p(α_1,…,α_n,β_1,…,β_m) = 0 \]
+    be \emph{Diophantine} over \(R\) if there exists a polynomial $p ∈
+    R[X_1,…,X_n, Y_1,…,Y_m]$ in \(n + m\) many indeterminates (\(m,n ≥ 0\)) such
+    that
+    \[
+      (α_1,…,α_n) ∈ S ⇔
+      ∃ β_1,…,β_m ∈ R: p(α_1,…,α_n,β_1,…,β_m) = 0
+    \]
 \end{defin}
 
-A polynomial $p ∈ R[X_1, …, X_n]$ as above defines $n$ relations $\rel{p}_i$ by
+A polynomial $p ∈ R[X_1, …, X_n]$ as above defines an $n$-ary relation $\rel{p}$
+on \(R\) by
 \[
-  \rel{p}(α_1, …, α_i)  \Leftrightarrow
-   ∃ β_1, …, β_{n - i} ∈ R : p(α_1, …, α_i, β_1, …, β_{i - n}) = 0 \quad
-   1 ≤ i ≤ n.
+  \rel{p}(α_1, …, α_n)  \quad :⇔ \quad p(α_1, …, α_n) = 0
 \]
 In this sense a set $S \subseteq R^i$ is Diophantine if there exists a
-polynomial $p ∈ R[X_1, …, X_n]$ such that for each $\mathbf α ∈ S$ there exists
-a $\mathbf β ∈ R^{n - i}$ that is related to $\mathbf α$ via $\rel p_i$.
+polynomial $p ∈ R[X_1, …, X_n]$ such that
+\[
+  (\seq[i]{α}) ∈ S \quad ⇔ \quad
+  ∃ \seq[n - i]{β} : \rel{p}(\seq[i]{α}, \seq[n - i]{β})
+\]
 
 Viewing $n$-ary relations as subsets of $R^n$, I will sometimes refer to
 Diophantine sets as \emph{Diophantine relations}. A function $R^n → R^m$ is
-called Diophantine if it is Diophantine viewed as a relation.
+called \emph{Diophantine} if it is Diophantine viewed as an \((n + m)\)-ary
+relation.
 
-\begin{exam}
+\begin{exam}\label{ex:Diophantine sets}
   \begin{exlist}
     \item Let $R$ be an integral domain.
     Then every finite subset $S$ of $R$ is Diophantine, because the roots of
@@ -62,23 +125,14 @@ called Diophantine if it is Diophantine viewed as a relation.
     \]
     are precisely the elements of $S$.
 
-    \item The set of composite numbers is Diophantine over $ℕ$, as $α ∈ ℕ$ is
-    composite if and only if
+    \item Let \(R\) be an integral domain. Then for every polynomial \(p ∈
+    R[X_1, …, X_n]\) the associated polynomial function \(p: R^n → R\) is
+    Diophantine. To see this we set
     \[
-      ∃ β_1, β_2 ∈ ℕ : x = (β_1 + 2) (β_2 + 2).
+      q(X_1, …, X_n, X_{n + 1}) := p(\seq{X}) - X_{n + 1},
     \]
-    Here adding $2$ to $β_1$ and $β_2$ ensures, that both factors are greater
-    than $1$. Choosing
-    \[
-      p (X, Y_1, Y_2) := X - (Y_1 + 2)(Y_2 + 2)
-    \]
-    yields the claim.
-
-    \item The usual order relation $≤$ on $ℕ$ is Diophantine over $ℕ$.
-    Indeed $α_1 ≤ α_2$ in $ℕ$ if and only if
-    \[
-      ∃ β ∈ ℕ : α_1 + β  = α_2.
-    \]
+    and notice that \(q\) has a root \((\seq{α}, α_{n + 1}) ∈ R\) if and only if
+    \(p(\seq{α}) = α_{n + 1}\) as claimed.
 
     \item Let $R$ be a commutative ring with unit. Then divisibility in $R$ is
     Diophantine. Indeed $α_1 \mid α_2$ in $R$ precisely if
@@ -138,115 +192,468 @@ called Diophantine if it is Diophantine viewed as a relation.
     \item\label{ex:U K is Diophantine}
     Let \(R\) be a commutative ring with unit. The set of units \(U\) in \(R\) is Diophantine over \(R\). This can be seen by the polynomial equation
     \[
-      x ∈ U ⇔ ∃ y : xy = 1.
+      x ∈ U \quad ⇔ \quad ∃ y : xy = 1.
     \]
-
-
-
-    \item\label{ex:N is Diophantine over Z}
-    Each non-negative integer $α$ is the sum of four squares and as a
-    consequence
-    \[
-      x ∈ ℕ ⇔ ∃β_1,β_2,β_3,β_4∈ℤ: β_1^2 + β_2^2 + β_3^2 + β_4^2 = α.
-    \]
-    is a Diophantine definition of $ℕ$ over $ℤ$. A full proof of the claim using
-    \cref{thm:Minkowski} is given in \cite[Remark 4.20]{Milne2017}.
   \end{exlist}
 \end{exam}
 
-Let $Σ_{ring} = \set{+,\cdot; 0, 1}$ be the signature of rings and let
-$\mathfrak{Z} = ⟨ℤ; +^{\mathfrak{Z}}, \cdot^{\mathfrak{Z}}; 0^{\mathfrak{Z}},
-1^{\mathfrak{Z}}⟩$ denote the integers as $Σ_{ring}$-structure. Then \textsc{H10}
-asks whether the existential positive theory $\mathtt{Th}_{∃+}(\mathfrak{Z})$ is
-decidable. This is the theory of $\mathfrak{Z}$ containing only fully
-existentially quantified atomic formulas or conjunctions---no negations,
-disjunctions or universal quantifiers.
+In the examples above we have seen that many sets and relations are Diophantine.
+Before we go on proving some structural results for Diophantine sets, we turn
+our attention to the classical case of Diophantine subsets of \(ℤ\) and study
+their relations with subsets of \(ℕ\).
 
-This claim can be justified by observing that each positive integer $n$ can
-be expressed as
-\[
-  \underbrace{\mathtt{1 + 1 + … + 1}}_{n\text{-times}}.
-\]
-So the question whether $X_1 - (X_2 + 2) (X_3 + 2)$ has integral roots is
-equivalent to asking whether
-\[
-  \mathfrak Z \models \mathtt{∃ x_1 ∃ x_2 ∃ x_3 \; x_1 \doteq (x_2 + 1 + 1) \cdot (x_3 + 1 + 1)}.
-\]
-We will see in \cref{lem:intersections and unions} that for certain integral
-domains including $\mathfrak Z$ conjunctions of multiple polynomial equations
-can be effectively translated to a single polynomial equation.
+\begin{exam}[Diophantine subsets of \(ℕ\)]\label{ex:N is Diophantine over Z}
+  If one wants to study sets that are Diophantine over \(ℕ\), one runs into the
+  problem that \(ℕ\) is not a ring. An approach that has been carried out
+  \cite[cf.~e.g.][]{Davis1973} is considering sets \(S ⊂ ℤ^n\) that are
+  Diophantine over \(ℤ\) and intersecting them with \(ℕ^n\). I will show that
+  this construction can be carried out in a Diophantine way.
 
-The beauty of this approach is that it directly gives rise to generalisations of
-Hilbert's tenth problem. For example one can exchange the ring structure
-$\mathfrak Z$ by some other ring. Even uncountable rings like $\mathfrak C = ⟨ℂ;
-+^{\mathfrak C}, \cdot^{\mathfrak C}; 0^{\mathfrak C}, 1^{\mathfrak C}⟩$ are
-possible, as $Σ_{ring}$ is finite and therefore each sentence in
-$\mathtt{Th}_{∃+}(\mathfrak{C})$ can be encoded by its Gödelisation or---as it
-was done when typesetting this thesis---by the concatenation of the
-\textsc{UTF-8} encodings of the symbols.
-% QUESTION One can show that the \(Σ_{ring}\)-theory of \(ℂ\) is complete
-% (Vaught's test) and therefore decidable. Should I present this?
-\todo{One can show that the \(Σ_{ring}\)-theory of \(ℂ\) is complete (Vaught's test) and therefore decidable. Should I present this?} %cf.~\url{https://math.stackexchange.com/a/103187/422444}}
-A second approach for generalisation is exchanging $Σ_{ring}$ by some other
-computable signature (see \cref{sec:computable structures}). Then one is in the
-realm of constraint satisfaction problems. Or one could consider the full first
-order theory of $\mathfrak Z$. Then Gödel's first incompleteness theorem gives a
-negative answer to the question, whether $\mathtt{Th}(\mathfrak Z)$ is
-decidable.\footnote{Actually, Gödel's first incompleteness theorem
-implies---under the assumption that Peano arithmetic is consistent---that the
-full first order theory of $\mathfrak N = ⟨ℕ; +^{\mathfrak N}, \cdot^{\mathfrak
-N}; 0^{\mathfrak N}, 1^{\mathfrak N}⟩$ is undecidable, but by \cref{ex:N is
-Diophantine over Z} we can transform any first order sentence $\mathtt{ϕ(x_1, …,
-x_n)}$ to a first order sentence where $\mathtt ϕ$ is appended by a conjunction
-of formulas
-\[
-  \mathtt{ ∃ x_{i1} ∃x_{i2} ∃x_{i3} ∃x_{i4} \; x_i \doteq x_{i1} \cdot x_{i1} +
-  x_{i2} \cdot x_{i2} + x_{i3} \cdot x_{i3} + x_{i4} \cdot x_{i4}}
-\]
-for $1 ≤ i ≤ n$, stating that $\mathtt{\seq x}$ are non-negative integers.
-}
-
-I will use the second approach and replace $Σ_{ring}=\set{+, \cdot;
-0, 1}$ by the signature
-\[
-  Σ_{ring}^* = \set{+, \cdot; 0, 1, η \mid η ∈ ℕ},
-\]
-where one adds countably many constants representing the elements unequal
-to $0$ and $1$ of a countable ring with unit $R$.
-
-Throughout this thesis I will mostly concern myself with the case where $K$ is
-an algebraic number field and $\algint$ is its ring of integers over $ℤ$.
-Setting $\modalgint = ⟨\algint; +^{\modalgint},
-\cdot^{\modalgint}; η \mid η ∈ \algint⟩$, I understand by Hilbert's tenth
-problem (\textsc{H10}) over $\algint$ the following problem.
-
-\begin{quote}
-  Is there a Turing machine $\mathbb A$ that decides $\mathtt{Th}_{∃+} (\modalgint)$ i.e.
+  First, we note that if \(S_1, S_2 ∈ ℤ^n\) are Diophantine over \(ℤ\), then
+  their intersection is Diophantine over \(ℤ\) as well. This is because if
+  \(p_1 ∈ ℤ[\seq{X}, \seq[m_1]{Y}]\) represents \(S_1\) via
   \[
-    \mathbb A (x) =
-      \begin{cases}
-        \one & \text{if } ∃ \mathtt{ϕ} ∈  \mathtt{Th}_{∃+} (\modalgint) : \enc{\mathtt{ϕ}} = x \\
-        \zer & \text{otherwise}
-      \end{cases}?
+    (\seq{α}) ∈ S_1 \quad ⇔ \quad
+    ∃ \seq[m_1]{β} : p_1(\seq{α}, \seq[m_1]{β}) = 0
   \]
-\end{quote}
+  and \(p_2 ∈ ℤ[\seq{X}, \seq[m_1]{Y}]\) represents \(S_2\), we set \(m := m_1 +
+  m_2\) and consider \(p_1\) and \(p_2\) as polynomials in \(n + m\) many
+  indeterminates, where for all \(i ∈ \set{n + 1, …, m}\) indeterminate \(Y_i\)
+  either appears in \(p_1\) or \(p_2\) but not in both. Then \((\seq{α},
+  \seq[m]{β}) ∈ ℤ^{m + n}\) is a root of
+  \[
+    q(\seq{X}, \seq[m]{Y}) :=
+      p_1(\seq{X}, \seq[m]{Y})^2 + p_2(\seq{X}, \seq[m]{Y})^2
+  \]
+  if and only if \((\seq{α}, \seq[m]{β})\) is a root of \(p_1\) and \(p_2\).
+  Thus, we find that
+  \[
+    S_1 ∩ S_2 =
+    \set{\seq{α} ∈ ℤ \mid ∃ \seq[m]{β} ∈ ℤ : q(\seq{α}, \seq[m]{β}) = 0}.
+  \]
 
-Using the notion of computable rings it will be easy to see that
-$\mathtt{Th}_{∃+}(\modalgint)$ is semi-decidable for all number fields $K$.
-However, it is not known for all number fields, whether their existential
-positive theory is undecidable. In the subsequent sections I will prove the
-undecidability of \textsc{H10} over selected number fields $K$.
-% QUESTION Should I mention \emph{pure Diophantine} definitions and their
-% relation to Diophantine definitions? \cite[cf.][§~11]{Davis1976}
-\todo{Should I mention \emph{pure Diophantine} definitions and their relation to Diophantine definitions? \cite[cf.][§~11]{Davis1976}}
+  By Lagrange's four square-theorem (\cref{cor:Lagranges four square theorem})
+  we know that every non-negative integer \(α\) is the sum of four squares and
+  as a consequence
+  \[
+    x ∈ ℕ \quad ⇔ \quad
+    ∃β_1,β_2,β_3,β_4∈ℤ: β_1^2 + β_2^2 + β_3^2 + β_4^2 = α.
+  \]
+  is a Diophantine definition of $ℕ$ over $ℤ$. We therefore say that a subset
+  \(S ⊂ ℕ^n\) is \emph{Diophantine over \(ℕ\)} if \(S\) is Diophantine over
+  \(ℤ\). If on the other hand \(S ⊂ ℤ^n\) is Diophantine over \(ℤ\), then by the
+  arguments above
+  \[
+    S ∩ ℕ^n
+  \]
+  is Diophantine over \(ℤ\) and therefore Diophantine over \(ℕ\) as well.
+  We now list some examples of sets that are Diophantine over \(ℕ\).
+  \begin{exlist}
+    \item The set of composite numbers is Diophantine over $ℕ$, as $α ∈ ℕ$ is
+    composite if and only if
+    \[
+      ∃ β_1, β_2 ∈ ℕ : x = (β_1 + 2) (β_2 + 2).
+    \]
+    Here adding $2$ to $β_1$ and $β_2$ ensures, that both factors are greater
+    than $1$. Choosing
+    \[
+      p (X, Y_1, Y_2) := X - (Y_1 + 2)(Y_2 + 2)
+    \]
+    yields the claim.
 
-Considering the full first order theory of $\modalgint$
-\textcite{Robinson1959} proved as early as \citeyear{Robinson1959} that
-$\mathtt{Th}(\modalgint)$ is undecidable. In \citeyear{Rumely1986},
-\textcite{Rumely1986} published his surprising result that \textsc{H10} is
-solvable over $\mathcal O$, the ring of all algebraic integers.
-\Textcite{Dries1988} extended this result to the full first order theory of
-$\mathcal O$ in \citeyear{Dries1988}.
+    \item The usual order relation $≤$ on $ℕ$ is Diophantine over $ℕ$.
+    Indeed $α_1 ≤ α_2$ in $ℕ$ if and only if
+    \[
+      ∃ β ∈ ℕ : α_1 + β  = α_2.
+    \]
+  \end{exlist}
+\end{exam}
+
+We will now see how one can describe Diophantine sets from the view of model
+theory.
+
+\begin{lem}
+  Let \(R\) be a commutative ring with one and let \(\mathfrak{R}\) be its
+  \(\lang_{ring}\)-structure. Then \(S ⊂ R^n\) is Diophantine if and only if
+  there exists an atomic \(\lang_R\)-formula \(ϕ(\mathtt{\seq{x}, \seq[m]{y}})\)
+  such that
+  \[
+    (\seq{α}) ∈ S \quad ⇔ \quad
+    \mathfrak{R} \models \mathtt{∃ y_1 : … ∃ y_m: }
+        ϕ(\seq{α}, \mathtt{\seq[m]{y}})
+  \]
+  holds.
+\end{lem}
+\begin{proof}
+  By \cref{thm:Diophantine theory} the forumla \(ϕ(\seq{α}, \seq[m]{β})\) is
+  true in \(\mathfrak{R}\) if and only if the polynomial associated with \(ϕ\)
+  has a root in \((\seq{α}, \seq[m]{β})\).
+\end{proof}
+
+Note that even more is true as a partially evaluated polynomial is still a
+polynomial. Thus, one can decide membership in all Diophantine sets if and only
+if one can decide for all polynomials whether they have roots. Thus, if \(R\) is
+a countable, commutative ring with one, we can identify Hilbert's tenth problem
+over \(R\) with the set of Gödel numbers of \(\mathtt{H10}(\mathfrak{R})\).
+
+\begin{lem}\label{lem:intersections and unions}
+    Let $R$ be an integral domain, whose quotient field $\Quot R$ is not
+    algebraically closed. Then if $S_1, S_2 \subseteq R$ are Diophantine so are
+    \[
+      S_1 ∩ S_2 \quad \text{and} \quad S_1 ∪ S_2.
+    \]
+
+    If $R$ is computable, then there is an algorithm that derives the defining
+    polynomial equations for union and intersection efficiently from the
+    equations of $S_1$ and $S_2$.
+\end{lem}
+
+In other words, conjunctions and disjunctions of existentially quantified atomic
+formulae can be replaced by a single existentially quantified atomic formula. Or
+again put differently, conjunction $∧$ and disjunction $∨$ are
+$\lang_{ring}$-definable, efficiently computable predicates.
+
+\begin{proof}
+  Let \(p(\seq{X}, \seq[m_1]{Y})\) and \(q(\seq{X}, \seq[m_2]{Y})\) give
+  Diophantine definitions of $S_1$ and $S_2$ resp. Then as in \cref{ex:N is
+  Diophantine over Z} we set \(m = m_1 + m_2\) and interpret \(p, q\) as
+  polynomials in \(n + m\) many indeterminates such that for all \(i ∈ \set{n +
+  1, …, m}\) indeterminate \(Y_i\) appears either in \(p\) or \(q\) but not
+  in both.
+
+  Now set
+  \[
+    h := p q.
+  \]
+  Then \(h\) vanishes if and only if $p$ or $q$ vanishes. As a consequence, the
+  \(n\)-tuple \(\seq{α} ∈ R\) is in the union of \(S_1\) and \(S_2\) if and only
+  if
+  \[
+    ∃ \seq[m]{β} ∈ R : h(\seq{α}, \seq[m]{β}) = 0.
+  \]
+
+  To make notation when proving the claim for intersections, I will assume that
+  \(n = 1\) and \(m = 2\). The general cases follows completely analogously.
+  Now let
+  \[
+    h(T) = a_k T^k + … + a_1 T + a_0 ∈ R[T]
+  \]
+  be a polynomial of degree $k > 0$ without roots in $\Quot R$. Then $\overline
+  h(X) = X^k h(X^{-1})$ does not have roots in $\Quot R$ either. As if $α ∈
+  \Quot R$ is a root of $\overline h$ then
+  \[
+    0 = \overline h(α) = a_k + a_{k-1} α + a_1 α^{-1} + a_0 α^k
+  \]
+  and $α = 0$ implies that $a_k = 0$. Otherwise, $α^{-1}$ is a root of
+  $α^k h$ and therefore of $h$.
+
+  Now consider
+  \[
+    H(α, β_1, β_2) =
+    \sum_{i=0}^k a_i p(α, β_1)^i q(α, β_2)^{k - i}.
+  \]
+  I will prove for all $α, β_1, β_2 ∈ R$ that \(H(α, β_1, β_2) = 0\) precisely
+  if \(p(α, β_1)\) and \(p(α, β_2)\) vanish. Then \(H\) represents the
+  intersection via
+  \[
+    α ∈ S_1 ∩ S_2 \quad ⇔ \quad
+    ∃ β_1, β_2 ∈ R : H(α, β_1, β_2) = 0.
+  \]
+
+  If $H(α, β_1, β_2) = 0$ but $p(α, β_1) ≠ 0$ then
+  \[
+    0 = \frac{H}{p^k} (α, β_1, β_2) =
+    \overline h \left(\frac pq (α, β_1, β_2) \right),
+  \]
+  which is a contradiction to \(\overline h\) not having roots. If on the
+  other hand $H(α, β_1, β_2) = 0$ but $q(α, β_2) ≠ 0$
+  one finds
+  \[
+    0 = \frac H {q^k}(α, β_1, β_2) = h \left( \frac pq (α, β_1, β_2) \right).
+  \]
+
+  The converse direction is clear as the powers of $p$ and $q$ sum up
+  to $k$ for each summand in the definition of $H$.
+
+  To prove the effectiveness of these methods one observes, that the defining
+  equations contain only polynomials in $p$ and $q$. Thus, \cref{ex:polynomials
+  are computable} implies that the polynomial equations for union and
+  intersection of Diophantine sets can be computed from the polynomials $p$ and
+  $q$.
+\end{proof}
+
+Using induction and the lemma above, one immediately obtains that arbitrary
+finite unions and intersections of Diophantine sets are Diophantine. For the
+special case that \(R\) is computable, one can deduce that Hilbert's tenth
+problem is essentially the same as the primitive positive diagram
+\(D_{∃+}(\mathfrak{R})\).
+
+\begin{cor}
+  Let \(R\) be a computable integral domain and \(\mathfrak{R}\) its
+  \(\lang_{ring}\)-structure. Then \(D_{∃+}(\mathfrak{R})\) is many-one
+  reducible to \(\mathtt{H10}(\mathfrak{R})\).
+\end{cor}
+\begin{proof}
+  This follows immediately from the lemma above and the properties of the
+  Gödelization.
+\end{proof}
+
+Of course one is tempted to consider Hilbert's tenth problem over the complex
+pane \(ℂ\). There is however a technicality in our way, as \(ℂ\) is uncountable.
+Thus, \(ℂ[X_1, X_2, …]\) is uncountable as well and one cannot encode all
+polynomials. For this reason it is sometimes preferable to consider \emph{purely
+Diophantine sets}.
+
+\subsection{Purely Diophantine sets}
+
+\begin{defin}
+    Let $R$ be a commutative ring with unit. A set $S \subseteq R^n$ is said to
+    be \emph{purely Diophantine} over \(R\) if there exists a polynomial $p ∈
+    ℤ[X_1,…,X_n, Y_1,…,Y_m]$ in \(n + m\) many indeterminates (\(m,n ≥ 0\)) such
+    that
+    \[
+      (α_1,…,α_n) ∈ S ⇔
+      ∃ β_1,…,β_m ∈ R: p(α_1,…,α_n,β_1,…,β_m) = 0
+    \]
+\end{defin}
+
+By demanding that the coefficients are rational integers, we immediately obtain
+that there can only be countably many purely Diophantine sets over a fixed ring
+with arbitrary cardinality. Whilst the choice of coefficients may seem random to
+the algebraist, it is perfectly natural from the perspective of model theory, as
+is shown in the following lemma.
+
+\begin{lem}
+  Let \(R\) be a commutative ring with one and let \(\mathfrak{R}\) be its
+  \(\lang_{ring}\)-structure. Then \(S ⊂ R^n\) is purely Diophantine if and only
+  if there exists an \(\lang_{ring}\)-term \(t(\mathtt{\seq{x}, \seq[m]{y}})\)
+  such that
+  \[
+    (\seq{α}) ∈ S \quad ⇔ \quad
+    \mathfrak{R} \models \mathtt{∃ y_1 : … ∃ y_m: }
+        t(\seq{α}, \mathtt{\seq[m]{y}}) \doteq \zer
+  \]
+  holds.
+\end{lem}
+\begin{proof}
+  Follows, immediately from \cref{lem:terms of rings are polynomials}.
+\end{proof}
+
+At second sight the construction is even less surprising, as for every ring with
+one \(R\) there exists exists exactly one ring-homomorphism \(φ: ℤ → R\).
+Looking back at \cref{ex:Diophantine sets}, we note that the Diophantine sets of
+(3), (4), and (5) are in fact purely Diophantine, whilst finite sets (1) are in
+general not purely Diophantine. As for polynomial functions \(p: R^n → R\) (2)
+we obtain that they are purely Diophantine if and only if the coefficients of
+\(p\) are rational integers. Note however that a partially evaluated polynomial
+with rational integral coefficients need not be a polynomial in \(ℤ[X_1, X_2,
+…]\). Thus, one needs to be a bit more careful when dealing with purely
+Diophantine sets.
+
+We now want to identify the purely Diophantine subsets within the Diophantine
+subsets of algebraic integers. For this purpose we reformulate a result of
+\textcite{Robinson1951}. But before we state his result let us look at a simple
+example: In \(ℚ{[√[4]{2}]}\) the polynomial \(p(X) := X^2 - 2\) does
+not give rise to a purely Diophantine representation of \(√2\) because \(-√2\)
+is a root of \(p\) as well. We can however represent \(√2\) as follows
+\[
+  α = √2 \quad ⇔ \quad
+  ∃ β ∈ ℚ{[√[4]{2}]} : (β^4 = 2 ∧ β^2 = α).
+\]
+This is because \(ℚ{[√[4]{2}]} ⊂ ℝ\) is real and the square of a real number is
+non-negative. In general, we have the following proposition.
+
+\begin{pro}\label{pro:Diophantine singletons}
+  Let \(K\) be an algebraic number field. If \(x ∈ K\) is fixed by all
+  automorphisms of \(K\), then there exist polynomials \(p,q ∈ ℤ[X]\) and a
+  constant \(c ∈ ℤ\) such that \(x\) is the only element of \(K\) satisfying
+  \[
+    ∃ y ∈ \algint : (p(y) = 0 ∧ q(y) = cx).
+  \]
+  If \(x\) is an algebraic integer, then \(\set{x}\) is purely Diophantine over
+  \(\algint\).
+\end{pro}
+\begin{proof}
+  By the primitive element theorem~\ref{thm:primitive element} there exists an
+  algebraic integer \(δ ∈ \algint\) such that \(K = ℚ[δ]\). Let \(μ_{ℚ, δ} ∈
+  ℤ[X]\) be the minimal polynomial of \(δ\) over the rationals \(ℚ\) and let
+  \(δ = \seq[k]{δ} ∈ \algint\) be the roots of \(μ_{ℚ, δ}\) that are contained
+  in \(K\). Since every \(z ∈ K\) can be written as \(z = f(δ)\), where \(f(X) ∈
+  ℚ[X]\) and the rationals are fixed by all automorphisms \(σ\) of \(K\), we
+  find that \(σ(z) = f(σ(δ))\) holds for all automorphisms. Thus, \(\id_K =
+  \seq[k]{σ}\), where \(σ_i(δ) = δ_i\), are all automorphisms of \(K\).
+
+  Since \(x\) is fixed by all of the \(σ_i\), we find that
+  \[
+    f(δ) = x = σ_i(x) = σ_i(f(δ)) = f(σ_i(δ)) = f(δ_i)
+  \]
+  holds for all \(1 ≤ i ≤ k\). Now since \(μ_{ℚ, δ}\) defines
+  \(\set{\seq[k]{δ}}\) in a Diophantine way, we obtain that
+  \[
+    α = x \quad ⇔ \quad ∃ y ∈ \algint : (μ_{ℚ, δ}(y) = 0 ∧ f(y) = x).
+  \]
+  To finish the prove set \(c\) to be the least common multiple of all
+  denominators of coefficients in \(f\) and multiply the right equation with
+  \(c\). Since \(\seq[k]{δ} ∈ \algint\) are the only roots of \(μ_{ℚ, δ}\), the
+  singleton \(\set{x}\) is in fact purely Diophantine over \(\algint\) as
+  claimed.
+\end{proof}
+
+Note that the assumption of \(x ∈ K\) being fixed by all automorphisms is
+necessary. Indeed, if \(p(X, Y) ∈ ℤ[X, Y]\) is a polynomial with rational
+integral coefficients such that there exists a \(y ∈ K\) with \(p(x, y) = 0\),
+then for every automorphism \(σ\), we find that
+\[
+  p(σ(x), σ(y)) = σ(p(x, y)) = 0,
+\]
+and thus, \(σ(x)\) satisfies the same relation. Building on this result for
+singletons, \textcite{Davis1976} gave the following characterization of purely
+Diophantine sets within Diophantine sets over rings of algebraic integers.
+
+\begin{thm}
+  Let \(\algint\) be the ring of algebraic integers of a number field \(K\). A
+  set \(S ⊂ \algint^n\) is purely Diophantine if and only if \(S\) is
+  Diophantine and self-conjugate i.e.\ for all automorphisms \(σ: K → K\)
+  and all \((\seq{α}) ∈ S\) we have that the image
+  \[
+    (σ(α_1), …, σ(α_n)) ∈ S.
+  \]
+\end{thm}
+\begin{proof}
+  We may assume that \(S\) is Diophantine, as being purely Diophantine clearly
+  implies the former. Thus, let \(p ∈ \algint{}[\seq{X}, \seq[m]{Y}]\) be a
+  polynomial witnessing that \(S\) is Diophantine i.e.\ we have that
+  \[
+    (\seq{α}) ∈ S \quad ⇔ \quad
+    ∃ β_1, …, β_m ∈ \algint : p(\seq{α}, \seq[m]{β}) = 0.
+  \]
+  To simplify notation I will assume that \(n = m = 1\) and thus that \(p(X,
+  Y)\) is bivariat. The general case follows completely analogously.
+
+  To see the first direction, we assume that \(p\) has in fact rational integral
+  coefficients and let \(α\) be in \(S\). Then there exists an integer \(β ∈
+  \algint\) such that \(p(α, β) = 0\). Let now \(\seq[k]{σ}\) be all
+  automorphisms of \(K\). Since each \(σ_i\) preserves \(ℤ\) point-wise (\(1 ≤
+  i ≤ k\)), we know that
+  \[
+    p(σ_i(α), σ_i(β)) = σ_i(p(α, β)) = 0
+  \]
+  and \(σ_i(α) ∈ S\) as claimed.
+
+  Conversely, let \(S\) be self-conjugate and let \(p_i\) denote the polynomial
+  obtained from \(p\) by replacing the coefficients of \(p\) by their images
+  under \(σ_i\) (\(1 ≤ i ≤ k\)). We define
+  \[
+    q(X, Y) := \prod_{i = 1}^k p_i(X, Y)
+  \]
+  and note that the coefficients of \(q\) are preserved by all automorphisms
+  \(σ_i\). As a consequence of \cref{pro:Diophantine singletons}
+  we can find for all coefficients \(a ∈ \algint\) of \(q\), polynomials \(P_a,
+  Q_a ∈ ℤ[Y]\) and a constant \(c_a ∈ ℤ\) such that
+  \[
+    α = a \quad ⇔ \quad ∃ β ∈ \algint : (P_a(β) = 0 ∧ Q_a(β) = c_aα).
+  \]
+  Therefore, the relation defined by \(q\) can be rewritten in a purely
+  Diophantine form. For this we assume that \(J ⊂ ℕ^2\) is finite and
+  \[
+    q(X, Y) = \sum_{(i,j) ∈ J} a_{ij} X^i Y^j.
+  \]
+  Then, we have the following equivalence for all \(α ∈ \algint\)
+  \begin{align*}
+    ∃ β ∈ \algint: q(α, β) ⇔ &\\
+    ∃ β, (β_{ij})_{(i,j) ∈ J} ∈ \algint :
+        & \sum_{(i,j) ∈ J} β_{ij} α^i β^j = 0 ∧\\
+        & \bigwedge_{(i,j) ∈ J} ∃ γ_{ij} ∈ \algint :
+          (P_{a_{ij}}(γ_{ij}) = 0 ∧ Q_{a_{ij}}(γ_{ij}) = β_{ij}).
+  \end{align*}
+
+  All that is left to prove is that \(q\) and \(p\) represent \(S\) i.e.\ that
+  \[
+    ∃ β ∈ \algint : p(α, β) \quad ⇔ \quad ∃ β ∈ \algint : q(α, β)
+  \]
+  holds for all algebraic integers \(α ∈ \algint\). To see this first assume
+  that \(p(α, β) = 0\) holds. Then since the identity is an automorphism of
+  \(K\), we find that one factor of
+  \[
+    q(α, β) := \prod_{i = 1}^k p_i(α, β)
+  \]
+  is zero, and thus that \(q(α, β) = 0\). If on the other hand \(q(α, β) = 0\)
+  then one of the factors of \(q\) must be zero. Say \(p_i(α, β) = 0\) and let
+  \(σ_j\) be the inverse of \(σ_i\). Then we find that
+  \[
+    0 = σ_j(p_i(α, β)) = p(σ_j(α), σ_j(β))
+  \]
+  and therefore \(σ_j(α) ∈ S\). Now since \(S\) is self-conjugate by assumption
+  we can deduce \(α = σ_i(σ_j(α)) ∈ S\) as claimed.
+\end{proof}
+
+\begin{cor}
+  Let \(S_1, S_2 ⊂ \algint^n\) be purely Diophantine. Then their union and
+  intersection are purely Diophantine.
+\end{cor}
+\begin{proof}
+  By the theorem \(S_1\) and \(S_2\) are Diophantine and self-conjugate. Thus,
+  their intersection and union are self-conjugate and Diophantine by
+  \cref{lem:intersections and unions}. Now the theorem implies that they are in
+  fact purely Diophantine.
+\end{proof}
+
+\begin{rem}
+  We could have also directly proven the claim of the corollary by choosing the
+  polynomial \(h\) from the proof of \cref{lem:intersections and unions} to have
+  rational integral coefficients. Such a polynomial \(h ∈ ℤ[X]\) without roots
+  in \(K\) must exist in every number field \(K\), as otherwise the normal
+  closure of \(K\) contains all algebraic integers and thus is the algebraic
+  closure of \(\overline{ℚ}\) by \cref{thm:primitive element}. But then the
+  degree \([\overline{ℚ} : K]\) is finite, implying that \([K : ℚ]\) is
+  infinite, which is a contradiction.
+\end{rem}
+
+The beauty of the model theoretic approach to Hilbert's tenth problem is that it
+directly gives rise to various generalizations. To conclude this section I will
+list some results on variants of the problem.
+
+In \citeyear{Rosser1936} \textcite{Rosser1936}---extending a result of
+\textcite{Goedel1931}---proved that the full first order theory
+\(\mathtt{Th}(\mathfrak{N})\) of the natural numbers is undecidable.%
+\footnote{Of course I assume throughout this thesis that the Peano arithmetic
+          is consistent.}
+As a consequence, the full first order theory of \(ℤ\) is undecidable, as one
+can translate a sentence in \(ℕ\) to an equivalent sentence in \(ℤ\) via the
+construction described in \cref{ex:N is Diophantine over Z}. Considering the
+full first order theory of $\algint$ \textcite{Robinson1959} proved as early as
+\citeyear{Robinson1959} that $\mathtt{Th}(\modalgint)$ is undecidable. In
+\citeyear{Matijasevic1970} \textcite{Matijasevic1970} proved---building on the
+work of Davis, Putnam, and J.~Robinson---the undecidability of Hilbert's tenth
+problem over \(ℤ\). More formally, we have the following.
+
+\begin{thm}[DPRM theorem]\label{thm:DPRM}
+  A subset of the natural numbers is semi-decidable if and only if it is
+  Diophantine over \(ℤ\).
+\end{thm}
+
+\begin{cor}
+  Hilbert's tenth problem over \(ℤ\) is undecidable.
+\end{cor}
+\begin{proof}
+  We use the encoding described in \cref{ex:omega encoding} and directly
+  identify a natural number \(n\) with its encoding \(\enc{n}\). Then the
+  halting set \(\mathcal{K}\) is a semi-decidable subset of \(ℕ\). By the
+  \textsc{DPRM} theorem there exist a polynomial \(p_{\mathcal{K}}(X,
+  \seq[m]{Y}) ∈ ℤ[X, Y_1, …, Y_m]\) such that
+  \[
+    n ∈ \mathcal{K} \quad ⇔ \quad
+    ∃ β_1, …, β_m : p(n, β_1, …, β_m) = 0.
+  \]
+  Rewrite this polynomial identity as an \(\lang_ℤ\)-theorem \(ϕ\), where
+  \(n\) is replaced by the constant \(\mathtt{c}_n\). Thus, the halting set is
+  many-one reducible to \(\mathtt{H10}(\mathfrak{Z})\), and the claim is proven.
+\end{proof}
+
+In \citeyear{Rumely1986}, \textcite{Rumely1986} published his surprising result
+that \textsc{H10} is solvable over $\mathcal O$, the ring of all algebraic
+integers. \Textcite{Dries1988} extended this result to the full first order
+theory of $\mathcal O$ in \citeyear{Dries1988}.
 
 Probably the most prominent open problem in this area is the case of $ℚ$. A
 positive answer to \textsc{H10} over $ℚ$ would imply that there is a universal
