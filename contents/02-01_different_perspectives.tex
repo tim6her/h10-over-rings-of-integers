@@ -13,6 +13,13 @@
 % ##     ##  ######   #####      ##     ## ####  ######     ##    ###
 
 \subsection{Diophantine equations and sets}
+%   ##
+% ####
+%   ##
+%   ##
+%   ##
+%   ##
+% ######
 
 In 1900, David Hilbert held his famous lecture~\cite{Hilbert1900} before the
 \emph{Second International Congress of Mathematicians} in Paris. The lecture
@@ -40,15 +47,15 @@ problems and its variants are the subject of this thesis. The problem states
 \end{foreigndisplayquote}
 
 A \emph{Diophantine equation}---in the classical sense---is of the form
-%
-\[ p(α_1, …, α_n) = 0 \]
-%
-for some polynomial $p ∈ ℤ[X_1, …, X_n]$, allowing only integral solutions
-$α_1,…,α_n ∈ ℤ$. Using the tools developed in \cref{sec:model theory,sec:number
-theory}, we will exchange one or both occurrences of the rational integers by
-values from other rings. It took until the 1930s to formalize what Hilbert meant
-by a \foreignquote{german}{Verfahren \textins{mit} einer endlichen Anzahl von
-Operationen%
+\[
+  p(α_1, …, α_n) = 0,
+\]
+where $p ∈ ℤ[X_1, …, X_n]$ is a polynomial and one only allows rational integral
+solutions $α_1,…,α_n ∈ ℤ$. Using the tools developed in \cref{sec:model
+theory,sec:number theory}, we will exchange one or both occurrences of the
+rational integers by values from other rings. It took until the 1930s to
+formalize what Hilbert meant by a \foreignquote{german}{Verfahren \textins{mit}
+einer endlichen Anzahl von Operationen%
 \footnote{\foreignquote{english}{%
   process \textins{with} a finite number of operations}
 }}
@@ -86,10 +93,10 @@ evaluated polynomial
 \]
 has roots in \(\algint\). The index \(\mathcal{K}\) of the polynomial above is
 not chosen at random. Indeed, the polynomial \(p_{\mathcal{K}}\) represents an
-encoded version of the halting set \(\mathcal{K}\) in the following sense.
+encoded version of the halting set \(\mathcal{K}\) in the following sense:
 
 \begin{defin}
-    Let $R$ be a commutative ring with unit. A set $S \subseteq R^n$ is said to
+    Let $R$ be a commutative ring with one. A set $S \subseteq R^n$ is said to
     be \emph{Diophantine} over \(R\) if there exists a polynomial $p ∈
     R[X_1,…,X_n, Y_1,…,Y_m]$ in \(n + m\) many indeterminates (\(m,n ≥ 0\)) such
     that
@@ -166,8 +173,8 @@ relation.
       ∃ x_2 ∈ \mathfrak x_2, ∃ y_2 ∈ \algint : 2 y_2 + x_2 = 1 \quad \text{and} \quad
       ∃ x_3 ∈ \mathfrak x_3, ∃ y_3 ∈ \algint : 3 y_3 + x_3 = 1
     \]
-     As a consequence of the Chinese remainder theorem~\cite[see][§~I,
-     Thm~3.6]{Neukirch2006} the congruences
+     As a consequence of the Chinese remainder theorem (\cref{thm:Chinese
+     remainder}) the congruences
     \[
       γ \equiv y_2 \mod \mathfrak x_2 \quad \text{and} \quad
       γ \equiv y_3 \mod \mathfrak x_3
@@ -239,14 +246,24 @@ their relations with subsets of \(ℕ\).
     x ∈ ℕ \quad ⇔ \quad
     ∃β_1,β_2,β_3,β_4∈ℤ: β_1^2 + β_2^2 + β_3^2 + β_4^2 = α.
   \]
-  is a Diophantine definition of $ℕ$ over $ℤ$. We therefore say that a subset
-  \(S ⊂ ℕ^n\) is \emph{Diophantine over \(ℕ\)} if \(S\) is Diophantine over
-  \(ℤ\). If on the other hand \(S ⊂ ℤ^n\) is Diophantine over \(ℤ\), then by the
-  arguments above
+  is a Diophantine definition of $ℕ$ over $ℤ$. Therefore, we can check for a
+  given polynomial equation whether all variables take only non-negative values
+  in a Diophantine way. More formally, we say that  a subset \(S ⊂ ℕ^n\) is
+  \emph{Diophantine over \(ℕ\)} if there exists a polynomial \(p ∈ ℤ[X_1, …,
+  X_n, Y_1, …, Y_m]\) such that
   \[
-    S ∩ ℕ^n
+    (\seq{α}) ∈ S \quad ⇔ \quad
+    ∃ \seq[m]{β} ∈ ℕ : p(\seq{α}, \seq[m]{β}) = 0.
   \]
-  is Diophantine over \(ℤ\) and therefore Diophantine over \(ℕ\) as well.
+  If this is the case, we find that \(S\) is Diophantine over \(ℤ\) as well, by
+  conjugating the identity with the clause
+  \[
+    \left(\bigwedge_{i = 1}^n ∃ γ_{i1}, …, γ_{i4} ∈ ℤ :
+      α_i = \sum_{j = 1}^4 γ_{ij}^2 \right) ∧
+    \left(\bigwedge_{i = 1}^m ∃ δ_{i1}, …, δ_{i4} ∈ ℤ :
+      β_i = \sum_{j = 1}^4 δ_{ij}^2 \right).
+  \]
+
   We now list some examples of sets that are Diophantine over \(ℕ\).
   \begin{exlist}
     \item The set of composite numbers is Diophantine over $ℕ$, as $α ∈ ℕ$ is
@@ -257,9 +274,29 @@ their relations with subsets of \(ℕ\).
     Here adding $2$ to $β_1$ and $β_2$ ensures, that both factors are greater
     than $1$. Choosing
     \[
-      p (X, Y_1, Y_2) := X - (Y_1 + 2)(Y_2 + 2)
+      p(X, Y_1, Y_2) := X - (Y_1 + 2)(Y_2 + 2)
     \]
-    yields the claim.
+    yields the claim. To transform this into a Diophantine definition over
+    \(ℤ\), we must conjugate the clauses stating that \(α, β_1\) and \(β_2\) are
+    non-negative. Thus, we obtain
+    \begin{align*}
+      ∃ β_1, β_2, γ_1, …, γ_4, δ_{11}, …, δ_{14}, δ_{21}, …, δ_{24} ∈ ℤ: (
+        & x = (β_1 + 2) (β_2 + 2) ∧\\
+        & x = γ_1^2 + γ_2^2 + γ_3^2 + γ_4^2 ∧\\
+        & β_1 = (δ_{11}^2 + δ_{12}^2 + δ_{13}^2 + δ_{14}^2 ∧\\
+        & β_2 = (δ_{21}^2 + δ_{22}^2 + δ_{23}^2 + δ_{24}^2),
+    \end{align*}
+    which can be rewritten as the single Diophantine identity
+    \begin{align*}
+      ∃ β_1, β_2, & γ_1, …, γ_4, δ_{11}, …, δ_{14}, δ_{21}, …, δ_{24} ∈ ℤ:\\
+        & \left(\left(\left(x - (β_1 + 2) (β_2 + 2)\right)^2 +
+          \left(x - (γ_1^2 + γ_2^2 + γ_3^2 + γ_4^2)\right)^2\right)^2 +\right.\\
+        & \left. +
+          \left(
+            β_1 - (δ_{11}^2 + δ_{12}^2 + δ_{13}^2 + δ_{14}^2)\right)^2
+          \right)^2 +
+          \left(β_2 - (δ_{21}^2 + δ_{22}^2 + δ_{23}^2 + δ_{24}^2)\right)^2.
+    \end{align*}
 
     \item The usual order relation $≤$ on $ℕ$ is Diophantine over $ℕ$.
     Indeed $α_1 ≤ α_2$ in $ℕ$ if and only if
@@ -293,7 +330,7 @@ theory.
 Note that even more is true as a partially evaluated polynomial is still a
 polynomial. Thus, one can decide membership in all Diophantine sets if and only
 if one can decide for all polynomials whether they have roots. Thus, if \(R\) is
-a countable, commutative ring with one, we can identify Hilbert's tenth problem
+a countable commutative ring with one, we can identify Hilbert's tenth problem
 over \(R\) with the set of Gödel numbers of \(\mathtt{H10}(\mathfrak{R})\).
 
 \begin{lem}\label{lem:intersections and unions}
@@ -332,14 +369,14 @@ $\lang_{ring}$-definable, efficiently computable predicates.
     ∃ \seq[m]{β} ∈ R : h(\seq{α}, \seq[m]{β}) = 0.
   \]
 
-  To make notation when proving the claim for intersections, I will assume that
-  \(n = 1\) and \(m = 2\). The general cases follows completely analogously.
-  Now let
+  To make notation easier when proving the claim for intersections, I will
+  assume that \(n = 1\) and \(m = 2\). The general cases follows completely
+  analogously. Now let
   \[
     h(T) = a_k T^k + … + a_1 T + a_0 ∈ R[T]
   \]
   be a polynomial of degree $k > 0$ without roots in $\Quot R$. Then $\overline
-  h(X) = X^k h(X^{-1})$ does not have roots in $\Quot R$ either. As if $α ∈
+  h(T) = T^k h(T^{-1})$ does not have roots in $\Quot R$ either. As if $α ∈
   \Quot R$ is a root of $\overline h$ then
   \[
     0 = \overline h(α) = a_k + a_{k-1} α + a_1 α^{-1} + a_0 α^k
@@ -405,6 +442,13 @@ polynomials. For this reason it is sometimes preferable to consider \emph{purely
 Diophantine sets}.
 
 \subsection{Purely Diophantine sets}
+%  #######
+% ##     ##
+%        ##
+%  #######
+% ##
+% ##
+% #########
 
 \begin{defin}
     Let $R$ be a commutative ring with unit. A set $S \subseteq R^n$ is said to
@@ -426,21 +470,23 @@ is shown in the following lemma.
 \begin{lem}
   Let \(R\) be a commutative ring with one and let \(\mathfrak{R}\) be its
   \(\lang_{ring}\)-structure. Then \(S ⊂ R^n\) is purely Diophantine if and only
-  if there exists an \(\lang_{ring}\)-term \(t(\mathtt{\seq{x}, \seq[m]{y}})\)
+  if there exists an atomic \(\lang_{ring}\)-formula \(ϕ(\mathtt{\seq{x}, \seq[m]{y}})\)
   such that
   \[
     (\seq{α}) ∈ S \quad ⇔ \quad
     \mathfrak{R} \models \mathtt{∃ y_1 : … ∃ y_m: }
-        t(\seq{α}, \mathtt{\seq[m]{y}}) \doteq \zer
+        ϕ(\seq{α}, \mathtt{\seq[m]{y}})
   \]
   holds.
 \end{lem}
 \begin{proof}
-  Follows, immediately from \cref{lem:terms of rings are polynomials}.
+  Follows \cref{lem:terms of rings are polynomials} and the analogue of part
+  (ii) of \label{thm:Diophantine theory}.
 \end{proof}
 
-At second sight the construction is even less surprising, as for every ring with
-one \(R\) there exists exists exactly one ring-homomorphism \(φ: ℤ → R\).
+At second sight the construction is even less surprising, as for every ring
+\(R\) with \(1\) there exists exists exactly one ring-homomorphism \(φ: ℤ → R\)
+mapping \(1 ∈ ℤ\) to \(1 ∈ R\).
 Looking back at \cref{ex:Diophantine sets}, we note that the Diophantine sets of
 (3), (4), and (5) are in fact purely Diophantine, whilst finite sets (1) are in
 general not purely Diophantine. As for polynomial functions \(p: R^n → R\) (2)
@@ -455,7 +501,7 @@ subsets of algebraic integers. For this purpose we reformulate a result of
 \textcite{Robinson1951}. But before we state his result let us look at a simple
 example: In \(ℚ{[√[4]{2}]}\) the polynomial \(p(X) := X^2 - 2\) does
 not give rise to a purely Diophantine representation of \(√2\) because \(-√2\)
-is a root of \(p\) as well. We can however represent \(√2\) as follows
+is a root of \(p\) as well. We can however represent \(√2\) as follows:
 \[
   α = √2 \quad ⇔ \quad
   ∃ β ∈ ℚ{[√[4]{2}]} : (β^4 = 2 ∧ β^2 = α).
@@ -514,10 +560,8 @@ Diophantine sets within Diophantine sets over rings of algebraic integers.
   Let \(\algint\) be the ring of algebraic integers of a number field \(K\). A
   set \(S ⊂ \algint^n\) is purely Diophantine if and only if \(S\) is
   Diophantine and self-conjugate i.e.\ for all automorphisms \(σ: K → K\)
-  and all \((\seq{α}) ∈ S\) we have that the image
-  \[
-    (σ(α_1), …, σ(α_n)) ∈ S.
-  \]
+  and all \((\seq{α}) ∈ S\) we have that the image \((σ(α_1), …, σ(α_n))\) is
+  contained in \(S\).
 \end{thm}
 \begin{proof}
   We may assume that \(S\) is Diophantine, as being purely Diophantine clearly
@@ -554,7 +598,7 @@ Diophantine sets within Diophantine sets over rings of algebraic integers.
     α = a \quad ⇔ \quad ∃ β ∈ \algint : (P_a(β) = 0 ∧ Q_a(β) = c_aα).
   \]
   Therefore, the relation defined by \(q\) can be rewritten in a purely
-  Diophantine form. For this we assume that \(J ⊂ ℕ^2\) is finite and
+  Diophantine form. To see this we assume that \(J ⊂ ℕ^2\) is finite and
   \[
     q(X, Y) = \sum_{(i,j) ∈ J} a_{ij} X^i Y^j.
   \]
@@ -636,18 +680,30 @@ problem over \(ℤ\). More formally, we have the following.
   Hilbert's tenth problem over \(ℤ\) is undecidable.
 \end{cor}
 \begin{proof}
-  We use the encoding described in \cref{ex:omega encoding} and directly
-  identify a natural number \(n\) with its encoding \(\enc{n}\). Then the
-  halting set \(\mathcal{K}\) is a semi-decidable subset of \(ℕ\). By the
-  \textsc{DPRM} theorem there exist a polynomial \(p_{\mathcal{K}}(X,
-  \seq[m]{Y}) ∈ ℤ[X, Y_1, …, Y_m]\) such that
-  \[
-    n ∈ \mathcal{K} \quad ⇔ \quad
-    ∃ β_1, …, β_m : p(n, β_1, …, β_m) = 0.
-  \]
-  Rewrite this polynomial identity as an \(\lang_ℤ\)-theorem \(ϕ\), where
-  \(n\) is replaced by the constant \(\mathtt{c}_n\). Thus, the halting set is
-  many-one reducible to \(\mathtt{H10}(\mathfrak{Z})\), and the claim is proven.
+  % TODO Write this proof
+  \todo{Write this proof}
+  % We have seen in \cref{ex:N is Diophantine over Z} that \(ℕ\) is Diophantine
+  % over \(ℤ\). Thus \(ℕ\) is semi-decidable and as a consequence of \cref{???}
+  % there exists a computable surjective function \(f: ω → \enc{ℕ}^ℤ\). Here
+  % \(\enc{\cdot}^ℤ\) denotes an encoding of \(ℤ\).
+  %
+  %  Now identify
+  % the halting set \(\mathcal{K}\) with a subset of \(ℕ\) using the inverse of
+  % the encoding described in \cref{ex:omega encoding}.
+  %
+  %
+  % We use the encoding described in \cref{ex:omega encoding} and directly
+  % identify a natural number \(n\) with its encoding \(\enc{n}\). Then the
+  % halting set \(\mathcal{K}\) is a semi-decidable subset of \(ℕ\). By the
+  % \textsc{DPRM} theorem there exist a polynomial \(p_{\mathcal{K}}(X,
+  % \seq[m]{Y}) ∈ ℤ[X, Y_1, …, Y_m]\) such that
+  % \[
+  %   n ∈ \mathcal{K} \quad ⇔ \quad
+  %   ∃ β_1, …, β_m : p(n, β_1, …, β_m) = 0.
+  % \]
+  % Rewrite this polynomial identity as an \(\lang_ℤ\)-theorem \(ϕ\), where
+  % \(n\) is replaced by the constant \(\mathtt{c}_n\). Thus, the halting set is
+  % many-one reducible to \(\mathtt{H10}(\mathfrak{Z})\), and the claim is proven.
 \end{proof}
 
 In \citeyear{Rumely1986}, \textcite{Rumely1986} published his surprising result
