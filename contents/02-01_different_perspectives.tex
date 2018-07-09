@@ -667,43 +667,59 @@ can translate a sentence in \(ℕ\) to an equivalent sentence in \(ℤ\) via the
 construction described in \cref{ex:N is Diophantine over Z}. Considering the
 full first order theory of $\algint$ \textcite{Robinson1959} proved as early as
 \citeyear{Robinson1959} that $\mathtt{Th}(\modalgint)$ is undecidable. In
-\citeyear{Matijasevic1970} \textcite{Matijasevic1970} proved---building on the
+\citeyear{Matijasevic1970} \textcite{Matijasevic1970} showed---building on the
 work of Davis, Putnam, and J.~Robinson---the undecidability of Hilbert's tenth
-problem over \(ℤ\). More formally, we have the following.
+problem over \(ℤ\). More specifically, he provided the last piece in the proof
+of the Davis-Putnam-Robinson-Matijasevič theorem (\textsc{DPRM}).
 
-\begin{thm}[DPRM theorem]\label{thm:DPRM}
+\begin{thm}[DPRM-theorem]\label{thm:DPRM}
   A subset of the natural numbers is semi-decidable if and only if it is
   Diophantine over \(ℤ\).
 \end{thm}
 
 \begin{cor}
-  Hilbert's tenth problem over \(ℤ\) is undecidable.
+  The halting set \(\mathcal{K}\) is many-one reducible to
+  \(\mathtt{H10}(\mathfrak{Z})\). Thus, Hilbert's
+  tenth problem over \(ℤ\) is undecidable.
 \end{cor}
 \begin{proof}
-  % TODO Write this proof
-  \todo{Write this proof}
-  % We have seen in \cref{ex:N is Diophantine over Z} that \(ℕ\) is Diophantine
-  % over \(ℤ\). Thus \(ℕ\) is semi-decidable and as a consequence of \cref{???}
-  % there exists a computable surjective function \(f: ω → \enc{ℕ}^ℤ\). Here
-  % \(\enc{\cdot}^ℤ\) denotes an encoding of \(ℤ\).
-  %
-  %  Now identify
-  % the halting set \(\mathcal{K}\) with a subset of \(ℕ\) using the inverse of
-  % the encoding described in \cref{ex:omega encoding}.
-  %
-  %
-  % We use the encoding described in \cref{ex:omega encoding} and directly
-  % identify a natural number \(n\) with its encoding \(\enc{n}\). Then the
-  % halting set \(\mathcal{K}\) is a semi-decidable subset of \(ℕ\). By the
-  % \textsc{DPRM} theorem there exist a polynomial \(p_{\mathcal{K}}(X,
-  % \seq[m]{Y}) ∈ ℤ[X, Y_1, …, Y_m]\) such that
-  % \[
-  %   n ∈ \mathcal{K} \quad ⇔ \quad
-  %   ∃ β_1, …, β_m : p(n, β_1, …, β_m) = 0.
-  % \]
-  % Rewrite this polynomial identity as an \(\lang_ℤ\)-theorem \(ϕ\), where
-  % \(n\) is replaced by the constant \(\mathtt{c}_n\). Thus, the halting set is
-  % many-one reducible to \(\mathtt{H10}(\mathfrak{Z})\), and the claim is proven.
+  Throughout this proof I will identify \(ℤ\) with the domain of one of its
+  computable representations. Then \(ℕ ⊂ ℤ\) is decidable. Indeed, for a given
+  integer \(n ∈ ℤ\) we know that
+  \begin{align*}
+    n ∈ ℕ \quad &⇔ \quad
+    ∃ x_1, x_2, x_3, x_4 ∈ ℤ : n = x_1^2 + x_2^2 + x_3^2 + x_4^2\\
+  \intertext{and}
+    n \not∈ ℕ \quad &⇔ \quad
+    ∃ x_1, x_2, x_3, x_4 ∈ ℤ : n =
+      - \left(x_1^2 + x_2^2 + x_3^2 + x_4^2 + 1\right)
+  \end{align*}
+  hold by \cref{cor:Lagranges four square theorem} and \(ℕ\) is decidable by
+  \cref{pro:Posts theorem}. As a consequence, there exists a computable
+  bijection \(f: ω → ℕ\) with an computable inverse.
+
+  Now consider \(f(\mathcal{K}) ⊂ ℤ\). Then the inverse mapping \(f^{-1}\)
+  witnesses that \(f(\mathcal{K})\) is many-one reducible to \(\mathcal{K}\).
+  Thus, \(f(\mathcal{K})\) is semi-decidable and by the \textsc{DPRM}-theorem
+  \(f(\mathcal{K})\) is Diophantine over \(ℤ\). Hence, there exists a
+  polynomial \(p_{\mathcal{K}} ∈ ℤ[X, Y_1, …, Y_m]\) with the property that
+  \[
+    α ∈ f(\mathcal{K}) \quad ⇔ \quad
+    ∃ \seq[m]{β} ∈ ℤ : p_{\mathcal{K}}(α, \seq[m]{β}) = 0.
+  \]
+  Finally, we find for all \(x ∈ ω\) that the \(\lang_ℤ\)-sentence
+  \begin{equation}\label{eq:representing halting set}
+    \mathtt{∃ y_1 : … ∃ y_m :} p_{\mathcal{K}}(f(x), \mathtt{\seq[m]{y}})
+      \doteq 0
+  \end{equation}
+  is contained in \(\mathtt{H10}(\mathfrak{Z})\) precisely if \(x ∈
+  \mathcal{K}\). Thus, the function mapping \(x ∈ ω\) to the Gödelization of
+  \eqref{eq:representing halting set} witnesses that \(\mathcal{K}\) is
+  many-one reducible to \(\mathtt{H10}(\mathfrak{Z})\).
+
+  Now \cref{pro:m reducibility and decidability} implies that
+  \(\mathtt{H10}(\mathfrak{Z})\) is undecidable, as \(\mathcal{K}\) is
+  undecidable.
 \end{proof}
 
 In \citeyear{Rumely1986}, \textcite{Rumely1986} published his surprising result
@@ -715,12 +731,12 @@ Probably the most prominent open problem in this area is the case of $ℚ$. A
 positive answer to \textsc{H10} over $ℚ$ would imply that there is a universal
 algorithm deciding whether a variety over $ℚ$ has a rational point. By giving a
 first order definition of $ℤ$ over $ℚ$, \textcite{Robinson1949} could derive the
-undecidability of the full first order theory $\mathtt{Th}(ℚ)$ from the
-undecidability of the theory of $ℤ$ in \citeyear{Robinson1949}. But her
+undecidability of the full first order theory of \(ℚ\) from the
+undecidability of the theory of \(ℤ\) in \citeyear{Robinson1949}. But her
 definition involves universal quantifiers and cannot be used for inferring to
-\textsc{H10}. \Textcite{Park2013} generalised this result by providing a
-universal first order definition for $\algint$ over an arbitrary number field
+\textsc{H10}. \Textcite{Park2013} generalized this result by providing a
+universal first order definition of $\algint$ over an arbitrary number field
 $K$ in \citeyear{Park2013}.
 
-The surveys \cite{Koenigsmann2014,Poonen2008} offer a more extensive overview of
+The surveys~\cite{Koenigsmann2014,Poonen2008} offer a more extensive overview of
 problems related to undecidability in number theory.

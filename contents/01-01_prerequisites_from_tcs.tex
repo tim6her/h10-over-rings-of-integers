@@ -919,12 +919,12 @@ seen that all semi-decidable sets are many-one reducible to \(\mathcal{K}\). The
 key step in settling Hilbert's tenth problem is proving that \(\mathcal{K}\) is
 many-one reducible to a collection of sets which are definable by polynomial
 equations. This suffices to prove the undecidability of Hilbert's tenth problem,
-since we have the following lemma.
+since we have the following proposition.
 
-\begin{lem}
+\begin{pro}\label{pro:m reducibility and decidability}
   Let \(Q, Q' \subseteq ω\) be problems such that \(Q ≤_m Q'\). Then if \(Q'\)
   is decidable, so is \(Q\).
-\end{lem}
+\end{pro}
 \begin{proof}
   Let \(f: Q → Q'\) be the computable function witnessing many-one reducibility
   of \(Q\) to \(Q'\). Since the characteristic function \(χ_{Q'}: ω → ω\) is
