@@ -4,13 +4,11 @@
 % !TEX engine = xelatex
 % !TEX root = ../Herbstrith-H10_over_AI.tex
 %
-% ##     ##  #######  ########      ######## ##     ##
-% ###   ### ##     ## ##     ##        ##    ##     ##
-% #### #### ##     ## ##     ##        ##    ##     ##
-% ## ### ## ##     ## ##     ##        ##    #########
-% ##     ## ##     ## ##     ##        ##    ##     ##
-% ##     ## ##     ## ##     ## ###    ##    ##     ## ### 
-% ##     ##  #######  ########  ###    ##    ##     ## ###
+% ███    ███  ██████  ██████  ███████ ██          ████████ ██   ██
+% ████  ████ ██    ██ ██   ██ ██      ██             ██    ██   ██
+% ██ ████ ██ ██    ██ ██   ██ █████   ██             ██    ███████
+% ██  ██  ██ ██    ██ ██   ██ ██      ██             ██    ██   ██
+% ██      ██  ██████  ██████  ███████ ███████        ██    ██   ██ ██
 
 The idea of model theory is to differentiate between the statements we can make
 about mathematical objects and the implementation of these mathematical objects.
@@ -19,22 +17,19 @@ for a mathematical object to \emph{model a theory}. In this section I will
 closely follow Chapter 1 of the textbook \cite{Marker2002}.
 
 \subsection{Formulae and models}
-
-%    ##
-%  ####
-%    ##
-%    ##
-%    ##
-%    ##
-%  ######
+% ███████  ██████  ██████  ███    ███ ██    ██ ██       █████  ███████
+% ██      ██    ██ ██   ██ ████  ████ ██    ██ ██      ██   ██ ██
+% █████   ██    ██ ██████  ██ ████ ██ ██    ██ ██      ███████ █████
+% ██      ██    ██ ██   ██ ██  ██  ██ ██    ██ ██      ██   ██ ██
+% ██       ██████  ██   ██ ██      ██  ██████  ███████ ██   ██ ███████
 
 Informally, a first-order formula is just a string of symbols that signify
 distinguished constants, functions, and relations. We demand that a formula is
 well-behaved according to the interpretability of constants, functions, and
 relations. We do however not make any assumptions on the implementation of these
 symbols. So a formula captures the \emph{syntax} of a collection of mathematical
-objects. A model on the other hand is describes the \emph{semantics} of an
-object. It gives concrete interpretation of the symbols of a language and tells
+objects. A model, on the other hand, describes the \emph{semantics} of an
+object. It gives concrete interpretations of the symbols of a language and tells
 us, how the formulae are to be understood.
 
 \begin{defin}
@@ -74,7 +69,7 @@ and thereby drop the arity function from the notation.
     constant; and
 
     \item the language of rings with one \(\lang_{ring} = \set{\mathtt{+, -,
-    \cdot; 0, 1}}\), where \(\mathtt{+, -}\) and \(\mathtt{\cdot}\) are binary
+    \cdot; 0, 1}}\), where \(\mathtt{+, -}\), and \(\mathtt{\cdot}\) are binary
     function symbols and \(\mathtt{0, 1}\) are constants.
   \end{exlist}
 \end{exam}
@@ -130,8 +125,8 @@ formally, we have the following definition.
     0^{\mathfrak{R}}, 1^{\mathfrak{R}}}⟩\), where \(\mathtt{+^{\mathfrak{R}},
     -^{\mathfrak{R}}, \cdot^{\mathfrak{R}}}\) are the respective binary
     ring-operations and \(\mathtt{0^{\mathfrak{R}}, 1^{\mathfrak{R}}}\) are the
-    neutral elements with respect to addition or multiplication respectively, is
-    a model in \(\lang_{ring}\). Of special interest to us will be the
+    neutral elements with respect to addition and multiplication respectively,
+    is a model in \(\lang_{ring}\). Of special interest to us will be the
     \(\lang_{ring}\)-structures \(\mathfrak{Z} := ⟨ ℤ; +, -, \cdot; 0, 1⟩\)
     denoting the structure of rational integers and \(\mathfrak{O}_K :=
     ⟨\algint; +, -, \cdot; 0, 1⟩\) denoting the structure of algebraic integers
@@ -162,7 +157,7 @@ terms.
 
 For example \(\mathtt{+(+(\cdot(x_1, x_1), \cdot(x_2, x_2)), 1)}\) is an
 \(\lang_{ring}\) term. It is more conventional---and more legible---to write
-this term in infix-notation to obtain the polynomial
+this term in infix-notation to obtain the ‘polynomial’
 \[
   \mathtt{x_1^2 + x_2^2 + 1},
 \]
@@ -219,7 +214,7 @@ functions of \(\mathfrak{A}\) is sometimes called the \emph{function clone} of
 \(\mathfrak{A}\).
 
 \begin{lem}\label{lem:terms of rings are polynomials}
-  Let \(R\) be a ring with unit and \(\mathfrak{R}\) its associated
+  Let \(R\) be a ring with one and \(\mathfrak{R}\) its associated
   \(\lang_{ring}\)-structure. The set of term functions of \(\mathfrak{R}\) is
   the set of polynomial functions with integral coefficients \(ℤ[X_1, X_2, …]\).
 \end{lem}
@@ -282,7 +277,7 @@ Finally, we have all tools at hand to formally define formulae in a language.
     t_2\), or%
     \footnote{Note the difference between the two symbols \(=\) and \(\doteq\)
     in this equation. While \(=\) denotes a \emph{semantic} equality of strings,
-    i.e. it denotes that both strings contain the same symbols in the same
+    i.e.\ it denotes that both strings contain the same symbols in the same
     order, \(\doteq\) is just a \emph{syntactic} symbol contained in the
     strings.}
 
@@ -361,7 +356,7 @@ reason we must distinguish between two kinds of appearances of variables.
 
 In \cref{ex:formula distributivity} all appearances of \(\mathtt{x_1, x_2}\) and
 \(\mathtt{x_3}\) are bound. In (2) variable \(\mathtt{x_2}\) appears bounded
-way while \(\mathtt{x_1}\) is free and in (1) all variables appear freely. For a
+while \(\mathtt{x_1}\) is free and in (1) all variables appear freely. For a
 formula \(ϕ\) we will write \(ϕ(\mathtt{\seq{x}})\) to emphasize that at most
 the variables \(\mathtt{\seq{x}}\) appear freely in \(ϕ\).
 
@@ -408,16 +403,16 @@ the variables \(\mathtt{\seq{x}}\) appear freely in \(ϕ\).
     \emph{implication} and \emph{universal quantification}.
 
     \item Note that variables can have both free \emph{and} bound appearances in
-    the same formula, e.g. \(\mathtt{x_2}\) in
+    the same formula, for example \(\mathtt{x_2}\) in
     \[
       \mathtt{(∃ x_2 : x_1 \cdot x_2 \doteq x_2) ∧ (x_2 + x_3 \doteq x_1)}.
     \]
     By the definition of what it means that a formula is true in a model, we can
     restrict our attention to formulae, such that all variables appear
     \emph{either} freely \emph{or} bounded but not both, and if a variable
-    appears bound, then it is bound by a single quantifier. It is easy to check
-    that the formula above is true in a model if and only if the following
-    formula is true
+    appears bound, then it is bound by a single quantifier. For instance, it is
+    easy to check that the formula above is true in a model if and only if the
+    following formula is true
     \[
       \mathtt{(∃ x_2 : x_1 \cdot x_2 \doteq x_2) ∧ (x_4 + x_3 \doteq x_1)}.
     \]
@@ -431,14 +426,11 @@ sentence is either true or false. This follows easily form the definition of
 truth in a model.
 
 \subsection{Morphisms, theories, and decidability}
-
-  %  #######
-  % ##     ##
-  %        ##
-  %  #######
-  % ##
-  % ##
-  % #########
+% ████████ ██   ██ ███████  ██████  ██████  ██ ███████ ███████
+%    ██    ██   ██ ██      ██    ██ ██   ██ ██ ██      ██
+%    ██    ███████ █████   ██    ██ ██████  ██ █████   ███████
+%    ██    ██   ██ ██      ██    ██ ██   ██ ██ ██           ██
+%    ██    ██   ██ ███████  ██████  ██   ██ ██ ███████ ███████
 
 In this section I introduce some very important notions from model theory and
 universal algebra. I start with the concept of \emph{morphism}. The reader
@@ -468,9 +460,9 @@ formally, one defines a morphism as follows.
 \begin{rem}
   Despite the similarity of the definition of \(\lang_{ring}\)-morphisms to
   ring-morphisms in the sense of abstract algebra, not every
-  \(\lang_{ring}\)-morphism is ring-morphism and vice versa. Consider for
+  \(\lang_{ring}\)-morphism is a ring-morphism and vice versa. Consider for
   example the identity \(\mathrm{id}_ℕ\) on the \(\lang_{ring}\)-structure
-  \(\mathfrak{N}\). As \(ℕ\) is not a ring in the sense of abstract algbera,
+  \(\mathfrak{N}\). As \(ℕ\) is not a ring in the sense of abstract algebra,
   \(\mathrm{id}_ℕ\) is not a ring-morphism, but it is clearly an
   \(\lang_{ring}\)-morphism.
 
@@ -489,7 +481,7 @@ formally, one defines a morphism as follows.
 
     \item Let \(\mathfrak{A}\) be a model in \(\lang\). We say \(\mathfrak{A}\)
     satisfies a theory \(T\) and write \(\mathfrak{A} \models T\) if
-    \(\mathfrak{A} \models ϕ\) for all \(ϕ ∈ T\).
+    \(\mathfrak{A}\) models all \(ϕ\) in \(T\).
 
     \item A class of models \(\mathcal{M}\) in \(\lang\) is called
     \emph{elementary class} if there exists an \(\lang\)-theory \(T\) such that
@@ -500,7 +492,7 @@ formally, one defines a morphism as follows.
     \]
 
     \item An elementary class \(\mathcal{V}\) of algebraic structures is called
-    \emph{universal variety}, if the defining theory \(T\) does only include
+    \emph{universal variety} if the defining theory \(T\) does only include
     universally quantified atomic formulae.
   \end{thmlist}
 \end{defin}
@@ -508,16 +500,17 @@ formally, one defines a morphism as follows.
 \begin{exam}
   The class of groups forms a universal variety with respect to
   \(\lang_{group}\). This is the case since the group axioms
-  \begin{clist}
-    \item \(\mathtt{∀ x_1 : x_1 \cdot e \doteq x_1}\),
-    \item \(\mathtt{∀ x_1 : e \cdot x_1 \doteq x_1}\),
-    \item \(\mathtt{∀ x_1 : ∀ x_2 : ∀ x_3 : (x_1 \cdot x_2) \cdot x_3 \doteq x_1 \cdot (x_2 \cdot x_3)}\), and
-    \item \(\mathtt{∀ x_1 : x_1 \cdot x_1^{-1} \doteq e}\)
-    \item \(\mathtt{∀ x_1 : x_1^{-1} \cdot x_1 \doteq e}\)
-  \end{clist}
+  \begin{align*}
+     \mathtt{∀ x_1 } & \mathtt{: x_1 \cdot e \doteq x_1},\\
+     \mathtt{∀ x_1 } & \mathtt{: e \cdot x_1 \doteq x_1},\\
+     \mathtt{∀ x_1 } & \mathtt{: ∀ x_2 : ∀ x_3 :
+             (x_1 \cdot x_2) \cdot x_3 \doteq x_1 \cdot (x_2 \cdot x_3)},\\
+     \mathtt{∀ x_1 } & \mathtt{: x_1 \cdot x_1^{-1} \doteq e}, \text{ and}\\\\
+     \mathtt{∀ x_1 } & \mathtt{: x_1^{-1} \cdot x_1 \doteq e}
+  \end{align*}
   characterize groups completely. Another example of a universal variety are
   rings with one. Note however, that fields do not form a universal variety with
-  respect to \(\lang_{ring}\) as we demand that elements unequal to \(0\) are
+  respect to \(\lang_{ring}\), as we demand that elements unequal to \(0\) are
   invertible which can be expressed by the sentence
   \[
     ∀ x_1 : (¬ x_1 \doteq 0) → (∃ x_2 : x_1 \cdot x_2 \doteq 1)
@@ -527,21 +520,22 @@ formally, one defines a morphism as follows.
 
 Universal varieties are useful, as substructures can be characterized by
 embeddings, e.g.\ we have that a subset \(S\) of a ring with one \(R\) is a
-sub-ring, if and only if \(S\) carries a \(\lang_{ring}\)-structure
+sub-ring if and only if \(S\) carries an \(\lang_{ring}\)-structure
 \(\mathfrak{S}\) such that the embedding
 \[
   ι: S → R, \quad ι(α) = α
 \]
 is an \(\lang_{ring}\)-morphism between \(\mathfrak{S}\) and the
-\(\lang_{ring}\)-structure of \(\mathfrak{R}\). Moreover, we have the following
+\(\lang_{ring}\)-structure of \(R\). Moreover, we have the following
 important result.
 
 \begin{thm}\label{thm:elementary equivalence}
   Let \(\mathfrak{A}\) and \(\mathfrak{B}\) be two \(\lang\)-structures, with
   universe \(A\) and \(B\) respectively, and let \(φ: A → B\) be a bijective
   \(\lang\)-morphism. Then \(\mathfrak{A}\) and \(\mathfrak{B}\) are
-  \emph{elementary equivalent} i.e.\ for all \(\lang\)-sentences
-  \(ϕ\), \(\mathfrak{A} \models ϕ\) if and only if \(\mathfrak{B} \models ϕ\).
+  \emph{elementary equivalent}, i.e.\ for all \(\lang\)-sentences
+  \(ϕ\), \(\mathfrak{A}\) models \(ϕ\) if and only if \(\mathfrak{B}\) models
+  \(ϕ\).
 \end{thm}
 
 A proof of the theorem using induction on the structure of formulae can be found
@@ -591,7 +585,8 @@ abstract definitions.
     \item Let \(\mathfrak{Q} := ⟨ℚ; +, -, \cdot; 0, 1⟩\) be the
     \(\lang_{ring}\)-structure of the rationals. Then
     \[
-      \mathfrak{Q} \models \mathtt{∀ x_1 : (¬ x_1 \doteq 0) → (∃ x_2 : x_1 \cdot x_2 \doteq 1)}
+      \mathfrak{Q} \models
+        \mathtt{∀ x_1 : (¬ x_1 \doteq 0) → (∃ x_2 : x_1 \cdot x_2 \doteq 1)}
     \]
     and therefore this sentence is contained in \(\mathtt{Th}(\mathfrak{Q})\).
     However, \(2 ∈ ℤ \setminus \set{0}\) is not invertible in \(ℤ\). Thus, the
@@ -599,37 +594,35 @@ abstract definitions.
 
     \item Consider \(ϕ := \mathtt{∃ x_1 : x_1^2 + 1 \doteq 0}\). Then \(ϕ\) can
     be satisfied by the witness \(i ∈ ℂ\) in \(\mathfrak{C} := ⟨ ℂ; +, -, \cdot;
-    0, 1⟩\) as \(i^2 + 1 = 0\) holds in \(\mathfrak{C}\). Thus, \(ϕ ∈
-    \mathtt{Th}_∃(\mathfrak{C})\). But the sentence is not contained in
-    \(\mathtt{Th}_{∃}(\mathfrak{Z})\).
+    0, 1⟩\) as \(i^2 + 1 = 0\) holds in \(\mathfrak{C}\). Thus, \(ϕ\) is
+    contained in \(\mathtt{Th}_∃(\mathfrak{C})\), but the sentence is not
+    contained in \(\mathtt{Th}_{∃}(\mathfrak{Z})\).
 
     \item Consider the directed graph \(\mathfrak{G} := ⟨\set{1, 2, 3, 4}; E⟩\)
     below.
     \begin{center}
       \includegraphics{res/digraph}
     \end{center}
-    Here \(E\) denotes the binary adjacency relation, where e.g. \(E(1,
+    Here \(E\) denotes the binary adjacency relation, where for instance \(E(1,
     2)\) holds but \(E(2, 1)\) does not. The following sentence intuitively says
     that a graph contains a cycle of length \(3\).
     \[
       ϕ := \mathtt{∃ x_1 : ∃ x_2 : ∃ x_3 :
            (E(x_1, x_2) ∧ E(x_2, x_3) ∧ E(x_3, x_1))}
     \]
-
     Using \(1\) as witness for \(\mathtt{x_1}\) and \(2, 4\) as witnesses for
-    \(\mathtt{x_2}, \mathtt{x_3}\), we obtain that \(ϕ ∈
-    \mathtt{Th}_{∃+}(\mathfrak{G})\). It is not difficult to find a directed
-    graph that does not model \(ϕ\).
+    \(\mathtt{x_2}, \mathtt{x_3}\), we obtain that \(ϕ\) is contained in
+    \(\mathtt{Th}_{∃+}(\mathfrak{G})\), and it is not difficult to find a
+    directed graph that does not model \(ϕ\).
   \end{exlist}
 \end{exam}
 
 While we can already state a lot of properties in the languages we have
 considered so far, we can for instance not formulate a sentence in the language
 \(\lang_{ring}\) that says a specific polynomial has a root. Take for instance
-the ring structure \(\mathfrak{C}\) of \(ℂ\), we cannot formulate a sentence
-that says the polynomial \(X^2 - i ∈ ℂ[X]\) has a root over \(ℂ\). To get around
-this limitation we define \emph{diagrams}.
-
+the \(\lang_{ring}\)-structure \(\mathfrak{C}\) of \(ℂ\), we cannot formulate a
+sentence that says the polynomial \(X^2 - i ∈ ℂ[X]\) has a root in \(ℂ\). To
+get around this limitation we define \emph{diagrams}.
 \begin{defin}
   Let \(\lang\) be a language and \(\mathfrak{A}\) a model in \(\lang\) with
   universe \(A\). We define the \(A\)-language as
@@ -707,7 +700,7 @@ can be justified by the following lemma.
     Such that for all sentences \(ϕ ∈ \mathtt{P}\) we have
     \[
       ϕ ∈ \mathtt{H10}(\mathfrak{R}) \quad ⇔ \quad
-      π(p) \text{ has roots over } R
+      π(p) \text{ has roots in } R.
     \]
   \end{thmlist}
 \end{thm}
@@ -768,13 +761,13 @@ can be justified by the following lemma.
       t_1^{\mathfrak{R}}(α_{i_1}, …, α_{i_k}) =
       t_2^{\mathfrak{R}}(α_{i_1}, …, α_{i_k}).
     \]
-    Which is the true if and only if \(π(ϕ) = t_1 - t_2\) has roots over \(R\).
+    Which is the true if and only if \(π(ϕ) = t_1 - t_2\) has roots in \(R\).
   \end{plist}
 \end{proof}
 
 To finish our last task of this section we have to overcome once more a
 technical difficulty: If we want to define what it means to \emph{decide} a
-theory, we must identify the theory with subsets of \(ω\). To this end
+theory, we must identify the theory with subsets of \(ω\). To this end,
 \textcite{Goedel1931} introduced a method that is today commonly known as
 \emph{Gödelization}.
 
@@ -809,7 +802,7 @@ theory, we must identify the theory with subsets of \(ω\). To this end
 By the uniqueness of the prime factorization in \(ℕ\), two different formulae
 cannot have the same Gödel number. Finally, one obtains an encoding
 \(\enc{\cdot}: Φ(\lang) → ω\) by composing \(\mathrm{gn}\) with an encoding of
-the natural numbers (cf.~\cref{ex:omega encoding})
+the natural numbers (see~\cref{ex:omega encoding})
 
 \begin{exam}
 To get a feeling for how fast the Gödel numbers grow let us consider the
@@ -855,7 +848,8 @@ which already has \(52\) decimal digits.
   If the language and the universe of \(\mathfrak{A}\) are at most countable
   then we can Gödelize these theories and identify them with their set of Gödel
   numbers. The identity \(\id: ω → ω\) will then witness many-one reducibility
-  of subsets to supersets e.g.\ \(D(\mathfrak{A}) ≤_m D^c(\mathfrak{A})\) holds.
+  of subsets to supersets, for instance \(D(\mathfrak{A}) ≤_m
+  D^c(\mathfrak{A})\) holds.
 
   Concerning rings of algebraic integers (incl. \(ℤ\)), we will see that
   \(\mathtt{Th}_{∃+}(\mathfrak{A})\) is many-one reducible to
@@ -863,9 +857,9 @@ which already has \(52\) decimal digits.
   reducible to \(\mathtt{H10}^*(\mathfrak{A})\) (see~\cref{lem:intersections and
   unions}). In order to settle Hilbert's tenth problem we will show for some
   rings of algebraic integers that the halting set \(\mathcal{K}\) is many-one
-  reducible to \(D_{∃+}(\mathfrak{A})\) and vice versa. Thus, with
-  respect to many-one reducibility we obtain the following interrelations
-  between the theories.
+  reducible to \(D_{∃+}(\mathfrak{A})\) and vice versa. However, even more is
+  true as we will show that---with respect to many-one reducibility---the
+  following interrelations hold between the theories.
   \begin{center}
     \includegraphics[scale=1]{res/theories_2}
   \end{center}

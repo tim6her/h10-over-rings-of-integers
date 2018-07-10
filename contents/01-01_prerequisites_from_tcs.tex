@@ -189,7 +189,7 @@ n$. This means that in a start configuration the work-tape reads
 \]
 It will be very convenient to identify the finite string $c(1) c(2) … c(n) ∈ ω$
 with this tape content. Note however, that albeit every string can be associated
-with a tape content, the converse is not true, e.g.
+with a tape content, the converse is not true, for instance
 \[
   \sta \zer \zer \one \emp \zer \emp …
 \]
@@ -829,7 +829,7 @@ can carry out all computations, can hardly be overestimated.
 \begin{thm}
     There exists a Turing machine $\mathbb U$ that computes upon receiving
     the tuple $⟨\ulcorner \mathbb A \urcorner, x⟩$ as input, the output of
-    Turing machine $\mathbb A$ on $x$ i.e.
+    Turing machine $\mathbb A$ on $x$, i.e.
     \[
       \mathbb U(\ulcorner \mathbb A \urcorner, x) = y \Leftrightarrow
         \mathbb A (x) = y
@@ -856,16 +856,16 @@ that the power set of the integers is uncountable or Russel's paradox.
 \end{thm}
 \begin{proof}
     Assume there exists a Turing machine $\mathbb B$ that decides the
-    halting problem i.e.~for all Turing machines $\mathbb A$ and all
+    halting problem, i.e.\ for all Turing machines $\mathbb A$ and all
     strings $x$
-
-    \[ \mathbb B(\enc{\mathbb A}, x) =
+    \[
+    \mathbb B(\enc{\mathbb A}, x) =
     \begin{cases}
       \one  & \text{if } \mathbb A \text{ halts on } x\\
       \zer  & \text{if } \mathbb A \text{ does not halt on } x
-    \end{cases}\]
-
-    Now using $\mathbb B$ construct a Turing machine $\mathbb B'$ that
+    \end{cases}
+    \]
+    holds. Now using $\mathbb B$ construct a Turing machine $\mathbb B'$ that
     simulates $\mathbb B(\enc{\mathbb A}, \enc{\mathbb A})$ on its input
     $\enc{\mathbb A}$ and enters an infinite loop if
     $\mathbb B(\enc{\mathbb A}, \enc{\mathbb A}) = \zer$. Expressed more
@@ -914,23 +914,38 @@ seen that all semi-decidable sets are many-one reducible to \(\mathcal{K}\). The
 key step in settling Hilbert's tenth problem is proving that \(\mathcal{K}\) is
 many-one reducible to a collection of sets which are definable by polynomial
 equations. This suffices to prove the undecidability of Hilbert's tenth problem,
-since we have the following proposition.
+since we have the following properties of many-one reducibility.
 
 \begin{pro}\label{pro:m reducibility and decidability}
-  Let \(Q, Q' \subseteq ω\) be problems such that \(Q ≤_m Q'\). Then if \(Q'\)
-  is decidable, so is \(Q\).
+  \begin{thmlist}
+    \item Let \(Q, Q' \subseteq ω\) be problems such that \(Q ≤_m Q'\). Then if
+    \(Q'\) is decidable, so is \(Q\).
+    \item If problem \(Q\) is many-one reducible to problem \(Q'\), and \(Q'\)
+    is many-one reducible to \(Q''\), then \(Q\) is many-one reducible to
+    \(Q''\). In other words the relation of many-one reducibility is transitive.
+  \end{thmlist}
 \end{pro}
 \begin{proof}
-  Let \(f: Q → Q'\) be the computable function witnessing many-one reducibility
-  of \(Q\) to \(Q'\). Since the characteristic function \(χ_{Q'}: ω → ω\) is
-  computable, the composition \(g := χ_{Q'} \circ f\) is a total computable
-  function with the property
-  \[
-    g(x) =
-      \begin{cases}
-        \one & \text{if } x ∈ Q\\
-        \zer & \text{otherwise}
-      \end{cases}
-  \]
-  and \(Q\) is decidable.
+  \begin{plist}
+    \item   Let \(f: ω → ω\) be the computable function witnessing many-one
+    reducibility of \(Q\) to \(Q'\). Since the characteristic function
+    \(χ_{Q'}: ω → ω\) is computable, the composition \(g := χ_{Q'} \circ f\) is
+    a total computable function with the property
+      \[
+        g(x) =
+          \begin{cases}
+            \one & \text{if } x ∈ Q\\
+            \zer & \text{otherwise}
+          \end{cases}
+      \]
+      and \(Q\) is decidable.
+
+    \item By assumption there exist computable functions \(f: ω → ω\) and \(g:
+    ω → ω\) such that \(x\) is in \(Q\) precisely if its image \(f(x)\) is
+    contained in \(Q'\) and \(x\) is in \(Q'\) precisely if \(g(x)\) is in
+    \(Q''\). Consider the composition \(g • f\). It is a total computable
+    function by \cref{lem:composition of Turing machines}, and has the property
+    that \(x\) is in \(Q\) if and only if \((g • f)(x)\) is contained in
+    \(Q''\). Thus, \(Q\) is many-one reducible to \(Q''\) as claimed.
+  \end{plist}
 \end{proof}
