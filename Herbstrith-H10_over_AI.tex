@@ -3,13 +3,12 @@
 % !TEX spellcheck = en_GB
 % !TEX engine = xelatex
 %
-% ########   #######   #######  ########
-% ##     ## ##     ## ##     ##    ##
-% ##     ## ##     ## ##     ##    ##
-% ########  ##     ## ##     ##    ##
-% ##   ##   ##     ## ##     ##    ##
-% ##    ##  ##     ## ##     ##    ##
-% ##     ##  #######   #######     ##
+% ██████   ██████   ██████  ████████
+% ██   ██ ██    ██ ██    ██    ██
+% ██████  ██    ██ ██    ██    ██
+% ██   ██ ██    ██ ██    ██    ██
+% ██   ██  ██████   ██████     ██
+%
 \documentclass[12pt,a4paper]{scrbook}
 
 % Input Type and AMS-Packages
@@ -209,15 +208,6 @@
 	sibling=thm]{exam}
 
 \declaretheorem[
-  name=Problem,
-  style=mydef,
-  numbered=no]{problem}
-\declaretheorem[
-  name=Church-Turing thesis,
-  style=mydef,
-  numbered=no]{churchturing}
-
-\declaretheorem[
 	name=Remark,
 	style=remark,
 	numbered=no]{rem}
@@ -257,15 +247,11 @@
 
 
 \begin{document}
-
-% ######## ########   #######  ##    ## ########
-% ##       ##     ## ##     ## ###   ##    ##
-% ##       ##     ## ##     ## ####  ##    ##
-% ######   ########  ##     ## ## ## ##    ##
-% ##       ##   ##   ##     ## ##  ####    ##
-% ##       ##    ##  ##     ## ##   ###    ##
-% ##       ##     ##  #######  ##    ##    ##
-
+% ███████ ██████   ██████  ███    ██ ████████
+% ██      ██   ██ ██    ██ ████   ██    ██
+% █████   ██████  ██    ██ ██ ██  ██    ██
+% ██      ██   ██ ██    ██ ██  ██ ██    ██
+% ██      ██   ██  ██████  ██   ████    ██
 
 % Using Layers in TikZ
 \pgfdeclarelayer{background}
@@ -279,23 +265,19 @@
 \input{./contents/00_frontmatter}
 
 \mainmatter
-
-% ##     ##    ###    #### ##    ##
-% ###   ###   ## ##    ##  ###   ##
-% #### ####  ##   ##   ##  ####  ##
-% ## ### ## ##     ##  ##  ## ## ##
-% ##     ## #########  ##  ##  ####
-% ##     ## ##     ##  ##  ##   ###
-% ##     ## ##     ## #### ##    ##
+% ███    ███  █████  ██ ███    ██
+% ████  ████ ██   ██ ██ ████   ██
+% ██ ████ ██ ███████ ██ ██ ██  ██
+% ██  ██  ██ ██   ██ ██ ██  ██ ██
+% ██      ██ ██   ██ ██ ██   ████
 
 \chapter{Prerequisites and central notions}
 
 To tackle Hilbert's tenth problem over some rings of algebraic integers we need
 to define three central notions. Firstly, we should formalize what we mean by a
-‘process [with] a finite number of operations’~\cite{Hilbert1900}; secondly, it
-must be defined what it means to determine the solvability of an equation; and
-thirdly, we must replace one or both occurrences of rational integers by
-elements of other rings.
+computation; secondly, it must be defined what it means to determine the
+solvability of an equation; and thirdly, we must define the rings we are
+interested in.
 
 The first section of the preliminaries will settle our first task and give a
 definition of computability. The second section will provide the techniques
@@ -336,14 +318,11 @@ integers \(\set{0, 1, 2, …}\).
 
 \clearpage
 \appendix
-
-% ########     ###     ######  ##    ##
-% ##     ##   ## ##   ##    ## ##   ##
-% ##     ##  ##   ##  ##       ##  ##
-% ########  ##     ## ##       #####
-% ##     ## ######### ##       ##  ##
-% ##     ## ##     ## ##    ## ##   ##
-% ########  ##     ##  ######  ##    ##
+% ██████   █████   ██████ ██   ██
+% ██   ██ ██   ██ ██      ██  ██
+% ██████  ███████ ██      █████
+% ██   ██ ██   ██ ██      ██  ██
+% ██████  ██   ██  ██████ ██   ██
 
 \chapter{Appendix}\label{sec:Appendix}
 \input{./contents/99-99-appendix}

@@ -4,13 +4,11 @@
 % !TEX engine = xelatex
 % !TEX root = ../Herbstrith-H10_over_AI.tex
 %
-%  ######   #######  ##     ## ########      ######## ##     ##
-% ##    ## ##     ## ###   ### ##     ##        ##    ##     ##
-% ##       ##     ## #### #### ##     ##        ##    ##     ##
-% ##       ##     ## ## ### ## ########         ##    #########
-% ##       ##     ## ##     ## ##               ##    ##     ##
-% ##    ## ##     ## ##     ## ##        ###    ##    ##     ## ###
-%  ######   #######  ##     ## ##        ###    ##    ##     ## ###
+%  ██████  ██████  ███    ███ ██████      ████████ ██   ██ ███████  ██████
+% ██      ██    ██ ████  ████ ██   ██        ██    ██   ██ ██      ██    ██
+% ██      ██    ██ ██ ████ ██ ██████         ██    ███████ █████   ██    ██
+% ██      ██    ██ ██  ██  ██ ██             ██    ██   ██ ██      ██    ██
+%  ██████  ██████  ██      ██ ██ ██          ██    ██   ██ ███████  ██████  ██
 
 Fuelled by the task of deciding another problem stated by Hilbert---the
 so-called \begin{german}\emph{Entscheidungsproblem}\end{german}--- Austrian
@@ -42,14 +40,11 @@ the subject by \textcite{Mueller2016} and present some results of the
 textbook~\cite{Cooper2004}.
 
 \subsection{Turing machines, problems, and decidability}
-
-%    ##
-%  ####
-%    ##
-%    ##
-%    ##
-%    ##
-%  ######
+% ████████ ██    ██ ██████  ██ ███    ██  ██████      ███    ███
+%    ██    ██    ██ ██   ██ ██ ████   ██ ██           ████  ████
+%    ██    ██    ██ ██████  ██ ██ ██  ██ ██   ███     ██ ████ ██
+%    ██    ██    ██ ██   ██ ██ ██  ██ ██ ██    ██     ██  ██  ██
+%    ██     ██████  ██   ██ ██ ██   ████  ██████      ██      ██ ██
 
 \begin{defin}
   A \emph{(decision) problem} is a subset of the set of finite
@@ -114,14 +109,13 @@ As a next step, we want to formalize the intuitive notion of ‘computation’. 
 was remarked above we will use a variant of the machine model of
 \textcite{Turing1936}. Specifically, our machines will consist of a
 \emph{read-write head} and a \emph{storage tape}. This storage tape consists of
-discrete cells stretching infinitely in one direction.
-
-The head will read at every step of the computation one symbol written on the
-tape and change the state of the machine, write a new symbol to the tape, and
-move to the left, right or stay on the current cell. An end of tape symbol
-\(\sta\) will tell the head not to move too far to the left and all but finitely
-many cells will contain the blank symbol \(\emp\). More formally a Turing
-machine can be described as follows.
+discrete cells stretching infinitely in one direction.The head will read at
+every step of the computation one symbol written on the tape and change the
+state of the machine, write a new symbol to the tape, and move to the left,
+right, or stay on the current cell. An end of tape symbol \(\sta\) will tell the
+head not to move too far to the left and all but finitely many cells will
+contain the blank symbol \(\emp\). More formally a Turing machine can be
+described as follows.
 
 \begin{defin}
   A \emph{Turing machine} $\mathbb A$ on the \emph{alphabet} $A = \lbrace \sta,
@@ -251,14 +245,13 @@ delta "state" b = ("state''", b'', m')
 \end{lstlisting}
 %
 should be interpreted as
-%
-\[ δ(s, b) =
+\[
+  δ(s, b) =
   \begin{cases}
     (\state{state'}, b', m) & \text{if } s=\state{state} ∧ b = \one\\
     (\state{state''}, b'', m') & \text{if } s=\state{state} ∧ b ≠ \one
   \end{cases}.
 \]
-
 This kind of pattern matching may seem unconventional at first glance but yields
 mutually exclusive definitions of the cases and is standardized in the
 specifications of the \emph{Haskell 2010} programming language\footnote{see
@@ -465,30 +458,29 @@ computable functions.
     \item\label{ex:tally encoding}
       in tally notation
       \begin{align*}
-        n & ↦ \underbrace{\one…\one}_{n\text{-times}}, \quad \text{if } n > 0 \\
-        0 & ↦ λ
+        n & ↦ \underbrace{\one…\one}_{n\text{-times}},
+          \quad \text{if } n > 0, \\
+        0 & ↦ λ;
       \end{align*}
     \item
       by its binary representation
       \begin{align*}
-          n = 2^k + \sum_{i = 0}^{k-1} b_i 2^i & ↦ b_0…b_{k-1}\one, \quad
-              \text{if } n > 0\\
-                                             0 & ↦ \zer,
+          n = 2^k + \sum_{i = 0}^{k-1} b_i 2^i & ↦ b_0…b_{k-1}\one,
+            \quad \text{if } n > 0\\
+                                             0 & ↦ \zer; \text{ or}
       \end{align*}
-      or
     \item\label{ex:omega encoding}
       by a shifted and truncated form of its binary representation
       \begin{align*}
-        n = 1 + \sum_{i = 0}^k b_i 2^i & ↦ b_0…b_k, \quad \text{if } n > 0\\
-                                     0 & ↦ λ
+        n = 1 + \sum_{i = 0}^k b_i 2^i & ↦ b_0…b_k, \quad \text{if } n > 0,\\
+                                     0 & ↦ λ.
       \end{align*}
-
       In other words, $n$ is mapped to the $n$-th string if one orders $\lbrace
       \zer, \one \rbrace^*$ lexicographically. I will write \(<_{lex}\) for the
       lexicographical ordering of \(ω = \set{\zer, \one}^*\).  As \(ω\)
       traditionally denotes the non-negative integers in the fields of logic and
       especially set theory, this last encoding is the reason why I am using the
-      symbol \(ω\) to denote the set of finite strings \(\set{\zer, \one}^*\),
+      symbol \(ω\) to denote the set of finite strings \(\set{\zer, \one}^*\).
     \end{exlist}
 
     In either case the set obtained by encoding $ℕ$ is easily seen to be
@@ -512,7 +504,7 @@ computable functions.
   Let \(Q_0\) be a decidable problem and \(Q \subseteq Q_0\) a subset. If there
   exists a Turing machine \(\mathbb{A}\) that upon receiving \(x ∈ Q_0\) as
   input decides whether \(x ∈ Q\), then \(Q\) is decidable. In other words, if
-  one can decide a problem relative to a decidable model than then the initial
+  one can decide a problem relative to a decidable problem then the initial
   problem is globally decidable. To obtain a Turing machine deciding \(Q\) we
   first run the Turing machine deciding \(Q_0\) and reject \(x\) if \(Q_0(x) =
   \zer\) otherwise we run \(\mathbb{A}\) on \(x\).
@@ -555,9 +547,9 @@ respectively.
     \cref{fig:total pairing non empty}.
 
     Next it starts shifting the content of all cells one cell to the left until
-    it reaches the end of tape symbol \(§\) (cf.~\cref{fig:total pairing shift
-    left 1} and c). The machine can find the end of the string by moving to the
-    right until it finds two consecutive blank cells (cf.~\cref{fig:total
+    it reaches the end of tape symbol \(\sta\) (cf.~\cref{fig:total pairing
+    shift left 1} and c). The machine can find the end of the string by moving
+    to the right until it finds two consecutive blank cells (cf.~\cref{fig:total
     pairing double blank}). At this point the whole process starts over, except
     when shifting left, the machine must check, if the cell it wants to write to
     is empty. If it is not empty, it starts moving right again to find two
@@ -567,31 +559,34 @@ respectively.
 \end{exam}
 
 \begin{figure*}
-    \begin{subfigure}{.5\textwidth}
+    \begin{subfigure}{.7\textwidth}
         \includegraphics{res/turing_p1_1}
-        \caption{The machine finds the first non-empty cell.}
+        \caption{The machine finds the first non-empty cell.}%
         \label{fig:total pairing non empty}
     \end{subfigure}
 
-    \begin{subfigure}{.5\textwidth}
+    \begin{subfigure}{.7\textwidth}
         \includegraphics{res/turing_p1_2}
-        \caption{The machine shifts the content of each cell one cell to the left …}
+        \caption{The machine shifts the content of each cell one cell to the
+                 left …}%
         \label{fig:total pairing shift left 1}
     \end{subfigure}
 
-    \begin{subfigure}{.5\textwidth}
+    \begin{subfigure}{.7\textwidth}
         \includegraphics{res/turing_p1_3}
-        \caption{… until it reaches the end of tape symbol \(§\).}
+        \caption{… until it reaches the end of tape symbol \(\sta\).}%
         \label{fig:total pairing shift left 2}
     \end{subfigure}
 
-    \begin{subfigure}{.5\textwidth}
+    \begin{subfigure}{.7\textwidth}
         \includegraphics{res/turing_p1_4}
-        \caption{The machine finds two consecutive blank cells and starts over.}
+        \caption{The machine finds two consecutive blank cells and starts
+                 over.}%
         \label{fig:total pairing double blank}
     \end{subfigure}
 
-    \caption{A schematic run of the first projection associated to the pairing function in \cref{ex:total pairing}}
+    \caption{A schematic run of the first projection associated to the pairing
+             function in \cref{ex:total pairing}}%
     \label{fig:pairing function}
 \end{figure*}
 
@@ -609,9 +604,9 @@ functions allow us to define decidable relations on \(ω^n\).
 
 \begin{defin}
   Let \(R \subseteq ω^n\) be an \(n\)-ary relation on \(ω\). Then \(R\) is
-  called (semi-)\emph{decidable} if the set
+  called (\emph{semi-})\emph{decidable} if the set
   \[
-    \set{⟨\seq{x}⟩ \mid R(\seq{x})}
+    \set{⟨\seq{x}⟩ \mid \seq{x} ∈ ω, R(\seq{x})}
   \]
   is a (semi-)decidable subset of \(ω\).
 \end{defin}
@@ -649,7 +644,7 @@ is modelled by a minimization operator.
   string will appear in our listing of \(ω\) after finitely many steps. Thus,
   \(f\) is computable.
 
-  More formally such a Turing machine computing \(f\) can be obtained as
+  More formally, such a Turing machine computing \(f\) can be obtained as
   follows. First apply a Turing machine that transforms a string \(b_1b_2…b_n ∈
   ω\) into the tape content
   \[
@@ -802,14 +797,11 @@ technically quite intricate.
 \end{proof}
 
 \subsection{Church-Turing thesis and the halting problem}
-
-%   #######
-%  ##     ##
-%         ##
-%   #######
-%  ##
-%  ##
-%  #########
+% ██   ██  █████  ██   ████████ ██ ███    ██  ██████      ██████
+% ██   ██ ██   ██ ██      ██    ██ ████   ██ ██           ██   ██
+% ███████ ███████ ██      ██    ██ ██ ██  ██ ██   ███     ██████
+% ██   ██ ██   ██ ██      ██    ██ ██  ██ ██ ██    ██     ██
+% ██   ██ ██   ██ ███████ ██    ██ ██   ████  ██████      ██ ██
 
 In the remainder of this thesis I will make use of the following
 meta-mathematical thesis. That cannot be mathematically proven but has been
@@ -818,20 +810,25 @@ interested reader should find the comment \cite{Davis2006} on hyper-computation
 by Davis quite revealing.} formalizations of computation. It allows one to state
 properties of computability without referring to a specific model.
 
-\begin{churchturing}
-  The class of intuitively computable
+\begin{quote}
+  \textsc{Churh-Turing thesis.} The class of intuitively computable
   functions coincides with the class of all Turing computable functions.
-\end{churchturing}
+\end{quote}
 
-One of the fundamental theorems of theoretical computer science is the existence
-of a universal Turing machine. It may seem not surprising to the reader of the
-21\textup{st} century, who is used to being surrounded by machines that can
-carry out nearly all tasks imaginable, but the insight that building a single
-machine that can carry out all computations can hardly be overestimated.
+In his foundational paper~\cite{Turing1936} Turing proved a crucial result for
+the whole field of computability theory and its practical applications. He noted
+\begin{quote}
+  It is possible to invent a single machine which can be used to compute any
+  computable sequence.
+\end{quote}
+This may seem not surprising to the reader of the twenty-first century, who is
+used to being surrounded by machines that can carry out nearly all tasks
+imaginable, but the insight, that it is possible to build a single machine that
+can carry out all computations, can hardly be overestimated.
 
-\begin{thm}[\textcite{Turing1936}]
+\begin{thm}
     There exists a Turing machine $\mathbb U$ that computes upon receiving
-    the tuple $(\ulcorner \mathbb A \urcorner, x)$ as input, the output of
+    the tuple $⟨\ulcorner \mathbb A \urcorner, x⟩$ as input, the output of
     Turing machine $\mathbb A$ on $x$ i.e.
     \[
       \mathbb U(\ulcorner \mathbb A \urcorner, x) = y \Leftrightarrow
@@ -847,8 +844,8 @@ but uncountably many problems. However, to find such a set within the
 semi-decidable ones we turn our attention to a problem that quite naturally
 arises in computability theory.
 \begin{quote}
-  Given a machine $\mathbb A$ and a string $x$. Does $\mathbb A$
-  halt on $x$?
+  \textsc{halting problem.} Given a machine $\mathbb A$ and a string $x$. Does
+  $\mathbb A$ halt on $x$?
 \end{quote}
 The contradiction to the existence of a Turing machine deciding this problem is
 obtained by a diagonalization technique that is also present in Cantor's proof
@@ -873,12 +870,10 @@ that the power set of the integers is uncountable or Russel's paradox.
     $\enc{\mathbb A}$ and enters an infinite loop if
     $\mathbb B(\enc{\mathbb A}, \enc{\mathbb A}) = \zer$. Expressed more
     formally this means
-
     \[
-      \mathbb B' \text{ halts on } \enc{\mathbb A} ⇔
+      \mathbb B' \text{ halts on } \enc{\mathbb A} \quad ⇔ \quad
       \mathbb A \text{ does not halts on } \enc{\mathbb A}.
     \]
-
     Setting $\mathbb A = \mathbb B'$ yields the desired contradiction.
 \end{proof}
 
@@ -888,7 +883,7 @@ computability see \cite{Cooper2004}. As the halting problem is undecidable the
 \[
  \mathcal{K} = \set{⟨\enc{\mathbb A}, x⟩ \mid \mathbb A \text{ halts on } x}
 \]
-is undecidable. However using the universal Turing machine it is seen to be
+is undecidable. However, using the universal Turing machine it is seen to be
 semi-decidable.
 
 \begin{cor}
