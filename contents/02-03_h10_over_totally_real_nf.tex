@@ -3,14 +3,12 @@
 % !TEX spellcheck = en_GB
 % !TEX engine = xelatex
 % !TEX root = ../Herbstrith-H10_over_AI.tex
-% 
-% ##     ##    ##     #####      ########  #######  ########     ########
-% ##     ##  ####    ##   ##        ##    ##     ##    ##        ##     ##
-% ##     ##    ##   ##     ##       ##    ##     ##    ##        ##     ##
-% #########    ##   ##     ##       ##    ##     ##    ##        ########
-% ##     ##    ##   ##     ##       ##    ##     ##    ##        ##   ##
-% ##     ##    ##    ##   ##        ##    ##     ##    ##    ### ##    ##  ###
-% ##     ##  ######   #####         ##     #######     ##    ### ##     ## ###
+%
+% ██   ██  ██  ██████      ████████  ██████  ████████    ██████  ███████
+% ██   ██ ███ ██  ████        ██    ██    ██    ██       ██   ██ ██
+% ███████  ██ ██ ██ ██        ██    ██    ██    ██ █████ ██████  █████
+% ██   ██  ██ ████  ██        ██    ██    ██    ██       ██   ██ ██
+% ██   ██  ██  ██████         ██     ██████     ██       ██   ██ ███████ ██
 
 I closely follow the papers of \textcite{Denef1980} and \textcite{Pheidas1988},
 whose structure in term heavily depends on the article \citetitle{Davis1973} by
@@ -22,14 +20,11 @@ the study~\cite{Shlapentokh2007} by Shlapentokh. The same author has proven the
 second result independently of Pheidas in her thesis~\cite{Shlapentokh1989}.
 
 \subsection{Finitely many easy lemmas}
-
-%    ##
-%  ####
-%    ##
-%    ##
-%    ##
-%    ##
-%  ######
+% ██      ███████ ███    ███ ███    ███  █████  ███████
+% ██      ██      ████  ████ ████  ████ ██   ██ ██
+% ██      █████   ██ ████ ██ ██ ████ ██ ███████ ███████
+% ██      ██      ██  ██  ██ ██  ██  ██ ██   ██      ██
+% ███████ ███████ ██      ██ ██      ██ ██   ██ ███████
 
 We start by defining two sequences, that satisfy Pell's equation stated below.
 
@@ -220,7 +215,7 @@ lets one prove properties of the sequences, by proving them for \(m ∈ \lbrace
 
 \begin{lem}\label{lem:recursion for x_m and y_m}
   Let \(K\) be a number field and \(a ∈ \algint\) such that \(δ = δ(a) \not\in
-  K\). For \(m > 1\) the following recursive conditions hold in $\algint$.
+  K\). For \(m > 1\) the following recursive conditions hold in \(\algint\).
   \begin{align*}
     \px_{m + 1} &= 2 a \px_m - \px_{m - 1}, & \px_1 = a, \;& \px_0 = 1 \\
     \py_{m + 1} &= 2 a \py_m - \py_{m - 1}, & \py_1 = 1, \;& \py_0 = 0 \\
@@ -242,7 +237,7 @@ One applies the previous lemma to prove some congruence conditions.
 \begin{lem}
   Let \(K\) be a number field and \(a, b, c ∈ \algint\) such that \(δ(a), δ(b)
   \not\in K\). Then for all \(m ∈ ℕ\) the following congruences hold in
-  $\algint$.
+  \(\algint\).
   \begin{plist}
     \item \(\py_m (a) \equiv m \mod (a - 1)\)
     \item If \(a \equiv b \mod (c)\), then \(\px_m (a) \equiv \px_m (b) \mod (c)\) and
@@ -279,7 +274,7 @@ One applies the previous lemma to prove some congruence conditions.
 \begin{lem}\label{lem:congruence x_2m+k}
   Let \(K\) be a number field and \(a ∈ \algint\) such that \(δ = δ(a) \not\in
   K\). Then for \(m, k ∈ ℕ\) such that \(m ± k ≥ 0\) the following congruence
-  holds in $\algint$.
+  holds in \(\algint\).
   \[
     \px_{2 m ± k} \equiv - \px_k \mod (\px_m)
   \]
@@ -450,14 +445,11 @@ cannot correctly decide
 \todo{State the full DPRM-theorem}
 
 \subsection{Diophantine definition of \(ℤ\) over \(K\)}
-
-%  #######
-% ##     ##
-%        ##
-%  #######
-% ##
-% ##
-% #########
+% ██████  ██  ██████  ██████  ██   ██        ██████  ███████ ███████
+% ██   ██ ██ ██    ██ ██   ██ ██   ██        ██   ██ ██      ██
+% ██   ██ ██ ██    ██ ██████  ███████        ██   ██ █████   █████
+% ██   ██ ██ ██    ██ ██      ██   ██        ██   ██ ██      ██
+% ██████  ██  ██████  ██      ██   ██ ██     ██████  ███████ ██   ██
 
 For the remainder of this section let \(K ≠ ℚ\) be a totally real number field
 or a number field with exactly one pair of non-real embeddings of degree \(n :=
@@ -468,8 +460,8 @@ before we set \(L = K[{δ(a)}]\), where \(δ(a) \not\in \algint\) is a root of
 
 Furthermore, let us assume that \(σ_1 = \id_K, σ_2, …, σ_n: K → ℂ\) are all
 embeddings of \(K\) into the complex pane \(ℂ\). If \(s = 1\) we demand without
-loss of generality that $K, σ_2(K) \not\subset ℝ$ and that $σ_2(α) =
-\overline{α}$ for all \(α ∈ K\). In other words, \((σ_1, σ_2)\) is the pair of
+loss of generality that \(K, σ_2(K) \not\subset ℝ\) and that \(σ_2(α) =
+\overline{α}\) for all \(α ∈ K\). In other words, \((σ_1, σ_2)\) is the pair of
 complex embeddings and all other morphisms embed \(K\) into the reals \(ℝ\).
 
 \begin{lem}\label{lem:L over K is quadratic}
@@ -498,7 +490,7 @@ complex embeddings and all other morphisms embed \(K\) into the reals \(ℝ\).
 \end{proof}
 
 We will prove later using Minkowski's theorem on convex bodies
-(\cref{thm:Minkowski}), that an algebraic integer $a ∈ \algint$ satisfying
+(\cref{thm:Minkowski}), that an algebraic integer \(a ∈ \algint\) satisfying
 \eqref{eq:approximations of a} exists and therefore the condition on \(a\) from
 the previous section holds.
 

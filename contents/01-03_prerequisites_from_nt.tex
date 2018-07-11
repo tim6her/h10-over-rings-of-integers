@@ -4,13 +4,11 @@
 % !TEX engine = xelatex
 % !TEX root = ../Herbstrith-H10_over_AI.tex
 %
-% ##    ## ##     ## ##     ##     ######## ##     ##
-% ###   ## ##     ## ###   ###        ##    ##     ##
-% ####  ## ##     ## #### ####        ##    ##     ##
-% ## ## ## ##     ## ## ### ##        ##    #########
-% ##  #### ##     ## ##     ##        ##    ##     ##
-% ##   ### ##     ## ##     ## ###    ##    ##     ## ###
-% ##    ##  #######  ##     ## ###    ##    ##     ## ###
+% ███    ██ ██    ██ ███    ███ ██████  ███████ ██████      ████████ ██   ██
+% ████   ██ ██    ██ ████  ████ ██   ██ ██      ██   ██        ██    ██   ██
+% ██ ██  ██ ██    ██ ██ ████ ██ ██████  █████   ██████         ██    ███████
+% ██  ██ ██ ██    ██ ██  ██  ██ ██   ██ ██      ██   ██        ██    ██   ██
+% ██   ████  ██████  ██      ██ ██████  ███████ ██   ██        ██    ██   ██ ██
 
 In this section I will closely follow Chapter 1 of the German
 textbook~\cite{Neukirch2006}. However, the content is also present in the
@@ -18,13 +16,11 @@ English reference~\cite[Chap.~2]{Milne2017}, and sometimes the presentation of
 this reference will be recited.
 
 \subsection{Number fields and rings of algebraic integers}
-%   ##
-% ####
-%   ##
-%   ##
-%   ##
-%   ##
-% ######
+% ███    ██ ██    ██ ███    ███        ███████ ██      ██████  ███████
+% ████   ██ ██    ██ ████  ████        ██      ██      ██   ██ ██
+% ██ ██  ██ ██    ██ ██ ████ ██        █████   ██      ██   ██ ███████
+% ██  ██ ██ ██    ██ ██  ██  ██        ██      ██      ██   ██      ██
+% ██   ████  ██████  ██      ██ ██     ██      ███████ ██████  ███████
 
 We start with a series of definitions and remind the reader on some important
 results from algebraic number theory and commutative algebra. But at first let
@@ -214,7 +210,7 @@ Missing facts
   pass
 \end{defin}
 
-\begin{defin}[class number $c_k$]
+\begin{defin}[class number \(c_k\)]
     pass
 \end{defin}
 
@@ -228,18 +224,18 @@ Missing facts
 
 In this section I closely follow \cite[Chap.~I, §2]{Schmidt1991}.
 
-Let $V$ be an $n$-dimensional vector space over the reals $ℝ$. If $\seq[k]{e} ∈
-V$ ($k ≤ n$) are linearly independent over $ℝ$, then the free Abelian group
+Let \(V\) be an \(n\)-dimensional vector space over the reals \(ℝ\). If \(\seq[k]{e} ∈
+V\) (\(k ≤ n\)) are linearly independent over \(ℝ\), then the free Abelian group
 \[
   Λ = ℤ e_1 + … + ℤ e_k
 \]
-is called a \emph{lattice}. Note that $ℤ + \sqrt{2} ℤ$ is not a lattice in this
-sense, because $1$ and $\sqrt{2}$ are linearly dependent over $ℝ$.
+is called a \emph{lattice}. Note that \(ℤ + \sqrt{2} ℤ\) is not a lattice in this
+sense, because \(1\) and \(\sqrt{2}\) are linearly dependent over \(ℝ\).
 
-Let $μ$ be the measure corresponding to the usual Euclidean volume%
-\footnote{I.e. $μ$ is the Lebesgue measure on $ℝ^n$ and therefore the Haar
-measure with respect to the locally compact, Abelian group $⟨Λ, +⟩$.}
-on $ℝ^n$. Then the \emph{fundamental parallelepiped}
+Let \(μ\) be the measure corresponding to the usual Euclidean volume%
+\footnote{I.e. \(μ\) is the Lebesgue measure on \(ℝ^n\) and therefore the Haar
+measure with respect to the locally compact, Abelian group \(⟨Λ, +⟩\).}
+on \(ℝ^n\). Then the \emph{fundamental parallelepiped}
 \[
   D = \set{\sum_{i=1}^n α_i e_i \;\middle\vert\; α_i ∈ [0, 1]}
 \]
@@ -247,17 +243,17 @@ has the volume
 \[
   μ(D) = |\det \left( \seq{e} \right)|
 \]
-for a fixed lattice $Λ = ℤ e_1 + … + ℤ e_n$ in $ℝ^n$. One calls such a lattice whose rank coincides with the dimension of the vector space $ℝ^n$ a \emph{full} lattice.
+for a fixed lattice \(Λ = ℤ e_1 + … + ℤ e_n\) in \(ℝ^n\). One calls such a lattice whose rank coincides with the dimension of the vector space \(ℝ^n\) a \emph{full} lattice.
 
 \begin{thm}[Minkowski's theorem on convex bodies] \label{thm:Minkowski}
-  Let $Λ = ℤ e_1 + … + ℤ e_n$ be a full lattice in the $n$-dimensional
-  $ℝ$-vector space $V$ and let $D$ denote its fundamental parallelepiped. If $T
-  \subseteq V$ is compact, convex and symmetric in the origin, i.e.\ if $α ∈ T$
-  so is $-α ∈ T$, and
+  Let \(Λ = ℤ e_1 + … + ℤ e_n\) be a full lattice in the \(n\)-dimensional
+  \(ℝ\)-vector space \(V\) and let \(D\) denote its fundamental parallelepiped. If \(T
+  \subseteq V\) is compact, convex and symmetric in the origin, i.e.\ if \(α ∈ T\)
+  so is \(-α ∈ T\), and
   \[
     μ(T) ≥ 2^n μ(D).
   \]
-  Then $T$ contains a non-zero lattice point $α ∈ Λ \setminus \set{0}$.
+  Then \(T\) contains a non-zero lattice point \(α ∈ Λ \setminus \set{0}\).
 \end{thm}
 
 For a proof of Minkowski's theorem and further details on lattices see

@@ -4,22 +4,19 @@
 % !TEX engine = xelatex
 % !TEX root = ../Herbstrith-H10_over_AI.tex
 %
-% ##     ##    ##     #####      ##     ## ####  ######  ########
-% ##     ##  ####    ##   ##     ##     ##  ##  ##    ##    ##
-% ##     ##    ##   ##     ##    ##     ##  ##  ##          ##
-% #########    ##   ##     ##    #########  ##   ######     ##
-% ##     ##    ##   ##     ##    ##     ##  ##        ##    ##
-% ##     ##    ##    ##   ##     ##     ##  ##  ##    ##    ##    ###
-% ##     ##  ######   #####      ##     ## ####  ######     ##    ###
+% ██████  ███████ ██████  ██████  ███████  ██████ ████████
+% ██   ██ ██      ██   ██ ██   ██ ██      ██         ██
+% ██████  █████   ██████  ██████  █████   ██         ██
+% ██      ██      ██   ██ ██      ██      ██         ██
+% ██      ███████ ██   ██ ██      ███████  ██████    ██ ██
 
 \subsection{Diophantine equations and sets}
-%   ##
-% ####
-%   ##
-%   ##
-%   ##
-%   ##
-% ######
+% ██████  ██  ██████  ██████  ██   ██        ███████  ██████
+% ██   ██ ██ ██    ██ ██   ██ ██   ██        ██      ██    ██
+% ██   ██ ██ ██    ██ ██████  ███████        █████   ██    ██
+% ██   ██ ██ ██    ██ ██      ██   ██        ██      ██ ▄▄ ██
+% ██████  ██  ██████  ██      ██   ██ ██     ███████  ██████  ██
+%                                                        ▀▀
 
 In 1900, David Hilbert held his famous lecture~\cite{Hilbert1900} before the
 \emph{Second International Congress of Mathematicians} in Paris. The lecture
@@ -50,8 +47,8 @@ A \emph{Diophantine equation}---in the classical sense---is of the form
 \[
   p(α_1, …, α_n) = 0,
 \]
-where $p ∈ ℤ[X_1, …, X_n]$ is a polynomial and one only allows rational integral
-solutions $α_1,…,α_n ∈ ℤ$. Using the tools developed in \cref{sec:model
+where \(p ∈ ℤ[X_1, …, X_n]\) is a polynomial and one only allows rational integral
+solutions \(α_1,…,α_n ∈ ℤ\). Using the tools developed in \cref{sec:model
 theory,sec:number theory}, we will exchange one or both occurrences of the
 rational integers by values from other rings. It took until the 1930s to
 formalize what Hilbert meant by a \foreignquote{german}{Verfahren \textins{mit}
@@ -96,9 +93,9 @@ not chosen at random. Indeed, the polynomial \(p_{\mathcal{K}}\) represents an
 encoded version of the halting set \(\mathcal{K}\) in the following sense:
 
 \begin{defin}
-    Let $R$ be a commutative ring with one. A set $S \subseteq R^n$ is said to
-    be \emph{Diophantine} over \(R\) if there exists a polynomial $p ∈
-    R[X_1,…,X_n, Y_1,…,Y_m]$ in \(n + m\) many indeterminates (\(m,n ≥ 0\)) such
+    Let \(R\) be a commutative ring with one. A set \(S \subseteq R^n\) is said to
+    be \emph{Diophantine} over \(R\) if there exists a polynomial \(p ∈
+    R[X_1,…,X_n, Y_1,…,Y_m]\) in \(n + m\) many indeterminates (\(m,n ≥ 0\)) such
     that
     \[
       (α_1,…,α_n) ∈ S ⇔
@@ -106,31 +103,31 @@ encoded version of the halting set \(\mathcal{K}\) in the following sense:
     \]
 \end{defin}
 
-A polynomial $p ∈ R[X_1, …, X_n]$ as above defines an $n$-ary relation $\rel{p}$
+A polynomial \(p ∈ R[X_1, …, X_n]\) as above defines an \(n\)-ary relation \(\rel{p}\)
 on \(R\) by
 \[
   \rel{p}(α_1, …, α_n)  \quad :⇔ \quad p(α_1, …, α_n) = 0
 \]
-In this sense a set $S \subseteq R^i$ is Diophantine if there exists a
-polynomial $p ∈ R[X_1, …, X_n]$ such that
+In this sense a set \(S \subseteq R^i\) is Diophantine if there exists a
+polynomial \(p ∈ R[X_1, …, X_n]\) such that
 \[
   (\seq[i]{α}) ∈ S \quad ⇔ \quad
   ∃ \seq[n - i]{β} : \rel{p}(\seq[i]{α}, \seq[n - i]{β})
 \]
 
-Viewing $n$-ary relations as subsets of $R^n$, I will sometimes refer to
-Diophantine sets as \emph{Diophantine relations}. A function $R^n → R^m$ is
+Viewing \(n\)-ary relations as subsets of \(R^n\), I will sometimes refer to
+Diophantine sets as \emph{Diophantine relations}. A function \(R^n → R^m\) is
 called \emph{Diophantine} if it is Diophantine viewed as an \((n + m)\)-ary
 relation.
 
 \begin{exam}\label{ex:Diophantine sets}
   \begin{exlist}
-    \item Let $R$ be an integral domain.
-    Then every finite subset $S$ of $R$ is Diophantine, because the roots of
+    \item Let \(R\) be an integral domain.
+    Then every finite subset \(S\) of \(R\) is Diophantine, because the roots of
     \[
       p(X) := \prod_{s ∈ S} (X - s)
     \]
-    are precisely the elements of $S$.
+    are precisely the elements of \(S\).
 
     \item Let \(R\) be an integral domain. Then for every polynomial \(p ∈
     R[X_1, …, X_n]\) the associated polynomial function \(p: R^n → R\) is
@@ -141,22 +138,22 @@ relation.
     and notice that \(q\) has a root \((\seq{α}, α_{n + 1}) ∈ R\) if and only if
     \(p(\seq{α}) = α_{n + 1}\) as claimed.
 
-    \item Let $R$ be a commutative ring with unit. Then divisibility in $R$ is
-    Diophantine. Indeed $α_1 \mid α_2$ in $R$ precisely if
+    \item Let \(R\) be a commutative ring with unit. Then divisibility in \(R\) is
+    Diophantine. Indeed \(α_1 \mid α_2\) in \(R\) precisely if
     \[
       ∃ β ∈ R : α_1 β = α_2.
     \]
 
-    \item Let $K$ be a number field and $\algint$ its ring of algebraic integers. Then $\algint \setminus \set{0}$ is
-    Diophantine over $\algint$. I extend the hint stated in \cite[Prop. 1]{Denef1978} and claim that
+    \item Let \(K\) be a number field and \(\algint\) its ring of algebraic integers. Then \(\algint \setminus \set{0}\) is
+    Diophantine over \(\algint\). I extend the hint stated in \cite[Prop. 1]{Denef1978} and claim that
     \[
       α ≠ 0 ⇔ ∃ β, γ ∈ \algint : α β = (2 γ - 1)(3 γ - 1).
     \]
 
-    Firstly, note that the polynomial on the right hand side has the roots $1/2$
-    and $1/3$ in $ℚ$. As the intersection $\algint ∩ ℚ $ equals $ℤ$ for all
-    number fields $K$, one obtains that the polynomial identity can only be
-    satisfied for $α ≠ 0$.
+    Firstly, note that the polynomial on the right hand side has the roots \(1/2\)
+    and \(1/3\) in \(ℚ\). As the intersection \(\algint ∩ ℚ \) equals \(ℤ\) for all
+    number fields \(K\), one obtains that the polynomial identity can only be
+    satisfied for \(α ≠ 0\).
 
     Let now \(α ≠ 0\). We can decompose the ideal \((α) = \mathfrak x_2
     \mathfrak x_3\) such that
@@ -246,7 +243,7 @@ their relations with subsets of \(ℕ\).
     x ∈ ℕ \quad ⇔ \quad
     ∃β_1,β_2,β_3,β_4∈ℤ: β_1^2 + β_2^2 + β_3^2 + β_4^2 = α.
   \]
-  is a Diophantine definition of $ℕ$ over $ℤ$. Therefore, we can check for a
+  is a Diophantine definition of \(ℕ\) over \(ℤ\). Therefore, we can check for a
   given polynomial equation whether all variables take only non-negative values
   in a Diophantine way. More formally, we say that  a subset \(S ⊂ ℕ^n\) is
   \emph{Diophantine over \(ℕ\)} if there exists a polynomial \(p ∈ ℤ[X_1, …,
@@ -266,13 +263,13 @@ their relations with subsets of \(ℕ\).
 
   We now list some examples of sets that are Diophantine over \(ℕ\).
   \begin{exlist}
-    \item The set of composite numbers is Diophantine over $ℕ$, as $α ∈ ℕ$ is
+    \item The set of composite numbers is Diophantine over \(ℕ\), as \(α ∈ ℕ\) is
     composite if and only if
     \[
       ∃ β_1, β_2 ∈ ℕ : x = (β_1 + 2) (β_2 + 2).
     \]
-    Here adding $2$ to $β_1$ and $β_2$ ensures, that both factors are greater
-    than $1$. Choosing
+    Here adding \(2\) to \(β_1\) and \(β_2\) ensures, that both factors are greater
+    than \(1\). Choosing
     \[
       p(X, Y_1, Y_2) := X - (Y_1 + 2)(Y_2 + 2)
     \]
@@ -298,8 +295,8 @@ their relations with subsets of \(ℕ\).
           \left(β_2 - (δ_{21}^2 + δ_{22}^2 + δ_{23}^2 + δ_{24}^2)\right)^2.
     \end{align*}
 
-    \item The usual order relation $≤$ on $ℕ$ is Diophantine over $ℕ$.
-    Indeed $α_1 ≤ α_2$ in $ℕ$ if and only if
+    \item The usual order relation \(≤\) on \(ℕ\) is Diophantine over \(ℕ\).
+    Indeed \(α_1 ≤ α_2\) in \(ℕ\) if and only if
     \[
       ∃ β ∈ ℕ : α_1 + β  = α_2.
     \]
@@ -334,25 +331,25 @@ a countable commutative ring with one, we can identify Hilbert's tenth problem
 over \(R\) with the set of Gödel numbers of \(\mathtt{H10}(\mathfrak{R})\).
 
 \begin{lem}\label{lem:intersections and unions}
-    Let $R$ be an integral domain, whose quotient field $\Quot R$ is not
-    algebraically closed. Then if $S_1, S_2 \subseteq R$ are Diophantine so are
+    Let \(R\) be an integral domain, whose quotient field \(\Quot R\) is not
+    algebraically closed. Then if \(S_1, S_2 \subseteq R\) are Diophantine so are
     \[
       S_1 ∩ S_2 \quad \text{and} \quad S_1 ∪ S_2.
     \]
 
-    If $R$ is computable, then there is an algorithm that derives the defining
+    If \(R\) is computable, then there is an algorithm that derives the defining
     polynomial equations for union and intersection efficiently from the
-    equations of $S_1$ and $S_2$.
+    equations of \(S_1\) and \(S_2\).
 \end{lem}
 
 In other words, conjunctions and disjunctions of existentially quantified atomic
 formulae can be replaced by a single existentially quantified atomic formula. Or
-again put differently, conjunction $∧$ and disjunction $∨$ are
-$\lang_{ring}$-definable, efficiently computable predicates.
+again put differently, conjunction \(∧\) and disjunction \(∨\) are
+\(\lang_{ring}\)-definable, efficiently computable predicates.
 
 \begin{proof}
   Let \(p(\seq{X}, \seq[m_1]{Y})\) and \(q(\seq{X}, \seq[m_2]{Y})\) give
-  Diophantine definitions of $S_1$ and $S_2$ resp. Then as in \cref{ex:N is
+  Diophantine definitions of \(S_1\) and \(S_2\) resp. Then as in \cref{ex:N is
   Diophantine over Z} we set \(m = m_1 + m_2\) and interpret \(p, q\) as
   polynomials in \(n + m\) many indeterminates such that for all \(i ∈ \set{n +
   1, …, m}\) indeterminate \(Y_i\) appears either in \(p\) or \(q\) but not
@@ -362,7 +359,7 @@ $\lang_{ring}$-definable, efficiently computable predicates.
   \[
     h := p q.
   \]
-  Then \(h\) vanishes if and only if $p$ or $q$ vanishes. As a consequence, the
+  Then \(h\) vanishes if and only if \(p\) or \(q\) vanishes. As a consequence, the
   \(n\)-tuple \(\seq{α} ∈ R\) is in the union of \(S_1\) and \(S_2\) if and only
   if
   \[
@@ -375,21 +372,21 @@ $\lang_{ring}$-definable, efficiently computable predicates.
   \[
     h(T) = a_k T^k + … + a_1 T + a_0 ∈ R[T]
   \]
-  be a polynomial of degree $k > 0$ without roots in $\Quot R$. Then $\overline
-  h(T) = T^k h(T^{-1})$ does not have roots in $\Quot R$ either. As if $α ∈
-  \Quot R$ is a root of $\overline h$ then
+  be a polynomial of degree \(k > 0\) without roots in \(\Quot R\). Then \(\overline
+  h(T) = T^k h(T^{-1})\) does not have roots in \(\Quot R\) either. As if \(α ∈
+  \Quot R\) is a root of \(\overline h\) then
   \[
     0 = \overline h(α) = a_k + a_{k-1} α + a_1 α^{-1} + a_0 α^k
   \]
-  and $α = 0$ implies that $a_k = 0$. Otherwise, $α^{-1}$ is a root of
-  $α^k h$ and therefore of $h$.
+  and \(α = 0\) implies that \(a_k = 0\). Otherwise, \(α^{-1}\) is a root of
+  \(α^k h\) and therefore of \(h\).
 
   Now consider
   \[
     H(α, β_1, β_2) =
     \sum_{i=0}^k a_i p(α, β_1)^i q(α, β_2)^{k - i}.
   \]
-  I will prove for all $α, β_1, β_2 ∈ R$ that \(H(α, β_1, β_2) = 0\) precisely
+  I will prove for all \(α, β_1, β_2 ∈ R\) that \(H(α, β_1, β_2) = 0\) precisely
   if \(p(α, β_1)\) and \(p(α, β_2)\) vanish. Then \(H\) represents the
   intersection via
   \[
@@ -397,26 +394,26 @@ $\lang_{ring}$-definable, efficiently computable predicates.
     ∃ β_1, β_2 ∈ R : H(α, β_1, β_2) = 0.
   \]
 
-  If $H(α, β_1, β_2) = 0$ but $p(α, β_1) ≠ 0$ then
+  If \(H(α, β_1, β_2) = 0\) but \(p(α, β_1) ≠ 0\) then
   \[
     0 = \frac{H}{p^k} (α, β_1, β_2) =
     \overline h \left(\frac pq (α, β_1, β_2) \right),
   \]
   which is a contradiction to \(\overline h\) not having roots. If on the
-  other hand $H(α, β_1, β_2) = 0$ but $q(α, β_2) ≠ 0$
+  other hand \(H(α, β_1, β_2) = 0\) but \(q(α, β_2) ≠ 0\)
   one finds
   \[
     0 = \frac H {q^k}(α, β_1, β_2) = h \left( \frac pq (α, β_1, β_2) \right).
   \]
 
-  The converse direction is clear as the powers of $p$ and $q$ sum up
-  to $k$ for each summand in the definition of $H$.
+  The converse direction is clear as the powers of \(p\) and \(q\) sum up
+  to \(k\) for each summand in the definition of \(H\).
 
   To prove the effectiveness of these methods one observes, that the defining
-  equations contain only polynomials in $p$ and $q$. Thus, \cref{ex:polynomials
+  equations contain only polynomials in \(p\) and \(q\). Thus, \cref{ex:polynomials
   are computable} implies that the polynomial equations for union and
-  intersection of Diophantine sets can be computed from the polynomials $p$ and
-  $q$.
+  intersection of Diophantine sets can be computed from the polynomials \(p\) and
+  \(q\).
 \end{proof}
 
 Using induction and the lemma above, one immediately obtains that arbitrary
@@ -442,18 +439,16 @@ polynomials. For this reason it is sometimes preferable to consider \emph{purely
 Diophantine sets}.
 
 \subsection{Purely Diophantine sets}
-%  #######
-% ##     ##
-%        ##
-%  #######
-% ##
-% ##
-% #########
+% ██████  ██    ██ ██████  ███████     ██████  ██  ██████  ██████  ██   ██
+% ██   ██ ██    ██ ██   ██ ██          ██   ██ ██ ██    ██ ██   ██ ██   ██
+% ██████  ██    ██ ██████  █████       ██   ██ ██ ██    ██ ██████  ███████
+% ██      ██    ██ ██   ██ ██          ██   ██ ██ ██    ██ ██      ██   ██
+% ██       ██████  ██   ██ ███████     ██████  ██  ██████  ██      ██   ██ ██
 
 \begin{defin}
-    Let $R$ be a commutative ring with unit. A set $S \subseteq R^n$ is said to
-    be \emph{purely Diophantine} over \(R\) if there exists a polynomial $p ∈
-    ℤ[X_1,…,X_n, Y_1,…,Y_m]$ in \(n + m\) many indeterminates (\(m,n ≥ 0\)) such
+    Let \(R\) be a commutative ring with unit. A set \(S \subseteq R^n\) is said to
+    be \emph{purely Diophantine} over \(R\) if there exists a polynomial \(p ∈
+    ℤ[X_1,…,X_n, Y_1,…,Y_m]\) in \(n + m\) many indeterminates (\(m,n ≥ 0\)) such
     that
     \[
       (α_1,…,α_n) ∈ S ⇔
@@ -665,8 +660,8 @@ In \citeyear{Rosser1936} \textcite{Rosser1936}---extending a result of
 As a consequence, the full first order theory of \(ℤ\) is undecidable, as one
 can translate a sentence in \(ℕ\) to an equivalent sentence in \(ℤ\) via the
 construction described in \cref{ex:N is Diophantine over Z}. Considering the
-full first order theory of $\algint$ \textcite{Robinson1959} proved as early as
-\citeyear{Robinson1959} that $\mathtt{Th}(\modalgint)$ is undecidable. In
+full first order theory of \(\algint\) \textcite{Robinson1959} proved as early
+as \citeyear{Robinson1959} that \(\mathtt{Th}(\modalgint)\) is undecidable. In
 \citeyear{Matijasevic1970} \textcite{Matijasevic1970} showed---building on the
 work of Davis, Putnam, and J.~Robinson---the undecidability of Hilbert's tenth
 problem over \(ℤ\). More specifically, he provided the last piece in the proof
@@ -723,20 +718,20 @@ of the Davis-Putnam-Robinson-Matijasevič theorem (\textsc{DPRM}).
 \end{proof}
 
 In \citeyear{Rumely1986}, \textcite{Rumely1986} published his surprising result
-that \textsc{H10} is solvable over $\mathcal O$, the ring of all algebraic
+that \textsc{H10} is solvable over \(\mathcal O\), the ring of all algebraic
 integers. \Textcite{Dries1988} extended this result to the full first order
-theory of $\mathcal O$ in \citeyear{Dries1988}.
+theory of \(\mathcal O\) in \citeyear{Dries1988}.
 
-Probably the most prominent open problem in this area is the case of $ℚ$. A
-positive answer to \textsc{H10} over $ℚ$ would imply that there is a universal
-algorithm deciding whether a variety over $ℚ$ has a rational point. By giving a
-first order definition of $ℤ$ over $ℚ$, \textcite{Robinson1949} could derive the
-undecidability of the full first order theory of \(ℚ\) from the
+Probably the most prominent open problem in this area is the case of \(ℚ\). A
+positive answer to \textsc{H10} over \(ℚ\) would imply that there is a universal
+algorithm deciding whether a variety over \(ℚ\) has a rational point. By giving
+a first order definition of \(ℤ\) over \(ℚ\), \textcite{Robinson1949} could
+derive the undecidability of the full first order theory of \(ℚ\) from the
 undecidability of the theory of \(ℤ\) in \citeyear{Robinson1949}. But her
 definition involves universal quantifiers and cannot be used for inferring to
 \textsc{H10}. \Textcite{Park2013} generalized this result by providing a
-universal first order definition of $\algint$ over an arbitrary number field
-$K$ in \citeyear{Park2013}.
+universal first order definition of \(\algint\) over an arbitrary number field
+\(K\) in \citeyear{Park2013}.
 
 The surveys~\cite{Koenigsmann2014,Poonen2008} offer a more extensive overview of
 problems related to undecidability in number theory.

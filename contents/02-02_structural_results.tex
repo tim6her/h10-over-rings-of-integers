@@ -4,23 +4,18 @@
 % !TEX engine = xelatex
 % !TEX root = ../Herbstrith-H10_over_AI.tex
 %
-%  ######  ######## ########  ##     ##  ######  ########
-% ##    ##    ##    ##     ## ##     ## ##    ##    ##
-% ##          ##    ##     ## ##     ## ##          ##
-%  ######     ##    ########  ##     ## ##          ##
-%       ##    ##    ##   ##   ##     ## ##          ##
-% ##    ##    ##    ##    ##  ##     ## ##    ##    ##    ###
-%  ######     ##    ##     ##  #######   ######     ##    ###
+% ███████ ████████ ██████  ██    ██  ██████ ████████     ██████  ███████ ███████
+% ██         ██    ██   ██ ██    ██ ██         ██        ██   ██ ██      ██
+% ███████    ██    ██████  ██    ██ ██         ██        ██████  █████   ███████
+%      ██    ██    ██   ██ ██    ██ ██         ██        ██   ██ ██           ██
+% ███████    ██    ██   ██  ██████   ██████    ██ ██     ██   ██ ███████ ███████
 
 \subsection{Computable structures}\label{sec:computable structures}
-
- %   ##
- % ####
- %   ##
- %   ##
- %   ##
- %   ##
- % ######
+%  ██████  ██████  ███    ███ ██████      ███████ ████████ ██████
+% ██      ██    ██ ████  ████ ██   ██     ██         ██    ██   ██
+% ██      ██    ██ ██ ████ ██ ██████      ███████    ██    ██████
+% ██      ██    ██ ██  ██  ██ ██               ██    ██    ██   ██
+%  ██████  ██████  ██      ██ ██ ██       ███████    ██    ██   ██ ██
 
 Up to this point the encoding of problems was treated as some kind of black-box.
 This subsection takes a categorical view on computability and ensures us,
@@ -58,27 +53,27 @@ non-constant symbols. However, in principal one could consider the signature
 is the characteristic function of the halting set.
 
 \begin{defin}
-  Let $Σ = \set{f_1, f_2, …}$ be a computable signature.
+  Let \(Σ = \set{f_1, f_2, …}\) be a computable signature.
   \begin{thmlist}
-    \item An algebraic structure $\mathfrak A = ⟨A; f_1^{\mathfrak A},
-    f_2^{\mathfrak A}, …⟩$, with $A \subseteq ω$, is called \emph{computable
-    structure} if $A$ is decidable and all operations \(f_i^{\mathfrak A}\) are \emph{universally computable} i.e.\ for every arity \(n\) ther exists a computable function \(Φ_n : I \times A^n → A\) such that for all \(n\)-ary operations \(f_i\) and all values \(\seq{a} ∈ A\)
+    \item An algebraic structure \(\mathfrak A = ⟨A; f_1^{\mathfrak A},
+    f_2^{\mathfrak A}, …⟩\), with \(A \subseteq ω\), is called \emph{computable
+    structure} if \(A\) is decidable and all operations \(f_i^{\mathfrak A}\) are \emph{universally computable} i.e.\ for every arity \(n\) ther exists a computable function \(Φ_n : I \times A^n → A\) such that for all \(n\)-ary operations \(f_i\) and all values \(\seq{a} ∈ A\)
     \[
       Φ_n(i, \seq{a}) = f_i(\seq{a}).
     \]
 
-    \item An algebraic structure $\mathfrak A = ⟨A; f_1^{\mathfrak A},
-    f_2^{\mathfrak A}, …⟩$ is called \emph{efficiently presentable} if there exists a computable $Σ$-structure $⟨Ω_A; φ_1, φ_2, …⟩$ and a $Σ$-isomorphism $\enc{\cdot}: A → Ω_A$.
+    \item An algebraic structure \(\mathfrak A = ⟨A; f_1^{\mathfrak A},
+    f_2^{\mathfrak A}, …⟩\) is called \emph{efficiently presentable} if there exists a computable \(Σ\)-structure \(⟨Ω_A; φ_1, φ_2, …⟩\) and a \(Σ\)-isomorphism \(\enc{\cdot}: A → Ω_A\).
 
-    \item A computable $Σ$-morphism between computable $Σ$-structures is called \emph{computable morphism}.
+    \item A computable \(Σ\)-morphism between computable \(Σ\)-structures is called \emph{computable morphism}.
   \end{thmlist}
 \end{defin}
 
 \begin{rem}
   \begin{exlist}
-    \item An efficient presentation of a ring $R$ is a ring-homomorphism
-    $\enc{\cdot}: R → Ω_R$ of $R$, where $Ω_R \subseteq ω$ is decidable and all
-    operations of $Ω_R$ are computable functions.
+    \item An efficient presentation of a ring \(R\) is a ring-homomorphism
+    \(\enc{\cdot}: R → Ω_R\) of \(R\), where \(Ω_R \subseteq ω\) is decidable and all
+    operations of \(Ω_R\) are computable functions.
 
     Adding constant symbols for all elements of \(R\), the structure remains
     computable. Note that \(Σ_{ring}^*\) contains only \(2\) function symbols.
@@ -88,22 +83,22 @@ is the characteristic function of the halting set.
     the index set \(I\) without the indices of the function symbols.
 
     \item \Textcite{Stoltenberg1999} use a slightly modified definition of
-    computable rings. They consider \emph{effective enumerations} $α_R : Ω_R →
-    R$, where $Ω_R \subseteq ω$ is a computable $Σ_{ring}^*$-structure in the
-    sense of the definition above and $α_R$ is a $Σ_{ring}^*$-epimorphism. Then
-    the ring $R$ is called computable if the equivalence relation
+    computable rings. They consider \emph{effective enumerations} \(α_R : Ω_R →
+    R\), where \(Ω_R \subseteq ω\) is a computable \(Σ_{ring}^*\)-structure in the
+    sense of the definition above and \(α_R\) is a \(Σ_{ring}^*\)-epimorphism. Then
+    the ring \(R\) is called computable if the equivalence relation
     \[
       x_1 \equiv_{α_R} x_2  ⇔ α_R(x_1) = α_R(x_2)
     \]
-    on $Ω_R$ is decidable for all pairs $x_1, x_2 ∈ R$.
+    on \(Ω_R\) is decidable for all pairs \(x_1, x_2 ∈ R\).
 
     This definition can have slight technical advantages but note that in this
-    case $Ω_R$ need not be a ring in the sense of abstract algebra, a
-    $Σ_{ring}^*$ structure in the sense of universal algebra suffices.  Let
-    $\lfloor α_R^{-1}(\set{η}) \rfloor ∈ Ω_R$ denote the smallest element of
-    $α_R^{-1}(\set{η})$ in lexicographic order. By setting $\enc{η} = \lfloor
-    α_R^{-1}(\set{η}) \rfloor$ for each $η ∈ R$ one obtains a ring-isomorphism
-    $R → Ω_R$ that gives rise to an efficient presentation of $R$. So $R$ is
+    case \(Ω_R\) need not be a ring in the sense of abstract algebra, a
+    \(Σ_{ring}^*\) structure in the sense of universal algebra suffices.  Let
+    \(\lfloor α_R^{-1}(\set{η}) \rfloor ∈ Ω_R\) denote the smallest element of
+    \(α_R^{-1}(\set{η})\) in lexicographic order. By setting \(\enc{η} = \lfloor
+    α_R^{-1}(\set{η}) \rfloor\) for each \(η ∈ R\) one obtains a ring-isomorphism
+    \(R → Ω_R\) that gives rise to an efficient presentation of \(R\). So \(R\) is
     computable in the sense of \textcite{Stoltenberg1999} if and only if it is
     efficiently presentable in the sense of this thesis.
   \end{exlist}
@@ -111,48 +106,48 @@ is the characteristic function of the halting set.
 
 \begin{exam}
   \begin{exlist}
-    \item Every finite structure $⟨S; f_1, …, f_n⟩$ with $S \subseteq ω$ is
-    computable. The set $S$ is decidable as it is finite and the domain of each
-    operation $f_i$ for $1 ≤ i ≤ n$ is finite as well. A Turing machine
-    computing $f_i$ can just store the images of all elements in the domain in
+    \item Every finite structure \(⟨S; f_1, …, f_n⟩\) with \(S \subseteq ω\) is
+    computable. The set \(S\) is decidable as it is finite and the domain of each
+    operation \(f_i\) for \(1 ≤ i ≤ n\) is finite as well. A Turing machine
+    computing \(f_i\) can just store the images of all elements in the domain in
     memory.
 
-    \item In \cref{ex:tally encoding} the non-negative integer $n$ was encoded
-    by a string of $n$ consecutive $\one$-s. I have also already
-    presented the algorithm deciding $\enc{ℕ} \subseteq ω$. under this encoding.
-    Considering $ℕ$ as $Σ_{ring}$-structure, one finds that the tally
-    encoding gives rise to an efficient presentation of $ℕ$.
+    \item In \cref{ex:tally encoding} the non-negative integer \(n\) was encoded
+    by a string of \(n\) consecutive \(\one\)-s. I have also already
+    presented the algorithm deciding \(\enc{ℕ} \subseteq ω\). under this encoding.
+    Considering \(ℕ\) as \(Σ_{ring}\)-structure, one finds that the tally
+    encoding gives rise to an efficient presentation of \(ℕ\).
 
-    The constants $0$ and $1$ are trivially computable, by clearing the tape in
-    the first case and writing a single $\one$ in the second case. Using the
-    pairing function of \cref{ex:tally pairing} the binary operations $+$ and
-    $\cdot$ are also easily seen to be computable. As for $+$ the algorithm
+    The constants \(0\) and \(1\) are trivially computable, by clearing the tape in
+    the first case and writing a single \(\one\) in the second case. Using the
+    pairing function of \cref{ex:tally pairing} the binary operations \(+\) and
+    \(\cdot\) are also easily seen to be computable. As for \(+\) the algorithm
     takes the input
     \[
       \one … \one \zer \one … \one
     \]
-    and replaces the $\zer$-symbol by an $\one$ and deletes the rightmost
-    $\one$.
+    and replaces the \(\zer\)-symbol by an \(\one\) and deletes the rightmost
+    \(\one\).
 
     \item \label{ex:polynomials are computable}
-    If $R$ is a computable integral domain, then the polynomial algebras
-    $R[X_1, …, X_n]$ in arbitrary many indeterminates and $R[X_1,
-    X_2, …]$ in countably many indeterminates are computable $R$-algebras.
+    If \(R\) is a computable integral domain, then the polynomial algebras
+    \(R[X_1, …, X_n]\) in arbitrary many indeterminates and \(R[X_1,
+    X_2, …]\) in countably many indeterminates are computable \(R\)-algebras.
 
-    A possible implementation starts by implementing the monoid $⟨M; \cdot; X_i
-    \mid i ∈ ℕ⟩$ and extends it to the $R$-algebra $R[X_1, X_2, …]$. Within
-    $R[X_1, X_2, …]$ the domain of every subalgebra $R[X_1, …, X_n]$ is
+    A possible implementation starts by implementing the monoid \(⟨M; \cdot; X_i
+    \mid i ∈ ℕ⟩\) and extends it to the \(R\)-algebra \(R[X_1, X_2, …]\). Within
+    \(R[X_1, X_2, …]\) the domain of every subalgebra \(R[X_1, …, X_n]\) is
     decidable and therefore the structure is computable. See
     \cite[Sec.~4.4]{Stoltenberg1999} for a more detailed discussion and
     \cref{app:polynomials} for a sample implementation based on this idea.
 
     \item\label{ex:Z is computable}
-    In general $ℤ$ and $\algint$ viewed as $Σ_{ring}^*$ structures are
+    In general \(ℤ\) and \(\algint\) viewed as \(Σ_{ring}^*\) structures are
     efficiently presentable. As for integers, one extends the presentation of
-    $ℕ$ by a sign-bit.
+    \(ℕ\) by a sign-bit.
 
-    To present algebraic integers one uses an integral basis say $ζ_1, …, ζ_n$.
-    Then any integer $η$ can be encoded as an $n$-tuple of integers. Addition and subtraction are defined coordinate-wise. To implement the multiplication one stores the finite multiplication table of the basis elements
+    To present algebraic integers one uses an integral basis say \(ζ_1, …, ζ_n\).
+    Then any integer \(η\) can be encoded as an \(n\)-tuple of integers. Addition and subtraction are defined coordinate-wise. To implement the multiplication one stores the finite multiplication table of the basis elements
     \[
       \begin{array}{r | r r r r}
             & ζ_1   & ζ_2     & … & ζ_n     \\
@@ -163,10 +158,10 @@ is the characteristic function of the halting set.
         ζ_n &       &         &   & ζ_n^2
       \end{array}
     \]
-    in memory and extends to all of $\algint$ linearly.
+    in memory and extends to all of \(\algint\) linearly.
 
-    \item $⟨ℕ, ≤⟩$ is efficiently presentable using the tally encoding and $n ≤
-    m$ if and only if $\max(n - m, 0) = 0$. So deciding $n ≤ m$ boils down to
+    \item \(⟨ℕ, ≤⟩\) is efficiently presentable using the tally encoding and \(n ≤
+    m\) if and only if \(\max(n - m, 0) = 0\). So deciding \(n ≤ m\) boils down to
     applying floor subtraction and checking whether the tape is empty. Both
     operations are clearly computable.
   \end{exlist}
@@ -178,9 +173,9 @@ isomorphism between them. We will see that the last example differs from the
 others in this regard.
 
 \begin{defin}
-  Let $Σ = \set{f_1, f_2, …}$ be a computable signature. An
-  algebraic structure $\mathfrak A = ⟨A; f_1^{\mathfrak A}, f_2^{\mathfrak A},
-  …⟩$ is called \emph{computably categorical} if it is efficiently
+  Let \(Σ = \set{f_1, f_2, …}\) be a computable signature. An
+  algebraic structure \(\mathfrak A = ⟨A; f_1^{\mathfrak A}, f_2^{\mathfrak A},
+  …⟩\) is called \emph{computably categorical} if it is efficiently
   representable and every pair of efficient representations is computably
   isomorphic.
 \end{defin}
@@ -191,19 +186,19 @@ depend on the encoding chosen. For a more detailed discussion of efficient
 representations of rings see \cite{Stoltenberg1999}.
 
 \begin{thm}
-  Let $R$ be a finitely generated, efficiently representable ring with unit.
-  Then $R$ is computably categorical.
+  Let \(R\) be a finitely generated, efficiently representable ring with unit.
+  Then \(R\) is computably categorical.
 \end{thm}
 
 I will not give a proof here but sketch how one proceeds in proving the
 theorem.
 
-Let $ζ_1, …, ζ_n ∈ R$ be a set of generators of $R$ over $R$ and let $φ_1: R →
-R_1, φ_2: R → R_2$ be the efficient representations of $R$ together with the
-respective ring isomorphisms. Then $φ_1(ζ_1), …, φ_1(ζ_n)$ generate $R_1$ over
-$R_1$ and $φ_2(ζ_1), …, φ_2(ζ_n)$ generate $R_2$ over $R_2$. Storing these
-finitely many values of the isomorphism $φ_2 \circ φ_1^{-1}$ in memory one can
-use the computabilty of $R_1$ and $R_2$ respectively to extend the partial
+Let \(ζ_1, …, ζ_n ∈ R\) be a set of generators of \(R\) over \(R\) and let \(φ_1: R →
+R_1, φ_2: R → R_2\) be the efficient representations of \(R\) together with the
+respective ring isomorphisms. Then \(φ_1(ζ_1), …, φ_1(ζ_n)\) generate \(R_1\) over
+\(R_1\) and \(φ_2(ζ_1), …, φ_2(ζ_n)\) generate \(R_2\) over \(R_2\). Storing these
+finitely many values of the isomorphism \(φ_2 \circ φ_1^{-1}\) in memory one can
+use the computabilty of \(R_1\) and \(R_2\) respectively to extend the partial
 mapping in the obvious way.
 
 As for the decidability of \textsc{H10} over some ring of algebraic integers
@@ -215,16 +210,16 @@ technicality out of the way I will from now on not differentiate between
 \(\algint\) and its effective representation.
 
 However, there are structures where the choice of representation matters. In
-fact, $⟨ℕ, ≤⟩$ is not computably categorical. A proof using the undecidability
+fact, \(⟨ℕ, ≤⟩\) is not computably categorical. A proof using the undecidability
 of the halting problem can be found in \cite[Prob. 1.6]{Shore}.
 
-Using that $\algint$ is computably categorical for each algebraic number field
-$K$ we observe that \textsc{H10} is semi-decidable over $\algint$. An algorithm
-affirming the existence of roots for a given polynomial $p ∈ \algint{[X_1, …,
-X_n]}$ starts by trying whether the empty string is the encoding of $n$
-algebraic integers $α_1, …, α_n$ and if this is the case evaluates $p(α_1, …,
-α_n)$. Both operations are computable as $\algint$ is computable. If $p(α_1, …,
-α_n) = 0$ the algorithm finishes, otherwise it writes the next string on the
+Using that \(\algint\) is computably categorical for each algebraic number field
+\(K\) we observe that \textsc{H10} is semi-decidable over \(\algint\). An algorithm
+affirming the existence of roots for a given polynomial \(p ∈ \algint{[X_1, …,
+X_n]}\) starts by trying whether the empty string is the encoding of \(n\)
+algebraic integers \(α_1, …, α_n\) and if this is the case evaluates \(p(α_1, …,
+α_n)\). Both operations are computable as \(\algint\) is computable. If \(p(α_1, …,
+α_n) = 0\) the algorithm finishes, otherwise it writes the next string on the
 tape and starts over.
 
 \subsection{Important techniques}
@@ -242,32 +237,32 @@ some structural results and methods used within the subsequent proofs. For
 further structural results see the study~\cite{Shlapentokh2000}.
 
 \begin{lem}\label{lem:intersections and unions}
-    Let $R$ be an integral domain, whose quotient field $\Quot R$ is not
-    algebraically closed. Then if $S_1, S_2 \subseteq R$ are Diophantine so are
+    Let \(R\) be an integral domain, whose quotient field \(\Quot R\) is not
+    algebraically closed. Then if \(S_1, S_2 \subseteq R\) are Diophantine so are
     \[
       S_1 ∩ S_2 \quad \text{and} \quad S_1 ∪ S_2.
     \]
 
-    If $R$ is computable, then there is an algorithm that derives the defining
+    If \(R\) is computable, then there is an algorithm that derives the defining
     polynomial equations for union and intersection efficiently from the
-    equations of $S_1$ and $S_2$.
+    equations of \(S_1\) and \(S_2\).
 \end{lem}
 
 In other words, conjunctions and disjunctions of existentially quantified atomic
 formulas can be replaced by a single existentially quantified atomic formula. Or
-again put differently, conjunction $∧$ and disjunction $∨$ are
-$Σ_{ring}^*$-definable, efficiently computable predicates.
+again put differently, conjunction \(∧\) and disjunction \(∨\) are
+\(Σ_{ring}^*\)-definable, efficiently computable predicates.
 
 \begin{proof}
-Let $p(\mathbf{X}, \mathbf{Y}) ∈ R[X_1, …, X_{n_1}, Y_1, …, Y_{n_2}]$ and
-$q(\mathbf{X}, \mathbf{Y}) ∈ R[X_1, …, X_{n_1}, Y_1, …, Y_{n_2}]$ give
+Let \(p(\mathbf{X}, \mathbf{Y}) ∈ R[X_1, …, X_{n_1}, Y_1, …, Y_{n_2}]\) and
+\(q(\mathbf{X}, \mathbf{Y}) ∈ R[X_1, …, X_{n_1}, Y_1, …, Y_{n_2}]\) give
 Diophantine definitions\footnote{By inserting dummy indeterminates we may whish
-that both polynomials have the same number of indeterminates.} of $S_1$ and
-$S_2$ resp. then
+that both polynomials have the same number of indeterminates.} of \(S_1\) and
+\(S_2\) resp. then
 \[
   h := p q
 \]
-vanishes if and only if $p$ or $q$ vanishes. As a consequence, the
+vanishes if and only if \(p\) or \(q\) vanishes. As a consequence, the
 following identity gives a Diophantine definition of the union.
 
 \[ S_1 ∪ S_2 = \lbrace \mathbf{α} \mid ∃ \mathbf{β} \; h(\mathbf{α}, \mathbf{β}) = 0 \rbrace. \]
@@ -276,59 +271,59 @@ To prove the claim for intersections of Diophantine sets, let
 \[
   h(T) = a_m T^m + … + a_1 T + a_0 ∈ R[T]
 \]
-be a polynomial of degree $m > 0$ without roots in $\Quot R$. Then
-$\overline h(X) = X^m h(X^{-1})$ does not have roots in $\Quot R$ either. As if
-$α ∈ \Quot R$ is a root of $\overline h$ then
+be a polynomial of degree \(m > 0\) without roots in \(\Quot R\). Then
+\(\overline h(X) = X^m h(X^{-1})\) does not have roots in \(\Quot R\) either. As if
+\(α ∈ \Quot R\) is a root of \(\overline h\) then
 \[
   0 = \overline h(α) = a_m + a_{m-1} α + a_1 α^{,-1} + a_0 α^m
 \]
-and $α = 0$ implies $a_m = 0$. Otherwise, $α^{-1}$ is a root of
-$α^m h$ and therefore of $h$.
+and \(α = 0\) implies \(a_m = 0\). Otherwise, \(α^{-1}\) is a root of
+\(α^m h\) and therefore of \(h\).
 
 Now consider
 \[
   H(\mathbf{X}, \mathbf{Y}) = \sum_{i=0}^m a_i p(\mathbf{X}, \mathbf{Y})^i q(\mathbf{X}, \mathbf{Y})^{m - i}.
 \]
-I will prove for all $\mathbf{α} ∈ R^{n_1}$ and $\mathbf{β} ∈ R^{n_2}$ the
-following equivalence, showing that $H$ witnesses that $S_1 ∩ S_2$ is
+I will prove for all \(\mathbf{α} ∈ R^{n_1}\) and \(\mathbf{β} ∈ R^{n_2}\) the
+following equivalence, showing that \(H\) witnesses that \(S_1 ∩ S_2\) is
 Diophantine.
 
 \[ H(\mathbf α, \mathbf β) = 0 \Leftrightarrow p(\mathbf α, \mathbf β) = 0 ∧ q(\mathbf α, \mathbf β) = 0 \]
 
-If $H(\mathbf α, \mathbf β) = 0$ but $p(\mathbf α, \mathbf β) ≠ 0$ then
+If \(H(\mathbf α, \mathbf β) = 0\) but \(p(\mathbf α, \mathbf β) ≠ 0\) then
 \[
   0 = \frac H {f^n} (\mathbf α, \mathbf β) = \overline h \left(\frac qp (\mathbf α, \mathbf β) \right),
 \]
-which is a contradiction to $\overline h$ not having roots. If, on the
-other hand, $H(\mathbf α, \mathbf β) = 0$ but $q(\mathbf α, \mathbf β) ≠ 0$
+which is a contradiction to \(\overline h\) not having roots. If, on the
+other hand, \(H(\mathbf α, \mathbf β) = 0\) but \(q(\mathbf α, \mathbf β) ≠ 0\)
 one finds
 \[
   0 = \frac H {g^n}(\mathbf α, \mathbf β) = h \left( \frac qp (\mathbf α, \mathbf β) \right).
 \]
 
-The converse direction is clear as the powers of $p$ and $q$ sum up
-to $n$ for each summand in the definition of $H$.
+The converse direction is clear as the powers of \(p\) and \(q\) sum up
+to \(n\) for each summand in the definition of \(H\).
 
 To prove the effectiveness of these methods one observes, that the defining
-equations contain only polynomials in $p$ and $q$. \Cref{ex:polynomials are
+equations contain only polynomials in \(p\) and \(q\). \Cref{ex:polynomials are
 computable} implies that the polynomial equations for union and intersection of
-Diophantine sets can be computed from the polynomials $p$ and $q$.
+Diophantine sets can be computed from the polynomials \(p\) and \(q\).
 \end{proof}
 
 Using induction and the lemma above, one immediately obtains that arbitrary
 finite unions and intersections of Diophantine sets are Diophantine.
 
 An important corollary of the lemma above is---as was remarked before---that
-\textsc{H10} over $\algint$ is decidable if and only if $\mathtt{Th}_{∃+}
-(\modalgint)$ is decidable. Indeed, if one has a Turing machine that decides
-whether a single polynomial over $\algint$ has roots in $\algint$. Then upon
+\textsc{H10} over \(\algint\) is decidable if and only if \(\mathtt{Th}_{∃+}
+(\modalgint)\) is decidable. Indeed, if one has a Turing machine that decides
+whether a single polynomial over \(\algint\) has roots in \(\algint\). Then upon
 using the algorithm described in \cref{lem:intersections and unions} the same
 Turing machine can decide whether a collection of polynomial equations can be
 satisfied simultaneously.
 
 Note that the algorithm presented above does not depend on the initial equations
-$p$ and $q$ but it does depend on the integral domain $R$. As we might need
-different polynomials $h$ without roots for each ring $R$ in the case of
+\(p\) and \(q\) but it does depend on the integral domain \(R\). As we might need
+different polynomials \(h\) without roots for each ring \(R\) in the case of
 conjunctions.
 
 \textcite{Shlapentokh2000} notes that the following lemma and its corollary are
@@ -337,15 +332,15 @@ for various subrings of the number fields' They explain the usefulness
 of Diopahtine definitions.
 
 \begin{lem} \label{lem:moving up}
-Let $R_1 \subseteq R_2$ be computable rings and integral domains such
-that the quotient field of $R_2$ is not algebraically closed. If \textsc{H10}
-is undecidable over $R_1$ and $R_1$ has a Diophantine definition over
-$R_2$, then \textsc{H10} in undecidable over $R_2$.
+Let \(R_1 \subseteq R_2\) be computable rings and integral domains such
+that the quotient field of \(R_2\) is not algebraically closed. If \textsc{H10}
+is undecidable over \(R_1\) and \(R_1\) has a Diophantine definition over
+\(R_2\), then \textsc{H10} in undecidable over \(R_2\).
 \end{lem}
 \begin{proof}
-Let $f(X, Y_1, …, Y_n)$ be a Diophantine definition of $R_1$ over $R_2$ and
-assume that \textsc{H10} is decidable over $R_2$. We prove that \textsc{H10} is
-decidable over $R_1$ as well, contradicting our assumption.
+Let \(f(X, Y_1, …, Y_n)\) be a Diophantine definition of \(R_1\) over \(R_2\) and
+assume that \textsc{H10} is decidable over \(R_2\). We prove that \textsc{H10} is
+decidable over \(R_1\) as well, contradicting our assumption.
 
 Let \(S \subseteq R_1^m\) be Diophantine over \(R_1\). Then there exists some
 polynomial
@@ -358,31 +353,31 @@ case follows completely analogously. Then
 \[
   S = \left\lbrace  α ∈ R_2 \;\middle|\; ∃β, γ_1, γ_2 ∈ R_2 p(α, β) = 0 ∧ f(α, γ_1) = 0 ∧ f(β, γ_2) = 0\right\rbrace
 \]
-is a Diophantine definition of $S$ over $R_2$. If $\mathfrak R_1$ is the
-$Σ_{ring}^*$-structure of $R_1$ and $\mathfrak R_2$ the respective
-structure of $R_2$, this equation can be restated as
+is a Diophantine definition of \(S\) over \(R_2\). If \(\mathfrak R_1\) is the
+\(Σ_{ring}^*\)-structure of \(R_1\) and \(\mathfrak R_2\) the respective
+structure of \(R_2\), this equation can be restated as
 \begin{align*}
   α ∈ S &⇔ \mathfrak R_1 \models \mathtt{∃ x \; p(α, x) \doteq 0} ⇔ \\
   &⇔\mathfrak R_2 \models \mathtt{∃ x ∃ y_1 ∃ y_2 \; p(α, x) \doteq 0 ∧ f(α, y_1) \doteq 0 ∧ f(x, y_2) \doteq 0},
 \end{align*}
 where the latter sentence can clearly be obtained efficiently from the first one
-again by an algorithm depending on $R_1$ and $R_2$ but not on $p$. Therefore,
-the decidability of $\mathtt{Th}_{∃+}(\mathfrak R_2)$ implies the decidability
-of $\mathtt{Th}_{∃+}(\mathfrak R_1)$ by first applying the transformation of
-sentences and then the deciding algorithm in $R_2$.
+again by an algorithm depending on \(R_1\) and \(R_2\) but not on \(p\). Therefore,
+the decidability of \(\mathtt{Th}_{∃+}(\mathfrak R_2)\) implies the decidability
+of \(\mathtt{Th}_{∃+}(\mathfrak R_1)\) by first applying the transformation of
+sentences and then the deciding algorithm in \(R_2\).
 \end{proof}
 
 The subsequent corollary follows directly from the lemma above and the
-undecidability of Hilbert's tenth problem over $ℤ$.
+undecidability of Hilbert's tenth problem over \(ℤ\).
 
 \begin{cor}
-  Let $R \supseteq ℤ$ be a computable integral domain, whose quotient field is
-  not algebraically closed. If $ℤ$ has a Diophantine definition over $R$ then
-  \textsc{H10} is not decidable over $R$.
+  Let \(R \supseteq ℤ\) be a computable integral domain, whose quotient field is
+  not algebraically closed. If \(ℤ\) has a Diophantine definition over \(R\) then
+  \textsc{H10} is not decidable over \(R\).
 \end{cor}
 
-Note that this corollary applies to $\algint$ for each algebraic number field
-$K$ since the quotient field of $\algint$ is (isomorphic to) $K$. In fact, one
+Note that this corollary applies to \(\algint\) for each algebraic number field
+\(K\) since the quotient field of \(\algint\) is (isomorphic to) \(K\). In fact, one
 can even strengthen the result of the corollary in this case \cite[cf.][§~11]{Davis1976}.
 
 \begin{thm}\label{thm:CE sets are Diophantine}
