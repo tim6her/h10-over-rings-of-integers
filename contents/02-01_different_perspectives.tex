@@ -19,10 +19,12 @@
 %                                                        ▀▀
 
 In 1900, David Hilbert held his famous lecture~\cite{Hilbert1900} before the
-\emph{Second International Congress of Mathematicians} in Paris. The lecture
-entitled \foreignquote{german}{Mathematische Probleme} contained 23
-mathematical problems left for the 20th century to solve. The tenth of these
-problems and its variants are the subject of this thesis. The problem states
+\emph{International Congress of Mathematicians} in Paris. During the lecture
+entitled \foreignquote{german}{Mathematische Probleme} Hilbert posed ten
+mathematical problems left for the twentieth century to solve.  Hilbert's list
+of problems was later amended to contain twenty-three problems. The tenth of
+these questions and its variants are the subject of this thesis. The problem
+states
 
 \begin{foreigndisplayquote}{german}
   \textsc{10. Entscheidung der Lösbarkeit einer Diophantischen Gleichung.}
@@ -61,8 +63,8 @@ theory}. In the same section we have also defined what it means to \emph{decide
 a problem}, so we are left with the task of identifying Hilbert's question with
 a set of strings. In a first approach one could reformulate the tenth problem as
 \begin{quote}
-  For a fixed polynomial \(p ∈ ℤ[X_1, X_2, …]\) does there exist a Turing
-  machine \(\mathbb{A}_p\) that returns \(\one\) if \(p\) has a root and
+  \textsc{H10.} For a fixed polynomial \(p ∈ ℤ[X_1, X_2, …]\) does there exist a
+  Turing machine \(\mathbb{A}_p\) that returns \(\one\) if \(p\) has a root and
   \(\zer\) otherwise?
 \end{quote}
 This formalization is however trivially solvable, as the Turing machine in
@@ -70,7 +72,7 @@ question takes no input and thus must always return either \(\one\) or \(\zer\).
 But such machines returning a constant value are easily constructable. We must
 therefore exchange the quantifiers and ask
 \begin{quote}
-  Does there exist a Turing machine \(\mathbb{A}\) and an encoding
+  \textsc{H10.} Does there exist a Turing machine \(\mathbb{A}\) and an encoding
   \(\enc{\cdot}\) such that for all polynomials \(p ∈ ℤ[X_1, X_2, …]\) the
   output \(\mathbb{A}(\enc{p})\) is \(\one\), if \(p\) has integral roots, and
   \(\zer\) otherwise.
@@ -80,17 +82,18 @@ We will see that if we restrict ourselves to encodings \(\enc{\cdot}\) that
 allow to efficiently obtain the evaluation \(\enc{p(\mathbf{α})}\) from
 \(\enc{p}\) and \(\enc{\mathbf{α}}\), then the answer to the question above is
 negative. In fact, for all rings of algebraic integers \(\algint\), that we will
-consider, we will find a single multivariate polynomial \(p_{\mathcal{K}}(X,
-\seq{Y}) ∈ \algint[X, \seq{Y}]\) such that for all Turing machines
-\(\mathbb{A}\) there exists an algebraic integer \(α ∈ \algint\) with the
-property that \(\mathbb{A}\) cannot correctly decide whether the partially
-evaluated polynomial
+consider, we will find a single multivariate polynomial \(p_{\mathcal{K}} ∈
+\algint{}[X, \seq{Y}]\) such that for all Turing machines \(\mathbb{A}\) there
+exists an algebraic integer \(α ∈ \algint\) with the property that
+\(\mathbb{A}\) cannot correctly decide whether the partially evaluated
+polynomial
 \[
   p_{\mathcal{K}}(α, \seq{Y})
 \]
 has roots in \(\algint\). The index \(\mathcal{K}\) of the polynomial above is
 not chosen at random. Indeed, the polynomial \(p_{\mathcal{K}}\) represents an
-encoded version of the halting set \(\mathcal{K}\) in the following sense:
+encoded version of the halting set \(\mathcal{K}\) in the sense of the following
+definition.
 
 \begin{defin}
     Let \(R\) be a commutative ring with one. A set \(S \subseteq R^n\) is said to
@@ -98,7 +101,7 @@ encoded version of the halting set \(\mathcal{K}\) in the following sense:
     R[X_1,…,X_n, Y_1,…,Y_m]\) in \(n + m\) many indeterminates (\(m,n ≥ 0\)) such
     that
     \[
-      (α_1,…,α_n) ∈ S ⇔
+      (α_1,…,α_n) ∈ S \quad ⇔ \quad
       ∃ β_1,…,β_m ∈ R: p(α_1,…,α_n,β_1,…,β_m) = 0
     \]
 \end{defin}
@@ -114,7 +117,6 @@ polynomial \(p ∈ R[X_1, …, X_n]\) such that
   (\seq[i]{α}) ∈ S \quad ⇔ \quad
   ∃ \seq[n - i]{β} : \rel{p}(\seq[i]{α}, \seq[n - i]{β})
 \]
-
 Viewing \(n\)-ary relations as subsets of \(R^n\), I will sometimes refer to
 Diophantine sets as \emph{Diophantine relations}. A function \(R^n → R^m\) is
 called \emph{Diophantine} if it is Diophantine viewed as an \((n + m)\)-ary
@@ -147,7 +149,8 @@ relation.
     \item Let \(K\) be a number field and \(\algint\) its ring of algebraic integers. Then \(\algint \setminus \set{0}\) is
     Diophantine over \(\algint\). I extend the hint stated in \cite[Prop. 1]{Denef1978} and claim that
     \[
-      α ≠ 0 ⇔ ∃ β, γ ∈ \algint : α β = (2 γ - 1)(3 γ - 1).
+      α ≠ 0 \quad ⇔ \quad
+      ∃ β, γ ∈ \algint : α β = (2 γ - 1)(3 γ - 1).
     \]
 
     Firstly, note that the polynomial on the right hand side has the roots \(1/2\)
@@ -160,9 +163,9 @@ relation.
     \[
     (2) + \mathfrak x_2 =
     \algint, \; (3) + \mathfrak x_3 = \algint \, \text{and } \, \mathfrak x_2 +
-    \mathfrak x_3 = \algint.
+    \mathfrak x_3 = \algint
     \]
-    This is because \(2\) and \(3\) are rational primes and therefore \((2)\)
+    hold. This is because \(2\) and \(3\) are rational primes and therefore \((2)\)
     and \((3)\) are relative prime.
     % see Baxa Thm 120
     In other words, we find
@@ -186,7 +189,7 @@ relation.
       2 γ - 1 ∈ \mathfrak x_2  \quad \text{and} \quad
       3 γ - 1 ∈ \mathfrak x_3.
     \]
-    As a consequence, \((2 γ - 1)(3 γ - 1)\) is contained in \(\mathfrak x_2
+    We deduce that \((2 γ - 1)(3 γ - 1)\) is contained in \(\mathfrak x_2
     \mathfrak x_3 = (α)\), or put differently, there exists a \(β ∈ \algint\)
     such that
     \[
@@ -210,7 +213,7 @@ their relations with subsets of \(ℕ\).
   If one wants to study sets that are Diophantine over \(ℕ\), one runs into the
   problem that \(ℕ\) is not a ring. An approach that has been carried out
   \cite[cf.~e.g.][]{Davis1973} is considering sets \(S ⊂ ℤ^n\) that are
-  Diophantine over \(ℤ\) and intersecting them with \(ℕ^n\). I will show that
+  Diophantine over \(ℤ\) and allow only for witnesses in \(ℕ\). I will show that
   this construction can be carried out in a Diophantine way.
 
   First, we note that if \(S_1, S_2 ∈ ℤ^n\) are Diophantine over \(ℤ\), then
@@ -319,24 +322,31 @@ theory.
   holds.
 \end{lem}
 \begin{proof}
-  By \cref{thm:Diophantine theory} the forumla \(ϕ(\seq{α}, \seq[m]{β})\) is
+  By \cref{thm:Diophantine theory} the formula \(ϕ(\seq{α}, \seq[m]{β})\) is
   true in \(\mathfrak{R}\) if and only if the polynomial associated with \(ϕ\)
   has a root in \((\seq{α}, \seq[m]{β})\).
 \end{proof}
 
 Note that even more is true as a partially evaluated polynomial is still a
 polynomial. Thus, one can decide membership in all Diophantine sets if and only
-if one can decide for all polynomials whether they have roots. Thus, if \(R\) is
-a countable commutative ring with one, we can identify Hilbert's tenth problem
-over \(R\) with the set of Gödel numbers of \(\mathtt{H10}(\mathfrak{R})\).
+if one can decide for all polynomials whether they have roots. As a consequence,
+we will identify Hilbert's tenth problem over \(R\) with the set of Gödel
+numbers of \(\mathtt{H10}(\mathfrak{R})\) if \(R\) is a countable commutative
+ring with one, and restate Hilbert's problem as
+\begin{quote}
+  \textsc{H10.} Is the Diophantine theory \(\mathtt{H10}(\mathfrak{R})\)
+  decidable?
+\end{quote}
+In some cases we can modify Hilbert's question even more and allow for
+disjunctions and conjunctions to appear in our theory.
 
 \begin{lem}\label{lem:intersections and unions}
     Let \(R\) be an integral domain, whose quotient field \(\Quot R\) is not
-    algebraically closed. Then if \(S_1, S_2 \subseteq R\) are Diophantine so are
+    algebraically closed. Then if \(S_1, S_2 \subseteq R\) are Diophantine so
+    are
     \[
       S_1 ∩ S_2 \quad \text{and} \quad S_1 ∪ S_2.
     \]
-
     If \(R\) is computable, then there is an algorithm that derives the defining
     polynomial equations for union and intersection efficiently from the
     equations of \(S_1\) and \(S_2\).
@@ -368,7 +378,7 @@ again put differently, conjunction \(∧\) and disjunction \(∨\) are
 
   To make notation easier when proving the claim for intersections, I will
   assume that \(n = 1\) and \(m = 2\). The general cases follows completely
-  analogously. Now let
+  analogously. Let then
   \[
     h(T) = a_k T^k + … + a_1 T + a_0 ∈ R[T]
   \]
@@ -397,29 +407,46 @@ again put differently, conjunction \(∧\) and disjunction \(∨\) are
   If \(H(α, β_1, β_2) = 0\) but \(p(α, β_1) ≠ 0\) then
   \[
     0 = \frac{H}{p^k} (α, β_1, β_2) =
-    \overline h \left(\frac pq (α, β_1, β_2) \right),
+    \frac{1}{p(α, β_1)^k} \sum_{i=0}^k a_i p(α, β_1)^i q(α, β_2)^{k - i} =
+    \overline h \left(\frac{q}{p}(α, β_1, β_2) \right),
   \]
   which is a contradiction to \(\overline h\) not having roots. If on the
   other hand \(H(α, β_1, β_2) = 0\) but \(q(α, β_2) ≠ 0\)
   one finds
   \[
-    0 = \frac H {q^k}(α, β_1, β_2) = h \left( \frac pq (α, β_1, β_2) \right).
+    0 = \frac H {q^k}(α, β_1, β_2) =
+    \frac{1}{q(α, β_2)^k} \sum_{i=0}^k a_i p(α, β_1)^i q(α, β_2)^{k - i} =
+    h \left( \frac pq (α, β_1, β_2) \right).
   \]
-
   The converse direction is clear as the powers of \(p\) and \(q\) sum up
   to \(k\) for each summand in the definition of \(H\).
 
   To prove the effectiveness of these methods one observes, that the defining
-  equations contain only polynomials in \(p\) and \(q\). Thus, \cref{ex:polynomials
-  are computable} implies that the polynomial equations for union and
-  intersection of Diophantine sets can be computed from the polynomials \(p\) and
-  \(q\).
+  equations contain only polynomials in \(p\) and \(q\). Thus,
+  \cref{ex:polynomials are computable} implies that the polynomial equations for
+  union and intersection of Diophantine sets can be computed from the
+  polynomials \(p\) and \(q\).
 \end{proof}
+
+Note that the algorithm presented above does not depend on the initial equations
+\(p\) and \(q\) but it does depend on the integral domain \(R\). As we might
+need different polynomials \(h\) without roots for each ring \(R\) in the case
+of conjunctions.
+
+\begin{rem}
+  Using \(h(X) = X^2 + 1\) as the polynomial without roots in \(ℤ\) for the
+  construction described in the proof of \cref{lem:intersections and unions},
+  one obtains
+  \[
+    H = p^2 + q^2
+  \]
+  precisely as in \cref{ex:N is Diophantine over Z}.
+\end{rem}
 
 Using induction and the lemma above, one immediately obtains that arbitrary
 finite unions and intersections of Diophantine sets are Diophantine. For the
-special case that \(R\) is computable, one can deduce that Hilbert's tenth
-problem is essentially the same as the primitive positive diagram
+special case that \(R\) is computable, one can thusly deduce that Hilbert's
+tenth problem is essentially the same as the primitive positive diagram
 \(D_{∃+}(\mathfrak{R})\).
 
 \begin{cor}
@@ -476,7 +503,7 @@ is shown in the following lemma.
 \end{lem}
 \begin{proof}
   Follows \cref{lem:terms of rings are polynomials} and the analogue of part
-  (ii) of \label{thm:Diophantine theory}.
+  (ii) of \cref{thm:Diophantine theory}.
 \end{proof}
 
 At second sight the construction is even less surprising, as for every ring
@@ -484,12 +511,30 @@ At second sight the construction is even less surprising, as for every ring
 mapping \(1 ∈ ℤ\) to \(1 ∈ R\).
 Looking back at \cref{ex:Diophantine sets}, we note that the Diophantine sets of
 (3), (4), and (5) are in fact purely Diophantine, whilst finite sets (1) are in
-general not purely Diophantine. As for polynomial functions \(p: R^n → R\) (2)
+general not. As for polynomial functions \(p: R^n → R\) (2)
 we obtain that they are purely Diophantine if and only if the coefficients of
 \(p\) are rational integers. Note however that a partially evaluated polynomial
 with rational integral coefficients need not be a polynomial in \(ℤ[X_1, X_2,
 …]\). Thus, one needs to be a bit more careful when dealing with purely
 Diophantine sets.
+
+\begin{lem}
+  Let \(S_1, S_2 ⊂ \algint^n\) be purely Diophantine subsets of a ring of
+  algebraic integers of some number field \(K\). Then their union and
+  intersection are purely Diophantine. The defining equations for union and
+  intersection can be obtained effectively.
+\end{lem}
+\begin{proof}
+  I claim that there exists a polynomial \(h ∈ ℤ[X]\) without roots in \(K\).
+  Then we can use the same construction as in \cref{lem:intersections and
+  unions} to prove the lemma.
+
+  Such a polynomial \(h ∈ ℤ[X]\) must exist in every number field \(K\), as
+  otherwise the normal closure of \(K\) contains all algebraic integers and thus
+  is the algebraic closure of \(\overline{ℚ}\) by \cref{thm:primitive element}.
+  But then the degree \([\overline{ℚ} : K]\) is finite, implying that \([K :
+  ℚ]\) is infinite, which is a contradiction.
+\end{proof}
 
 We now want to identify the purely Diophantine subsets within the Diophantine
 subsets of algebraic integers. For this purpose we reformulate a result of
@@ -524,7 +569,7 @@ non-negative. In general, we have the following proposition.
   find that \(σ(z) = f(σ(δ))\) holds for all automorphisms. Thus, \(\id_K =
   \seq[k]{σ}\), where \(σ_i(δ) = δ_i\), are all automorphisms of \(K\).
 
-  Since \(x\) is fixed by all of the \(σ_i\), we find that
+  As \(x\) is fixed by all of the \(σ_i\), we find that
   \[
     f(δ) = x = σ_i(x) = σ_i(f(δ)) = f(σ_i(δ)) = f(δ_i)
   \]
@@ -626,37 +671,16 @@ Diophantine sets within Diophantine sets over rings of algebraic integers.
   we can deduce \(α = σ_i(σ_j(α)) ∈ S\) as claimed.
 \end{proof}
 
-\begin{cor}
-  Let \(S_1, S_2 ⊂ \algint^n\) be purely Diophantine. Then their union and
-  intersection are purely Diophantine.
-\end{cor}
-\begin{proof}
-  By the theorem \(S_1\) and \(S_2\) are Diophantine and self-conjugate. Thus,
-  their intersection and union are self-conjugate and Diophantine by
-  \cref{lem:intersections and unions}. Now the theorem implies that they are in
-  fact purely Diophantine.
-\end{proof}
-
-\begin{rem}
-  We could have also directly proven the claim of the corollary by choosing the
-  polynomial \(h\) from the proof of \cref{lem:intersections and unions} to have
-  rational integral coefficients. Such a polynomial \(h ∈ ℤ[X]\) without roots
-  in \(K\) must exist in every number field \(K\), as otherwise the normal
-  closure of \(K\) contains all algebraic integers and thus is the algebraic
-  closure of \(\overline{ℚ}\) by \cref{thm:primitive element}. But then the
-  degree \([\overline{ℚ} : K]\) is finite, implying that \([K : ℚ]\) is
-  infinite, which is a contradiction.
-\end{rem}
-
 The beauty of the model theoretic approach to Hilbert's tenth problem is that it
 directly gives rise to various generalizations. To conclude this section I will
 list some results on variants of the problem.
 
-In \citeyear{Rosser1936} \textcite{Rosser1936}---extending a result of
-\textcite{Goedel1931}---proved that the full first order theory
+In \citeyear{Rosser1936} \textcite{Rosser1936} proved---extending a result of
+\textcite{Goedel1931}---that the full first order theory
 \(\mathtt{Th}(\mathfrak{N})\) of the natural numbers is undecidable.%
-\footnote{Of course I assume throughout this thesis that the Peano arithmetic
-          is consistent.}
+\footnote{At this point I should mention that I assume throughout this thesis
+that the Peano arithmetic is consistent. See e.g.\ Chap.~8 of the
+textbook~\cite{Cooper2004} for a more rigorous discussion of Gödel's results.}
 As a consequence, the full first order theory of \(ℤ\) is undecidable, as one
 can translate a sentence in \(ℕ\) to an equivalent sentence in \(ℤ\) via the
 construction described in \cref{ex:N is Diophantine over Z}. Considering the
@@ -731,7 +755,11 @@ undecidability of the theory of \(ℤ\) in \citeyear{Robinson1949}. But her
 definition involves universal quantifiers and cannot be used for inferring to
 \textsc{H10}. \Textcite{Park2013} generalized this result by providing a
 universal first order definition of \(\algint\) over an arbitrary number field
-\(K\) in \citeyear{Park2013}.
+\(K\) in \citeyear{Park2013}. Again moving to larger rings proves to be easier.
+\textcite{Tarski1931} proved in \citeyear{Tarski1931} using the method of
+\emph{quantifier elimination} that the full \(\lang_{ring}\)-theory of the
+real numbers is decidable. For complex numbers the tools for proving the
+analogous result were already known in the nineteenth century.
 
 The surveys~\cite{Koenigsmann2014,Poonen2008} offer a more extensive overview of
 problems related to undecidability in number theory.

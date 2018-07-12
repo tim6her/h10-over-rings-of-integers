@@ -14,7 +14,7 @@ The idea of model theory is to differentiate between the statements we can make
 about mathematical objects and the implementation of these mathematical objects.
 We will define \emph{languages} and their syntax and will describe what it means
 for a mathematical object to \emph{model a theory}. In this section I will
-closely follow Chapter 1 of the textbook \cite{Marker2002}.
+closely follow Chapter 1 of the textbook~\cite{Marker2002}.
 
 \subsection{Formulae and models}
 % ███████  ██████  ██████  ███    ███ ██    ██ ██       █████  ███████
@@ -458,20 +458,26 @@ formally, one defines a morphism as follows.
 \end{defin}
 
 \begin{rem}
-  Despite the similarity of the definition of \(\lang_{ring}\)-morphisms to
-  ring-morphisms in the sense of abstract algebra, not every
-  \(\lang_{ring}\)-morphism is a ring-morphism and vice versa. Consider for
-  example the identity \(\mathrm{id}_ℕ\) on the \(\lang_{ring}\)-structure
-  \(\mathfrak{N}\). As \(ℕ\) is not a ring in the sense of abstract algebra,
-  \(\mathrm{id}_ℕ\) is not a ring-morphism, but it is clearly an
-  \(\lang_{ring}\)-morphism.
+  \begin{exlist}
+    \item   Despite the similarity of the definition of
+    \(\lang_{ring}\)-morphisms to ring-morphisms in the sense of abstract
+    algebra, not every \(\lang_{ring}\)-morphism is a ring-morphism and vice
+    versa. Consider for example the identity \(\mathrm{id}_ℕ\) on the
+    \(\lang_{ring}\)-structure \(\mathfrak{N}\). As \(ℕ\) is not a ring in the
+    sense of abstract algebra, \(\mathrm{id}_ℕ\) is not a ring-morphism, but it
+    is clearly an \(\lang_{ring}\)-morphism.
 
-  On the other hand, the mapping \(φ: ℤ → ℤ \times ℤ\) defined by
-  \[
-    φ(α) = (0, α)
-  \]
-  is a ring-morphism that is not a \(\lang_{ring}\)-morphism, as \(1\) is not
-  mapped to the neutral element \((1, 1)\) in \(ℤ \times ℤ\).
+    On the other hand, the mapping \(φ: ℤ → ℤ \times ℤ\) defined by
+    \[
+      φ(α) = (0, α)
+    \]
+    is a ring-morphism that is not a \(\lang_{ring}\)-morphism, as \(1\) is not
+    mapped to the neutral element \((1, 1)\) in \(ℤ \times ℤ\).
+
+    \item As in abstract algebra an injective morphism is called
+    \emph{monomorphism}, a surjective one \emph{epimorphism}, and a bijective
+    morphism is called \emph{isomorphism}.
+  \end{exlist}
 \end{rem}
 
 \begin{defin}
@@ -812,7 +818,7 @@ Gödelization of the following \(\lang_{ring}\)-formula
 \]
 We choose the function \(i\) as described in the table below.
 \[
-  \begin{array}{l r r r r r r r r r r r r r r}
+  \begin{array}{l @{\qquad} r r r r r r r r r r r r r r}
     \toprule
     s & \doteq & ¬ & ∧ & ∃ & : & ( & ) & \mathtt{x} & ' & + & - & \cdot & \mathtt{0} & \mathtt{1}\\
     i(s) & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14\\
@@ -864,3 +870,262 @@ which already has \(52\) decimal digits.
     \includegraphics[scale=1]{res/theories_2}
   \end{center}
 \end{rem}
+
+\subsection{Computable structures and decidable models}%
+\label{sec:computable structures}
+%  ██████  ██████  ███    ███ ██████      ███████ ████████ ██████
+% ██      ██    ██ ████  ████ ██   ██     ██         ██    ██   ██
+% ██      ██    ██ ██ ████ ██ ██████      ███████    ██    ██████
+% ██      ██    ██ ██  ██  ██ ██               ██    ██    ██   ██
+%  ██████  ██████  ██      ██ ██ ██       ███████    ██    ██   ██ ██
+
+Up to this point the encoding of problems was treated as some kind of black-box.
+This subsection takes a categorical view on computability and ensures us,
+that---up to a sensible definition---encodings of the rings we concern ourselves
+with do not matter. The interested reader may whish to read the excellent
+textbook by \textcite{Stoltenberg1999} on this subject. However, I am using the
+notation of the paper~\cite{Khoussainov2000} and the
+textbook~\cite[Chap.~16]{Cooper2004}.
+
+Throughout this section I will identify the set of non-negative integers \(ℕ\)
+with the set of strings \(ω\) via the encoding described in \cref{ex:omega
+encoding}.
+
+\begin{defin}
+  Let \(\lang\) be an at most countable language. We say \(\lang\) is
+  \emph{computable} if we can Gödelize the set of \(\lang\)-formulae
+  \(Φ(\lang)\) in such a way, that \(\gn(Φ(\lang))\) is decidable.
+\end{defin}
+
+Note that we can only change the function \(i\) described in the definition of
+the Gödelization. Thus, we can rearrange the symbols of our language. In this
+view, a language \(\lang = \set{f ∈ \mathcal{F}; R ∈ \mathcal{R}; c ∈
+\mathcal{C}}\) is computable if we can encode its basic symbols in such a way
+that
+\begin{enumerate}
+  \item the sets \(i(\mathcal{F})\), \(i(\mathcal{R})\), and
+  \(i(\mathcal{C})\) are decidable; and
+
+  \item the function \(\mathtt{ar}: i(\mathcal{F}) ∪ i(\mathcal{R}) → ω\)
+  defined by \(i(ℓ) ↦ \ar(ℓ)\) is computable.
+\end{enumerate}
+Indeed, if this is the case, we can use the properties of the Gödelization to
+obtain from an encoded formula \(\gn(ϕ)\) the sequence of symbols that \(ϕ\)
+contains and then check efficiently using structural induction, whether \(ϕ\) is
+a well-formed formula.
+
+Of course, all languages we will consider---and have considered so far---are
+computable. In fact, they are all either finite, or contain only finitely many
+non-constant symbols.
+
+\begin{defin}
+  Let \(\lang\) be a computable language and let \(i: \lang → ℕ\) be the
+  function used to Gödelize \(\lang\).
+  \begin{thmlist}
+    \item A model \(\mathfrak{A}\) in \(\lang\), with universe \(A \subseteq
+    ω\), is called \emph{computable} if \(A\) is decidable and there exist two
+    computable functions \(\mathtt{F}, \mathtt{C}\) and a decidable relation
+    \(\mathtt{R}\) such that
+    \[
+      \mathtt{F}(i(f), ⟨\seq[n_f]{α}⟩) = f^{\mathfrak{A}}(\seq[n_f]{α})
+    \]
+    holds for all function symbols \(f ∈ \mathcal{F}\) and all elements
+    \(\seq[n_f]{α} ∈ A\),
+    \[
+      \mathtt{R}(i(R), ⟨\seq[n_R]{α}⟩) \quad ⇔ \quad
+      R^{\mathfrak{A}}(\seq[n_R]{α})
+    \]
+    holds for all relation symbols \(R ∈ \mathcal{R}\) and all elements
+    \(\seq[n_R]{α} ∈ A\), and
+    \[
+      \mathtt{C}(i(c)) = c^{\mathfrak{A}}
+    \]
+    holds for all constant symbols \(c ∈ \mathcal{C}\).
+
+    \item A model \(\mathfrak{A}\) with universe \(A\) is called
+    \emph{efficiently presentable} if \(\mathfrak{A}\) is isomorphic to a
+    computable model with universe \(Ω_A ⊂ ω\) in the same languare.
+
+    \item A computable morphism between computable models is called
+    \emph{computable morphism}.
+  \end{thmlist}
+\end{defin}
+
+\begin{rem}
+  \begin{exlist}
+    \item An efficient presentation of a ring \(R\) is a ring-homomorphism
+    \(\enc{\cdot}: R → Ω_R\) of \(R\), where \(Ω_R \subseteq ω\) is decidable
+    and all operations of \(Ω_R\) are computable functions.
+
+    \item \Textcite{Stoltenberg1999} use a slightly modified definition of
+    computable rings. They consider \emph{effective enumerations} \(α_R : Ω_R →
+    R\), where \(Ω_R \subseteq ω\) is a computable \(\lang_{ring}\)-structure in
+    the sense of the definition above and \(α_R\) is a
+    \(\lang_{ring}\)-epimorphism. Then the ring \(R\) is called computable if
+    the equivalence relation
+    \[
+      x_1 \equiv_{α_R} x_2  ⇔ α_R(x_1) = α_R(x_2)
+    \]
+    on \(Ω_R\) is decidable for all pairs \(x_1, x_2 ∈ R\).
+
+    This definition can have slight technical advantages but note that in this
+    case \(Ω_R\) need not be a ring in the sense of abstract algebra, a
+    \(\lang_{ring}\)-structure in the sense of universal algebra suffices. Let
+    \(\lfloor α_R^{-1}(\set{η}) \rfloor ∈ Ω_R\) denote the smallest element of
+    \(α_R^{-1}(\set{η})\) in lexicographic order. By setting \(\enc{η} = \lfloor
+    α_R^{-1}(\set{η}) \rfloor\) for each \(η ∈ R\) one obtains a
+    ring-isomorphism \(R → Ω_R\) that gives rise to an efficient presentation of
+    \(R\). So \(R\) is computable in the sense of \textcite{Stoltenberg1999} if
+    and only if it is efficiently presentable in the sense of this thesis.
+  \end{exlist}
+\end{rem}
+
+The following alternative characterization of computably presentable models can
+easily be proven via structural induction.
+
+\begin{lem}
+  Let \(\lang\) be an at most countable language and \(\mathfrak{A}\) a model in
+  \(\lang\) with universe \(A\). Then the following are equivalent.
+  \begin{exlist}
+    \item \(\mathfrak{A}\) is computably presentable as a model in \(\lang\).
+    \item \(\mathfrak{A}\) is computably presentable as a model in \(\lang_A\).
+    \item The atomic diagram of \(\mathfrak{A}\) is decidable.
+  \end{exlist}
+\end{lem}
+
+\begin{exam}
+  \begin{exlist}
+    \item Every finite structure \(⟨S; f_1, …, f_n⟩\) with \(S \subseteq ω\) is
+    computable. The set \(S\) is decidable as it is finite and the domain of
+    each operation \(f_i\) for \(1 ≤ i ≤ n\) is finite as well. A Turing machine
+    computing \(f_i\) can just store the images of all elements in the domain in
+    memory.
+
+    \item In \cref{ex:tally encoding} the non-negative integer \(n\) was encoded
+    by a string of \(n\) consecutive \(\one\)-s. I have also already presented
+    the algorithm deciding \(\enc{ℕ} \subseteq ω\) under this encoding.
+    Considering \(ℕ\) as an \(\lang_{ring}\)-structure, one finds that the tally
+    encoding gives rise to an efficient presentation of \(ℕ\).
+
+    The constants \(0\) and \(1\) are trivially computable, by clearing the tape
+    in the first case and writing a single \(\one\) in the second case. Using
+    the pairing function of \cref{ex:tally pairing} the binary operations \(+\)
+    and \(\cdot\) are also easily seen to be computable. As for \(+\) the
+    algorithm takes the input
+    \[
+      \one … \one \zer \one … \one
+    \]
+    and replaces the \(\zer\)-symbol by an \(\one\) and deletes the rightmost
+    \(\one\).
+
+    \item \label{ex:polynomials are computable} If \(R\) is a computable
+    integral domain, then the polynomial algebras \(R[X_1, …, X_n]\) in
+    arbitrary many indeterminates and \(R[X_1, X_2, …]\) in countably many
+    indeterminates are efficiently presentable \(R\)-algebras.
+
+    A possible implementation starts by implementing the monoid \(⟨M; \cdot; X_i
+    \mid i ∈ ℕ⟩\) and extends it to the \(R\)-algebra \(R[X_1, X_2, …]\). Within
+    \(R[X_1, X_2, …]\) the domain of every subalgebra \(R[X_1, …, X_n]\) is
+    decidable and therefore the structure is computable. See the
+    textbook~\cite[Sec.~4.4]{Stoltenberg1999} for a more detailed discussion and
+    \cref{app:polynomials} for a sample implementation based on this idea.
+
+    \item\label{ex:Z is computable}
+    In general \(ℤ\) and every finitely generated free \(ℤ\)-algebra viewed as
+    \(\lang_{ring}\)-structure is efficiently presentable. As for integers, one
+    extends the presentation of \(ℕ\) by a sign-bit.
+
+    To present free \(ℤ\)-algebras one uses a basis say \(ζ_1, …, ζ_n\). Then
+    any element \(η\) can be encoded as an \(n\)-tuple of integers. Addition and
+    subtraction are defined coordinate-wise. To implement the multiplication one
+    stores the finite multiplication table of the basis elements
+    \[
+      \begin{array}{l @{\qquad} r r r r}
+        \toprule
+              & ζ_1   & ζ_2     & … & ζ_n     \\
+        \midrule
+        ζ_1 & ζ_1^2     & ζ_1 ζ_2 & … & ζ_1 ζ_n \\
+        ζ_2 & ζ_2 ζ_1   & ζ_2^2   & … & ζ_2 ζ_n \\
+        \vdots & \vdots &  \vdots & \ddots  & \vdots  \\
+         ζ_n & ζ_n ζ_1  & ζ_n ζ_2 & … & ζ_n^2\\
+        \bottomrule
+      \end{array}
+    \]
+    in memory and extends to all of \(\algint\) linearly.
+
+    \item \(⟨ℕ, ≤⟩\) is efficiently presentable using the tally encoding and
+    \(n ≤ m\) if and only if \(\max(n - m, 0) = 0\). So deciding \(n ≤ m\) boils
+    down to applying floor subtraction and checking whether the tape is empty.
+    Both operations are clearly computable.
+  \end{exlist}
+\end{exam}
+
+It is a natural question whether two efficient presentations of the same
+model are computably isomorphic, i.e.\ if there exists a computable
+isomorphism between them. We will see that the last example differs from the
+others in this regard.
+
+\begin{defin}
+  Let \(\lang\) be a computable language. A model is called \emph{computably
+  categorical} if it is efficiently presentable and every pair of efficient
+  presentations is computably isomorphic.
+\end{defin}
+
+In the case of rings of algebraic integers (see~\cref{sec:number theory}) the
+following theorem applies and assures us that the decidability of
+\textsc{H10} does in fact not depend on the encoding chosen. For a more detailed
+discussion of efficient representations of rings see the
+textbook~\cite{Stoltenberg1999}.
+
+\begin{thm}
+  Let \(R\) be a finitely generated, efficiently representable ring with unit.
+  Then \(R\) is computably categorical.
+\end{thm}
+
+I will not give a proof here but sketch how one proceeds in proving the
+theorem.
+
+Let \(ζ_1, …, ζ_n ∈ R\) be a set of generators of \(R\) over \(R\) and let
+\(φ_1: R → R_1, φ_2: R → R_2\) be the efficient representations of \(R\)
+together with the respective ring isomorphisms. Then \(φ_1(ζ_1), …, φ_1(ζ_n)\)
+generate \(R_1\) over \(R_1\) and \(φ_2(ζ_1), …, φ_2(ζ_n)\) generate \(R_2\)
+over \(R_2\). Storing these finitely many values of the isomorphism \(φ_2 \circ
+φ_1^{-1}\) in memory one can use the computabilty of \(R_1\) and \(R_2\)
+respectively to extend the partial mapping in the obvious way.
+
+As for the decidability of \textsc{H10} over some ring of algebraic integers
+\(\algint\) this means, that if we have two encodings of \(\algint\) that allow
+to evaluate polynomial expressions, then we can efficiently transform a
+statemant in one encoding into a statement in the other encoding and vice versa.
+Note however, that there are structures where the choice of presentation
+matters. In fact, \(⟨ℕ, ≤⟩\) is not computably categorical. A proof using the
+undecidability of the halting problem can be found in the
+paper~\cite[Prob.~1.6]{Shore}.
+
+\begin{lem}\label{lem:H10 is semi decidable}
+  Let \(R\) be a computable, commutative ring with one and \(\mathfrak{R}\) its
+  \(\lang_{ring}\)-structure. Then the Diophantine theory
+  \(\mathtt{H10}(\mathfrak{R})\) is semi-decidable.
+\end{lem}
+\begin{proof}
+  Since \(R\) is computable, \(\lang_{R}\) is computable and as a consequence
+  the set of (Gödel numbers of) fully existentially quantified atomic
+  \(\lang_{R}\)-formulae is decidable.
+
+  Let now \(ϕ = \mathtt{∃ x_1: … : ∃ x_n :} ψ(\mathtt{\seq{x}})\) be a fully
+  existentially quantified \(\lang_{R}\)-formula. Then by \cref{thm:Diophantine
+  theory} there exists a polynomial \(p ∈ R[\seq{X}]\) such that for all
+  \(\seq{α} ∈ R\) we have that
+  \[
+    \mathfrak{R} \models ψ(\seq{α}) \quad ⇔ \quad
+    p(\seq{α}) = 0.
+  \]
+  In fact, the polynomial \(p\) can be obtained from the Gödel number \(\gn(ϕ)\)
+  efficiently. Thus, the relation \(H ⊂ R^2\) defined by
+  \[
+    H(\gn(ϕ), ⟨\seq{α}⟩) \quad :⇔ \quad
+    p(\seq{α}) = 0
+  \]
+  is computable and the Diophantine theory \(\mathtt{H10}(\mathfrak{R})\) is
+  semi-decidable by \cref{pro:characterizations of ce sets}.
+\end{proof}
