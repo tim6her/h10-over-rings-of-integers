@@ -1140,7 +1140,23 @@ textbook~\cite{Stoltenberg1999}.
 As for the decidability of \textsc{H10} over some ring of algebraic integers
 \(\algint\) this means, that if we have two encodings of \(\algint\) that allow
 to evaluate polynomial expressions, then we can efficiently transform a
-statemant in one encoding into a statement in the other encoding and vice versa.
+statement in one encoding into a statement in the other encoding and vice versa.
+
+\begin{exam}\label{ex:N is computably categorical}
+  Another example of a computably categorical structure is \(\struc{N}\), the
+  \(\lang_{ring}\)-structure of \(ℕ\). To see this let \(\struc{N}_1\) and
+  \(\struc{N}_2\) be two computable representations of \(ℕ\). A computable
+  isomorphism \(f\) between the two structures can be obtained by defining
+  \(f(\mathtt{0}^{\struc{N}_1}) := \mathtt{0}^{\struc{N}_2}\) and then
+  recursively
+  \[
+    f(\mathtt{c_{n + 1}}^{\struc{N}_1}) := f(\mathtt{c_n}^{\struc{N}_1}) +
+    \mathtt{1}^{\struc{N}_2},
+  \]
+  where \(\mathtt{c_{n}}\) is as before the constant representing the integer
+  \(n\).
+\end{exam}
+
 Note however, that there are structures where the choice of presentation
 matters. In fact, \(⟨ℕ, ≤⟩\) is not computably categorical. A proof using the
 undecidability of the halting problem can be found in the

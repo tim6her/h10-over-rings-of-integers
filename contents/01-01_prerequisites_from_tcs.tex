@@ -698,23 +698,45 @@ sets.
   \(\mathbb{A}_{check1}\) does halt on \(x\) if and only if \(x ∈ Q\).
 
   \emph{(ii) \(⇒\) (iii):}
-  %TODO
-  \todo{finish this proof}
+  Let \(\mathbb{A}\) be a Turing machine, that halts on \(x ∈ ω\) if and only if
+  \(x ∈ Q\). We construct a Turing machine \(\mathbb{B}\) that outputs \(x\)
+  whenever \(\mathbb{A}\) halts on \(x\). Then \(Q\) is the range of the
+  computable function computed by \(\mathbb{B}\). Machine \(\mathbb{B}\) will
+  perform the following three operations.
+
+  Firstly, it transforms the string \(x = b_1…b_n ∈ ω\) into the tape content
+  \[
+    \sta b_1 b_1 … b_n b_n \emp ….
+  \]
+  In a second step, the machine checks by a modification of Turing machine
+  \(\mathbb{A}\) that only uses cells with an even index,  wether cells with
+  even index correspond to an element in \(Q\). If \(x\) was indeed contained in
+  \(Q\), then the machine will stop after finitely many steps and can transform
+  the tape content back to
+  \[
+    \sta b_1 … b_n \emp.
+  \]
+  This can be done by a slight modification of the machine computing the first
+  projection in \cref{ex:total pairing}.
+
+  If on the other hand \(x\) is not contained in \(Q\), then in the second step
+  of the computation machine will not stop. Thus \(x\) is not in the image of
+  the function computed by \(\mathbb{B}\).
 
   \emph{(iii) \(⇒\) (iv):} Let \(\mathbb{A}\) be a Turing machine computing the
-  function, whose domain is \(Q\). For each integer \(n ∈ ℕ\), I denote by
-  \(\mathbb{A}_n\) the set of all strings \(x := b_1…b_k ∈ ω\) such that \(k ≤
-  n\) and \(\mathbb{A}\) halts on \(x\) in at most \(n\) steps of the
-  computation.
+  function with image \(Q\). For each integer \(n ∈ ℕ\), I denote by
+  \(\mathbb{A}_n\) the set of all strings \(y := b_1…b_k ∈ ω\) such that \(k ≤
+  n\) and there exists a string \(x := c_1…c_ℓ ∈ ω\) with the properties that
+  \(ℓ ≤ n\) plus machine \(\mathbb{A}\) halts on \(x\) and outputs \(y\) in at
+  most \(n\) steps of the computation.
 
   As \(|\mathbb{A}_n| ≤ 2^n\) is finite for all \(n ∈ ℕ\), the sets
   \(\mathbb{A}_n\) are decidable by \cref{ex:finite problems are decidable}.
   Using induction on \(n\), we see that the relation
   \[
-    R(x, \enc{n}) \quad :⇔ \quad x ∈ \mathbb{A}_n
+    R(y, \enc{n}) \quad :⇔ \quad y ∈ \mathbb{A}_n
   \]
-  is decidable by continuing the execution of \(\mathbb{A}\) for one more step.
-  Finally, we obtain
+  is decidable. Finally, we obtain
   \[
     x ∈ Q \quad ⇔ \quad ∃ y ∈ ω: R(x, y),
   \]
@@ -729,6 +751,11 @@ sets.
 \lstinputlisting[float, frame=tb,
                  caption=A Turing machine that halts and accepts only on input \(\one\),
                  label=lst:check one]{./listings/check1.hs}
+
+\begin{rem}
+  The second equivalent property in the proposition above is the reason why
+  semi-decidable sets are also called \emph{listable} sets.
+\end{rem}
 
 The following proposition---which is sometimes referred to as \emph{Post's
 theorem}---is intuitively clear. It states that if we have an algorithm
