@@ -26,7 +26,7 @@ We start with a series of definitions and remind the reader on some important
 results from algebraic number theory and commutative algebra. But at first let
 us fix an important notation.
 
-Let \(R\) and \(S\) be commutative rings with one. Let \(φ: R → S\) be a
+Let \(R\) and \(S\) be commutative rings with unity. Let \(φ: R → S\) be a
 ring-homomorphism mapping \(1_R\) to \(1_S\), then \(S\) is called an
 \emph{\(R\)-algebra} and we write \(a α\) as a short form for \(φ(a) \cdot α\)
 (\(a ∈ R\) and \(α ∈ S\)). We are especially interested in the case
@@ -70,7 +70,7 @@ pane \(ℂ\).
 \end{exam}
 
 \begin{defin}
-  Let \(R \subseteq S\) be commutative rings with one. Then \(α ∈ S\) is called
+  Let \(R \subseteq S\) be commutative rings with unity. Then \(α ∈ S\) is called
   \emph{integral} over \(R\) if it is the root of a monic polynomial with
   coefficients in \(R\) i.e.\ if \(α\) satisfies an equation of the form
   \[
@@ -85,14 +85,14 @@ considered sets is needed. Thus, the following theorem, implying that if \(α, �
 ∈ S\) are algebraic over \(S\), so are their sum and product, is very desirable.
 
 \begin{thm}\label{thm:integral closure}
-  Let \(R \subseteq S\) be commutative rings with one. Then the elements of
+  Let \(R \subseteq S\) be commutative rings with unity. Then the elements of
   \(S\) that are integral over \(R\) form a subring of \(S\).
 \end{thm}
 
 Dedekind gave a proof of this theorem using the following proposition.
 
 \begin{pro}\label{pro:characterization of integral elements}
-  Let \(R \subseteq S\) be commutative rings with one. Then \(α ∈ S\) is
+  Let \(R \subseteq S\) be commutative rings with unity. Then \(α ∈ S\) is
   integral over \(R\) if and only if there exists a finitely generated
   \(R\)-module \(M \subseteq S\) such that \(αM \subseteq M\), in fact \(M =
   R[α]\) can be chosen.
@@ -146,7 +146,7 @@ that being integral is a transitive relation on rings. More formally, we have
 the following proposition.
 
 \begin{pro}\label{pro:being integral is transitive}
-  Let \(R \subseteq S \subseteq T\) be commutative rings with one. If \(S\) is
+  Let \(R \subseteq S \subseteq T\) be commutative rings with unity. If \(S\) is
   integral over \(R\) and \(α ∈ T\) is integral over \(S\), then \(α\) is
   integral over \(R\).
 \end{pro}
@@ -199,7 +199,8 @@ Missing facts
   \item\label{cor:Lagranges four square theorem}
   Lagrange's four-square theorem. A full proof of the claim using
   \cref{thm:Minkowski} is given in \cite[Remark 4.20]{Milne2017}.
-  \item Integral bases
+  \item\label{ex:O K is computable}
+  Integral bases and computability
   \item normal extension/closure
   \item Galois group acts transitively on \(μ_a\).
   \item self-conjugate elements

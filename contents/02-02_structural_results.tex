@@ -10,161 +10,102 @@
 %      ██    ██    ██   ██ ██    ██ ██         ██        ██   ██ ██           ██
 % ███████    ██    ██   ██  ██████   ██████    ██ ██     ██   ██ ███████ ███████
 
-%  #######
-% ##     ##
-%        ##
-%  #######
-% ##
-% ##
-% #########
+Before tackling Hilbert's tenth problem over selected rings of algebraic
+integers, I list some structural results and methods used within the subsequent
+proofs. For further structural results see the study~\cite{Shlapentokh2000}.
 
-Before tackling \textsc{H10} over selected rings of algebraic integers, I list
-some structural results and methods used within the subsequent proofs. For
-further structural results see the study~\cite{Shlapentokh2000}.
-
-\begin{lem}\label{lem:intersections and unions}
-    Let \(R\) be an integral domain, whose quotient field \(\Quot R\) is not
-    algebraically closed. Then if \(S_1, S_2 \subseteq R\) are Diophantine so are
-    \[
-      S_1 ∩ S_2 \quad \text{and} \quad S_1 ∪ S_2.
-    \]
-
-    If \(R\) is computable, then there is an algorithm that derives the defining
-    polynomial equations for union and intersection efficiently from the
-    equations of \(S_1\) and \(S_2\).
-\end{lem}
-
-In other words, conjunctions and disjunctions of existentially quantified atomic
-formulas can be replaced by a single existentially quantified atomic formula. Or
-again put differently, conjunction \(∧\) and disjunction \(∨\) are
-\(Σ_{ring}^*\)-definable, efficiently computable predicates.
-
-\begin{proof}
-Let \(p(\mathbf{X}, \mathbf{Y}) ∈ R[X_1, …, X_{n_1}, Y_1, …, Y_{n_2}]\) and
-\(q(\mathbf{X}, \mathbf{Y}) ∈ R[X_1, …, X_{n_1}, Y_1, …, Y_{n_2}]\) give
-Diophantine definitions\footnote{By inserting dummy indeterminates we may whish
-that both polynomials have the same number of indeterminates.} of \(S_1\) and
-\(S_2\) resp. then
-\[
-  h := p q
-\]
-vanishes if and only if \(p\) or \(q\) vanishes. As a consequence, the
-following identity gives a Diophantine definition of the union.
-
-\[ S_1 ∪ S_2 = \lbrace \mathbf{α} \mid ∃ \mathbf{β} \; h(\mathbf{α}, \mathbf{β}) = 0 \rbrace. \]
-
-To prove the claim for intersections of Diophantine sets, let
-\[
-  h(T) = a_m T^m + … + a_1 T + a_0 ∈ R[T]
-\]
-be a polynomial of degree \(m > 0\) without roots in \(\Quot R\). Then
-\(\overline h(X) = X^m h(X^{-1})\) does not have roots in \(\Quot R\) either. As if
-\(α ∈ \Quot R\) is a root of \(\overline h\) then
-\[
-  0 = \overline h(α) = a_m + a_{m-1} α + a_1 α^{,-1} + a_0 α^m
-\]
-and \(α = 0\) implies \(a_m = 0\). Otherwise, \(α^{-1}\) is a root of
-\(α^m h\) and therefore of \(h\).
-
-Now consider
-\[
-  H(\mathbf{X}, \mathbf{Y}) = \sum_{i=0}^m a_i p(\mathbf{X}, \mathbf{Y})^i q(\mathbf{X}, \mathbf{Y})^{m - i}.
-\]
-I will prove for all \(\mathbf{α} ∈ R^{n_1}\) and \(\mathbf{β} ∈ R^{n_2}\) the
-following equivalence, showing that \(H\) witnesses that \(S_1 ∩ S_2\) is
-Diophantine.
-
-\[ H(\mathbf α, \mathbf β) = 0 \Leftrightarrow p(\mathbf α, \mathbf β) = 0 ∧ q(\mathbf α, \mathbf β) = 0 \]
-
-If \(H(\mathbf α, \mathbf β) = 0\) but \(p(\mathbf α, \mathbf β) ≠ 0\) then
-\[
-  0 = \frac H {f^n} (\mathbf α, \mathbf β) = \overline h \left(\frac qp (\mathbf α, \mathbf β) \right),
-\]
-which is a contradiction to \(\overline h\) not having roots. If, on the
-other hand, \(H(\mathbf α, \mathbf β) = 0\) but \(q(\mathbf α, \mathbf β) ≠ 0\)
-one finds
-\[
-  0 = \frac H {g^n}(\mathbf α, \mathbf β) = h \left( \frac qp (\mathbf α, \mathbf β) \right).
-\]
-
-The converse direction is clear as the powers of \(p\) and \(q\) sum up
-to \(n\) for each summand in the definition of \(H\).
-
-To prove the effectiveness of these methods one observes, that the defining
-equations contain only polynomials in \(p\) and \(q\). \Cref{ex:polynomials are
-computable} implies that the polynomial equations for union and intersection of
-Diophantine sets can be computed from the polynomials \(p\) and \(q\).
-\end{proof}
-
-Using induction and the lemma above, one immediately obtains that arbitrary
-finite unions and intersections of Diophantine sets are Diophantine.
-
-An important corollary of the lemma above is---as was remarked before---that
-\textsc{H10} over \(\algint\) is decidable if and only if \(\mathtt{Th}_{∃+}
-(\modalgint)\) is decidable. Indeed, if one has a Turing machine that decides
-whether a single polynomial over \(\algint\) has roots in \(\algint\). Then upon
-using the algorithm described in \cref{lem:intersections and unions} the same
-Turing machine can decide whether a collection of polynomial equations can be
-satisfied simultaneously.
-
-Note that the algorithm presented above does not depend on the initial equations
-\(p\) and \(q\) but it does depend on the integral domain \(R\). As we might need
-different polynomials \(h\) without roots for each ring \(R\) in the case of
-conjunctions.
-
-\textcite{Shlapentokh2000} notes that the following lemma and its corollary are
-`the only tool successfully used to show the undecidability of \textsc{H10}
-for various subrings of the number fields' They explain the usefulness
-of Diopahtine definitions.
-
-\begin{lem} \label{lem:moving up}
-Let \(R_1 \subseteq R_2\) be computable rings and integral domains such
-that the quotient field of \(R_2\) is not algebraically closed. If \textsc{H10}
-is undecidable over \(R_1\) and \(R_1\) has a Diophantine definition over
-\(R_2\), then \textsc{H10} in undecidable over \(R_2\).
+\begin{lem}\label{lem:moving up}
+Let \(R_1 \subseteq R_2\) be integral domains such that the quotient field of
+\(R_2\) is not algebraically closed. If \(S ⊂ R_1^m\) is Diophantine over
+\(R_1\) and \(R_1\) has a Diophantine definition over \(R_2\), then \(S\) is
+Diophantine over \(R_2\). If \(R_2\) is computable, then the defining equation
+of \(S\) over \(R_2\) can be obtained efficiently from the equation over
+\(R_1\).
 \end{lem}
 \begin{proof}
-Let \(f(X, Y_1, …, Y_n)\) be a Diophantine definition of \(R_1\) over \(R_2\) and
-assume that \textsc{H10} is decidable over \(R_2\). We prove that \textsc{H10} is
-decidable over \(R_1\) as well, contradicting our assumption.
-
-Let \(S \subseteq R_1^m\) be Diophantine over \(R_1\). Then there exists some
-polynomial
-\[
-  p ∈ R_1[X_1, …, X_m, Y_1, …, Y_ℓ]
-\]
-witnessing that \(S\) is
-Diophantine. To make notation clearer, I assume \(ℓ = m = n = 1\). The general
-case follows completely analogously. Then
-\[
-  S = \left\lbrace  α ∈ R_2 \;\middle|\; ∃β, γ_1, γ_2 ∈ R_2 p(α, β) = 0 ∧ f(α, γ_1) = 0 ∧ f(β, γ_2) = 0\right\rbrace
-\]
-is a Diophantine definition of \(S\) over \(R_2\). If \(\mathfrak R_1\) is the
-\(Σ_{ring}^*\)-structure of \(R_1\) and \(\mathfrak R_2\) the respective
-structure of \(R_2\), this equation can be restated as
-\begin{align*}
-  α ∈ S &⇔ \mathfrak R_1 \models \mathtt{∃ x \; p(α, x) \doteq 0} ⇔ \\
-  &⇔\mathfrak R_2 \models \mathtt{∃ x ∃ y_1 ∃ y_2 \; p(α, x) \doteq 0 ∧ f(α, y_1) \doteq 0 ∧ f(x, y_2) \doteq 0},
-\end{align*}
-where the latter sentence can clearly be obtained efficiently from the first one
-again by an algorithm depending on \(R_1\) and \(R_2\) but not on \(p\). Therefore,
-the decidability of \(\mathtt{Th}_{∃+}(\mathfrak R_2)\) implies the decidability
-of \(\mathtt{Th}_{∃+}(\mathfrak R_1)\) by first applying the transformation of
-sentences and then the deciding algorithm in \(R_2\).
+  Let \(f(X, Y_1, …, Y_n)\) give rise to a Diophantine definition of \(R_1\)
+  over \(R_2\) and let \(S \subseteq R_1^m\) be Diophantine over \(R_1\). Then
+  there exists some polynomial
+  \[
+    p ∈ R_1[X_1, …, X_m, Y_1, …, Y_ℓ]
+  \]
+  witnessing that \(S\) is Diophantine. To make notation clearer, I assume \(ℓ =
+  m = n = 1\). The general case follows completely analogously. Then
+  \[
+    S = \left\lbrace  α ∈ R_2 \;\middle|\;
+    ∃β, γ_1, γ_2 ∈ R_2 p(α, β) = 0 ∧ f(α, γ_1) = 0 ∧ f(β, γ_2) = 0\right\rbrace
+  \]
+  is a Diophantine definition of \(S\) over \(R_2\).
 \end{proof}
 
-The subsequent corollary follows directly from the lemma above and the
-undecidability of Hilbert's tenth problem over \(ℤ\).
+\textcite{Shlapentokh2000} notes that the previous lemma and its corollary are
+\enquote{the only tool\textins{s} successfully used to show the undecidability
+of \textsc{H10} for various subrings of the number fields}. They explain the
+usefulness of Diophantine definitions.
 
-\begin{cor}
+\begin{cor}\label{cor:Diophantine theory is undecidable}
   Let \(R \supseteq ℤ\) be a computable integral domain, whose quotient field is
-  not algebraically closed. If \(ℤ\) has a Diophantine definition over \(R\) then
-  \textsc{H10} is not decidable over \(R\).
+  not algebraically closed. If \(ℤ\) has a Diophantine definition over \(R\)
+  then the Diophantine theory \(\mathtt{H10}(\struc{R})\) of the rings-structure
+  \(\struc{R}\) of \(R\) is undecidable.
 \end{cor}
+\begin{proof}
+  Since the non-negative integers are Diophantine over \(ℤ\) and \(ℤ\) is
+  Diophantine over \(R\), we know by the lemma that \(ℕ\) is Diophantine over
+  \(R\) and thus \(ℕ ⊂ R\) is semi-decidable. However, the complement \(ℤ
+  \setminus ℕ\) is Diophantine over \(ℤ\) as well, and thus \(ℕ ⊂ R\) is
+  decidable.
+
+  As in the proof of \cref{cor:H10 over Z}, we can embed the halting set
+  \(\mathcal{K} ⊂ ω\) by a computable bijection \(f: ω → ℕ ⊂ R\). Again,
+  \(f(\mathcal{K})\) is semi-decidable and thus Diophantine over the rational
+  integers \(ℤ\). By the lemma \(f(\mathcal{K})\) is Diophantine over \(R\).
+  Thus, there exists a polynomial \(p_{\mathcal{K}} ∈ R[X, \seq[m]{Y}]\) such
+  that
+  \begin{equation}\label{eq:halting set is Diophantine}
+    x ∈ \mathcal{K} \quad ⇔ \quad
+    ∃ \seq[m]{y} ∈ R : p_{\mathcal{K}}(f(x), \seq[m]{y}) = 0,
+  \end{equation}
+  and as before the computable function mapping \(x ∈ ω\) to the Gödelization of
+  the equation above witnesses many-one reducibility of \(\mathcal{K}\) to
+  \(\mathtt{H10}(\struc{R})\).
+\end{proof}
 
 Note that this corollary applies to \(\algint\) for each algebraic number field
-\(K\) since the quotient field of \(\algint\) is (isomorphic to) \(K\). In fact, one
-can even strengthen the result of the corollary in this case \cite[cf.][§~11]{Davis1976}.
+\(K\) since the quotient field of \(\algint\) is (isomorphic to) \(K\). In fact,
+in the case of algebraic integers one can prove that if \(ℤ\) is Diophantine
+over \(\algint\), then the purely Diophantine theory of \(\algint\) is equally
+hard to decide as the Diophantine theory and the halting set.
+
+\begin{cor}
+  Let \(K\) be a number field such that the rational integers \(ℤ\) are
+  Diophantine over its ring of algebraic integers \(\algint\). Then the halting
+  set \(\mathcal{K}\) is many one reducible to the purely Diophantine theory
+  \(\mathtt{H10}^*(\struc{O}_K)\) of \(\algint\).
+\end{cor}
+\begin{proof}
+  As in the proof of \cref{cor:Diophantine theory is undecidable} one finds a
+  computable bijection \(f: ω → ℕ ⊂ \algint\) and considers \(f(\mathcal{K})\).
+  Since \(ℤ\) is fixed point-wise by all automorphisms of \(K\), in particular
+  \(f(\mathcal{K})\) is fixed point-wise, and by \cref{thm:purely Diophantine
+  sets} the set \(f(\mathcal{K})\) is in fact purely Diophantine.
+
+  This means that the polynomial \(p_{\mathcal{K}}\) in \eqref{eq:halting set is
+  Diophantine} can be chosen to have rational integral coefficients. Now
+  since \(f(\mathcal{K})\) is a subset of \(ℕ\), we deduce that the partially
+  evaluated polynomial
+  \[
+    p_{\mathcal{K}}(f(x), \seq[m]{Y})
+  \]
+  still has rational integral coefficents. It follows that the Gödelization of
+  \eqref{eq:halting set is Diophantine} is contained in the theory
+  \(\mathtt{H10}^*(\struc{O}_K)\) if and only if \(x ∈ \mathcal{K}\), which
+  concludes the proof.
+\end{proof}
+
+One can even strengthen the result of the corollary to obtain the full analogue
+of the \textsc{DPRM}-theorem~(\ref{thm:DPRM}) for rings of algebraic integers.
+This was shown by \textcite[§~11]{Davis1976}.
 
 \begin{thm}\label{thm:CE sets are Diophantine}
   Let \(K\) be an algebraic number field and \(\algint\) its ring of
@@ -173,14 +114,15 @@ can even strengthen the result of the corollary in this case \cite[cf.][§~11]{D
   \(\algint\).
 \end{thm}
 \begin{proof}
-  As the \(Σ_{ring}^*\)-structure of \(\algint\) is computable, the
+  As the \(\lang_{\algint}\)-structure of \(\algint\) is computable, the
   interpretations of the constants \(\mathtt{-1, 0, 1}\) and addition are
   computable. As a consequence, the surjective function \(f: ω → ℤ \subseteq
   \algint\) defined by
   \[
-    f(n) = \Bigg\lbrace\begin{array}{l l}
+    f(\enc{n}) = \Bigg\lbrace\begin{array}{l l}
              0 \overbrace{+ 1 … + 1}^{k\text{-times}} & \text{if } n = 2k\\
-             0 \underbrace{+ (-1) … + (-1)}_{k\text{-times}} & \text{if } n = 2k + 1
+             0 \underbrace{+ (-1) … + (-1)}_{k\text{-times}} &
+                \text{if } n = 2k + 1
            \end{array}
   \]
   is computable and \(ℤ\) is semi-decidable. Thus, it suffices to prove that if
@@ -191,19 +133,24 @@ can even strengthen the result of the corollary in this case \cite[cf.][§~11]{D
   be an integral basis for \(\algint\) over \(ℤ\). We define the set of all
   coefficients of elements in \(A\) by
   \[
-    R := \set{a_{11}, …, a_{1n}, …, a_{k1}, …, a_{kn} ∈ ℤ \,\middle\vert\,
+    S := \set{(a_{11}, …, a_{1n}, …, a_{k1}, …, a_{kn}) ∈ ℤ^{kn}
+              \,\middle\vert\,
               \left(\sum_{i=1}^n a_{ij} ζ_i\right)_{1 ≤ j ≤ k} ∈ A}.
   \]
-  As \(A\) is semi-decidable so is \(R\). By the DPRM theorem\todo{reference it} \(R\) is Diophantine over \(ℤ\) i.e.\ there exists a polynomial \(p\) with coefficients in \(ℤ\) such that
+  As \(A\) is semi-decidable so is \(S\). Note that this is exactly how we
+  efficiently represented \(\algint\) in \cref{ex:O K is computable}. By the
+  \textsc{DPRM}-theorem~(\ref{thm:DPRM}) the set \(S\) is Diophantine over
+  \(ℤ\), i.e.\ there exists a polynomial \(p\) with coefficients in \(ℤ\) such
+  that
   \begin{align*}
-    &a_{11}, …, a_{1n}, …, a_{k1}, …, a_{kn} ∈ R ⇔\\
+    &(a_{11}, …, a_{1n}, …, a_{k1}, …, a_{kn}) ∈ R ⇔\\
     &\quad ∃ \seq[m]{β} ∈ ℤ: p(a_{11}, …, a_{1n}, …, a_{k1}, …, a_{kn}, \seq[m]{β}) = 0.
   \end{align*}
   It immediately follows that
   \begin{align*}
-    &\seq[k]{α} ∈ A ⇔\\
-    & \quad ∃ a_{11}, …, a_{1n}, …, a_{k1}, …, a_{kn} ∈ ℤ\,
-      ∃ \seq[m]{β} ∈ ℤ :\\
+    &(\seq[k]{α}) ∈ A ⇔\\
+    & \quad ∃ a_{11}, …, a_{1n}, …, a_{k1}, …, a_{kn},\,
+      \seq[m]{β} ∈ ℤ :\\
     & \quad \begin{cases}
               p(a_{11}, …, a_{1n}, …, a_{k1}, …, a_{kn}, \seq[m]{y}) = 0\\
               α_1 = a_{11} ζ_1 + … + a_{1n} ζ_n\\
@@ -212,9 +159,9 @@ can even strengthen the result of the corollary in this case \cite[cf.][§~11]{D
             \end{cases}
   \end{align*}
   By assumption there exists a Diophantine definition of \(ℤ\) over \(\algint\).
-  So by the procedure described in the proof of \cref{lem:moving up}, one can
-  translate the above conditions into a Diophantine definition of \(A\) over
-  \(\algint\).
+  So by the procedure described in the proof of \cref{cor:Diophantine theory is
+  undecidable}, one can translate the above conditions into a Diophantine
+  definition of \(A\) over \(\algint\).
 \end{proof}
 
 In the following I will present an important tool in proving that a field

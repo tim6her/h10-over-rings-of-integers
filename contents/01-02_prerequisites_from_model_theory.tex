@@ -68,7 +68,7 @@ and thereby drop the arity function from the notation.
     \(\mathtt{{}^{-1}}\) is an unary function symbol, and \(\mathtt{e}\) is a
     constant; and
 
-    \item the language of rings with one \(\lang_{ring} = \set{\mathtt{+, -,
+    \item the language of rings with unity \(\lang_{ring} = \set{\mathtt{+, -,
     \cdot; 0, 1}}\), where \(\mathtt{+, -}\), and \(\mathtt{\cdot}\) are binary
     function symbols and \(\mathtt{0, 1}\) are constants.
   \end{exlist}
@@ -120,7 +120,7 @@ formally, we have the following definition.
     \(\mathbf{0}: ℕ → ℕ\) is defined by \(n ↦ 0\) for all \(n ∈ ℕ\), is an
     \(\lang_{group}\)-structure as well.
 
-    \item Let \(R\) be a ring with one, then \(\mathfrak{R} := ⟨R;
+    \item Let \(R\) be a ring with unity, then \(\mathfrak{R} := ⟨R;
     \mathtt{+^{\mathfrak{R}}, -^{\mathfrak{R}}, \cdot^{\mathfrak{R}};
     0^{\mathfrak{R}}, 1^{\mathfrak{R}}}⟩\), where \(\mathtt{+^{\mathfrak{R}},
     -^{\mathfrak{R}}, \cdot^{\mathfrak{R}}}\) are the respective binary
@@ -214,7 +214,7 @@ functions of \(\mathfrak{A}\) is sometimes called the \emph{function clone} of
 \(\mathfrak{A}\).
 
 \begin{lem}\label{lem:terms of rings are polynomials}
-  Let \(R\) be a ring with one and \(\mathfrak{R}\) its associated
+  Let \(R\) be a ring with unity and \(\mathfrak{R}\) its associated
   \(\lang_{ring}\)-structure. The set of term functions of \(\mathfrak{R}\) is
   the set of polynomial functions with integral coefficients \(ℤ[X_1, X_2, …]\).
 \end{lem}
@@ -425,7 +425,7 @@ A formula without free variables is called a \emph{sentence}. In a fixed model a
 sentence is either true or false. This follows easily form the definition of
 truth in a model.
 
-\subsection{Morphisms, theories, and decidability}
+\subsection{Morphisms, theories, and decidability}\label{sec:theories}
 % ████████ ██   ██ ███████  ██████  ██████  ██ ███████ ███████
 %    ██    ██   ██ ██      ██    ██ ██   ██ ██ ██      ██
 %    ██    ███████ █████   ██    ██ ██████  ██ █████   ███████
@@ -515,7 +515,7 @@ formally, one defines a morphism as follows.
      \mathtt{∀ x_1 } & \mathtt{: x_1^{-1} \cdot x_1 \doteq e}
   \end{align*}
   characterize groups completely. Another example of a universal variety are
-  rings with one. Note however, that fields do not form a universal variety with
+  rings with unity. Note however, that fields do not form a universal variety with
   respect to \(\lang_{ring}\), as we demand that elements unequal to \(0\) are
   invertible which can be expressed by the sentence
   \[
@@ -525,7 +525,7 @@ formally, one defines a morphism as follows.
 \end{exam}
 
 Universal varieties are useful, as substructures can be characterized by
-embeddings, e.g.\ we have that a subset \(S\) of a ring with one \(R\) is a
+embeddings, e.g.\ we have that a subset \(S\) of a ring with unity \(R\) is a
 sub-ring if and only if \(S\) carries an \(\lang_{ring}\)-structure
 \(\mathfrak{S}\) such that the embedding
 \[
@@ -687,11 +687,11 @@ interpreting \(\mathtt{c}_a^{\mathfrak{A}} := a\) for all \(a ∈ A\).
   \end{thmlist}
 \end{defin}
 
-Of special interest to us is the Diophantine theory of rings with one. The name
+Of special interest to us is the Diophantine theory of rings with unity. The name
 can be justified by the following lemma.
 
 \begin{thm}\label{thm:Diophantine theory}
-  Let \(R\) be a ring with one and let \(\mathfrak{R}\) be its
+  Let \(R\) be a ring with unity and let \(\mathfrak{R}\) be its
   \(\lang_{ring}\)-structure.
   \begin{thmlist}
     \item The set of term functions associated to \(\lang_R\)-terms is the set
@@ -898,10 +898,10 @@ encoding}.
 \end{defin}
 
 Note that we can only change the function \(i\) described in the definition of
-the Gödelization. Thus, we can rearrange the symbols of our language. In this
-view, a language \(\lang = \set{f ∈ \mathcal{F}; R ∈ \mathcal{R}; c ∈
-\mathcal{C}}\) is computable if we can encode its basic symbols in such a way
-that
+the Gödelization. Thus, we can rearrange the symbols of our language to simplify
+our computations. In this view, a language \(\lang = \set{f ∈ \mathcal{F}; R ∈
+\mathcal{R}; c ∈ \mathcal{C}}\) is computable if we can encode its basic symbols
+in such a way that
 \begin{enumerate}
   \item the sets \(i(\mathcal{F})\), \(i(\mathcal{R})\), and
   \(i(\mathcal{C})\) are decidable; and
@@ -917,6 +917,12 @@ a well-formed formula.
 Of course, all languages we will consider---and have considered so far---are
 computable. In fact, they are all either finite, or contain only finitely many
 non-constant symbols.
+
+\begin{lem}\label{lem:properties of Goedelization}
+  Properties of the Gödelization
+  %TODO
+  \todo{properties of Gödelization}
+\end{lem}
 
 \begin{defin}
   Let \(\lang\) be a computable language and let \(i: \lang → ℕ\) be the
@@ -980,17 +986,17 @@ non-constant symbols.
   \end{exlist}
 \end{rem}
 
-The following alternative characterization of computably presentable models can
+The following alternative characterization of efficiently presentable models can
 easily be proven via structural induction.
 
 \begin{lem}
   Let \(\lang\) be an at most countable language and \(\mathfrak{A}\) a model in
   \(\lang\) with universe \(A\). Then the following are equivalent.
-  \begin{exlist}
-    \item \(\mathfrak{A}\) is computably presentable as a model in \(\lang\).
-    \item \(\mathfrak{A}\) is computably presentable as a model in \(\lang_A\).
+  \begin{thmlist}
+    \item \(\mathfrak{A}\) is efficiently presentable as a model in \(\lang\).
+    \item \(\mathfrak{A}\) is efficiently presentable as a model in \(\lang_A\).
     \item The atomic diagram of \(\mathfrak{A}\) is decidable.
-  \end{exlist}
+  \end{thmlist}
 \end{lem}
 
 \begin{exam}
@@ -1060,10 +1066,25 @@ easily be proven via structural induction.
   \end{exlist}
 \end{exam}
 
-It is a natural question whether two efficient presentations of the same
-model are computably isomorphic, i.e.\ if there exists a computable
-isomorphism between them. We will see that the last example differs from the
-others in this regard.
+It is a natural question whether two efficient presentations of the same model
+are computably isomorphic, i.e.\ if there exists a computable isomorphism
+between them. We will see that the last example differs from the others in this
+regard. But before studying computable isomorphisms we need a lemma.
+
+\begin{lem}
+  Let \(f: Q → Q'\) be a computable bijection between the problems \(Q, Q' ⊂
+  ω\). Then the inverse mapping \(f^{-1}: Q' → Q\) is computable as well.
+\end{lem}
+\begin{proof}
+  Let \(x ∈ Q'\) be given. To find \(f^{-1}(x)\) one lists all elements of \(ω\)
+  and checks for every \(y ∈ ω\) wether \(y\) is contained in \(Q\). Since \(Q\)
+  is decidable, this check can be carried out efficiently. If \(y\) is not
+  contained in \(Q\), try the next element in \(ω\). Otherwise, we compute
+  \(f(y)\) and check wether \(f(y) = x\) holds. In this case, we set
+  \(f^{-1}(x) := y\) and are finished. If \(f(y)\) does not equal \(x\) we take
+  the next element of \(ω\) and start over. The process will stop at some point
+  as \(f\) is surjective.
+\end{proof}
 
 \begin{defin}
   Let \(\lang\) be a computable language. A model is called \emph{computably
@@ -1103,7 +1124,7 @@ undecidability of the halting problem can be found in the
 paper~\cite[Prob.~1.6]{Shore}.
 
 \begin{lem}\label{lem:H10 is semi decidable}
-  Let \(R\) be a computable, commutative ring with one and \(\mathfrak{R}\) its
+  Let \(R\) be a computable, commutative ring with unity and \(\mathfrak{R}\) its
   \(\lang_{ring}\)-structure. Then the Diophantine theory
   \(\mathtt{H10}(\mathfrak{R})\) is semi-decidable.
 \end{lem}

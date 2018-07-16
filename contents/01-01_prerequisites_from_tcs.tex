@@ -678,7 +678,8 @@ sets.
   Let \(Q\) be a problem. The following are equivalent.
   \begin{thmlist}
     \item \(Q\) is semi-decidable.
-    \item \(Q\) is the domain of a partial computable function.
+    \item \(Q\) is the domain of a (partial) computable function.
+    \item \(Q\) is the image of a (partial) computable function.
     \item There exists a decidable relation \(R \subseteq ω^2\) such that
     \[
       x ∈ Q \quad ⇔ \quad ∃ y ∈ ω : R(x, y)
@@ -689,18 +690,22 @@ sets.
   \emph{(i) \(⇒\) (ii):} Let \(\mathbb{A}\) be a Turing machine witnessing that
   \(Q\) is semi-decidable. Then \(\mathbb{A}\) halts on all \(x ∈ Q\) and
   returns \(\one\). If on the other hand \(x \not\in Q\) then \(\mathbb{A}\)
-  outputs an arbitrary string \(y ≠ \one\) or does not halt on \(x\).
+  outputs an arbitrary string \(y ≠ \one\), or does not halt on \(x\).
 
   Consider the Turing machine \(\mathbb{A}_{check1}\) defined in \cref{lst:check
   one}. It outputs \(\one\) on input \(\one\) and does not halt on any other
   input. The machine obtained by composing \(\mathbb{A}\) and
   \(\mathbb{A}_{check1}\) does halt on \(x\) if and only if \(x ∈ Q\).
 
-  \emph{(ii) \(⇒\) (iii):} Let \(\mathbb{A}\) be a Turing machine computing the
-  partial computable function, whose domain is \(Q\). For each integer \(n ∈
-  ℕ\), I denote by \(\mathbb{A}_n\) the set of all strings \(x := b_1…b_k ∈ ω\)
-  such that \(k ≤ n\) and \(\mathbb{A}\) halts on \(x\) in at most \(n\) steps
-  of the computation.
+  \emph{(ii) \(⇒\) (iii):}
+  %TODO
+  \todo{finish this proof}
+
+  \emph{(iii) \(⇒\) (iv):} Let \(\mathbb{A}\) be a Turing machine computing the
+  function, whose domain is \(Q\). For each integer \(n ∈ ℕ\), I denote by
+  \(\mathbb{A}_n\) the set of all strings \(x := b_1…b_k ∈ ω\) such that \(k ≤
+  n\) and \(\mathbb{A}\) halts on \(x\) in at most \(n\) steps of the
+  computation.
 
   As \(|\mathbb{A}_n| ≤ 2^n\) is finite for all \(n ∈ ℕ\), the sets
   \(\mathbb{A}_n\) are decidable by \cref{ex:finite problems are decidable}.
@@ -715,7 +720,7 @@ sets.
   \]
   as claimed.
 
-  \emph{(iii) \(⇒\) (i):} By \cref{lem:minimization} the function \(f(x) = μy :
+  \emph{(iv) \(⇒\) (i):} By \cref{lem:minimization} the function \(f(x) = μy :
   R(x, y)\) is computable. Compose \(f\) with a function that returns \(\one\)
   on all inputs to obtain a computable function that outputs \(\one\) for all
   \(x ∈ Q\) and is undefined otherwise.
@@ -900,7 +905,7 @@ semi-decidable.
 
   Indeed, since \(Q\) is semi-decidable, by \cref{pro:characterizations of ce
   sets} there exists a Turing machine \(\mathbb{A}\) that halts on \(x\) if and
-  if \(x ∈ Q\). This means that
+  only if \(x ∈ Q\). This means that
   \[
     x ∈ Q \quad ⇔ \quad ⟨\enc{\mathbb{A}}, x⟩ ∈ \mathcal{K}.
   \]
@@ -919,7 +924,8 @@ since we have the following properties of many-one reducibility.
 \begin{pro}\label{pro:m reducibility and decidability}
   \begin{thmlist}
     \item Let \(Q, Q' \subseteq ω\) be problems such that \(Q ≤_m Q'\). Then if
-    \(Q'\) is decidable, so is \(Q\).
+    \(Q'\) is \hbox{(semi-)}decidable, so is \(Q\).
+
     \item If problem \(Q\) is many-one reducible to problem \(Q'\), and \(Q'\)
     is many-one reducible to \(Q''\), then \(Q\) is many-one reducible to
     \(Q''\). In other words the relation of many-one reducibility is transitive.
@@ -928,17 +934,18 @@ since we have the following properties of many-one reducibility.
 \begin{proof}
   \begin{plist}
     \item   Let \(f: ω → ω\) be the computable function witnessing many-one
-    reducibility of \(Q\) to \(Q'\). Since the characteristic function
-    \(χ_{Q'}: ω → ω\) is computable, the composition \(g := χ_{Q'} \circ f\) is
-    a total computable function with the property
-      \[
-        g(x) =
-          \begin{cases}
-            \one & \text{if } x ∈ Q\\
-            \zer & \text{otherwise}
-          \end{cases}
-      \]
-      and \(Q\) is decidable.
+    reducibility of \(Q\) to \(Q'\) and assume that \(Q'\) is the domain of the
+    computable function \(g\). Then \(Q\) is the domain of the computable
+    function \(g • f\). Indeed, assume that \(x ∈ Q\), then \(f(x) ∈ Q'\) and
+    thus \(g(f(x))\) is defined. Otherwise, \(f(x) \not∈ Q'\) and thus
+    \(g(f(x))\) is undefined.
+
+    To see the claim for the case of \(Q'\) being decidable, note that \(f\)
+    witnesses many-one reducibility of \(ω \setminus Q\) to \(ω \setminus Q'\)
+    as well. By \cref{pro:Posts theorem} both \(Q'\) and \(ω \setminus Q'\) are
+    semi-decidable and thus \(Q\) and \(ω \setminus Q\) are semi-decidable by
+    the case that was just proven. Now \cref{pro:Posts theorem} implies that
+    \(Q\) is decidable.
 
     \item By assumption there exist computable functions \(f: ω → ω\) and \(g:
     ω → ω\) such that \(x\) is in \(Q\) precisely if its image \(f(x)\) is

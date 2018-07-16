@@ -4,11 +4,11 @@
 % !TEX engine = xelatex
 % !TEX root = ../Herbstrith-H10_over_AI.tex
 %
-% ██████  ███████ ██████  ██████  ███████  ██████ ████████
-% ██   ██ ██      ██   ██ ██   ██ ██      ██         ██
-% ██████  █████   ██████  ██████  █████   ██         ██
-% ██      ██      ██   ██ ██      ██      ██         ██
-% ██      ███████ ██   ██ ██      ███████  ██████    ██ ██
+% ██████  ███████ ██████  ███████ ██████  ███████  ██████ ████████
+% ██   ██ ██      ██   ██ ██      ██   ██ ██      ██         ██
+% ██████  █████   ██████  ███████ ██████  █████   ██         ██
+% ██      ██      ██   ██      ██ ██      ██      ██         ██
+% ██      ███████ ██   ██ ███████ ██      ███████  ██████    ██ ██
 
 \subsection{Diophantine equations and sets}
 % ██████  ██  ██████  ██████  ██   ██        ███████  ██████
@@ -20,11 +20,14 @@
 
 In 1900, David Hilbert held his famous lecture~\cite{Hilbert1900} before the
 \emph{International Congress of Mathematicians} in Paris. During the lecture
-entitled \foreignquote{german}{Mathematische Probleme} Hilbert posed ten
-mathematical problems left for the twentieth century to solve.  Hilbert's list
-of problems was later amended to contain twenty-three problems. The tenth of
-these questions and its variants are the subject of this thesis. The problem
-states
+entitled \foreignquote{german}{Mathematische Probleme%
+\footnote{%
+  \foreignquote{english}{mathematical problems}
+}}
+Hilbert posed ten mathematical problems left for the twentieth century to solve.
+Hilbert's list of problems was later amended to contain twenty-three problems.
+The tenth of these questions and its variants are the subject of this thesis.
+The problem states
 
 \begin{foreigndisplayquote}{german}
   \textsc{10. Entscheidung der Lösbarkeit einer Diophantischen Gleichung.}
@@ -96,7 +99,7 @@ encoded version of the halting set \(\mathcal{K}\) in the sense of the following
 definition.
 
 \begin{defin}
-    Let \(R\) be a commutative ring with one. A set \(S \subseteq R^n\) is said to
+    Let \(R\) be a commutative ring with unity. A set \(S \subseteq R^n\) is said to
     be \emph{Diophantine} over \(R\) if there exists a polynomial \(p ∈
     R[X_1,…,X_n, Y_1,…,Y_m]\) in \(n + m\) many indeterminates (\(m,n ≥ 0\)) such
     that
@@ -115,8 +118,15 @@ In this sense a set \(S \subseteq R^i\) is Diophantine if there exists a
 polynomial \(p ∈ R[X_1, …, X_n]\) such that
 \[
   (\seq[i]{α}) ∈ S \quad ⇔ \quad
-  ∃ \seq[n - i]{β} : \rel{p}(\seq[i]{α}, \seq[n - i]{β})
+  ∃ \seq[n - i]{β} : \rel{p}(\seq[i]{α}, \seq[n - i]{β}).
 \]
+If the ring \(R\) is computable, it is immediate that the relation \(\rel{p}\)
+is computable. Thus, we have the following lemma.
+\begin{lem}
+  Let \(R\) be a computable commutative ring with unity. Then every Diophantine
+  subset of \(R\) is semi-decidable.
+\end{lem}
+
 Viewing \(n\)-ary relations as subsets of \(R^n\), I will sometimes refer to
 Diophantine sets as \emph{Diophantine relations}. A function \(R^n → R^m\) is
 called \emph{Diophantine} if it is Diophantine viewed as an \((n + m)\)-ary
@@ -212,7 +222,7 @@ their relations with subsets of \(ℕ\).
 \begin{exam}[Diophantine subsets of \(ℕ\)]\label{ex:N is Diophantine over Z}
   If one wants to study sets that are Diophantine over \(ℕ\), one runs into the
   problem that \(ℕ\) is not a ring. An approach that has been carried out
-  \cite[cf.~e.g.][]{Davis1973} is considering sets \(S ⊂ ℤ^n\) that are
+  \cite[cf.~e.g.][]{Davis1973} is considering sets \(S ⊂ ℕ^n\) that are
   Diophantine over \(ℤ\) and allow only for witnesses in \(ℕ\). I will show that
   this construction can be carried out in a Diophantine way.
 
@@ -283,8 +293,8 @@ their relations with subsets of \(ℕ\).
       ∃ β_1, β_2, γ_1, …, γ_4, δ_{11}, …, δ_{14}, δ_{21}, …, δ_{24} ∈ ℤ: (
         & x = (β_1 + 2) (β_2 + 2) ∧\\
         & x = γ_1^2 + γ_2^2 + γ_3^2 + γ_4^2 ∧\\
-        & β_1 = (δ_{11}^2 + δ_{12}^2 + δ_{13}^2 + δ_{14}^2 ∧\\
-        & β_2 = (δ_{21}^2 + δ_{22}^2 + δ_{23}^2 + δ_{24}^2),
+        & β_1 = δ_{11}^2 + δ_{12}^2 + δ_{13}^2 + δ_{14}^2 ∧\\
+        & β_2 = δ_{21}^2 + δ_{22}^2 + δ_{23}^2 + δ_{24}^2),
     \end{align*}
     which can be rewritten as the single Diophantine identity
     \begin{align*}
@@ -310,7 +320,7 @@ We will now see how one can describe Diophantine sets from the view of model
 theory.
 
 \begin{lem}
-  Let \(R\) be a commutative ring with one and let \(\mathfrak{R}\) be its
+  Let \(R\) be a commutative ring with unity and let \(\mathfrak{R}\) be its
   \(\lang_{ring}\)-structure. Then \(S ⊂ R^n\) is Diophantine if and only if
   there exists an atomic \(\lang_R\)-formula \(ϕ(\mathtt{\seq{x}, \seq[m]{y}})\)
   such that
@@ -332,7 +342,7 @@ polynomial. Thus, one can decide membership in all Diophantine sets if and only
 if one can decide for all polynomials whether they have roots. As a consequence,
 we will identify Hilbert's tenth problem over \(R\) with the set of Gödel
 numbers of \(\mathtt{H10}(\mathfrak{R})\) if \(R\) is a countable commutative
-ring with one, and restate Hilbert's problem as
+ring with unity, and restate Hilbert's problem as
 \begin{quote}
   \textsc{H10.} Is the Diophantine theory \(\mathtt{H10}(\mathfrak{R})\)
   decidable?
@@ -355,7 +365,7 @@ disjunctions and conjunctions to appear in our theory.
 In other words, conjunctions and disjunctions of existentially quantified atomic
 formulae can be replaced by a single existentially quantified atomic formula. Or
 again put differently, conjunction \(∧\) and disjunction \(∨\) are
-\(\lang_{ring}\)-definable, efficiently computable predicates.
+\(\lang_R\)-definable, efficiently computable predicates.
 
 \begin{proof}
   Let \(p(\seq{X}, \seq[m_1]{Y})\) and \(q(\seq{X}, \seq[m_2]{Y})\) give
@@ -369,9 +379,9 @@ again put differently, conjunction \(∧\) and disjunction \(∨\) are
   \[
     h := p q.
   \]
-  Then \(h\) vanishes if and only if \(p\) or \(q\) vanishes. As a consequence, the
-  \(n\)-tuple \(\seq{α} ∈ R\) is in the union of \(S_1\) and \(S_2\) if and only
-  if
+  Then \(h\) vanishes if and only if \(p\) or \(q\) vanishes. As a consequence,
+  the \(n\)-tuple \((\seq{α}) ∈ R^n\) is in the union of \(S_1\) and \(S_2\) if
+  and only if
   \[
     ∃ \seq[m]{β} ∈ R : h(\seq{α}, \seq[m]{β}) = 0.
   \]
@@ -382,9 +392,9 @@ again put differently, conjunction \(∧\) and disjunction \(∨\) are
   \[
     h(T) = a_k T^k + … + a_1 T + a_0 ∈ R[T]
   \]
-  be a polynomial of degree \(k > 0\) without roots in \(\Quot R\). Then \(\overline
-  h(T) = T^k h(T^{-1})\) does not have roots in \(\Quot R\) either. As if \(α ∈
-  \Quot R\) is a root of \(\overline h\) then
+  be a polynomial of degree \(k > 0\) without roots in \(\Quot R\). Then
+  \(\overline h(T) = T^k h(T^{-1})\) does not have roots in \(\Quot R\) either.
+  As if \(α ∈ \Quot R\) is a root of \(\overline h\) then
   \[
     0 = \overline h(α) = a_k + a_{k-1} α + a_1 α^{-1} + a_0 α^k
   \]
@@ -429,7 +439,7 @@ again put differently, conjunction \(∧\) and disjunction \(∨\) are
 \end{proof}
 
 Note that the algorithm presented above does not depend on the initial equations
-\(p\) and \(q\) but it does depend on the integral domain \(R\). As we might
+\(p\) and \(q\) but it does depend on the integral domain \(R\). We might
 need different polynomials \(h\) without roots for each ring \(R\) in the case
 of conjunctions.
 
@@ -440,7 +450,12 @@ of conjunctions.
   \[
     H = p^2 + q^2
   \]
-  precisely as in \cref{ex:N is Diophantine over Z}.
+  precisely as in \cref{ex:N is Diophantine over Z}. However, we could have
+  equivalently chosen \(h(X) = X^2 - 2X - 2\) as a polynomial without rational
+  roots---\(h\) has the irrational roots \(1 ± √3\)---and obtain
+  \[
+    H = p^2 - 2 pq + 2 q^2.
+  \]
 \end{rem}
 
 Using induction and the lemma above, one immediately obtains that arbitrary
@@ -478,7 +493,7 @@ Diophantine sets}.
     ℤ[X_1,…,X_n, Y_1,…,Y_m]\) in \(n + m\) many indeterminates (\(m,n ≥ 0\)) such
     that
     \[
-      (α_1,…,α_n) ∈ S ⇔
+      (α_1,…,α_n) ∈ S \quad ⇔ \quad
       ∃ β_1,…,β_m ∈ R: p(α_1,…,α_n,β_1,…,β_m) = 0
     \]
 \end{defin}
@@ -490,10 +505,10 @@ the algebraist, it is perfectly natural from the perspective of model theory, as
 is shown in the following lemma.
 
 \begin{lem}
-  Let \(R\) be a commutative ring with one and let \(\mathfrak{R}\) be its
+  Let \(R\) be a commutative ring with unity and let \(\mathfrak{R}\) be its
   \(\lang_{ring}\)-structure. Then \(S ⊂ R^n\) is purely Diophantine if and only
-  if there exists an atomic \(\lang_{ring}\)-formula \(ϕ(\mathtt{\seq{x}, \seq[m]{y}})\)
-  such that
+  if there exists an atomic \(\lang_{ring}\)-formula \(ϕ(\mathtt{\seq{x},
+  \seq[m]{y}})\) such that
   \[
     (\seq{α}) ∈ S \quad ⇔ \quad
     \mathfrak{R} \models \mathtt{∃ y_1 : … ∃ y_m: }
@@ -502,21 +517,21 @@ is shown in the following lemma.
   holds.
 \end{lem}
 \begin{proof}
-  Follows \cref{lem:terms of rings are polynomials} and the analogue of part
-  (ii) of \cref{thm:Diophantine theory}.
+  Follows from \cref{lem:terms of rings are polynomials} and the analogue of
+  part (ii) of \cref{thm:Diophantine theory}.
 \end{proof}
 
-At second sight the construction is even less surprising, as for every ring
+At second sight, the construction is even less surprising, as for every ring
 \(R\) with \(1\) there exists exists exactly one ring-homomorphism \(φ: ℤ → R\)
-mapping \(1 ∈ ℤ\) to \(1 ∈ R\).
-Looking back at \cref{ex:Diophantine sets}, we note that the Diophantine sets of
-(3), (4), and (5) are in fact purely Diophantine, whilst finite sets (1) are in
-general not. As for polynomial functions \(p: R^n → R\) (2)
-we obtain that they are purely Diophantine if and only if the coefficients of
-\(p\) are rational integers. Note however that a partially evaluated polynomial
-with rational integral coefficients need not be a polynomial in \(ℤ[X_1, X_2,
-…]\). Thus, one needs to be a bit more careful when dealing with purely
-Diophantine sets.
+mapping \(1 ∈ ℤ\) to \(1 ∈ R\). Looking back at \cref{ex:Diophantine sets}, we
+note that the Diophantine sets of (3), (4), and (5) are in fact purely
+Diophantine, whilst finite sets (1) are in general not. As for polynomial
+functions \(p: R^n → R\), we obtain that they are purely Diophantine if and only
+if the coefficients of \(p\) are rational integers. Note however that a
+partially evaluated polynomial with rational integral coefficients need not be a
+polynomial in \(ℤ[X_1, X_2, …]\). Thus, one needs to be a bit more careful when
+dealing with purely Diophantine sets. However, the analogue of
+\cref{lem:intersections and unions} holds for purely Diophantine sets.
 
 \begin{lem}
   Let \(S_1, S_2 ⊂ \algint^n\) be purely Diophantine subsets of a ring of
@@ -596,7 +611,7 @@ and thus, \(σ(x)\) satisfies the same relation. Building on this result for
 singletons, \textcite{Davis1976} gave the following characterization of purely
 Diophantine sets within Diophantine sets over rings of algebraic integers.
 
-\begin{thm}
+\begin{thm}\label{thm:purely Diophantine sets}
   Let \(\algint\) be the ring of algebraic integers of a number field \(K\). A
   set \(S ⊂ \algint^n\) is purely Diophantine if and only if \(S\) is
   Diophantine and self-conjugate, i.e.\ for all automorphisms \(σ: K → K\)
@@ -624,9 +639,9 @@ Diophantine sets within Diophantine sets over rings of algebraic integers.
   \]
   and \(σ_i(α) ∈ S\) as claimed.
 
-  Conversely, let \(S\) be self-conjugate and let \(p_i\) denote the polynomial
-  obtained from \(p\) by replacing the coefficients of \(p\) by their images
-  under \(σ_i\) (\(1 ≤ i ≤ k\)). We define
+  Conversely, let \(S\) be self-conjugate and let \(p_i\) for \(1 ≤ i ≤ k\)
+  denote the polynomial obtained from \(p\) by replacing the coefficients of
+  \(p\) by their images under \(σ_i\). We define
   \[
     q(X, Y) := \prod_{i = 1}^k p_i(X, Y)
   \]
@@ -671,11 +686,23 @@ Diophantine sets within Diophantine sets over rings of algebraic integers.
   we can deduce \(α = σ_i(σ_j(α)) ∈ S\) as claimed.
 \end{proof}
 
-% The following diagram summarizes all the reducibility relations that hold
-% between the theories of rings of algebraic integers.
-% \begin{center}
-%   \includegraphics{res/theories_3}
-% \end{center}
+The following diagram summarizes all the reducibility relations between the
+theories of rings of algebraic integers that we have proven so far. By the
+transitivity of many-one reducibility (cf.~\cref{pro:m reducibility and
+decidability}) all that is left to prove is many-one reducibility of the
+halting set \(\mathcal{K}\) to the purely Diophantine theory
+\(\mathtt{H10}^*(\struc{O}_K)\). Then the diagram collapses as depicted at the
+end of \cref{sec:theories}.
+\begin{center}
+  \includegraphics{res/theories_3}
+\end{center}
+
+\subsection{Related problems}
+% ██████  ███████ ██             ██████  ██████   ██████  ██████  ███████
+% ██   ██ ██      ██             ██   ██ ██   ██ ██    ██ ██   ██ ██
+% ██████  █████   ██             ██████  ██████  ██    ██ ██████  ███████
+% ██   ██ ██      ██             ██      ██   ██ ██    ██ ██   ██      ██
+% ██   ██ ███████ ███████ ██     ██      ██   ██  ██████  ██████  ███████ ██
 
 The beauty of the model theoretic approach to Hilbert's tenth problem is that it
 directly gives rise to various generalizations. To conclude this section I will
@@ -690,7 +717,7 @@ textbook~\cite{Cooper2004} for a more rigorous discussion of Gödel's results.}
 As a consequence, the full first order theory of \(ℤ\) is undecidable, as one
 can translate a sentence in \(ℕ\) to an equivalent sentence in \(ℤ\) via the
 construction described in \cref{ex:N is Diophantine over Z}. Considering the
-full first order theory of \(\algint\) \textcite{Robinson1959} proved as early
+full first order theory of \(\algint\), \textcite{Robinson1959} proved as early
 as \citeyear{Robinson1959} that \(\mathtt{Th}(\modalgint)\) is undecidable. In
 \citeyear{Matijasevic1970} \textcite{Matijasevic1970} showed---building on the
 work of Davis, Putnam, and J.~Robinson---the undecidability of Hilbert's tenth
@@ -699,13 +726,13 @@ of the Davis-Putnam-Robinson-Matijasevič theorem (\textsc{DPRM}).
 
 \begin{thm}[DPRM-theorem]\label{thm:DPRM}
   A subset of the natural numbers is semi-decidable if and only if it is
-  Diophantine over \(ℤ\).
+  Diophantine over \(ℕ\).
 \end{thm}
 
-\begin{cor}
+\begin{cor}\label{cor:H10 over Z}
   The halting set \(\mathcal{K}\) is many-one reducible to
-  \(\mathtt{H10}(\mathfrak{Z})\). Thus, Hilbert's
-  tenth problem over \(ℤ\) is undecidable.
+  \(\mathtt{H10}(\mathfrak{Z})\). Thus, Hilbert's tenth problem over \(ℤ\) is
+  undecidable.
 \end{cor}
 \begin{proof}
   Throughout this proof I will identify \(ℤ\) with the domain of one of its
@@ -726,8 +753,9 @@ of the Davis-Putnam-Robinson-Matijasevič theorem (\textsc{DPRM}).
   Now consider \(f(\mathcal{K}) ⊂ ℤ\). Then the inverse mapping \(f^{-1}\)
   witnesses that \(f(\mathcal{K})\) is many-one reducible to \(\mathcal{K}\).
   Thus, \(f(\mathcal{K})\) is semi-decidable and by the \textsc{DPRM}-theorem
-  \(f(\mathcal{K})\) is Diophantine over \(ℤ\). Hence, there exists a
-  polynomial \(p_{\mathcal{K}} ∈ ℤ[X, Y_1, …, Y_m]\) with the property that
+  \(f(\mathcal{K})\) is Diophantine over \(ℕ\) and therefore Diophantine over
+  \(ℤ\) as well. Hence, there exists a polynomial \(p_{\mathcal{K}} ∈ ℤ[X, Y_1,
+  …, Y_m]\) with the property that
   \[
     α ∈ f(\mathcal{K}) \quad ⇔ \quad
     ∃ \seq[m]{β} ∈ ℤ : p_{\mathcal{K}}(α, \seq[m]{β}) = 0.
@@ -759,13 +787,14 @@ a first order definition of \(ℤ\) over \(ℚ\), \textcite{Robinson1949} could
 derive the undecidability of the full first order theory of \(ℚ\) from the
 undecidability of the theory of \(ℤ\) in \citeyear{Robinson1949}. But her
 definition involves universal quantifiers and cannot be used for inferring to
-\textsc{H10}. \Textcite{Park2013} generalized this result by providing a
-universal first order definition of \(\algint\) over an arbitrary number field
-\(K\) in \citeyear{Park2013}. Again moving to larger rings proves to be easier.
-\textcite{Tarski1931} proved in \citeyear{Tarski1931} using the method of
-\emph{quantifier elimination} that the full \(\lang_{ring}\)-theory of the
-real numbers is decidable. For complex numbers the tools for proving the
-analogous result were already known in the nineteenth century.
+\textsc{H10}. \Textcite{Park2013} strengthend the results of
+\textcite{Robinson1949,Robinson1959} by providing a universal first order
+definition of \(\algint\) over an arbitrary number field \(K\) in
+\citeyear{Park2013}. Again moving to larger rings proves to be easier.
+\textcite{Tarski1931} showed in \citeyear{Tarski1931} using the method of
+\emph{quantifier elimination} that the full \(\lang_{ring}\)-theory of the real
+numbers is decidable. For complex numbers the tools for proving the analogous
+result were already known in the nineteenth century.
 
 The surveys~\cite{Koenigsmann2014,Poonen2008} offer a more extensive overview of
 problems related to undecidability in number theory.
