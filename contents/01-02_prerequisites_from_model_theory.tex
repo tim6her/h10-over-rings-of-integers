@@ -882,7 +882,7 @@ which already has \(52\) decimal digits.
 Up to this point the encoding of problems was treated as some kind of black-box.
 This subsection takes a categorical view on computability and ensures us,
 that---up to a sensible definition---encodings of the rings we concern ourselves
-with do not matter. The interested reader may whish to read the excellent
+with do not matter. The interested reader may whish to consult the excellent
 textbook by \textcite{Stoltenberg1999} on this subject. However, I am using the
 notation of the paper~\cite{Khoussainov2000} and the
 textbook~\cite[Chap.~16]{Cooper2004}.
@@ -914,15 +914,39 @@ obtain from an encoded formula \(\gn(ϕ)\) the sequence of symbols that \(ϕ\)
 contains and then check efficiently using structural induction, whether \(ϕ\) is
 a well-formed formula.
 
+\begin{lem}\label{lem:properties of Goedelization}
+  Let \(\lang\) be a computable language. For a fixed Gödelization, the
+  following numbers are computable for every \(\lang\)-formula \(ϕ\) from the
+  Gödel number \(\gn(ϕ)\).
+  \begin{thmlist}
+    \item The length \(\ln(ϕ)\) of \(ϕ\), this is the number of symbols
+    appearing in \(ϕ\).
+
+    \item For every \(i ∈ \set{1, …, \ln(ϕ)}\) the code \(i(s)\) of the symbol
+    \(s\) appearing in the \(i\)-th position of \(ϕ\).
+
+    \item The number of quantifiers appearing in \(ϕ\) and the number of free
+    variables.
+
+    \item The Gödel number of the negation of \(ϕ\).
+
+    \item If a second formula \(ψ\) is given, one can efficiently obtain the
+    Gödel number of the conjunction of \(ϕ\) and \(ψ\).
+
+    \item If \(ϕ(\mathtt{x_i})\) contains the free variable \(\mathtt{x_i}\) and
+    the Gödel number of a term \(t\) is given, one can efficiently obtain the
+    Gödel number of \(ϕ(t)\), i.e.\ the Gödel number of the formula, where each
+    free appearance of \(\mathtt{x_i}\) is replaced by \(t\).
+  \end{thmlist}
+\end{lem}
+
+The lemma is easily proven using that the prime factorization of a positive
+integer is computable. All of the numbers above can then be computed by
+manipulating the factorizations.
+
 Of course, all languages we will consider---and have considered so far---are
 computable. In fact, they are all either finite, or contain only finitely many
 non-constant symbols.
-
-\begin{lem}\label{lem:properties of Goedelization}
-  Properties of the Gödelization
-  %TODO
-  \todo{properties of Gödelization}
-\end{lem}
 
 \begin{defin}
   Let \(\lang\) be a computable language and let \(i: \lang → ℕ\) be the
@@ -966,16 +990,17 @@ non-constant symbols.
     \item \Textcite{Stoltenberg1999} use a slightly modified definition of
     computable rings. They consider \emph{effective enumerations} \(α_R : Ω_R →
     R\), where \(Ω_R \subseteq ω\) is a computable \(\lang_{ring}\)-structure in
-    the sense of the definition above and \(α_R\) is a
+    the sense of the definition above and \(α_R\) is an
     \(\lang_{ring}\)-epimorphism. Then the ring \(R\) is called computable if
     the equivalence relation
     \[
-      x_1 \equiv_{α_R} x_2  ⇔ α_R(x_1) = α_R(x_2)
+      x_1 \equiv_{α_R} x_2  \quad ⇔ \quad
+      α_R(x_1) = α_R(x_2)
     \]
     on \(Ω_R\) is decidable for all pairs \(x_1, x_2 ∈ R\).
 
     This definition can have slight technical advantages but note that in this
-    case \(Ω_R\) need not be a ring in the sense of abstract algebra, a
+    case \(Ω_R\) need not be a ring in the sense of abstract algebra, an
     \(\lang_{ring}\)-structure in the sense of universal algebra suffices. Let
     \(\lfloor α_R^{-1}(\set{η}) \rfloor ∈ Ω_R\) denote the smallest element of
     \(α_R^{-1}(\set{η})\) in lexicographic order. By setting \(\enc{η} = \lfloor
@@ -1015,9 +1040,9 @@ easily be proven via structural induction.
 
     The constants \(0\) and \(1\) are trivially computable, by clearing the tape
     in the first case and writing a single \(\one\) in the second case. Using
-    the pairing function of \cref{ex:tally pairing} the binary operations \(+\)
-    and \(\cdot\) are also easily seen to be computable. As for \(+\) the
-    algorithm takes the input
+    the pairing function of \cref{ex:tally pairing} the binary operations
+    \(+\), \(\dotminus\), and \(\cdot\) are also easily seen to be computable.
+    As for \(+\) the algorithm takes the input
     \[
       \one … \one \zer \one … \one
     \]
@@ -1060,7 +1085,7 @@ easily be proven via structural induction.
     in memory and extends to all of \(\algint\) linearly.
 
     \item \(⟨ℕ, ≤⟩\) is efficiently presentable using the tally encoding and
-    \(n ≤ m\) if and only if \(\max(n - m, 0) = 0\). So deciding \(n ≤ m\) boils
+    \(n ≤ m\) if and only if \(n \dotminus m = 0\). So deciding \(n ≤ m\) boils
     down to applying floor subtraction and checking whether the tape is empty.
     Both operations are clearly computable.
   \end{exlist}
@@ -1099,20 +1124,18 @@ discussion of efficient representations of rings see the
 textbook~\cite{Stoltenberg1999}.
 
 \begin{thm}
-  Let \(R\) be a finitely generated, efficiently representable ring with unit.
+  Let \(R\) be a finitely generated, efficiently representable ring with unity.
   Then \(R\) is computably categorical.
 \end{thm}
-
-I will not give a proof here but sketch how one proceeds in proving the
-theorem.
-
-Let \(ζ_1, …, ζ_n ∈ R\) be a set of generators of \(R\) over \(R\) and let
-\(φ_1: R → R_1, φ_2: R → R_2\) be the efficient representations of \(R\)
-together with the respective ring isomorphisms. Then \(φ_1(ζ_1), …, φ_1(ζ_n)\)
-generate \(R_1\) over \(R_1\) and \(φ_2(ζ_1), …, φ_2(ζ_n)\) generate \(R_2\)
-over \(R_2\). Storing these finitely many values of the isomorphism \(φ_2 \circ
-φ_1^{-1}\) in memory one can use the computabilty of \(R_1\) and \(R_2\)
-respectively to extend the partial mapping in the obvious way.
+\begin{proof}
+  Let \(ζ_1, …, ζ_n ∈ R\) be a set of generators of \(R\) over \(R\) and let
+  \(φ_1: R → R_1, φ_2: R → R_2\) be the efficient representations of \(R\)
+  together with the respective ring isomorphisms. Then \(φ_1(ζ_1), …, φ_1(ζ_n)\)
+  generate \(R_1\) over \(R_1\) and \(φ_2(ζ_1), …, φ_2(ζ_n)\) generate \(R_2\)
+  over \(R_2\). Storing these finitely many values of the isomorphism \(φ_2
+  \circ φ_1^{-1}\) in memory one can use the computabilty of \(R_1\) and \(R_2\)
+  respectively to extend the partial mapping in the natural way.
+\end{proof}
 
 As for the decidability of \textsc{H10} over some ring of algebraic integers
 \(\algint\) this means, that if we have two encodings of \(\algint\) that allow
@@ -1124,8 +1147,8 @@ undecidability of the halting problem can be found in the
 paper~\cite[Prob.~1.6]{Shore}.
 
 \begin{lem}\label{lem:H10 is semi decidable}
-  Let \(R\) be a computable, commutative ring with unity and \(\mathfrak{R}\) its
-  \(\lang_{ring}\)-structure. Then the Diophantine theory
+  Let \(R\) be a computable, commutative ring with unity and \(\mathfrak{R}\)
+  its \(\lang_{ring}\)-structure. Then the Diophantine theory
   \(\mathtt{H10}(\mathfrak{R})\) is semi-decidable.
 \end{lem}
 \begin{proof}
@@ -1142,7 +1165,7 @@ paper~\cite[Prob.~1.6]{Shore}.
     p(\seq{α}) = 0.
   \]
   In fact, the polynomial \(p\) can be obtained from the Gödel number \(\gn(ϕ)\)
-  efficiently. Thus, the relation \(H ⊂ R^2\) defined by
+  efficiently. Thus, the relation \(H ⊂ ω^2\) defined by
   \[
     H(\gn(ϕ), ⟨\seq{α}⟩) \quad :⇔ \quad
     p(\seq{α}) = 0
