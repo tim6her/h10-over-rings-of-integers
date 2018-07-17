@@ -733,22 +733,24 @@ sets.
   of the computation machine will not stop. Thus \(x\) is not in the image of
   the function computed by \(\mathbb{B}\).
 
-  \emph{(iii) \(⇒\) (iv):} Let \(\mathbb{A}\) be a Turing machine computing the
-  function with image \(Q\). For each integer \(n ∈ ℕ\), I denote by
-  \(\mathbb{A}_n\) the set of all strings \(y := b_1…b_k ∈ ω\) such that \(k ≤
-  n\) and there exists a string \(x := c_1…c_ℓ ∈ ω\) with the properties that
-  \(ℓ ≤ n\) plus machine \(\mathbb{A}\) halts on \(x\) and outputs \(y\) in at
-  most \(n\) steps of the computation.
-
-  As \(|\mathbb{A}_n| ≤ 2^n\) is finite for all \(n ∈ ℕ\), the sets
-  \(\mathbb{A}_n\) are decidable by \cref{ex:finite problems are decidable}.
-  Using induction on \(n\), we see that the relation
+  \emph{(iii) \(⇒\) (iv):} Let \(f\) be a computable function with image \(Q\)
+  and let \(\mathbb{A}\) be a Turing machine computing \(f\). For each
+  non-negative integer \(n ∈ ℕ\) and all strings \(x := b_1…b_i, y := c_2…c_j ∈
+  ω\), I consider the relation \(R ⊂ ω^3\) defined by
   \[
-    R(y, \enc{n}) \quad :⇔ \quad y ∈ \mathbb{A}_n
+    R(n, x, y) \quad :⇔ \quad
+    \mathbb{A} \text{ halts on } x \text{ in at most } n \text{ steps, }
+    i,j ≤ n, \text{ and } f(x) = y.
   \]
-  is decidable. Finally, we obtain
+  Note that for a fixed integer \(n\) the relation can contain at most \(2^{n +
+  1}\) triples. Thus, \(R\) is decidable for fixed \(n\). However, using
+  induction on \(n\) one sees easily that \(R\) is decdidable as a ternary
+  relation. (If \(R(n, x, y)\) holds, so does \(R(m, x, y)\) for all \(m ≥ n\),
+  and if \(\mathbb{A}\) did not halt on \(x\) in \(n\) steps, we perform one
+  more step of the computation and can check wether \(\mathbb{A}(x) = y\)
+  holds.) Finally, we obtain
   \[
-    x ∈ Q \quad ⇔ \quad ∃ y ∈ ω: R(x, y),
+    y ∈ Q \quad ⇔ \quad ∃ z ∈ ω: R(π_1(z), π_2(z), y),
   \]
   as claimed.
 
