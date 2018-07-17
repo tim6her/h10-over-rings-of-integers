@@ -511,13 +511,17 @@ computable functions.
 \end{rem}
 
 Taking another look at the definition of computability, one sees that only
-functions in one argument defined on subsets of \(ω\), mapping to subsets of \(ω\)
-can be computable. However, one can easily extend this to functions on multiple
-arguments, by encoding tuples in \(ω \times ω\) by elements of \(ω\) in such a way,
-that the projections \(p_i: \enc{(x_1, x_2)} ↦ x_i\)  for \(i ∈ \lbrace 0, 1
-\rbrace\) are computable. This means, there are injective pairing functions \(ω^2
-→ ω\) and Turing machines \(\mathbb P_1, \mathbb P_2\) computing \(p_1\) or \(p_2\)
-respectively.
+functions in one argument defined on subsets of \(ω\), mapping to subsets of
+\(ω\) can be computable. However, one can easily extend this to functions on
+multiple arguments. To do this, one uses an injective function \(⟨\cdot, \cdot⟩:
+D^2 → ω\), where \(D ⊂ ω\) is decidable and encodes tuples by elements of \(ω\)
+in such a way, that the image
+\[
+  \set{⟨x_1, x_2⟩ \mid x_1, x_2 ∈ D}
+\]
+is decidable and the projections \(p_i(⟨x_1, x_2⟩) ↦ x_i\) for \(i ∈ \lbrace 0,
+1 \rbrace\) are computable. This means, there are Turing machines \(\mathbb P_1,
+\mathbb P_2\) computing \(p_1\) or \(p_2\) respectively.
 
 \begin{exam}[Pairing functions]
   \begin{exlist}
@@ -525,11 +529,16 @@ respectively.
     Using tally notation (cf.~\cref{ex:tally encoding}) on can encode \((n, m) ∈
     ℕ^2\) by
     \[
-      ⟨\enc{n}, \enc{m}⟩ = \underbrace{\one … \one}_{n\text{-times}} \zer \underbrace{\one … \one}_{m\text{-times}}.
+      ⟨\enc{n}, \enc{m}⟩ =
+        \underbrace{\one … \one}_{n\text{-times}} \zer
+        \underbrace{\one … \one}_{m\text{-times}}.
     \]
-    The machine \(\mathbb{P}_1\) clears everything after the first \(\zer\) on
-    the tape and \(\mathbb{P}_2\) deletes everything up to the first zero and
-    then moves the second block of \(\one\)-s cell by cell from left to right.
+    To test, wether a given string \(x ∈ ω\) encodes a pair of non-negative
+    integers, one only needs to check, wether \(x\) contains a single \(\zer\)
+    and all other symbols are \(\one\)-s. As for the projections, machine
+    \(\mathbb{P}_1\) clears everything after the first \(\zer\) on the tape and
+    \(\mathbb{P}_2\) deletes everything up to the first zero and then moves the
+    second block of \(\one\)-s cell by cell from left to right.
 
     \item\label{ex:total pairing}
     A simple pairing function encodes the pair \((b_1b_2…b_n, c_1c_2…c_m) ∈ ω^2\)
@@ -537,14 +546,15 @@ respectively.
     \[
       ⟨b_1b_2…b_n, c_1c_2…c_m⟩ = b_1b_1b_2b_2…b_nb_n \; \zer\one \; c_1c_2…c_m.
     \]
-    In this encoding the second projection is obtained completely analogously as
-    in the previous example. As for the first projection, the machine
-    \(\mathbb{P}_1\) first moves to the right, deleting every second symbol
-    until it reaches the substring \(\zer\one\) indicating the end of the first
-    component. At this point, the machine deletes all symbols to its right until
-    it reaches the first blank symbol and returns to the left until it reads
-    \(b_n\) in cell \(2n - 1\). The tape will now look like the one in
-    \cref{fig:total pairing non empty}.
+    Again it is easy to check wether a given string encodes a tuple. The second
+    projection in this encoding is obtained completely analogously as in the
+    previous example. As for the first projection, the machine \(\mathbb{P}_1\)
+    first moves to the right, deleting every second symbol until it reaches the
+    substring \(\zer\one\) indicating the end of the first component. At this
+    point, the machine deletes all symbols to its right until it reaches the
+    first blank symbol and returns to the left until it reads \(b_n\) in cell
+    \(2n - 1\). The tape will now look like the one in \cref{fig:total pairing
+    non empty}.
 
     Next it starts shifting the content of all cells one cell to the left until
     it reaches the end of tape symbol \(\sta\) (cf.~\cref{fig:total pairing
