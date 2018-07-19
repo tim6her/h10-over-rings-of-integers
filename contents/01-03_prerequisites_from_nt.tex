@@ -42,17 +42,16 @@ where only finitely many \(a_{i_1, …, i_m} ∈ R\) are non-zero.
 
 \begin{defin}
   A finite field-extension \(K\) of the rationals \(ℚ\) is called
-  \emph{algebraic number field} i.e. \(K\) is a field and at the same time a
-  \(ℚ\)-algebra, that is finite-dimensional viewed as a \(ℚ\)-vector space. The
-  \emph{degree} \([K : ℚ]\) is the dimension of \(K\) viewed as a \(ℚ\)-vector
-  space.
+  \emph{algebraic number field}. This means that \(K\) is a field and at the
+  same time a \(ℚ\)-algebra, that is finite-dimensional viewed as a \(ℚ\)-vector
+  space. The \emph{degree} \([K : ℚ]\) is the dimension of \(K\) viewed as a
+  \(ℚ\)-vector space.
 \end{defin}
 
 For convenience we will always assume that \(K\) is a subset of the complex
 pane \(ℂ\).
 
 \begin{exam}
-  Examples of number fields include.
   \begin{exlist}
     \item \(ℚ\) is (up to isomorphism) the only algebraic number field of
     degree \(1\).
@@ -64,20 +63,33 @@ pane \(ℂ\).
     \item \(ℚ[√[3]{2}] = \set{a + b √[3]{2} + c √[3]{4} \mid a, b ∈ ℚ}\) is an
     algebraic number field of degree \(3\).
 
-    \item \(ℚ[\e^{\frac{2 i π}{3}}] = \set{a + b \e^{\frac{2 i π}{3}}}\) is an
-    algebraic number field of degree \(2\).
+    \item \(ℚ\left[\e^{\frac{2 i π}{3}}\right] = \set{a + b \e^{\frac{2 i
+    π}{3}}}\) is an algebraic number field of degree \(2\).
   \end{exlist}
 \end{exam}
 
+If \(K\) is a number field, then the extension \(K/M\) of number fields is in
+fact an \emph{algebraic} one. This means that every \(x ∈ K\) is the root of
+some polynomial with coefficients in \(M\). We denote by \(μ_{M, x} ∈ M[X]\) the
+monic polynomial with root \(x\) dividing (in \(M[X]\)) all other polynomials
+with root \(x\). The polynomial \(μ_{M, x}\) is called \emph{minimal polynomial}
+of \(x\) over \(M\). By the minimality condition (w.r.t.\ divisibility in
+\(K[X]\)) on \(μ_{M, x}\) this polynomial must be irreducible.
+
+In fact, every element \(x\) in \(K\) is algebraic over the rationals \(ℚ\).
+Note that the field of all algebraic elements \(\overline{ℚ}\)---called
+\emph{algebraic closure} of \(ℚ\)---is however not a number field, as the
+extension \(\overline{ℚ} / ℚ\) is (countably) infinite.
+
 \begin{defin}
-  Let \(R \subseteq S\) be commutative rings with unity. Then \(α ∈ S\) is called
+  Let \(R ⊂ S\) be commutative rings with unity. Then \(α ∈ S\) is called
   \emph{integral} over \(R\) if it is the root of a monic polynomial with
-  coefficients in \(R\) i.e.\ if \(α\) satisfies an equation of the form
+  coefficients in \(R\), i.e.\ if \(α\) satisfies an equation of the form
   \[
     α^n + a_{n-1}α^{n - 1} + … + a_0 = 0
   \]
   for some \(n ≥ 1\) and some \(\seq[n - 1]{a} ∈ R\). If all elements of \(S\)
-  are integral over \(R\), then \(S\) is called \emph{integral} over \(R\).
+  are integral over \(R\) then \(S\) is called \emph{integral} over \(R\).
 \end{defin}
 
 Of course, when one wants to use tools from algebra some structure on the
@@ -151,8 +163,8 @@ the following proposition.
   integral over \(R\).
 \end{pro}
 
-The set \(\overline{R}{}^S\) of all elements of \(S\) that are algebraic over
-\(R\) is called \emph{algebraic closure} of \(R\) in \(S\). By the theorem above
+The set \(\overline{R}{}^S\) of all elements of \(S\) that are integral over
+\(R\) is called \emph{integral closure} of \(R\) in \(S\). By the theorem above
 \(\overline{R}{}^S\) is a subring of \(S\).
 
 We will now return our attention from the general case to our specific situation
@@ -177,13 +189,122 @@ integer. More precisely, the following holds.
 \begin{pro}
   Let \(K\) be a number field and \(\algint\) its ring of algebraic integers.
   For all \(x ∈ K\) there exists a non-zero rational integer \(n ∈ ℤ \setminus
-  \set{0}\) such that \(nx ∈ \algint\) is an algebraic integer.
+  \set{0}\) such that their product \(nx ∈ \algint\) is an algebraic integer.
 \end{pro}
 
 \begin{thm}\label{thm:K is the quotient field of O K}
   The quotient field of \(\algint\) is (isomorphic to) \(K\) for all number
   fields \(K\).
 \end{thm}
+\begin{proof}
+  By the proposition every \(x ∈ K\) can be written as \(x = αn^{-1}\), where
+  \(α ∈ \algint\) is an algebraic and \(n ∈ ℤ \setminus \set{0}\) is a rational
+  integer. If \(x = βm^{-1}\) is another representation of this form, then \(αm
+  = βn\) must hold in \(\algint\) and thus we can embed \(K\) into the quotient
+  field \(Quot(\algint)\) by mapping \(x = αn^{-1}\) to the representative \([α,
+  n] ∈ \Quot(\algint)\).
+
+  If on the other hand \([α, β] ∈ \Quot(\algint)\) with \(β ≠ 0\) is given,
+  then \(α β^{-1}\) an element of \(K\). Thus, there exist \(γ ∈ \algint\) and
+  \(n ∈ ℤ \setminus \set{0}\) such that \(γ n^{-1} = α β^{-1}\)---or put
+  differently, such that \([γ, n] ∈ \Quot(\algint)\) is in the same equivalence
+  class as \([α, β]\). As a consequence, the embedding defined above is
+  surjective.
+\end{proof}
+
+We can now deduce that an element \(x ∈ K\) is an algebraic integer if and only
+if its minimal polynomial \(μ_{ℚ, x}\) has rational integral coefficients.
+Indeed, if \(x\) is a root of the monic polynomial \(p ∈ ℤ[X]\) then \(μ_{ℚ,
+x}\) divides \(p\) and thus every root of \(μ_{ℚ, x}\) is an algebraic integer
+as well. Now decompose
+\[
+  μ_{ℚ, x}(X) = \prod_{i=1}^n (X - α_i)
+\]
+then since \(\algint\) is a ring, the minimal polynomial must have coefficients
+in \(\algint ∩ ℚ = ℤ\) and the claim is proven. In fact, we can always find an
+algebraic integer \(α ∈ K\) that completely determines the number field \(K\).
+
+\begin{thm}[primitive element theorem]\label{thm:primitive element}
+  Let \(L/K\) be an extension of number fields then there exists a
+  \emph{primitive element} \(α ∈ \algint[L]\) such that \(L = K[α]\). Moreover,
+  if \(μ_{K, α} ∈ K[X]\) is the minimal polynomial of \(α\) over \(K\) then the
+  degree of \(μ_{K, α}\) and the degree of the field extension \(L/K\) coincide.
+  A \(K\)-basis of \(L\) is given by \(\set{1, α, …, α^{n - 1}}\), where \(n =
+  [L : K]\).
+\end{thm}
+
+Important tools for studying of number fields and algebraic integers are given
+by the norm and trace.
+
+\subsection{Norms and traces of field extensions}
+
+For an extension \(L/K\) of number fields and a fixed element \(x ∈ L\) we
+consider the linear transformation \(λ_x : L → L\) defined by \(λ_x(z) = xz\)
+and define the \emph{trace} of \(x\) as
+\[
+  Tr_{L/K} (x) := Tr(λ_x)
+\]
+ as well as the \emph{norm} of \(x\) as
+ \[
+  N_{L/K} (x) := \det(λ_x).
+ \]
+ By basic facts from linear algebra, we find that the trace \(Tr_{L/K}: L → K\)
+ is in fact a homomorphism between the additive groups of the number fields and
+ the norm \(N_{L/K}: L^* → K^*\) is in fact a homomorphism between the groups of
+ units.
+
+ From the view of Galois theory one can reinterpret the norm and trace as
+ follows.
+
+ \begin{thm}
+   Let \(L/K\) be an extension of number fields of degree \(n\). Then there
+   exist exactly \(n\) embeddings \(\seq{σ}: L → ℂ\) that fix \(K\) point-wise.
+   Furthermore, for all \(x ∈ L\) we have that
+   \begin{thmlist}
+     \item \(μ_{K, x}(X) = \prod_{i = 1}^n (X - σ_i(x))\),
+     \item \(Tr_{L/K}(x) = \sum_{i = 1}^n σ_i(x)\), and
+     \item \(N_{L_K}(x) = \prod_{i = 1}^n σ_i(x)\).
+   \end{thmlist}
+ \end{thm}
+
+We call an extension \(L / K\) of number fields \emph{normal extension} if the
+embeddings \(σ_i: L → ℂ\) that fix \(K\) point-wise are in fact automorphisms of
+\(L\). We do however have the following equivalent characterizations as well.
+
+\begin{pro}
+  For an extension \(L/K\) of number fields the following properties are
+  equivalent.
+  \begin{thmlist}
+    \item \(L/K\) is a normal extension.
+
+    \item If an irreducible polynomial \(p ∈ K[X]\) has one root in \(L\), then
+    \(p\) splits over \(L\).
+
+    \item \(L\) is the splitting field of some irreducible polynomial \(p ∈
+    K[X]\).
+  \end{thmlist}
+\end{pro}
+
+From the proposition above it is immediate that every extension \(K / ℚ\) of
+degree \(2\) is normal. Moving on to degree \(3\) this changes as for instance
+\(ℚ[√[3]{2}] / ℚ\) is not normal. The polynomial \(X^3 - 2\) has the root
+\(√[3]{2}\) in \(ℚ[√[3]{2}]\) but both of the other non-real roots are not
+contained in the number field. One can however enlarge \(ℚ[√[3]{2}]\) to obtain
+a normal extension. More especially, if \(L/K\) is an extension of number
+fields, then there exists (up to isomorphism) a unique number field \(N
+\supseteq L\), such that the extension \(N/K\) is normal. We call \(N\) the
+normal closure of the extension. In fact, if \(N = K[α]\) then \(N\) can be
+chosen as the splitting field of \(μ_{K, α}\). Using the normal closure of
+\(L/K\) one can show that norm and trace behave well w.r.t.\ towers of field
+extensions.
+
+\begin{cor}
+  Let \(K ⊂ M ⊂ L\) be a tower of extensions of number fields. Then we have
+  \[
+    Tr_{L/K} = Tr_{M/K} • Tr_{L/M} \quad \text{and} \quad
+    N_{L/K} = N_{M/K} • N_{L/M}.
+  \]
+\end{cor}
 
 % TODO Fill out missing facts
 \todo{Fill out missing facts}
@@ -195,15 +316,15 @@ Missing facts
   \item\label{thm:Chinese remainder}
    Chinese remainder theorem \cite[see][Chap.~1,
   Thm~3.6]{Neukirch2006}
-  \item\label{thm:primitive element} Primitive element theorem
+  %\item Primitive element theorem
   \item\label{cor:Lagranges four square theorem}
   Lagrange's four-square theorem. A full proof of the claim using
   \cref{thm:Minkowski} is given in \cite[Remark 4.20]{Milne2017}.
   \item\label{ex:O K is computable}
   Integral bases and computability
-  \item normal extension/closure
-  \item Galois group acts transitively on \(μ_a\).
-  \item self-conjugate elements
+  %\item normal extension/closure
+  %\item Galois group acts transitively on \(μ_a\).
+  %\item self-conjugate elements
 \end{enumerate}
 
 
