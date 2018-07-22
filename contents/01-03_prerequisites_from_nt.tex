@@ -89,7 +89,9 @@ extension \(\overline{ℚ} / ℚ\) is (countably) infinite.
     α^n + a_{n-1}α^{n - 1} + … + a_0 = 0
   \]
   for some \(n ≥ 1\) and some \(\seq[n - 1]{a} ∈ R\). If all elements of \(S\)
-  are integral over \(R\) then \(S\) is called \emph{integral} over \(R\).
+  are integral over \(R\) then \(S\) is called \emph{integral} over \(R\). If
+  \(R\) is an integral domain then \(R\) is \emph{integrally closed} if for all
+  elements \(x ∈ \Quot(R)\) being integral over \(R\) implies \(x ∈ R\).
 \end{defin}
 
 Of course, when one wants to use tools from algebra some structure on the
@@ -176,15 +178,14 @@ is denoted by \(\algint[]\). Given a number field \(K\), we denote by
 considering the ring \(ℤ\) and not any \(\algint\), we call \(ℤ\) the ring of
 \emph{rational integers}.
 
-We have that \(\overline{ℤ}{}^ℚ = \algint[] ∩ ℚ = ℤ\). This follows from a more
-general result stating that factorial rings \(R\) equal their algebraic closure
-\(\overline{R}{}^{\Quot R}\) in their quotient fields \(\Quot R\). By
-\cref{pro:being integral is transitive} this property of \(ℤ\) extends to all
-rings of algebraic integers, we have \(\overline{\algint}{}^K = \algint\). To
-make the analogue complete we prove that \(K\) is the fraction field of
-\(\algint\) (see~\cref{thm:K is the quotient field of O K}). However, even more
-is true, as one can choose the denominator in the quotient to be a rational
-integer. More precisely, the following holds.
+We have that \(\overline{ℤ}{}^ℚ = \algint[] ∩ ℚ = ℤ\). Thus, \(ℤ\) is integrally
+closed. This follows from a more general result stating that factorial rings are
+integrally closed. By \cref{pro:being integral is transitive} this property of
+\(ℤ\) extends to all rings of algebraic integers, we have
+\(\overline{\algint}{}^K = \algint\). To make the analogue complete we prove
+that \(K\) is the fraction field of \(\algint\) (see~\cref{thm:K is the quotient
+field of O K}). However, even more is true, as one can choose the denominator in
+the quotient to be a rational integer. More precisely, the following holds.
 
 \begin{pro}
   Let \(K\) be a number field and \(\algint\) its ring of algebraic integers.
@@ -236,18 +237,19 @@ algebraic integer \(α ∈ K\) that completely determines the number field \(K\)
 Important tools for studying of number fields and algebraic integers are given
 by the norm and trace.
 
-\subsection{Norms and traces of field extensions}
+\begin{defin}
+  For an extension \(L/K\) of number fields and a fixed element \(x ∈ L\) we
+  consider the linear transformation \(λ_x : L → L\) defined by \(λ_x(z) = xz\)
+  and define the \emph{trace} of \(x\) as
+  \[
+    Tr_{L/K} (x) := Tr(λ_x)
+  \]
+  as well as the \emph{norm} of \(x\) as
+  \[
+    N_{L/K} (x) := \det(λ_x).
+  \]
+\end{defin}
 
-For an extension \(L/K\) of number fields and a fixed element \(x ∈ L\) we
-consider the linear transformation \(λ_x : L → L\) defined by \(λ_x(z) = xz\)
-and define the \emph{trace} of \(x\) as
-\[
-  Tr_{L/K} (x) := Tr(λ_x)
-\]
- as well as the \emph{norm} of \(x\) as
- \[
-  N_{L/K} (x) := \det(λ_x).
- \]
  By basic facts from linear algebra, we find that the trace \(Tr_{L/K}: L → K\)
  is in fact a homomorphism between the additive groups of the number fields and
  the norm \(N_{L/K}: L^* → K^*\) is in fact a homomorphism between the groups of
@@ -256,7 +258,7 @@ and define the \emph{trace} of \(x\) as
  From the view of Galois theory one can reinterpret the norm and trace as
  follows.
 
- \begin{thm}
+ \begin{thm}\label{thm:norm and trace}
    Let \(L/K\) be an extension of number fields of degree \(n\). Then there
    exist exactly \(n\) embeddings \(\seq{σ}: L → ℂ\) that fix \(K\) point-wise.
    Furthermore, for all \(x ∈ L\) we have that
@@ -287,14 +289,14 @@ embeddings \(σ_i: L → ℂ\) that fix \(K\) point-wise are in fact automorphis
 
 From the proposition above it is immediate that every extension \(K / ℚ\) of
 degree \(2\) is normal. Moving on to degree \(3\) this changes as for instance
-\(ℚ[√[3]{2}] / ℚ\) is not normal. The polynomial \(X^3 - 2\) has the root
-\(√[3]{2}\) in \(ℚ[√[3]{2}]\) but both of the other non-real roots are not
-contained in the number field. One can however enlarge \(ℚ[√[3]{2}]\) to obtain
-a normal extension. More especially, if \(L/K\) is an extension of number
-fields, then there exists (up to isomorphism) a unique number field \(N
+\(ℚ[√[3]{2}] / ℚ\) is not normal. The irreducible polynomial \(X^3 - 2 ∈ ℚ[X]\)
+has the root \(√[3]{2}\) in \(ℚ[√[3]{2}]\) but both of the other non-real roots
+are not contained in the number field. One can however enlarge \(ℚ[√[3]{2}]\) to
+obtain a normal extension. More specifically, if \(L/K\) is an extension of
+number fields, then there exists (up to isomorphism) a unique number field \(N
 \supseteq L\), such that the extension \(N/K\) is normal. We call \(N\) the
-normal closure of the extension. In fact, if \(N = K[α]\) then \(N\) can be
-chosen as the splitting field of \(μ_{K, α}\). Using the normal closure of
+\emph{normal closure} of the extension. In fact, if \(N = K[α]\) then \(N\) can
+be chosen as the splitting field of \(μ_{K, α}\). Using the normal closure of
 \(L/K\) one can show that norm and trace behave well w.r.t.\ towers of field
 extensions.
 
@@ -306,41 +308,266 @@ extensions.
   \]
 \end{cor}
 
-% TODO Fill out missing facts
-\todo{Fill out missing facts}
-Missing facts
-\begin{enumerate}
-  \item Dedekind domain and factorization into prime ideals
-  \item GCD and LCM
-  \item Principal ideals of different primes are relative prime
-  \item\label{thm:Chinese remainder}
-   Chinese remainder theorem \cite[see][Chap.~1,
-  Thm~3.6]{Neukirch2006}
-  %\item Primitive element theorem
-  \item\label{cor:Lagranges four square theorem}
-  Lagrange's four-square theorem. A full proof of the claim using
-  \cref{thm:Minkowski} is given in \cite[Remark 4.20]{Milne2017}.
-  \item\label{ex:O K is computable}
-  Integral bases and computability
-  %\item normal extension/closure
-  %\item Galois group acts transitively on \(μ_a\).
-  %\item self-conjugate elements
-\end{enumerate}
+We fix an extension \(L/K\) of number fields and take another look at
+\cref{thm:norm and trace}. Then we find for an algebraic integer \(α ∈
+\algint[L]\) that its norm \(N_{L/K}(α)\) and trace \(Tr_{L/K}(α)\) are in fact
+products and sums of algebraic integers and thus algebraic integers themselves.
+Now since norm and trace map are mappings from \(L\) to \(K\) we can deduce that
+both \(N_{L/K}(α)\) and \(Tr_{L/K}(α)\) are contained in \(\algint\). In
+particular, we find for all \(α ∈ \algint[L]\) that \(N_{L/ℚ}(α)\) and
+\(Tr_{L/ℚ}(α)\) are rational integers.
 
+Furthermore, one finds that an algebraic integer \(α \algint[L]\) is a unit if
+and only if its norm \(N_{L/K}(α)\) is a unit in \(\algint\). Indeed, if \(β
+N_{L/K}(α) = 1\) holds for some algebraic integer \(β ∈ \algint\), we can
+rewrite the norm to find that
+\[
+  1 = α \underbrace{β \prod_{i = 2}^n σ_i(α)}_{∈ \algint[L]}
+\]
+holds, where \(\id = \seq{σ}\) denote all the complex embeddings of \(L\) that
+fix \(K\) point-wise. In the special case that \(K = ℚ\) we find that \(α ∈
+\algint[L]\) is a unit if and only if \(N_{L/ℚ}(α)\) is \(±1\).
 
-\begin{defin}[Dedekind domain]
-  pass
+As a next step we will further investigate the algebraic structure of
+\(\algint\).
+
+\begin{thm}
+  Let \(L/K\) be an extension of number fields. Then \(\algint[L]\) is a
+  finitely generated free \(\algint\)-module.
+\end{thm}
+
+We call a module-basis of \(\algint[L]\) over \(\algint\) an \emph{integral
+basis} of \(L\) over \(K\). In particular, we can deduce that \(\algint[L]\) is
+a finitely generated free \(ℤ\)-module by setting \(K = ℚ\) in the theorem
+above. Every integral basis \(\set{\seq{ζ}} ⊂ \algint[L]\) is in fact a vector
+space basis of \(L\) over \(K\) as well, thus its cardinality must coincide with
+the degree of the extension. Note however, that not every \(K\)-basis of \(L\)
+containing only algebraic integers is an integral basis of \(L\) over \(K\). In
+full generality it is hard to find an integral basis, but once the basis is
+known the structure of \(\algint[L]\) behaves very nicely with respect to
+computability, which is the content of the following corollary.
+
+\begin{cor}\label{cor:O K is computable}
+  Let \(K\) be a number field and \(\algint\) its ring of algebraic integers.
+  Then \(\algint\) is an efficiently presentable and computably categorical
+  \(\lang_{ring}\)-structure. \end{cor} \begin{proof} By the theorem \(\algint\)
+  is a finitely generated free \(ℤ\)-module. In fact, it even carries a
+  \(ℤ\)-algebra structure. Thus, it is efficiently presentable by \cref{ex:Z is
+  computable}. Since \(\algint\) is a ring with unity, it is finitely generated
+  and as a consequence of \cref{thm:computable categoricity} \(\algint\) is
+  computably categorical.
+\end{proof}
+
+\subsection{Ideals of \(\algint\)}
+% ██ ██████  ███████  █████  ██      ███████
+% ██ ██   ██ ██      ██   ██ ██      ██
+% ██ ██   ██ █████   ███████ ██      ███████
+% ██ ██   ██ ██      ██   ██ ██           ██
+% ██ ██████  ███████ ██   ██ ███████ ███████
+
+We view algebraic integers as generalizations of rational integers. Given a
+fixed algebraic integer \(α\) one can show using induction on the absolute value
+of its norm \(N_{K/ℚ}(α)\) that \(α\) decomposes into a product of irreducible
+elements. However, unlike in the case of rational integers this decomposition is
+not unique. Indeed, in \(ℚ[i√{5}]\) one can decompose
+\[
+  21 = 3 \cdot 7 = (1 + i 2 √{5}) \cdot (1 - i 2 √{5}),
+\]
+where \(3, 7, 1 + i 2 √{5}\) and \(1 - i2 √{5}\) are irreducible and pair-wise
+non-associated algebraic integers.%
+\footnote{For full details see the first example in~\cite[Chap.~1,
+§~3]{Neukirch2006}.}
+
+It was the idea of German mathematician Ernst Eduard Krummer to generalize the
+prime decomposition to ‘ideal numbers’. In his view, there should be ideal
+primes \(\mathfrak{p}_1, \mathfrak{p}_2, \mathfrak{p}_3\) and \(\mathfrak{p}_4\)
+such that
+\[
+  3 = \mathfrak{p}_1 \mathfrak{p}_2, \quad
+  7 = \mathfrak{p}_3 \mathfrak{p}_4, \quad
+  1 + 2 √{-5} = \mathfrak{p}_1 \mathfrak{p}_3, \; \text{and} \;
+  1 - 2 √{-5} = \mathfrak{p}_2 \mathfrak{p}_4
+\]
+then
+\[
+  21 = (\mathfrak{p}_1 \mathfrak{p}_2)(\mathfrak{p}_3 \mathfrak{p}_4) =
+    (\mathfrak{p}_1 \mathfrak{p}_3) (\mathfrak{p}_2 \mathfrak{p}_4)
+\]
+and the decomposition is again unique.
+
+Since divisibility by a fixed number \(n ∈ ℤ\) gives rise to a congruence
+relation \(m_1 \equiv m_2 \mod n\) defined by \(n \mid m_1 - m_2\), it is quite
+natural---and was indeed carried out by Richard Dedekind---to view these ‘ideal
+numbers’ as congruence relations on \(\algint\). Then the equivalence class
+containing \(0\) is an \emph{ideal} in the sense of today's algebra and
+‘divisibility’ of ideals \(\mathfrak{a}\) by \(\mathfrak{b}\) can be
+replaced by the inclusion of sets \(\mathfrak{a} ⊂ \mathfrak{b}\).
+
+Compare this to the well known case of rational integers. Here every ideal is a
+principal ideal. Thus, there exist \(α, β ∈ ℤ\) such that \(\mathfrak{a} = (α)\)
+and \(\mathfrak{b} = (β)\) and \(α\) is divisible by \(β\) if and only if \((α)
+⊂ (β)\).
+
+As with rational integers, one can addition and multiplication of ideals by
+\begin{align*}
+  \mathfrak{a} + \mathfrak{b} &:=
+    \set{α + β \mid α ∈ \mathfrak{a}, β ∈ \mathfrak{b}}, \text{ and}\\
+  \mathfrak{a} \mathfrak{b} &:=
+    \set{\sum_{i=0}^n α_i β_i \mid
+      n ∈ ℕ, α_0,\seq{α} ∈ \mathfrak{a}, β_0,\seq{β} ∈ \mathfrak{b}}.
+\end{align*}
+It is easy to prove that sums and products of ideals are again ideals. In fact,
+the set of all ideals of \(\algint\) is a monoid with respect to multiplication,
+where the neutral element is given by \(\algint = (1)\). However, unlike in the
+case of rational integers we have that
+\[
+  \mathfrak{a} \mathfrak{b} ⊂ \mathfrak{a, b} ⊂ \mathfrak{a} + \mathfrak{b}
+\]
+and thus that
+\[
+  \mathfrak{a, b} \mid \mathfrak{a} \mathfrak{b} \quad \text{and} \quad
+  \mathfrak{a} + \mathfrak{b} \mid \mathfrak{a, b}.
+\]
+Before we can further study divisibility of ideals, we need to investigate the
+algebraic properties of \(\algint\).
+
+\begin{defin}
+  An integral domain \(D\) is called \emph{Dedekind domain} if \(D\) is
+  Noetherian, i.e.\ every ideal of \(D\) is finitely generated, algebraically
+  closed, and every non-zero prime ideal \(\mathfrak{p} ⊂ D\) is a maximal
+  ideal.
 \end{defin}
 
-\begin{defin}[class number \(c_k\)]
-    pass
-\end{defin}
+To study the ideals of algebraic integers the following theorem is essential.
 
-\begin{defin}[Abelian extension]
-    pass
-\end{defin}
+\begin{thm}
+  Let \(K\) be a number field. Then its ring of algebraic integers \(\algint\)
+  is a Dedekind domain.
+\end{thm}
+
+Note that for two ideals \((0) \subsetneq \mathfrak{a, b} \subsetneq \algint\),
+the sum \(\mathfrak{a} + \mathfrak{b}\) is the smallest (w.r.t.\ set-inclusion)
+ideal containing both \(\mathfrak{a}\) and \(\mathfrak{b}\). Indeed, if
+\(\mathfrak{c}\) contains \(\mathfrak{b}\) and \(\mathfrak{c}\) then it contains
+all sums of elements in \(\mathfrak{a}\) and \(\mathfrak{b}\). As a consequence,
+we call \(\mathfrak{a} + \mathfrak{b}\) the \emph{greatest common divisor} of
+\(\mathfrak{a}\) and \(\mathfrak{b}\).
+
+Similarly, the intersection \(\mathfrak{a} ∩ \mathfrak{b}\) is the greatest
+ideal of \(\algint\) contained in both \(\mathfrak{a}\) and \(\mathfrak{b}\).
+Thus, we call \(\mathfrak{a} ∩ \mathfrak{b}\) the \emph{least common multiple}
+of the ideals \(\mathfrak{a}\) and \(\mathfrak{b}\). Before we study the role of
+prime ideals with respect to this notion of divisibility, an example is in
+order.
+
+\begin{exam}
+  Consider the ring of rational integers \(ℤ\) and fix two integers \(n_1, n_2
+  ∈ ℤ\). We denote by \(d\) their greatest common divisor and by \(m\) their
+  least common multiple. As for their principal ideals the following hold
+  \begin{align*}
+    (n_1) ∩ (n_2) &= n_1 ℤ ∩ n_2 ℤ =
+      \set{n : n_1 \mid n \text{ and } n_2 \mid n} =
+      \set{n : m \mid n} = (m),\\
+    (n_1)(n_2) &=
+      \set{\sum_{i=0}^n α_i β_i :
+           n ∈ ℕ, α_0,\seq{α} ∈ n_1 ℤ, β_0,\seq{β} ∈ n_2 ℤ} =\\
+      &= \set{\sum_{i=0}^n n_1 k_i n_2 ℓ_i :
+              n ∈ ℕ, k_0,\seq{k}, ℓ_0,\seq{ℓ} ∈ ℤ} =
+        (n_1 n_2),\\
+    \intertext{and using Bézout's identity}
+    (n_1) + (n_2) &= \set{α + β : α ∈ (n_1), β ∈ (n_2)} =
+       \set{n_1 k + n_2 ℓ : k, ℓ ∈ ℤ} = (d).
+  \end{align*}
+  Thus, in the case of rational integers greatest common divisor and least
+  common multiple have their intended meaning if one replaces integers \(n\)
+  with their respective principal ideals \((n)\).
+\end{exam}
+
+\begin{thm}
+  Let \(\algint\) be the ring of of algebraic integers in some number field
+  \(K\) and let \(\mathfrak{a} \subsetneq \algint\) be a non-zero ideal. Then
+  there exist up to reordering unique prime ideals \(\seq{\mathfrak{p}} ⊂
+  \algint\) such that
+  \[
+    \mathfrak{a} = \mathfrak{p}_1 … \mathfrak{p}_n.
+  \]
+\end{thm}
+
+Combining multiple occurrences of the same prime ideal in the decomposition
+described in the theorem, one writes
+\[
+  \mathfrak{a} =
+    \prod_{\substack{\mathfrak{p} ⊂ \algint\\\mathfrak{p} \text{ prime ideal}}}
+      \mathfrak{p}^{ν_{\mathfrak{p}}},
+\]
+where \(ν_{\mathfrak{p}} ∈ ℕ\) and all but finitely many exponents are zero.%
+\footnote{The constructivist reader will be pleased to hear that \(\algint\)
+contains only countably many prime ideals and thus one can fix an order of the
+set of prime ideals, such that for all ideals \(\mathfrak{a} ⊂ \algint\) all
+non-zero exponents \(ν_{\mathfrak{p}}\) appear in a finite initial segment of
+the order.}
+Using this product notation of the prime decomposition of ideals, one obtains
+for
+\[
+\mathfrak{a} =
+  \prod_{\substack{\mathfrak{p} ⊂ \algint\\\mathfrak{p} \text{ prime ideal}}}
+    \mathfrak{p}^{ν_{\mathfrak{p}}}
+\quad \text{and} \quad
+\mathfrak{b} =
+  \prod_{\substack{\mathfrak{p} ⊂ \algint\\\mathfrak{p} \text{ prime ideal}}}
+    \mathfrak{p}^{μ_{\mathfrak{p}}},
+\]
+that their greatest common divisor has the factorization
+\[
+\mathfrak{a + b} =
+  \prod_{\substack{\mathfrak{p} ⊂ \algint\\\mathfrak{p} \text{ prime ideal}}}
+    \mathfrak{p}^{\min(ν_{\mathfrak{p}}, μ_{\mathfrak{p}})}.
+\]
+Thus, if \(\mathfrak{a} + \mathfrak{b} = (1)\), we say \(\mathfrak{a}\) and
+\(\mathfrak{b}\) are \emph{relative prime}.
+
+If we notice that the product ideals \(\mathfrak{a = \seq{a}}\), where the
+\(\mathfrak{a}_i\) are pair-wise relative prime, is equal to the intersection
+\[
+  \mathfrak{a} = \bigcap_{i = 1}^n \mathfrak{a}_i,
+\]
+we have all the tools at hand to restate another important property of the
+integers.
+
+\begin{thm}[Chinese remainder theorem]\label{thm:Chinese remainder}
+  Let \(\seq{\mathfrak{a}} ⊂ \algint\) ideals, which are pair-wise relative
+  prime, and let \(\mathfrak{a} = \cap_{i=1}^n \mathfrak{a}_i\). Then the
+  following isomorphism of rings holds
+  \[
+    \algint / \mathfrak{a} \; \cong \;
+    \bigoplus_{i = 1}^n \algint / \mathfrak{a}_i.
+  \]
+\end{thm}
+
+To conclude this subsection we consider the principal ideals \((p)\) generated
+by rational primes \(p ∈ ℤ\). It is easy to deduce that the equality
+\[
+  (21) = (3)(7) = (1 + i 2 √{5}) (1 - i 2 √{5}),
+\]
+of principal ideals holds in \(K = ℚ[i √5]\) by plugging-in the definition of
+products of ideals. Thus, neither \((3)\) nor \((7)\) can be prime ideals in
+\(\algint\). We do however know that no other rational prime can divide these
+principal ideals. More formally we have
+\begin{pro}
+  Let \(\mathfrak{p} ≠ (0)\) be a prime ideal in the ring of algebraic integers
+  of some number field \(K\). Then there exists a unique rational prime \(p ∈
+  ℤ\) such that \(\mathfrak{p}\) divides the principal ideal \((p) = p
+  \algint\).
+\end{pro}
+% TODO cite this theorem (Thm 120, Baxa)
+\todo{cite this theorem (Thm 120, Baxa)}
 
 \subsection{Geometry of numbers}
+%  ██████  ███████  ██████  ███    ███ ███████ ████████ ██████  ██    ██
+% ██       ██      ██    ██ ████  ████ ██         ██    ██   ██  ██  ██
+% ██   ███ █████   ██    ██ ██ ████ ██ █████      ██    ██████    ████
+% ██    ██ ██      ██    ██ ██  ██  ██ ██         ██    ██   ██    ██
+%  ██████  ███████  ██████  ██      ██ ███████    ██    ██   ██    ██
 
 \subsubsection{Minkowski's theorem on convex bodies}
 
@@ -394,3 +621,25 @@ the subject can as well be found in \cite[see][Chap.~\textsc{XXIII}]{Hardy1975}.
 \begin{thm}[Local-Global--Principle / Hasse-Minkowski theorem]
     see \cite[§ 66]{Meara2000}
 \end{thm}
+
+% TODO Fill out missing facts
+\todo{Fill out missing facts}
+Missing facts
+\begin{enumerate}
+  %\item Dedekind domain and factorization into prime ideals
+  %\item GCD and LCM
+  %\item Principal ideals of different primes are relative prime
+  % \item
+  %  Chinese remainder theorem \cite[see][Chap.~1,
+  % Thm~3.6]{Neukirch2006}
+  %\item Primitive element theorem
+  \item\label{cor:Lagranges four square theorem}
+  Lagrange's four-square theorem. A full proof of the claim using
+  \cref{thm:Minkowski} is given in \cite[Remark 4.20]{Milne2017}.
+  \item abealian extension
+  %\item
+  Integral bases and computability
+  %\item normal extension/closure
+  %\item Galois group acts transitively on \(μ_a\).
+  %\item self-conjugate elements
+\end{enumerate}

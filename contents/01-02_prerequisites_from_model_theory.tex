@@ -1120,25 +1120,24 @@ regard. But before studying computable isomorphisms we need a lemma.
   presentations is computably isomorphic.
 \end{defin}
 
-In the case of rings of algebraic integers (see~\cref{sec:number theory}) the
-following theorem applies and assures us that the decidability of
-\textsc{H10} does in fact not depend on the encoding chosen. For a more detailed
-discussion of efficient representations of rings see the
-textbook~\cite{Stoltenberg1999}.
+In the case of rings of algebraic integers (see~\cref{cor:O K is computable})
+the following theorem applies and assures us that the decidability of
+\textsc{H10} does in fact not depend on the encoding chosen.
 
-\begin{thm}
-  Let \(R\) be a finitely generated, efficiently representable ring with unity.
-  Then \(R\) is computably categorical.
+\begin{thm}\label{thm:computable categoricity}
+  Let \(R\) be a finitely generated, efficiently representable ring. Then \(R\)
+  is computably categorical.
 \end{thm}
-\begin{proof}
-  Let \(ζ_1, …, ζ_n ∈ R\) be a set of generators of \(R\) over \(R\) and let
-  \(φ_1: R → R_1, φ_2: R → R_2\) be the efficient representations of \(R\)
-  together with the respective ring isomorphisms. Then \(φ_1(ζ_1), …, φ_1(ζ_n)\)
-  generate \(R_1\) over \(R_1\) and \(φ_2(ζ_1), …, φ_2(ζ_n)\) generate \(R_2\)
-  over \(R_2\). Storing these finitely many values of the isomorphism \(φ_2
-  \circ φ_1^{-1}\) in memory one can use the computabilty of \(R_1\) and \(R_2\)
-  respectively to extend the partial mapping in the natural way.
-\end{proof}
+
+This theorem follows from a more general result of \textcite{Malcev1961}. The
+idea of the proof is to let \(ζ_1, …, ζ_n ∈ R\) be a set of generators of \(R\)
+over \(R\) and let \(φ_1: R → R_1, φ_2: R → R_2\) be the efficient
+representations of \(R\) together with the respective ring isomorphisms. Then
+\(φ_1(ζ_1), …, φ_1(ζ_n)\) generate \(R_1\) over \(R_1\) and \(φ_2(ζ_1), …,
+φ_2(ζ_n)\) generate \(R_2\) over \(R_2\). Storing these finitely many values of
+the isomorphism \(φ_2 \circ φ_1^{-1}\) in memory one can use the computabilty of
+\(R_1\) and \(R_2\) respectively to extend the partial mapping in the natural
+way.
 
 As for the decidability of \textsc{H10} over some ring of algebraic integers
 \(\algint\) this means, that if we have two encodings of \(\algint\) that allow
