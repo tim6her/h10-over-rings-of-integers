@@ -359,7 +359,7 @@ corresponding set but it might not be able to refute membership.
   \(\mathbb{A}\) with the states
   \[
     S = \set{\sstart, \shalt, \state{accept}, \state{reject}} \sqcup
-    \set{s_{b_1…b_k} \mid b_1…b_k ∈ ω \text{ for } 0 ≤ k ≤ n},
+    \set{s_{b_1…b_k} : b_1…b_k ∈ ω \text{ for } 0 ≤ k ≤ n},
   \]
   where \(\sqcup\) denotes the disjoint union. As for the transition function
   \(δ\), we define
@@ -517,7 +517,7 @@ multiple arguments. To do this, one uses an injective function \(⟨\cdot, \cdot
 D^2 → ω\), where \(D ⊂ ω\) is decidable and encodes tuples by elements of \(ω\)
 in such a way, that the image
 \[
-  \set{⟨x_1, x_2⟩ \mid x_1, x_2 ∈ D}
+  \set{⟨x_1, x_2⟩ : x_1, x_2 ∈ D}
 \]
 is decidable and the projections \(p_i(⟨x_1, x_2⟩) ↦ x_i\) for \(i ∈ \lbrace 0,
 1 \rbrace\) are computable. This means, there are Turing machines \(\mathbb P_1,
@@ -616,7 +616,7 @@ functions allow us to define decidable relations on \(ω^n\).
   Let \(R \subseteq ω^n\) be an \(n\)-ary relation on \(ω\). Then \(R\) is
   called (\emph{semi-})\emph{decidable} if the set
   \[
-    \set{⟨\seq{x}⟩ \mid \seq{x} ∈ ω, R(\seq{x})}
+    \set{⟨\seq{x}⟩ : \seq{x} ∈ ω, R(\seq{x})}
   \]
   is a (semi-)decidable subset of \(ω\).
 \end{defin}
@@ -633,7 +633,7 @@ is modelled by a minimization operator.
   \]
   if
   \[
-    D_R = \set{x ∈ ω \mid ∃ y ∈ ω : R(x, y)},
+    D_R = \set{x ∈ ω : ∃ y ∈ ω \text{ with } R(x, y)},
   \]
   there exists a Turing machine \(\mathbb{A}\) semi-deciding \(R\), such that
   for all \(x ∈ D_R\) the machine \(\mathbb{A}\) can refute \(R(x, y)\), i.e.\
@@ -925,7 +925,7 @@ For a more detailed proof of theorem fact and lot more information on
 computability see \cite{Cooper2004}. As the halting problem is undecidable the
 \emph{halting set} defined by
 \[
- \mathcal{K} = \set{⟨\enc{\mathbb A}, x⟩ \mid \mathbb A \text{ halts on } x}
+ \mathcal{K} = \set{⟨\enc{\mathbb A}, x⟩ : \mathbb A \text{ halts on } x}
 \]
 is undecidable. However, using the universal Turing machine it is seen to be
 semi-decidable.
