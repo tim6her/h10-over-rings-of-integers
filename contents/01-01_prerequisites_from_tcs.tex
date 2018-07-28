@@ -744,11 +744,13 @@ sets.
   \]
   Note that for a fixed integer \(n\) the relation can contain at most \(2^{n +
   1}\) triples. Thus, \(R\) is decidable for fixed \(n\). However, using
-  induction on \(n\) one sees easily that \(R\) is decdidable as a ternary
-  relation. (If \(R(n, x, y)\) holds, so does \(R(m, x, y)\) for all \(m ≥ n\),
-  and if \(\mathbb{A}\) did not halt on \(x\) in \(n\) steps, we perform one
-  more step of the computation and can check wether \(\mathbb{A}(x) = y\)
-  holds.) Finally, we obtain
+  induction on \(n\) one sees easily that \(R\) is decidable as a ternary
+  relation. (If \(R(n, x, y)\) holds, so does \(R(m, x, y)\) for all \(m ≥ n\).
+  If \(R(n, x, y)\) does not hold, then either \(x\) or \(y\) contain more than
+  \(n\) bits; or \(\mathbb{A}\) did not halt on \(x\) in \(n\) steps; or
+  \(\mathbb{A}(x)\) is not \(y\). In this case, we perform one more step of the
+  computation and can check wether \(\mathbb{A}\) outputs \(y\).) Finally, we
+  obtain
   \[
     y ∈ Q \quad ⇔ \quad ∃ z ∈ ω: R(π_1(z), π_2(z), y),
   \]
