@@ -26,7 +26,7 @@
 #### Definitions
 
 - (Class number $c_k$)
-- Abelian extension
+- abelian extension
 
 ### Theorems
 

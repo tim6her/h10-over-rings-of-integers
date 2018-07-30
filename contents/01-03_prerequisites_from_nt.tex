@@ -36,9 +36,9 @@ where \(R \subseteq S\) and \(φ\) is chosen to be the embedding of \(R\) into
 polynomial expressions in \(\seq{α}\) with coefficients in \(R\), i.e.\ all
 elements of the form
 \[
-  \sum_{(\seq[m]{i}) ∈ ℕ^m} a_{i_1, …, i_m} α^{i_1} … α^{i_m},
+  \sum_{(\seq{i}) ∈ ℕ^n} a_{i_1, …, i_n} α^{i_1} … α^{i_n},
 \]
-where only finitely many \(a_{i_1, …, i_m} ∈ R\) are non-zero.
+where only finitely many \(a_{i_1, …, i_n} ∈ R\) are non-zero.
 
 \begin{defin}
   A finite field-extension \(K\) of the rationals \(ℚ\) is called
@@ -62,9 +62,6 @@ pane \(ℂ\).
 
     \item \(ℚ[√[3]{2}] = \set{a + b √[3]{2} + c √[3]{4} : a, b ∈ ℚ}\) is an
     algebraic number field of degree \(3\).
-
-    \item \(ℚ\left[\e^{\frac{2 i π}{3}}\right] = \set{a + b \e^{\frac{2 i
-    π}{3}}}\) is an algebraic number field of degree \(2\).
   \end{exlist}
 \end{exam}
 
@@ -219,7 +216,7 @@ Indeed, if \(x\) is a root of the monic polynomial \(p ∈ ℤ[X]\) then \(μ_{�
 x}\) divides \(p\) and thus every root of \(μ_{ℚ, x}\) is an algebraic integer
 as well. Now decompose
 \[
-  μ_{ℚ, x}(X) = \prod_{i=1}^n (X - α_i)
+  μ_{ℚ, x}(X) = \prod_{i=1}^n (X - α_i),
 \]
 then since \(\algint\) is a ring, the minimal polynomial must have coefficients
 in \(\algint ∩ ℚ = ℤ\) and the claim is proven. In fact, we can always find an
@@ -295,10 +292,9 @@ are not contained in the number field. One can however enlarge \(ℚ[√[3]{2}]\
 obtain a normal extension. More specifically, if \(L/K\) is an extension of
 number fields, then there exists (up to isomorphism) a unique number field \(N
 \supseteq L\), such that the extension \(N/K\) is normal. We call \(N\) the
-\emph{normal closure} of the extension. In fact, if \(N = K[α]\) then \(N\) can
-be chosen as the splitting field of \(μ_{K, α}\). Using the normal closure of
-\(L/K\) one can show that norm and trace behave well w.r.t.\ towers of field
-extensions.
+\emph{normal closure} of the extension. In fact, if \(L = K[α]\) then \(N\) is
+the splitting field of \(μ_{K, α}\). Using the normal closure of \(L/K\) one can
+show that norm and trace behave well w.r.t.\ towers of field extensions.
 
 \begin{cor}
   Let \(K ⊂ M ⊂ L\) be a tower of extensions of number fields. Then we have
@@ -312,12 +308,12 @@ We fix an extension \(L/K\) of number fields and take another look at
 \cref{thm:norm and trace}. Then we find for an algebraic integer \(α ∈
 \algint[L]\) that its norm \(N_{L/K}(α)\) and trace \(Tr_{L/K}(α)\) are in fact
 products and sums of algebraic integers and thus algebraic integers themselves.
-Now since norm and trace map are mappings from \(L\) to \(K\) we can deduce that
+Now since norm and trace are mappings from \(L\) to \(K\) we can deduce that
 both \(N_{L/K}(α)\) and \(Tr_{L/K}(α)\) are contained in \(\algint\). In
 particular, we find for all \(α ∈ \algint[L]\) that \(N_{L/ℚ}(α)\) and
 \(Tr_{L/ℚ}(α)\) are rational integers.
 
-Furthermore, one finds that an algebraic integer \(α \algint[L]\) is a unit if
+Furthermore, one finds that an algebraic integer \(α ∈ \algint[L]\) is a unit if
 and only if its norm \(N_{L/K}(α)\) is a unit in \(\algint\). Indeed, if \(β
 N_{L/K}(α) = 1\) holds for some algebraic integer \(β ∈ \algint\), we can
 rewrite the norm to find that
@@ -399,16 +395,19 @@ Since divisibility by a fixed number \(n ∈ ℤ\) gives rise to a congruence
 relation \(m_1 \equiv m_2 \mod n\) defined by \(n \mid m_1 - m_2\), it is quite
 natural---and was indeed carried out by Richard Dedekind---to view these ‘ideal
 numbers’ as congruence relations on \(\algint\). Then the equivalence class
-containing \(0\) is an \emph{ideal} in the sense of today's algebra and
-‘divisibility’ of ideals \(\mathfrak{a}\) by \(\mathfrak{b}\) can be
-replaced by the inclusion of sets \(\mathfrak{a} ⊂ \mathfrak{b}\).
+containing \(0\) is an \emph{ideal} in the sense of modern abstract algebra and
+‘divisibility’ of ideals \(\mathfrak{a}\) by \(\mathfrak{b}\) can be replaced by
+the inclusion of sets \(\mathfrak{a} ⊂ \mathfrak{b}\). On the other hand, for a
+given ideal \(\mathfrak{a}\) we obtain back the congruence if we define \(α
+\equiv β \mod \mathfrak{a}\) by \(α - β ∈ \mathfrak{a}\).
 
 Compare this to the well known case of rational integers. Here every ideal is a
 principal ideal. Thus, there exist \(α, β ∈ ℤ\) such that \(\mathfrak{a} = (α)\)
 and \(\mathfrak{b} = (β)\) and \(α\) is divisible by \(β\) if and only if \((α)
 ⊂ (β)\).
 
-As with rational integers, one can addition and multiplication of ideals by
+As with rational integers, one can define addition and multiplication of ideals
+by
 \begin{align*}
   \mathfrak{a} + \mathfrak{b} &:=
     \set{α + β : α ∈ \mathfrak{a}, β ∈ \mathfrak{b}}, \text{ and}\\
@@ -448,7 +447,7 @@ To study the ideals of algebraic integers the following theorem is essential.
 Note that for two ideals \((0) \subsetneq \mathfrak{a, b} \subsetneq \algint\),
 the sum \(\mathfrak{a} + \mathfrak{b}\) is the smallest (w.r.t.\ set-inclusion)
 ideal containing both \(\mathfrak{a}\) and \(\mathfrak{b}\). Indeed, if
-\(\mathfrak{c}\) contains \(\mathfrak{b}\) and \(\mathfrak{c}\) then it contains
+\(\mathfrak{c}\) contains \(\mathfrak{a}\) and \(\mathfrak{b}\) then it contains
 all sums of elements in \(\mathfrak{a}\) and \(\mathfrak{b}\). As a consequence,
 we call \(\mathfrak{a} + \mathfrak{b}\) the \emph{greatest common divisor} of
 \(\mathfrak{a}\) and \(\mathfrak{b}\).
@@ -502,8 +501,8 @@ described in the theorem, one writes
 \]
 where \(ν_{\mathfrak{p}} ∈ ℕ\) and all but finitely many exponents are zero.%
 \footnote{The constructivist reader will be pleased to hear that \(\algint\)
-contains only countably many prime ideals and thus one can fix an order of the
-set of prime ideals, such that for all ideals \(\mathfrak{a} ⊂ \algint\) all
+contains only countably many prime ideals and thus one can fix a linear order of
+the set of prime ideals, such that for all ideals \(\mathfrak{a} ⊂ \algint\) all
 non-zero exponents \(ν_{\mathfrak{p}}\) appear in a finite initial segment of
 the order.}
 Using this product notation of the prime decomposition of ideals, one obtains
@@ -526,7 +525,7 @@ that their greatest common divisor has the factorization
 Thus, if \(\mathfrak{a} + \mathfrak{b} = (1)\), we say \(\mathfrak{a}\) and
 \(\mathfrak{b}\) are \emph{relative prime}.
 
-If we notice that the product ideals \(\mathfrak{a = \seq{a}}\), where the
+If we notice that the product of ideals \(\mathfrak{a = \seq{a}}\), where the
 \(\mathfrak{a}_i\) are pair-wise relative prime, is equal to the intersection
 \[
   \mathfrak{a} = \bigcap_{i = 1}^n \mathfrak{a}_i,
@@ -543,6 +542,57 @@ integers.
     \bigoplus_{i = 1}^n \algint / \mathfrak{a}_i.
   \]
 \end{thm}
+\begin{proof}
+  We consider the ring-homomorphism \(φ: \algint → \bigoplus_{i = 1}^n \algint /
+  \mathfrak{a}_i\) defined by
+  \[
+    α ↦ (α + \mathfrak{a}_i)_{i = 1}^n.
+  \]
+  Its kernel is given by \(\mathfrak{a} = \cap_{i=1}^n \mathfrak{a}_i\). Thus,
+  it suffices to prove that \(φ\) is surjective. For this we proceed by
+  induction on \(n\). If \(n = 1\), then the claim is trivial. Thus, we consider
+  the case \(n = 2\). Then we can find \(β_1 ∈ \mathfrak{a}_1\) and \(β_2 ∈
+  \mathfrak{a}_2\) such that \(1 = β_1 + β_2\). In other words, we find \(β_1,
+  β_2 ∈ \algint\) such that
+  \[
+    β_i \equiv 1 \mod \mathfrak{a}_{3 - i} \quad \text{and} \quad
+    β_i \equiv 0 \mod \mathfrak{a}_i
+  \]
+  hold simultaneously for \(i ∈ \set{1, 2}\). If now an arbitrary element
+  \((x_1 + \mathfrak{a}_1, x_2 + \mathfrak{a}_2) ∈ \mathfrak{a}_1 \times
+  \mathfrak{a}_2\) is given then
+  \[
+    x := x_1 β_2 + x_2 β_1
+  \]
+  has the property that \(x \equiv x_i \mod \mathfrak{a}_{i}\) holds for \(i ∈
+  \set{1, 2}\). Thus, we have found that \(φ\) is surjective for \(n = 2\).
+
+  Let now \(n ≥ 2\) and note that we have the isomorphism of direct sums
+  \[
+    \bigoplus_{i = 1}^{n} \algint / \mathfrak{a}_i \; \cong \;
+    \algint / \mathfrak{a}_n \times
+      \bigoplus_{i = 1}^{n - 1} \algint / \mathfrak{a}_i.
+  \]
+  We denote \(\mathfrak{b} := \mathfrak{a}_1 … \mathfrak{a}_{n - 1}\) then by
+  the induction hypothesis the factor rings \(\algint / \mathfrak{b}\) and
+  \(\algint / \bigoplus_{i = 1}^{n - 1} \mathfrak{a}_i\) are isomorphic. Thus,
+  we can deduce that
+  \[
+    \bigoplus_{i = 1}^{n} \algint / \mathfrak{a}_i \; \cong \;
+    \algint / \mathfrak{a}_n \times \algint / \mathfrak{b}
+  \]
+  holds. To conclude the proof note that the ideals \(\mathfrak{a}_n\) and
+  \(\mathfrak{b} := \mathfrak{a}_1 … \mathfrak{a}_{n - 1}\) are relative prime.
+  Now by our observation for the case \(n = 2\), we find that the mapping
+  \(\tilde{φ} : \algint → \algint / \mathfrak{a}_n \times \algint /
+  \mathfrak{b}\) defined by
+  \[
+    α ↦ \left(α + \mathfrak{a}_n,
+               α + \mathfrak{b}\right)
+  \]
+  is surjective and has kernel \(\mathfrak{a}_n ∩ \mathfrak{b} = \mathfrak{a}\).
+  By the reduction steps observed above the claim holds.
+\end{proof}
 
 To conclude this subsection we consider the principal ideals \((p)\) generated
 by rational primes \(p ∈ ℤ\). It is easy to deduce that the equality
@@ -569,57 +619,218 @@ principal ideals. More formally we have
 % ██    ██ ██      ██    ██ ██  ██  ██ ██         ██    ██   ██    ██
 %  ██████  ███████  ██████  ██      ██ ███████    ██    ██   ██    ██
 
-\subsubsection{Minkowski's theorem on convex bodies}
+In this section we want to study approximations of real numbers by rational
+quantities. The first main result will be Minkowski's theorem on convex
+bodies~(\ref{thm:Minkowski}), which can be applied to prove Dirichlet's unit
+theorem~(\ref{thm:Dirichlet}). The second main result is Kronecker's
+approximation theorem~(\ref{thm:Kronecker}), whose proof is presented as in
+Chap.~2 of the textbook~\cite{Hlawka1986}.
 
-In this section I closely follow \cite[Chap.~I, §2]{Schmidt1991}.
-
-Let \(V\) be an \(n\)-dimensional vector space over the reals \(ℝ\). If \(\seq[k]{e} ∈
-V\) (\(k ≤ n\)) are linearly independent over \(ℝ\), then the free Abelian group
+Let \(\seq{e} ∈ ℝ^n\) be a collection of linearly independent vectors over
+\(ℝ\), then the free abelian group
 \[
   Λ = ℤ e_1 + … + ℤ e_k
 \]
-is called a \emph{lattice}. Note that \(ℤ + \sqrt{2} ℤ\) is not a lattice in this
-sense, because \(1\) and \(\sqrt{2}\) are linearly dependent over \(ℝ\).
+is called a \emph{lattice} and its elements are \emph{lattice points}.
+The set of generators \(\set{\seq{e}}\) is called \emph{basis} of \(Λ\). Note
+that \(ℤ + \sqrt{2} ℤ\) is not a lattice in this sense, because \(1\) and
+\(\sqrt{2}\) are linearly dependent over \(ℝ\).
 
-Let \(μ\) be the measure corresponding to the usual Euclidean volume%
-\footnote{I.e. \(μ\) is the Lebesgue measure on \(ℝ^n\) and therefore the Haar
-measure with respect to the locally compact, Abelian group \(⟨Λ, +⟩\).}
-on \(ℝ^n\). Then the \emph{fundamental parallelepiped}
+The basis \(\set{\seq{e}}\) of a lattice \(Λ\) is not unique. For instance,
+another basis is given by \(\set{-e_1, e_2, …, e_n}\). However, if
+\(\set{\seq{f}}\) is another basis then the \(n \times n\)-matrix \(C :=
+(c_{ij})_{1 ≤ i, j ≤ n}\) defined by
+\[
+  f_{i} = \sum_{i = 1}^n c_{ij} e_j
+\]
+has rational integral coefficients and is invertible. Thus, the determinant of
+\(C\) is either \(-1\) or \(1\).
+
+Let \(μ\) be the measure corresponding to the usual euclidean volume%
+\footnote{I.e.\ \(μ\) is the Lebesgue measure on \(ℝ^n\) and therefore the Haar
+measure with respect to the locally compact, abelian group \(⟨Λ, +⟩\).}
+on \(ℝ^n\). Then for a fixed lattice \(Λ = ℤ e_1 + … + ℤ e_n\) in \(ℝ^n\) the
+\emph{fundamental parallelepiped}
 \[
   D = \set{\sum_{i=1}^n α_i e_i : α_i ∈ [0, 1]}
 \]
 has the volume
 \[
-  μ(D) = |\det \left( \seq{e} \right)|
+  μ(D) = |\det \left( \seq{e} \right)|.
 \]
-for a fixed lattice \(Λ = ℤ e_1 + … + ℤ e_n\) in \(ℝ^n\). One calls such a lattice whose rank coincides with the dimension of the vector space \(ℝ^n\) a \emph{full} lattice.
+Note that the fundamental parallelepiped \(D\) does depend on the choice of
+basis, whereas its volume \(μ(D)\) is an invariant of the lattice. This is
+because determinant for change of bases has absolute value \(1\). A lattice
+\(Λ\) in \(ℝ^2\) and its fundamental parallelepiped are depicted in
+\cref{fideterminate. All elements of \(Λ\) appear at intersection of the lines.
 
-\begin{thm}[Minkowski's theorem on convex bodies] \label{thm:Minkowski}
+\begin{figure}
+  \begin{center}
+    \includegraphics{res/lattice_1}
+    \caption{A lattice in \(ℝ^2\) and its fundamental parallelepiped \(D\)}
+    \label{fig:lattice}
+  \end{center}
+\end{figure}
+
+We have now all tools at hand to state our first main result. The following
+proof is presented as in Thm.~4.4 of the textbook~\cite{Neukirch2006}.
+
+\begin{thm}[Minkowski's theorem on convex bodies]\label{thm:Minkowski}
   Let \(Λ = ℤ e_1 + … + ℤ e_n\) be a full lattice in the \(n\)-dimensional
-  \(ℝ\)-vector space \(V\) and let \(D\) denote its fundamental parallelepiped. If \(T
-  \subseteq V\) is compact, convex and symmetric in the origin, i.e.\ if \(α ∈ T\)
-  so is \(-α ∈ T\), and
+  \(ℝ\)-vector space \(V\) and let \(D\) denote its fundamental parallelepiped.
+  If \(T \subseteq V\) is compact, convex and symmetric in the origin, i.e.\ if
+  \(α ∈ T\) so is \(-α ∈ T\), and
   \[
-    μ(T) ≥ 2^n μ(D).
+    μ(T) > 2^n μ(D).
   \]
-  Then \(T\) contains a non-zero lattice point \(α ∈ Λ \setminus \set{0}\).
+  Then \(T\) contains a non-zero lattice point \(γ ∈ Λ \setminus \set{0}\).
 \end{thm}
+\begin{proof}
+  We prove that there exist two distinct lattice points \(γ_1, γ_2 ∈ Λ\) such
+  that the intersection of sets
+  \[
+    \left( ½ T + γ_1 \right) ∩ \left( ½ T + γ_2 \right)
+  \]
+  is non-empty. If this is the case then there exist \(x_1, x_2 ∈ T\) such that
+  \[
+    ½ x_1 + γ_1 = ½ x_2 + γ_2
+  \]
+  and thus
+  \[
+    0 ≠ γ := γ_1 - γ_2 = ½ (x_1 - x_2)
+  \]
+  lies in \(T ∩ Λ\), since it is the centre of the line segment between \(x_1\)
+  and \(x_2 ∈ T\).
 
-For a proof of Minkowski's theorem and further details on lattices see
-\cite[4.4, p.~28]{Neukirch2006} or \cite[Thm.~4.19]{Milne2017}.
+  To obtain a contradiction assume that the members of the family of sets \((1/2
+  T + γ)_{γ ∈ Λ}\) are pair-wise disjoint. Then their intersections \(D ∩ (1/2
+  T + γ)\) with the fundamental parallelepiped \(D\) are pairwise disjoint as
+  well. It follows that
+  \[
+    μ(D) ≥ \sum_{γ ∈ Λ} μ\left(D ∩ \left(½ T + γ\right)\right).
+  \]
 
-\subsubsection{Kronecker's theorem}
+  On the other hand, since the euclidean volume is invariant under translation,
+  we find that
+  \[
+    μ\left(D ∩ \left(½ T + γ\right)\right) =
+    μ\left((D - γ) ∩ \left(½ T\right)\right)
+  \]
+  Furthermore, the sets \(D - γ\) cover all of \(ℝ^n\) and therefore all of
+  \(1/2 T\) as well. Finally, we conclude that
+  \[
+    μ(D) ≥ μ\left((D - γ) ∩ \left(½ T\right)\right) = μ\left(½ T\right)
+      = \frac{1}{2^n} μ(T),
+  \]
+  which contradicts our assumption on the volume of \(T\).
+\end{proof}
 
-I will closely follow the German reference \cite[Chap.~2]{Hlawka1986}. However,
-the subject can as well be found in \cite[see][Chap.~\textsc{XXIII}]{Hardy1975}.
+Note that the approximation of \(μ(T)\) cannot be improved as for instance the
+open square \(\set{(x, y) ∈ ℝ^2 : |x|, |y| < 1}\) has volume \(2^2\) but
+contains no lattice point of \((1, 0)ℤ + (0, 1)ℤ\).
 
+We will now use Minkowski's theorem to reprove an old result of Lagrange, that
+is of utmost importance to our task of settling Hilbert's tenth problem. The
+proof is taken from Remark~4.20 of Milne's lecture notes~\cite{Milne2017}. But
+first we need a lemma.
+
+\begin{lem}
+  Let \(Λ ⊂ Λ'\) be two lattices in \(ℝ^n\) and let \(D\) and \(D'\) be one of
+  their respective fundamental parallelepipeds. Then
+  \[
+    μ(D) = μ(D') [Λ' : Λ]
+  \]
+  holds, where \([Λ' : Λ] = | Λ' / Λ |\) denotes the index of \(Λ\) in \(Λ'\).
+\end{lem}
+
+For the proof of the proposition it will be convenient to identify the free
+abelian group \(a_1 ℤ \times … \times a_n ℤ\) with the lattice generated by the
+basis \(\set{a_1 e_1, …, a_n e_n} ⊂ ℝ^n\), where \(e_i\) denotes the \(i\)-th
+vector of the standard basis of \(ℝ^n\).
+
+\begin{pro}[Lagrange's four-square theorem]%
+\label{pro:Lagranges four square theorem}
+  Every non-negative integer is the sum of four squares of integers.
+\end{pro}
+\begin{proof}
+  The integers \(0, 1\) and \(2\) can be written as
+  \[
+    0 = 0^2 + 0^2 + 0^2 + 0^2, \quad
+    1 = 1^2 + 0^2 + 0^2 + 0^2, \; \text{and} \;
+    2 = 1^2 + 1^2 + 0^2 + 0^2.
+  \]
+  Thus, we may assume that \(n > 2\). Furthermore, the set of integers
+  representable as sum of four squares is closed under multiplication as
+  \begin{align*}
+    (a_1^2 &+ a_2^2 + a_3^2 + a_4^2)(b_1^2 + b_2^2 + b_3^2 + b_4^2) =\\
+      & (a_1 b_1 - a_2 b_2 - a_3 b_3 - a_4 b_4)^2 +
+        (a_1 b_2 + a_2 b_1 + a_3 b_4 - a_4 b_3)^2 +\\
+      & (a_1 b_3 - a_2 b_4 + a_3 b_1 + a_4 b_2)^2 +
+        (a_1 b_4 + a_2 b_3 - a_3 b_2 + a_4 b_1)^2
+  \end{align*}
+  holds. Hence, all that is left is to prove the claim for odd primes.
+
+  For a fixed odd prime \(p\) the squares of an integer \(m\) take exactly \((p
+  + 1)/2\) distinct values modulo \(p\) when \(m\) runs through \(0, 1, …, p -
+  1\) by Euler's criterion. By the same criterion \(-n^2 - 1\) runs through
+  exactly \((p + 1)/2\) modulo \(p\) as well. Thus, there exist integers \(m, n
+  ∈ \set{0, 1, …, p_1}\) solving the congruence
+  \[
+    m^2 + n^2 + 1 \equiv 0 \mod p.
+  \]
+
+  For a fixed solution \((m, n)\) of the above congruence we consider the set
+  \(Λ\) of all solutions \((a, b, c, d) ∈ ℤ^4\) of the simultaneous congruence
+  \[
+    c \equiv m a + n b \mod p \quad \text{and} \quad
+    d \equiv m b - n a \mod p.
+  \]
+  It is not hard to see, that \(Λ\) is in fact a (free abelian) subgroup of
+  \(ℤ^4\) and thus can be considered as an lattice. As \((p, p, p, p)\) is a
+  solution of the congruences, we find that \(p ℤ^4 ⊂ Λ\) is a subgroup of
+  \(Λ\). Considering the quotient \(Λ / p ℤ^4\) we note that \(a\) and \(b\) can
+  be chosen arbitrarily modulo \(p\), but then \(c\) and \(d\) are uniquely
+  determined. Thus, the index \([Λ : p ℤ^4]\) equals \(p^2\). We conclude that
+  the index \([ℤ^4 : Λ]\) equals \(p^2\) as well and by the previous lemma the
+  volume \(μ(D)\) of a fundamental parallelepiped \(D\) of \(Λ\) is \(1 \cdot
+  p^2\).
+
+  Consider the closed four-dimensional ball \(T\) of radius \(r\) around the
+  origin. Its volume is \(π^2 r^4 / 2\) and if we choose \(2 p > r^2 > 4 √2 /
+  π\) then
+  \[
+    μ(T) > 16 p^2 = 2^4 μ(D)
+  \]
+  holds. By Minkowski's theorem there exists a non-zero lattice point \((a, b,
+  c, d) ∈ (Λ ∩ T) \setminus \set{0}\). Since \((a, b, c, d)\) is in \(Λ\), we
+  know that
+  \begin{align*}
+    a^2 + b^2 + c^2 + d^2 &\equiv
+        a^2 + b^2 + (m a + n b)^2 + (m b - n a)^2 \equiv\\
+      &\equiv a^2 (m^2 + n^2 + 1) + b^2 (m^2 + n^2 + 1) \equiv 0 \mod p
+  \end{align*}
+  holds. On the other hand, since \((a, b, c, d)\) is in \(T\), we have that
+  \[
+    a^2 + b^2 + c^2 + d^2 < 2p
+  \]
+  and thus, \(p = a^2 + b^2 + c^2 + d^2\) is the desired representation.
+\end{proof}
 
 \begin{thm}[Dirichlet's unit theorem]\label{thm:Dirichlet}
     see \cite[Thm.~5.1]{Milne2017}
 \end{thm}
 
+\subsubsection{Kronecker's theorem}
+
+I will closely follow the German reference~\cite[Chap.~2]{Hlawka1986}. However,
+the subject can as well be found in Chap.~23 of the textbook~\cite{Hardy1975}.
+
 \begin{thm}[Local-Global--Principle / Hasse-Minkowski theorem]
     see \cite[§ 66]{Meara2000}
+\end{thm}
+
+\begin{thm}{Kronecker's approximation theorem}\label{thm:Kronecker}
+  pass
 \end{thm}
 
 % TODO Fill out missing facts
@@ -633,10 +844,7 @@ Missing facts
   %  Chinese remainder theorem \cite[see][Chap.~1,
   % Thm~3.6]{Neukirch2006}
   %\item Primitive element theorem
-  \item\label{cor:Lagranges four square theorem}
-  Lagrange's four-square theorem. A full proof of the claim using
-  \cref{thm:Minkowski} is given in \cite[Remark 4.20]{Milne2017}.
-  \item abealian extension
+  \item abelian extension
   %\item
   Integral bases and computability
   %\item normal extension/closure
