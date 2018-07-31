@@ -938,7 +938,7 @@ Minkowski's theorem.
 Using the set
 \[
   T := \set{(x, \seq[k]{y}) ∈ ℝ^{1 + k} : -N^k - ½ ≤ x ≤ N^k + ½,
-            |α_i x - y_i| ≤ \frac{1}{N}}
+            |α_i x - y_i| ≤ \frac{1}{N}},
 \]
 one proves completely analogously the multidimensional version
 of Dirichlet's approximation theorem.
@@ -962,8 +962,90 @@ of Dirichlet's approximation theorem.
   \end{center}
 \end{figure}
 
-\begin{thm}{Kronecker's approximation theorem}\label{thm:Kronecker}
-  pass
+Intuitively, Dirichlet's approximation theorem tells us that \(α n\) for \(α ∈
+ℝ\) can be made arbitrarily close to an integer by varing \(n ∈ ℕ\). The closely
+related approximation theorem by Leopold Kronecker tells us, that we cannot only
+approximate integral values, but if \(α\) is irrational then \(α n - β\) can be
+made arbitrarily close to an integer for all \(β ∈ ℝ\).
+
+In the following I will recite the presentation of the proof of Kronecker'
+theorem from Chap.~2 of the textbook~\cite{Hlawka1991}. Note however that the
+material is also present in Chap.~23 of the reference~\cite{Hardy1975} and the
+remark following the theorem stems from this book.
+
+\begin{thm}[Kronecker's approximation theorem]
+  For all irrational numbers \(α ∈ ℝ \setminus ℚ\), all real numbers \(β ∈ ℝ\),
+  all integers \(N > 1\), and all \(ε > 0\) there exist integers \(p, n ∈ ℤ\)
+  with \(|n| ≥ N\) such that
+  \[
+    |αn - β - p| < ε
+  \]
+  holds.
+\end{thm}
+\begin{proof}
+  By Dirichlet's approximation theorem there exist integers \(g, q ∈ ℤ\) with
+  \(0 < q\) such that
+  \[
+    0 < |α q - g | < ε
+  \]
+  holds. Indeed, for the left inequality we notice that \(α\) is irrational and
+  the right inequality follows by setting \(N > ε^{-1}\). Now we set \(n := kq\)
+  and \(p := kg + c\), where the exact values of \(k\) and \(c\) will be
+  determined in the course of the proof.
+
+  We transform the expression of interest
+  \begin{equation}\label{eq:Kronecker 1}
+    |α n - β - p | = |k (α q - g) - β - c| =
+    |αq - g| \left\vert k - \frac{β + c}{α q - g}\right\vert
+  \end{equation}
+  and set
+  \[
+    k := \left\lfloor \frac{β + c}{α q - g} \right\rfloor + 1,
+  \]
+  where \(\lfloor x \rfloor\) denotes greatest integer smaller than \(x\), to
+  ensure that the last factor in \eqref{eq:Kronecker 1} remains smaller than
+  one. Secondly, we want that \(|n| ≥ N\), but since \(|n| = q |k|\), it
+  suffices make sure that \(|k| ≥ N\). For this it suffices to have
+  \[
+    |k| > \left\vert \frac{β + c}{α q - g}\right\vert ≥
+          \frac{|c| - |β|}{|α q - g|} ≥ N + 1,
+  \]
+  which holds if
+  \[
+    |c| ≥ (N + 1) |αq - g| + |β|
+  \]
+  is satisfied. Choose such an integer \(c\) and set \(k\) accordingly then
+  \(|n| ≥ N\) holds, but we can also deduce from \eqref{eq:Kronecker 1} that
+  \[
+    |α n - β - p | =
+      \underbrace{|αq - g|}_{< ε}
+      \underbrace{\left\vert k - \frac{β + c}{α q - g}\right\vert}_{≤ 1} < ε
+  \]
+  is fulfilled, which was to be proved.
+\end{proof}
+
+\begin{rem}
+  Note that the condition on \(α\) being irrational in Kronecker's theorem is
+  necessary. Indeed, if we assume otherwise that \(α = a/b\) then \(αn - \lfloor
+  αn \rfloor\) runs only through the values
+  \[
+    0, \frac{1}{b}, \frac{2}{b}, …, \frac{b - 1}{b}
+  \]
+  for all \(n ∈ ℕ\). Thus, if we choose any \(β ∈ [0, 1)\) that is not among
+  these values, then
+  \[
+    \set{\left\vert \frac{r}{b} - β \right\vert : 0 ≤ r < b}
+  \]
+  has a positive maximum, say \(δ\) and the condition
+  \[
+    |αn - β - p| < ε
+  \]
+  cannot be satisfied for \(ε < δ\).
+\end{rem}
+
+
+\begin{thm}[Multidimensional Kronecker approximation theorem]
+  \label{thm:Kronecker}
 \end{thm}
 
 % \begin{thm}[Local-Global--Principle / Hasse-Minkowski theorem]
