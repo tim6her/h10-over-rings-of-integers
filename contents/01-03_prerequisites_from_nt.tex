@@ -624,7 +624,7 @@ quantities. The first main result will be Minkowski's theorem on convex
 bodies~(\ref{thm:Minkowski}), which can be applied to prove Dirichlet's unit
 theorem~(\ref{thm:Dirichlet}). The second main result is Kronecker's
 approximation theorem~(\ref{thm:Kronecker}), whose proof is presented as in
-Chap.~2 of the textbook~\cite{Hlawka1986}.
+Chap.~2 of the textbook~\cite{Hlawka1991}.
 
 Let \(\seq{e} ∈ ℝ^n\) be a collection of linearly independent vectors over
 \(ℝ\), then the free abelian group
@@ -678,7 +678,7 @@ proof is presented as in Thm.~4.4 of the textbook~\cite{Neukirch2006}.
 \begin{thm}[Minkowski's theorem on convex bodies]\label{thm:Minkowski}
   Let \(Λ = ℤ e_1 + … + ℤ e_n\) be a full lattice in the \(n\)-dimensional
   \(ℝ\)-vector space \(V\) and let \(D\) denote its fundamental parallelepiped.
-  If \(T \subseteq V\) is compact, convex and symmetric in the origin, i.e.\ if
+  If \(T \subseteq V\) is convex and symmetric in the origin, i.e.\ if
   \(α ∈ T\) so is \(-α ∈ T\), and
   \[
     \Vol(T) > 2^n \Vol(D).
@@ -845,7 +845,7 @@ In other words, Dirichlet's theorem states that there exists a collection of
 units \(\seq[r + s - 1]{u} ∈ U_K\)---called \emph{fundamental system of
 units}---such that every unit \(u ∈ U_K\) can be written as
 \[
-  u = ζ u_1^m_1 … u_{r + s - 1}^{m_{r + s - 1}}
+  u = ζ u_1^{m_1} … u_{r + s - 1}^{m_{r + s - 1}}
 \]
 where \(ζ ∈ μ(K)\) is a root of unity and \(m_i ∈ ℤ\) is a rational integer for
 all \(i ∈ \set{1, …, r + s - 1}\).
@@ -884,34 +884,88 @@ which is an \(r + s - 1\)-dimensional \(ℝ\)-vector space. The key to proving
 Dirichlet's theorem is showing that \(L(U_K)\) can be considered as an \(r + s -
 1\)-dimensional lattice in \(H\).
 
-\subsubsection{Kronecker's theorem}
+We will now turn our attention to approximations of real numbers by the
+rationals and start with an result of Peter Dirichlet. Dirichlet's direct proof
+makes use of the pigeonhole principle. In fact, it was he who popularized this
+simple combinatorial fact by giving it its German name
+\foreignquote{german}{Schubfachprinzip}. However, we base our proof on
+Minkowski's theorem.
 
-I will closely follow the German reference~\cite[Chap.~2]{Hlawka1986}. However,
-the subject can as well be found in Chap.~23 of the textbook~\cite{Hardy1975}.
-
-\begin{thm}[Local-Global--Principle / Hasse-Minkowski theorem]
-    see \cite[§ 66]{Meara2000}
+\begin{thm}[Dirichlet's approximation theorem]
+  For each real number \(α ∈ ℝ\) and each integer \(N > 1\) there exist integers
+  \(n, p ∈ ℤ\) with \(0 < n ≤ N\) such that
+  \[
+    |n α - p | < \frac{1}{N}
+  \]
+  holds.
 \end{thm}
+\begin{proof}
+  Consider the set
+  \[
+    T := \set{(x, y) ∈ ℝ^2 : -N - ½ ≤ x ≤ N + ½, |αx - y| ≤ \frac{1}{N}}.
+  \]
+  If we can proof \(T\) contains an integral tuple \((n, p) ∈ ℤ^2\), we are
+  done, as if \(n < 0\) we can replace \(p\) by \(-p\) and have found the
+  claimed approximation. Note that \(n\) cannot be zero, as otherwise since
+  \(1/N\) is smaller than one, \(p\) must be zero as well.
+
+  As was mentioned before, we want to apply Minkowski's theorem and thus need to
+  check that \(T\) is convex and symmetric in the origin. Symmetry is satisfied
+  as the first condition on \(x\) is symmetric and the second condition is
+  invariant under replacing \((x, y)\) by \((-x, -y)\). Geometrically, \(T\) is
+  the are of the ribbon of width \(2/N\) around the graph of \(f(x) = αx\)
+  between the perpendicular lines at \(±(N + 1/2)\). In \cref{fig:dirichlet} the
+  set \(T\) is represented by the shaded area, the thick line represents the
+  function \(f\) and the dashed lines mark the area where the condition
+  \[
+    -N - ½ ≤ x ≤ N + ½
+  \]
+  is met.\footnote{In the example depicted \(N\) equals \(3\).}
+  We need to prove that \(T\) contains a lattice point \(γ ∈ ℤ^2\). But
+  this is now easy as by our geometrical observation \(T\) is convex and its
+  area is equal to the width of the ribbon \(2/N\) times the length of the
+  parallelogram, which is equal to
+  \[
+    √{(2N + 1)^2 + (α (2N + 1))^2} = (2N + 1) √{1 + α^2}.
+  \]
+  Multiplication yields
+  \[
+    \Vol (T) = \frac{2}{N} (2N + 1) √{1 + α^2} > 4
+  \]
+  and Minkowski's theorem implies the existence of the claimed lattice point.
+\end{proof}
+
+Using the set
+\[
+  T := \set{(x, \seq[k]{y}) ∈ ℝ^{1 + k} : -N^k - ½ ≤ x ≤ N^k + ½,
+            |α_i x - y_i| ≤ \frac{1}{N}}
+\]
+one proves completely analogously the multidimensional version
+of Dirichlet's approximation theorem.
+
+\begin{thm}[Multidimensional Dirichlet approximation theorem]%
+  \label{thm:Dirichlet}%
+  Let \(\seq[k]{α} ∈ ℝ\) be \(k\) real numbers and fix an integer \(N > 1\).
+  Then there exist integers \(\seq[k]{p}, n ∈ ℤ\) with \(0 < n ≤ N^k\) such that
+  for all \(1 ≤ i ≤ ℓ\) we have that
+  \[
+    |α_i n - p_i | ≤ \frac{1}{N}
+  \]
+  holds.
+\end{thm}
+
+\begin{figure}
+  \begin{center}
+    \includegraphics{res/dirichlet}
+    \caption{The convex set \(T\) contains the lattice point \(γ\)}
+    \label{fig:dirichlet}
+  \end{center}
+\end{figure}
 
 \begin{thm}{Kronecker's approximation theorem}\label{thm:Kronecker}
   pass
 \end{thm}
 
-% TODO Fill out missing facts
-\todo{Fill out missing facts}
-Missing facts
-\begin{enumerate}
-  %\item Dedekind domain and factorization into prime ideals
-  %\item GCD and LCM
-  %\item Principal ideals of different primes are relative prime
-  % \item
-  %  Chinese remainder theorem \cite[see][Chap.~1,
-  % Thm~3.6]{Neukirch2006}
-  %\item Primitive element theorem
-  \item abelian extension
-  %\item
-  Integral bases and computability
-  %\item normal extension/closure
-  %\item Galois group acts transitively on \(μ_a\).
-  %\item self-conjugate elements
-\end{enumerate}
+% \begin{thm}[Local-Global--Principle / Hasse-Minkowski theorem]
+%     see \cite[§ 66]{Meara2000}
+% \end{thm}
