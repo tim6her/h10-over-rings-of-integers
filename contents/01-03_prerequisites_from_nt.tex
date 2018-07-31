@@ -646,9 +646,9 @@ another basis is given by \(\set{-e_1, e_2, …, e_n}\). However, if
 has rational integral coefficients and is invertible. Thus, the determinant of
 \(C\) is either \(-1\) or \(1\).
 
-Let \(μ\) be the measure corresponding to the usual euclidean volume%
-\footnote{I.e.\ \(μ\) is the Lebesgue measure on \(ℝ^n\) and therefore the Haar
-measure with respect to the locally compact, abelian group \(⟨Λ, +⟩\).}
+Let \(\Vol\) be the measure corresponding to the usual euclidean volume%
+\footnote{I.e.\ \(\Vol\) is the Lebesgue measure on \(ℝ^n\) and therefore the
+Haar measure with respect to the locally compact, abelian group \(⟨Λ, +⟩\).}
 on \(ℝ^n\). Then for a fixed lattice \(Λ = ℤ e_1 + … + ℤ e_n\) in \(ℝ^n\) the
 \emph{fundamental parallelepiped}
 \[
@@ -656,13 +656,13 @@ on \(ℝ^n\). Then for a fixed lattice \(Λ = ℤ e_1 + … + ℤ e_n\) in \(ℝ
 \]
 has the volume
 \[
-  μ(D) = |\det \left( \seq{e} \right)|.
+  \Vol(D) = |\det \left( \seq{e} \right)|.
 \]
 Note that the fundamental parallelepiped \(D\) does depend on the choice of
-basis, whereas its volume \(μ(D)\) is an invariant of the lattice. This is
+basis, whereas its volume \(\Vol(D)\) is an invariant of the lattice. This is
 because determinant for change of bases has absolute value \(1\). A lattice
 \(Λ\) in \(ℝ^2\) and its fundamental parallelepiped are depicted in
-\cref{fideterminate. All elements of \(Λ\) appear at intersection of the lines.
+\cref{fig:lattice}. All elements of \(Λ\) appear at intersection of the lines.
 
 \begin{figure}
   \begin{center}
@@ -681,7 +681,7 @@ proof is presented as in Thm.~4.4 of the textbook~\cite{Neukirch2006}.
   If \(T \subseteq V\) is compact, convex and symmetric in the origin, i.e.\ if
   \(α ∈ T\) so is \(-α ∈ T\), and
   \[
-    μ(T) > 2^n μ(D).
+    \Vol(T) > 2^n \Vol(D).
   \]
   Then \(T\) contains a non-zero lattice point \(γ ∈ Λ \setminus \set{0}\).
 \end{thm}
@@ -707,25 +707,25 @@ proof is presented as in Thm.~4.4 of the textbook~\cite{Neukirch2006}.
   T + γ)\) with the fundamental parallelepiped \(D\) are pairwise disjoint as
   well. It follows that
   \[
-    μ(D) ≥ \sum_{γ ∈ Λ} μ\left(D ∩ \left(½ T + γ\right)\right).
+    \Vol(D) ≥ \sum_{γ ∈ Λ} \Vol\left(D ∩ \left(½ T + γ\right)\right).
   \]
 
   On the other hand, since the euclidean volume is invariant under translation,
   we find that
   \[
-    μ\left(D ∩ \left(½ T + γ\right)\right) =
-    μ\left((D - γ) ∩ \left(½ T\right)\right)
+    \Vol\left(D ∩ \left(½ T + γ\right)\right) =
+    \Vol\left((D - γ) ∩ \left(½ T\right)\right)
   \]
   Furthermore, the sets \(D - γ\) cover all of \(ℝ^n\) and therefore all of
   \(1/2 T\) as well. Finally, we conclude that
   \[
-    μ(D) ≥ μ\left((D - γ) ∩ \left(½ T\right)\right) = μ\left(½ T\right)
-      = \frac{1}{2^n} μ(T),
+    \Vol(D) ≥ \Vol\left((D - γ) ∩ \left(½ T\right)\right) = \Vol\left(½ T\right)
+      = \frac{1}{2^n} \Vol(T),
   \]
   which contradicts our assumption on the volume of \(T\).
 \end{proof}
 
-Note that the approximation of \(μ(T)\) cannot be improved as for instance the
+Note that the approximation of \(\Vol(T)\) cannot be improved as for instance the
 open square \(\set{(x, y) ∈ ℝ^2 : |x|, |y| < 1}\) has volume \(2^2\) but
 contains no lattice point of \((1, 0)ℤ + (0, 1)ℤ\).
 
@@ -738,7 +738,7 @@ first we need a lemma.
   Let \(Λ ⊂ Λ'\) be two lattices in \(ℝ^n\) and let \(D\) and \(D'\) be one of
   their respective fundamental parallelepipeds. Then
   \[
-    μ(D) = μ(D') [Λ' : Λ]
+    \Vol(D) = \Vol(D') [Λ' : Λ]
   \]
   holds, where \([Λ' : Λ] = | Λ' / Λ |\) denotes the index of \(Λ\) in \(Λ'\).
 \end{lem}
@@ -792,14 +792,14 @@ vector of the standard basis of \(ℝ^n\).
   be chosen arbitrarily modulo \(p\), but then \(c\) and \(d\) are uniquely
   determined. Thus, the index \([Λ : p ℤ^4]\) equals \(p^2\). We conclude that
   the index \([ℤ^4 : Λ]\) equals \(p^2\) as well and by the previous lemma the
-  volume \(μ(D)\) of a fundamental parallelepiped \(D\) of \(Λ\) is \(1 \cdot
+  volume \(\Vol(D)\) of a fundamental parallelepiped \(D\) of \(Λ\) is \(1 \cdot
   p^2\).
 
   Consider the closed four-dimensional ball \(T\) of radius \(r\) around the
   origin. Its volume is \(π^2 r^4 / 2\) and if we choose \(2 p > r^2 > 4 √2 /
   π\) then
   \[
-    μ(T) > 16 p^2 = 2^4 μ(D)
+    \Vol(T) > 16 p^2 = 2^4 \Vol(D)
   \]
   holds. By Minkowski's theorem there exists a non-zero lattice point \((a, b,
   c, d) ∈ (Λ ∩ T) \setminus \set{0}\). Since \((a, b, c, d)\) is in \(Λ\), we
@@ -816,9 +816,73 @@ vector of the standard basis of \(ℝ^n\).
   and thus, \(p = a^2 + b^2 + c^2 + d^2\) is the desired representation.
 \end{proof}
 
+We now want to give a structural description of the group of units \(U_K :=
+\algint^*\) in a number field \(K\). It is easy to see that all algebraic
+integers \(ζ ∈ \algint\) with finite order, say \(k ∈ ℕ\), are roots of unity.
+Indeed, the property \(ζ^k = 1\) shows that \(ζ\) is a \(k\)-th root of unity.
+The set of all roots of unity \(ζ ∈ U_K\) is denoted by \(μ(K)\). If one can
+show, that \(μ(K)\) is finite then \(μ(K)\) is cyclic subgroup of \(K^*\).
+
+By the fundamental theorem of finitely generated abelian groups, we know that
+every finitely generated abelian group \(G\) is isomorphic to \(G_{tors} \times
+ℤ^t\), where \(G_{tors}\) is the finite subgroup of elements with finite order,
+called the \emph{torsion part} of \(G\), and \(t ∈ ℕ\) is called the \emph{free
+rank} of \(G\). Thus, if \(U_K\) is finitely generated then its torsion part is
+\(μ(K)\) and all that is left to fully describe \(U_K\) is finding its free
+rank. This classification is the content of the following important theorem.
+
 \begin{thm}[Dirichlet's unit theorem]\label{thm:Dirichlet}
-    see \cite[Thm.~5.1]{Milne2017}
+  Let \(K\) be a number field of degree \(n\) over the rationals \(ℚ\). If \(r\)
+  is the number of real embeddings \(σ: K → ℝ\) of \(K\) then \(s := (n - r) /
+  2\) is the number of pairs of complex-conjugate embeddings \(σ,\overline{σ}:
+  K → ℂ\). In this case the group of units \(U_K\) is isomorphic to
+  \[
+    μ(K) \times ℤ^{r + s - 1}.
+  \]
 \end{thm}
+
+In other words, Dirichlet's theorem states that there exists a collection of
+units \(\seq[r + s - 1]{u} ∈ U_K\)---called \emph{fundamental system of
+units}---such that every unit \(u ∈ U_K\) can be written as
+\[
+  u = ζ u_1^m_1 … u_{r + s - 1}^{m_{r + s - 1}}
+\]
+where \(ζ ∈ μ(K)\) is a root of unity and \(m_i ∈ ℤ\) is a rational integer for
+all \(i ∈ \set{1, …, r + s - 1}\).
+
+A full proof of the theorem exceeds the scope of this thesis, but among others
+Chap.~5 of the textbook~\cite{Milne2017} and Chap.~1, §7 of the German
+reference~\cite{Neukirch2006} contain proofs based on Minkowski's theorem. The
+idea is to consider the mapping \(Σ: K → ℝ^r \times ℂ^s\) defined by
+\[
+  Σ(x) := (σ_1(x), …, σ_r(x), σ_{r + 1}(x), …, σ_{r + s}(x)),
+\]
+where \(\seq[r]{σ}\) are all real embeddings of \(K\) and \(σ_{r + 1},
+\overline{σ}_{r + 1}, …, σ_{r + s}, \overline{σ}_{r + s}\) are all non-real
+embeddings. Then \(Σ\) preserves sums and we obtain a group-homomorphism by
+taking logarithms. More formally, we consider \(L : K^* → ℝ^{r + s}\) defined by
+\[
+  L(x) := (\log |σ_1(x)|, …, \log |σ_r(x)|,
+           \log |σ_{r + 1}(x)|, …, \log |σ_{r + s}(x)|).
+\]
+Now, since the norm \(N_{K / ℚ}(u) = ±1\) for every unit \(u ∈ U_K\), we know
+that
+\[
+  |σ_1(u)| … |σ_r(u)| |σ_{r + 1}(u)|^2 … |σ_{r + s}(u)|^2 = 1
+\]
+and upon taking the logarithm that
+\[
+  \log |σ_1(u)| + … + \log |σ_r(u)| +
+  2\log |σ_{r + 1}(u)| + … + 2 |σ_{r + s}(u)| = 0
+\]
+holds. In other words, the image \(L(U_K)\) is contained in the hyperplane \(H\)
+defined by
+\[
+  H: x_1 + … + x_r + 2 x_{r + 1} + … + 2 x_{r + s} = 0,
+\]
+which is an \(r + s - 1\)-dimensional \(ℝ\)-vector space. The key to proving
+Dirichlet's theorem is showing that \(L(U_K)\) can be considered as an \(r + s -
+1\)-dimensional lattice in \(H\).
 
 \subsubsection{Kronecker's theorem}
 
