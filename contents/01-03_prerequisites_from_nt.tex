@@ -946,8 +946,8 @@ of Dirichlet's approximation theorem.
 \begin{thm}[Multidimensional Dirichlet approximation theorem]%
   \label{thm:Dirichlet}%
   Let \(\seq[k]{α} ∈ ℝ\) be \(k\) real numbers and fix an integer \(N > 1\).
-  Then there exist integers \(\seq[k]{p}, n ∈ ℤ\) with \(0 < n ≤ N^k\) such that
-  for all \(1 ≤ i ≤ ℓ\) we have that
+  Then there exist integers \(\seq[k]{p}, n ∈ ℤ\) with \(0 < n ≤ N^k\) such
+  that for all \(1 ≤ i ≤ ℓ\) we have that
   \[
     |α_i n - p_i | ≤ \frac{1}{N}
   \]
@@ -963,10 +963,20 @@ of Dirichlet's approximation theorem.
 \end{figure}
 
 Intuitively, Dirichlet's approximation theorem tells us that \(α n\) for \(α ∈
-ℝ\) can be made arbitrarily close to an integer by varing \(n ∈ ℕ\). The closely
-related approximation theorem by Leopold Kronecker tells us, that we cannot only
-approximate integral values, but if \(α\) is irrational then \(α n - β\) can be
-made arbitrarily close to an integer for all \(β ∈ ℝ\).
+ℝ\) can be made arbitrarily close to an integer by varying \(n ∈ ℕ\). The
+closely related approximation theorem by Leopold Kronecker tells us, that we
+cannot only approximate integral values, but if \(α\) is irrational then \(α n -
+p\) can be made arbitrarily close to a fixed \(β ∈ ℝ\) if we vary the integers
+\(n\) and \(p\).
+
+If we identify two real numbers \(x, y\) whenever there exists an integer \(p\)
+with the property that \(x + p = y\) then we have constructed the additive
+quotient group \(ℝ / ℤ\). Geometrically, this construction can be seen as
+rolling up the half open unit interval \([0, 1)\) to form a unit circle.
+Considering the quotient topology on \(ℝ / ℤ\), Dirichlet's theorem tells us
+that \(α n\) can be made arbitrarily close to \(0 + ℤ\), while Kronecker's
+theorem states that every point of the unit circle is a cluster point of the
+sequence \((α n)_{n ∈ ℕ}\) if \(α\) is irrational.
 
 In the following I will recite the presentation of the proof of Kronecker'
 theorem from Chap.~2 of the textbook~\cite{Hlawka1991}. Note however that the
@@ -975,8 +985,8 @@ remark following the theorem stems from this book.
 
 \begin{thm}[Kronecker's approximation theorem]
   For all irrational numbers \(α ∈ ℝ \setminus ℚ\), all real numbers \(β ∈ ℝ\),
-  all integers \(N > 1\), and all \(ε > 0\) there exist integers \(p, n ∈ ℤ\)
-  with \(|n| ≥ N\) such that
+  all integers \(N ≥ 1\), and all \(ε > 0\) there exist integers \(p, n ∈ ℤ\)
+  with \(n ≥ N\) such that
   \[
     |αn - β - p| < ε
   \]
@@ -1004,18 +1014,20 @@ remark following the theorem stems from this book.
   \]
   where \(\lfloor x \rfloor\) denotes greatest integer smaller than \(x\), to
   ensure that the last factor in \eqref{eq:Kronecker 1} remains smaller than
-  one. Secondly, we want that \(|n| ≥ N\), but since \(|n| = q |k|\), it
-  suffices make sure that \(|k| ≥ N\). For this it suffices to have
-  \[
-    |k| > \left\vert \frac{β + c}{α q - g}\right\vert ≥
-          \frac{|c| - |β|}{|α q - g|} ≥ N + 1,
-  \]
-  which holds if
+  one. Choose \(c\) to be any integer with the same sign as \(α q - g\) that
+  satisfies
   \[
     |c| ≥ (N + 1) |αq - g| + |β|
   \]
-  is satisfied. Choose such an integer \(c\) and set \(k\) accordingly then
-  \(|n| ≥ N\) holds, but we can also deduce from \eqref{eq:Kronecker 1} that
+  and set \(k\) accordingly. Then
+  \begin{align*}
+    k &= \left\lfloor \frac{β + c}{α q - g} \right\rfloor + 1 ≥
+         \frac{c}{α q -g } - \left\vert \frac{β}{α q - g} \right\vert ≥\\
+      &≥ \left((N + 1) + \left\vert \frac{β}{α q - g} \right\vert \right) -
+        \left\vert \frac{β}{α q - g} \right\vert = N + 1 > 0
+  \end{align*}
+  and therefore \(n = kq ≥ k > N\). From \eqref{eq:Kronecker 1} we can now
+  deduce that
   \[
     |α n - β - p | =
       \underbrace{|αq - g|}_{< ε}
@@ -1043,10 +1055,161 @@ remark following the theorem stems from this book.
   cannot be satisfied for \(ε < δ\).
 \end{rem}
 
+As with Dirichlet's approximation theorem there is a multidimensional version of
+Kronecker's theorem as well. To state this theorem we need a definition.
 
-\begin{thm}[Multidimensional Kronecker approximation theorem]
+\begin{defin}
+  A set of distinct real numbers \(\seq[n]{α} ∈ ℝ\) is called \emph{linearly
+  independent over \(ℤ\)} if for all integers \(\seq[n]{c}\) the fact that
+  \[
+    \sum_{i = 1}^n c_i α_i
+  \]
+  is an integer implies that \(c_1 = c_2 = … = c_n = 0\).
+\end{defin}
+
+Note that a set of real numbers \(\set{\seq[ℓ]{α}} ⊂ ℝ\) is linearly independent
+over \(ℤ\) if and only if \(\set{1, \seq[ℓ]{α}}\) is linearly independent over
+\(ℚ\) in the sense of linear algebra. Indeed, if \(\set{\seq[ℓ]{α}}\) is
+linearly independent over \(ℤ\) and there are rationals \(\seq[ℓ]{x} ∈ ℚ\) such
+that
+\[
+  \sum_{i = 1}^ℓ x_i α_i = x_0 \cdot 1
+\]
+then upon multiplying with the least common multiple of the denominators of the
+non-zero \(x_i\) we obtain a \(ℤ\)-linear combination of the \(α_i\) with an
+integral value and thus all the \(x_i\) must be zero.
+
+If on the other hand, \(\set{1, \seq[ℓ]{α}}\) is linearly independent over \(ℚ\)
+then
+\[
+  \sum_{i = 1}^ℓ c_i α_i = a ∈ ℤ
+\]
+for some \(\seq[ℓ]{c} ∈ ℤ\) implies that all of the \(c_i\) (and \(a\)) must be
+zero. Thus, \(\set{\seq[ℓ]{α}}\) is linearly independent over \(ℤ\).
+
+\begin{thm}[Multidimensional Kronecker approximation theorem]%
   \label{thm:Kronecker}
+  Let \(\seq[ℓ]{α} ∈ ℝ\) be distinct real numbers that are linearly independent
+  over \(ℤ\). Then for all real \(\seq[ℓ]{β} ∈ ℝ\), all \(ε > 0\), and all
+  integers \(N ≥ 1\) one can find integers \(n, \seq[ℓ]{p} ∈ ℤ\) with \(|n| ≥
+  N\) such that for all \(i ∈ \set{1, …, ℓ}\) the inequality
+  \[
+    |α_i n - β_i - p_i| < ε
+  \]
+  is satisfied.
 \end{thm}
+
+As did \textcite{Hlawka1991} I will present the inductive proof of
+\textcite{Estermann1933} published in 1933.
+
+\begin{proof}
+  For \(ℓ = 1\) we have already carried out a proof in the previous theorem, as
+  for a single real number \(α\) to be linearly independent over \(ℤ\) is the
+  same as being irrational. Thus let us assume that \(ℓ > 1\) and that the claim
+  holds true for all collections of less than \(ℓ\) linearly independent real
+  numbers.
+
+  We set \(δ := ε/2\) and apply the multidimensional version of Dirichlet's
+  approximation theorem to obtain integers \(q, \seq[ℓ]{g} ∈ ℤ\) with \(q > 0\)
+  such that
+  \[
+    0 < |α_i q - g_i| < δ
+  \]
+  holds for all \(i ∈ \set{1, …, ℓ}\). The left inequality holds again since
+  \(α_i\) is irrational.
+
+  As in the one-dimensional case we set \(k = n q\) and \(p_i = k g_i + c_i\)
+  for \(1 ≤ i ≤ ℓ\) and integers \(k, \seq[ℓ]{c}\) whose values will be
+  determined later. Considering the expression of interest we can again obtain
+  \[
+    |α_i n - β_i - p_i| = |k(α_i q - g_i) - β_i - c_i| =
+      |α_i q - g_i| \left\vert k - \frac{β_i + c_i}{α_i q - g_i}\right\vert
+  \]
+  for all \(1 ≤ i ≤ ℓ\). Now if
+  \[
+    k := \left\lfloor \frac{β_ℓ + c_ℓ}{α_ℓ q - g_ℓ} \right\rfloor + 1 \quad
+    \text{and} \quad
+    |c_ℓ| ≥ N |α_ℓ q - g_ℓ| + |β_ℓ|
+  \]
+  are satisfied then one obtains analogously to the one-dimensional case that
+  \begin{equation}\label{eq:Kronecker 3}
+    |α_ℓ n - β_ℓ - p_ℓ| < δ \quad \text{and} \quad
+    |n| ≥ N
+  \end{equation}
+  hold. Furthermore, we denote \(ϑ := k - (β_ℓ + c_ℓ)/(α_ℓ q - g_ℓ)\).
+
+  For \(1 ≤ j < ℓ\) we consider
+  \begin{equation}\label{eq:Kronecker 2}
+    \begin{split}
+      α_j n - β_j - p_j &= α_j k q - β_j - k g_j - c_j =\\
+        &= α_j q \left( \frac{β_ℓ + c_ℓ}{α_ℓ q - g_ℓ} + ϑ\right) -
+           \left( \frac{β_ℓ + c_ℓ}{α_ℓ q - g_ℓ} + ϑ\right) g_j - β_j - c_j =\\
+        &= c_ℓ \left(\frac{α_j q - g_j}{α_ℓ q - g_ℓ}\right) -
+           \left(β_j - \frac{β_ℓ (α_j q - g_j)}{α_ℓ q - g_ℓ}\right) -
+           c_j + ϑ(α_j q - g_j)
+    \end{split}
+  \end{equation}
+  and define for \(1 ≤ j < ℓ\)
+  \[
+    \tilde{α}_j := \frac{α_j q - g_j}{α_ℓ q - g_ℓ} \quad \text{and} \quad
+    \tilde{β}_j := β_j - \frac{β_ℓ (α_j q - g_j)}{α_ℓ q - g_ℓ}.
+  \]
+  I claim that the real numbers \(\seq[ℓ-1]{\tilde{α}}\) are linearly
+  independent over \(ℤ\), so that the induction hypothesis can be applied to the
+  \(\tilde{α}_j\) and \(\tilde{β}_j\). Indeed, if we have integers \(\seq[ℓ]{c}
+  ∈ ℤ\) such that
+  \[
+    \sum_{j = 1}^{ℓ - 1} c_j \tilde{α}_j = -c_ℓ
+  \]
+  holds. We can transform this identity to the expression
+  \[
+    0 = c_ℓ + \sum_{j = 1}^{ℓ - 1} c_j \tilde{α}_j =
+        c_ℓ + \left(\sum_{j = 1}^{ℓ - 1} c_j α_j q -
+                    \sum_{j = 1}^{ℓ - 1} c_j g_j \right)
+        \frac{1}{α_ℓ q - g_ℓ},
+  \]
+  which is equivalent to
+  \[
+  \sum_{j = 1}^{ℓ} c_j α_j q = \sum_{j = 1}^{ℓ} c_j g_j ∈ ℤ.
+  \]
+  Now since \(q\) is a non-zero integer and \(\seq[ℓ]{α}\) are linearly
+  independent over \(ℤ\), we find that \(c_1 = … = c_{ℓ - 1} = c_ℓ = 0\) and
+  thus the claim holds true.
+
+  With these definitions for \(\tilde{α}_j\) and \(\tilde{β}_j\) we can deduce
+  from \eqref{eq:Kronecker 2} that
+  \begin{equation}\label{eq:Kronecker 4}
+    |α_j n - β_j - p_j| ≤
+         |c_ℓ \tilde{α}_j - \tilde{β}_j - c_j| + |α_j q - g_j| <
+         |c_ℓ \tilde{α}_j - \tilde{β}_j - c_j| + δ
+  \end{equation}
+  holds for all \(1 ≤ j < ℓ\). We apply apply the inductive assumption to obtain
+  an estimate of the left term in the last expression. More formally, there
+  exists an integer \(\tilde{n}\) with the property
+  \[
+    |\tilde{n}| ≥ N |α_ℓ q - g_ℓ| + |β_ℓ|
+  \]
+  and integers \(\seq[ℓ]{\tilde{p}}\), such that for all \(i ∈ \set{1, …, ℓ}\)
+  we have that
+  \[
+    |c_ℓ \tilde{α}_j - \tilde{β}_j - c_j| < δ.
+  \]
+  Since \(c_ℓ\) needs only to satisfy
+  \[
+    |c_ℓ| ≥ N |α_ℓ q - g_ℓ| + |β_ℓ|
+  \]
+  we can set \(c_ℓ := \tilde{n}\) and \(c_j := \tilde{p}_j\) (\(1 ≤ j < ℓ\)).
+  Then we find not only that \(|n| ≥ N\) and
+  \[
+    |α_ℓ n - β_ℓ - p_ℓ| < δ < ε
+  \]
+  are satisfied by \eqref{eq:Kronecker 3} but also that
+  \[
+    |α_j n - β_j - p_j| < 2δ = ε
+  \]
+  holds true for all \(1 ≤ j < ℓ\) by \eqref{eq:Kronecker 4}. Thus, concluding
+  the proof.
+\end{proof}
 
 % \begin{thm}[Local-Global--Principle / Hasse-Minkowski theorem]
 %     see \cite[§ 66]{Meara2000}

@@ -422,27 +422,19 @@ quantifiers} i.e.\ by
   {(∃y)}_{≤x}ϕ(x, y) &⇔ ∃y\; (y ≤ x ∧ ϕ(x, y)),\\
   {(∀y)}_{≤x}ϕ(x, y) &⇔ ∀y\; (y > x ∨ ϕ(x, y))
 \end{align*}
-where \(ϕ\) is a positive existential formula~\cite[Thm 5.1]{Davis1973}. The first
-one is easily seen to be Diophantine as the order relation on \(ℕ^{*}\) is
+where \(ϕ\) is a positive existential formula~\cite[Thm 5.1]{Davis1973}. The
+first one is easily seen to be Diophantine as the order relation on \(ℕ^{*}\) is
 Diophantine. Proving the second claim takes the rest of the section. Now using
 this result together with the sequence number theorem~\cite[Thm 1.3]{Davis1973}
-Davis proofs that a function is Diophantine if and only if it is computable~\cite[Thm 6.1]{Davis1973}.
+Davis proofs that a function is Diophantine if and only if it is
+computable~\cite[Thm 6.1]{Davis1973}.
 
-This already implies the undecidability of \textsc{H10} over \(ℤ\) as Davis
+This already implies the \textsc{DPRM}-theorm~(\ref{thm:DPRM}) as Davis has
 introduced Diophantine pairing functions in~\cite[Thm 1.1]{Davis1973} and
 therefore all ranges of Diophantine---and therefore all computable
 functions---are Diophantine. But the ranges of computable functions are exactly
-the semi-decidable subsets of \(ω\) and we have already met a semi-decidable set
-that is not decidable, namely the halting set \(\mathcal{K}\). As a consequence,
-there is a Diophantine set that is not decidable, or put differently there
-exists a polynomial \(p_{\mathcal{K}} ∈ ℤ[X, \seq{Y}]\), such that for every
-Turing machine \(\mathbb A\) there exists an \(α ∈ ℤ\) such that \(\mathbb A\)
-cannot correctly decide
-\[
-  ∃\seq{β}: p_{\mathcal{K}}(α, \seq{β}) = 0.
-\]
-% TODO State the full DPRM-theorem
-\todo{State the full DPRM-theorem}
+the semi-decidable subsets of \(ω\) by \cref{pro:characterizations of ce sets},
+thus proving the claim of the theorem.
 
 \subsection{Diophantine definition of \(ℤ\) over \(K\)}
 % ██████  ██  ██████  ██████  ██   ██        ██████  ███████ ███████
@@ -914,10 +906,8 @@ considering one can derive further properties.
   a constant \(λ > 0\) such that \(1 - \cos(π ϑ) | < 1/2\) whenever \(|ϑ| <
   λ\).
 
-  Let \(c_0 = \max_{t,j}(|c_{tj}|)\). By Kronecker's theorem \cite[see][§~23,
-  Thm~442]{Hardy1975}
-  % TODO Kronecker's theorem should be at least stated
-  \todo{Kronecker's theorem should be at least stated}
+  Let \(c_0 = \max_{t,j}(|c_{tj}|)\). By Kronecker's
+  theorem~(\ref{thm:Kronecker})
   we can find an integer \(ℓ ∈ ℕ\) divisible by \(k\) such that for all \(j ∈
   J_0\) there exists an \(ℓ_j ∈ ℤ\) with the property that
   \[
@@ -929,7 +919,7 @@ considering one can derive further properties.
    \]
 
   From \eqref{eq:approximation of sigma x and sigma y} and the fact that
-  \(σ_{t1}(δ)\) is pureluniformlyy we deduce that
+  \(σ_{t1}(δ)\) is uniformly continuous we deduce that
   \[
     |σ_t(\px_{ℓb})| =
     \left| \cos\left(π \sum_{j ∈ J_0} ℓ c_{tj} ϑ_j\right) \right| =
