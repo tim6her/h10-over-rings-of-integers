@@ -10,11 +10,6 @@
 % ██  ██ ██ ██    ██ ██  ██  ██ ██   ██ ██      ██   ██        ██    ██   ██
 % ██   ████  ██████  ██      ██ ██████  ███████ ██   ██        ██    ██   ██ ██
 
-In this section I will closely follow Chapter 1 of the German
-textbook~\cite{Neukirch2006}. However, the content is also present in the
-English reference~\cite[Chap.~2]{Milne2017}, and sometimes the presentation of
-this reference will be recited.
-
 \subsection{Number fields and rings of algebraic integers}
 % ███    ██ ██    ██ ███    ███        ███████ ██      ██████  ███████
 % ████   ██ ██    ██ ████  ████        ██      ██      ██   ██ ██
@@ -22,9 +17,12 @@ this reference will be recited.
 % ██  ██ ██ ██    ██ ██  ██  ██        ██      ██      ██   ██      ██
 % ██   ████  ██████  ██      ██ ██     ██      ███████ ██████  ███████
 
-We start with a series of definitions and remind the reader on some important
-results from algebraic number theory and commutative algebra. But at first let
-us fix an important notation.
+In this section I will closely follow Chapter 1 of the German
+textbook~\cite{Neukirch2006}. However, the content is also present in the
+English reference~\cite[Chap.~2]{Milne2017}, and sometimes the presentation of
+this reference will be recited. We start with a series of definitions and remind
+the reader on some important results from algebraic number theory and
+commutative algebra. But at first let us fix an important notation.
 
 Let \(R\) and \(S\) be commutative rings with unity. Let \(φ: R → S\) be a
 ring-homomorphism mapping \(1_R\) to \(1_S\), then \(S\) is called an
@@ -100,7 +98,7 @@ considered sets is needed. Thus, the following theorem, implying that if \(α, �
   \(S\) that are integral over \(R\) form a subring of \(S\).
 \end{thm}
 
-Dedekind gave a proof of this theorem using the following proposition.
+Richard Dedekind gave a proof of this theorem using the following proposition.
 
 \begin{pro}\label{pro:characterization of integral elements}
   Let \(R \subseteq S\) be commutative rings with unity. Then \(α ∈ S\) is
@@ -124,10 +122,10 @@ Dedekind gave a proof of this theorem using the following proposition.
   \(M\) for all \(a ∈ R\) and \(m_i ∈ M\) since \(M\) is an \(R\)-module. As a
   consequence,
   \[
-    a \sum_{i=1}^k m_i n_i = \sum_{i=1}^k \underbrace{a m_i}_{∈ M} n_i ∈ MN
+    a \sum_{i=1}^k m_i n_i = \sum_{i=1}^k \underbrace{a m_i}_{∈ M} n_i
   \]
-  for all \(a ∈ R\) and all \(\seq[k]{m} ∈ M\), \(\seq[k]{n} ∈ N\), and we can
-  deduce that \(MN\) is an \(R\)-module.
+  is contained in \(MN\) for all \(a ∈ R\) and all \(\seq[k]{m} ∈ M\),
+  \(\seq[k]{n} ∈ N\), and we can deduce that \(MN\) is an \(R\)-module.
 
   Let \(\set{\seq[m]{e}} \subseteq M\) generate \(M\) and \(\set{\seq[n]{f}}
   \subseteq N\) generate \(N\). Then it is easily seen that the finite set
@@ -187,7 +185,7 @@ the quotient to be a rational integer. More precisely, the following holds.
 \begin{pro}
   Let \(K\) be a number field and \(\algint\) its ring of algebraic integers.
   For all \(x ∈ K\) there exists a non-zero rational integer \(n ∈ ℤ \setminus
-  \set{0}\) such that their product \(nx ∈ \algint\) is an algebraic integer.
+  \set{0}\) such that their product \(nx\) is an algebraic integer.
 \end{pro}
 
 \begin{thm}\label{thm:K is the quotient field of O K}
@@ -289,7 +287,7 @@ degree \(2\) is normal. Moving on to degree \(3\) this changes as for instance
 \(ℚ[√[3]{2}] / ℚ\) is not normal. The irreducible polynomial \(X^3 - 2 ∈ ℚ[X]\)
 has the root \(√[3]{2}\) in \(ℚ[√[3]{2}]\) but both of the other non-real roots
 are not contained in the number field. One can however enlarge \(ℚ[√[3]{2}]\) to
-obtain a normal extension. More specifically, if \(L/K\) is an extension of
+obtain a normal extension. More generally, if \(L/K\) is an extension of
 number fields, then there exists (up to isomorphism) a unique number field \(N
 \supseteq L\), such that the extension \(N/K\) is normal. We call \(N\) the
 \emph{normal closure} of the extension. In fact, if \(L = K[α]\) then \(N\) is
@@ -403,8 +401,8 @@ given ideal \(\mathfrak{a}\) we obtain back the congruence if we define \(α
 
 Compare this to the well known case of rational integers. Here every ideal is a
 principal ideal. Thus, there exist \(α, β ∈ ℤ\) such that \(\mathfrak{a} = (α)\)
-and \(\mathfrak{b} = (β)\) and \(α\) is divisible by \(β\) if and only if \((α)
-⊂ (β)\).
+and \(\mathfrak{b} = (β)\) and \(α\) is divisible by \(β\) if and only if
+\(\mathfrak{a} ⊂ \mathfrak{b}\).
 
 As with rational integers, one can define addition and multiplication of ideals
 by
@@ -412,7 +410,7 @@ by
   \mathfrak{a} + \mathfrak{b} &:=
     \set{α + β : α ∈ \mathfrak{a}, β ∈ \mathfrak{b}}, \text{ and}\\
   \mathfrak{a} \mathfrak{b} &:=
-    \set{\sum_{i=0}^n α_i β_i \mid
+    \set{\sum_{i=0}^n α_i β_i :
       n ∈ ℕ, α_0,\seq{α} ∈ \mathfrak{a}, β_0,\seq{β} ∈ \mathfrak{b}}.
 \end{align*}
 It is easy to prove that sums and products of ideals are again ideals. In fact,
@@ -428,7 +426,7 @@ and thus that
   \mathfrak{a} + \mathfrak{b} \mid \mathfrak{a, b}.
 \]
 Before we can further study divisibility of ideals, we need to investigate the
-algebraic properties of \(\algint\).
+algebraic properties of rings of algebraic integers \(\algint\).
 
 \begin{defin}
   An integral domain \(D\) is called \emph{Dedekind domain} if \(D\) is
@@ -465,8 +463,8 @@ order.
   least common multiple. As for their principal ideals the following hold
   \begin{align*}
     (n_1) ∩ (n_2) &= n_1 ℤ ∩ n_2 ℤ =
-      \set{n : n_1 \mid n \text{ and } n_2 \mid n} =
-      \set{n : m \mid n} = (m),\\
+      \set{n ∈ ℤ : n_1 \mid n \text{ and } n_2 \mid n} =
+      \set{n ∈ ℤ : m \mid n} = (m),\\
     (n_1)(n_2) &=
       \set{\sum_{i=0}^n α_i β_i :
            n ∈ ℕ, α_0,\seq{α} ∈ n_1 ℤ, β_0,\seq{β} ∈ n_2 ℤ} =\\
@@ -499,14 +497,15 @@ described in the theorem, one writes
     \prod_{\substack{\mathfrak{p} ⊂ \algint\\\mathfrak{p} \text{ prime ideal}}}
       \mathfrak{p}^{ν_{\mathfrak{p}}},
 \]
-where \(ν_{\mathfrak{p}} ∈ ℕ\) and all but finitely many exponents are zero.%
-\footnote{The constructivist reader will be pleased to hear that \(\algint\)
-contains only countably many prime ideals and thus one can fix a linear order of
-the set of prime ideals, such that for all ideals \(\mathfrak{a} ⊂ \algint\) all
-non-zero exponents \(ν_{\mathfrak{p}}\) appear in a finite initial segment of
-the order.}
-Using this product notation of the prime decomposition of ideals, one obtains
-for
+where \(ν_{\mathfrak{p}}\) is a non-negative integers and all but finitely many
+exponents are zero.%
+\footnote{The constructivist reader will be pleased to hear
+that \(\algint\) contains only countably many prime ideals and thus one can fix
+a linear order of the set of prime ideals, such that for all ideals
+\(\mathfrak{a} ⊂ \algint\) all non-zero exponents \(ν_{\mathfrak{p}}\) appear in
+a finite initial segment of the order.}
+Using this product notation of the prime
+decomposition of ideals, one obtains for
 \[
 \mathfrak{a} =
   \prod_{\substack{\mathfrak{p} ⊂ \algint\\\mathfrak{p} \text{ prime ideal}}}
@@ -629,7 +628,7 @@ Chap.~2 of the textbook~\cite{Hlawka1991}.
 Let \(\seq{e} ∈ ℝ^n\) be a collection of linearly independent vectors over
 \(ℝ\), then the free abelian group
 \[
-  Λ = ℤ e_1 + … + ℤ e_k
+  Λ = ℤ e_1 + … + ℤ e_n
 \]
 is called a \emph{lattice} and its elements are \emph{lattice points}.
 The set of generators \(\set{\seq{e}}\) is called \emph{basis} of \(Λ\). Note
@@ -660,7 +659,7 @@ has the volume
 \]
 Note that the fundamental parallelepiped \(D\) does depend on the choice of
 basis, whereas its volume \(\Vol(D)\) is an invariant of the lattice. This is
-because determinant for change of bases has absolute value \(1\). A lattice
+because the determinant for change of bases has absolute value \(1\). A lattice
 \(Λ\) in \(ℝ^2\) and its fundamental parallelepiped are depicted in
 \cref{fig:lattice}. All elements of \(Λ\) appear at intersection of the lines.
 
@@ -678,8 +677,8 @@ proof is presented as in Thm.~4.4 of the textbook~\cite{Neukirch2006}.
 \begin{thm}[Minkowski's theorem on convex bodies]\label{thm:Minkowski}
   Let \(Λ = ℤ e_1 + … + ℤ e_n\) be a full lattice in the \(n\)-dimensional
   \(ℝ\)-vector space \(V\) and let \(D\) denote its fundamental parallelepiped.
-  If \(T \subseteq V\) is convex and symmetric in the origin, i.e.\ if
-  \(α ∈ T\) so is \(-α ∈ T\), and
+  If \(T \subseteq V\) is convex and symmetric in the origin, i.e.\ \(α ∈ T\)
+  implies \(-α ∈ T\), and
   \[
     \Vol(T) > 2^n \Vol(D).
   \]
@@ -773,8 +772,8 @@ vector of the standard basis of \(ℝ^n\).
   For a fixed odd prime \(p\) the squares of an integer \(m\) take exactly \((p
   + 1)/2\) distinct values modulo \(p\) when \(m\) runs through \(0, 1, …, p -
   1\) by Euler's criterion. By the same criterion \(-n^2 - 1\) runs through
-  exactly \((p + 1)/2\) modulo \(p\) as well. Thus, there exist integers \(m, n
-  ∈ \set{0, 1, …, p_1}\) solving the congruence
+  exactly \((p + 1)/2\) modulo \(p\) as well. Thus, by the pigeonhole principle
+  there exist integers \(m, n ∈ \set{0, 1, …, p_1}\) solving the congruence
   \[
     m^2 + n^2 + 1 \equiv 0 \mod p.
   \]
@@ -796,7 +795,7 @@ vector of the standard basis of \(ℝ^n\).
   p^2\).
 
   Consider the closed four-dimensional ball \(T\) of radius \(r\) around the
-  origin. Its volume is \(π^2 r^4 / 2\) and if we choose \(2 p > r^2 > 4 √2 /
+  origin. Its volume is \(π^2 r^4 / 2\) and if we choose \(2 p > r^2 > 4 √2 p /
   π\) then
   \[
     \Vol(T) > 16 p^2 = 2^4 \Vol(D)
@@ -806,7 +805,7 @@ vector of the standard basis of \(ℝ^n\).
   know that
   \begin{align*}
     a^2 + b^2 + c^2 + d^2 &\equiv
-        a^2 + b^2 + (m a + n b)^2 + (m b - n a)^2 \equiv\\
+        a^2 + b^2 + (m a + n b)^2 + (m b - n a)^2 \equiv \\
       &\equiv a^2 (m^2 + n^2 + 1) + b^2 (m^2 + n^2 + 1) \equiv 0 \mod p
   \end{align*}
   holds. On the other hand, since \((a, b, c, d)\) is in \(T\), we have that
@@ -842,8 +841,8 @@ rank. This classification is the content of the following important theorem.
 \end{thm}
 
 In other words, Dirichlet's theorem states that there exists a collection of
-units \(\seq[r + s - 1]{u} ∈ U_K\)---called \emph{fundamental system of
-units}---such that every unit \(u ∈ U_K\) can be written as
+units \(\seq[r + s - 1]{u} ∈ U_K\), called \emph{fundamental system of
+units}, such that every unit \(u ∈ U_K\) can be written as
 \[
   u = ζ u_1^{m_1} … u_{r + s - 1}^{m_{r + s - 1}}
 \]
@@ -865,17 +864,17 @@ taking logarithms. More formally, we consider \(L : K^* → ℝ^{r + s}\) define
   L(x) := (\log |σ_1(x)|, …, \log |σ_r(x)|,
            \log |σ_{r + 1}(x)|, …, \log |σ_{r + s}(x)|).
 \]
-Now, since the norm \(N_{K / ℚ}(u) = ±1\) for every unit \(u ∈ U_K\), we know
-that
+Now, since the norm \(N_{K / ℚ}(u)\) is \(±1\) for every unit \(u ∈ U_K\), we
+know that
 \[
   |σ_1(u)| … |σ_r(u)| |σ_{r + 1}(u)|^2 … |σ_{r + s}(u)|^2 = 1
 \]
-and upon taking the logarithm that
+and upon taking the logarithm we have that
 \[
   \log |σ_1(u)| + … + \log |σ_r(u)| +
-  2\log |σ_{r + 1}(u)| + … + 2 |σ_{r + s}(u)| = 0
+  2\log |σ_{r + 1}(u)| + … + 2 |σ_{r + s}(u)| = 0.
 \]
-holds. In other words, the image \(L(U_K)\) is contained in the hyperplane \(H\)
+In other words, the image \(L(U_K)\) is contained in the hyperplane \(H\)
 defined by
 \[
   H: x_1 + … + x_r + 2 x_{r + 1} + … + 2 x_{r + s} = 0,
@@ -885,7 +884,7 @@ Dirichlet's theorem is showing that \(L(U_K)\) can be considered as an \(r + s -
 1\)-dimensional lattice in \(H\).
 
 We will now turn our attention to approximations of real numbers by the
-rationals and start with an result of Peter Dirichlet. Dirichlet's direct proof
+rationals and start with a result of Peter Dirichlet. Dirichlet's direct proof
 makes use of the pigeonhole principle. In fact, it was he who popularized this
 simple combinatorial fact by giving it its German name
 \foreignquote{german}{Schubfachprinzip}. However, we base our proof on
@@ -905,18 +904,19 @@ Minkowski's theorem.
     T := \set{(x, y) ∈ ℝ^2 : -N - ½ ≤ x ≤ N + ½, |αx - y| ≤ \frac{1}{N}}.
   \]
   If we can proof \(T\) contains an integral tuple \((n, p) ∈ ℤ^2\), we are
-  done, as if \(n < 0\) we can replace \(p\) by \(-p\) and have found the
-  claimed approximation. Note that \(n\) cannot be zero, as otherwise since
-  \(1/N\) is smaller than one, \(p\) must be zero as well.
+  done, as if \(n < 0\) we can replace \(p\) by \(-p\) as well as \(n\) by
+  \(-n\) and have found the claimed approximation. Note that \(n\) cannot be
+  zero, as otherwise since \(1/N\) is smaller than one, \(p\) must be zero as
+  well.
 
   As was mentioned before, we want to apply Minkowski's theorem and thus need to
   check that \(T\) is convex and symmetric in the origin. Symmetry is satisfied
   as the first condition on \(x\) is symmetric and the second condition is
   invariant under replacing \((x, y)\) by \((-x, -y)\). Geometrically, \(T\) is
-  the are of the ribbon of width \(2/N\) around the graph of \(f(x) = αx\)
-  between the perpendicular lines at \(±(N + 1/2)\). In \cref{fig:dirichlet} the
-  set \(T\) is represented by the shaded area, the thick line represents the
-  function \(f\) and the dashed lines mark the area where the condition
+  a ribbon of width \(2/N\) around the graph of \(f(x) = αx\) between the
+  perpendicular lines at \(±(N + 1/2)\). In \cref{fig:dirichlet} the set \(T\)
+  is represented by the shaded area, the thick line represents the function
+  \(f\) and the dashed lines mark the area where the condition
   \[
     -N - ½ ≤ x ≤ N + ½
   \]
@@ -1059,7 +1059,7 @@ As with Dirichlet's approximation theorem there is a multidimensional version of
 Kronecker's theorem as well. To state this theorem we need a definition.
 
 \begin{defin}
-  A set of distinct real numbers \(\seq[n]{α} ∈ ℝ\) is called \emph{linearly
+  A set of real numbers \(\seq[n]{α} ∈ ℝ\) is called \emph{linearly
   independent over \(ℤ\)} if for all integers \(\seq[n]{c}\) the fact that
   \[
     \sum_{i = 1}^n c_i α_i
@@ -1089,7 +1089,7 @@ zero. Thus, \(\set{\seq[ℓ]{α}}\) is linearly independent over \(ℤ\).
 
 \begin{thm}[Multidimensional Kronecker approximation theorem]%
   \label{thm:Kronecker}
-  Let \(\seq[ℓ]{α} ∈ ℝ\) be distinct real numbers that are linearly independent
+  Let \(\seq[ℓ]{α} ∈ ℝ\) be real numbers that are linearly independent
   over \(ℤ\). Then for all real \(\seq[ℓ]{β} ∈ ℝ\), all \(ε > 0\), and all
   integers \(N ≥ 1\) one can find integers \(n, \seq[ℓ]{p} ∈ ℤ\) with \(|n| ≥
   N\) such that for all \(i ∈ \set{1, …, ℓ}\) the inequality
@@ -1115,8 +1115,8 @@ As did \textcite{Hlawka1991} I will present the inductive proof of
   \[
     0 < |α_i q - g_i| < δ
   \]
-  holds for all \(i ∈ \set{1, …, ℓ}\). The left inequality holds again since
-  \(α_i\) is irrational.
+  holds for all \(i ∈ \set{1, …, ℓ}\). Again, the left inequality holds again
+  since \(α_i\) is irrational.
 
   As in the one-dimensional case we set \(k = n q\) and \(p_i = k g_i + c_i\)
   for \(1 ≤ i ≤ ℓ\) and integers \(k, \seq[ℓ]{c}\) whose values will be
@@ -1136,9 +1136,10 @@ As did \textcite{Hlawka1991} I will present the inductive proof of
     |α_ℓ n - β_ℓ - p_ℓ| < δ \quad \text{and} \quad
     |n| ≥ N
   \end{equation}
-  hold. Furthermore, we denote \(ϑ := k - (β_ℓ + c_ℓ)/(α_ℓ q - g_ℓ)\).
+  hold.
 
-  For \(1 ≤ j < ℓ\) we consider
+  Let us denote \(ϑ := k - (β_ℓ + c_ℓ)/(α_ℓ q - g_ℓ)\). For \(1 ≤ j < ℓ\) we
+  consider
   \begin{equation}\label{eq:Kronecker 2}
     \begin{split}
       α_j n - β_j - p_j &= α_j k q - β_j - k g_j - c_j =\\
