@@ -428,11 +428,11 @@ Diophantine over \(ℕ\) \cite[Thm 3.3]{Davis1973}. Then he is able to extend th
 language of Diophantine predicates by \emph{bounded existential} and
 \emph{bounded universal quantifiers}, i.e.\ by
 \begin{align*}
-  {(∃y)}_{≤x}ϕ(x, y) &⇔ ∃y\; (y ≤ x ∧ ϕ(x, y)),\\
-  {(∀y)}_{≤x}ϕ(x, y) &⇔ ∀y\; (y > x ∨ ϕ(x, y))
+  {(∃y)}_{≤x}ϕ(x, y) \quad &⇔ \quad ∃y\; (y ≤ x ∧ ϕ(x, y)),\\
+  {(∀y)}_{≤x}ϕ(x, y) \quad &⇔ \quad ∀y\; (y > x ∨ ϕ(x, y))
 \end{align*}
 where \(ϕ\) is a positive existential formula~\cite[Thm 5.1]{Davis1973}. The
-first one is easily seen to be Diophantine as the order relation on \(ℕ^{*}\) is
+first one is easily seen to be Diophantine as the order relation on \(ℕ\) is
 Diophantine. Proving the second claim takes the rest of the section. Now using
 this result together with the sequence number theorem~\cite[Thm 1.3]{Davis1973}
 Davis proofs that a function is Diophantine over \(ℕ\) if and only if it is
@@ -454,14 +454,17 @@ proving the claim of the theorem.
 
 For the remainder of this section let \(K ≠ ℚ\) be a totally real number field
 or a number field with exactly one pair of non-real embeddings of degree \(n :=
-[K : ℚ] ≥ 3\) over the rationals \(ℚ\). In the notation of \cref{thm:Dirichlet}
-this means that either \(r = n > 1\), or \(r = n - 2 > 0\) and \(s = 1\). As
-before we set \(L = K[{δ(a)}]\), where \(δ(a) \not\in \algint\) is a root of
-\(X^2 - a^2 + 1\) and \(-π/2 < \arg δ(a) ≤ π/2\).
+[K : ℚ] ≥ 3\) over the rationals \(ℚ\). For any number field \(K\) we set
+\(r_K\) to be the number of real embeddings of \(K\) and \(s_K\) to be the
+number of pairs of complex-conjugate embeddings of \(K\). Then the conditions on
+the number fields we are considering in this section can be restated as \(r_K =
+n > 1\), or \(r_K = n - 2 > 0\) and \(s_K = 1\) respectively. As before we set
+\(L = K[{δ(a)}]\), where \(δ(a) \not\in \algint\) is a root of \(X^2 - a^2 + 1\)
+and \(-π/2 < \arg δ(a) ≤ π/2\).
 
 Furthermore, let us assume that \(σ_1 = \id_K, σ_2, …, σ_n: K → ℂ\) are all
-embeddings of \(K\) into the complex pane \(ℂ\). If \(s = 1\) we demand without
-loss of generality that \(K, σ_2(K) \not\subset ℝ\) and that \(σ_2(α) =
+embeddings of \(K\) into the complex pane \(ℂ\). If \(s_K = 1\) we demand
+without loss of generality that \(K, σ_2(K) \not\subset ℝ\) and that \(σ_2(α) =
 \overline{α}\) for all \(α ∈ K\). In other words, \((σ_1, σ_2)\) is the pair of
 complex embeddings and all other morphisms embed \(K\) into the reals \(ℝ\).
 
@@ -470,13 +473,13 @@ complex embeddings and all other morphisms embed \(K\) into the reals \(ℝ\).
   satisfies
   \begin{equation}\label{eq:approximations of a}
     \begin{cases}
-      r = n > 1\\
+      r_K = n > 1\\
       a > 2^{2(n + 1)}\\
       0 < σ_i(a) < \frac{1}{2} &\text{for } 1 < i ≤ n
     \end{cases}
     \quad \text{or} \quad
     \begin{cases}
-      r = n - 2 > 0\\
+      r_K = n - 2 > 0\\
       |σ_i(a)| > 2^{2(n + 1)} &\text{for } i ∈ \set{1, 2}\\
       0 < σ_i(a) < \frac{1}{2} &\text{for } 2 < i ≤ n
     \end{cases},
@@ -491,7 +494,7 @@ complex embeddings and all other morphisms embed \(K\) into the reals \(ℝ\).
 \end{proof}
 
 We will prove later using Minkowski's theorem on convex bodies
-(\cref{thm:Minkowski}), that an algebraic integer \(a ∈ \algint\) satisfying
+(\ref{thm:Minkowski}), that an algebraic integer \(a ∈ \algint\) satisfying
 \eqref{eq:approximations of a} exists and therefore the condition on \(a\) from
 the previous section holds.
 
@@ -516,9 +519,9 @@ instead of \(σ_{11}(x)\) for its elements.
   Let \(K ≠ ℚ\) be a number field of degree \(n\) over \(ℚ\) and let \(a ∈
   \algint\) be such that \eqref{eq:approximations of a} is satisfied. Then
   \begin{thmlist}
-    \item if \(r = n\), only \(σ_{11}\) and \(σ_{12}\) embed \(L\) into the
+    \item if \(r_K = n\), only \(σ_{11}\) and \(σ_{12}\) embed \(L\) into the
     reals, and
-    \item if \(r = n - 2\), the field \(L\) is totally complex.
+    \item if \(r_K = n - 2\), the field \(L\) is totally complex.
   \end{thmlist}
 \end{lem}
 \begin{proof}
@@ -531,20 +534,26 @@ instead of \(σ_{11}(x)\) for its elements.
     radicands are both positive. We deduce that \(σ_{11}\) and \(σ_{12}\) are
     both real embeddings and \(L\) is a subfield of the reals by our
     identification.
-    \item As \(σ_1\) and \(σ_2\) are already complex embeddings, so are
-    \(σ_{11}, σ_{12}, σ_{21}\) and \(σ_{22}\). For the remaining embeddings one
-    argues completely analogously to (i).
+
+    \item As \(σ_1\) and \(σ_2\) are already non-real embeddings and \(σ_i^K\)
+    preserve \(σ_j(K)\) point-wise (\(1 ≤ i, j ≤ 2\)), \(σ_{11}, σ_{12},
+    σ_{21}\) and \(σ_{22}\) are non-real as well. For the remaining embeddings
+    one argues completely analogously to (i).
   \end{plist}
 \end{proof}
 
 \begin{lem}\label{lem:properties of sigma epsilon}
   Let \(K ≠ ℚ\) be a number field of degree \(n\) over \(ℚ\) and let \(a ∈
-  \algint\) be such that \eqref{eq:approximations of a} is satisfied. If \(s\) is the number of pairs of non-real embeddings of \(K\), then
+  \algint\) be such that \eqref{eq:approximations of a} is satisfied. If \(s\)
+  is the number of pairs of non-real embeddings of \(K\), then
   \begin{thmlist}
     \item \(σ_{i1}(ε)^{-1} = σ_{i2}(ε)\) for all \(1 ≤ i ≤ n\),
-    \item \(σ_{i1}(ε)\) and \(σ_{i2}(ε)\) are complex conjugates for \(s + 1 < i ≤ n\), and
+
+    \item \(σ_{i1}(ε)\) and \(σ_{i2}(ε)\) are complex conjugates for \(s_K + 1 <
+    i ≤ n\), and
+
     \item\label{lem:modulus of sigma epsilon}
-    \(|σ_{i1}(ε)| = |σ_{i2}(ε)| = 1\) for \(s + 1 < i ≤ n\).
+    \(|σ_{i1}(ε)| = |σ_{i2}(ε)| = 1\) for \(s_K + 1 < i ≤ n\).
   \end{thmlist}
 \end{lem}
 \begin{proof}
@@ -556,7 +565,7 @@ instead of \(σ_{11}(x)\) for its elements.
       &= σ_i(a)^2 - σ_{i1}(δ)^2 = σ_i(a)^2 - σ_i(a)^2 + 1 = 1.
   \end{align*}
 
-  For all \(s + 1 < i ≤ n\) we have defined \(σ_i: K → ℂ\) to be a real
+  For all \(s_K + 1 < i ≤ n\) we have defined \(σ_i: K → ℂ\) to be a real
   embedding. Thus \(σ_i(a)\) is a real number and as \(0 < σ_i(a) < 1/2\), we
   find that \(σ_{i1}(δ)\) is purely imaginary. Hence, we deduce that
   \(σ_{i1}(ε)\) and \(σ_{i2}(ε)\) are complex conjugates. But then the complex
@@ -582,8 +591,9 @@ Before we can start proving some approximations for the complex moduli of \(ε,
 \begin{rem}
   \begin{exlist}
     \item In the definition above we could have equivalently defined \(ε_i :=
-    σ_{i1}(ε)\) for \(s + 1 < i ≤ n\), as by \cref{lem:modulus of sigma epsilon}
-    the complex modulus of \(σ_{i1}(ε)\) is \(1\).
+    σ_{i1}(ε)\) for \(s_K + 1 < i ≤ n\), as by \cref{lem:modulus of sigma
+    epsilon} the complex modulus of \(σ_{i1}(ε)\) is \(1\).
+
     \item Note that by \eqref{eq:def of sigma ij} we have \(σ_{i2}(δ) = -δ_i\)
     and therefore \(|δ_i| = |σ_{i2}(δ)|\) for all \(1 ≤ i ≤ n\).
   \end{exlist}
@@ -613,16 +623,21 @@ We will use the following fact from number theory.
   Then the following inequalities hold.
   \begin{thmlist}
     \item\label{lem:approx for delta i 1}
-    \(|a_i|/2 < |δ_i| < |a_i| + 1\) for \(1 ≤ i ≤ s + 1\).
+    \(|a_i|/2 < |δ_i| < |a_i| + 1\) for \(1 ≤ i ≤ s_K + 1\).
+
     \item\label{lem:approx for delta i 2}
-     \(1/2 < | δ_i | < 1\) for \(s + 1 < i ≤ n\).
+     \(1/2 < | δ_i | < 1\) for \(s_K + 1 < i ≤ n\).
+
     \item\label{lem:modulus of elements in the kernel}
-     If \(η ∈ \ker N_{L/K}\) then \(|σ_{ij}(η)| = 1\) for \(s + 1 < i ≤ n\) and
-     \(j ∈ \set{1, 2}\). Furthermore, \(|η| = 1\) if and only if  \(η\) is a
+     If \(η ∈ \ker N_{L/K}\) then \(|σ_{ij}(η)| = 1\) for \(s_K + 1 < i ≤ n\)
+     and \(j ∈ \set{1, 2}\). Furthermore, \(|η| = 1\) if and only if  \(η\) is a
      root of unity.
+
     \item \(\left\vert |a| - \sqrt{|a^2 - 1|} \right\vert < 1\).
+
     \item\label{lem:approximation of epsilon with a}
      \(|a| < |ε_1| < 2|a| + 1\).
+
     \item\label{lem:epsilon is not a root of unity}
     \(ε\) is not a root of unity.
   \end{thmlist}
@@ -631,13 +646,16 @@ We will use the following fact from number theory.
   \begin{plist}
     \item By assumption we have \(|a_i| > 2^{2(n + 1)}\) and therefore
       \begin{align*}
-        \frac{|a_i|^2}{4} &= |a_i|^2 - \frac{3a_i^2}{4} ≤ |a_i|^2 - \frac{3}{4} 2^{4(n + 1)} < |a_i|^2 - 1 ≤\\
-        &≤ |δ_i| = |a_i^2 - 1| ≤ |a_i|^2 + 1 < (|a_i| + 1)^2
+        \frac{|a_i|^2}{4} &= |a_i|^2 - \frac{3a_i^2}{4} ≤
+            |a_i|^2 - \frac{3}{4} 2^{4(n + 1)} < |a_i|^2 - 1 ≤\\
+          &≤ |δ_i| = |a_i^2 - 1| ≤ |a_i|^2 + 1 < (|a_i| + 1)^2
       \end{align*}
+
     \item Again by our assumption \(|a_i| < 1/2\). Thus, we find
     \[
       \frac{1}{4} < \frac{3}{4} < 1 - a_i^2 = |δ_i|^2 < 1.
     \]
+
     \item As in \cref{lem:properties of sigma epsilon} one uses that
     \(\overline{σ_{i1}(δ)} = σ_{i2}(δ)\) for all \(s + 1 < i ≤ n\) and finds
     for \(η = α + δ β ∈ \ker N_{L /K}\) that
@@ -651,20 +669,20 @@ We will use the following fact from number theory.
     \]
     for both \(j = 1\) and \(2\).
 
-    To prove the second part of the claim, we notice that all roots
-    of unity have complex modulus \(1\), so one direction is trivial.
+    To prove the second part of the claim, we notice that all roots of unity
+    have complex modulus \(1\), so one direction is trivial. Let now \(η = α +
+    δ β ∈ \ker N_{L / K}\) and additionally \(|η| = 1\), we differentiate two
+    cases. If \(K\) is totally real, then all embeddings of the algebraic
+    integer \(η\) have complex modulus \(1\). Therefore, \(η\) is a root of
+    unity.
 
-    Let now \(η = α + δ β ∈ \ker N_{L / K}\) and additionally \(|η| = 1\), we
-    differentiate two cases. If \(K\) is totally real, then all embeddings of
-    the algebraic integer \(η\) have complex modulus \(1\). Therefore, \(η\) is
-    a root of unity.
-
-    If on the other hand, there exists a pair of non-real embeddings of \(K\),
-    then note firstly, that the complex conjugate \(\overline{δ}\) is a root of the polynomial
+    If on the other hand, \(s_K = 1\), then note firstly, that the complex
+    conjugate \(\overline{δ}\) is a root of the polynomial
     \[
       X^2 - \overline{a}^2 + 1 = X^2 - σ_2(a) + 1.
     \]
-    As a consequence, \(σ_{2j}(δ) = (-1)^{1 + j} \overline{δ}\) for \(j ∈ \set{1, 2}\). We deduce that
+    As a consequence, \(σ_{2j}(δ) = (-1)^{1 + j} \overline{δ}\) for \(j ∈
+    \set{1, 2}\). We deduce that
     \[
       \overline{σ_{11}(η)} = \overline{η} = \overline{α + δ β} = σ_2(α) +
       σ_{21}(δ) σ_{2}(β) = σ_{21}(η)
@@ -678,14 +696,18 @@ We will use the following fact from number theory.
     \(|σ_{22}(η)| = |σ_{12}(η)|\). Finally, note that \(N_{L / ℚ} = N_{K / ℚ}
     \circ N_{L / K}\) and therefore
     \[
-      1 = |N_{K / ℚ}(1)| = |N_{K / ℚ} \circ N_{L / K} (η)| = \left\vert \prod_{\substack{1 ≤ i ≤ n\\ 1 ≤ j ≤ 2}} σ_{ij}(η) \right\vert = |σ_{12}(η)| |σ_{22}(η)| = |σ_{12}(η)|^2.
+      1 = |N_{K / ℚ}(1)| = |N_{K / ℚ} \circ N_{L / K} (η)| =
+          \left\vert
+            \prod_{\substack{1 ≤ i ≤ n\\ 1 ≤ j ≤ 2}} σ_{ij}(η)
+          \right\vert = |σ_{12}(η)| |σ_{22}(η)| = |σ_{12}(η)|^2.
     \]
 
     \item The inequality
     \[
       0 ≤ \left\vert |a| - \sqrt{|a^2 - 1|} \right\vert < 1
     \]
-    is equivalent to \(|a|^2 - 2 |a| + 1 < |a^2 - 1|\). But this equality can easily seen to be satisfied, as
+    is equivalent to \(|a|^2 - 2 |a| + 1 < |a^2 - 1|\). But this inequality can
+    easily seen to be satisfied, as
     \[
       |a|^2 + 1 < |a|^2 + 2|a| - 1 = |a^2 - 1| + 2 |a|
     \]
@@ -693,13 +715,17 @@ We will use the following fact from number theory.
 
     \item Consider the inequality
     \[
-      |ε_1|^2 = |a + δ_1|^2 = |a^2 + 2 a δ_1 + δ_1^2| ≥ |2a^2 + 2a δ_1| - 1 = 2 |a| |ε_1| - 1
+      |ε_1|^2 = |a + δ_1|^2 = |a^2 + 2 a δ_1 + δ_1^2| ≥ |2a^2 + 2a δ_1| - 1 =
+                2 |a| |ε_1| - 1
     \]
     which can be rewritten as
     \[
-      0 ≤ |ε_1|^2 - 2 |a| |ε_1| + 1 = \left(|ε_1| - |a| - \sqrt{|a|^2 - 1}\right) \left(|ε_1| - |a| + \sqrt{|a|^2 - 1}\right)
+      0 ≤ |ε_1|^2 - 2 |a| |ε_1| + 1 =
+          \left(|ε_1| - |a| - \sqrt{|a|^2 - 1}\right)
+          \left(|ε_1| - |a| + \sqrt{|a|^2 - 1}\right)
     \]
-    Thus, either both factors are negative real numbers or both are positive. In the first case
+    Thus, either both factors are negative real numbers or both are positive. In
+    the first case
     \[
       0 < |ε_1| < |a| - \sqrt{|a|^2 - 1} \overset{\text{by (iv)}}{<} 1,
     \]
@@ -707,11 +733,14 @@ We will use the following fact from number theory.
     \[
       |ε_1| > |a| + \sqrt{|a|^2 - 1}  > |a|,
     \]
-    proving the first estimate. The second inequality follows from \(|ε_1| = |a + δ_1| < 2|a| + 1\) by (i).
+    proving the first estimate. The second inequality follows from \(|ε_1| = |a
+    + δ_1| < 2|a| + 1\) by (i).
     % QUESTION Can one get rid of the \(+ 1\)? I doubt the proof of
     % Shlapentokh, but will check, if the stronger estimate is needed. It seems
     % that it is not needed.
-    \todo{Can one get rid of the \(+ 1\)? I doubt the proof of Shlapentokh, but will check, if the stronger estimate is needed. It seems that it is not needed.}
+    \todo{Can one get rid of the \(+ 1\)? I doubt the proof of Shlapentokh, but
+    will check, if the stronger estimate is needed. It seems that it is not
+    needed.}
 
     \item Note that by (v), \(|ε_1| > |a| > 2^{2(n + 1)} > 1\) and therefore the
     complex modulus of \(ε\) cannot be equal to \(1\). The claim follows from
@@ -735,7 +764,8 @@ tr and opnr} that \(\rk U_L = 1 + n\). If on the other hand, \(K\) satisfies
 opnr} we have \(\rk U_L = n\).
 
 Note that \(ε\) is contained in \(S\) and by the previous lemma, \(ε\) is not a
-root of unity. Thus the group \(⟨ε⟩ ≤ S\) has free rank at least equal to \(1\). We deduce that
+root of unity. As a consequence, the group \(⟨ε⟩ ≤ S\) has free rank at least
+equal to \(1\). We deduce that
 \[
   \rk ⟨ε⟩ = \rk S = 1.
 \]
@@ -746,7 +776,8 @@ this, we need a lemma.
 
 \begin{lem}
   Let \(K ≠ ℚ\) be a number field and let \(a ∈ \algint\) satisfy
-  \eqref{eq:approximations of a}. Furthermore, let \(ε_0\) be a generator of the torsion free part of \(S\). Then \(2δ | (ε_0 - ε_0^{-1})\) and
+  \eqref{eq:approximations of a}. Furthermore, let \(ε_0\) be a generator of the
+  torsion free part of \(S\). Then \(2δ \mid (ε_0 - ε_0^{-1})\) and
   \begin{thmlist}
     \item if \(K\) is totally real, then
     \[
@@ -767,28 +798,31 @@ this, we need a lemma.
   \[
     ε_0 - ε_0^{-1} = 2δ\, β,
   \]
-  proving that \(2δ | (ε_0 - ε_0^{-1})\).
+  proving that \(2δ \mid (ε_0 - ε_0^{-1})\).
 
   We assert without loss of generality that \(ε = ζε_0^k\), where \(|ε_0| ≥ 1\).
   Then for all \(1 ≤ i ≤ n\) and all \(1 ≤ j ≤ 2\), we have
   \[
     |σ_{ij}(ε)| = |σ_{ij}(ζε_0^k)| = |σ_{ij}(ε_0)|^k,
   \]
-  and thus, \(|ε_1| = |ε_0|^k ≥ |ε_0| ≥ 1\). Furthermore, by \cref{lem:modulus of elements in the kernel} the following inequality holds
+  and thus, \(|ε_1| = |ε_0|^k ≥ |ε_0| ≥ 1\). Furthermore, by \cref{lem:modulus
+  of elements in the kernel} the following inequality holds
   \begin{equation}\label{eq:approximation of epsilon 0}
     |σ_{i1}(ε_0) - σ_{i1}(ε_0^{-1})| |σ_{i2}(ε_0) - σ_{i2}(ε_0^{-1})| =
     |σ_{i1}(ε_0) - σ_{i1}(ε_0^{-1})|^2 ≤ 2^2
   \end{equation}
-  for all \(s + 1 < i ≤ n\).
+  for all \(s_K + 1 < i ≤ n\).
 
   \begin{plist}
     \item If \(K ≠ ℚ\) is totally real, then by \cref{lem:approx for delta i 1}
     and (ii) we find that
     \[
-      |N_{L/ℚ}(2δ)| = 2^{2n} \prod_{i = 1}^n |δ_i|^2 > \frac{2^{2n}}{2^{2n - 2}} \frac{|a|^2}{4} = a^2.
+      |N_{L/ℚ}(2δ)| = 2^{2n} \prod_{i = 1}^n |δ_i|^2 >
+        \frac{2^{2n}}{2^{2n - 2}} \frac{|a|^2}{4} = a^2.
     \]
 
-    To see the second inequality, we use \eqref{eq:approximation of epsilon 0} to find
+    To see the second inequality, we use \eqref{eq:approximation of epsilon 0}
+    to find
     \begin{align*}
       |N_{L/ℚ}(ε_0 - ε_0^{-1})| &=
         \prod_{\substack{1 ≤ i ≤ n\\1 ≤ j ≤ 2}} |σ_{ij}(ε_0) - σ_{ij}(ε_0^{-1})|
@@ -825,7 +859,7 @@ this, we need a lemma.
   and the proposition is proven.
 
   Assume to the contrary, that \(k ≥ 2\), then \(|ε_1| ≥ |ε_0|^2 ≥ 1\).
-  By the lemma above \(2δ | (ε_0 - ε_0^{-1})\) and therefore
+  By the lemma above \(2δ \mid (ε_0 - ε_0^{-1})\) and therefore
   \[
     N_{L / K}(2δ) ≤ N_{L / K}(ε_0 - ε_0^{-1}).
   \]
@@ -833,7 +867,8 @@ this, we need a lemma.
   where \(m_0 ∈ \set{1, 2}\) is chosen accordingly. Applying
   \cref{lem:approximation of epsilon with a} yields
   \[
-    |a|^2 < 2^{2n} |ε_0|^{2} ≤ 2^{2n} |ε_1| < 2^{2n + 1} (|a| + 1) < 2^{2n + 2} |a|.
+    |a|^2 < 2^{2n} |ε_0|^{2} ≤ 2^{2n} |ε_1| <
+            2^{2n + 1} (|a| + 1) < 2^{2n + 2} |a|.
   \]
   But this is a contradiction to the assumption \(|a| > 2^{2n + 2}\) of
   \eqref{eq:approximations of a}.
@@ -849,7 +884,7 @@ considering one can derive further properties.
   \[
     m < |σ_i(\px_m)|
   \]
-  for all non-negative integers \(m ∈ ℕ\) and all \(1 ≤ i ≤ s + 1\).
+  for all non-negative integers \(m ∈ ℕ\) and all \(1 ≤ i ≤ s_K + 1\).
 \end{lem}
 \begin{proof}
   By \cref{lem:approximation of epsilon with a} we know that \(|ε_1| > |a| > 1\)
@@ -859,165 +894,215 @@ considering one can derive further properties.
     > \frac{|a|^{m} + 1}{2} > \frac{2^{2(n+1)m} + 1}{2} > m
   \]
 
-  If \(s = 1\), then \(σ_2(\px_m)\) is the complex conjugate of \(σ_1(\px_m) =
-  \px_m \)
-  their moduli must coincide.
+  If \(s_K = 1\), then \(σ_2(\px_m)\) is the complex conjugate of \(σ_1(\px_m) =
+  \px_m \). As a consequence, their moduli must coincide.
 \end{proof}
 
 \begin{lem}\label{lem:approximations of sigma x and sigma y}
   Let \(K ≠ ℚ\) be a number field and let \(a ∈ \algint\) satisfy
   \eqref{eq:approximations of a}. There exists a constant \(C\) depending on
   \(K\) and \(a\) such that for all \(k ∈ ℕ \setminus \set{0}\) there exist \(m,
-  h ∈ ℕ\) with \(k | m\) and \(k | h\), and
+  h ∈ ℕ\) with \(k \mid m\) and \(k \mid h\), and
   \begin{align*}
     |σ_i(\px_m)| &> \frac{1}{2},\\
     |σ_i(\py_h)| &> C
   \end{align*}
-  for \(s + 1 < i ≤ n\).
+  for \(s_K + 1 < i ≤ n\).
 \end{lem}
 \begin{proof}
-  By \cref{lem:modulus of sigma epsilon} we know that \(|ε_j| = 1\) for \(s + 1
-  < j ≤ n\), but in the same lemma we have proven, that \(ε\) is not a root of
-  unity. It follows that there exist arguments \(ϑ_{s + 2}, …, ϑ_n ∈ ℝ\) such
-  that
+  Fix any positive integer \(k\). By \cref{lem:modulus of sigma epsilon} we know
+  that \(|ε_j| = 1\) for \(s_K + 1 < j ≤ n\), but in the same lemma we have
+  proven, that \(ε\) is not a root of unity. It follows that there exist
+  arguments \(ϑ_{s_K + 2}, …, ϑ_n ∈ ℝ\) such that
   \[
     ε_j = e^{i π ϑ_j}.
   \]
-  Let \(A = \set{1, ϑ_{j_1}, … ϑ_{j_s}}\) be a maximal \(ℚ\)-linear independent
-  subset of \(\set{1, ϑ_{s + 2}, …, ϑ_{n}}\). Since \(ε\) is not a root of
-  unity, none of the \(ϑ_j\) can be rational and \(A\) contains an element
-  unequal to \(1\).
+  Let \(A = \set{ϑ_{j_1}, …, ϑ_{j_s}}\) be a maximal \(ℤ\)-linear independent
+  subset of \(\set{ϑ_{s_K + 2}, …, ϑ_{n}}\). Since \(ε\) is not a root of unity,
+  none of the \(ϑ_j\) can be rational. Indeed, if \(ϑ_j = p/q\) then \(ε_j^{2q}
+  = e^{i π 2 p} = 1\) and \(ε_j\) is a root of unity. Hence, \(A\) contains at
+  least one element.
 
-  Let \(J_0\) be the set of indices of
-  elements in \(A\), then the construction implies that for all \(s + 1 < t ≤
-  n\) there exist integers \(b_t, b_{tj} ∈ ℤ\) with the property
+  Let \(J_0 := \set{\seq[s]{j}}\) be the set of indices of elements in \(A\),
+  then the construction implies that for all \(s_K + 1 < r ≤ n\) there exist
+  integers \(b_r, b_{rj} ∈ ℤ\) with \(b_r ≠ 0\) such that
   \[
-    ε_r^{b_t} = \prod_{j ∈ J_0} ε_j^{b_{tj}}.
+    b_r ϑ_r = \sum_{j ∈ J_0} b_{rj} ϑ_j.
   \]
-  We set \(b := \prod_{t = s + 2}^n b_t\) and find for all \(s + 1 < t ≤
-  n\) integers \(c_{tj} ∈ ℤ\) with
+  For otherwise, \(1, ϑ_{j_1}, …, ϑ_{j_s}, ϑ_{r}\) would be \(ℚ\)-linear
+  independent, contradicting the maximality of \(A\). In other words, we have
+  that
   \[
-    ε_t^b = \prod_{j ∈ J_0} ε_j^{c_{tj}}.
+    ε_r^{b_r} = \prod_{j ∈ J_0} ε_j^{b_{rj}}.
+  \]
+  We set \(b := \prod_{r = s_K + 2}^n b_r ≠ 0\) and find for all \(s_K + 1 < r ≤
+  n\) integers \(c_{rj} ∈ ℤ\) with
+  \[
+    ε_r^b = \prod_{j ∈ J_0} ε_j^{c_{rj}}.
   \]
 
-  We exponent this expression by a multiple \(ℓ ∈ ℤ\) of \(k\) and rewrite it
-  to obtain
+  We exponent this expression by a multiple \(ℓ ∈ kℤ\) of \(k\), whose value
+  will be fixed later, and rewrite it to obtain
   \begin{align}
     \begin{split}\label{eq:approximation of sigma x and sigma y}
-    σ_t(\px_{ℓb}) + σ_{t1}(δ) σ_t(\py_{ℓb}) &= ε_t^{ℓb} = \prod_{j ∈ J_0} ε_j^{ℓ c_{tj}}\\
-      &= e^{iπ \sum_{j ∈ J_0} ℓ c_{tj} ϑ_j} =\\
-      &= \cos\left(π \sum_{j ∈ J_0} ℓ c_{tj} ϑ_j\right) +
-         i \sin\left(π \sum_{j ∈ J_0} ℓ c_{tj} ϑ_j\right).
+        σ_r(\px_{ℓb}) + σ_{r1}(δ) σ_t(\py_{rb}) &= ε_r^{ℓb} =
+            \prod_{j ∈ J_0} ε_j^{ℓ c_{rj}} =
+            e^{iπ \sum_{j ∈ J_0} ℓ c_{rj} ϑ_j} =\\
+          &= \cos\left(π \sum_{j ∈ J_0} ℓ c_{rj} ϑ_j\right) +
+            i \sin\left(π \sum_{j ∈ J_0} ℓ c_{rj} ϑ_j\right).
     \end{split}
   \end{align}
 
   By continuity of \(| \cos(π ϑ) |\) in \(ϑ\), we can find
-  a constant \(λ > 0\) such that \(1 - \cos(π ϑ) | < 1/2\) whenever \(|ϑ| <
-  λ\).
+  a constant \(λ > 0\) such that \(1 - |\cos(π ϑ)| < 1/2\) whenever \(|ϑ| <
+  λ\). Or put differently, \(|\cos(π ϑ)| > 1/2\).
 
-  Let \(c_0 = \max_{t,j}(|c_{tj}|)\). By Kronecker's
-  theorem~(\ref{thm:Kronecker})
-  we can find an integer \(ℓ ∈ ℕ\) divisible by \(k\) such that for all \(j ∈
-  J_0\) there exists an \(ℓ_j ∈ ℤ\) with the property that
+  Let \(c_0 = \max_{r,j}(|c_{rj}|)\). Setting \(α_j := k ϑ_j\), \(β_j = 0\),
+  \(N = 1\), and \(ε := λ / (2 c_0 n)\) we obtain by Kronecker's
+  theorem~(\ref{thm:Kronecker}) integers \(\tilde{ℓ}, \tilde{ℓ}_j\) with
+  \(\tilde{ℓ} > 0\) such that
   \[
-    |ℓ ϑ_j - ℓ_j| < \frac{λ}{c_0n}.
+    |\tilde{ℓ} k ϑ_j - \tilde{ℓ}_j| < \frac{λ}{2 c_0 n}
   \]
-   This implies that
-   \[
-    \left| \sum_{j ∈ J_0} ℓ c_{tj} ϑ_j - \sum_{j ∈ J_0} ℓ_j c_{tj} \right| < λ
-   \]
-
-  From \eqref{eq:approximation of sigma x and sigma y} and the fact that
-  \(σ_{t1}(δ)\) is uniformly continuous we deduce that
+  holds for all \(j ∈ J_0\) simultaneously. But then
   \[
-    |σ_t(\px_{ℓb})| =
-    \left| \cos\left(π \sum_{j ∈ J_0} ℓ c_{tj} ϑ_j\right) \right| =
-    \left| \cos\left(π \sum_{j ∈ J_0} ℓ c_{tj} ϑ_j - π \sum_{j ∈ J_0} ℓ_j c_{tj}\right) \right| < \frac{1}{2}.
+    |2 \tilde{ℓ} k ϑ_j - 2 \tilde{ℓ}_j| < \frac{λ}{c_0n}
   \]
-  % QUESTION How can I deduce that \(\sum_{j ∈ J_0} ℓ_j c_{tj}\) is divisible by 2?
-  \todo{How can I deduce that \(\sum_{j ∈ J_0} ℓ_j c_{tj}\) is divisible by 2?}
+  holds as well and we set \(ℓ := 2 \tilde{ℓ} k\) and \(ℓ_j := 2 \tilde{ℓ}_j\).
+  This does not only implies that
+  \[
+    \left| \sum_{j ∈ J_0} ℓ c_{rj} ϑ_j - \sum_{j ∈ J_0} ℓ_j c_{rj} \right| < λ
+  \]
+  but also by the choice of the \(ℓ_j\) that \(\sum_{j ∈ J_0} ℓ_j c_{rj} ∈ ℤ\)
+  is divisible by \(2\) for all \(s_K + 1 < r ≤ n\). From
+  \eqref{eq:approximation of sigma x and sigma y} we conclude that
+  \[
+    |σ_r(\px_{ℓb})| =
+      \left| \cos\left(π \sum_{j ∈ J_0} ℓ c_{rj} ϑ_j\right) \right| =
+      \left| \cos\left(π \sum_{j ∈ J_0} ℓ c_{rj} ϑ_j -
+                       π \sum_{j ∈ J_0} ℓ_j c_{rj}\right) \right| > \frac{1}{2}.
+  \]
+  Setting \(m := ℓb\) proves the first claim as \(ℓ\) is divisible by \(k\).
 
-  To prove the claimed bound for \(\py_h\) let \(C_t := \sum_{j ∈ J_0} c_{tj}\)
-  for all \(s + 1 < t ≤ n\) and fix a constant \(C_0 ∈ ℕ\) such that \(C_0 >
-  \max_t (|C_t|)\) and in the prime factorization of \(C_0\) appear at least as
-  many twos as in the prime factorization of \(C_t\). In other words,
+  To prove the claimed bound for \(\py_h\) let \(C_r := \sum_{j ∈ J_0} c_{rj}\)
+  for all \(s + 1 < r ≤ n\) and fix a constant \(C_0 ∈ ℕ\) such that \(C_0 >
+  \max_r (|C_r|)\) and in the prime factorization of \(C_0\) appear at least as
+  many twos as in all the prime factorizations of the \(C_r\). In other words,
   \[
     \ord_2 C_0 ≥ \ord_2 C_t, \quad \text{ for all } s + 1 < t ≤ n.
   \]
 
-  As \(|\sin(π ϑ)|\) is uniformly continuous on the compact interval \([-1,
-  1]\) we can find for all positive \(λ_1 > 0\) a real number \(0 < λ_2 < 1/4\)
-  such that \(|\sin(π ϑ) - \sin(π φ)| < λ_1\) whenever \(|ϑ - φ| < λ_2\). We
-  apply Kronecker's theorem again to obtain an integer \(ℓ ∈ ℤ\) divisible by
-  \(k\) such that for all \(j ∈ J_0\) there exists an integer \(ℓ_j ∈ ℤ\) with
-  the property
+  As \(|\sin(π ϑ)|\) is uniformly continuous on the compact interval \([-1, 1]\)
+  we can find for all positive \(λ_1 > 0\) a real number \(0 < λ_2 < 1/4\) such
+  that \(||\sin(π ϑ)| - |\sin(π φ)|| < λ_1\) whenever \(|ϑ - φ| < λ_2\) and
+  \(ϑ, φ ∈ [-1, 1]\) are satisfied. We apply Kronecker's theorem again with the
+  parameters \(α_j := k ϑ_j\), \(β_j := 1/(4 C_0)\), \(N := 1\), and \(ε := λ_2
+  / (2 C_0 n)\) and obtain integers \(\tilde{ℓ}, \tilde{ℓ}_j\) with \(\tilde{ℓ}
+  > 0\) and the property that
   \[
-    \left| ℓ ϑ_j - ℓ_j - \frac{1}{2 C_0} \right| < \frac{λ_2}{2 C_0}.
+    \left\vert \tilde{ℓ} k ϑ_j - \tilde{ℓ}_j - \frac{1}{4 C_0}\right\vert
+     < \frac{λ_2}{2 C_0 n}
   \]
-
-  Then we find that
+  holds for all \(j ∈ J_0\) simultaneously. We again multiply by \(2\) to obtain
   \[
-    \left| \sum_{j ∈ J_0} \left( ℓ c_{tj} ϑ_j - ℓ_j c_{tj}\right) - \frac{C_t}{2 C_0}\right| =
-    \left| \sum_{j ∈ J_0} \left( ℓ c_{tj} ϑ_j - ℓ_j c_{tj} - \frac{c_{tj}}{2 C_0}\right)\right| < λ_2
+  \left\vert 2 \tilde{ℓ} k ϑ_j - 2 \tilde{ℓ}_j - \frac{1}{2 C_0}\right\vert
+    < \frac{λ_2}{C_0 n}
   \]
-  Set now \(λ_1 = 1/2 | \sin(π C_t / (2 C_0))\) then we can use \eqref{eq:approximation of sigma x and sigma y} to obtain
+  and set \(ℓ := 2 \tilde{ℓ} k\) and \(ℓ_j := 2 \tilde{ℓ}_j\) for all \(s_K + 1
+  < r ≤ n\). Hence, we can deduce that
+  \[
+    \left|
+      \sum_{j ∈ J_0} \left( ℓ c_{rj} ϑ_j - ℓ_j c_{rj}\right) - \frac{C_r}{2 C_0}
+    \right| ≤
+    \left|
+      \sum_{j ∈ J_0}
+        \left( ℓ c_{rj} ϑ_j - ℓ_j c_{rj} - \frac{c_{rj}}{2 C_0}\right)
+    \right| < λ_2
+  \]
+  and again that \(\sum_{j ∈ J_0}ℓ_j c_{rj}\) is divisible by \(2\) for all
+  \(s_K + 1 < r ≤ n\). Set now \(λ_1 = 1/2 | \sin(π C_r / (2 C_0))|\) then we
+  can use \eqref{eq:approximation of sigma x and sigma y} to obtain
   \begin{align*}
-    |σ_{t1} σ_t (y_{ℓb})| &=
-      \left| \sin \left(π \sum_{j ∈ J_0} ℓ c_{tj} ϑ_j \right)\right| =
-      \left| \sin \left(π \sum_{j ∈ J_0} ℓ c_{tj} ϑ_j  - ℓ_j c_{tj}\right)\right| >\\
-      &> \frac{1}{2} \left| \sin \left( \frac{π C_t}{2 C_0}\right)\right|
+    \left\vert
+      |σ_{r1}(δ) σ_r (y_{ℓb})| -
+        \left| \sin\left( π \frac{C_r}{2 C_0} \right)\right|
+    \right\vert &=
+      \left|\left|
+          \sin \left(π \sum_{j ∈ J_0} ℓ c_{rj} ϑ_j \right)
+        \right| -
+        \left\vert \sin\left( π \frac{C_r}{2 C_0} \right)\right\vert
+       \right\vert=\\
+      &= \left|\left| \sin \left(π \sum_{j ∈ J_0} ℓ c_{rj} ϑ_j  -
+              π \sum_{j ∈ J_0}ℓ_j c_{rj}\right)
+          \right|
+          \left\vert \sin\left( π \frac{C_r}{2 C_0} \right)\right\vert
+        \right| <\\
+      &< λ_1 = \frac{1}{2} \left| \sin \left( π \frac{C_r}{2 C_0}\right)\right|
   \end{align*}
-  for all \(s + 1 < t ≤ n\).
-  % QUESTION Why is \(\sum_j ℓ_j c_{tj}\) divisible by \(2\)?
-  \todo{Why is \(\sum_j ℓ_j c_{tj}\) divisible by \(2\)?}
-  Note that \(\sin(π C_t / (2 C_0)) ≠ 0\) as \(C_t / (2 C_0)\) cannot be an integer by the choice of \(C_0\). Now set
+  for all \(s_K + 1 < r ≤ n\). Thus, we can conclude that \(|σ_{r1}(δ) σ_r
+  (y_{ℓb})| > λ_1\).
+
+  Note that \(\sin(π C_r / (2 C_0)) ≠ 0\) as \(C_r / (2 C_0)\) cannot be an
+  integer by the choice of \(C_0\). Now set
   \[
-    C := \min_{s + 1 < t ≤ n} \frac{\left| \sin \left(π \frac{C_t}{2 C_0}\right) \right|}{2 |σ_{t1}(δ)|}
+    C :=
+      \min_{r}
+        \frac{\left|
+          \sin \left(π \frac{C_r}{2 C_0}\right)
+        \right|}{2 |σ_{r1}(δ)|}
   \]
   then \(C\) satisfies the claim.
 \end{proof}
 
 \begin{lem}
   Let \(K\) be a number field of degree \(n > 0\) over \(ℚ\) and let \(a ∈
-  \algint\) satisfy \eqref{eq:approximations of a}. Furthermore, let \(s\)
-  denote the number of pairs of non-real embeddings. If \(\py_{eh}\) satisfies
+  \algint\) satisfy \eqref{eq:approximations of a}. If \(\py_{eh}\) satisfies
   \cref{lem:approximations of sigma x and sigma y} for an arbitrary but fixed
   positive integer \(k ∈ ℕ \setminus \set{0}\) dividing \(h\), where \(e ∈ ℕ\)
   is an integer such that
   \begin{equation}\label{eq:def of e}
-    |ε_1^e| > \frac{4 |δ_1|^{s + 1}}{C^{n - s - 1}}
+    |ε_1^e| > \frac{4 |δ_1|^{s_K + 1}}{C^{n - s_K - 1}}
   \end{equation}
   holds for the constant \(C\) of the same lemma, then
   \begin{thmlist}
-    \item \(\py_{eh} | \py_{eℓ}\) implies \(h | ℓ\) in \(ℤ\) and
-    \item \(\py_{eh}^2 | \py_{eℓ}\) implies \(h \py_{eh} | ℓ\) in \(\algint\).
+    \item \(\py_{eh} \mid \py_{eℓ}\) implies \(h \mid ℓ\) in \(ℤ\) and
+
+    \item \(\py_{eh}^2 \mid \py_{eℓ}\) implies \(h \py_{eh} \mid ℓ\) in
+    \(\algint\).
   \end{thmlist}
 \end{lem}
 \begin{proof}
-  Let \(q ∈ ℕ\) be such that \(0 < r < h\). As before let \(L := K[δ]\). Considering the
-  field norm \(N_{L / ℚ}\) of \(\py_{eq}\) we use \cref{lem:real part of
-  epsilon} to obtain
+  Let \(q ∈ ℕ\) be such that \(0 < r < h\). As before let \(L := K[δ]\).
+  Considering the field norm \(N_{L / ℚ}\) of \(\py_{eq}\) we use \cref{lem:real
+  part of epsilon} to obtain
   \begin{align*}
     | N_{L / ℚ} (\py_{er}) | &=
-        \prod_{i = 1}^n \prod_{j = 1}^2 \left| σ_{ij} \left( \frac{ε^{er} - ε^{-er}}{2δ}\right) \right| ≤\\
-      &≤ \prod_{i = 1}^{s + 1} \frac{|ε_i^{er} - ε_i^{-er}| |ε_i^{-er} - ε_i^{er}|}{4 |δ_i|^2} \prod_{i = s + 2}^n \frac{1}{|δ_i|^2}\\
-      &≤ \frac{4 |ε_1|^{2er(s + 1)}}{4^{s + 1} |N_{K/ℚ}(a^2 - 1)|} <
-      \frac{|ε_1|^{2er (s + 1)}}{4^{s}},
+        \prod_{i = 1}^n
+          \prod_{j = 1}^2
+            \left| σ_{ij} \left( \frac{ε^{er} - ε^{-er}}{2δ}\right) \right| ≤\\
+      &≤ \prod_{i = 1}^{s_K + 1}
+        \frac{|ε_i^{er} - ε_i^{-er}| |ε_i^{-er} - ε_i^{er}|}{4 |δ_i|^2}
+        \prod_{i = s_K + 2}^n \frac{1}{|δ_i|^2}\\
+      &≤ \frac{4 |ε_1|^{2er(s_K + 1)}}{4^{s_K + 1} |N_{K/ℚ}(a^2 - 1)|} <
+      \frac{|ε_1|^{2er (s_K + 1)}}{4^{s_K}},
   \end{align*}
   where the approximations follow completely analogously as in the proof of
   \cref{pro:epsilon essentially generaltes S}. As \(\py_{er}\) is in \(\algint\)
   we deduce that
   \[
-    |N_{K / ℚ} (\py_{er})| < \frac{|ε_1|^{er (s + 1)}}{2^{s}}.
+    |N_{K / ℚ} (\py_{er})| < \frac{|ε_1|^{er (s_K + 1)}}{2^{s_K}}.
   \]
 
   On the other hand, by our assumption on \(|σ_i(\py_{eh})|\) we know that
   \begin{align*}
     |N_{K / ℚ} (\py_{eh})| &= \prod_{i = 1}^n | σ_i(\py_{eh}) | ≥
-        C^{n - s - 1} \prod_{i = 1}^{s + 1} |σ_i(\py_{eh}) | =\\
-      &= C^{n - s - 1} \prod_{i = 1}^{s + 1} \frac{|ε_i^{eh} - ε_i^{-eh}|}{2 |δ_i|} ≥
-        C^{n - s - 1} \left( \frac{|ε_1|^{eh} - 1}{2 |δ_1|} \right)^{s + 1} >\\
-      &> C^{n - s - 1} \frac{|ε_1|^{eh (s + 1)}}{2^{s + 2} |δ_1|^{s + 1}},
+        C^{n - s_K - 1} \prod_{i = 1}^{s + 1} |σ_i(\py_{eh}) | =\\
+      &= C^{n - s_K - 1} \prod_{i = 1}^{s_K + 1} \frac{|ε_i^{eh} -
+           ε_i^{-eh}|}{2 |δ_i|} ≥
+        C^{n - s_K - 1}
+        \left( \frac{|ε_1|^{eh} - 1}{2 |δ_1|} \right)^{s_K + 1} >\\
+      &> C^{n - s_K - 1}
+        \frac{|ε_1|^{eh (s_K + 1)}}{2^{s_K + 2} |δ_1|^{s_K + 1}},
   \end{align*}
   where the second inequality follows from \(|ε_1^{-1}| ≤ 1\). Using our
   assumption on \(e\), it follows that
@@ -1025,34 +1110,39 @@ considering one can derive further properties.
     |N_{K / ℚ} (\py_{eh})| > | N_{L / ℚ}(\py_{er}) |.
   \end{equation}
 
-  Let \(\py_{eh} | \py_{eℓ}\) and  set \(ℓ = t h + r\) for \(t, r ∈ ℕ\) with \(0 ≤ r < h\). Assume to reach a contradiction that \(r > 0\), then
+  Let \(\py_{eh} \mid \py_{eℓ}\) and  set \(ℓ = t h + r\) for \(t, r ∈ ℕ\) with
+  \(0 ≤ r < h\). Assume to reach a contradiction that \(r > 0\), then
   \[
     \py_{eℓ} = \py_{eth + er} \overset{\text{\cref{lem:addition formulas}}}{=}
     \py_{eth}\px_{er} + \px_{eth} \py_{er}.
   \]
-  By \cref{lem:y m divides y mk} we know that \(\py_{eh} | \py_{eth}\) and
-  consequently \(\py_{eh} | \px_{eth} \py_{er}\) in \(\algint\). But by
+  By \cref{lem:y m divides y mk} we know that \(\py_{eh} \mid \py_{eth}\) and
+  consequently \(\py_{eh} \mid \px_{eth} \py_{er}\) in \(\algint\). But by
   \cref{lem:x m and y m are relative prime} the principal ideals \((\px_{eth})\)
   and \((\py_{eth})\) are relative prime. Now \cref{lem:y m divides y mk}
   implies that \((\px_{eth})\) and \((\py_{eh})\) are relative prime as well.
-  And therefore \(y_{eh} | y_{er}\), contradicting \eqref{eq:norm of x eh and x
-  er}. Consequently, \(r = 0\) and \(h | ℓ\) in \(ℤ\).
+  And therefore \(y_{eh} \mid y_{er}\), contradicting \eqref{eq:norm of x eh and
+  x er}. Consequently, \(r = 0\) and \(h \mid ℓ\) in \(ℤ\).
 
-  To see the second divisibility condition we assume \(\py_{eh}^2 | \py_{eℓ}\)
-  in \(\algint\). Then by the first part of the lemma, we know that there exists
-  an integer \(t\) such that \(ℓ = th\). Using the binomial formula we obtain
+  To see the second divisibility condition we assume \(\py_{eh}^2 \mid
+  \py_{eℓ}\) in \(\algint\). Then by the first part of the lemma, we know that
+  there exists an integer \(t\) such that \(ℓ = th\). Using the binomial formula
+  we obtain
   \begin{align*}
     \px_{eth} + δ\py_{eth} &= (ε^{eh})^t = (\px_{eh} + δ \py_{eh})^t =\\
-      &= \sum_{\substack{0 ≤ i ≤ t\\2 \text{ even}}} \begin{pmatrix}t \\ i\end{pmatrix} \px_{eh}^{t - i} δ^i \py_{eh}^i +
-      δ \sum_{\substack{0 ≤ i ≤ t\\2 \text{ odd}}} \begin{pmatrix}t \\ i\end{pmatrix} \px_{eh}^{t - i} δ^{i - 1} \py_{eh}^i
+      &= \sum_{\substack{0 ≤ i ≤ t\\2 \text{ even}}}
+        {t \choose i} \px_{eh}^{t - i} δ^i \py_{eh}^i +
+      δ \sum_{\substack{0 ≤ i ≤ t\\2 \text{ odd}}}
+        {t \choose i} \px_{eh}^{t - i} δ^{i - 1} \py_{eh}^i
   \end{align*}
   and, since \((\px_{eh})\)  and \((\py_{eh})\) are relative prime, we can
   conclude that
   \[
-    0 \equiv \py_{eth} \equiv t \px_{eh}^{t - 1} \py_{eh} \equiv t \py_{eh} \mod (\py_{eh}^2).
+    0 \equiv \py_{eth} \equiv t \px_{eh}^{t - 1} \py_{eh} \equiv t \py_{eh}
+    \mod (\py_{eh}^2).
   \]
-  It follows that \(\py_{eh} | t\) in \(\algint\) and therefore \(h \py_{eh} |
-  ℓ\).
+  It follows that \(\py_{eh} \mid t\) in \(\algint\) and therefore \(h \py_{eh}
+  \mid ℓ\).
 \end{proof}
 
 %
