@@ -593,6 +593,25 @@ integers.
   By the reduction steps observed above the claim holds.
 \end{proof}
 
+\begin{rem}
+  Let \(\seq{\mathfrak{a}}\) be pair-wise relative prime. Then the Chinese
+  remainder theorem tells us, that the collection of congruences
+  \[
+    x \equiv a_1 \mod \mathfrak{a}_1 \; … \;
+    x \equiv a_n \mod \mathfrak{a}_n
+  \]
+  can be solved simultaneously. Indeed, in the proof of the theorem we have
+  proven that the ring-homomorphism \(φ: \algint → \bigoplus_{i = 1}^n \algint /
+  \mathfrak{a}_i\) defined by
+  \[
+    x ↦ (x + \mathfrak{a}_i)_{i = 1}^n.
+  \]
+  is a surjection and thus the \(n\)-tuple \((a_1 + \mathfrak{a}_1, …, a_n +
+  \mathfrak{a}_n)\) is the image of some \(x ∈ \algint\). In other words, there
+  exists an \(x ∈ \algint\) such that \(x \equiv a_i \mod \mathfrak{a}_i\) for
+  all \(1 ≤ i ≤ n\).
+\end{rem}
+
 To conclude this subsection we consider the principal ideals \((p)\) generated
 by rational primes \(p ∈ ℤ\). It is easy to deduce that the equality
 \[
@@ -826,9 +845,10 @@ By the fundamental theorem of finitely generated abelian groups, we know that
 every finitely generated abelian group \(G\) is isomorphic to \(G_{tors} \times
 ℤ^t\), where \(G_{tors}\) is the finite subgroup of elements with finite order,
 called the \emph{torsion part} of \(G\), and \(t ∈ ℕ\) is called the \emph{free
-rank} of \(G\). Thus, if \(U_K\) is finitely generated then its torsion part is
-\(μ(K)\) and all that is left to fully describe \(U_K\) is finding its free
-rank. This classification is the content of the following important theorem.
+rank} of \(G\), denoted by \(\rk G = t\). Thus, if \(U_K\) is finitely
+generated then its torsion part is \(μ(K)\) and all that is left to fully
+describe \(U_K\) is finding its free rank. This classification is the content of
+the following important theorem.
 
 \begin{thm}[Dirichlet's unit theorem]\label{thm:Dirichlet}
   Let \(K\) be a number field of degree \(n\) over the rationals \(ℚ\). If \(r\)
@@ -957,7 +977,8 @@ of Dirichlet's approximation theorem.
 \begin{figure}
   \begin{center}
     \includegraphics{res/dirichlet}
-    \caption{The convex set \(T\) contains the lattice point \(γ\)}
+    \caption{The convex set \(T\) (shaded area) contains the lattice point
+             \(γ\)}
     \label{fig:dirichlet}
   \end{center}
 \end{figure}
@@ -972,11 +993,20 @@ p\) can be made arbitrarily close to a fixed \(β ∈ ℝ\) if we vary the integ
 If we identify two real numbers \(x, y\) whenever there exists an integer \(p\)
 with the property that \(x + p = y\) then we have constructed the additive
 quotient group \(ℝ / ℤ\). Geometrically, this construction can be seen as
-rolling up the half open unit interval \([0, 1)\) to form a unit circle.
-Considering the quotient topology on \(ℝ / ℤ\), Dirichlet's theorem tells us
-that \(α n\) can be made arbitrarily close to \(0 + ℤ\), while Kronecker's
-theorem states that every point of the unit circle is a cluster point of the
-sequence \((α n)_{n ∈ ℕ}\) if \(α\) is irrational.
+rolling up the half-open unit interval \([0, 1)\) to form a unit circle
+(cf.~\cref{fig:unitcircle}). Considering the quotient topology on \(ℝ / ℤ\),
+Dirichlet's theorem tells us that \(α n\) can be made arbitrarily close to \(0
++ ℤ\), while Kronecker's theorem states that every point of the unit circle is a
+cluster point of the sequence \((α n)_{n ∈ ℕ}\) if \(α\) is irrational.
+
+\begin{figure}
+  \begin{center}
+    \includegraphics{res/unitcircle}
+    \caption{The half-open unit interval is rolled up to form a unit circle.
+             Both can be seen as representations of the factor group \(ℝ/ℤ\).}%
+    \label{fig:unitcircle}
+  \end{center}
+\end{figure}
 
 In the following I will recite the presentation of the proof of Kronecker'
 theorem from Chap.~2 of the textbook~\cite{Hlawka1991}. Note however that the

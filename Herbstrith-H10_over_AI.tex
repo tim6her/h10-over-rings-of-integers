@@ -31,6 +31,8 @@
 
 
 \renewcommand{\scshape}{\headingfont}
+\setkomafont{caption}{\footnotesize\itshape}
+\setkomafont{captionlabel}{\usekomafont{caption}}
 
 \DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
 \DeclareOldFontCommand{\it}{\normalfont\itshape}{\mathit}
@@ -90,7 +92,8 @@
         language=haskell}
 
 % BibLaTex
-\usepackage[style=numeric,
+\usepackage[sortcites,
+            style=numeric-comp,
             backend=biber,
             useprefix=true,
             uniquename=full]{biblatex}
@@ -98,7 +101,7 @@
 
 
 % Math, Operators and Theorems
-\usepackage{thmtools}	% More Flexibility in Theorem Styles + Provides in Combination with ref-Packages the
+\usepackage{thmtools, thm-restate}	% More Flexibility in Theorem Styles + Provides in Combination with ref-Packages the
 						% Possibility to Refer to Theorem Style in Reference.
 
 \numberwithin{equation}{section}

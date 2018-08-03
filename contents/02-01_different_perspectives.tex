@@ -19,7 +19,7 @@
 %                                                        ▀▀
 
 In 1900, David Hilbert held his famous lecture~\cite{Hilbert1900} before the
-\emph{International Congress of Mathematicians} in Paris. During the lecture
+\emph{International Congress of Mathematicians} in Paris. During the talk
 entitled \foreignquote{german}{Mathematische Probleme%
 \footnote{%
   \foreignquote{english}{mathematical problems}
@@ -150,23 +150,25 @@ relation.
     and notice that \(q\) has a root \((\seq{α}, α_{n + 1}) ∈ R\) if and only if
     \(p(\seq{α}) = α_{n + 1}\) as claimed.
 
-    \item Let \(R\) be a commutative ring with unit. Then divisibility in \(R\) is
-    Diophantine. Indeed \(α_1 \mid α_2\) in \(R\) precisely if
+    \item Let \(R\) be a commutative ring with unit. Then divisibility in \(R\)
+    is Diophantine. Indeed \(α_1 \mid α_2\) in \(R\) precisely if
     \[
       ∃ β ∈ R : α_1 β = α_2.
     \]
 
-    \item Let \(K\) be a number field and \(\algint\) its ring of algebraic integers. Then \(\algint \setminus \set{0}\) is
-    Diophantine over \(\algint\). I extend the hint stated in \cite[Prop. 1]{Denef1978} and claim that
+    \item Let \(K\) be a number field and \(\algint\) its ring of algebraic
+    integers. Then \(\algint \setminus \set{0}\) is Diophantine over
+    \(\algint\). I extend the hint stated in \cite[Prop. 1]{Denef1978} and claim
+    that
     \[
       α ≠ 0 \quad ⇔ \quad
       ∃ β, γ ∈ \algint : α β = (2 γ - 1)(3 γ - 1).
     \]
 
-    Firstly, note that the polynomial on the right hand side has the roots \(1/2\)
-    and \(1/3\) in \(ℚ\). As the intersection \(\algint ∩ ℚ \) equals \(ℤ\) for all
-    number fields \(K\), one obtains that the polynomial identity can only be
-    satisfied for \(α ≠ 0\).
+    Firstly, note that the polynomial on the right hand side has the roots
+    \(1/2\) and \(1/3\) in \(ℚ\). As the intersection \(\algint ∩ ℚ \) equals
+    \(ℤ\) for all number fields \(K\), one obtains that the polynomial identity
+    can only be satisfied for \(α ≠ 0\).
 
     Let now \(α ≠ 0\). We can decompose the ideal \((α) = \mathfrak x_2
     \mathfrak x_3\) such that
@@ -175,15 +177,13 @@ relation.
     \algint, \; (3) + \mathfrak x_3 = \algint \, \text{and } \, \mathfrak x_2 +
     \mathfrak x_3 = \algint
     \]
-    hold. This is because \(2\) and \(3\) are rational primes and therefore \((2)\)
-    and \((3)\) are relative prime.
-    % see Baxa Thm 120
-    In other words, we find
+    hold. This is because \(2\) and \(3\) are rational primes and therefore
+    \((2)\) and \((3)\) are relative prime. In other words, we find
     \[
       ∃ x_2 ∈ \mathfrak x_2, ∃ y_2 ∈ \algint : 2 y_2 + x_2 = 1 \quad \text{and} \quad
       ∃ x_3 ∈ \mathfrak x_3, ∃ y_3 ∈ \algint : 3 y_3 + x_3 = 1
     \]
-     As a consequence of the Chinese remainder theorem (\cref{thm:Chinese
+     As a consequence of the Chinese remainder theorem~(\ref{thm:Chinese
      remainder}) the congruences
     \[
       γ \equiv y_2 \mod \mathfrak x_2 \quad \text{and} \quad
@@ -207,7 +207,7 @@ relation.
     \]
 
     \item\label{ex:U K is Diophantine}
-    Let \(R\) be a commutative ring with unit. The set of units \(U\) in \(R\) is Diophantine over \(R\). This can be seen by the polynomial equation
+    Let \(R\) be a commutative ring with unity. The set of units \(U\) in \(R\) is Diophantine over \(R\). This can be seen by the polynomial equation
     \[
       x ∈ U \quad ⇔ \quad ∃ y : xy = 1.
     \]
@@ -246,10 +246,10 @@ their relations with subsets of \(ℕ\).
   Thus, we find that
   \[
     S_1 ∩ S_2 =
-    \set{\seq{α} ∈ ℤ \mid ∃ \seq[m]{β} ∈ ℤ : q(\seq{α}, \seq[m]{β}) = 0}.
+    \set{\seq{α} ∈ ℤ : ∃ \seq[m]{β} ∈ ℤ : q(\seq{α}, \seq[m]{β}) = 0}.
   \]
 
-  By Lagrange's four square-theorem (\cref{pro:Lagranges four square theorem})
+  By Lagrange's four-square theorem (\cref{pro:Lagranges four square theorem})
   we know that every non-negative integer \(α\) is the sum of four squares and
   as a consequence
   \[
@@ -575,7 +575,7 @@ non-negative. In general, we have the following proposition.
   \(\algint\).
 \end{pro}
 \begin{proof}
-  By the primitive element theorem~\ref{thm:primitive element} there exists an
+  By the primitive element theorem~(\ref{thm:primitive element}) there exists an
   algebraic integer \(δ ∈ \algint\) such that \(K = ℚ[δ]\). Let \(μ_{ℚ, δ} ∈
   ℤ[X]\) be the minimal polynomial of \(δ\) over the rationals \(ℚ\) and let
   \(δ = \seq[k]{δ} ∈ \algint\) be the roots of \(μ_{ℚ, δ}\) that are contained
@@ -724,14 +724,14 @@ work of Davis, Putnam, and J.~Robinson---the undecidability of Hilbert's tenth
 problem over \(ℤ\). More specifically, he provided the last piece in the proof
 of the Davis-Putnam-Robinson-Matijasevič theorem (\textsc{DPRM}).
 
-\begin{thm}[DPRM-theorem]\label{thm:DPRM}
+\begin{restatable}[DPRM-theorem]{thm}{DPRM}\label{thm:DPRM}
   A subset of the natural numbers is semi-decidable if and only if it is
   Diophantine over \(ℕ\).
-\end{thm}
+\end{restatable}
 
 This result is remarkably similar to the key theorem~(7) of Gödel's
 proof~\cite{Goedel1931} of his celebrated first incompleteness theorem. Quite in
-his spirit [cf.~Thm.~9 ibid.] we can deduce
+his spirit \cite[cf.][Thm.~9]{Goedel1931} we can deduce
 
 \begin{cor}\label{cor:H10 over Z}
   The halting set \(\mathcal{K}\) is many-one reducible to

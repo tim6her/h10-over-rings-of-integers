@@ -32,8 +32,9 @@ of \(S\) over \(R_2\) can be obtained efficiently from the equation over
   witnessing that \(S\) is Diophantine. To make notation clearer, I assume \(ℓ =
   m = n = 1\). The general case follows completely analogously. Then
   \[
-    S = \left\lbrace  α ∈ R_2 \;\middle|\;
-    ∃β, γ_1, γ_2 ∈ R_2 p(α, β) = 0 ∧ f(α, γ_1) = 0 ∧ f(β, γ_2) = 0\right\rbrace
+    S = \left\lbrace  α ∈ R_2 :
+         ∃β, γ_1, γ_2 ∈ R_2 \text{ with }
+            p(α, β) = 0 ∧ f(α, γ_1) = 0 ∧ f(β, γ_2) = 0\right\rbrace
   \]
   is a Diophantine definition of \(S\) over \(R_2\).
 \end{proof}
@@ -105,7 +106,7 @@ hard to decide as the Diophantine theory and the halting set.
 
 One can even strengthen the result of the corollary to obtain the full analogue
 of the \textsc{DPRM}-theorem~(\ref{thm:DPRM}) for rings of algebraic integers.
-This was shown by \textcite[§~11]{Davis1976}.
+This was shown by \textcite[§11]{Davis1976}.
 
 \begin{thm}\label{thm:CE sets are Diophantine}
   Let \(K\) be an algebraic number field and \(\algint\) its ring of
@@ -133,18 +134,19 @@ This was shown by \textcite[§~11]{Davis1976}.
   be an integral basis for \(\algint\) over \(ℤ\). We define the set of all
   coefficients of elements in \(A\) by
   \[
-    S := \set{(a_{11}, …, a_{1n}, …, a_{k1}, …, a_{kn}) ∈ ℤ^{kn}
-              \,\middle\vert\,
+    S := \set{(a_{11}, …, a_{1n}, …, a_{k1}, …, a_{kn}) ∈ ℤ^{kn} :
               \left(\sum_{i=1}^n a_{ij} ζ_i\right)_{1 ≤ j ≤ k} ∈ A}.
   \]
   As \(A\) is semi-decidable so is \(S\). Note that this is exactly how we
-  efficiently represented \(\algint\) in \cref{cor:O K is computable}. By the
+  efficiently represented finitely generated free \(ℤ\)-algebras and thus
+  \(\algint\) in \cref{ex:Z is computable}. By the
   \textsc{DPRM}-theorem~(\ref{thm:DPRM}) the set \(S\) is Diophantine over
   \(ℤ\), i.e.\ there exists a polynomial \(p\) with coefficients in \(ℤ\) such
   that
   \begin{align*}
     &(a_{11}, …, a_{1n}, …, a_{k1}, …, a_{kn}) ∈ R ⇔\\
-    &\quad ∃ \seq[m]{β} ∈ ℤ: p(a_{11}, …, a_{1n}, …, a_{k1}, …, a_{kn}, \seq[m]{β}) = 0.
+    &\quad ∃ \seq[m]{β} ∈ ℤ: p(a_{11}, …, a_{1n}, …, a_{k1}, …, a_{kn},
+     \seq[m]{β}) = 0.
   \end{align*}
   It immediately follows that
   \begin{align*}
@@ -200,6 +202,10 @@ Denef and Lipshitz and successfully applied over various number fields
   \[
     |N_{L/ℚ}(x - α)| = \prod_{i=1}^n |σ_i(x - α)| ≤
     \prod_{i=1}^n 2 \max(|σ_i(x)|, |σ_i(α)|) ≤ 2^n |N_{L/ℚ}(y^{cn})|.
+  \]
+  From these two inequalities above it follows that
+  \[
+    |N_{L/ℚ}(y^{2cn})| ≤ |N_{L/ℚ}(y^{cn})|.
   \]
   Now since \(y\) is not a unit, the modulus of its norm is greater than \(1\).
   We conclude that \(|N_{L/ℚ}(y^{cn})| < |N_{L/ℚ}(y^{2cn})|\) yielding the
