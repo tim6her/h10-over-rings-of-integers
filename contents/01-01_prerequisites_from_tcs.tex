@@ -890,12 +890,22 @@ but uncountably many problems. However, to find such a set within the
 semi-decidable ones we turn our attention to a problem that quite naturally
 arises in computability theory.
 \begin{quote}
-  \textsc{halting problem.} Given a machine \(\mathbb A\) and a string \(x\). Does
-  \(\mathbb A\) halt on \(x\)?
+  \textsc{halting problem.} Given a machine \(\mathbb A\) and a string \(x\).
+  Does \(\mathbb A\) halt on \(x\)?
 \end{quote}
 The contradiction to the existence of a Turing machine deciding this problem is
 obtained by a diagonalization technique that is also present in Cantor's proof
-that the power set of the integers is uncountable or Russel's paradox.
+that the power set of the integers is uncountable or Russel's paradox. However,
+the idea is best encapsulated by the self-referential nature of the Pinocchio
+paradox, whose illustration by Carlo Chiostri is displayed in
+\cref{fig:Pinocchio}.
+
+\begin{figure}
+  \includegraphics[height=30ex]{res/Pinocchio_paradox.png}
+  \caption{Pinocchio says a lie and stretches his nose. What happens if he says
+           ‘My nose grows now’? Does it grow, or does it shrink?}
+  \label{fig:Pinocchio}
+\end{figure}
 
 \begin{thm}
     The halting problem is undecidable.
