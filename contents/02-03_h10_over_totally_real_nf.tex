@@ -544,7 +544,7 @@ instead of \(σ_{11}(x)\) for its elements.
 
 \begin{lem}\label{lem:properties of sigma epsilon}
   Let \(K ≠ ℚ\) be a number field of degree \(n\) over \(ℚ\) and let \(a ∈
-  \algint\) be such that \eqref{eq:approximations of a} is satisfied. If \(s\)
+  \algint\) be such that \eqref{eq:approximations of a} is satisfied. If \(s_K\)
   is the number of pairs of non-real embeddings of \(K\), then
   \begin{thmlist}
     \item \(σ_{i1}(ε)^{-1} = σ_{i2}(ε)\) for all \(1 ≤ i ≤ n\),
@@ -1054,7 +1054,7 @@ considering one can derive further properties.
   then \(C\) satisfies the claim.
 \end{proof}
 
-\begin{lem}
+\begin{lem}\label{lem:defining e}
   Let \(K\) be a number field of degree \(n > 0\) over \(ℚ\) and let \(a ∈
   \algint\) satisfy \eqref{eq:approximations of a}. If \(\py_{eh}\) satisfies
   \cref{lem:approximations of sigma x and sigma y} for an arbitrary but fixed
@@ -1143,6 +1143,142 @@ considering one can derive further properties.
   \]
   It follows that \(\py_{eh} \mid t\) in \(\algint\) and therefore \(h \py_{eh}
   \mid ℓ\).
+\end{proof}
+
+As a next step we prove a similar result for \(\px_m\).
+
+\begin{lem}
+  Let \(K\) be a number field of degree \(n > 0\) over \(ℚ\) and let \(a ∈
+  \algint\) satisfy \eqref{eq:approximations of a}. If \(\px_{m}\) satisfies
+  \[
+    |σ_i(\px_m)| > ½
+  \]
+  for \(s_K + 1 < i ≤ n\) then for all integers \(ℓ, j  ∈ ℤ\) and some sign \(ς
+  ∈ \set{-1, 1}\) we have that \(\px_ℓ \equiv \px_j ς \mod (\px_m)\) in
+  \(\algint\) implies \(ℓ \equiv ± j \mod m\) in \(ℤ\).
+\end{lem}
+\begin{proof}
+  Set \(ℓ = 2 m ℓ_1 + r_1\) as well as \(j = 2 m j_1 + r_2\) with \(-m < r_1,
+  r_2 ≤ m\). Without loss of generality we may assume that \(0 ≤ r_1, r_2 ≤ m\)
+  holds, since we have
+  \[
+    \px_ℓ = \px_{2 m ℓ_1 ± r_1} \equiv -\px_{r_1} \mod (\px_m)
+    \quad \text{and} \quad
+    \px_j = \px_{2 m j_1 ± r_2} \equiv -\px_{r_2} \mod (\px_m)
+  \]
+  by \cref{lem:congruence x_2m+k}. Thus, we can deduce that \(\px_{r_1} \equiv
+  \px_{r_2} ς \mod (\px_m)\). We will prove that \(\px_{r_1} = \px_{r_2} ς\) and
+  will deduce \(r_1 = r_2 ς\). Assume otherwise that \(r_1 ≠ r_2\) and
+  \(\px_{r_1} ≠ \px_{r_2} ς\) then from the congruence it follows that
+  \begin{equation}\label{eq:approx of x r1  x r2 and x m}
+    |N_{K/ℚ} (\px_m)| ≤ |N_{K/ℚ} (\px_{r_1} - \px_{r_2} ς)|.
+  \end{equation}
+
+  To reach a contradiction we assume without loss of generality that \(r_1 ≤
+  r_2\) and appeal to \cref{lem:real part of epsilon} to express \(\px_m,
+  \px_{r_1}\) and \(\px_{r_2}\) as the ‘real part’ of a power of \(ε\). Now
+  similarly as in the proof of \cref{lem:defining e}, we have that
+  \begin{equation}\label{eq:norm of p x}
+    \begin{split}
+    |N_{K/ℚ}(\px_m)| &=
+      \prod_{i = 1}^{s_K + 1} |σ_i(\px_m)| \prod_{i = s_K + 2}^n |σ_i(\px_m)|≥
+        \frac{1}{2^{n - s_K - 1}} |σ_1(\px_m)|^{s_K + 1}=\\
+      &= \frac{1}{2^{n - s_K - 1}}
+            \left| \frac{ε_1^m + ε_1^{-m}}{2} \right|^{s_K + 1} ≥
+          \frac{(|ε_1|^m - 1)^{s_K + 1}}{2^n}
+    \end{split}
+  \end{equation}
+  Again the last inequality follows from the triangular inequality and the fact
+  that \(|ε_1^{-1}| ≤ 1\). To estimate the norm of \(\px_{r_1} - \px_{r_2} ς\)
+  we note that by \cref{lem:properties of sigma epsilon} we know for all \(s_K +
+  1 < i ≤ n\) that
+  \[
+    |σ_i(\px_{r_1}) - σ_i(\px_{r_2} ς)| ≤
+    \frac{|ε_i^{r_1} - ε_i^{-r_1}| + |ς| |ε_i^{r_2} - ε_i^{-r_2}|}{2} ≤
+    \frac{|ε_i|^{r_1} + |ε_i|^{-r_1} + |ε_i|^{r_2} + |ε_i|^{-r_2}}{2} = 2.
+  \]
+  Thus, we can conclude that
+  \begin{equation}
+    \begin{split}\label{eq:norm of x r1 plus x r2}
+    |N_{K/ℚ}(\px_{r_1} - \px_{r_2} ς)| &=
+      \prod_{i = 1}^n |σ_i(\px_{r_1} - σ_i(\px_{r_2} ς)| ≤
+      2^{n - s_K - 1} |σ_i(\px_{r_1} - σ_i(\px_{r_2} ς)|^{s_K + 1} ≤\\
+    &≤   2^{n - s_K - 1} \left(
+      \frac{|ε_1|^{r_1} + |ε_1|^{-r_1} + |ε_1|^{r_2} + |ε_1|^{-r_2}}{2}
+    \right)^{s_K + 1} ≤\\
+    &≤ 2^{n - s_K - 1}(|ε_1|^{r_2} + 1)^{s_K + 1}.
+    \end{split}
+  \end{equation}
+
+  We know by \cref{lem:approximation of epsilon with a} that \(|ε_1| > 1\). So
+  \(|ε_1|^{r_2} + 1 < 2 |ε_1|^{r_2}\) and by \cref{lem:approximation of epsilon
+  with a} we have that
+  \[
+    |ε_1|^m - 1 > |a|^m - 1 > ½ (|a|^m + 1) > ½ |ε_1|^m.
+  \]
+  Now notice that \(s_K ≤ 1\) and thus we can deduce from \eqref{eq:norm of p
+  x} and \eqref{eq:norm of x r1 plus x r2} that
+  \begin{align}\label{eq:norm of x m and x r1 plus x r2 1}
+    |N_{K/ℚ}(\px_m)| &≥ \frac{|ε_1|^{m (s_K + 1)}}{2^{n + s_K + 1}} ≥
+    \frac{|ε_1|^{m (s_K + 1)}}{2^{n + 2}}\\
+    \intertext{and}\label{eq:norm of x m and x r1 plus x r2 2}
+    |N_{K/ℚ}(\px_{r_1} - \px_{r_2} ς)| &≤ 2^{n} |ε_1|^{r_2 (s_K + 1)}.
+  \end{align}
+
+  We will now distinguish to cases. Either \(r_2 < m\) then we have that
+  \[
+    2^{2n + 2} < |a|^{s_K + 1} < |ε_1|^{s_K + 1} ≤
+    |ε_1|^{(m - r_2)(s_K + 1)},
+  \]
+  which together with the inequalities in \eqref{eq:norm of x m and x r1 plus x
+  r2 1} and \eqref{eq:norm of x m and x r1 plus x r2 2} implies
+  \[
+    |N_{K/ℚ} (\px_m)| > |N_{K/ℚ} (\px_{r_1} - \px_{r_2} ς)|.
+  \]
+  Thus, we have reached a contradiction with \eqref{eq:approx of x r1  x r2 and
+  x m} and we must assume that \(r_2 = m\) holds. But this implies that
+  \(\px_m\) actually divides \(\px_{r_1}\), yielding
+  \[
+    |N_{K/ℚ} (\px_m)| ≤ |N_{K/ℚ} (\px_{r_1})|.
+  \]
+  As for the norm of \(\px_{r_1}\) we find that
+  \begin{align*}
+    |N_{K/ℚ} (\px_{r_1})| &=
+         |σ_1(\px_{r_1})|^{s_K + 1} \prod_{i = s_K + 2}^n |σ_i(\px_{r_1})| ≤\\
+      &≤ |σ_1(\px_{r_1})|^{s_K + 1} \prod_{i = s_K + 2}^n
+                \frac{|ε_i|^{r_1} + |ε_i|^{-r_1}}{2} = |σ_1(\px_{r_1})|^2 ≤\\
+      &≤ \left(\frac{|ε_1^{r_1} + ε_1^{r-1}|}{2}\right)^{s_K + 1} ≤\\
+      &≤ \left(\frac{|ε_1|^{r_1} + 1}{2}\right)^{s_K + 1} ≤
+         |ε_1|^{r_1 (s_K + 1)}
+  \end{align*}
+  holds. Remember that we are assuming that \(r_1 ≠ r_2\) and we have already
+  shown \(r_2 = m\). Thus, we can conclude that \(2^{n + 2} < |ε_1|^{m - r_1}\).
+  But then the inequality above implies together with \eqref{eq:norm of x m and
+  x r1 plus x r2 1} that
+  \[
+    |N_{K/ℚ} (\px_m)| > |N_{K/ℚ} (\px_{r_1})|,
+  \]
+  which is again an contradiction.
+
+  As a consequence, our assumption that both \(r_1 ≠ r_2\) and \(\px_{r_1} ≠
+  \px_{r_2} ς\) are true can not hold. So the only thing left to check is that
+  \(\px_{r_1} = \px_{r_2} ς\) implies \(r_1 = ± r_2\), which yields the desired
+  congruence of rational integers. We know that \(\px_{r_1} = \px_{r_2} ς\)
+  implies \(ε^{r_1} + ε^{-r_1} = (ε^{r_2} + ε^{-r_2}) ς\). If \(ς = 1\) we find
+  that this is equivalent to
+  \[
+    0 = ε^{r_1} (ε^{r_1} + ε^{-r_1} - ε^{r_2} - ε^{-r_2}) =
+      ε^{2 r_1} + 1 - ε^{r_1 + r_2} - ε^{r_1 - r_2} =
+      (ε^{r_1 + r_2} - 1) (ε^{r_1 - r_2} - 1).
+  \]
+  Hence, \(r_1 = ± r_2\) as claimed. If on the other hand, \(ς = -1\) holds we
+  find
+  \[
+  0 = -ε^{r_2} (ε^{r_1} + ε^{-r_1} - ε^{r_2} - ε^{-r_2}) =
+    -ε^{r_2 + r_1} -ε^{r_2 - r_1} + ε^{2 r_2} + 1 =
+    (ε^{r_2 + r_1} - 1) (ε^{r_2 - r_1} - 1),
+  \]
+  yielding \(r_1 = ± r_2\).
 \end{proof}
 
 %

@@ -964,7 +964,7 @@ one proves completely analogously the multidimensional version
 of Dirichlet's approximation theorem.
 
 \begin{thm}[Multidimensional Dirichlet approximation theorem]%
-  \label{thm:Dirichlet}%
+  \label{thm:Dirichlet approximation}%
   Let \(\seq[k]{α} ∈ ℝ\) be \(k\) real numbers and fix an integer \(N > 1\).
   Then there exist integers \(\seq[k]{p}, n ∈ ℤ\) with \(0 < n ≤ N^k\) such
   that for all \(1 ≤ i ≤ ℓ\) we have that
@@ -1140,8 +1140,8 @@ As did \textcite{Hlawka1991} I will present the inductive proof of
   numbers.
 
   We set \(δ := ε/2\) and apply the multidimensional version of Dirichlet's
-  approximation theorem to obtain integers \(q, \seq[ℓ]{g} ∈ ℤ\) with \(q > 0\)
-  such that
+  approximation theorem~(\ref{thm:Dirichlet approximation}) to obtain integers
+  \(q, \seq[ℓ]{g} ∈ ℤ\) with \(q > 0\) such that
   \[
     0 < |α_i q - g_i| < δ
   \]
@@ -1242,6 +1242,49 @@ As did \textcite{Hlawka1991} I will present the inductive proof of
   the proof.
 \end{proof}
 
-% \begin{thm}[Local-Global--Principle / Hasse-Minkowski theorem]
-%     see \cite[§ 66]{Meara2000}
-% \end{thm}
+\subsection{Absolute values and local fields}
+% ██       ██████   ██████    ███████ ██      ██████  ███████
+% ██      ██    ██ ██         ██      ██      ██   ██ ██
+% ██      ██    ██ ██         █████   ██      ██   ██ ███████
+% ██      ██    ██ ██         ██      ██      ██   ██      ██
+% ███████  ██████   ██████ ██ ██      ███████ ██████  ███████
+
+
+We say a multivariate polynomial \(p\) is \emph{homogeneous} if all non-zero
+monoids appearing in \(p\) have the same degree. Thus, \(X^5 + 2 X^3 Y^2 - 7 X
+Y^4\) is homogeneous while \(X^4 - X^2 Y\) is not. We call a polynomial \(q ∈
+R[Y_1, …, Y_n]\) a \emph{quadratic form} over an integral domain \(R\) if \(q\)
+is homogeneous and has degree \(2\). Then \(x ∈ R\) is \emph{represented} by
+\(q\) if there exist \(\seq{y} ∈ R\) such that \(a = q(\seq{y})\). We call a
+quadratic form \(q ∈ R[\seq{Y}]\) \emph{universal} if it represents every
+element of \(R\). As for representabilty in \(ℚ\) we have the following theorem.
+
+\begin{thm}[Hasse-Minkowski theorem]\label{thm:Hasse Minkowski}
+  A rational \(a\) is represented by \(q\) in \(ℚ\) if and only if \(a\) is
+  represented by \(q\) in all completions \(K_{\mathfrak{p}}\). Furthermore, if
+  \(q\) has at least four indeterminates then \(q\) is universal in all local
+  fields.
+\end{thm}
+See \cite[§66]{Meara2000} and Section~5.1 of \cite{Shlapentokh2007}.
+% QUESTION How should we proceed with the Hasse-Minkowski theorem?
+\todo{How should we proceed with the Hasse-Minkowski theorem?}
+
+\begin{thm}[Strong approximation theorem]
+  Let \(K\) be a number field. Let \(\mathcal{M}_K\) be the set of all the
+  absolute values of \(K\). Let \(\mathcal{F}_K ⊂ \mathcal{M}_K\) be a non-empty
+  finite subset. Let \(\mathcal{F}_K = { |\cdot|_1,…,|\cdot|_l}\). Let
+  \(a_1,…,a_{l−1} ∈ K\). Then for any \(ε > 0\) there exists an \(x ∈ K\) such
+  that the following conditions are satisfied.
+  \begin{thmlist}
+    \item For \(1 ≤ i ≤ l−1\) we have that \(|x − a_i|_i <ε\).
+
+    \item For any absolute value \(|\cdot|\) not contained in \(\mathcal{F}_K\)
+    we have that \(|x| ≤ 1\).
+  \end{thmlist}
+\end{thm}
+See Theorem~B.2.1 of \cite{Shlapentokh2007}.
+
+% NOTE We only use these theorems to show that the relation \(σ(x) ≥ 0\) is
+%      Diophantine (Denef1980 Lem.~10)
+\todo{We only use these theorems to show that the relation \(σ(x) ≥ 0\) is
+      Diophantine \cite[see][Lem.~10]{Denef1980}}
