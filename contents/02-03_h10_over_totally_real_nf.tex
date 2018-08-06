@@ -1281,6 +1281,89 @@ As a next step we prove a similar result for \(\px_m\).
   yielding \(r_1 = ± r_2\).
 \end{proof}
 
+\begin{lem}
+  Let \(K\) be a number field of degree \(n\) over \(ℚ\) and let \(a ∈ \algint\)
+  satisfy \eqref{eq:approximations of a}. Then for all positive \(m ∈ ℕ
+  \setminus \set{0}\) there exists an algebraic integer \(b\) such that
+  \begin{thmlist}
+    \item \(b \equiv 1 \mod (\py_m(a))\),
+
+    \item \(b \equiv a \mod (\px_m(a))\), and
+
+    \item \(b\) satisfies the approximations of the embeddings of \(a\) in
+    \eqref{eq:approximations of a}.
+  \end{thmlist}
+\end{lem}
+\begin{proof}
+  Set
+  \[
+    b :=
+    \left(
+      \px_m(a)^2 + \py_m(a)^2 (a^2 - 1)
+    \right)^{2s}
+    \left(
+      \px_m(a)^4 + a \left(1 - \px_m(a)^2\right)^2
+    \right)
+  \]
+  for some positive integer \(s\), whose value will be determined later. Note
+  that since \(\px_m(a)\) and \(\py_m(a)\) solve Pell's equation, we have
+  \[
+    \px_m(a)^2 - (a^2 - 1)\py_m(a)^2 = 1,
+  \]
+  or put differently \((a^2 - 1) \py_m(a)^2 \equiv -1 \mod (\px_m(a))\). Thus,
+  condition~(ii) is satisfied. As for condition~(i), we note that by the same
+  argument \(\px_m(a)^2 \equiv 1 \mod (\py_m(a))\) holds.
+
+  To prove the last claim note that for all positive \(m\), we have
+  \[
+    |σ_i(\px_m(a))| = \left| \frac{ε_i(a)^m + ε_i(a)^{-m}}{2} \right| ≤
+    \frac{|ε_i(a)|^m + |ε_i(a)|^{-m}}{2} = 1
+  \]
+  for all \(s_K + 1 < i ≤ n\). The only way equality can be reached in the
+  inequality above is if \(|ε_i(a)^m + ε_i(a)^{-m}| = |ε_i(a)|^m +
+  |ε_i(a)|^{-m}\). But this can only happen, if there arguments coincide, which
+  implies that both \(ε_i(a)^{m}\) and \(ε_i(a)^{-m}\) are real numbers with
+  complex modulus \(1\). Hence, \(ε_i(a)^{2m} = 1\) and \(ε(a)\) would be a
+  \(2m\)-th root of unity, contradicting \cref{lem:epsilon is not a root of
+  unity}. We conclude that the approximation of the modulus \(|σ_i(\px_m(a))| <
+  1\) holds for all \(s_K + 1 < i ≤ n\). But since
+  \[
+    |N_{K/ℚ}(\px_m(a))| =
+      |σ_1(\px_m(a))|^{s_K + 1} \prod_{i = s_K + 2}^n |σ_i(\px_m(a))|
+  \]
+  is a positive integer we must also have \(|σ_1(\px_m(a))| > 1\).
+
+  As for the embeddings of \(b\) we have
+  \[
+    σ_i(b) =
+    \left(
+      σ_i(\px_m(a))^2 + σ_i(\py_m(a))^2 (a_i^2 - 1)
+    \right)^{2s}
+    \left(
+      σ_i(\px_m(a))^4 + a_i \left(1 - σ_i(\px_m(a))^2\right)^2
+    \right)
+  \]
+  where \(|a_i| > 1\) for all \(1 ≤ i ≤ s_K + 1\) and \(|a_i| < 1\) for all
+  \(s_K + 1 < i ≤ n\) by \eqref{eq:approximations of a}. Let us first consider
+  the case for \(1 ≤ i ≤ s_K + 1\). Then
+  \[
+  \left|
+    σ_i(\px_m(a))^2 + σ_i(\py_m(a))^2 (a_i^2 - 1)
+  \right| = |2 σ_i(\px_m(a))^2 - 1| ≥ 2 |σ_i(\px_m(a))|^2 - 1 > 1
+  \]
+  holds and thus \(|σ_i(b)|\) is strictly increasing in \(s\). On the other
+  hand, if \(s_K + 1 < i ≤ n\) we note that \(σ_i(\px_m)\) is a real number as
+  \(σ_i : K → ℝ\) is a real embedding and conclude that both
+  \begin{align*}
+    σ_i(\px_m(a))^2 - σ_i(\py_m(a))^2 (1 - a_i^2) &< σ_i(\px_m(a))^2 < 1 \\
+    \intertext{as well as}
+    σ_i(\px_m(a))^2 - σ_i(\py_m(a))^2 (1 - a_i^2) &= 2 σ_i(\px_m(a))^2 - 1 > -1
+  \end{align*}
+  hold. As a consequence, the moduls \(|σ_i(b)|\) is strictly decreasing in
+  \(s\). Hence, we can arrange for \(|σ_i(b)| > 2^{2(n + 1)}\) and \(|σ_j(b)| <
+  1/2\) to hold (\(1 ≤ i ≤ s_K + 1 < j ≤ n\)), as claimed.
+\end{proof}
+
 %
 % \begin{lem}\label{lem:rank of S is greater 0}
 %   Let \(K\) be a totally real number field and \(a ∈ \algint\) satisfies \(δ =
