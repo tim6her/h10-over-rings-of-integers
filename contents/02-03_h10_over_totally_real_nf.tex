@@ -74,8 +74,46 @@ In the following the number field \(K[δ(a)]\) will be denoted by \(L\).
   conjugation.
 \end{rem}
 
+\begin{exam}
+  Consider the number field \(K := ℚ[√2]\). It is not hard to check that
+  \(\set{1, √2}\) is an integral basis for \(\algint\). We may choose \(a = 2\)
+  as the integer in the definition of the sequences. Indeed, we find \(δ =
+  √{a^2 - 1} = √3\) and if \(√3\) was contained in \(K\) then it would be an
+  algebraic integer. Thus there exist \(m, n ∈ ℤ\) such that
+  \[
+    √3 = m + n√2.
+  \]
+  Now since neither \(√3\) nor \(√3 / √2\) are integers, we may assume that both
+  \(m\) and \(n\) are non-zero. But then
+  \[
+    3 = m^2 + 2 m n √2 + 2 n^2
+  \]
+  which is equivalent to
+  \[
+    √2 = \frac{3 - m^2 - 2 n^2}{2 m n} ∈ ℚ.
+  \]
+  Note that \(ε = a + δ = 2 + √3\) then by definition of the sequences we have
+  for all \(m ∈ ℕ\) that
+  \begin{align*}
+    \px_m + δ\py_m &= ε^m = \left(2 + √3\right)^m =
+      \sum_{j = 0}^m \binom{m}{j} 2^j √{3^{m - j}} =\\
+    &= \sum_{\substack{j=0\\ j \text{ even}}}^m
+          \binom{m}{j} 2^j 3^{\frac{j}{2}} +
+       √3 \sum_{\substack{j=0\\ j \text{ odd}}}^m
+          \binom{m}{j} 2^j 3^{\frac{j - 1}{2}}.
+  \end{align*}
+  Thus, we have found that
+  \begin{align*}
+    \px_m &= \sum_{\substack{j=0\\ j \text{ even}}}^m
+          \binom{m}{j} \left(2 √3\right)^j\\
+    \intertext{and}
+    \py_m &= 2\sum_{\substack{j=0\\ j \text{ odd}}}^m
+       \binom{m}{j} \left(2 √3\right)^{j - 1}.
+  \end{align*}
+\end{exam}
+
 Let me now collect some properties of these sequences. The proofs are
-generalized versions of the ones given in~\cite{Davis1973}.
+generalized versions of the ones given in Davis' paper~\cite{Davis1973}.
 
 \begin{lem}
   Let \(K\) be an algebraic number field and \(a ∈ \algint\) such that \(δ(a) \not\in K\). Then
@@ -192,8 +230,8 @@ of this lemma is the subsequent one, which brings divisibility into play.
 
     \item Again the defining equation yields
     \begin{align*}
-      \px_{mk} + δ \py_{mk} &= ε^{mk} = {(\px_m + δ \py_m)}^k = \\
-                        &= \sum_{j = 0}^k \binom k j \px_m^{k - j} \py_m^j δ^j \\
+      \px_{mk} + δ \py_{mk} &= ε^{mk} = {(\px_m + δ \py_m)}^k =
+                        \sum_{j = 0}^k \binom k j \px_m^{k - j} \py_m^j δ^j \\
       \intertext{and}
       \py_{mk} &= \sum_{\substack{j=0\\ j \text{ odd}}}^k
                 \binom k j \px_m^{k - j} \py_m^j δ^{j -1}.
@@ -498,6 +536,18 @@ We will prove later using Minkowski's theorem on convex bodies
 \eqref{eq:approximations of a} exists and therefore the condition on \(a\) from
 the previous section holds.
 
+\begin{exam}
+  Consider again the case of \(K := ℚ[√2]\). Since both embeddings of \(K\)
+  into \(ℂ\) are uniquely determined by \(σ(√2) = ± √2\) it suffices to find two
+  integers \(k, ℓ ∈ ℤ\) such that \(|k + ℓ √2| > 2^{2 \cdot 2 + 2} = 64\) and
+  \(|k - ℓ √2| < 1/2\). Then we can set \(a := k + ℓ √2\) and the \(a\) fulfils
+  \eqref{eq:approximations of a}. Such a pair of integers is given by \(a = 34 +
+  24 √2\). In this case
+  \[
+    δ = \sqrt{4 {\left(12 \sqrt{2} + 17\right)}^{2} - 1}.
+  \]
+\end{exam}
+
 \begin{rem}
   As the expansion \(L / K\) is quadratic by \cref{lem:L over K is
   quadratic}, every \(σ_i\) can be extended to exactly two embeddings \(σ_{i1}\)
@@ -611,7 +661,7 @@ We will use the following fact from number theory.
     f_k(X) := (X - η_1^k)…(X - η_n^k) = X^n + a_{k, n - 1} X^{n - 1} + … + a_{k, 0}
   \]
   for all integers \(k ∈ ℕ\). Since \(f_k ∈ ℤ[X]\) has integral coefficients and
-  all \(|η_i| = 1\), we find that \(|a_{k, s}| ≤ {n \choose s}\). This implies
+  all \(|η_i| = 1\), we find that \(|a_{k, s}| ≤ \binom{n}{s}\). This implies
   that there can only be finitely many different \(f_k\). Now choose \(ℓ > k\)
   with \(f_ℓ = f_k\), then \(η^ℓ = η^k\) and \(η\) is a \((ℓ - k)\)-th root of
   unity.
@@ -1131,9 +1181,9 @@ considering one can derive further properties.
   \begin{align*}
     \px_{eth} + δ\py_{eth} &= (ε^{eh})^t = (\px_{eh} + δ \py_{eh})^t =\\
       &= \sum_{\substack{0 ≤ i ≤ t\\2 \text{ even}}}
-        {t \choose i} \px_{eh}^{t - i} δ^i \py_{eh}^i +
+        \binom{t}{i} \px_{eh}^{t - i} δ^i \py_{eh}^i +
       δ \sum_{\substack{0 ≤ i ≤ t\\2 \text{ odd}}}
-        {t \choose i} \px_{eh}^{t - i} δ^{i - 1} \py_{eh}^i
+        \binom{t}{i} \px_{eh}^{t - i} δ^{i - 1} \py_{eh}^i
   \end{align*}
   and, since \((\px_{eh})\)  and \((\py_{eh})\) are relative prime, we can
   conclude that
