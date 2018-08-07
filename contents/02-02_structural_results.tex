@@ -130,12 +130,12 @@ This was shown by \textcite[§11]{Davis1976}.
   \(ℤ\) is Diophantine over \(\algint\), then every semi-decidable set is
   Diophantine over \(\algint\).
 
-  Let \(A \subseteq \algint^k\) be semi-decidable and let \(\set{ζ_1, …, ζ_n}\)
+  Let \(A \subseteq \algint^k\) be semi-decidable and let \(\set{ξ_1, …, ξ_n}\)
   be an integral basis for \(\algint\) over \(ℤ\). We define the set of all
   coefficients of elements in \(A\) by
   \[
     S := \set{(a_{11}, …, a_{1n}, …, a_{k1}, …, a_{kn}) ∈ ℤ^{kn} :
-              \left(\sum_{i=1}^n a_{ij} ζ_i\right)_{1 ≤ j ≤ k} ∈ A}.
+              \left(\sum_{i=1}^n a_{ij} ξ_i\right)_{1 ≤ j ≤ k} ∈ A}.
   \]
   As \(A\) is semi-decidable so is \(S\). Note that this is exactly how we
   efficiently represented finitely generated free \(ℤ\)-algebras and thus
@@ -155,9 +155,9 @@ This was shown by \textcite[§11]{Davis1976}.
       \seq[m]{β} ∈ ℤ :\\
     & \quad \begin{cases}
               p(a_{11}, …, a_{1n}, …, a_{k1}, …, a_{kn}, \seq[m]{y}) = 0\\
-              α_1 = a_{11} ζ_1 + … + a_{1n} ζ_n\\
+              α_1 = a_{11} ξ_1 + … + a_{1n} ξ_n\\
               \vdots\\
-              α_k = a_{k1} ζ_1 + … + a_{kn} ζ_n
+              α_k = a_{k1} ξ_1 + … + a_{kn} ξ_n
             \end{cases}
   \end{align*}
   By assumption there exists a Diophantine definition of \(ℤ\) over \(\algint\).

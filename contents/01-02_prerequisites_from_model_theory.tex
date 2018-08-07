@@ -1069,19 +1069,19 @@ easily be proven via structural induction.
     \(\lang_{ring}\)-structure is efficiently presentable. As for integers, one
     extends the presentation of \(ℕ\) by a sign-bit.
 
-    To present free \(ℤ\)-algebras one uses a basis say \(ζ_1, …, ζ_n\). Then
+    To present free \(ℤ\)-algebras one uses a basis say \(ξ_1, …, ξ_n\). Then
     any element \(η\) can be encoded as an \(n\)-tuple of integers. Addition and
     subtraction are defined coordinate-wise. To implement the multiplication one
     stores the finite multiplication table of the basis elements
     \[
       \begin{array}{l @{\qquad} r r r r}
         \toprule
-              & ζ_1   & ζ_2     & … & ζ_n     \\
+              & ξ_1   & ξ_2     & … & ξ_n     \\
         \midrule
-        ζ_1 & ζ_1^2     & ζ_1 ζ_2 & … & ζ_1 ζ_n \\
-        ζ_2 & ζ_2 ζ_1   & ζ_2^2   & … & ζ_2 ζ_n \\
+        ξ_1 & ξ_1^2     & ξ_1 ξ_2 & … & ξ_1 ξ_n \\
+        ξ_2 & ξ_2 ξ_1   & ξ_2^2   & … & ξ_2 ξ_n \\
         \vdots & \vdots &  \vdots & \ddots  & \vdots  \\
-         ζ_n & ζ_n ζ_1  & ζ_n ζ_2 & … & ζ_n^2\\
+         ξ_n & ξ_n ξ_1  & ξ_n ξ_2 & … & ξ_n^2\\
         \bottomrule
       \end{array}
     \]
@@ -1130,11 +1130,11 @@ the following theorem applies and assures us that the decidability of
 \end{thm}
 
 This theorem follows from a more general result of \textcite{Malcev1961}. The
-idea of the proof is to let \(ζ_1, …, ζ_n ∈ R\) be a set of generators of \(R\)
+idea of the proof is to let \(ξ_1, …, ξ_n ∈ R\) be a set of generators of \(R\)
 over \(R\) and let \(φ_1: R → R_1, φ_2: R → R_2\) be the efficient
 representations of \(R\) together with the respective ring isomorphisms. Then
-\(φ_1(ζ_1), …, φ_1(ζ_n)\) generate \(R_1\) over \(R_1\) and \(φ_2(ζ_1), …,
-φ_2(ζ_n)\) generate \(R_2\) over \(R_2\). Storing these finitely many values of
+\(φ_1(ξ_1), …, φ_1(ξ_n)\) generate \(R_1\) over \(R_1\) and \(φ_2(ξ_1), …,
+φ_2(ξ_n)\) generate \(R_2\) over \(R_2\). Storing these finitely many values of
 the isomorphism \(φ_2 \circ φ_1^{-1}\) in memory one can use the computabilty of
 \(R_1\) and \(R_2\) respectively to extend the partial mapping in the natural
 way.

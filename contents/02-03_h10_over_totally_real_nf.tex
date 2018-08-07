@@ -1364,6 +1364,126 @@ As a next step we prove a similar result for \(\px_m\).
   1/2\) to hold (\(1 ≤ i ≤ s_K + 1 < j ≤ n\)), as claimed.
 \end{proof}
 
+Before we can present a Diophantine representation of the rational integers over
+\(K\) we need two more auxiliary results. I present the proofs of Lemma~5.2.1
+and Corollary~5.2.2 of Shlapentokh's book~\cite{Shlapentokh2007} but a similar
+result can be found in Lemma~8 of the paper~\cite{Denef1980}.
+\begin{lem}
+  Let \(K\) be a number field of degree \(n\) over rationals \(ℚ\). Let \(α, β ∈
+  \algint \setminus \set{0}\) and assume that for \(0 ≤ i ≤ n\) we have that
+  \(ℓ_i − α\) divides \(β\) in the ring of integers \(\algint\) for some
+  distinct non-negative integers \(0 = ℓ_0, \seq{ℓ}\). Then there exists a
+  constant \(C > 0\), depending solely on the integers \(n, \seq{ℓ}\), such that
+  the absolute values of all the coefficients of the characteristic polynomial
+  \(μ_{ℚ, α}\) of \(α\) over \(ℚ\) are bound from above by \(C|N_{K/ℚ} (β)|\).
+\end{lem}
+\begin{proof}
+  Since \(ℓ_i - α\) divides \(β\), we know that there exists a non-zero rational
+  integer \(d_i\) such that
+  \[
+    N_{K/ℚ}(ℓ_i - α) d_i = N_{K/ℚ}(β).
+  \]
+  We set \(c_i := 1 / d_i\) and note that \(|c_i| < 1\) for all \(0 ≤ i ≤ n\).
+  On the other hand, notice that
+  \[
+    N_{K/ℚ}(ℓ_i - α) = \prod_{j = 1}^n (ℓ_i - σ_i(α)) = μ_{ℚ, α}(ℓ_i),
+  \]
+  where \(\seq{σ}\) denote the embeddings of \(K\) into \(ℂ\) and \(μ_{ℚ, α}\)
+  is the minimal polynomial of \(α\) over \(ℚ\). From these two observations we
+  obtain that \(μ_{ℚ, α}(ℓ_i) = c_i N_{K/ℚ}(β)\). Let
+  \[
+    μ_{ℚ, α}(X) = X^n + a_{n - 1} X^{n - 1} + … + a_1 X + a_0,
+  \]
+  then we can view these identities as a linear system of \(n + 1\) equations in
+  the variables \(a_0, \seq{a} = 1\). Written in matrix form the system looks
+  like
+  \[
+    \underbrace{
+      \begin{pmatrix}
+        1 & … & 0                 & 0     \\
+        1 & … & ℓ_1^{n - 1}       & ℓ_1^n \\
+        \vdots & & \vdots & \vdots  \\
+        1 & … & ℓ_{n - 1}^{n - 1} & ℓ_{n - 1}^n \\
+        1 & … & ℓ_1^{n}           & ℓ_1^n \\
+      \end{pmatrix}
+    }_{:= A}
+    \begin{pmatrix}
+      a_0 \\ a_1 \\ \vdots \\ a_{n - 1} \\ a_n
+    \end{pmatrix}
+    =
+    \underbrace{
+      \begin{pmatrix}
+        c_0 N_{K/ℚ}(β) \\
+        c_1 N_{K/ℚ}(β) \\
+        \vdots \\
+        c_{n - 1} N_{K/ℚ}(β) \\
+        c_n N_{K/ℚ}(β) \\
+      \end{pmatrix}
+    }_{:= b}
+  \]
+  Note that matrix \(A\) is of Vandermonde-shape and thus has non-zero
+  determinant. Hence, we can use Cramer's rule to solve the system and obtain
+  \[
+    a_i =
+      {\det A}^{- 1} \;
+      \det
+      \begin{pmatrix}
+        1 & … & c_0 N{K/ℚ}(β) & … & 0 \\
+        1 & … & c_1 N{K/ℚ}(β) & … & ℓ_1^n \\
+        \vdots & & \vdots & & \vdots \\
+        1 & … & c_{n - 1} N{K/ℚ}(β) & … & ℓ_{n - 1}^n \\
+        1 & … & c_n N{K/ℚ}(β) & … & ℓ_n^n \\
+      \end{pmatrix},
+  \]
+  where in \(A_i\) the \(i\)-th column of matrix \(A\) is replaced by \(b\). But
+  this implies
+  \[
+    a_i =
+      {\det A}^{- 1} \; N_{K/ℚ}(β)
+      \det
+      \underbrace{
+        \begin{pmatrix}
+          1 & … & c_0  & … & 0 \\
+          1 & … & c_1  & … & ℓ_1^n \\
+          \vdots & & \vdots & & \vdots \\
+          1 & … & c_{n - 1}  & … & ℓ_{n - 1}^n \\
+          1 & … & c_n  & … & ℓ_n^n \\
+        \end{pmatrix}
+      }_{:= A_i},
+  \]
+  and setting \(C := \max_i|{\det A}^{-1} \det A_i|\) yields the claim.
+\end{proof}
+
+\begin{cor}
+  Let \(K\) be a number field of degree \(n\) over \(ℚ\). Fix two non-zero
+  algebraic integers \(α, β ∈ K \setminus \set{0}\) and assume that there are
+  pair-wise distinct non-negative integers \(0 = ℓ_0, \seq{ℓ}\) with the
+  property that \(ℓ_i - α\) divides \(β\) in \(\algint\) for \(0 ≤ i ≤ n\). Then
+  there exists a constant \(C ∈ ℚ\), such that for all embeddings \(σ: K → ℂ\)
+  we have that \(|σ(α)| ≤ C |N_{K/ℚ}(β)|\). If additionally \(β\) is not a unit
+  then there exist a non-negative integer \(c ∈ ℕ\) such that \(|σ(α)| ≤
+  |N_{K/ℚ}(β)|^c\).
+\end{cor}
+\begin{proof}
+  Let
+  \[
+    μ_{ℚ, α}(X) = X^n + a_{n - 1} X^{n - 1} + … + a_1 X + a_0.
+  \]
+   Then since \(σ(α)\) is a root of \(μ_{ℚ, α}\) as well, we know that
+  \[
+    σ(α)^n = - a_{n - 1} {σ(a)}^{n - 1} - … - a_1 σ(a) - a_0.
+  \]
+  By the previous lemma there exists a constant \(\tilde{C}\) such that \(|a_i|
+  ≤ \tilde{C} |N_{K/ℚ}(β)|\). If now \(|σ(α)| > 1\) then
+  \[
+    |σ(α)| ≤ |a_{n - 1}| + … + |a_1| + |a_0| ≤ n \tilde{C} |N_{K/ℚ}(β)|.
+  \]
+  Setting \(C := \max(1, n \tilde{C})\) yields the first claim. If addtionally
+  \(β\) is not a unit then the absolute value of its norm is strictly greater
+  than one. Hence, there exists a non-negative integer \(c\) such that
+  \(\tilde{C} ≤ |N_{K/ℚ}(β)|^{c - 1}\).
+\end{proof}
+
 %
 % \begin{lem}\label{lem:rank of S is greater 0}
 %   Let \(K\) be a totally real number field and \(a ∈ \algint\) satisfies \(δ =
