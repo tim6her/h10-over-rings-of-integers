@@ -456,8 +456,9 @@ theorem~\cite[see][II~§1, p.~89]{Lang2002} the following inequality holds
 \begin{equation}\label{eq:rank of S} \rk S ≤ \rk \ker N_{L / K} = \rk U_L - \rk
 U_K. \end{equation}
 
-Before proving the main theorem of this section (\todo{reference it}) I
-sketch how \textcite{Davis1973} proceeds in proving the \textsc{DPRM}-theorem.
+Before proving the main result of this section (\cref{cor:ZZ is Diophantine over
+O K}) I sketch how \textcite{Davis1973} proceeds in proving the
+\textsc{DPRM}-theorem.
 
 \DPRM*
 
@@ -1478,11 +1479,11 @@ result can be found in Lemma~8 of the paper~\cite{Denef1980}.
       {\det A}^{- 1} \;
       \det
       \begin{pmatrix}
-        1 & … & c_0 N{K/ℚ}(β) & … & 0 \\
-        1 & … & c_1 N{K/ℚ}(β) & … & ℓ_1^n \\
+        1 & … & c_0 N_{K/ℚ}(β) & … & 0 \\
+        1 & … & c_1 N_{K/ℚ}(β) & … & ℓ_1^n \\
         \vdots & & \vdots & & \vdots \\
-        1 & … & c_{n - 1} N{K/ℚ}(β) & … & ℓ_{n - 1}^n \\
-        1 & … & c_n N{K/ℚ}(β) & … & ℓ_n^n \\
+        1 & … & c_{n - 1} N_{K/ℚ}(β) & … & ℓ_{n - 1}^n \\
+        1 & … & c_n N_{K/ℚ}(β) & … & ℓ_n^n \\
       \end{pmatrix},
   \]
   where in \(A_i\) the \(i\)-th column of matrix \(A\) is replaced by \(b\). But
@@ -1523,8 +1524,8 @@ result can be found in Lemma~8 of the paper~\cite{Denef1980}.
   \[
     σ(α)^n = - a_{n - 1} {σ(a)}^{n - 1} - … - a_1 σ(a) - a_0.
   \]
-  By the previous lemma there exists a constant \(\tilde{C}\) such that \(|a_i|
-  ≤ \tilde{C} |N_{K/ℚ}(β)|\). If now \(|σ(α)| > 1\) then
+  By the previous lemma there exists a constant \(\tilde{C}\) such additionally
+  that \(|a_i| ≤ \tilde{C} |N_{K/ℚ}(β)|\). If now \(|σ(α)| > 1\) then
   \[
     |σ(α)| ≤ |a_{n - 1}| + … + |a_1| + |a_0| ≤ n \tilde{C} |N_{K/ℚ}(β)|.
   \]
@@ -1533,6 +1534,16 @@ result can be found in Lemma~8 of the paper~\cite{Denef1980}.
   than one. Hence, there exists a non-negative integer \(c\) such that
   \(\tilde{C} ≤ |N_{K/ℚ}(β)|^{c - 1}\).
 \end{proof}
+
+\begin{thm}
+  pass
+\end{thm}
+
+\begin{cor}\label{cor:ZZ is Diophantine over O K}
+  Let \(K\) be a totally real number field or a number field with exactly one
+  pair of non-real embeddings and at least one real embedding. Then \(ℤ\) is
+  Diophantine over \(\algint\).
+\end{cor}
 
 %
 % \begin{lem}\label{lem:rank of S is greater 0}

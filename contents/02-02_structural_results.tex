@@ -166,19 +166,24 @@ This was shown by \textcite[§11]{Davis1976}.
   definition of \(A\) over \(\algint\).
 \end{proof}
 
-In the following I will present an important tool in proving that a field
-extension \(L/K\) has a Diophantine definition of \(\algint\) over
-\(\algint[L]\). This so called \emph{strong vertical method} was developed by
-Denef and Lipshitz and successfully applied over various number fields
+Given the tools and structural results that we have just introduced, all that is
+left to prove the undecidability of Hilbert's tenth problem over a fixed ring of
+algebraic integers \(\algint\), is proving that \(ℤ\) has a Diophantine
+definition over \(\algint\). This task will fill the remainder of this thesis.
+But before moving on to the case of specific number fields I will present an
+important tool in proving that a field extension \(L/K\) has a Diophantine
+definition of \(\algint\) over \(\algint[L]\). This so called \emph{strong
+vertical method} was developed by Denef and Lipshitz and successfully applied
+over various number fields
 \cite[e.g.][]{Denef1975,Denef1978,Denef1980,Pheidas1988,Shlapentokh1989}.
 
 \begin{thm}\label{thm:strong vertical method}
   Let \(L/K\) be an extension of number fields and \(n = [L : ℚ]\). If \(x, y ∈ \algint[L]\) and \(α ∈ \algint\) satisfy
   \begin{align}
     \label{eq:y is not a unit}& y \text{ is not a unit},\\
-    \label{eq:sigma x and norm of y}& |σ_i(x)| ≤ |N_{L/ℚ}(y^c)|
+    \label{eq:sigma x and norm of y}& |σ_i(x)| ≤ |N_{L/ℚ}(y)|^c
     \text{ for all } 1 ≤ i ≤ n, \\
-    \label{eq:sigma x and norm of alpha}& |σ_i(α)| ≤ |N_{L/ℚ}(y^c)|
+    \label{eq:sigma alpha and norm of y}& |σ_i(α)| ≤ |N_{L/ℚ}(y)|^c
     \text{ for all } 1 ≤ i ≤ n, \text{ and}\\
     \label{eq:x mod alpha}& x \equiv α \mod \left(2 y^{2cn}\right) \text{ in }
       \algint[L],
@@ -197,7 +202,7 @@ Denef and Lipshitz and successfully applied over various number fields
     |N_{L/ℚ}(x - α)| = |N_{L/ℚ}(β \, 2 y^{2cn})| ≥ 2^n |N_{L/ℚ}(y^{2cn})|
   \]
   holds. To reach a contradiction assume the latter to be true. Then
-  \eqref{eq:sigma x and norm of y} and \eqref{eq:sigma x and norm of alpha}
+  \eqref{eq:sigma x and norm of y} and \eqref{eq:sigma alpha and norm of y}
   imply that
   \[
     |N_{L/ℚ}(x - α)| = \prod_{i=1}^n |σ_i(x - α)| ≤
@@ -212,7 +217,26 @@ Denef and Lipshitz and successfully applied over various number fields
   desired contradiction.
 \end{proof}
 
-Given the tools and structural results that we have just introduced, all that is
-left to prove the undecidability of Hilbert's tenth problem over a fixed ring of
-algebraic integers \(\algint\), is proving that \(ℤ\) has a Diophantine
-definition over \(\algint\). This task will fill the remainder of this thesis.
+If \(σ_i\) is a real embedding, conditions \eqref{eq:sigma x and norm of y},
+\eqref{eq:sigma alpha and norm of y}, \eqref{eq:x mod alpha} are in fact
+Diophantine for a fixed \(y ∈ \algint[L]\). For the last condition this follows
+from \(α \equiv β \mod (γ)\) if and only if \(∃ δ: α - β = δ γ\). The other
+conditions are covered by the following lemma \cite[cf.][Lem.~9]{Denef1980}.
+
+\begin{lem}\label{lem:approximations of embeddings are Diophantine}
+  Let \(K\) be a number field and \(σ: K → ℝ\) be a real embedding. Then the
+  relation \(σ(α) ≥ 0\) is Diophantine over \(\algint\).
+\end{lem}
+
+Note that we can exchange the bound \(0\) to any value in the image \(σ(K) ⊂
+ℝ\). Indeed, for a given bound \(σ(a/b)\), where \(a, b ∈ \algint\)
+(cf.~\cref{thm:K is the quotient field of O K}), this can be achieved by the
+relation
+\[
+  ∃ β ∈ \algint : (σ(β) ≥ 0) ∧ \left(β = α - \frac{a}{b}\right)
+\]
+which is equivalent to the Diophantine relation
+\[
+  ∃ β ∈ \algint : (σ(β) ≥ 0) ∧ (bβ = bα - a).
+\]
+Similarly, one can obtain upper bounds by replacing \(x\) by \(-x\).
