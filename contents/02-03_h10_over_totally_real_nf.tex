@@ -385,7 +385,7 @@ nevertheless true for the case \(K = ℚ\) and \(\algint = ℤ\).
   Let \(K\) be a number field and \(a ∈ \algint\) such that \(δ = δ(a) \not\in
   K\). Then the set
   \[
-    S = \set{α + δ β :
+    G := \set{α + δ β :
              (α, β) ∈ \algint^2
              \text{ is a solution to~\eqref{eq:Pell} with parameter } d = δ^2}
   \]
@@ -394,17 +394,17 @@ nevertheless true for the case \(K = ℚ\) and \(\algint = ℤ\).
   \(\algint[L]\) respectively.
 \end{lem}
 \begin{proof}
-  First of all, note that, if \(α + δ β ∈ S\), so is \(\sigmaK{α + δ β} = α - δ
-  β ∈ S\) because
+  First of all, note that, if \(α + δ β ∈ G\), so is \(\sigmaK{α + δ β} = α - δ
+  β ∈ G\) because
   \[
     α^2 - d {(-β)}^2 = α^2 - d β^2 = 1.
   \]
-  Now let \(α + δ β\) be an arbitrary element of \(S\), then
+  Now let \(α + δ β\) be an arbitrary element of \(G\), then
   \[
     N_{L/K}(α + δ β) = (α + δ β) \sigmaK{α + δ β} = α^2 - d β^2 = 1.
   \]
   This implies that \(α + δ β ∈ \ker N_{L / K}\) but also that \(α + δ β\) is a
-  unit, as \(α - δ β\) is its inverse. The product of two arbitrary elements \(α_1 + δ β_1, α_2 + δ β_2 ∈ S\) is
+  unit, as \(α - δ β\) is its inverse. The product of two arbitrary elements \(α_1 + δ β_1, α_2 + δ β_2 ∈ G\) is
   \[
     (α_1 + δ β_1)(α_2 + δ β_2) = (α_1 α_2 + δ^2 β_1 β_2) + δ (α_1 β_2 + α_2 β_1).
   \]
@@ -415,7 +415,7 @@ nevertheless true for the case \(K = ℚ\) and \(\algint = ℤ\).
     &=
     (α_1 + δ β_1)\sigmaK{α_1 + δ β_1}(α_2 + δ β_2)\sigmaK{α_2 + δ β_2} = 1.
   \end{align*}
-  As a consequence, \(S\) is closed under multiplication and the claim is
+  As a consequence, \(G\) is closed under multiplication and the claim is
   proven.
 \end{proof}
 
@@ -450,11 +450,12 @@ nevertheless true for the case \(K = ℚ\) and \(\algint = ℤ\).
 \end{proof}
 
 As for the free ranks of \(U_K\), \(U_L\), \(N_{L / K}\left(U_L\right)\) and
-\(S\) the lemma above implies that \(\rk N_{L / K}\left(U_L\right) = \rk U_K\)
+\(G\) the lemma above implies that \(\rk N_{L / K}\left(U_L\right) = \rk U_K\)
 and therefore, as an immediate consequence of the first isomorphism
 theorem~\cite[see][II~§1, p.~89]{Lang2002} the following inequality holds
-\begin{equation}\label{eq:rank of S} \rk S ≤ \rk \ker N_{L / K} = \rk U_L - \rk
-U_K. \end{equation}
+\begin{equation}\label{eq:rank of G}
+    \rk G ≤ \rk \ker N_{L / K} = \rk U_L - \rk U_K.
+\end{equation}
 
 Before proving the main result of this section (\cref{cor:ZZ is Diophantine over
 O K}) I sketch how \textcite{Davis1973} proceeds in proving the
@@ -799,28 +800,28 @@ We will use the following fact from number theory.
   \end{plist}
 \end{proof}
 
-As a next step, we want to show that we have already found all solutions of
+As a next step, we want to show that we have essentially found all solutions of
 Pell's equation~\eqref{eq:Pell}. For this we need some lemmas.
 
-Recall the group \(S ≤ \ker N_{L / K}\) defined in \cref{lem:subgroup of ker N
+Recall the group \(G ≤ \ker N_{L / K}\) defined in \cref{lem:subgroup of ker N
 L/K}. We have seen in \cref{lem:rank of N_L/K U_L} and the subsequent
-inequality~\eqref{eq:rank of S} that the free rank of \(S\) can be bound from
+inequality~\eqref{eq:rank of G} that the free rank of \(G\) can be bound from
 above by \(\rk U_L - \rk U_K\). I claim that this difference of ranks is equal
 to \(1\) in both cases of algebraic number fields we are considering.
 
-If \(K ≠ ℚ\) is totally real, then by Dirichlet's unit theorem
-(\cref{thm:Dirichlet}) we find that \(\rk U_K = n\) and by \cref{lem:r and s for
-tr and opnr} that \(\rk U_L = 1 + n\). If on the other hand, \(K\) satisfies
-\(r = n - 2 > 0\) then \(\rk U_K = n - 1\) and by \cref{lem:r and s for tr and
-opnr} we have \(\rk U_L = n\).
+If \(K ≠ ℚ\) is totally real, then by Dirichlet's unit
+theorem~(\ref{thm:Dirichlet}) we find that \(\rk U_K = n\) and by \cref{lem:r
+and s for tr and opnr} that \(\rk U_L = 1 + n\). If on the other hand, \(K\)
+satisfies \(r = n - 2 > 0\) then \(\rk U_K = n - 1\) and by \cref{lem:r and s
+for tr and opnr} we have \(\rk U_L = n\).
 
-Note that \(ε\) is contained in \(S\) and by the previous lemma, \(ε\) is not a
-root of unity. As a consequence, the group \(⟨ε⟩ ≤ S\) has free rank at least
+Note that \(ε\) is contained in \(G\) and by the previous lemma, \(ε\) is not a
+root of unity. As a consequence, the group \(⟨ε⟩ ≤ G\) has free rank at least
 equal to \(1\). We deduce that
 \[
-  \rk ⟨ε⟩ = \rk S = 1.
+  \rk ⟨ε⟩ = \rk G = 1.
 \]
-Thus, there exists a unit \(ε_0 ∈ S\) such that for all \(η ∈ S\)  there exists
+Thus, there exists a unit \(ε_0 ∈ G\) such that for all \(η ∈ G\)  there exists
 a root of unity \(ζ\) and an integer \(k\), such that \(η = ζ ε_0^k\). However,
 even more is true, as one can set \(ε = ε_0\), but before we can prove
 this, we need a lemma.
@@ -828,7 +829,7 @@ this, we need a lemma.
 \begin{lem}
   Let \(K ≠ ℚ\) be a number field and let \(a ∈ \algint\) satisfy
   \eqref{eq:approximations of a}. Furthermore, let \(ε_0\) be a generator of the
-  torsion free part of \(S\). Then \(2δ \mid (ε_0 - ε_0^{-1})\) and
+  torsion free part of \(G\). Then \(2δ \mid (ε_0 - ε_0^{-1})\) and
   \begin{thmlist}
     \item if \(K\) is totally real, then
     \[
@@ -893,9 +894,9 @@ this, we need a lemma.
   \end{plist}
 \end{proof}
 
-\begin{pro}\label{pro:epsilon essentially generaltes S}
+\begin{pro}\label{pro:epsilon essentially generaltes G}
   Let \(K ≠ ℚ\) be a number field and let \(a ∈ \algint\) satisfy
-  \eqref{eq:approximations of a}. Then for every \(η ∈ S\) there exists an
+  \eqref{eq:approximations of a}. Then for every \(η ∈ G\) there exists an
   integer \(k\) and a root of unity \(ζ ∈ L\) such that \(η = ζ ε^k\).
 \end{pro}
 \begin{proof}
@@ -918,16 +919,75 @@ this, we need a lemma.
   where \(m_0 ∈ \set{1, 2}\) is chosen accordingly. Applying
   \cref{lem:approximation of epsilon with a} yields
   \[
-    |a|^2 < 2^{2n} |ε_0|^{2} ≤ 2^{2n} |ε_1| <
-            2^{2n + 1} (|a| + 1) < 2^{2n + 2} |a|.
+    |a|^{2 m_0} < 2^{2n} |ε_0|^{2 m_0} ≤ 2^{2n} |ε_1|^{m_0} <
+            2^{2n + m_0} {(|a| + 1)}^{m_0} < 2^{2n + 1 + m_0} |a|^{m_0}.
   \]
-  But this is a contradiction to the assumption \(|a| > 2^{2n + 2}\) of
+  If \(m_0\) is one then the inequality above reads \(|a|^2 < 2^{2n + 2}|a|\),
+  which is a contradiction to \eqref{eq:approximations of a}. If on the other
+  hand \(m_0 = 2\) holds then we obtain \(|a|^4 < 2^{2n + 3} |a|^2\). But this
+  can be transformed upon dividing by \(|a|^2\) and taking square roots to
+  \(|a| < 2^{n + 3/2}\), which is again a contradiction to
   \eqref{eq:approximations of a}.
 \end{proof}
 
 Recall the sequences \((\px_m)_{m ∈ ℕ}\) and \((\py_m)_{m ∈ ℕ}\) defined in
-\eqref{eq:def of x and y}. In the special cases of the field \(K\) we are
-considering one can derive further properties.
+\eqref{eq:def of x and y}. If \(K\) is totally real we can conclude from the
+proposition above that all solutions of Pell's equation with the parameter \(d =
+a^2 - 1\) are of the form
+\[
+  (±\px_m(a), ±\py_m(a))
+\]
+for some integer \(m ∈ ℕ\). This is because \(L = K[√d]\) has two real
+embeddings (\(σ_{1,1}\) and \(σ_{1,2}\)) and the only real roots of unity are
+\(±1\). If \(K\) has one pair of non-real embeddings and at least one real
+embedding. This argument can no longer be used as \(L\) is totally complex in
+this case. One can however impose a Diophantine condition on the solutions of
+Pell's equation to force them to be of this shape
+\cite[cf.][Lem.~3]{Pheidas1988}.
+
+\begin{cor}
+  Let \(K\) be a number field of positive degree \(n\) over \(ℚ\) and let \(a ∈
+  \algint\) satisfy \eqref{eq:approximations of a}. Then there exists a
+  constant \(ν ∈ ℕ \setminus \set{0}\) with the property, that if \(x'+
+  δ y') ∈ G\) and
+  \begin{equation}\label{eq:forcing solutions to be sequences}
+     {(x' + δ y')}^{ν} = x + δ y
+  \end{equation}
+  for two algebraic integers \(x, y ∈ \algint\) then there exists an index \(m
+  ∈ ℕ\) such that
+  \[
+    (x, y) = (±\px_m, ±\py_m).
+  \]
+  In particular, \((x, y)\) is a solution to Pell's equation.
+\end{cor}
+\begin{proof}
+  Set \(ν := |μ(K)|\) which is finite by Dirichlet's unit
+  theorem~(\ref{thm:Dirichlet}). By the proposition there exists a root of
+  unity \(ζ ∈ L\) and an integer \(m_1 ∈ ℕ\) such that \(ζε^{m_1} = x' + δ y'\).
+  We conclude that
+  \[
+    x + δ y = (x' + δ y')^ν = (ζ ε^{m_1})^ν = ζ^ν ε^{m_1 ν} = ε^{m_1 ν}
+  \]
+  and therefore that \((x, y) = (±\px_{m_1 ν}, ±\py_{m_2 ν})\). The claim
+  follows from \cref{lem:x and y solve Pells equation}.
+\end{proof}
+
+Note that \eqref{eq:forcing solutions to be sequences} is not a Diophantine
+relation over \(\algint\) as \(δ\) not contained in \(K\). We can however use
+the binomial theorem to rewrite the identity as
+\[
+  x + δ y = {(x' + δ y')}^{ν} = \sum_{i = 0}^ν \binom{ν}{i} x'^{ν - i} δ^i y'^i
+\]
+and by equating coefficients of \(δ\) we get the two Diophantine definitions
+\begin{align*}
+  x &= \sum_{\substack{i = 1\\i \text{ even}}}^ν
+          \binom{ν}{i} x'^{ν - i} (a^2 - 1)^{\frac{i}{2}} y'^i\\
+  \intertext{and}
+  y &= \sum_{\substack{i = 1\\i \text{ odd}}}^ν
+          \binom{ν}{i} x'^{ν - i} (a^2 - 1)^{\frac{i - 1}{2}} y'^i\\
+\end{align*}
+As a next step we derive further properties of the sequences \((\px_m)_{m ∈ ℕ}\)
+and \((\py_m)_{m ∈ ℕ}\).
 
 \begin{lem}
   Let \(K ≠ ℚ\) be a number field and let \(a ∈ \algint\) satisfy
@@ -1109,8 +1169,8 @@ considering one can derive further properties.
   Let \(K\) be a number field of degree \(n > 0\) over \(ℚ\) and let \(a ∈
   \algint\) satisfy \eqref{eq:approximations of a}. If \(\py_{eh}\) satisfies
   \cref{lem:approximations of sigma x and sigma y} for an arbitrary but fixed
-  positive integer \(k ∈ ℕ \setminus \set{0}\) dividing \(h\), where \(e ∈ ℕ\)
-  is an integer such that
+  positive integer \(k ∈ ℕ \setminus \set{0}\) dividing \(h\), where \(e ≥
+  |μ(K)|\) is an integer such that
   \begin{equation}\label{eq:def of e}
     |ε_1^e| > \frac{4 |δ_1|^{s_K + 1}}{C^{n - s_K - 1}}
   \end{equation}
@@ -1123,9 +1183,10 @@ considering one can derive further properties.
   \end{thmlist}
 \end{lem}
 \begin{proof}
-  Let \(q ∈ ℕ\) be such that \(0 < r < h\). As before let \(L := K[δ]\).
-  Considering the field norm \(N_{L / ℚ}\) of \(\py_{eq}\) we use \cref{lem:real
-  part of epsilon} to obtain
+  Note that such an integer \(e\) must exist as \(|ε_1| > 1\) by
+  \cref{lem:approximation of epsilon with a}. Let now \(q ∈ ℕ\) be such that
+  \(0 < r < h\). As before let \(L := K[δ]\). Considering the field norm \(N_{L
+  / ℚ}\) of \(\py_{eq}\) we use \cref{lem:real part of epsilon} to obtain
   \begin{align*}
     | N_{L / ℚ} (\py_{er}) | &=
         \prod_{i = 1}^n
@@ -1138,7 +1199,7 @@ considering one can derive further properties.
       \frac{|ε_1|^{2er (s_K + 1)}}{4^{s_K}},
   \end{align*}
   where the approximations follow completely analogously as in the proof of
-  \cref{pro:epsilon essentially generaltes S}. As \(\py_{er}\) is in \(\algint\)
+  \cref{pro:epsilon essentially generaltes G}. As \(\py_{er}\) is in \(\algint\)
   we deduce that
   \[
     |N_{K / ℚ} (\py_{er})| < \frac{|ε_1|^{er (s_K + 1)}}{2^{s_K}}.
