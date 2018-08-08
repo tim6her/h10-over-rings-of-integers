@@ -1536,14 +1536,92 @@ result can be found in Lemma~8 of the paper~\cite{Denef1980}.
 \end{proof}
 
 \begin{thm}
-  pass
+  Let \(K\) be a number field of degree \(n > 0\) over \(ℚ\) and let \(a ∈
+  \algint\) satisfy \eqref{eq:approximations of a}. Let \(\seq{σ}\) be all
+  embeddings of \(K\) into \(ℂ\), where we demand that \(σ_i\) is a non-real
+  embedding if and only if \(i ≤ 2 s_K\). Furthermore, let \(C\) be the bound
+  defined in \cref{lem:approximations of sigma x and sigma y} and \(e\) defined
+  as in \eqref{eq:def of e}. Then the set \(S\) defined by the following
+  relations is Diophantine over \(\algint\) and satisfies \(ℕ ⊂ S ⊂ ℤ\).
+  \begin{align}
+    ξ ∈ S \quad &⇔ \quad
+      ∃ x, y, w, z, u, v, s, t, x', y', w', z', u', v', s', t', b, f ∈ \algint:
+      \nonumber \\
+      \label{eq:seq 1}
+      & x^2 - (a^2 - 1) y^2 = 1 \\
+      \label{eq:seq 2}
+      & w'^2 - (a^2 - 1) z'^2 = 1 \\
+      \label{eq:seq 2.1}
+      & w - δ z = {(w' - δ z')}^e \\
+      \label{eq:seq 3}
+      & u^2 - (a^2 - 1) v^2 = 1 \\
+      \label{eq:seq 4}
+      & s^2 = (b^2 - 1) y^2 = 1 \\
+      \label{eq:approx of embeddings 1}
+      & 0 < σ_i(b) < 2^{-16} \quad \text{for all } s_K + 1 < i ≤ n \\
+      \label{eq:approx of embeddings 2}
+      & |σ_i(z)| ≥ C, \quad |σ_i(u)| ≥ ½ \quad \text{for all } s_K + 1 < i ≤ n\\
+      \label{eq:v is non zero}
+      & v ≠ 0 \\
+      \label{eq:z 2 divides v}
+      & z^2 \mid v \\
+      \label{eq:cong 1}
+      & b \equiv 1 \mod (z), \quad b \equiv a \mod (u) \\
+      \label{eq:cong 2}
+      & s \equiv x \mod (u) \\
+      \label{eq:cong 3}
+      & t \equiv ξ \mod (z) \\
+      \label{eq:divisibilty of f}
+      & \prod_{i=0}^n (i - ξ)(i - x) \mid f \quad
+        \text{where } f ≠ 0 \text{ and } (2^n f^{cn}) \mid z
+  \end{align}
 \end{thm}
+\begin{proof}
+  Note that the set \(S\) defined by the relations above is indeed Diophantine
+  since \eqref{eq:approx of embeddings 1} as well as \eqref{eq:approx of
+  embeddings 2} can be rewritten in a Diophantine form by
+  \cref{lem:approximations of embeddings are Diophantine} and \eqref{eq:v is non
+  zero} as well as \eqref{eq:divisibilty of f} are Diophantine by \cref{ex:being
+  non zero is Diophantine}. Finally, the conjunction of all of these Diophantine
+  relations is Diophantine by \cref{lem:intersections and unions}.
+
+  First suppose that the relations above have a common solution \(ξ\). We need
+  to show that \(ξ\) is a rational integer. To see this I first claim that \(b\)
+  satisfies \eqref{eq:approximations of a}. Indeed, the part for the embeddings
+  \(σ_i(b)\) with \(s_K + 1 < i ≤ n\) are guaranteed by \eqref{eq:approx of
+  embeddings 1}. For the embeddings \(σ_i(b)\) with \(1 ≤ i ≤ s_K + 1\) we note
+  that since \(b\) is an algebraic integer, its norm \(N_{K/ℚ}(b)\) must have an
+  absolute value of at least one. Thus, we have
+  \[
+    1 ≤ |N_{K/ℚ}(b)| = |σ_1(b)|^{s_K + 1} \prod_{i = s_K + 2}^n |σ_i(b)| ≤
+      |σ_1(b)|^{s_K + 1} 2^{-16 (n - s_K + 1)},
+  \]
+  which implies
+  \[
+    |σ_1(b)| ≥ 2^{16 \frac{n - s_K + 1}{s_K + 1}}.
+  \]
+  Now if \(s_K = 0\), then \(n ≥ 2\) and since \(16 (n - 1) > 2 (n + 1)\) the
+  claim holds. If on the other hand \(s_K = 1\), then we have demanded that \(n
+  ≥ 3\) holds and again since \(8 (n - 2) ≥ 2(n + 1)\) the claim holds true.
+
+  Now \eqref{eq:seq 1}, \eqref{eq:seq 2}, \eqref{eq:seq 3}, and \eqref{eq:seq 4}
+  imply by
+\end{proof}
 
 \begin{cor}\label{cor:ZZ is Diophantine over O K}
   Let \(K\) be a totally real number field or a number field with exactly one
   pair of non-real embeddings and at least one real embedding. Then \(ℤ\) is
   Diophantine over \(\algint\).
 \end{cor}
+\begin{proof}
+  By the theorem ther exists a Diophantine set \(S ⊂ \algint\) with the
+  property \(ℕ ⊂ S ⊂ ℤ\). Thus, \(ℤ\) can be defined in a Diophantine way as
+  follows
+  \[
+    α ∈ ℤ \quad ⇔ \quad
+    ∃ β_1, β_2 ∈ \algint : (α = β_1 β_2) ∧ (β_1 ∈ S) ∧ (β_2 - 1)(β_2 + 1) = 0
+  \]
+\end{proof}
 
 %
 % \begin{lem}\label{lem:rank of S is greater 0}
