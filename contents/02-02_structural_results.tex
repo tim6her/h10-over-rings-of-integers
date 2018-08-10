@@ -173,10 +173,12 @@ definition over \(\algint\). This task will fill the remainder of this thesis.
 But before moving on to the case of specific number fields I will present an
 important tool in proving that a field extension \(L/K\) has a Diophantine
 definition of \(\algint\) over \(\algint[L]\). This so called \emph{strong
-vertical method} was formalized by Denef and Lipshitz
-\cite[cf.][Lem.~1]{Denef1978} and successfully applied over various number
-fields
+vertical method} was formalized by Denef and Lipshitz and successfully applied
+over various number fields
 \cite[e.g.][]{Denef1975,Denef1978,Denef1980,Pheidas1988,Shlapentokh1989}.
+I do however present a version of this result that can be obtained from Lem.~1
+of \cite{Denef1978} and Lem.~8 of \cite{Denef1980} and is similar to Lem.~7.1.3
+of \cite{Shlapentokh2007}.
 
 \begin{thm}\label{thm:strong vertical method}
   Let \(L/K\) be an extension of number fields and \(n = [L : ℚ]\). If \(x, y ∈
@@ -212,11 +214,39 @@ fields
   \]
 \end{proof}
 
-If \(σ_i\) is a real embedding, conditions \eqref{eq:sigma x and norm of y},
-\eqref{eq:sigma alpha and norm of y}, \eqref{eq:x mod alpha} are in fact
-Diophantine for a fixed \(y ∈ \algint[L]\). For the last condition this follows
-from \(α \equiv β \mod (γ)\) if and only if \(∃ δ: α - β = δ γ\). The other
-conditions are covered by the following lemma \cite[cf.][Lem.~9]{Denef1980}.
+Unlike Shlapentokh's formulation if \(y ∈ \algint\) then the conditions on the
+embeddings are easily seen to be Diophantine \cite[cf.][Lem.~8]{Denef1980}.
+
+\begin{lem}\label{lem:8}
+  Let \(K\) be a number field of degree \(n\) over \(ℚ\) and let \(\seq{σ}\) be
+  its embeddings into the complex pane. Let \(α, β ∈ \algint\) be algebraic
+  integers with \(β ≠ 0\) such that
+  \[
+    2^{n + 1} \prod_{i = 0}^{n - 1} (α + i)^n \mid β.
+  \]
+  Then \(|σ_i(α)| < 1/2 |N_{K/ℚ}(β)|^{1/n}\) for all \(1 ≤ i ≤ n\).
+\end{lem}
+\begin{proof}
+  Fix some \(j ∈ \set{0, 1, …, n - 1}\) and notice that \(2^{n + 1} (α + j)^n\)
+  divides \(β\). From this it follows that
+  \[
+    |N_{K/ℚ}(2^{n + 1} (α + j)^n)| ≤ |N_{K/ℚ}(β)|,
+  \]
+  or put differently
+  \[
+    1 ≤ |N_{K/ℚ}(α + j)| ≤ |N_{K/ℚ}(2^{-n - 1} β)|^{\frac{1}{n}}.
+  \]
+  Set \(c := |N_{K/ℚ}(2^{-n - 1} β)|^{1/n}\) then
+  \[
+    |N_{K/ℚ}(α + j)| = \prod_{i = 1}^n |σ_i(α) + j| ≤ c.
+  \]
+  I claim that this implies that \(|σ_i(a)| < 2^n c\).
+  % TODO Why is this true?
+  \todo{Why?}
+\end{proof}
+
+If \(σ_i\) is a real embedding, the following lemma
+\cite[cf.][Lem.~9]{Denef1980} could have been used as well.
 
 \begin{lem}\label{lem:approximations of embeddings are Diophantine}
   Let \(K\) be a number field and \(σ: K → ℝ\) be a real embedding. Then the
