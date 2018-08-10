@@ -1824,22 +1824,31 @@ of \(ℤ\) over \(\algint\).
   \end{align*}
 \end{proof}
 
-%
-% \begin{lem}\label{lem:rank of S is greater 0}
-%   Let \(K\) be a totally real number field and \(a ∈ \algint\) satisfies \(δ =
-%   δ(a) \not\in \algint\) as well as~\eqref{eq:embeddings of a into reals v1}.
-%   Then \(ε(a) = ε\) is torsion free i.e.\ there is a group isomorphism \(⟨ε⟩ \cong
-%   ℤ\).
-% \end{lem}
-% \begin{proof}
-%   Assume otherwise that \(ε^m = 1\) for some positive integer \(m\) i.e. \(ε\) is an
-%   \(m\)-th root of unity. As we have identified \(L\) with a subset of \(ℝ\), this
-%   leaves \(±1\) as values for \(ε = 1 + δ\). This is impossible as \(δ \not\in
-%   \algint\).
-% \end{proof}
-%
-% As a consequence, of \cref{thm:Dirichlet} we find that
-% \[
-%   1 ≤ \rk S ≤ \rk U_L - \rk U_K ≤ (n + 1) - n = 1.
-% \]
-% In other words, we can write every \(η\) in \(S\) as a product \(ζ ε_0^k\), where \(ζ ∈ U_L\) is a root of unity and \(ε_0\)
+We have just seen that the rational integers are Diophantine over rings of
+algebraic integers \(\algint\), if the number field \(K ≠ ℚ\) is totally real,
+or \([K : ℚ] ≥ 3\) and there is exactly one pair of complex embeddings. By our
+observations in \cref{cor:Diophantine theory is undecidable} Hilbert's tenth
+problem over these rings is not decidable. The restriction on the degree in the
+second case can be omitted, as \textcite{Denef1975} showed in
+\citeyear{Denef1975} that \(ℤ\) is Diophantine over rings of algebraic integers
+in quadratic number fields. This result was further strengthened by
+\textcite{Denef1978}. They proved that \(ℤ\) is Diophantine over \(\algint\) if
+\(K / M\) is a quadratic extension of a totally real number field \(M\).
+\textcite{Shapiro1989} used these results to deduce that all cyclotomic fields
+posses a Diophantine definition of \(ℤ\) over their rings of algebraic integers.
+More generally, they deduced this result for all fields \(K\), such that \(K/ℚ\)
+is normal and the Galois group of the extension is abelian.
+
+All these results make the conjecture of \textcite{Denef1978}, that such a
+Diophantine definition of \(ℤ\) over \(\algint\) exists for all number fields
+\(K\), very plausible. This is especially true since promising techniques using
+elliptic curves have been developed among others by \textcite{Poonen2002}.
+
+Notice however that a Diophantine definition of \(ℤ\) might not be necessary for
+the Diophantine theory \(\mathtt{H10}(\struc{O}_K)\) to be undecidable. Indeed,
+there might exist rings of algebraic integers whose Diophantine theory forms a
+kind of set that \textcite{Post1944} calls ‘creative’. Then
+\(\mathtt{H10}(\struc{O}_K)\) would be undecidable as well, but the halting set
+is not many-one reducible to this theory. As a consequence of \cref{thm:CE sets
+are Diophantine} such a ring of integers cannot posses a Diophantine definition
+of \(ℤ\).
