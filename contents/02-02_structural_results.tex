@@ -328,6 +328,33 @@ If \(σ_i\) is a real embedding, the following lemma
   Let \(K\) be a number field and \(σ: K → ℝ\) be a real embedding. Then the
   relation \(σ(α) ≥ 0\) is Diophantine over \(\algint\).
 \end{lem}
+\begin{proof}
+  By the strong approximation theorem~(\ref{thm:strong approximation}) we can
+  find an algebraic integer \(c\) such that \(σ(c) > 0\) and \(τ(c) < 0\) for
+  all other real embeddings.
+  % TODO: Why an algebraic integer?
+  \todo{Why an algebraic integer?}
+  Let \(α ∈ \algint\) be such that \(σ(α) ≥ 0\). Then by\cref{lem:quadratic
+  form} there exist \(z_1, z_2, z_3, z_4 ∈ K\) such that
+  \[
+    x = z_1^2 + z_2^2 + c z_3^2 + z_4^2
+  \]
+  Since \(K\) is the fraction field of \(\algint\), there exists an algebraic
+  integer \(y_0\) such that \(y_0 z_i\) is an algebraic integer for \(1 ≤ i ≤
+  4\). We conclude that
+  \[
+    ∃ y_0, y_1, y_2, y_3, y_4 ∈ \algint : \left(y_0 ≠ 0 ∧
+      y_0^2 x = y_1^2 + y_2^2 + c y_3^2 + y_4^2\right)
+  \]
+  is a Diophantine representation of a set containing \(x\). To finish the proof
+  note that if \(x\) satisfies the representation above then
+  \[
+    σ(x) = σ\left(\frac{y_1}{y_0}\right)^2 +
+           σ\left(\frac{y_2}{y_0}\right)^2 +
+           c σ\left(\frac{y_3}{y_0}\right)^2 +
+           σ\left(\frac{y_4}{y_0}\right)^2 ≥ 0.
+  \]
+\end{proof}
 
 Note that we can exchange the bound \(0\) to any value in the image \(σ(K) ⊂
 ℝ\). Indeed, for a given bound \(σ(a/b)\), where \(a, b ∈ \algint\)
