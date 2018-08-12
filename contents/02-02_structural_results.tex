@@ -240,9 +240,85 @@ embeddings are easily seen to be Diophantine \cite[cf.][Lem.~8]{Denef1980}.
   \[
     |N_{K/ℚ}(α + j)| = \prod_{i = 1}^n |σ_i(α) + j| ≤ c.
   \]
-  I claim that this implies that \(|σ_i(a)| < 2^n c\).
-  % TODO Why is this true?
-  \todo{Why?}
+  I claim that this implies that \(|σ_i(a)| < 2^n c = 1/2 |N_{K/ℚ}(β)|^{1/n}\).
+
+  Indeed, this follows from a more general property of complex numbers. Namely,
+  if \(\seq{a} ∈ ℂ\) are fixed complex numbers with the property that
+  \[
+    \prod_{i = 1}^n |a_i + j| ≤ C
+  \]
+  for a fixed constant \(C ≥ 1\) and all \(0 ≤ j ≤ n - 1\) then \(|a_i| < 2^n
+  C\) for all \(1 ≤ i ≤ n\).
+
+  Note that if \(0 ≤ j_1, j_2 ≤ n - 1\) have the property that \(|a_i + j_k| <
+  \frac{1}{2}\) then
+  \[
+    |j_1 - j_2| ≤ |a_i + j_1| + |a_i + j_2| < \frac{1}{2} + \frac{1}{2} = 1
+  \]
+  and thus $j_1 = j_2$.
+
+  We will argue by induction on $n$ and notice that the claim is trivial for $n
+  = 1$. Thus, we may assume that $n > 1$ and that the claim is proven for all
+  smaller collections of complex numbers. We will distinguish two cases.
+
+  Let us first assume that
+  \[
+    ∀ j ∈ \set{0, …, n - 1} : ∃ i_j ∈ \set{1, …, n}:
+      |a_{i_j} + j| < \frac{1}{2}.
+  \]
+  Since we allow only \(n\) values for both \(j\) and \(i_j\) and we know by the
+  observation that two different values of \(j\) must have two different
+  witnesses \(i_j\), we find that there must exist a bijective function  \(f:
+  \{0, …, n- 1\} → \{1, …, n\}\) with the property that
+  \[
+    |a_{f(j)} + j| < \frac{1}{2}.
+  \]
+  Then for all indices \(j' ≠ j\) we must have
+  \[
+    |a_{f(j)} + j'| ≥ \frac{1}{2}.
+  \]
+  Set \(i_0 := f(n - 1)\) then we know for all \(0 ≤ j ≤ n - 2\) that
+  \(|a_{i_0} + j| ≥ 1/2\) and therefore that
+  \[
+    C ≥ \prod_{i = 1}^n |a_i + j| ≥
+        \frac{1}{2} \prod_{\substack{i = 1\\i ≠ i_0}}^n |a_i + j|
+  \]
+  Thus, \(a_1, …, a_{i_0 - 1}, a_{i_0 + 1}, …, a_n\) satisfy the assumption of
+  the induction hypothesis (w.r.t.\ \(c' := 2c\)) and hence
+  \[
+    |a_i| < 2^{n - 1} 2 C.
+  \]
+  To reach a contradiction assume that \(|a_{i_0}| ≥ 2^n C\). But then
+  \[
+    \frac{1}{2} > |a_{i_0} + {n - 1}| ≥
+                  |a_{i_0}| - |n - 1| ≥ 2^n c - n + 1 ≥ 2^n - n + 1 ≥ 2
+  \]
+  holds, thus, concluding the first case.
+
+  As for the second case, let us assume that
+  \[
+    ∃ j_0 ∈ \set{0, …, n - 1} : ∀ i \set{1, …, n}: |a_i + j_0| ≥ \frac{1}{2}.
+  \]
+  Then, we have for all \(i ≤ k ≤ n\) that
+  \[
+    2^nC ≥ \prod_{i= 1}^n \underbrace{2|a_i + j_0|}_{≥ 1} ≥ 2|a_k + j_0|.
+  \]
+  Now if we can choose \(j_0 = 0\), we are done. Otherwise, there exists an
+  index \(i_0\) such that \(|a_{i_0}| < 1/2\). But then \(|a_{i_0} + j| > 1/2\)
+  for all \(1 ≤ j ≤ n - 1\). Now we have that
+  \[
+    C ≥ \prod_{i = 1}^n |a_i + j| ≥
+        \frac{1}{2} \prod_{\substack{i = 1\\i ≠ i_0}}^n |a_i + j|
+  \]
+  is satisfied for all \(1 ≤ j ≤ n - 1\). Set \(b_i := a_i + 1\) for all \(i ≠
+  i_0\). Then we can use the induction hypothesis on the \(b_i\) to obtain that
+  \[
+    |a_i + 1| = |b_i| < 2^n c.
+  \]
+  Hence, \(|a_i| < 2^n c + 1\) which is a bit weaker than the claimed result.
+
+  % TODO How do I get rid of the trailing +1?
+  \todo{How do I get rid of the trailing \(+1\)?}
 \end{proof}
 
 If \(σ_i\) is a real embedding, the following lemma
