@@ -11,6 +11,22 @@
 %
 \documentclass[12pt, a4paper, numbers=noenddot]{scrbook}
 
+% ------------------------------------------------------------------------------
+% Only for drafts!
+\usepackage{todonotes}
+\usepackage{showlabels}	%Used in Drafts to Print references.
+\usepackage{datetime2}
+\usepackage[mark]{gitinfo2}
+  \renewcommand{\gitMark}{%
+  Branch: \gitBranch\,@\,\gitAbbrevHash{}
+  \textbullet{}
+  Head tags: \gitFirstTagDescribe{}
+  \textbullet{}
+  Compile time: \DTMnow
+}
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+
 % Input Type and AMS-Packages
 \usepackage{amsmath,amsfonts,amssymb,amsthm}
 \usepackage{unicode-math}
@@ -246,13 +262,6 @@
 \addtotheorempostheadhook[pro]{\crefalias{thmlisti}{pro}}
 \addtotheorempostheadhook[cor]{\crefalias{thmlisti}{cor}}
 \addtotheorempostheadhook[exam]{\crefalias{exlisti}{exam}}
-
-% ------------------------------------------------------------------------------
-% Only for drafts!
-\usepackage{todonotes}
-\usepackage{showlabels}	%Used in Drafts to Print references.
-%-------------------------------------------------------------------------------
-%-------------------------------------------------------------------------------
 
 
 \begin{document}
