@@ -1284,7 +1284,7 @@ or Chap.~7 of the reference~\cite{Milne2017} for a more rigour discussion.
     \item \(|xy| = |x| |y|\) for all \(x, y ∈ K\); and
     \item \(|x + y| ≤ |x| + |y|\) for all \(x, y ∈ K\).
   \end{thmlist}
-  If additionally, the stronger condition
+  If additionally the stronger condition
   \begin{thmlist}[resume]
     \item \(|x + y| ≤ \max(|x|, |y|)\)
   \end{thmlist}
@@ -1295,7 +1295,7 @@ For notational convenience we introduce the function
 \(\ord_{\mathfrak{p}}\) for all non-zero prime ideals \(\mathfrak{p} ⊂ \algint\)
 mapping a non-zero fractional ideal \(\mathfrak{m} ⊂ K\) to the power of
 \(\mathfrak{p}\) in its prime decomposition and \(\ord_{\mathfrak{p}}(0) := ∞\).
-If \(K = ℚ\) we will write \(\ord_{p}\) instead of \(\ord_{(p)}\) for all primes
+If \(K = ℚ\) we write \(\ord_{p}\) instead of \(\ord_{(p)}\) for all primes
 \(p ∈ ℤ\).
 
 \begin{exam}
@@ -1307,8 +1307,8 @@ If \(K = ℚ\) we will write \(\ord_{p}\) instead of \(\ord_{(p)}\) for all prim
     \item one absolute value for all embeddings \(σ: K → ℂ\) by setting \(|x| :=
     |σ(a)|_ℂ\), where \(|\cdot|_{ℂ}\) denotes the complex modulus; and
 
-    \item for each non-zero prime ideal \(\mathfrak{p}\) the
-    \emph{\(\mathfrak{p}\)-adic absolute value} defined by
+    \item one \emph{\(\mathfrak{p}\)-adic absolute value} for each non-zero
+    prime ideal \(\mathfrak{p}\) defined by
     \[
       |x|_{\mathfrak{p}} :=
        \left(\frac{1}{ℕ\mathfrak{p}}\right)^{\ord_{\mathfrak{p}}(x\algint)},
@@ -1324,34 +1324,55 @@ Note that an absolute value \(|\cdot|\) defines a metric on \(K\) by setting
 Thus, we can view \(K\) as a topological space and define two absolute values to
 be \emph{equivalent} if they induce the same topology on \(K\). An equivalence
 class of absolute values is called a \emph{prime} or \emph{place} of \(K\). The
-\emph{completion} of a number field with respect to a \emph{prime} \(v\) by the
-completion of \(K\) with respect to the topology induced by \(v\). A completion
-is called \emph{non-archimedian} if it is induced by a non-archimedian absolute
-value. As for number fields the archimedian completions are precisely those
-induced by the embeddings \(σ\) of \(K\) into \(ℂ\). If the embedding \(σ\) is
-real one obtains \(ℝ\) as an completion of \(K\), while non-real embeddings
-yield \(ℂ\) as a completion.
+\emph{completion} of a number field with respect to a \emph{prime} \(v\) is the
+completion of \(K\) with respect to the topology induced by \(v\). More
+formally, we consider first the set \(C_K\) of all Cauchy series in \(K\) with
+respect to the prime \(v\) and notice that \(C_v\) forms a ring with respect to
+pointwise addition and multiplication. A maximal ideal \(M_v\) is given by the
+set of null sequences in \(K\). Thus, we can define the completion of \(K\) with
+respect to \(v\) to be the quotient ring
+\[
+  \hat{K} := C_v / M_v.
+\]
+It is easy to check that this field is indeed topologically complete. Note that
+one can identify \(x ∈ K\) with the equivalence class of the constant sequence
+\((x, x, x, …)\). A completion is called \emph{non-archimedian} if it is induced
+by a non-archimedian absolute value. As for number fields the archimedian
+completions are precisely those induced by the embeddings \(σ\) of \(K\) into
+\(ℂ\). If the embedding \(σ\) is real, one obtains \(ℝ\) as an completion of
+\(K\), while non-real embeddings yield \(ℂ\) as a completion. The completions of
+number fields are examples of so called \emph{local fields}.
 
 We say a multivariate polynomial \(p\) is \emph{homogeneous} if all non-zero
-monoids appearing in \(p\) have the same degree. Thus, \(X^5 + 2 X^3 Y^2 - 7 X
-Y^4\) is homogeneous while \(X^4 - X^2 Y\) is not. We call a polynomial \(q ∈
-R[Y_1, …, Y_n]\) a \emph{quadratic form} over an integral domain \(R\) if \(q\)
-is homogeneous and has degree \(2\). Then \(x ∈ R\) is \emph{represented} by
-\(q\) if there exist \(\seq{y} ∈ R\) such that \(a = q(\seq{y})\). We call a
-quadratic form \(q ∈ R[\seq{Y}]\) \emph{universal} if it represents every
-element of \(R\). As for representabilty in a number field \(K\) we have the
-following theorem.
+monoids appearing in \(p\) have the same degree. Thus, \(Y_1^5 + 2 Y_1^3 Y_2^2 -
+7 Y_1 Y_2^4\) is homogeneous while \(Y_1^4 - Y_1^2 Y_2\) is not. We call a
+polynomial \(q ∈ R[Y_1, …, Y_n]\) a \emph{quadratic form} over an integral
+domain \(R\) if \(q\) is homogeneous and has degree \(2\). If \(F\) is a field
+of characteristic unequal to two, one can alternatively define a quadratic form
+as a polynomial \(q(Y_1, …, Y_n)\) that can be written in the form
+\[
+  q(Y_1, …, Y_n) = (Y_1, …, Y_n) A
+  \begin{pmatrix} Y_1 \\ \vdots \\ Y_n\end{pmatrix},
+\]
+where \(A ∈ M_{n}(F)\) is a symmetric \(n × n\)-matrix over \(F\). If \(A\) is
+non-singular, we call \(q\) a \emph{regular} quadratic form. We say \(x ∈ R\) is
+\emph{represented} by \(q\) over \(R\) if there exist \(\seq{y} ∈ R\) such that
+\(x = q(\seq{y})\). We call a quadratic form \(q ∈ R[\seq{Y}]\) \emph{universal}
+if it represents every element of \(R\). As for representabilty in a number
+field \(K\) we have the following theorem.
 
 \begin{thm}[Hasse-Minkowski theorem]\label{thm:Hasse Minkowski}
   A number \(x ∈ K\) is represented by a quadratic form \(q\) in a number field
   \(K\) if and only if \(x\) is represented by \(q\) in all completions of
-  \(K\). Furthermore, if \(q\) has at least four indeterminates then \(q\) is
-  universal in all non-archimedian completions of \(K\).
+  \(K\).
 \end{thm}
 
-A proof of this theorem can be found in §66 of the textbook~\cite{Meara2000}. A
-direct application of the Hasse-Minkowski theorem is the following lemma
-\cite[cf.][Lem.~5.1.1]{Shlapentokh2007}.
+A proof of this theorem can be found in §66 of the textbook~\cite{Meara2000}.
+With regard to universal quadratic forms we have furthermore, that if the
+regular quadratic form \(q\) has at least four indeterminates then \(q\) is
+universal in all non-archimedian completions of \(K\)
+\cite[see][Remark~63:18]{Meara2000}. A direct application of the Hasse-Minkowski
+theorem is the following lemma, taken from \cite[Lem.~5.1.1]{Shlapentokh2007}.
 
 \begin{lem}\label{lem:quadratic form}
   Let \(K\) be a number field and fix \(x ∈ K\). Furthermore, let \(x =
@@ -1360,13 +1381,16 @@ direct application of the Hasse-Minkowski theorem is the following lemma
     q(Y_1, Y_2, Y_3, Y_4) := Y_1^2 + Y_2^2 + c Y_3^2 + Y_4^2
   \]
   represents \(x\) over \(K\) if \(c = \seq{c}\) are all the conjugates of \(c ∈
-  K\) over \(ℚ\) and \(c_i < 0\) whenever \(x_i < 0\).
+  K \setminus \set{0}\) over \(ℚ\) and \(c_i < 0\) whenever \(x_i < 0\).
 \end{lem}
 \begin{proof}
-  Since \(q\) has four indeterminates it suffices to check that \(q\) represents
-  \(x_i\) over \(ℂ\) and \(ℝ\). Then the Hasse-Minkowski theorem implies that
-  \(q\) represents \(x\) over \(K\). But since \(ℂ\) is algebraically closed,
-  the polynomial \(X^2 - x_i\) has a root \(y_{i1}\) in \(ℂ\). Thus,
+  Note that \(q\) can be written as \((Y_1, Y_2, Y_3, Y_4)A(Y_1, Y_2, Y_3,
+  Y_4)^t\), where \(A\) is a non-singular diagonal matrix. Hence, \(q\) is
+  regular. Since \(q\) has four indeterminates it suffices to check that \(q\)
+  represents \(x_i\) over \(ℂ\) and \(ℝ\). Then the Hasse-Minkowski theorem
+  implies that \(q\) represents \(x\) over \(K\). But since \(ℂ\) is
+  algebraically closed, the polynomial \(X^2 - x_i\) has a root \(y_{i1}\) in
+  \(ℂ\). Thus,
   \[
     x_i = y_{i1}^2 + 0^2 + c\,0^2 + 0^2
   \]
