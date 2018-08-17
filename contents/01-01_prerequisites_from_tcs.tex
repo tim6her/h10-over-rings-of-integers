@@ -176,8 +176,8 @@ of step-wise computation is formalized in the subsequent definitions.
 \begin{defin}
   Let \(\mathbb A = (S, δ)\) be a Turing machine. A \emph{configuration}
   of \(\mathbb A\) is a triple \((s, j, c) ∈ S × ℕ × A^ℕ\). It reflects
-  the current state of \(\mathbb A\), the current position of its
-  head, and the content of its work-tape.
+  the current state \(s\) of \(\mathbb A\), the current position \(j\) of its
+  head, and the content \(c\) of its work-tape.
 \end{defin}
 
 A configuration of the form \((\shalt, 0, c)\) is called \emph{halting}. A
@@ -622,7 +622,7 @@ functions allow us to define decidable relations on \(ω^n\).
 \end{defin}
 
 When trying to find solution of equations or witnesses for relations the concept
-of \emph{effective search} is very important. In the theory of computability it
+of \emph{efficient search} is very important. In the theory of computability it
 is modelled by a minimization operator.
 
 \begin{defin}
@@ -726,12 +726,12 @@ sets.
   \[
     \sta b_1 … b_n \emp.
   \]
-  This can be done by a slight modification of the machine computing the first
-  projection in \cref{ex:total pairing}.
+  This can be achieved by a slight modification of the machine computing the
+  first projection in \cref{ex:total pairing}.
 
   If on the other hand \(x\) is not contained in \(Q\), then in the second step
-  of the computation machine will not stop. Thus \(x\) is not in the image of
-  the function computed by \(\mathbb{B}\).
+  of the computation will not stop. Thus \(x\) is not in the image of the
+  function computed by \(\mathbb{B}\).
 
   \emph{(iii) \(⇒\) (iv):} Let \(f\) be a computable function with image \(Q\)
   and let \(\mathbb{A}\) be a Turing machine computing \(f\). For each
@@ -748,9 +748,9 @@ sets.
   relation. (If \(R(n, x, y)\) holds, so does \(R(m, x, y)\) for all \(m ≥ n\).
   If \(R(n, x, y)\) does not hold, then either \(x\) or \(y\) contain more than
   \(n\) bits; or \(\mathbb{A}\) did not halt on \(x\) in \(n\) steps; or
-  \(\mathbb{A}(x)\) is not \(y\). In this case, we perform one more step of the
-  computation and can check wether \(\mathbb{A}\) outputs \(y\).) Finally, we
-  obtain
+  \(\mathbb{A}(x)\) is not \(y\). In the last two cases, we perform one more
+  step of the computation and can check wether \(\mathbb{A}\) outputs \(y\).)
+  Finally, we obtain
   \[
     y ∈ Q \quad ⇔ \quad ∃ z ∈ ω: R(π_1(z), π_2(z), y),
   \]
@@ -838,8 +838,8 @@ technically quite intricate.
   \(\mathbb{A}^c\) will halt. Then \(\mathbb{D}\) has reached a state where
   either the first or the second component of \((s_1, s_2, s_a) ∈ S\) is a
   halting state. Then \(\mathbb{D}\) can clear the tape and write \(\one\) or
-  \(\zer\) to the cell with index \(1\) to indicate whether \(s_1 = \shalt\) or
-  \(s_2\) does.
+  \(\zer\) to the cell with index \(1\) to indicate whether \(s_1\) equals
+  \(\shalt\) or \(s_2\) does.
 \end{proof}
 
 \subsection{Church-Turing thesis and the halting problem}
@@ -874,10 +874,10 @@ can carry out all computations, can hardly be overestimated.
 
 \begin{thm}
     There exists a Turing machine \(\mathbb U\) that computes upon receiving
-    the tuple \(⟨\ulcorner \mathbb A \urcorner, x⟩\) as input, the output of
+    the tuple \(⟨\ulcorner \mathbb A \urcorner, x⟩\) as input the output of
     Turing machine \(\mathbb A\) on \(x\), i.e.
     \[
-      \mathbb U(\ulcorner \mathbb A \urcorner, x) = y \Leftrightarrow
+      \mathbb U(\ulcorner \mathbb A \urcorner, x) = y \quad ⇔ \quad
         \mathbb A (x) = y
     \]
 \end{thm}
@@ -885,7 +885,12 @@ can carry out all computations, can hardly be overestimated.
 As a last task of this section we want to find a set \(\mathcal{K} \subseteq ω\)
 that is semi-decidable but not decidable. It will be the key ingredient in the
 task of settling Hilbert's tenth problem. Note that it is not hard to see that
-an undecidable problem exists, as there are only countably many Turing machines
+an undecidable problem exists, as there are only countably many Turing machines%
+\footnote{To be precise, there are countably many pairs \((S, δ)\) of sets of
+sates \(S\) and transition functions \(δ: S × A → S × A × \set{-1, 0, 1}\) if we
+demand the set of states \(S\) to be a set of integers. Since we always assume
+\(S\) to be finite, this is possible in general without affecting the
+computations of the Turing machine.}
 but uncountably many problems. However, to find such a set within the
 semi-decidable ones we turn our attention to a problem that quite naturally
 arises in computability theory.
@@ -907,10 +912,15 @@ paradox, whose illustration by Carlo Chiostri is displayed in
            shrink?\hspace{1pt}\protect\footnotemark}
   \label{fig:Pinocchio}
 \end{figure}
-\footnotetext{As Carlo Chiostri died in 1939, this work is in the public domain
-in its country of origin (Italy) and other countries and areas where the
-copyright term is the author's life plus 70 years or less. In particular, it is
-in the public domain in Austria.}
+\footnotetext{%
+Own \textsc{SVG}-tracing, derived of an illustration by Carlo Chiostri published
+in Collodi, Carlo. \begin{italian}\itshape Le avventure di Pinocchio~: Storia di
+un burattino.\end{italian} Firenze Bemporad \& Figlio, 1901.
+% As Carlo Chiostri died in 1939, this work is in the public domain
+% in its country of origin (Italy) and other countries and areas where the
+% copyright term is the author's life plus 70 years or less. In particular, it
+% is in the public domain in Austria.
+}
 
 \begin{thm}
     The halting problem is undecidable.
@@ -953,8 +963,8 @@ semi-decidable.
 
 \begin{rem}
   Note that the halting set contains the information of \emph{all}
-  semi-decidable sets in the sense that given a semi-decidable set \(Q\), there
-  is a total computable function \(f: ω → ω\) such that
+  semi-decidable sets in the following sense: Given a semi-decidable set \(Q\),
+  there is a total computable function \(f: ω → ω\) such that
   \begin{equation}\label{eq:m reducibility}
     x ∈ Q \quad ⇔ \quad f(x) ∈ \mathcal{K}.
   \end{equation}
@@ -980,7 +990,7 @@ since we have the following properties of many-one reducibility.
 \begin{pro}\label{pro:m reducibility and decidability}
   \begin{thmlist}
     \item Let \(Q, Q' \subseteq ω\) be problems such that \(Q ≤_m Q'\). Then if
-    \(Q'\) is \hbox{(semi-)}decidable, so is \(Q\).
+    \(Q'\) is \hbox{(semi-)}de\-cid\-able, so is \(Q\).
 
     \item If problem \(Q\) is many-one reducible to problem \(Q'\), and \(Q'\)
     is many-one reducible to \(Q''\), then \(Q\) is many-one reducible to
