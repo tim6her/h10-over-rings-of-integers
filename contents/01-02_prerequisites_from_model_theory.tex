@@ -39,7 +39,7 @@ us, how the formulae are to be understood.
   relation symbols, and \(\mathcal{C}\) is a set of constant symbols, such that
   all of these sets are pair-wise disjoint. The function \(ar: \mathcal{F} ∪
   \mathcal{R} → ℕ\) assigns to every function symbol \(f ∈ \mathcal{F}\) and
-  every relation symbol \(R ∈ \mathcal{R}\) the \emph{arity} \(n_f\) and \(n_R\)
+  every relation symbol \(R ∈ \mathcal{R}\) the \emph{arity} \(n_f\) or \(n_R\)
   respectively.
 \end{defin}
 
@@ -84,15 +84,19 @@ formally, we have the following definition.
   \(A\), called the \emph{universe} or \emph{carrier set} of \(\mathfrak{A}\),
   together with
   \begin{thmlist}
-    \item a function \(f^{\mathfrak{A}}: A^{n_f} → A\) for every function symbols \(f ∈ \mathcal{F}\),
+    \item a function \(f^{\mathfrak{A}}: A^{n_f} → A\) for every function symbol
+    \(f ∈ \mathcal{F}\),
 
-    \item a relation \(R^{\mathfrak{A}} \subseteq A^{n_R}\) for every relation symbols \(R ∈ \mathcal{R}\), and
+    \item a relation \(R^{\mathfrak{A}} \subseteq A^{n_R}\) for every relation
+    symbol \(R ∈ \mathcal{R}\), and
 
-    \item a constant \(c^{\mathfrak{A}} ∈ A\) for every constant \(c ∈ \mathcal{C}\).
+    \item a constant \(c^{\mathfrak{A}} ∈ A\) for every constant symbol \(c ∈
+    \mathcal{C}\).
   \end{thmlist}
   We will use the notation
   \[
-    {\mathfrak{A}} = ⟨A; f^{\mathfrak{A}} ∈ \mathcal{F}; R^{\mathfrak{A}} ∈ \mathcal{R}; c^{\mathfrak{A}} ∈ \mathcal{C}⟩
+    {\mathfrak{A}} = ⟨A; f^{\mathfrak{A}} ∈ \mathcal{F}; R^{\mathfrak{A}} ∈
+      \mathcal{R}; c^{\mathfrak{A}} ∈ \mathcal{C}⟩
   \]
   to denote this model.
 
@@ -106,27 +110,28 @@ formally, we have the following definition.
     \item In the language of pure sets \(\lang = ∅\), every non-empty set \(S\)
     gives rise to a model \(\mathfrak{S} = ⟨S⟩\).
 
-    \item An example of model in the language of (reflexive) orderings
+    \item An example of a model in the language of (reflexive) orderings
     \(\lang_{≤} = \set{\mathtt{≤}}\) is \(\mathfrak{N}_{≤} := ⟨ℕ, ≤⟩\), where
     \(≤\) denotes the usual ordering of the non-negative integers.
 
-    \item As for \(\lang_{group} = \set{\mathtt{\cdot, {}^{-1}; e}}\), we can
-    use any group \(G\) as a model. Indeed, consider \(\mathfrak{G} := ⟨G;
-    \cdot^{\mathfrak{G}}, {\mathtt{{}^{-1}}}^{\mathfrak{G}};
-    \mathtt{e}^{\mathfrak{G}}⟩\), where \(\cdot^{\mathfrak{G}}\) denotes the
-    binary group-operation, \({\mathtt{{}^{-1}}}^{\mathfrak{G}}\) denotes
-    inversion, and \(\mathtt{e}^{\mathfrak{G}} ∈ G\) is the neutral element of
-    \(G\). However, \(\mathfrak{N}_{sg} = ⟨ℕ; +, \mathbf{0}; 0⟩\), where
-    \(\mathbf{0}: ℕ → ℕ\) is defined by \(n ↦ 0\) for all \(n ∈ ℕ\), is an
-    \(\lang_{group}\)-structure as well.
+    \item As for \(\lang_{group} = \set{\mathtt{\cdot, {}^{-1}; e}}\), any group
+    \(G\) induces a model. Indeed, consider the algebraic structure
+    \(\mathfrak{G} := ⟨G; \cdot^{\mathfrak{G}},
+    {\mathtt{{}^{-1}}}^{\mathfrak{G}}; \mathtt{e}^{\mathfrak{G}}⟩\), where
+    \(\cdot^{\mathfrak{G}}\) denotes the binary group-operation,
+    \({\mathtt{{}^{-1}}}^{\mathfrak{G}}\) denotes inversion, and
+    \(\mathtt{e}^{\mathfrak{G}} ∈ G\) is the neutral element of \(G\). However,
+    \(\mathfrak{N}_{sg} = ⟨ℕ; +, \mathbf{0}; 0⟩\), where \(\mathbf{0}: ℕ → ℕ\)
+    is defined by \(n ↦ 0\) for all \(n ∈ ℕ\), is an \(\lang_{group}\)-structure
+    as well.
 
     \item Let \(R\) be a ring with unity, then \(\mathfrak{R} := ⟨R;
     \mathtt{+^{\mathfrak{R}}, -^{\mathfrak{R}}, \cdot^{\mathfrak{R}};
     0^{\mathfrak{R}}, 1^{\mathfrak{R}}}⟩\), where \(\mathtt{+^{\mathfrak{R}},
     -^{\mathfrak{R}}, \cdot^{\mathfrak{R}}}\) are the respective binary
     ring-operations and \(\mathtt{0^{\mathfrak{R}}, 1^{\mathfrak{R}}}\) are the
-    neutral elements with respect to addition and multiplication respectively,
-    is a model in \(\lang_{ring}\). Of special interest to us will be the
+    neutral elements with respect to addition and multiplication, is a model in
+    \(\lang_{ring}\). Of special interest to us will be the
     \(\lang_{ring}\)-structures \(\mathfrak{Z} := ⟨ ℤ; +, -, \cdot; 0, 1⟩\)
     denoting the structure of rational integers and \(\mathfrak{O}_K :=
     ⟨\algint; +, -, \cdot; 0, 1⟩\) denoting the structure of algebraic integers
@@ -147,8 +152,7 @@ terms.
   \begin{thmlist}
     \item every constant symbol \(c ∈ \mathcal{C}\) is a term,
 
-    \item every variable symbol \(\mathtt{x_i}\) is a term (\(i ∈ ℕ \setminus
-    \set{0}\)), and
+    \item every variable symbol \(\mathtt{x_1, x_2, x_3, …}\) is a term, and
 
     \item if \(\seq[n_f]{t} ∈ T(\lang)\) are terms then \(f(\seq[n_f]{t})\) is a
     term for all function symbols \(f ∈ \mathcal{F}\).
@@ -159,10 +163,9 @@ For example \(\mathtt{+(+(\cdot(x_1, x_1), \cdot(x_2, x_2)), 1)}\) is an
 \(\lang_{ring}\) term. It is more conventional---and more legible---to write
 this term in infix-notation to obtain the ‘polynomial’
 \[
-  \mathtt{x_1^2 + x_2^2 + 1},
+  \mathtt{x_1 \cdot x_1 + x_2 \cdot x_2 + 1},
 \]
-where \(\mathtt{x_i^2}\) is a short-hand notation for \(\mathtt{x_i \cdot
-x_i}\). Using the very important technique of \emph{structural induction}, we
+Using the very important technique of \emph{structural induction}, we
 can show that every term in an \(\lang_{ring}\)-structure is a polynomial
 (see~\cref{lem:terms of rings are polynomials}). In order to do this we need to
 consider terms as functions. There is just a little technicality in our way,
@@ -235,7 +238,8 @@ functions of \(\mathfrak{A}\) is sometimes called the \emph{function clone} of
     polynomials, the term functions are indeed contained in \(ℤ[X_1, X_2, …]\)
   \end{plist}
 
-  To see the converse inclusion note that every positive integer \(n\) can be expressed as the \(\lang_{ring}\)-term
+  To see the converse inclusion note that every positive integer \(n\) can be
+  expressed as the \(\lang_{ring}\)-term
   \[
     \underbrace{\mathtt{1 + 1 + … + 1}}_{n\text{-times}}
   \]
@@ -243,10 +247,10 @@ functions of \(\mathfrak{A}\) is sometimes called the \emph{function clone} of
   \[
     \mathtt{0 -} \underbrace{\mathtt{1 - 1 - … - 1}}_{|n|\text{-times}}.
   \]
-  Then a monomial \(a X_{i_1} … X_{i_d} ∈ ℤ[X_1, X_2, …]\) with \(i_1,…,i_d ∈
-  ℕ \setminus \set{0}\) not necessarily distinct can be expressed as the term
+  Then a monomial \(a X_{i_1} … X_{i_d} ∈ ℤ[X_1, X_2, …]\), with \(i_1,…,i_d ∈
+  ℕ \setminus \set{0}\) not necessarily distinct, can be expressed as the term
   \[
-    \mathtt{a \cdot x_{i_1} \cdot … \cdot x_{i_d}},
+    \mathtt{a} \cdot x_{i_1} \cdot … \cdot x_{i_d},
   \]
   where \(\mathtt{a}\) is the term representing the integer \(a\). Finally,
   since every polynomial \(p\) is a finite sum of monomials \(p = m_1 + … +
@@ -276,10 +280,9 @@ Finally, we have all tools at hand to formally define formulae in a language.
     \item there exist \(\lang\)-terms \(t_1, t_2\) such that \(ϕ = t_1 \doteq
     t_2\), or%
     \footnote{Note the difference between the two symbols \(=\) and \(\doteq\)
-    in this equation. While \(=\) denotes a \emph{semantic} equality of strings,
-    i.e.\ it denotes that both strings contain the same symbols in the same
-    order, \(\doteq\) is just a \emph{syntactic} symbol contained in the
-    strings.}
+    in this equation. While \(=\) denotes an equality on the meta-level, i.e.\
+    it denotes that both strings contain the same symbols in the same order,
+    \(\doteq\) is just a symbol contained in the strings.}
 
     \item there exist \(\lang\)-terms \(t_1, …, t_{n_R}\) and a relation symbol
     \(R ∈ \mathcal{R}\) such that \(ϕ = R(t_1, …, t_{n_R})\).
@@ -287,7 +290,7 @@ Finally, we have all tools at hand to formally define formulae in a language.
 
   The set of \emph{formulae} in \(\lang\) is the smallest set \(Φ(\lang)\)
   containing all atomic \(\lang\)-formulae that is closed under the following
-  constructions.
+  constructions:
   \begin{thmlist}[resume]
     \item If \(ϕ ∈ Φ(\lang)\) is a formula, so is its \emph{negation} \(¬ϕ ∈
     Φ(\lang)\).
@@ -320,7 +323,8 @@ meaning or truthfulness.%
 instance \(\mathtt{∀ x_1 : x_1 \doteq x_1}\) is easily seen to hold in all
 models.}
 However, once we interpret a formula in a model, we can say whether the formula
-is true or false. Let us consider some examples in the language of rings with
+is true or false. Let us consider some examples in the language \(\lang_{ring}\)
+of rings with
 one.
 
 \begin{exam}
@@ -346,12 +350,10 @@ choice of elements for \(\mathtt{x_1, x_2}\) and \(\mathtt{x_3}\). For this
 reason we must distinguish between two kinds of appearances of variables.
 
 \begin{defin}
-  Let \(\mathtt{x_i}\) be a variable (\(i ∈ ℕ \setminus \set{0} \)) and let
-  \(ϕ\) be a formula containing \(\mathtt{x_i}\). If \(ϕ\) contains \(\mathtt{∃
-  x_i} : ψ(\mathtt{x_i})\) as a sub-formula for some formula \(ψ\), we call this
-  appearance of \(\mathtt{x_i}\) \emph{bound appearance}. All appearances of
-  \(\mathtt{x_i}\) that are not of this shape are called \emph{free
-  appearances}.
+  Let \(x\) be a variable and let \(ϕ\) be a formula containing \(x\). If \(ϕ\)
+  contains \(∃ x : ψ(x)\) as a sub-formula for some formula \(ψ\), we call this
+  appearance of \(x\) \emph{bound appearance}. All appearances of \(x\) that are
+  not of this shape are called \emph{free appearances}.
 \end{defin}
 
 In \cref{ex:formula distributivity} all appearances of \(\mathtt{x_1, x_2}\) and
@@ -368,7 +370,7 @@ the variables \(\mathtt{\seq{x}}\) appear freely in \(ϕ\).
   \[
     \mathfrak{A} \models ϕ(\seq{α})
   \]
-  if the following recursively defined conditions are met.
+  if the following recursively defined conditions are met:
   \begin{thmlist}
     \item If \(ϕ = t_1 \doteq t_2\) for two terms \(t_1, t_2\), then
     \(\mathfrak{A} \models ϕ(\seq{α})\) if
@@ -511,15 +513,15 @@ formally, one defines a morphism as follows.
      \mathtt{∀ x_1 } & \mathtt{: e \cdot x_1 \doteq x_1},\\
      \mathtt{∀ x_1 } & \mathtt{: ∀ x_2 : ∀ x_3 :
              (x_1 \cdot x_2) \cdot x_3 \doteq x_1 \cdot (x_2 \cdot x_3)},\\
-     \mathtt{∀ x_1 } & \mathtt{: x_1 \cdot x_1^{-1} \doteq e}, \text{ and}\\\\
+     \mathtt{∀ x_1 } & \mathtt{: x_1 \cdot x_1^{-1} \doteq e}, \text{ and}\\
      \mathtt{∀ x_1 } & \mathtt{: x_1^{-1} \cdot x_1 \doteq e}
   \end{align*}
   characterize groups completely. Another example of a universal variety are
-  rings with unity. Note however, that fields do not form a universal variety with
-  respect to \(\lang_{ring}\), as we demand that elements unequal to \(0\) are
-  invertible which can be expressed by the sentence
+  rings with unity. Note however, that fields do not form a universal variety
+  with respect to \(\lang_{ring}\), as we demand that elements unequal to \(0\)
+  are invertible which can be expressed by the sentence
   \[
-    ∀ x_1 : (¬ x_1 \doteq 0) → (∃ x_2 : x_1 \cdot x_2 \doteq 1)
+    \mathtt{∀ x_1 : (¬ x_1 \doteq 0) → (∃ x_2 : x_1 \cdot x_2 \doteq 1)}
   \]
   containing both universal and existential quantifiers.
 \end{exam}
@@ -936,10 +938,10 @@ a well-formed formula.
     \item If a second formula \(ψ\) is given, one can efficiently obtain the
     Gödel number of the conjunction of \(ϕ\) and \(ψ\).
 
-    \item If \(ϕ(\mathtt{x_i})\) contains the free variable \(\mathtt{x_i}\) and
+    \item If \(ϕ(x)\) contains the free variable \(x\) and
     the Gödel number of a term \(t\) is given, one can efficiently obtain the
     Gödel number of \(ϕ(t)\), i.e.\ the Gödel number of the formula, where each
-    free appearance of \(\mathtt{x_i}\) is replaced by \(t\).
+    free appearance of \(x\) is replaced by \(t\).
   \end{thmlist}
 \end{lem}
 

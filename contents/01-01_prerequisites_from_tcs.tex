@@ -65,7 +65,7 @@ captured up to an encoding.
 \end{defin}
 
 \begin{rem}
-  A direct consequence of the definitions of problems and encodings is that one
+  A direct consequence of this definition of problems and encodings is that one
   can only consider at most countable problems. Note however, that there are
   uncountably many---\(2^{ℵ_0}\) to be precise---many subsets of \(ω\) and
   therefore uncountably many problems.
@@ -118,14 +118,14 @@ contain the blank symbol \(\emp\). More formally a Turing machine can be
 described as follows.
 
 \begin{defin}
-  A \emph{Turing machine} \(\mathbb A\) on the \emph{alphabet} \(A = \lbrace \sta,
-  \emp, \zer, \one \rbrace\) is a tuple \((S, δ)\), where \(S\) is a finite set,
-  called \emph{set of states}, that contains at least the states \(\sstart,
-  \shalt\) and
+  A \emph{Turing machine} \(\mathbb A\) on the \emph{alphabet} \(A = \lbrace
+  \sta, \emp, \zer, \one \rbrace\) is a tuple \((S, δ)\), where \(S\) is a
+  finite set, called \emph{set of states}, that contains at least the states
+  \(\sstart, \shalt\) and a function
   \[
-    δ: S × A → S × A × \lbrace -1, 0, 1 \rbrace
+    δ: S × A → S × A × \lbrace -1, 0, 1 \rbrace,
   \]
-  is called \emph{transition function}. If \(δ(s, a) = (s', b, m)\), one
+  called \emph{transition function}. If \(δ(s, a) = (s', b, m)\), one
   demands that the following axioms are satisfied
 
   \begin{thmlist}
@@ -142,13 +142,12 @@ The transition function should be understood as the logic behind the actions of
 the machine. It is applied at every step of the computation. Its arguments are
 the current state of the machine and the symbol currently read by the head. The
 image of the transition function determines the new state, the symbol written to
-the tape, and the movement of the head. In this intuitive view the axioms of a
-Turing machine state that
-
+the tape, and the movement of the head. From this intuitive view the axioms of a
+Turing machine state
 \begin{plist}
-  \item the end of tape symbol \(\sta\) may never be written to nor deleted
+  \item that the end of tape symbol \(\sta\) may never be written to nor deleted
   from the tape,
-  \item the end of tape symbol marks the left-most cell of the tape, and
+  \item that the end of tape symbol marks the left-most cell of the tape, and
   \item that once the halting state \(\shalt\) is reached, the machine remains
   in this state and does not move anymore.
 \end{plist}
@@ -182,19 +181,20 @@ of step-wise computation is formalized in the subsequent definitions.
 
 A configuration of the form \((\shalt, 0, c)\) is called \emph{halting}. A
 \emph{start configuration} is of the form \((\sstart, 0, c)\) such that \(c(0) =
-\sta\) and there exists an \(n ∈ ℕ\) such that \(c(i) = \emp\) if and only if \(i >
-n\). This means that in a start configuration the work-tape reads
+\sta\) and there exists an \(n ∈ ℕ\) such that \(c(i) = \emp\) if and only if
+\(i > n\). This means that in a start configuration the work-tape reads
 \[
   \sta c(1) c(2) … c(n) \emp \emp …
 \]
-It will be very convenient to identify the finite string \(c(1) c(2) … c(n) ∈ ω\)
-with this tape content. Note however, that albeit every string can be associated
-with a tape content, the converse is not true, for instance
+It will be very convenient to identify the finite string \(c(1) c(2) … c(n) ∈
+ω\) with this tape content. Note however, that albeit every string can be
+associated with a tape content, the converse is not true, for instance
 \[
-  \sta \zer \zer \one \emp \zer \emp …
+  \sta \zer \zer \one \emp \zer \emp \emp …
 \]
 is a valid tape content but we cannot interpret it as a finite string in the
-alphabet \(\set{\zer, \one}\). Nevertheless, if reference is clear, the symbols \(b_1b_2 … b_n ∈ ω\) shall denote both the string and the tape content
+alphabet \(\set{\zer, \one}\). Nevertheless, if reference is clear, the symbols
+\(b_1b_2 … b_n ∈ ω\) shall denote both the string and the tape content
 \[
   c(i) :=
     \begin{cases}
@@ -207,9 +207,8 @@ alphabet \(\set{\zer, \one}\). Nevertheless, if reference is clear, the symbols 
 \begin{defin}
   Let \((s, j, c)\) and \((s', j', c')\) be configurations of a Turing machine
   \(\mathbb{A} = (S, δ)\). One writes \((s, j, c) \vdash_1 (s', j', c')\) and
-  calls \((s', j', c')\) a \emph{successor configuration} of \((s, j, c)\) if there
-  exists an \(m ∈ \lbrace -1, 0, 1 \rbrace\) such that
-
+  calls \((s', j', c')\) a \emph{successor configuration} of \((s, j, c)\) if
+  there exists an \(m ∈ \lbrace -1, 0, 1 \rbrace\) such that
   \begin{itemize}
   \item
     \(δ(s, c(j)) = (s', c'(j), m)\),
@@ -220,20 +219,20 @@ alphabet \(\set{\zer, \one}\). Nevertheless, if reference is clear, the symbols 
   \end{itemize}
 \end{defin}
 
-This relation makes the set of all configurations of \(\mathbb A\) into a directed
-graph. A \emph{run} or \emph{computation} of \(\mathbb A\) on \(x ∈ ω\) is a path in
-this directed graph starting at the start configuration \((\sstart, 0, x)\). A run
-of \(\mathbb A\) on \(x\) is \emph{halting} or \emph{complete} if it reaches a
+This relation makes the set of all configurations of \(\mathbb A\) into a
+directed graph, called \emph{computation graph}. A \emph{run} or
+\emph{computation} of \(\mathbb A\) on \(x ∈ ω\) is a path in this directed
+graph starting at the start configuration \((\sstart, 0, x)\). A run of
+\(\mathbb A\) on \(x\) is \emph{halting} or \emph{complete} if it reaches a
 halting configuration \((\shalt, 0, y)\) with \(y ∈ ω\). In this case I write
 \(\mathbb A (x) = y\).
 
 I will denote Turing machines using listings, where the fact that
 \(δ_\text{delta} (\state{state}, b) = (\state{state'}, b', m)\) is encoded by
-%
 \begin{lstlisting}
 delta "state" b = ("state'", b', m)
 \end{lstlisting}
-%
+
 Variables match all possible states or characters in the alphabet
 respectively. However, I follow the convention that if an assignment of
 variables matches more than one pattern, the first matching pattern is chosen.
@@ -262,14 +261,14 @@ See \cref{app:turing} on how to simulate Turing machines using these listings.
     Consider the Turing machine \(\mathbb A_\text{add1} = (\lbrace \sstart,
     \shalt, \state{overflow}, \state{return}, \state{error} \rbrace,
     δ_\text{add1})\) that adds \(1\) to a (possibly zero-patched) binary
-    representation of a natural number \(n\). Its transition function is described
-    in \cref{lst:add1}.
+    representation of a natural number \(n\). Its transition function is
+    described in \cref{lst:add1}.
 
     The last line of the program ensures, that \(δ\) is a total function, as it
     matches all remaining pairs of states and characters and lets the machine
-    enter the state \(\state{error}\). The complete run of \(\mathbb A_\text{add1}\)
-    on \(\one\one\zer\one\)---encoding the number \(11\)---can be seen in
-    \cref{fig:complete run}.
+    enter the state \(\state{error}\). The complete run of \(\mathbb
+    A_\text{add1}\) on \(\one\one\zer\one\)---encoding the number \(11\)---can
+    be seen in \cref{fig:complete run}.
 \end{exam}
 
 \lstinputlisting[float, frame=tb,
@@ -351,7 +350,7 @@ See \cref{app:turing} on how to simulate Turing machines using these listings.
 
 The last item of the definition above means that a problem is
 semi-decidable if there is a Turing machine affirming membership of the
-corresponding set but it might not be able to refute membership.
+corresponding set but the machine might not be able to refute membership.
 
 \begin{exam}\label{ex:finite problems are decidable}
   Let \(Q\) be a finite problem then \(Q\) is decidable. To see this let \(n\)
@@ -389,7 +388,7 @@ corresponding set but it might not be able to refute membership.
   corresponds to the string on the tape that the machine has read so far. Now
   one of three things can happen:
   \begin{itemize}
-    \item Either the input string continues and we have read less than \(n\)
+    \item either the input string continues and we have read less than \(n\)
     symbols so far, then the machine continues reading (first case of lines 2
     and 3); or
     \item the machine reads a blank symbol \(\emp\), then we must check if the
@@ -417,38 +416,41 @@ computable functions.
 
 \begin{lem}\label{lem:composition of Turing machines}
   Let \(\mathbb A_1 = (S_1, δ_1)\) and \(\mathbb A_2 = (S_2, δ_2)\) be Turing
-  machines computing \(f_1: D_1 → ω\) and \(f_2: D_2 → ω\) respectively (\(D_1, D_2
-  \subseteq ω\)). Then there exists a Turing machine \(\mathbb A_{f_2 \circ f_1}\)
-  computing the partial function \(f_2 \circ f_1: D_1 ∩ f_1^{-1}(D_2) → ω\)
-  obtained by composing \(f_1\) and \(f_2\).
+  machines computing the functions \(f_1: D_1 → ω\) and \(f_2: D_2 → ω\)
+  respectively, where \(D_1, D_2\) are subsets of \(ω\). Then there exists a
+  Turing machine \(\mathbb A_{f_2 \circ f_1}\) computing the partial function
+  \(f_2 \circ f_1: D_1 ∩ f_1^{-1}(D_2) → ω\) obtained by composing \(f_1\) and
+  \(f_2\).
 \end{lem}
 \begin{proof}
   If \(\sstart = \shalt\) then machine \(\mathbb{A}_1\) and machine
   \(\mathbb{A}_2\) compute the identity function on \(ω\) and the claim is
   trivial. Similarly, if \(δ_1(\sstart, \sta) = (\shalt, \sta, 0)\), then
   \(\mathbb{A}_1\) computes the identity and the claim is proven by setting
-  \(\mathbb{A}_{f_2 \circ f_1} = \mathbb{A}_2\)
+  \(\mathbb{A}_{f_2 \circ f_1} = \mathbb{A}_2\).
 
-  We can therefore assume that we are not in these degenerate cases and
-  construct \(\mathbb A_{f_2 \circ f_1}\) from \(\mathbb A_1\) and \(\mathbb A_2\) as
-  follows: Let \(S_1' := S_1 \setminus \set{\sstart, \shalt}\) and \(S_2' := S_2
-  \setminus \set{\sstart, \shalt}\), then set \(S = \set{\sstart, \shalt} \sqcup
-  S_1' \sqcup S_2' \sqcup \set{\state{compose}}\), where \(\sqcup\) denotes the
-  disjoint union. Now for a state \(s ∈ S\) and a symbol \(b ∈ A\) we define
+  We can therefore assume that we are not in these trivial cases and
+  construct \(\mathbb A_{f_2 \circ f_1}\) from \(\mathbb A_1\) and \(\mathbb
+  A_2\) as follows: Let \(S_1' := S_1 \setminus \set{\sstart, \shalt}\) and
+  \(S_2' := S_2 \setminus \set{\sstart, \shalt}\), then set \(S = \set{\sstart,
+  \shalt} \sqcup S_1' \sqcup S_2' \sqcup \set{\state{compose}}\), where
+  \(\sqcup\) denotes the disjoint union. Now for a state \(s ∈ S\) and a symbol
+  \(b ∈ A\) we define
   %
   \begin{align*}
     δ (s, b) &:=
       \begin{cases}
         δ_1 (s, b) & \text{if } s ∈ S_1' ∪ \set\sstart \\
-        (\state{compose}, b, m) & \text{if } s ∈ S_1 \text{ and } δ_1(s, b) = (\shalt, b', m)\\
+        (\state{compose}, b, m) & \text{if } s ∈ S_1 \text{ and }
+          δ_1(s, b) = (\shalt, b', m)\\
         δ_2 (s, b) & \text{if } s ∈ S_2' ∪ \set\shalt \\
         δ_2 (\sstart, b) & \text{if } s = \state{compose}
       \end{cases}
   \end{align*}
   %
-  Then \(\mathbb A_{f_2 \circ f_1} = (S, δ)\) computes \(f_2 \circ f_1\) because \(δ\)
-  is defined to first run the program of \(\mathbb A_1\) and if this machine
-  reaches a halting state run \(\mathbb A_2\).
+  Then \(\mathbb A_{f_2 \circ f_1} = (S, δ)\) computes \(f_2 \circ f_1\)
+  because \(δ\) is defined to first run the program of \(\mathbb A_1\) and if
+  this machine reaches a halting state run \(\mathbb A_2\).
 \end{proof}
 
 \begin{exam}
@@ -475,12 +477,13 @@ computable functions.
         n = 1 + \sum_{i = 0}^k b_i 2^i & ↦ b_0…b_k, \quad \text{if } n > 0,\\
                                      0 & ↦ λ.
       \end{align*}
-      In other words, \(n\) is mapped to the \(n\)-th string if one orders \(\lbrace
-      \zer, \one \rbrace^*\) lexicographically. I will write \(<_{lex}\) for the
-      lexicographical ordering of \(ω = \set{\zer, \one}^*\).  As \(ω\)
-      traditionally denotes the non-negative integers in the fields of logic and
-      especially set theory, this last encoding is the reason why I am using the
-      symbol \(ω\) to denote the set of finite strings \(\set{\zer, \one}^*\).
+      In other words, \(n\) is mapped to the \(n\)-th string if one orders
+      \(\lbrace \zer, \one \rbrace^*\) lexicographically. I will write
+      \(<_{lex}\) for the lexicographical ordering of \(ω = \set{\zer,
+      \one}^*\).  As \(ω\) traditionally denotes the non-negative integers in
+      the fields of logic and especially set theory, this last encoding is the
+      reason why I am using the symbol \(ω\) to denote the set of finite strings
+      \(\set{\zer, \one}^*\).
     \end{exlist}
 
     In either case the set obtained by encoding \(ℕ\) is easily seen to be
@@ -492,8 +495,8 @@ computable functions.
           \state{rejectMR}, \state{error} \rbrace, δ),
     \]
     whose transition function is displayed in \cref{lst:tally encoding}. In the
-    second case it suffices to check that the string has length \(1\) or ends in a
-    \(\one\), and in the third case every string is accepted.
+    second case it suffices to check that the string has length \(1\) or ends in
+    a \(\one\), and in the third case every string is accepted.
 \end{exam}
 
 \lstinputlisting[float, frame=tb,
@@ -511,7 +514,7 @@ computable functions.
 \end{rem}
 
 Taking another look at the definition of computability, one sees that only
-functions in one argument defined on subsets of \(ω\), mapping to subsets of
+functions in one argument defined on subsets of \(ω\) mapping to subsets of
 \(ω\) can be computable. However, one can easily extend this to functions on
 multiple arguments. To do this, one uses an injective function \(⟨\cdot, \cdot⟩:
 D^2 → ω\), where \(D ⊂ ω\) is decidable and encodes tuples by elements of \(ω\)
@@ -526,15 +529,15 @@ is decidable and the projections \(p_i(⟨x_1, x_2⟩) ↦ x_i\) for \(i ∈ \lb
 \begin{exam}[Pairing functions]
   \begin{exlist}
     \item\label{ex:tally pairing}
-    Using tally notation (cf.~\cref{ex:tally encoding}) on can encode \((n, m) ∈
-    ℕ^2\) by
+    Using tally notation (cf.~\cref{ex:tally encoding}) one can encode \((n, m)
+    ∈ ℕ^2\) by
     \[
       ⟨\enc{n}, \enc{m}⟩ =
         \underbrace{\one … \one}_{n\text{-times}} \zer
         \underbrace{\one … \one}_{m\text{-times}}.
     \]
     To test, wether a given string \(x ∈ ω\) encodes a pair of non-negative
-    integers, one only needs to check, wether \(x\) contains a single \(\zer\)
+    integer, one only needs to check wether \(x\) contains a single \(\zer\)
     and all other symbols are \(\one\)-s. As for the projections, machine
     \(\mathbb{P}_1\) clears everything after the first \(\zer\) on the tape and
     \(\mathbb{P}_2\) deletes everything up to the first zero and then moves the
@@ -685,14 +688,14 @@ We are now able to state equivalent definitions of decidable and semi-decidable
 sets.
 
 \begin{pro}\label{pro:characterizations of ce sets}
-  Let \(Q\) be a problem. The following are equivalent.
+  Let \(Q\) be a problem. The following properties are equivalent.
   \begin{thmlist}
     \item \(Q\) is semi-decidable.
     \item \(Q\) is the domain of a (partial) computable function.
     \item \(Q\) is the image of a (partial) computable function.
     \item There exists a decidable relation \(R \subseteq ω^2\) such that
     \[
-      x ∈ Q \quad ⇔ \quad ∃ y ∈ ω : R(x, y)
+      x ∈ Q \quad ⇔ \quad ∃ y ∈ ω : R(x, y).
     \]
   \end{thmlist}
 \end{pro}
@@ -719,7 +722,7 @@ sets.
     \sta b_1 b_1 … b_n b_n \emp ….
   \]
   In a second step, the machine checks by a modification of Turing machine
-  \(\mathbb{A}\) that only uses cells with an even index,  wether cells with
+  \(\mathbb{A}\) that only uses cells with an even index, wether cells with
   even index correspond to an element in \(Q\). If \(x\) was indeed contained in
   \(Q\), then the machine will stop after finitely many steps and can transform
   the tape content back to
@@ -730,23 +733,23 @@ sets.
   first projection in \cref{ex:total pairing}.
 
   If on the other hand \(x\) is not contained in \(Q\), then in the second step
-  of the computation will not stop. Thus \(x\) is not in the image of the
-  function computed by \(\mathbb{B}\).
+  of the computation the machine will not stop. Thus \(x\) is not in the image
+  of the function computed by \(\mathbb{B}\).
 
   \emph{(iii) \(⇒\) (iv):} Let \(f\) be a computable function with image \(Q\)
   and let \(\mathbb{A}\) be a Turing machine computing \(f\). For each
-  non-negative integer \(n ∈ ℕ\) and all strings \(x := b_1…b_i, y := c_2…c_j ∈
-  ω\), I consider the relation \(R ⊂ ω^3\) defined by
+  non-negative integer \(n ∈ ℕ\) and all strings \(x := b_1…b_i, y := c_1…c_j\)
+  in \(ω\), I consider the relation \(R ⊂ ω^3\) defined by
   \[
     R(n, x, y) \quad :⇔ \quad
-    \mathbb{A} \text{ halts on } x \text{ in at most } n \text{ steps, }
-    i,j ≤ n, \text{ and } f(x) = y.
+    \mathbb{A} \text{ halts on } x \text{ in at most } n \text{ steps; }
+    i,j ≤ n; \text{ and } f(x) = y.
   \]
   Note that for a fixed integer \(n\) the relation can contain at most \(2^{n +
   1}\) triples. Thus, \(R\) is decidable for fixed \(n\). However, using
   induction on \(n\) one sees easily that \(R\) is decidable as a ternary
   relation. (If \(R(n, x, y)\) holds, so does \(R(m, x, y)\) for all \(m ≥ n\).
-  If \(R(n, x, y)\) does not hold, then either \(x\) or \(y\) contain more than
+  If \(R(n, x, y)\) does not hold, then either \(x\) or \(y\) contains more than
   \(n\) bits; or \(\mathbb{A}\) did not halt on \(x\) in \(n\) steps; or
   \(\mathbb{A}(x)\) is not \(y\). In the last two cases, we perform one more
   step of the computation and can check wether \(\mathbb{A}\) outputs \(y\).)
@@ -783,7 +786,7 @@ technically quite intricate.
 \end{pro}
 \begin{proof}
   Assume \(Q\) to be decidable by the Turing machine \(\mathbb{A}\), then \(Q\)
-  is semi-decidable in particular. Now compose \(\mathbb{A}\) with a Turing
+  is in particular semi-decidable. Now compose \(\mathbb{A}\) with a Turing
   machine \(\mathbb{B}\) with the property \(\mathbb{B}(\one) = \zer\) and
   \(\mathbb{B}(\zer) = \one\). One obtains a Turing machine deciding the
   complement of \(Q\) and \(ω \setminus Q\) is thus semi-decidable, as claimed.
@@ -807,11 +810,11 @@ technically quite intricate.
   Starting to count at \(1\), cells with an index \(i \equiv 1 \mod 4\) indicate
   if the head of machine \(\mathbb{A}\) is currently reading the cell with index
   \(i + 1\), in this case a \(\one\) is placed inside this cell, \(\zer\)
-  otherwise; cells with an index \(i \equiv 2 \mod 4\) represent the the tape
-  of machine \(\mathbb{A}\); and cells with indices congruent \(3\) or \(0\)
-  modulo \(4\) represent the corresponding information for machine
-  \(\mathbb{A}^c\). The first block of \(4\) bits represents the ends of the
-  tapes of machine \(\mathbb{A}\) and \(\mathbb{A}^c\) respectively.
+  otherwise; cells with an index \(i \equiv 2 \mod 4\) represent the tape of
+  machine \(\mathbb{A}\); and cells with indices congruent \(3\) or \(0\) modulo
+  \(4\) represent the corresponding information for machine \(\mathbb{A}^c\).
+  The first block of \(4\) bits represents the ends of the tapes of machine
+  \(\mathbb{A}\) and \(\mathbb{A}^c\) respectively.
 
   Now construct a Turing machine \(\mathbb{D}\) whose states \(S = S_1 \times
   S_2 \times S_{aux}\) are triples of states of machine \(\mathbb{A}\), states
@@ -824,17 +827,17 @@ technically quite intricate.
   this will only effect \(s_a\) and preserve \(s_1\) and \(s_2\).
   Next the machine will mark cell \(i\) with \(\zer\) and will then carry out
   one step of the computation of \(\mathbb{A}\), reading the cell with index \(i
-  + 1\) and writing in one of the cells with indices \(i - 3, i + 1\) and \(i +
+  + 1\) and writing in one of the cells with indices \(i - 3, i + 1\), or \(i +
   5\). Thereby the state \(s_1\) will be changed to the state dictated by the
   transition function of machine \(\mathbb{A}\).
   Finally, the head moves one cell to the left, marks by writing a \(\one\) the
   last position of its head, and moves back to the end of the tape.
 
-  Add even stages the head moves to the right until it finds the first \(\one\)
+  At even stages the head moves to the right until it finds the first \(\one\)
   in a cell with an index \(i \equiv 3 \mod 4\) and carry out the analogous
   steps for machine \(\mathbb{A}^c\) as in the even case.
 
-  At some point either the computation of \(\mathbb{A}\) or the one of
+  At some point either the computation of \(\mathbb{A}\) or the computation of
   \(\mathbb{A}^c\) will halt. Then \(\mathbb{D}\) has reached a state where
   either the first or the second component of \((s_1, s_2, s_a) ∈ S\) is a
   halting state. Then \(\mathbb{D}\) can clear the tape and write \(\one\) or
@@ -850,7 +853,7 @@ technically quite intricate.
 % ██   ██ ██   ██ ███████ ██    ██ ██   ████  ██████      ██ ██
 
 In the remainder of this thesis I will make use of the following
-meta-mathematical thesis. That cannot be mathematically proven but has been
+meta-mathematical thesis, which cannot be mathematically proven but has been
 heuristically justified for all of the generally accepted\footnote{The
 interested reader should find the comment \cite{Davis2006} on hyper-computation
 by Davis quite revealing.} formalizations of computation. It allows one to state
@@ -882,16 +885,12 @@ can carry out all computations, can hardly be overestimated.
     \]
 \end{thm}
 
-As a last task of this section we want to find a set \(\mathcal{K} \subseteq ω\)
-that is semi-decidable but not decidable. It will be the key ingredient in the
+As a final task of this section we want to find a set \(\mathcal{K} ⊂ ω\) that
+is semi-decidable but not decidable. This set will be the key ingredient in the
 task of settling Hilbert's tenth problem. Note that it is not hard to see that
 an undecidable problem exists, as there are only countably many Turing machines%
-\footnote{To be precise, there are countably many pairs \((S, δ)\) of sets of
-sates \(S\) and transition functions \(δ: S × A → S × A × \set{-1, 0, 1}\) if we
-demand the set of states \(S\) to be a set of integers. Since we always assume
-\(S\) to be finite, this is possible in general without affecting the
-computations of the Turing machine.}
-but uncountably many problems. However, to find such a set within the
+\footnote{To be precise, there are countably many non-isomorphic computation
+graphs.} but uncountably many problems. However, to find such a set within the
 semi-decidable ones we turn our attention to a problem that quite naturally
 arises in computability theory.
 \begin{quote}
@@ -936,19 +935,18 @@ un burattino.\end{italian} Firenze Bemporad \& Figlio, 1901.
       \zer  & \text{if } \mathbb A \text{ does not halt on } x
     \end{cases}
     \]
-    holds. Now using \(\mathbb B\) construct a Turing machine \(\mathbb B'\) that
-    simulates \(\mathbb B(\enc{\mathbb A}, \enc{\mathbb A})\) on its input
-    \(\enc{\mathbb A}\) and enters an infinite loop if
-    \(\mathbb B(\enc{\mathbb A}, \enc{\mathbb A}) = \zer\). Expressed more
-    formally this means
+    holds. Now using \(\mathbb B\) construct a Turing machine \(\mathbb B'\)
+    that simulates \(\mathbb B(\enc{\mathbb A}, \enc{\mathbb A})\) on its input
+    \(\enc{\mathbb A}\) and enters an infinite loop if \(\mathbb B(\enc{\mathbb
+    A}, \enc{\mathbb A}) = \zer\). Expressed more formally this means
     \[
       \mathbb B' \text{ halts on } \enc{\mathbb A} \quad ⇔ \quad
-      \mathbb A \text{ does not halts on } \enc{\mathbb A}.
+      \mathbb A \text{ does not halt on } \enc{\mathbb A}.
     \]
     Setting \(\mathbb A = \mathbb B'\) yields the desired contradiction.
 \end{proof}
 
-For a more detailed proof of theorem fact and lot more information on
+For a more detailed proof of this theorem and a lot more information on
 computability see \cite{Cooper2004}. As the halting problem is undecidable the
 \emph{halting set} defined by
 \[
@@ -980,12 +978,13 @@ semi-decidable.
 
 We say a problem \(Q\) is \emph{many-one reducible} to a second problem \(Q'\)
 if there exists a total computable function \(f: ω → ω\) as in \eqref{eq:m
-reducibility}. One writes \(Q ≤_m Q'\) in this situation. In the remark we have
-seen that all semi-decidable sets are many-one reducible to \(\mathcal{K}\). The
-key step in settling Hilbert's tenth problem is proving that \(\mathcal{K}\) is
-many-one reducible to a collection of sets which are definable by polynomial
-equations. This suffices to prove the undecidability of Hilbert's tenth problem,
-since we have the following properties of many-one reducibility.
+reducibility}. One writes \(Q ≤_m Q'\) in this situation. In the previous remark
+we have seen that all semi-decidable sets are many-one reducible to
+\(\mathcal{K}\). The key step in settling Hilbert's tenth problem is proving
+that \(\mathcal{K}\) is many-one reducible to a collection of sets which are
+definable by polynomial equations. This suffices to prove the undecidability of
+Hilbert's tenth problem, since we have the following properties of many-one
+reducibility.
 
 \begin{pro}\label{pro:m reducibility and decidability}
   \begin{thmlist}
