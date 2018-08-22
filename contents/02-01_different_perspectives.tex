@@ -130,7 +130,23 @@ is computable. Thus, we have the following lemma.
 Viewing \(n\)-ary relations as subsets of \(R^n\), I will sometimes refer to
 Diophantine sets as \emph{Diophantine relations}. A function \(R^n → R^m\) is
 called \emph{Diophantine} if it is Diophantine viewed as an \((n + m)\)-ary
-relation.
+relation. Geometrically, Diophantine subsets are precisely the projections of
+roots of polynomials. Consider for instance the unit circle defined as the roots
+in \(ℝ^2\) of the polynomial $X^2 + Y^2 - 1$. The projection onto the first
+coordinate can be defined in a Diophantine way by
+\[
+  \set{x ∈ ℝ : ∃ y ∈ ℝ \text{ such that } x^2 + y^2 - 1 = 0}
+\]
+and is easly seen to be the interval \([-1, 1]\). The situation is depicted in
+\cref{fig:diophantine}.
+
+\begin{figure}
+  \begin{center}
+    \includegraphics{res/diophantine}
+    \caption{Diophantine sets are projections of roots of polynomials}
+    \label{fig:diophantine}
+  \end{center}
+\end{figure}
 
 \begin{exam}\label{ex:Diophantine sets}
   \begin{exlist}
