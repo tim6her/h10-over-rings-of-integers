@@ -63,9 +63,9 @@ pane \(ℂ\).
   \end{exlist}
 \end{exam}
 
-If \(K\) is a number field, then the extension \(K/M\) of number fields is in
-fact an \emph{algebraic} one. This means that every \(x ∈ K\) is the root of
-some polynomial with coefficients in \(M\). We denote by \(μ_{M, x} ∈ M[X]\) the
+Let \(K/M\) be an extension of number fields, then \(K/M\) is in fact an
+\emph{algebraic extension}. This means that every \(x ∈ K\) is the root of some
+polynomial with coefficients in \(M\). We denote by \(μ_{M, x} ∈ M[X]\) the
 monic polynomial with root \(x\) dividing (in \(M[X]\)) all other polynomials
 with root \(x\). The polynomial \(μ_{M, x}\) is called \emph{minimal polynomial}
 of \(x\) over \(M\). By the minimality condition (w.r.t.\ divisibility in
@@ -89,7 +89,7 @@ extension \(\overline{ℚ} / ℚ\) is (countably) infinite.
   elements \(x ∈ \Quot(R)\) being integral over \(R\) implies \(x ∈ R\).
 \end{defin}
 
-Of course, when one wants to use tools from algebra some structure on the
+Of course, if one wants to use tools from algebra some structure on the
 considered sets is needed. Thus, the following theorem, implying that if \(α, β
 ∈ S\) are algebraic over \(S\), so are their sum and product, is very desirable.
 
@@ -112,7 +112,7 @@ Richard Dedekind gave a proof of this theorem using the following proposition.
   generated \(R\)-modules contained in \(S\) such that \(αM \subseteq M\) and
   \(βN \subseteq N\) hold. We define the product of the two modules as
   \[
-    MN := \set{\sum_{i=1}^k m_i n_i \;\middle\vert\;
+    MN := \set{\sum_{i=1}^k m_i n_i :
      k ∈ ℕ, \seq[k]{m} ∈ M, \seq[k]{n} ∈ N}.
   \]
   Clearly, \(MN\) contains \(0\) as \(M\) (and \(N\)) contains \(0\).
@@ -136,7 +136,7 @@ Richard Dedekind gave a proof of this theorem using the following proposition.
 
   We finish the proof by showing that \(αβ\) and \(α ± β\) satisfy \(αβ\, MN
   \subseteq MN\) and \((α ± β) MN\) respectively. Then the proposition implies
-  the claim. But this is easy since
+  the claim. But this is the case since
   \[
     αβ \sum_{i=1}^k m_i n_i = \sum_{i=1}^k \underbrace{αm_i}_{∈ M} \,
     \underbrace{βn_i}_{∈ N} ∈ MN
@@ -176,7 +176,7 @@ considering the ring \(ℤ\) and not any \(\algint\), we call \(ℤ\) the ring o
 We have that \(\overline{ℤ}{}^ℚ = \algint[] ∩ ℚ = ℤ\). Thus, \(ℤ\) is integrally
 closed. This follows from a more general result stating that factorial rings are
 integrally closed. By \cref{pro:being integral is transitive} this property of
-\(ℤ\) extends to all rings of algebraic integers, we have
+\(ℤ\) extends to all rings of algebraic integers, formally we have
 \(\overline{\algint}{}^K = \algint\). To make the analogue complete we prove
 that \(K\) is the fraction field of \(\algint\) (see~\cref{thm:K is the quotient
 field of O K}). However, even more is true, as one can choose the denominator in
@@ -193,12 +193,12 @@ the quotient to be a rational integer. More precisely, the following holds.
   fields \(K\).
 \end{thm}
 \begin{proof}
-  By the proposition every \(x ∈ K\) can be written as \(x = αn^{-1}\), where
-  \(α ∈ \algint\) is an algebraic and \(n ∈ ℤ \setminus \set{0}\) is a rational
-  integer. If \(x = βm^{-1}\) is another representation of this form, then \(αm
-  = βn\) must hold in \(\algint\) and thus we can embed \(K\) into the quotient
-  field \(Quot(\algint)\) by mapping \(x = αn^{-1}\) to the representative \([α,
-  n] ∈ \Quot(\algint)\).
+  By the proposition above every \(x ∈ K\) can be written as \(x = αn^{-1}\),
+  where \(α ∈ \algint\) is an algebraic and \(n ∈ ℤ \setminus \set{0}\) is a
+  rational integer. If \(x = βm^{-1}\) is another representation of this form,
+  then \(αm = βn\) must hold in \(\algint\) and thus we can embed \(K\) into the
+  quotient field \(Quot(\algint)\) by mapping \(x = αn^{-1}\) to the
+  representative \([α, n] ∈ \Quot(\algint)\).
 
   If on the other hand \([α, β] ∈ \Quot(\algint)\) with \(β ≠ 0\) is given,
   then \(α β^{-1}\) an element of \(K\). Thus, there exist \(γ ∈ \algint\) and
@@ -216,9 +216,10 @@ as well. Now decompose
 \[
   μ_{ℚ, x}(X) = \prod_{i=1}^n (X - α_i),
 \]
-then since \(\algint\) is a ring, the minimal polynomial must have coefficients
-in \(\algint ∩ ℚ = ℤ\) and the claim is proven. In fact, we can always find an
-algebraic integer \(α ∈ K\) that completely determines the number field \(K\).
+for some \(\seq{α} ∈ K\), then since \(\algint\) is a ring, the minimal
+polynomial must have coefficients in \(\algint ∩ ℚ = ℤ\) and the claim is
+proven. In fact, we can always find an algebraic integer \(α ∈ K\) that
+completely determines the number field \(K\).
 
 \begin{thm}[primitive element theorem]\label{thm:primitive element}
   Let \(L/K\) be an extension of number fields then there exists a
@@ -229,8 +230,8 @@ algebraic integer \(α ∈ K\) that completely determines the number field \(K\)
   [L : K]\).
 \end{thm}
 
-Important tools for studying of number fields and algebraic integers are given
-by the norm and trace.
+Important tools for studying number fields and algebraic integers are given
+by the norm and trace, which are defined below.
 
 \begin{defin}
   For an extension \(L/K\) of number fields and a fixed element \(x ∈ L\) we
@@ -372,7 +373,7 @@ non-associated algebraic integers.%
 \footnote{For full details see the first example in~\cite[Chap.~1,
 §~3]{Neukirch2006}.}
 
-It was the idea of German mathematician Ernst Eduard Krummer to generalize the
+It was the idea of German mathematician Ernst Eduard Kummer to generalize the
 prime decomposition to ‘ideal numbers’. In his view, there should be ideal
 primes \(\mathfrak{p}_1, \mathfrak{p}_2, \mathfrak{p}_3\) and \(\mathfrak{p}_4\)
 such that
@@ -1371,7 +1372,10 @@ A proof of this theorem can be found in §66 of the textbook~\cite{Meara2000}.
 With regard to universal quadratic forms we have furthermore, that if the
 regular quadratic form \(q\) has at least four indeterminates then \(q\) is
 universal in all non-archimedian completions of \(K\)
-\cite[see][Remark~63:18]{Meara2000}. A direct application of the Hasse-Minkowski
+\cite[see][Remark~63:18]{Meara2000}. 
+%TODO
+\todo{Is this really the content of remark?}
+A direct application of the Hasse-Minkowski
 theorem is the following lemma, taken from \cite[Lem.~5.1.1]{Shlapentokh2007}.
 
 \begin{lem}\label{lem:quadratic form}

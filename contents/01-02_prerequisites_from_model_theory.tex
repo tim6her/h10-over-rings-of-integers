@@ -489,7 +489,7 @@ formally, one defines a morphism as follows.
 
     \item Let \(\mathfrak{A}\) be a model in \(\lang\). We say \(\mathfrak{A}\)
     satisfies a theory \(T\) and write \(\mathfrak{A} \models T\) if
-    \(\mathfrak{A}\) models all \(ϕ\) in \(T\).
+    \(\mathfrak{A}\) models all sentences in \(T\).
 
     \item A class of models \(\mathcal{M}\) in \(\lang\) is called
     \emph{elementary class} if there exists an \(\lang\)-theory \(T\) such that
@@ -708,17 +708,17 @@ name can be justified by the following lemma.
     \[
       π: \mathtt{P} → R[X_1, X_2, …]
     \]
-    Such that for all sentences \(ϕ ∈ \mathtt{P}\) we have
+    such that for all sentences \(ϕ ∈ \mathtt{P}\) we have
     \[
       ϕ ∈ \mathtt{H10}(\mathfrak{R}) \quad ⇔ \quad
-      π(p) \text{ has roots in } R.
+      π(ϕ) \text{ has roots in } R.
     \]
   \end{thmlist}
 \end{thm}
 \begin{proof}
   \begin{plist}
-    \item Let \(t\) be an \(\lang_R\)-term. One proves completely analogously as
-    in the proof of \cref{lem:terms of rings are polynomials}, that
+    \item Let \(t\) be an \(\lang_R\)-term. One proves completely analogously to
+    the proof of \cref{lem:terms of rings are polynomials}, that
     \(t^{\mathfrak{R}} ∈ R[X_1, X_2, …]\) is a polynomial function. The only
     difference is that constants now range over all of \(R\) instead of
     \(\set{0, 1}\) thus yielding the different coefficients.
@@ -730,8 +730,8 @@ name can be justified by the following lemma.
       \mathtt{c}_α \cdot \mathtt{x_{i_1} \cdot … \cdot x_{i_d}}.
     \]
     Since every polynomial \(p\) is a finite sum of monomials we obtain a term
-    representing \(p\) by joining the terms representing the monomials by a
-    \(\mathtt{+}\) symbol.
+    representing \(p\) by joining the terms representing the monomials using the
+    symbol \(\mathtt{+}\).
 
     \item Let \(ϕ ∈ \mathtt{P}\) be a sentence. By definition of \(\mathtt{P}\)
     there exists an atomic \(\lang_{R}\)-formula \(ψ\) such that
@@ -744,7 +744,7 @@ name can be justified by the following lemma.
     \[
       ψ = t_1 \doteq t_2.
     \]
-    By part (i) of the theorem the term functions \(t_1^{\mathfrak{R}}\) and
+    By part (i) of the theorem, the term functions \(t_1^{\mathfrak{R}}\) and
     \(t_2^{\mathfrak{R}}\) are polynomial functions in \(R[X_1, X_2, …]\). We
     set \(π(ϕ) := t_1^{\mathfrak{R}} - t_2^{\mathfrak{R}}\).
 
@@ -772,7 +772,8 @@ name can be justified by the following lemma.
       t_1^{\mathfrak{R}}(α_{i_1}, …, α_{i_k}) =
       t_2^{\mathfrak{R}}(α_{i_1}, …, α_{i_k}).
     \]
-    Which is the true if and only if \(π(ϕ) = t_1 - t_2\) has roots in \(R\).
+    But this identity holds if and only if \(π(ϕ) = t_1 - t_2\) has roots in
+    \(R\).
   \end{plist}
 \end{proof}
 
@@ -800,7 +801,7 @@ theory, we must identify the theory with subsets of \(ω\). To this end,
   \]
   Say the resulting string is
   \[
-    \mathbf{s} = s_1 s_2 … s_n
+    \mathbf{s} = s_1 s_2 … s_n,
   \]
   where \(s_i\) is a symbol contained in \(\lang ∪ \set{\doteq, \mathtt{¬, ∧,
   ∃, (, ), x, '}}\) then
@@ -813,7 +814,7 @@ theory, we must identify the theory with subsets of \(ω\). To this end,
 By the uniqueness of the prime factorization in \(ℕ\), two different formulae
 cannot have the same Gödel number. Finally, one obtains an encoding
 \(\enc{\cdot}: Φ(\lang) → ω\) by composing \(\mathrm{gn}\) with an encoding of
-the natural numbers (see~\cref{ex:omega encoding})
+the natural numbers (see~\cref{ex:omega encoding}).
 
 \begin{exam}
 To get a feeling for how fast the Gödel numbers grow let us consider the
@@ -851,7 +852,7 @@ which already has \(52\) decimal digits.
 \end{defin}
 
 \begin{rem}
-  Let \(\mathfrak{A}\) be model. If we order the theories defined above by
+  Let \(\mathfrak{A}\) be a model. If we order the theories defined above by
   set-inclusion, the interrelations depicted in the following diagram hold.
   \begin{center}
     \includegraphics[scale=1]{res/theories}
@@ -924,10 +925,10 @@ a well-formed formula.
   following numbers are computable for every \(\lang\)-formula \(ϕ\) from the
   Gödel number \(\gn(ϕ)\).
   \begin{thmlist}
-    \item The length \(\ln(ϕ)\) of \(ϕ\), this is the number of symbols
+    \item The length \(\ln(ϕ)\) of \(ϕ\), which is the number of symbols
     appearing in \(ϕ\).
 
-    \item For every \(i ∈ \set{1, …, \ln(ϕ)}\) the code \(i(s)\) of the symbol
+    \item For every \(i ∈ \set{1, …, \ln(ϕ)}\), the code \(i(s)\) of the symbol
     \(s\) appearing in the \(i\)-th position of \(ϕ\).
 
     \item The number of quantifiers appearing in \(ϕ\) and the number of free
@@ -1004,7 +1005,7 @@ non-constant symbols.
     \]
     on \(Ω_R\) is decidable for all pairs \(x_1, x_2 ∈ R\).
 
-    This definition can have slight technical advantages but note that in this
+    This definition can have slight technical advantages. But note that in this
     case \(Ω_R\) need not be a ring in the sense of abstract algebra, an
     \(\lang_{ring}\)-structure in the sense of universal algebra suffices. Let
     \(\lfloor α_R^{-1}(\set{η}) \rfloor ∈ Ω_R\) denote the smallest element of
@@ -1034,14 +1035,14 @@ easily be proven via structural induction.
     \item Every finite structure \(⟨S; f_1, …, f_n⟩\) with \(S \subseteq ω\) is
     computable. The set \(S\) is decidable as it is finite and the domain of
     each operation \(f_i\) for \(1 ≤ i ≤ n\) is finite as well. A Turing machine
-    computing \(f_i\) can just store the images of all elements in the domain in
+    computing \(f_i\) can store the images of all elements in the domain in
     memory.
 
     \item In \cref{ex:tally encoding} the non-negative integer \(n\) was encoded
     by a string of \(n\) consecutive \(\one\)-s. I have also already presented
-    the algorithm deciding \(\enc{ℕ} \subseteq ω\) under this encoding.
-    Considering \(ℕ\) as an \(\lang_{ring}\)-structure, one finds that the tally
-    encoding gives rise to an efficient presentation of \(ℕ\).
+    the algorithm deciding \(\enc{ℕ} \subseteq ω\) with respect to this
+    encoding. Considering \(ℕ\) as an \(\lang_{ring}\)-structure, one finds that
+    the tally encoding gives rise to an efficient presentation of \(ℕ\).
 
     The constants \(0\) and \(1\) are trivially computable, by clearing the tape
     in the first case and writing a single \(\one\) in the second case. Using
@@ -1071,7 +1072,7 @@ easily be proven via structural induction.
     \(\lang_{ring}\)-structure is efficiently presentable. As for integers, one
     extends the presentation of \(ℕ\) by a sign-bit.
 
-    To present free \(ℤ\)-algebras one uses a basis say \(ξ_1, …, ξ_n\). Then
+    To present free \(ℤ\)-algebras one uses a basis, say \(ξ_1, …, ξ_n\). Then
     any element \(η\) can be encoded as an \(n\)-tuple of integers. Addition and
     subtraction are defined coordinate-wise. To implement the multiplication one
     stores the finite multiplication table of the basis elements
@@ -1087,7 +1088,7 @@ easily be proven via structural induction.
         \bottomrule
       \end{array}
     \]
-    in memory and extends to all of \(\algint\) linearly.
+    in memory and extends it to all of \(\algint\) linearly.
 
     \item \(⟨ℕ, ≤⟩\) is efficiently presentable using the tally encoding and
     \(n ≤ m\) if and only if \(n \dotminus m = 0\). So deciding \(n ≤ m\) boils
@@ -1108,8 +1109,8 @@ regard. But before studying computable isomorphisms we need a lemma.
 \begin{proof}
   Let \(x ∈ Q'\) be given. To find \(f^{-1}(x)\) one lists all elements of \(ω\)
   and checks for every \(y ∈ ω\) wether \(y\) is contained in \(Q\). Since \(Q\)
-  is decidable, this check can be carried out efficiently. If \(y\) is not
-  contained in \(Q\), try the next element in \(ω\). Otherwise, we compute
+  is decidable, this can be carried out efficiently. If \(y\) is not
+  contained in \(Q\), we try the next element in \(ω\). Otherwise, we compute
   \(f(y)\) and check wether \(f(y) = x\) holds. In this case, we set
   \(f^{-1}(x) := y\) and are finished. If \(f(y)\) does not equal \(x\) we take
   the next element of \(ω\) and start over. The process will stop at some point
@@ -1138,7 +1139,7 @@ representations of \(R\) together with the respective ring isomorphisms. Then
 \(φ_1(ξ_1), …, φ_1(ξ_n)\) generate \(R_1\) over \(R_1\) and \(φ_2(ξ_1), …,
 φ_2(ξ_n)\) generate \(R_2\) over \(R_2\). Storing these finitely many values of
 the isomorphism \(φ_2 \circ φ_1^{-1}\) in memory one can use the computabilty of
-\(R_1\) and \(R_2\) respectively to extend the partial mapping in the natural
+\(R_1\) and \(R_2\) respectively to extend the partial mapping in a natural
 way.
 
 As for the decidability of \textsc{H10} over some ring of algebraic integers
