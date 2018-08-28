@@ -101,7 +101,7 @@ definition.
 \begin{defin}
   Let \(R\) be a commutative ring with unity. A set \(S \subseteq R^n\) is said
   to be \emph{Diophantine} over \(R\) if there exists a polynomial \(p ∈
-  R[X_1,…,X_n, Y_1,…,Y_m]\) in \(n + m\) many indeterminates (\(m,n ≥ 0\)) such
+  R[X_1,…,X_n, Y_1,…,Y_m]\) in \(n + m\) indeterminates (\(m,n ≥ 0\)) such
   that
   \[
     (α_1,…,α_n) ∈ S \quad ⇔ \quad
@@ -112,7 +112,7 @@ definition.
 A polynomial \(p ∈ R[X_1, …, X_n]\) as above defines an \(n\)-ary relation
 \(\rel{p}\) on \(R\) by
 \[
-  \rel{p}(α_1, …, α_n)  \quad :⇔ \quad p(α_1, …, α_n) = 0
+  \rel{p}(α_1, …, α_n)  \quad :⇔ \quad p(α_1, …, α_n) = 0.
 \]
 In this sense a set \(S \subseteq R^i\) is Diophantine if there exists a
 polynomial \(p ∈ R[X_1, …, X_n]\) such that
@@ -150,8 +150,8 @@ and is easly seen to be the interval \([-1, 1]\). The situation is depicted in
 
 \begin{exam}\label{ex:Diophantine sets}
   \begin{exlist}
-    \item Let \(R\) be an integral domain.
-    Then every finite subset \(S\) of \(R\) is Diophantine, because the roots of
+    \item Let \(R\) be an integral domain. Then every finite subset \(S\) of
+    \(R\) is Diophantine because the roots of
     \[
       p(X) := \prod_{s ∈ S} (X - s)
     \]
@@ -211,7 +211,7 @@ and is easly seen to be the interval \([-1, 1]\). The situation is depicted in
       2 γ \equiv 2 y_2 \equiv 1 \mod \mathfrak x_2 \quad \text{and} \quad
       3 γ \equiv 3 y_3 \equiv 1 \mod \mathfrak x_3.
     \]
-    Which can be rewritten as
+    This can be rewritten as
     \[
       2 γ - 1 ∈ \mathfrak x_2  \quad \text{and} \quad
       3 γ - 1 ∈ \mathfrak x_3.
@@ -252,7 +252,7 @@ their relations with subsets of \(ℕ\).
     ∃ \seq[m_1]{β} : p_1(\seq{α}, \seq[m_1]{β}) = 0
   \]
   and \(p_2 ∈ ℤ[\seq{X}, \seq[m_1]{Y}]\) represents \(S_2\), we set \(m := m_1 +
-  m_2\) and consider \(p_1\) and \(p_2\) as polynomials in \(n + m\) many
+  m_2\) and consider \(p_1\) and \(p_2\) as polynomials in \(n + m\)
   indeterminates, where for all \(i ∈ \set{n + 1, …, m}\) indeterminate \(Y_i\)
   either appears in \(p_1\) or \(p_2\) but not in both. Then \((\seq{α},
   \seq[m]{β}) ∈ ℤ^{m + n}\) is a root of
@@ -272,7 +272,7 @@ their relations with subsets of \(ℕ\).
   as a consequence
   \[
     x ∈ ℕ \quad ⇔ \quad
-    ∃β_1,β_2,β_3,β_4∈ℤ: β_1^2 + β_2^2 + β_3^2 + β_4^2 = α.
+    ∃β_1,β_2,β_3,β_4∈ℤ: β_1^2 + β_2^2 + β_3^2 + β_4^2 = α
   \]
   is a Diophantine definition of \(ℕ\) over \(ℤ\). Therefore, we can check for a
   given polynomial equation whether all variables take only non-negative values
@@ -389,7 +389,7 @@ again put differently, conjunction \(∧\) and disjunction \(∨\) are
   Let \(p(\seq{X}, \seq[m_1]{Y})\) and \(q(\seq{X}, \seq[m_2]{Y})\) give
   Diophantine definitions of \(S_1\) and \(S_2\) resp. Then as in \cref{ex:N is
   Diophantine over Z} we set \(m = m_1 + m_2\) and interpret \(p, q\) as
-  polynomials in \(n + m\) many indeterminates such that for all \(i ∈ \set{n +
+  polynomials in \(n + m\) indeterminates such that for all \(i ∈ \set{n +
   1, …, m}\) indeterminate \(Y_i\) appears either in \(p\) or \(q\) but not
   in both.
 
@@ -508,7 +508,7 @@ Diophantine sets}.
 \begin{defin}
     Let \(R\) be a commutative ring with unit. A set \(S \subseteq R^n\) is said to
     be \emph{purely Diophantine} over \(R\) if there exists a polynomial \(p ∈
-    ℤ[X_1,…,X_n, Y_1,…,Y_m]\) in \(n + m\) many indeterminates (\(m,n ≥ 0\)) such
+    ℤ[X_1,…,X_n, Y_1,…,Y_m]\) in \(n + m\) indeterminates (\(m,n ≥ 0\)) such
     that
     \[
       (α_1,…,α_n) ∈ S \quad ⇔ \quad
