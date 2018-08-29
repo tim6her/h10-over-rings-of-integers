@@ -251,7 +251,7 @@ their relations with subsets of \(ℕ\).
     (\seq{α}) ∈ S_1 \quad ⇔ \quad
     ∃ \seq[m_1]{β} : p_1(\seq{α}, \seq[m_1]{β}) = 0
   \]
-  and \(p_2 ∈ ℤ[\seq{X}, \seq[m_1]{Y}]\) represents \(S_2\), we set \(m := m_1 +
+  and \(p_2 ∈ ℤ[\seq{X}, \seq[m_2]{Y}]\) represents \(S_2\), we set \(m := m_1 +
   m_2\) and consider \(p_1\) and \(p_2\) as polynomials in \(n + m\)
   indeterminates, where for all \(i ∈ \set{n + 1, …, m}\) indeterminate \(Y_i\)
   either appears in \(p_1\) or \(p_2\) but not in both. Then \((\seq{α},
@@ -352,15 +352,16 @@ theory.
 \begin{proof}
   By \cref{thm:Diophantine theory} the formula \(ϕ(\seq{α}, \seq[m]{β})\) is
   true in \(\mathfrak{R}\) if and only if the polynomial associated with \(ϕ\)
-  has a root in \((\seq{α}, \seq[m]{β})\).
+  has a root at \((\seq{α}, \seq[m]{β})\).
 \end{proof}
 
-Note that even more is true as a partially evaluated polynomial is still a
-polynomial. Thus, one can decide membership in all Diophantine sets if and only
-if one can decide for all polynomials whether they have roots. As a consequence,
-we will identify Hilbert's tenth problem over \(R\) with the set of Gödel
-numbers of \(\mathtt{H10}(\mathfrak{R})\) if \(R\) is a countable commutative
-ring with unity, and restate Hilbert's problem as
+Note that even more is true as a partially evaluated polynomial with
+coefficients in \(R\) is still a polynomial. Thus, one can decide membership in
+all Diophantine sets if and only if one can decide for all polynomials whether
+they have roots in \(R\). As a consequence, we will identify Hilbert's tenth
+problem over \(R\) with the set of Gödel numbers of
+\(\mathtt{H10}(\mathfrak{R})\) if \(R\) is a countable commutative ring with
+unity, and restate Hilbert's problem as
 \begin{quote}
   \textsc{H10.} Is the Diophantine theory \(\mathtt{H10}(\mathfrak{R})\)
   decidable?
@@ -387,11 +388,11 @@ again put differently, conjunction \(∧\) and disjunction \(∨\) are
 
 \begin{proof}
   Let \(p(\seq{X}, \seq[m_1]{Y})\) and \(q(\seq{X}, \seq[m_2]{Y})\) give
-  Diophantine definitions of \(S_1\) and \(S_2\) resp. Then as in \cref{ex:N is
-  Diophantine over Z} we set \(m = m_1 + m_2\) and interpret \(p, q\) as
-  polynomials in \(n + m\) indeterminates such that for all \(i ∈ \set{n +
-  1, …, m}\) indeterminate \(Y_i\) appears either in \(p\) or \(q\) but not
-  in both.
+  Diophantine definitions of \(S_1\) and \(S_2\) respectively. Then as in
+  \cref{ex:N is Diophantine over Z} we set \(m = m_1 + m_2\) and interpret \(p,
+  q\) as polynomials in \(n + m\) indeterminates such that for all \(i ∈ \set{n
+  + 1, …, m}\) indeterminate \(Y_i\) appears either in \(p\) or \(q\) but not in
+  both.
 
   Now set
   \[
@@ -405,8 +406,8 @@ again put differently, conjunction \(∧\) and disjunction \(∨\) are
   \]
 
   To make notation easier when proving the claim for intersections, I will
-  assume that \(n = 1\) and \(m = 2\). The general cases follows completely
-  analogously. Let then
+  assume that \(n = 1\) and \(m = 2\). The general cases follows analogously.
+  Let then
   \[
     h(T) = a_k T^k + … + a_1 T + a_0 ∈ R[T]
   \]
@@ -535,22 +536,21 @@ is shown in the following lemma.
   holds.
 \end{lem}
 \begin{proof}
-  Follows from \cref{lem:terms of rings are polynomials} and the analogue of
-  part (ii) of \cref{thm:Diophantine theory}.
+  The claim follows from \cref{lem:terms of rings are polynomials} and the
+  analogue of part (ii) of \cref{thm:Diophantine theory}.
 \end{proof}
 
 At second sight, the construction is even less surprising, as for every ring
-\(R\) with \(1\) there exists exists exactly one ring-homomorphism \(φ: ℤ → R\)
-mapping \(1 ∈ ℤ\) to \(1 ∈ R\). Looking back at \cref{ex:Diophantine sets}, we
-note that the Diophantine sets of (3), (4), and (5) are in fact purely
-Diophantine, whilst finite sets (1) are in general not. As for polynomial
-functions \(p: R^n → R\), we obtain that they are purely Diophantine if and only
-if the coefficients of \(p\) are rational integers. Note however that a
-partially evaluated polynomial with rational integral coefficients need not be a
-polynomial in \(ℤ[X_1, X_2, …]\). Thus, one needs to be a bit more careful when
-dealing with purely Diophantine sets. However, the analogue of
-\cref{lem:intersections and unions} holds for purely Diophantine sets.
-
+\(R\) with \(1\) there exists exactly one ring-homomorphism \(φ: ℤ → R\) mapping
+\(1 ∈ ℤ\) to \(1 ∈ R\). Looking back at \cref{ex:Diophantine sets}, we note that
+the Diophantine sets of (3), (4), and (5) are in fact purely Diophantine, whilst
+finite sets (1) are in general not. As for polynomial functions \(p: R^n → R\),
+we obtain that they are purely Diophantine if and only if the coefficients of
+\(p\) are rational integers. Note however that a partially evaluated polynomial
+with rational integral coefficients need not be a polynomial in \(ℤ[X_1, X_2,
+…]\). Thus, one needs to be a bit more careful when dealing with purely
+Diophantine sets. However, the analogue of \cref{lem:intersections and unions}
+holds for purely Diophantine sets.
 \begin{lem}
   Let \(S_1, S_2 ⊂ \algint^n\) be purely Diophantine subsets of a ring of
   algebraic integers of some number field \(K\). Then their union and
@@ -564,17 +564,17 @@ dealing with purely Diophantine sets. However, the analogue of
 
   Such a polynomial \(h ∈ ℤ[X]\) must exist in every number field \(K\), as
   otherwise the normal closure of \(K\) contains all algebraic integers and thus
-  is the algebraic closure of \(\overline{ℚ}\) by \cref{thm:primitive element}.
-  But then the degree \([\overline{ℚ} : K]\) is finite, implying that \([K :
-  ℚ]\) is infinite, which is a contradiction.
+  is the algebraic closure of \(\overline{ℚ}\) (in \(ℂ\)) by \cref{thm:primitive
+  element}. But the degree \([\overline{ℚ} : K]\) is finite, implying that
+  \([K : ℚ]\) is infinite, which is a contradiction.
 \end{proof}
 
-We now want to identify the purely Diophantine subsets within the Diophantine
-subsets of algebraic integers. For this purpose we reformulate a result of
+We now want to identify the purely Diophantine sets of algebraic integers within
+the Diophantine subsets. For this purpose we reformulate a result of
 \textcite{Robinson1951}. But before we state his result let us look at a simple
-example: In \(ℚ{[√[4]{2}]}\) the polynomial \(p(X) := X^2 - 2\) does
-not give rise to a purely Diophantine representation of \(√2\) because \(-√2\)
-is a root of \(p\) as well. We can however represent \(√2\) as follows:
+example: In \(ℚ{[√[4]{2}]}\) the polynomial \(p(X) := X^2 - 2\) does not give
+rise to a purely Diophantine representation of \(√2\) because \(-√2\) is a root
+of \(p\) as well. We can however represent \(√2\) as follows:
 \[
   α = √2 \quad ⇔ \quad
   ∃ β ∈ ℚ{[√[4]{2}]} : (β^4 = 2 ∧ β^2 = α).
@@ -611,7 +611,7 @@ non-negative. In general, we have the following proposition.
   \[
     α = x \quad ⇔ \quad ∃ y ∈ \algint : (μ_{ℚ, δ}(y) = 0 ∧ f(y) = x).
   \]
-  To finish the prove set \(c\) to be the least common multiple of all
+  To finish the proof set \(c\) to be the least common multiple of all
   denominators of coefficients in \(f\) and multiply the right equation with
   \(c\). Since \(\seq[k]{δ} ∈ \algint\) are the only roots of \(μ_{ℚ, δ}\), the
   singleton \(\set{x}\) is in fact purely Diophantine over \(\algint\) as
@@ -645,7 +645,7 @@ Diophantine sets within Diophantine sets over rings of algebraic integers.
     ∃ β_1, …, β_m ∈ \algint : p(\seq{α}, \seq[m]{β}) = 0.
   \]
   To simplify notation I will assume that \(n = m = 1\) and thus that \(p(X,
-  Y)\) is bivariat. The general case follows completely analogously.
+  Y)\) is bivariat. The general case follows analogously.
 
   To see the first direction, we assume that \(p\) has in fact rational integral
   coefficients and let \(α\) be in \(S\). Then there exists an integer \(β ∈
@@ -671,7 +671,7 @@ Diophantine sets within Diophantine sets over rings of algebraic integers.
     α = a \quad ⇔ \quad ∃ β ∈ \algint : (P_a(β) = 0 ∧ Q_a(β) = c_aα).
   \]
   Therefore, the relation defined by \(q\) can be rewritten in a purely
-  Diophantine form. To see this we assume that \(J ⊂ ℕ^2\) is finite and
+  Diophantine form. To see this, we assume that \(J ⊂ ℕ^2\) is finite and
   \[
     q(X, Y) = \sum_{(i,j) ∈ J} a_{ij} X^i Y^j.
   \]
@@ -688,7 +688,7 @@ Diophantine sets within Diophantine sets over rings of algebraic integers.
   \[
     ∃ β ∈ \algint : p(α, β) \quad ⇔ \quad ∃ β ∈ \algint : q(α, β)
   \]
-  holds for all algebraic integers \(α ∈ \algint\). To see this first assume
+  holds for all algebraic integers \(α ∈ \algint\). To see this, first assume
   that \(p(α, β) = 0\) holds. Then since the identity is an automorphism of
   \(K\), we find that one factor of
   \[
@@ -739,7 +739,7 @@ full first order theory of \(\algint\), \textcite{Robinson1959} proved as early
 as \citeyear{Robinson1959} that \(\mathtt{Th}(\modalgint)\) is undecidable. In
 \citeyear{Matijasevic1970} \textcite{Matijasevic1970} showed---building on the
 work of Davis, Putnam, and J.~Robinson---the undecidability of Hilbert's tenth
-problem over \(ℤ\). More specifically, he provided the last piece in the proof
+problem over \(ℤ\). More specifically, he provided the last piece of the proof
 of the Davis-Putnam-Robinson-Matijasevič theorem (\textsc{DPRM}).
 
 \begin{restatable}[DPRM-theorem]{thm}{DPRM}\label{thm:DPRM}

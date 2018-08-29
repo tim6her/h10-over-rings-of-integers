@@ -47,13 +47,13 @@ usefulness of Diophantine definitions.
 \begin{cor}\label{cor:Diophantine theory is undecidable}
   Let \(R \supseteq ℤ\) be a computable integral domain, whose quotient field is
   not algebraically closed. If \(ℤ\) has a Diophantine definition over \(R\)
-  then the Diophantine theory \(\mathtt{H10}(\struc{R})\) of the rings-structure
+  then the Diophantine theory \(\mathtt{H10}(\struc{R})\) of the ring-structure
   \(\struc{R}\) of \(R\) is undecidable.
 \end{cor}
 \begin{proof}
   Since the non-negative integers are Diophantine over \(ℤ\) and \(ℤ\) is
-  Diophantine over \(R\), we know by the lemma that \(ℕ\) is Diophantine over
-  \(R\) and thus \(ℕ ⊂ R\) is semi-decidable. However, the complement \(ℤ
+  Diophantine over \(R\), we know by the lemma above that \(ℕ\) is Diophantine
+  over \(R\) and thus \(ℕ ⊂ R\) is semi-decidable. However, the complement \(ℤ
   \setminus ℕ\) is Diophantine over \(ℤ\) as well, and thus \(ℕ ⊂ R\) is
   decidable.
 
@@ -138,7 +138,7 @@ This was shown by \textcite[§11]{Davis1976}.
               \left(\sum_{i=1}^n a_{ij} ξ_i\right)_{1 ≤ j ≤ k} ∈ A}.
   \]
   As \(A\) is semi-decidable so is \(S\). Note that this is exactly how we
-  efficiently represented finitely generated free \(ℤ\)-algebras and thus
+  efficiently represent finitely generated free \(ℤ\)-algebras and thus
   \(\algint\) in \cref{ex:Z is computable}. By the
   \textsc{DPRM}-theorem~(\ref{thm:DPRM}) the set \(S\) is Diophantine over
   \(ℤ\), i.e.\ there exists a polynomial \(p\) with coefficients in \(ℤ\) such
@@ -158,19 +158,19 @@ This was shown by \textcite[§11]{Davis1976}.
               α_1 = a_{11} ξ_1 + … + a_{1n} ξ_n\\
               \vdots\\
               α_k = a_{k1} ξ_1 + … + a_{kn} ξ_n
-            \end{cases}
+            \end{cases}.
   \end{align*}
   By assumption there exists a Diophantine definition of \(ℤ\) over \(\algint\).
   So by the procedure described in the proof of \cref{cor:Diophantine theory is
-  undecidable}, one can translate the above conditions into a Diophantine
+  undecidable}, one can translate the conditions above into a Diophantine
   definition of \(A\) over \(\algint\).
 \end{proof}
 
 Given the tools and structural results that we have just introduced, all that is
 left to prove the undecidability of Hilbert's tenth problem over a fixed ring of
-algebraic integers \(\algint\), is proving that \(ℤ\) has a Diophantine
+algebraic integers \(\algint\), is showing that \(ℤ\) has a Diophantine
 definition over \(\algint\). This task will fill the remainder of this thesis.
-But before moving on to the case of specific number fields I will present an
+But before moving on to the case of specific number fields, I will present an
 important tool in proving that a field extension \(L/K\) has a Diophantine
 definition of \(\algint\) over \(\algint[L]\). This so called \emph{strong
 vertical method} was formalized by Denef and Lipshitz and successfully applied
@@ -214,7 +214,7 @@ of \cite{Shlapentokh2007}.
   \]
 \end{proof}
 
-Unlike Shlapentokh's formulation if \(y ∈ \algint\) then the conditions on the
+Unlike Shlapentokh's formulation, if \(y ∈ \algint\) then the conditions on the
 embeddings are easily seen to be Diophantine \cite[cf.][Lem.~8]{Denef1980}.
 
 \begin{lem}\label{lem:8}
@@ -261,7 +261,7 @@ embeddings are easily seen to be Diophantine \cite[cf.][Lem.~8]{Denef1980}.
   = 1$. Thus, we may assume that $n > 1$ and that the claim is proven for all
   smaller collections of complex numbers. We will distinguish two cases.
 
-  Let us first assume that
+  Firstly, let us assume that
   \[
     ∀ j ∈ \set{0, …, n - 1} : ∃ i_j ∈ \set{1, …, n}:
       |a_{i_j} + j| < \frac{1}{2}.
@@ -281,7 +281,7 @@ embeddings are easily seen to be Diophantine \cite[cf.][Lem.~8]{Denef1980}.
   \(|a_{i_0} + j| ≥ 1/2\) and therefore that
   \[
     C ≥ \prod_{i = 1}^n |a_i + j| ≥
-        \frac{1}{2} \prod_{\substack{i = 1\\i ≠ i_0}}^n |a_i + j|
+        \frac{1}{2} \prod_{\substack{i = 1\\i ≠ i_0}}^n |a_i + j|.
   \]
   Thus, \(a_1, …, a_{i_0 - 1}, a_{i_0 + 1}, …, a_n\) satisfy the assumption of
   the induction hypothesis (w.r.t.\ \(C' := 2C\)) and hence
@@ -299,7 +299,7 @@ embeddings are easily seen to be Diophantine \cite[cf.][Lem.~8]{Denef1980}.
   \[
     ∃ j_0 ∈ \set{0, …, n - 1} : ∀ i \set{1, …, n}: |a_i + j_0| ≥ \frac{1}{2}.
   \]
-  Then, we have for all \(i ≤ k ≤ n\) that
+  Then we have for all \(i ≤ k ≤ n\) that
   \[
     2^nC ≥ \prod_{i= 1}^n \underbrace{2|a_i + j_0|}_{≥ 1} ≥ 2|a_k + j_0|.
   \]

@@ -10,14 +10,15 @@
 % ██   ██  ██ ████  ██        ██    ██    ██    ██       ██   ██ ██
 % ██   ██  ██  ██████         ██     ██████     ██       ██   ██ ███████ ██
 
-I closely follow the papers of \textcite{Denef1980} and \textcite{Pheidas1988},
-whose structure in term heavily depends on the article \citetitle{Davis1973} by
-\textcite{Davis1973}. This way, one can prove the undecidability of Hilbert's
-tenth problem over rings of algebraic integers in totally real number fields and
-number fields with one pair of non-real embeddings and at least one real
-embedding in one go. This approach is also present in Sections 6.3 and 7.2 of
-the study~\cite{Shlapentokh2007} by Shlapentokh. The same author has proven the
-second result independently of Pheidas in her thesis~\cite{Shlapentokh1989}.
+I will closely follow the papers of \textcite{Denef1980} and
+\textcite{Pheidas1988}, whose structure in term heavily depends on the article
+\citetitle{Davis1973} by \textcite{Davis1973}. This way, one can prove the
+undecidability of Hilbert's tenth problem over rings of algebraic integers in
+totally real number fields and number fields with one pair of non-real
+embeddings and at least one real embedding in one go. This approach is also
+present in Sections 6.3 and 7.2 of the study~\cite{Shlapentokh2007} by
+Shlapentokh. The same author has proven the second result independently of
+Pheidas in her thesis~\cite{Shlapentokh1989}.
 
 \subsection{Finitely many easy lemmas}
 % ██      ███████ ███    ███ ███    ███  █████  ███████
@@ -48,30 +49,28 @@ sequences defined below.
   \end{equation}
 \end{defin}
 
-This definition includes the case \(K = ℚ\) with \(\algint = ℤ\) of~\cite{Davis1973}. However, I am using the slightly modified notation of~\cite{Denef1980,Pheidas1988}.
-
-Under the assumptions of the definition \(δ(a)\) is a root of the monic
-quadratic polynomial
+This definition includes the case \(K = ℚ\) with \(\algint = ℤ\)
+of~\cite{Davis1973}. However, I am using the slightly modified notation
+of~\cite{Denef1980,Pheidas1988}. Under the assumptions of the definition,
+\(δ(a)\) is a root of the monic quadratic polynomial
 \[
   X^2 - a^2 + 1 ∈ \algint {[X]}.
 \]
 Therefore, the extension \(K[δ(a)] / K\) is quadratic and \(δ(a) ∈
-\algint[{K[δ(a)]}]\). The sequences \(\px_m(a)\) and \(\py_m(a)\) are well
-defined for each \(m ∈ ℕ\) as they correspond to the coefficients of
-\({(ε(a))}^m\) in \(K[δ(a)]/K\) with respect to the basis \(\lbrace 1,
-δ(a)\rbrace\). If the reference is clear, I will omit the dependency on \(a\)
-writing \(δ, ε, \px_m\) and \(\py_m\).
+\algint[{K[δ(a)]}]\) in an algebraic integer. The sequences \(\px_m(a)\) and
+\(\py_m(a)\) are well defined for each \(m ∈ ℕ\) as they correspond to the
+coefficients of \({(ε(a))}^m\) in \(K[δ(a)]/K\) with respect to the basis
+\(\lbrace 1, δ(a)\rbrace\). If the reference is clear, I will omit the
+dependency on \(a\) writing \(δ, ε, \px_m\) and \(\py_m\) instead.
 % QUESTION Why does every number field contain such an element \(a\)?
-\todo{Why does every number field contain such an element \(a\)?}
-In the following the number field \(K[δ(a)]\) will be denoted by \(L\).
+%\todo{Why does every number field contain such an element \(a\)?}
+%In the following the number field \(K[δ(a)]\) will be denoted by \(L\).
 
 \begin{rem}
-  As \(L/K\) has degree two, there is exactly one pair of field
-  automorphisms\footnote{A field extension of degree two is necessarily normal.}
-  on \(L\) preserving \(K\) point-wise, namely \(σ_1^{K}(α + δβ) = α + δβ\) and
+  As \(L/K\) has degree two, there is exactly one pair of field automorphisms on
+  \(L\) preserving \(K\) point-wise, namely \(σ_1^{K}(α + δβ) = α + δβ\) and
   \(σ_2^K(α + δβ) = α - δβ\) for \(α, β ∈ \algint\). The latter will be denoted
-  by \(\sigmaK{η} = σ_2^K(η)\) to emphasize the analogy of complex
-  conjugation.
+  by \(\sigmaK{η} = σ_2^K(η)\) to emphasize the analogy of complex conjugation.
 \end{rem}
 
 \begin{exam}
@@ -83,8 +82,8 @@ In the following the number field \(K[δ(a)]\) will be denoted by \(L\).
   \[
     √3 = m + n√2.
   \]
-  Now since neither \(√3\) nor \(√3 / √2\) are integers, we may assume that both
-  \(m\) and \(n\) are non-zero. But then
+  Now since neither \(√3\) nor \(√{3/2}\) are rational integers, we may assume
+  that both \(m\) and \(n\) are non-zero. But then
   \[
     3 = m^2 + 2 m n √2 + 2 n^2
   \]
@@ -129,20 +128,24 @@ generalized versions of the ones given in Davis' paper~\cite{Davis1973}.
 \begin{proof}
   \begin{plist}
     \item We have \(ε \; (a - δ) = (a + δ) (a - δ) = a^2 - δ^2 = 1\) as desired.
-    \item One uses induction on \(m\). If \(m = 0\), the pair \(\px_0 = 1\) and \(\py_0 =
-    0\) yields a trivial solution to equation~\eqref{eq:Pell}. Let the claim be
-    proven for all pairs \(\px_n, \py_n\) with \(n ≤ m\). Then rewriting the definition
-    of \(\px_{m + 1}, \py_{m + 1}\) one obtains
+
+    \item One uses induction on \(m\). If \(m = 0\), the pair \(\px_0 =
+    1\) and \(\py_0 = 0\) yields a trivial solution to
+    equation~\eqref{eq:Pell}. Let the claim be proven for all pairs
+    \(\px_n, \py_n\) with \(n ≤ m\). Then rewriting the definition of
+    \(\px_{m + 1}, \py_{m + 1}\) one obtains
     \[
       \px_{m + 1} + δ \py_{m + 1} = ε^{m + 1} = (\px_m + δ \py_m)ε.
     \]
     Applying the automorphism \(\sigmaK{\cdot}\) implies
     \[
-      \sigmaK{\px_{m + 1} + δ \py_{m + 1}} = \px_{m + 1} - δ \py_{m + 1} = (\px_m - δ \py_m) ε^{-1}
+      \sigmaK{\px_{m + 1} + δ \py_{m + 1}} = \px_{m + 1} - δ \py_{m + 1} =
+      (\px_m - δ \py_m) ε^{-1}
     \]
     and multiplication of both equations yields
     \[
-      \px_{m + 1}^2 - d \py_{m + 1}^2 = \sigmaK{\px_{m + 1} + δ \py_{m + 1}} (\px_{m + 1} - δ \py_{m + 1}) = 1
+      \px_{m + 1}^2 - d \py_{m + 1}^2 = 
+      \sigmaK{\px_{m + 1} + δ \py_{m + 1}} (\px_{m + 1} - δ \py_{m + 1}) = 1,
     \]
     as claimed.
   \end{plist}
@@ -156,7 +159,9 @@ can be seen as an analogue of the trigonometric identity
 \[
   \cos m + i \sin m = e^{im} = {(\cos 1 + i \sin 1)}^m,
 \]
-where \(\px_m\) plays the role of \(\cos m\), \(\py_m\) the one of \(\sin m\), and \(i\) is replaced by \(δ\). In this view Pell's equation~\eqref{eq:Pell} is the analogue of the Pythagorean identity
+where \(\px_m\) plays the role of \(\cos m\), \(\py_m\) the one of \(\sin m\),
+and \(i\) is replaced by \(δ\). In this view Pell's equation~\eqref{eq:Pell} is
+the analogue of the Pythagorean identity
 \[
   {\cos (m)}^2 + {\sin (m)}^2 = 1.
 \]
@@ -177,16 +182,20 @@ The next lemma proves the identities corresponding to \(\cos m = \Re e^{im}\),
 \begin{proof}
   \begin{plist}
     \item In \cref{lem:epsilon is unit} we have seen that \(ε^{-1} =
-    \sigmaK{ε}\) and therefore \(ε^{-m} = {\left(\sigmaK{ε}\right)}^m\). Observe that for arbitrary \(α, β ∈ \algint\) we have
+    \sigmaK{ε}\) and therefore \(ε^{-m} = {\left(\sigmaK{ε}\right)}^m\). Observe
+    that for arbitrary \(α, β ∈ \algint\) we have
     \[
       α + β y + \sigmaK{α + δ β} = 2α \quad \text{and} \quad
       α + β y - \sigmaK{α - δ β} = 2δ β.
     \]
     Now, setting \(α + δ β = ε^m\) yields the claim.
-    \item By the defining equation for \(\px_m\) and \(\py_m\) we have
+    
+    \item By the defining equation for \(\px_{m + k}\) and \(\py_{m + k}\) we
+    have
     \begin{align*}
-      \px_{m + k} + δ \py_{m + k} &= ε^{m + k} = (\px_m + δ \py_m) (\px_k + δ \py_k) =\\
-                            &= (\px_m \px_k + δ^2 \py_m \py_k) + δ (\px_m \py_k + \px_k \py_m)
+      \px_{m + k} + δ \py_{m + k} &= ε^{m + k} = 
+        (\px_m + δ \py_m) (\px_k + δ \py_k) =\\
+      &= (\px_m \px_k + δ^2 \py_m \py_k) + δ (\px_m \py_k + \px_k \py_m)
     \end{align*}
     and thusly
     \begin{align*}
@@ -212,7 +221,7 @@ of this lemma is the subsequent one, which brings divisibility into play.
     \(\algint\), as well as
 
     \item\label{lem:x m and y m are relative prime}
-    the principal ideals \((\px_m)\) and \(\py_m\) are relative prime in
+    the principal ideals \((\px_m)\) and \((\py_m)\) are relative prime in
     \(\algint\) for all \(m ∈ ℕ\)
   \end{thmlist}
 \end{lem}
@@ -224,9 +233,9 @@ of this lemma is the subsequent one, which brings divisibility into play.
       \py_{m(k + 1)} = \px_m \py_{mk} + x{mk} \py_m.
     \]
 
-    If the claim is proven for all factors lower than \(k + 1\), one finds that
-    \(\py_m \mid \py_{mk}\) and \(\py_m \mid \py_m\) trivially. As a consequence, \(\py_m \mid
-    \py_{m(k + 1)}\).
+    If the claim is proven for all factors up to \(k\), one finds that
+    \(\py_m \mid \py_{mk}\) and \(\py_m \mid \py_m\) trivially. As a
+    consequence, \(\py_m \mid \py_{m(k + 1)}\).
 
     \item Again the defining equation yields
     \begin{align*}
@@ -301,13 +310,14 @@ One applies the previous lemma to prove some congruence conditions.
     \item Note that \(a \equiv 1 \mod (a - 1)\) and thusly by
     \cref{lem:recursion for x_m and y_m}
     \[
-      \py_{m + 1} = 2 a \py_m - \py_{m - 1} \equiv 2 m - (m - 1) = m + 1 \mod (a - 1)
+      \py_{m + 1} = 2 a \py_m - \py_{m - 1} \equiv 2 m - (m - 1) =
+      m + 1 \mod (a - 1)
     \]
     as claimed.
 
-    \item Using \cref{lem:recursion for x_m and y_m} we see that for fixed \(m\)
-    the coefficients \(\px_m (η)\) and \(\py_m (η)\) can be expressed as some fixed
-    polynomial in \(η\). For the congruence this means
+    \item Using \cref{lem:recursion for x_m and y_m} again, we see that for
+    fixed \(m\) the coefficients \(\px_m (η)\) and \(\py_m (η)\) can be
+    expressed as some fixed polynomial in \(η\). For the congruence this means
     \begin{align*}
       \px_{m + 1} (a) &= 2 a \px_m (a) - \px_{m - 1} (a)
                      \equiv 2 b \px_m (b) - \px_m{m - 1} (b) = \px_{m + 1} (b)
@@ -337,9 +347,9 @@ One applies the previous lemma to prove some congruence conditions.
 \end{proof}
 
 At this point for the first time in this section I state a result that is no
-direct generalization of a result in~\cite{Davis1973} and present proofs given
-in~\cite{Denef1980} or \cite{Shlapentokh2007}. Note however that the results are
-nevertheless true for the case \(K = ℚ\) and \(\algint = ℤ\).
+direct generalization of a result of~\textcite{Davis1973} and present proofs
+given in~\cite{Denef1980} or \cite{Shlapentokh2007}. Note however that the
+results are nevertheless true for the case \(K = ℚ\) and \(\algint = ℤ\).
 
 \begin{lem}
   Let \(K\) be a number field and \(a ∈ \algint\) such that \(δ = δ(a) \not\in
@@ -1821,30 +1831,30 @@ of \(ℤ\) over \(\algint\).
 \end{proof}
 
 We have just seen that the rational integers are Diophantine over rings of
-algebraic integers \(\algint\), if the number field \(K ≠ ℚ\) is totally real,
-or \([K : ℚ] ≥ 3\) and there is exactly one pair of complex embeddings. By our
+algebraic integers \(\algint\) if the number field \(K ≠ ℚ\) is totally real, or
+\([K : ℚ] ≥ 3\) and there is exactly one pair of complex embeddings. From our
 observations in \cref{cor:Diophantine theory is undecidable} Hilbert's tenth
 problem over these rings is not decidable. The restriction on the degree in the
-second case can be omitted, as \textcite{Denef1975} showed in
+second case can be omitted, since \textcite{Denef1975} showed in
 \citeyear{Denef1975} that \(ℤ\) is Diophantine over rings of algebraic integers
 in quadratic number fields. This result was further strengthened by
 \textcite{Denef1978}. They proved that \(ℤ\) is Diophantine over \(\algint\) if
 \(K / M\) is a quadratic extension of a totally real number field \(M\).
 \textcite{Shapiro1989} used these results to deduce that all cyclotomic fields
 posses a Diophantine definition of \(ℤ\) over their rings of algebraic integers.
-More generally, they deduced this result for all fields \(K\), such that \(K/ℚ\)
+More generally, they deduced this result for all fields \(K\), for which \(K/ℚ\)
 is normal and the Galois group of the extension is abelian.
 
 All these results make the conjecture of \textcite{Denef1978}, that such a
 Diophantine definition of \(ℤ\) over \(\algint\) exists for all number fields
 \(K\), very plausible. This is especially true since promising techniques using
-elliptic curves have been developed among others by \textcite{Poonen2002}.
+elliptic curves have been developed, for instance by \textcite{Poonen2002}.
 
 Notice however that a Diophantine definition of \(ℤ\) might not be necessary for
 the Diophantine theory \(\mathtt{H10}(\struc{O}_K)\) to be undecidable. Indeed,
 there might exist rings of algebraic integers whose Diophantine theory forms a
 kind of set that \textcite{Post1944} calls ‘creative’. Then
 \(\mathtt{H10}(\struc{O}_K)\) would be undecidable as well, but the halting set
-is not many-one reducible to this theory. As a consequence of \cref{thm:CE sets
-are Diophantine} such a ring of integers cannot posses a Diophantine definition
-of \(ℤ\).
+is not many-one reducible to this Diophantine theory. As a consequence of
+\cref{thm:CE sets are Diophantine}, such a ring of integers cannot posses a
+Diophantine definition of \(ℤ\).
