@@ -331,7 +331,7 @@ one.
   The following are \(\lang_{ring}\)-formulae:
   \begin{exlist}
     \item \(\mathtt{x_1 \cdot x_2 \doteq x_3}\)
-    \item \(\mathtt{∃ x_2 : x_1 \cdot x_2 = 1}\)
+    \item \(\mathtt{∃ x_2 : x_1 \cdot x_2 \doteq 1}\)
     \item\label{ex:formula distributivity}
      \(\mathtt{∀x_1 : ∀x_2 : ∀x_3 : (x_1 + x_2) \cdot x_3 \doteq x_1 \cdot x_3 + x_2 \cdot x_3}\)
   \end{exlist}
@@ -558,7 +558,7 @@ of settling Hilbert's tenth problem and define what it means to decide a theory.
   Let \(\lang\) be a language and let \(\mathfrak{A}\) be a model with universe
   \(A\) in \(\lang\).
   \begin{thmlist}
-    \item The \emph{full theory of \(\mathfrak{A}\)} is the the set
+    \item The \emph{full theory of \(\mathfrak{A}\)} is the set
     \[
       \mathtt{Th}(\mathfrak{A}) :=
         \set{ϕ ∈ Φ(\lang) : \mathfrak{A} \models ϕ}
@@ -606,8 +606,8 @@ abstract definitions.
     \item Consider \(ϕ := \mathtt{∃ x_1 : x_1^2 + 1 \doteq 0}\). Then \(ϕ\) can
     be satisfied by the witness \(i ∈ ℂ\) in \(\mathfrak{C} := ⟨ ℂ; +, -, \cdot;
     0, 1⟩\) as \(i^2 + 1 = 0\) holds in \(\mathfrak{C}\). Thus, \(ϕ\) is
-    contained in \(\mathtt{Th}_∃(\mathfrak{C})\), but the sentence is not
-    contained in \(\mathtt{Th}_{∃}(\mathfrak{Z})\).
+    contained in \(\mathtt{H10}^*(\mathfrak{C})\), but the sentence is not
+    contained in \(\mathtt{H10}^*(\mathfrak{Z})\).
 
     \item Consider the directed graph \(\mathfrak{G} := ⟨\set{1, 2, 3, 4}; E⟩\)
     below.
@@ -650,7 +650,7 @@ interpreting \(\mathtt{c}_a^{\mathfrak{A}} := a\) for all \(a ∈ A\).
   Let \(\lang\) be a language and let \(\mathfrak{A}\) be a model with universe
   \(A\) in \(\lang\). We define the following \(\lang_A\)-theories.
   \begin{thmlist}
-    \item The \emph{complete diagram} of \(\mathfrak{A}\) is the the set
+    \item The \emph{complete diagram} of \(\mathfrak{A}\) is the set
     \[
       D^c(\mathfrak{A}) :=
         \set{ϕ ∈ Φ(\lang_A) : \mathfrak{A} \models ϕ}
@@ -700,7 +700,7 @@ name can be justified by the following lemma.
   \(\lang_{ring}\)-structure.
   \begin{thmlist}
     \item The set of term functions associated to \(\lang_R\)-terms is the set
-    of polynomial functions \(R[X_1, X_2, …]\)
+    of polynomial functions \(R[X_1, X_2, …]\).
 
     \item Let \(\mathtt{P} \subseteq Φ(\lang_R)\) be the set of all
     existentially quantified atomic \(\lang_R\)-formulae. There exists a
@@ -723,9 +723,9 @@ name can be justified by the following lemma.
     difference is that constants now range over all of \(R\) instead of
     \(\set{0, 1}\) thus yielding the different coefficients.
 
-    To see the converse inclusion we note that monomials \(α X_{i_1} X_{i_d} ∈
-    R[X_1, X_2]\), with \(\set{\seq[d]{i}} \subseteq ℕ \setminus \set{0}\) not
-    necessarily distinct, correspond to terms
+    To see the converse inclusion we note that monomials \(α X_{i_1} … X_{i_d} ∈
+    R[X_1, X_2, …]\), with \(\set{\seq[d]{i}} \subseteq ℕ \setminus \set{0}\)
+    not necessarily distinct, correspond to terms
     \[
       \mathtt{c}_α \cdot \mathtt{x_{i_1} \cdot … \cdot x_{i_d}}.
     \]
@@ -852,8 +852,9 @@ which already has \(52\) decimal digits.
 \end{defin}
 
 \begin{rem}
-  Let \(\mathfrak{A}\) be a model. If we order the theories defined above by
-  set-inclusion, the interrelations depicted in the following diagram hold.
+  Let \(\mathfrak{A}\) be a model. If one orders the theories defined above with
+  respect to set-inclusion, the interrelations depicted in the following diagram
+  hold. (Arrows pointing from sub- to supersets)
   \begin{center}
     \includegraphics[scale=1]{res/theories}
   \end{center}
@@ -976,14 +977,16 @@ non-constant symbols.
     \[
       \mathtt{C}(i(c)) = c^{\mathfrak{A}}
     \]
-    holds for all constant symbols \(c ∈ \mathcal{C}\).
+    holds for all constant symbols \(c ∈ \mathcal{C}\). As before angled
+    brackets \(⟨\cdot⟩\) in the expressions above indicate pairings like in
+    \cref{ex:total pairing}.
 
     \item A model \(\mathfrak{A}\) with universe \(A\) is called
     \emph{efficiently presentable} if \(\mathfrak{A}\) is isomorphic to a
-    computable model with universe \(Ω_A ⊂ ω\) in the same languare.
+    computable model with universe \(Ω_A ⊂ ω\) in the same language.
 
-    \item A computable morphism between computable models is called
-    \emph{computable morphism}.
+    \item A morphism between computable models is called \emph{computable
+    morphism} if it is computable as a partial function.
   \end{thmlist}
 \end{defin}
 
@@ -998,12 +1001,13 @@ non-constant symbols.
     R\), where \(Ω_R \subseteq ω\) is a computable \(\lang_{ring}\)-structure in
     the sense of the definition above and \(α_R\) is an
     \(\lang_{ring}\)-epimorphism. Then the ring \(R\) is called computable if
-    the equivalence relation
+    there exists an effective enumeration \(α_R : Ω_R → R\) such that the
+    equivalence relation
     \[
       x_1 \equiv_{α_R} x_2  \quad ⇔ \quad
       α_R(x_1) = α_R(x_2)
     \]
-    on \(Ω_R\) is decidable for all pairs \(x_1, x_2 ∈ R\).
+    is decidable on \(Ω_R\).
 
     This definition can have slight technical advantages. But note that in this
     case \(Ω_R\) need not be a ring in the sense of abstract algebra, an
@@ -1088,7 +1092,7 @@ easily be proven via structural induction.
         \bottomrule
       \end{array}
     \]
-    in memory and extends it to all of \(\algint\) linearly.
+    in memory and extends it to all of the \(ℤ\)-algebra linearly.
 
     \item \(⟨ℕ, ≤⟩\) is efficiently presentable using the tally encoding and
     \(n ≤ m\) if and only if \(n \dotminus m = 0\). So deciding \(n ≤ m\) boils
@@ -1108,10 +1112,10 @@ regard. But before studying computable isomorphisms we need a lemma.
 \end{lem}
 \begin{proof}
   Let \(x ∈ Q'\) be given. To find \(f^{-1}(x)\) one lists all elements of \(ω\)
-  and checks for every \(y ∈ ω\) wether \(y\) is contained in \(Q\). Since \(Q\)
+  and checks for every \(y ∈ ω\) whether \(y\) is contained in \(Q\). Since \(Q\)
   is decidable, this can be carried out efficiently. If \(y\) is not
   contained in \(Q\), we try the next element in \(ω\). Otherwise, we compute
-  \(f(y)\) and check wether \(f(y) = x\) holds. In this case, we set
+  \(f(y)\) and check whether \(f(y) = x\) holds. In this case, we set
   \(f^{-1}(x) := y\) and are finished. If \(f(y)\) does not equal \(x\) we take
   the next element of \(ω\) and start over. The process will stop at some point
   as \(f\) is surjective.

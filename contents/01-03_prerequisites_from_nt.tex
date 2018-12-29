@@ -21,7 +21,7 @@ In this section I will closely follow Chapter 1 of the German
 textbook~\cite{Neukirch2006}. However, the content is also present in the
 English reference~\cite[Chap.~2]{Milne2017}, and sometimes the presentation of
 this reference will be recited. We start with a series of definitions and remind
-the reader on some important results from algebraic number theory and
+the reader of some important results from algebraic number theory and
 commutative algebra. But at first let us fix an important notation.
 
 Let \(R\) and \(S\) be commutative rings with unity. Let \(φ: R → S\) be a
@@ -58,18 +58,18 @@ pane \(ℂ\).
     of degree \(2\). The inverse of \(a + b √2\), where not both \(a\) and \(b\)
     are \(0\), is given by \(\frac{a - b √2}{a^2 - 2 b^2}\).
 
-    \item \(ℚ[√[3]{2}] = \set{a + b √[3]{2} + c √[3]{4} : a, b ∈ ℚ}\) is an
+    \item \(ℚ[√[3]{2}] = \set{a + b √[3]{2} + c √[3]{4} : a, b, c ∈ ℚ}\) is an
     algebraic number field of degree \(3\).
   \end{exlist}
 \end{exam}
 
 Let \(K/M\) be an extension of number fields, then \(K/M\) is in fact an
 \emph{algebraic extension}. This means that every \(x ∈ K\) is the root of some
-polynomial with coefficients in \(M\). We denote by \(μ_{M, x} ∈ M[X]\) the
-monic polynomial with root \(x\) dividing (in \(M[X]\)) all other polynomials
-with root \(x\). The polynomial \(μ_{M, x}\) is called \emph{minimal polynomial}
-of \(x\) over \(M\). By the minimality condition (w.r.t.\ divisibility in
-\(K[X]\)) on \(μ_{M, x}\) this polynomial must be irreducible.
+non-zero polynomial with coefficients in \(M\). We denote by \(μ_{M, x} ∈ M[X]\)
+the monic polynomial with root \(x\) dividing (in \(M[X]\)) all other
+polynomials with root \(x\). The polynomial \(μ_{M, x}\) is called \emph{minimal
+polynomial} of \(x\) over \(M\). By the minimality condition (w.r.t.\
+divisibility in \(M[X]\)) on \(μ_{M, x}\) this polynomial must be irreducible.
 
 In fact, every element \(x\) in \(K\) is algebraic over the rationals \(ℚ\).
 Note that the field of all algebraic elements \(\overline{ℚ}\)---called
@@ -83,7 +83,7 @@ extension \(\overline{ℚ} / ℚ\) is (countably) infinite.
   \[
     α^n + a_{n-1}α^{n - 1} + … + a_0 = 0
   \]
-  for some \(n ≥ 1\) and some \(\seq[n - 1]{a} ∈ R\). If all elements of \(S\)
+  for some \(n ≥ 1\) and some \(a_0,…,a_{n-1} ∈ R\). If all elements of \(S\)
   are integral over \(R\) then \(S\) is called \emph{integral} over \(R\). If
   \(R\) is an integral domain then \(R\) is \emph{integrally closed} if for all
   elements \(x ∈ \Quot(R)\) being integral over \(R\) implies \(x ∈ R\).
@@ -102,7 +102,7 @@ Richard Dedekind gave a proof of this theorem using the following proposition.
 
 \begin{pro}\label{pro:characterization of integral elements}
   Let \(R \subseteq S\) be commutative rings with unity. Then \(α ∈ S\) is
-  integral over \(R\) if and only if there exists a finitely generated
+  integral over \(R\) if and only if there exists a finitely generated non-zero
   \(R\)-module \(M \subseteq S\) such that \(αM \subseteq M\), in fact \(M =
   R[α]\) can be chosen.
 \end{pro}
@@ -135,8 +135,8 @@ Richard Dedekind gave a proof of this theorem using the following proposition.
   generates \(MN\).
 
   We finish the proof by showing that \(αβ\) and \(α ± β\) satisfy \(αβ\, MN
-  \subseteq MN\) and \((α ± β) MN\) respectively. Then the proposition implies
-  the claim. But this is the case since
+  \subseteq MN\) and \((α ± β) MN ⊂ MN\) respectively. Then the proposition
+  implies the claim. But this is the case since
   \[
     αβ \sum_{i=1}^k m_i n_i = \sum_{i=1}^k \underbrace{αm_i}_{∈ M} \,
     \underbrace{βn_i}_{∈ N} ∈ MN
@@ -197,7 +197,7 @@ the quotient to be a rational integer. More precisely, the following holds.
   where \(α ∈ \algint\) is an algebraic and \(n ∈ ℤ \setminus \set{0}\) is a
   rational integer. If \(x = βm^{-1}\) is another representation of this form,
   then \(αm = βn\) must hold in \(\algint\) and thus we can embed \(K\) into the
-  quotient field \(Quot(\algint)\) by mapping \(x = αn^{-1}\) to the
+  quotient field \(\Quot(\algint)\) by mapping \(x = αn^{-1}\) to the
   representative \([α, n] ∈ \Quot(\algint)\).
 
   If on the other hand \([α, β] ∈ \Quot(\algint)\) with \(β ≠ 0\) is given,
@@ -259,7 +259,8 @@ by the norm and trace, which are defined below.
    exist exactly \(n\) embeddings \(\seq{σ}: L → ℂ\) that fix \(K\) point-wise.
    Furthermore, for all \(x ∈ L\) we have that
    \begin{thmlist}
-     \item \(μ_{K, x}(X) = \prod_{i = 1}^n (X - σ_i(x))\),
+     \item \(λ_{K, x}(X) = \prod_{i = 1}^n (X - σ_i(x))\),
+     \todo{Characteristic polynomial: Needed?}
      \item \(Tr_{L/K}(x) = \sum_{i = 1}^n σ_i(x)\), and
      \item \(N_{L_K}(x) = \prod_{i = 1}^n σ_i(x)\).
    \end{thmlist}
@@ -327,8 +328,8 @@ As a next step we will further investigate the algebraic structure of
 \(\algint\).
 
 \begin{thm}
-  Let \(L/K\) be an extension of number fields. Then \(\algint[L]\) is a
-  finitely generated free \(\algint\)-module.
+  Let \(K\) be an algebraic number field. Then \(\algint\) is a finitely
+  generated free \(ℤ\)-module.
 \end{thm}
 
 We call a module-basis of \(\algint[L]\) over \(\algint\) an \emph{integral
@@ -348,11 +349,11 @@ computability, which is the content of the following corollary.
   \(\lang_{ring}\)-structure.
 \end{cor}
 \begin{proof}
-  By the theorem above\(\algint\) is a finitely generated free \(ℤ\)-module. In fact,
-  it even carries a \(ℤ\)-algebra structure. Thus, it is efficiently presentable
-  by \cref{ex:Z is computable}. Since \(\algint\) is a ring with unity, it is
-  finitely generated and as a consequence of \cref{thm:computable categoricity}
-  \(\algint\) is computably categorical.
+  By the theorem above \(\algint\) is a finitely generated free \(ℤ\)-module. In
+  fact, it even carries a \(ℤ\)-algebra structure. Thus, it is efficiently
+  presentable by \cref{ex:Z is computable}. Since \(\algint\) is a ring with
+  unity, it is finitely generated and as a consequence of \cref{thm:computable
+  categoricity} \(\algint\) is computably categorical.
 \end{proof}
 
 \subsection{Ideals of \(\algint\)}
@@ -528,7 +529,7 @@ that their greatest common divisor has the factorization
 Thus, if \(\mathfrak{a} + \mathfrak{b} = (1)\), we say \(\mathfrak{a}\) and
 \(\mathfrak{b}\) are \emph{relative prime}.
 
-If we notice that the product of ideals \(\mathfrak{a = \seq{a}}\), where the
+If we notice that the product of ideals \(\mathfrak{a = a_1 … a_n}\), where the
 \(\mathfrak{a}_i\) are pair-wise relative prime, is equal to the intersection
 \[
   \mathfrak{a} = \bigcap_{i = 1}^n \mathfrak{a}_i,
@@ -578,7 +579,7 @@ integers.
   \]
   If we set \(\mathfrak{b} := \mathfrak{a}_1 … \mathfrak{a}_{n - 1}\) then by
   the induction hypothesis the factor rings \(\algint / \mathfrak{b}\) and
-  \(\algint / \bigoplus_{i = 1}^{n - 1} \mathfrak{a}_i\) are isomorphic. Thus,
+  \(\bigoplus_{i = 1}^{n - 1} \algint / \mathfrak{a}_i\) are isomorphic. Thus,
   we can deduce that
   \[
     \bigoplus_{i = 1}^{n} \algint / \mathfrak{a}_i \; \cong \;
@@ -601,7 +602,7 @@ integers.
   Let \(\seq{\mathfrak{a}}\) be pair-wise relative prime. Then the Chinese
   remainder theorem tells us, that the collection of congruences
   \[
-    x \equiv a_1 \mod \mathfrak{a}_1 \; … \;
+    x \equiv a_1 \mod \mathfrak{a}_1, \; …, \;
     x \equiv a_n \mod \mathfrak{a}_n
   \]
   can be solved simultaneously. Indeed, in the proof of the theorem we have
@@ -626,10 +627,12 @@ of primes. As for ideals there exists a similar construction.
   \set{0}\) such that \(α \mathfrak{m} ⊂ \algint\).
 
   Let \(x := α / β ∈ K\), where \(α, β ∈ \algint\) and \(β ≠ 0\), then \(x
-  \algint := α^{-1}(β \algint)\) is called the \emph{principal fractional ideal}
+  \algint := β^{-1}(α \algint)\) is called the \emph{principal fractional ideal}
   generated by \(x\).
 \end{defin}
-As with usual ideals every fractional ideal \(\mathfrak{m}\) can be written as
+
+As with usual ideals every non-zero fractional ideal \(\mathfrak{m}\) can be
+written as
 \[
   \mathfrak{m} =
   \prod_{\substack{\mathfrak{p} ⊂ \algint\\\mathfrak{p} \text{ prime ideal}}}
@@ -653,8 +656,8 @@ principal ideals. More formally we have
   ℤ\) such that \(\mathfrak{p}\) divides the principal ideal \((p) = p
   \algint\).
 \end{pro}
-% TODO cite this theorem (Thm 120, Baxa)
-\todo{cite this theorem (Thm 120, Baxa)}
+For a short argrument proving the proposition see the proof of Thm~3.1 in the
+textbook~\cite{Neukirch2006}.
 
 \subsection{Geometry of numbers}
 %  ██████  ███████  ██████  ███    ███ ███████ ████████ ██████  ██    ██
@@ -743,15 +746,15 @@ proof is presented as in Thm.~4.4 of the textbook~\cite{Neukirch2006}.
   \]
   and thus
   \[
-    0 ≠ γ := γ_1 - γ_2 = ½ (x_1 - x_2)
+    0 ≠ γ := γ_1 - γ_2 = ½ (x_2 - x_1)
   \]
   lies in \(T ∩ Λ\), since it is the centre of the line segment between \(x_1\)
   and \(x_2 ∈ T\).
 
-  To obtain a contradiction assume that the members of the family of sets \((1/2
-  T + γ)_{γ ∈ Λ}\) are pair-wise disjoint. Then their intersections \(D ∩ (1/2
-  T + γ)\) with the fundamental parallelepiped \(D\) are pairwise disjoint as
-  well. It follows that
+  To obtain a contradiction assume that the members of the family of sets
+  \(\left(½ T + γ\right)_{γ ∈ Λ}\) are pair-wise disjoint. Then their
+  intersections \(D ∩ \left(½ T + γ\right)\) with the fundamental parallelepiped
+  \(D\) are pairwise disjoint as well. It follows that
   \[
     \Vol(D) ≥ \sum_{γ ∈ Λ} \Vol\left(D ∩ \left(½ T + γ\right)\right).
   \]
@@ -763,17 +766,17 @@ proof is presented as in Thm.~4.4 of the textbook~\cite{Neukirch2006}.
     \Vol\left((D - γ) ∩ \left(½ T\right)\right)
   \]
   Furthermore, the sets \(D - γ\) cover all of \(ℝ^n\) and therefore all of
-  \(1/2 T\) as well. Finally, we conclude that
+  \(½ T\) as well. Finally, we conclude that
   \[
-    \Vol(D) ≥ \Vol\left((D - γ) ∩ \left(½ T\right)\right) = \Vol\left(½ T\right)
-      = \frac{1}{2^n} \Vol(T),
+    \Vol(D) ≥ \sum_{γ ∈ Λ} \Vol\left((D - γ) ∩ \left(½ T\right)\right) =
+      \Vol\left(½ T\right) = \frac{1}{2^n} \Vol(T),
   \]
   which contradicts our assumption on the volume of \(T\).
 \end{proof}
 
 Note that the approximation of \(\Vol(T)\) cannot be improved as for instance
 the open square \(\set{(x, y) ∈ ℝ^2 : |x|, |y| < 1}\) has volume \(2^2\) but
-contains no lattice point of \((1, 0)ℤ + (0, 1)ℤ\).
+contains no non-zero lattice point of \((1, 0)ℤ + (0, 1)ℤ\).
 
 We will now use Minkowski's theorem to reprove an old result of Lagrange, that
 is of utmost importance to our task of settling Hilbert's tenth problem. The
@@ -828,7 +831,7 @@ vector of the standard basis of \(ℝ^n\).
   value \(0 = 0^2\) when \(m\) runs through \(0, 1, …, p - 1\).
   
   By the same argument \(-n^2 - 1\) runs through exactly \((p + 1)/2\)
-  distinc values modulo \(p\) for \(0 ≤ n ≤ p - 1\) as well. Hence, by the
+  distinct values modulo \(p\) for \(0 ≤ n ≤ p - 1\) as well. Hence, by the
   pigeonhole principle there exist integers \(m, n ∈ \set{0, 1, …, p - 1}\)
   solving the congruence
   \[
@@ -842,14 +845,14 @@ vector of the standard basis of \(ℝ^n\).
     d \equiv m b - n a \mod p.
   \]
   It is not hard to see, that \(Λ\) is in fact a (free abelian) subgroup of
-  \(ℤ^4\) and thus can be considered as an lattice. As \((p, p, p, p)\) is a
-  solution of the congruences, we find that \(p ℤ^4 ⊂ Λ\) is a subgroup of
-  \(Λ\). Considering the quotient \(Λ / p ℤ^4\) we note that \(a\) and \(b\) can
-  be chosen arbitrarily modulo \(p\), but then \(c\) and \(d\) are uniquely
-  determined. Thus, the index \([Λ : p ℤ^4]\) equals \(p^2\). We conclude that
-  the index \([ℤ^4 : Λ]\) equals \(p^2\) as well and by the previous lemma the
-  volume \(\Vol(D)\) of a fundamental parallelepiped \(D\) of \(Λ\) is \(1 \cdot
-  p^2\).
+  \(ℤ^4\) of rank \(4\) and thus can be considered as an lattice. As \((p, p, p,
+  p)\) is a solution of the congruences, we find that \(p ℤ^4 ⊂ Λ\) is a
+  subgroup of \(Λ\). Considering the quotient \(Λ / p ℤ^4\) we note that \(a\)
+  and \(b\) can be chosen arbitrarily modulo \(p\), but then \(c\) and \(d\) are
+  uniquely determined. Thus, the index \([Λ : p ℤ^4]\) equals \(p^2\). We
+  conclude that the index \([ℤ^4 : Λ]\) equals \(p^2\) as well and by the
+  previous lemma the volume \(\Vol(D)\) of a fundamental parallelepiped \(D\)
+  of \(Λ\) is \(1 \cdot p^2\).
 
   Consider the closed four-dimensional ball \(T\) of radius \(r\) around the
   origin. Its volume is \(π^2 r^4 / 2\) and if we choose \(2 p > r^2 > 4 √2 p /
@@ -862,7 +865,7 @@ vector of the standard basis of \(ℝ^n\).
   know that
   \begin{align*}
     a^2 + b^2 + c^2 + d^2 &\equiv
-        a^2 + b^2 + (m a + n b)^2 + (m b - n a)^2 \equiv \\
+        a^2 + b^2 + (m a + n b)^2 + (m b - n a)^2 \\
       &\equiv a^2 (m^2 + n^2 + 1) + b^2 (m^2 + n^2 + 1) \equiv 0 \mod p
   \end{align*}
   holds. On the other hand, since \((a, b, c, d)\) is in \(T\), we have that
@@ -942,7 +945,7 @@ Dirichlet's theorem is showing that \(L(U_K)\) can be considered as an \(r + s -
 1\)-dimensional lattice in \(H\).
 
 We will now turn our attention to approximations of real numbers by the
-rationals and start with a result of Peter Dirichlet. Dirichlet's direct proof
+rationals and start with a result of Dirichlet. Dirichlet's direct proof
 makes use of the pigeonhole principle. In fact, it was he who popularized this
 simple combinatorial fact by giving it its German name
 \foreignquote{german}{Schubfachprinzip}. However, we base our proof on
@@ -961,11 +964,11 @@ Minkowski's theorem.
   \[
     T := \set{(x, y) ∈ ℝ^2 : -N - ½ ≤ x ≤ N + ½, |αx - y| ≤ \frac{1}{N}}.
   \]
-  If we can proof \(T\) contains an integral tuple \((n, p) ∈ ℤ^2\), we are
-  done, as if \(n < 0\) we can replace \(p\) by \(-p\) as well as \(n\) by
-  \(-n\) and have found the claimed approximation. Note that \(n\) cannot be
-  zero, as otherwise since \(1/N\) is smaller than one, \(p\) must be zero as
-  well.
+  If we can prove that \(T\) contains a non-zero integral tuple \((n, p) ∈
+  ℤ^2\), we are done, as if \(n < 0\) we can replace \(p\) by \(-p\) as well as
+  \(n\) by \(-n\) and have found the claimed approximation. Note that \(n\)
+  cannot be zero, as otherwise since \(1/N\) is smaller than one, \(p\) must be
+  zero as well.
 
   As was mentioned before, we want to apply Minkowski's theorem and thus need to
   check that \(T\) is convex and symmetric in the origin. Symmetry is satisfied
@@ -979,16 +982,11 @@ Minkowski's theorem.
     -N - ½ ≤ x ≤ N + ½
   \]
   is met.\footnote{In the example depicted \(N\) equals \(3\).}
-  We need to prove that \(T\) contains a lattice point \(γ ∈ ℤ^2\). But
+  We need to prove that \(T\) contains a non-zero lattice point \(γ ∈ ℤ^2\). But
   this is now easy as by our geometrical observation \(T\) is convex and its
-  area is equal to the width of the ribbon \(2/N\) times the length of the
-  parallelogram, which is equal to
+  area is equal to
   \[
-    √{(2N + 1)^2 + (α (2N + 1))^2} = (2N + 1) √{1 + α^2}.
-  \]
-  Multiplication yields
-  \[
-    \Vol (T) = \frac{2}{N} (2N + 1) √{1 + α^2} > 4
+    \Vol(T) = \frac{2}{N} (2 N + 1) = 4 + \frac{2}{N} > 41
   \]
   and Minkowski's theorem implies the existence of the claimed lattice point.
 \end{proof}
@@ -1003,7 +1001,7 @@ of Dirichlet's approximation theorem.
 
 \begin{thm}[Multidimensional Dirichlet approximation theorem]%
   \label{thm:Dirichlet approximation}%
-  Let \(\seq[k]{α} ∈ ℝ\) be \(k\) real numbers and fix an integer \(N > 1\).
+  Let \(\seq[k]{α} ∈ ℝ\) be \(k\) real numbers and fix an integer \(N ≥ 1\).
   Then there exist integers \(\seq[k]{p}, n ∈ ℤ\) with \(0 < n ≤ N^k\) such
   that for all \(1 ≤ i ≤ ℓ\) we have that
   \[
@@ -1041,12 +1039,12 @@ cluster point of the sequence \((α n)_{n ∈ ℕ}\) if \(α\) is irrational.
   \begin{center}
     \includegraphics{res/unitcircle}
     \caption{The half-open unit interval is rolled up to form a unit circle.
-             Both can be seen as representations of the factor group \(ℝ/ℤ\).}%
+             Both can be seen as representations of the factor group \(ℝ/ℤ\)}%
     \label{fig:unitcircle}
   \end{center}
 \end{figure}
 
-In the following I will recite the presentation of the proof of Kronecker'
+In the following I will recite the presentation of the proof of Kronecker's
 theorem from Chap.~2 of the textbook~\cite{Hlawka1991}. Note however that the
 material is also presented in Chap.~23 of the reference~\cite{Hardy1975} and the
 remark following the theorem stems from this book.
@@ -1054,7 +1052,7 @@ remark following the theorem stems from this book.
 \begin{thm}[Kronecker's approximation theorem]
   For all irrational numbers \(α ∈ ℝ \setminus ℚ\), all real numbers \(β ∈ ℝ\),
   all integers \(N ≥ 1\), and all \(ε > 0\) there exist integers \(p, n ∈ ℤ\)
-  with \(n ≥ N\) such that
+  with \(|n| ≥ N\) such that
   \[
     |αn - β - p| < ε
   \]
@@ -1080,21 +1078,21 @@ remark following the theorem stems from this book.
   \[
     k := \left\lfloor \frac{β + c}{α q - g} \right\rfloor + 1,
   \]
-  where \(\lfloor x \rfloor\) denotes the greatest integer smaller than \(x\),
-  to ensure that the last factor in \eqref{eq:Kronecker 1} remains smaller than
-  one. Choose \(c\) to be any integer with the same sign as \(α q - g\) that
+  where \(\lfloor x \rfloor\) denotes the greatest integer smaller than \(x\).
+  This ensures that the last factor in \eqref{eq:Kronecker 1} remains \(≤ 1\).
+  Choose \(c\) to be any integer with the same sign as \(α q - g\) that
   satisfies
   \[
-    |c| ≥ (N + 1) |αq - g| + |β|
+    |c| ≥ N |αq - g| + |β|
   \]
   and set \(k\) accordingly. Then
   \begin{align*}
     k &= \left\lfloor \frac{β + c}{α q - g} \right\rfloor + 1 ≥
          \frac{c}{α q -g } - \left\vert \frac{β}{α q - g} \right\vert ≥\\
-      &≥ \left((N + 1) + \left\vert \frac{β}{α q - g} \right\vert \right) -
-        \left\vert \frac{β}{α q - g} \right\vert = N + 1 > 0
+      &≥ \left(N + \left\vert \frac{β}{α q - g} \right\vert \right) -
+        \left\vert \frac{β}{α q - g} \right\vert = N > 0
   \end{align*}
-  and therefore \(n = kq ≥ k > N\). From \eqref{eq:Kronecker 1} we can now
+  and therefore \(n = kq ≥ k ≥ N\). From \eqref{eq:Kronecker 1} we can now
   deduce that
   \[
     |α n - β - p | =
@@ -1106,8 +1104,8 @@ remark following the theorem stems from this book.
 
 \begin{rem}
   Note that the condition on \(α\) being irrational in Kronecker's theorem is
-  necessary. Indeed, if we assume otherwise that \(α = a/b\) then \(αn - \lfloor
-  αn \rfloor\) runs only through the values
+  necessary. Indeed, if we assume otherwise that \(α = a/b ∈ ℚ\) then \(αn -
+  \lfloor αn \rfloor\) runs only through the values
   \[
     0, \frac{1}{b}, \frac{2}{b}, …, \frac{b - 1}{b}
   \]
@@ -1183,10 +1181,10 @@ As did \textcite{Hlawka1991} I will present the inductive proof of
   \[
     0 < |α_i q - g_i| < δ
   \]
-  holds for all \(i ∈ \set{1, …, ℓ}\). Again, the left inequality holds again
+  holds for all \(i ∈ \set{1, …, ℓ}\). Again, the left inequality holds
   since \(α_i\) is irrational.
 
-  As in the one-dimensional case we set \(k = n q\) and \(p_i = k g_i + c_i\)
+  As in the one-dimensional case we set \(n = k q\) and \(p_i = k g_i + c_i\)
   for \(1 ≤ i ≤ ℓ\) and integers \(k, \seq[ℓ]{c}\) whose values will be
   determined later. Considering the expression of interest we can again obtain
   \[
@@ -1225,24 +1223,24 @@ As did \textcite{Hlawka1991} I will present the inductive proof of
   \]
   I claim that the real numbers \(\seq[ℓ-1]{\tilde{α}}\) are linearly
   independent over \(ℤ\), so that the induction hypothesis can be applied to the
-  \(\tilde{α}_j\) and \(\tilde{β}_j\). Indeed, if we have integers \(\seq[ℓ]{c}
+  \(\tilde{α}_j\) and \(\tilde{β}_j\). Indeed, if we have integers \(\seq[ℓ]{f}
   ∈ ℤ\) such that
   \[
-    \sum_{j = 1}^{ℓ - 1} c_j \tilde{α}_j = -c_ℓ
+    \sum_{j = 1}^{ℓ - 1} f_j \tilde{α}_j = -f_ℓ
   \]
   holds. We can transform this identity to the expression
   \[
-    0 = c_ℓ + \sum_{j = 1}^{ℓ - 1} c_j \tilde{α}_j =
-        c_ℓ + \left(\sum_{j = 1}^{ℓ - 1} c_j α_j q -
-                    \sum_{j = 1}^{ℓ - 1} c_j g_j \right)
+    0 = f_ℓ + \sum_{j = 1}^{ℓ - 1} f_j \tilde{α}_j =
+        f_ℓ + \left(\sum_{j = 1}^{ℓ - 1} f_j α_j q -
+                    \sum_{j = 1}^{ℓ - 1} f_j g_j \right)
         \frac{1}{α_ℓ q - g_ℓ},
   \]
   which is equivalent to
   \[
-  \sum_{j = 1}^{ℓ} c_j α_j q = \sum_{j = 1}^{ℓ} c_j g_j ∈ ℤ.
+  \sum_{j = 1}^{ℓ} f_j α_j q = \sum_{j = 1}^{ℓ} f_j g_j ∈ ℤ.
   \]
   Now since \(q\) is a non-zero integer and \(\seq[ℓ]{α}\) are linearly
-  independent over \(ℤ\), we find that \(c_1 = … = c_{ℓ - 1} = c_ℓ = 0\) and
+  independent over \(ℤ\), we find that \(f_1 = … = f_{ℓ - 1} = f_ℓ = 0\) and
   thus the claim holds true.
 
   With these definitions for \(\tilde{α}_j\) and \(\tilde{β}_j\) we can deduce
@@ -1258,16 +1256,20 @@ As did \textcite{Hlawka1991} I will present the inductive proof of
   \[
     |\tilde{n}| ≥ N |α_ℓ q - g_ℓ| + |β_ℓ|
   \]
-  and integers \(\seq[ℓ]{\tilde{p}}\), such that for all \(i ∈ \set{1, …, ℓ}\)
-  we have that
+  and integers \(\seq[ℓ-1]{\tilde{p}}\), such that for all \(j ∈
+  \set{1, …, ℓ-1}\) we have that
   \[
-    |c_ℓ \tilde{α}_j - \tilde{β}_j - c_j| < δ.
+    |\tilde{α}_j \tilde{n} - \tilde{β}_j - \tilde{p}_j| < δ.
   \]
   Since \(c_ℓ\) needs only to satisfy
   \[
     |c_ℓ| ≥ N |α_ℓ q - g_ℓ| + |β_ℓ|
   \]
-  we can set \(c_ℓ := \tilde{n}\) and \(c_j := \tilde{p}_j\) (\(1 ≤ j < ℓ\)).
+  we can set \(c_ℓ := \tilde{n}\) and \(c_j := \tilde{p}_j\) (\(1 ≤ j < ℓ\))
+  and therefore
+  \[
+    |c_ℓ \tilde{α}_j - \tilde{β}_j - c_j| < δ.
+  \]
   Then we find not only that \(|n| ≥ N\) and
   \[
     |α_ℓ n - β_ℓ - p_ℓ| < δ < ε
@@ -1296,7 +1298,7 @@ or Chap.~7 of the reference~\cite{Milne2017} for a more rigour discussion.
   An \emph{absolute value} on a field \(K\) is a function \(|\cdot| : K → ℝ, x ↦
   |x|\) with the properties
   \begin{thmlist}
-    \item \(|x| ≥ 0\) for all \(x ∈ K\) and \(|x| = 0\) precisely if \(x = 0\);
+    \item \(|x| ≥ 0\) for all \(x ∈ K\) and \(|x| = 0\) if and only if \(x = 0\);
     \item \(|xy| = |x| |y|\) for all \(x, y ∈ K\); and
     \item \(|x + y| ≤ |x| + |y|\) for all \(x, y ∈ K\).
   \end{thmlist}
@@ -1304,7 +1306,8 @@ or Chap.~7 of the reference~\cite{Milne2017} for a more rigour discussion.
   \begin{thmlist}[resume]
     \item \(|x + y| ≤ \max(|x|, |y|)\)
   \end{thmlist}
-  holds then \(|\cdot|\) is called a \emph{non-archimedian absolute value}.
+  holds for all \(x, y ∈ K\) then \(|\cdot|\) is called a \emph{non-archimedian
+  absolute value}.
 \end{defin}
 
 For notational convenience we introduce the function
@@ -1320,7 +1323,7 @@ If \(K = ℚ\) we write \(\ord_{p}\) instead of \(\ord_{(p)}\) for all primes
     \item a trivial absolute value defined by \(|0|_1 := 0\) and \(|x|_1 :=
     1\) for all non-zero \(x ∈ K \setminus \set{0}\);
 
-    \item one absolute value for all embeddings \(σ: K → ℂ\) by setting \(|x| :=
+    \item one absolute value for each embedding \(σ: K → ℂ\) by setting \(|x| :=
     |σ(a)|_ℂ\), where \(|\cdot|_{ℂ}\) denotes the complex modulus; and
 
     \item one \emph{\(\mathfrak{p}\)-adic absolute value} for each non-zero
@@ -1360,9 +1363,9 @@ completions are precisely those induced by the embeddings \(σ\) of \(K\) into
 number fields are examples of so called \emph{local fields}.
 
 We say a multivariate polynomial \(p\) is \emph{homogeneous} if all non-zero
-monoids appearing in \(p\) have the same degree. Thus, \(Y_1^5 + 2 Y_1^3 Y_2^2 -
-7 Y_1 Y_2^4\) is homogeneous while \(Y_1^4 - Y_1^2 Y_2\) is not. We call a
-polynomial \(q ∈ R[Y_1, …, Y_n]\) a \emph{quadratic form} over an integral
+monomials appearing in \(p\) have the same degree. Thus, \(Y_1^5 + 2 Y_1^3
+Y_2^2 - 7 Y_1 Y_2^4\) is homogeneous while \(Y_1^4 - Y_1^2 Y_2\) is not. We call
+a polynomial \(q ∈ R[Y_1, …, Y_n]\) a \emph{quadratic form} over an integral
 domain \(R\) if \(q\) is homogeneous and has degree \(2\). If \(F\) is a field
 of characteristic unequal to two, one can alternatively define a quadratic form
 as a polynomial \(q(Y_1, …, Y_n)\) that can be written in the form
@@ -1378,9 +1381,9 @@ if it represents every element of \(R\). As for representabilty in a number
 field \(K\) we have the following theorem.
 
 \begin{thm}[Hasse-Minkowski theorem]\label{thm:Hasse Minkowski}
-  A number \(x ∈ K\) is represented by a quadratic form \(q\) in a number field
-  \(K\) if and only if \(x\) is represented by \(q\) in all completions of
-  \(K\).
+  A number \(x ∈ K\) is represented by a regular quadratic form \(q\) in a
+  number field \(K\) if and only if \(x\) is represented by \(q\) in all
+  completions of \(K\).
 \end{thm}
 
 A proof of this theorem can be found in §66 of the textbook~\cite{Meara2000}.
@@ -1390,8 +1393,8 @@ universal in all non-archimedian completions of \(K\)
 \cite[see][Remark~63:18]{Meara2000}. 
 %TODO
 \todo{Is this really the content of remark?}
-A direct application of the Hasse-Minkowski
-theorem is the following lemma, taken from \cite[Lem.~5.1.1]{Shlapentokh2007}.
+A direct application of the Hasse-Minkowski theorem is the following lemma,
+taken from \cite[Lem.~5.1.1]{Shlapentokh2007}.
 
 \begin{lem}\label{lem:quadratic form}
   Let \(K\) be a number field and fix \(x ∈ K\). Furthermore, let \(x =
@@ -1411,14 +1414,14 @@ theorem is the following lemma, taken from \cite[Lem.~5.1.1]{Shlapentokh2007}.
   algebraically closed, the polynomial \(X^2 - x_i\) has a root \(y_{i1}\) in
   \(ℂ\). Thus,
   \[
-    x_i = y_{i1}^2 + 0^2 + c\,0^2 + 0^2
+    x_i = y_{i1}^2 + 0^2 + c_i\,0^2 + 0^2
   \]
   is the desired representation. On the other hand, in the case of \(ℝ\) we
   distinguish two cases. If \(x_i ≥ 0\) then we can proceed as in the case of
   \(ℂ\). If \(x_i < 0\) then \(x_i / c_i\) is positive and thus a square in
   \(ℝ\). Now set \(y_{i3} := √{x_i / c_i}\) and notice that
   \[
-    x_i = 0^2 + 0^2 + c\,y_{i3}^2 + 0^2.
+    x_i = 0^2 + 0^2 + c_i\,y_{i3}^2 + 0^2.
   \]
 \end{proof}
 

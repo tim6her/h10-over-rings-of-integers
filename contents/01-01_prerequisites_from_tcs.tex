@@ -47,10 +47,11 @@ textbook~\cite{Cooper2004}.
 %    ██     ██████  ██   ██ ██ ██   ████  ██████      ██      ██ ██
 
 \begin{defin}
-  A \emph{(decision) problem} is a subset of the set of finite
-  \(\zer\)-\(\one\)-strings \(ω = \lbrace \zer, \one \rbrace^*\) including the
-  empty string \(λ\). One calls \(\lbrace \zer, \one \rbrace\)
-  \emph{alphabet} and its elements \emph{bits.}
+  We consider the set of finite \(\zer\)-\(\one\)-strings \(ω = \lbrace \zer,
+  \one \rbrace^*\), where we include the empty string \(λ ∈ ω\) and define a
+  \emph{(decision) problem} to be a subset of \(ω\). The set \(\lbrace \zer,
+  \one \rbrace\) is called \emph{alphabet} and its elements \(\zer\) and
+  \(\one\) are called \emph{bits.}
 \end{defin}
 
 One immediate objection against this definition is that not all problems
@@ -65,10 +66,11 @@ captured up to an encoding.
 \end{defin}
 
 \begin{rem}
-  A direct consequence of this definition of problems and encodings is that one
-  can only consider at most countable problems. Note however, that there are
-  uncountably many---\(2^{ℵ_0}\) to be precise---many subsets of \(ω\) and
-  therefore uncountably many problems.
+  Since the set of finite strings \(ω\) is countable, each and every subset
+  \(Q\) of \(ω\) is either finite or countable. Thus, problems are by
+  definition at most countable. Note however, that there are uncountably
+  many---\(2^{ℵ_0}\) to be precise---many subsets of \(ω\) and therefore
+  uncountably many problems.
 \end{rem}
 
 One usually does not concern oneself with the details of this encoding.
@@ -154,8 +156,8 @@ Turing machine state
 
 Let us look at the example of the Turing machine in \cref{fig:Turing machine}.
 During the run of the machine the head reads the symbol \(\zer\) at the current
-position and the machine evaluates the transition function \(δ\) at \(\zer\) and the
-current state \(\state{overflow}\). Now assume that
+position and the machine evaluates the transition function \(δ\) at \(\zer\) and
+the current state \(\state{overflow}\). Now assume that
 \[
   δ(\state{overflow}, \zer) = (\state{return}, \one, -1).
 \]
@@ -225,9 +227,10 @@ directed graph, called \emph{computation graph}. A \emph{run} or
 graph starting at the start configuration \((\sstart, 0, x)\). A run of
 \(\mathbb A\) on \(x\) is \emph{halting} or \emph{complete} if it reaches a
 halting configuration \((\shalt, 0, y)\) with \(y ∈ ω\). In this case I write
-\(\mathbb A (x) = y\).
+\(\mathbb A (x) = y\). If \(\mathbb{A}\) does not halt on input \(x\), the
+symbol \(\mathbb{A}(x)\) shall be undefined.
 
-I will denote Turing machines using listings, where the fact that
+I will describe Turing machines using listings, where the fact that
 \(δ_\text{delta} (\state{state}, b) = (\state{state'}, b', m)\) is encoded by
 \begin{lstlisting}
 delta "state" b = ("state'", b', m)
@@ -262,13 +265,14 @@ See \cref{app:turing} on how to simulate Turing machines using these listings.
     \shalt, \state{overflow}, \state{return}, \state{error} \rbrace,
     δ_\text{add1})\) that adds \(1\) to a (possibly zero-patched) binary
     representation of a natural number \(n\). Its transition function is
-    described in \cref{lst:add1}.
-
-    The last line of the program ensures, that \(δ\) is a total function, as it
-    matches all remaining pairs of states and characters and lets the machine
-    enter the state \(\state{error}\). The complete run of \(\mathbb
-    A_\text{add1}\) on \(\one\one\zer\one\)---encoding the number \(11\)---can
-    be seen in \cref{fig:complete run}.
+    described in \cref{lst:add1}. The last line of the program ensures, that
+    \(δ\) is a total function, as it matches all remaining pairs of states and
+    characters and lets the machine enter the state \(\state{error}\).
+    
+    The complete run of \(\mathbb A_\text{add1}\) on \(\one\one\zer\one\)can be
+    seen in \cref{fig:complete run}. To ease readability the binary
+    representation of natural numbers is reversed. Thus, the string
+    \(\one\one\zer\one\) does in fact encode \(11 = 2^3 + 2^1 + 2^0\).
 \end{exam}
 
 \lstinputlisting[float, frame=tb,
@@ -283,12 +287,12 @@ See \cref{app:turing} on how to simulate Turing machines using these listings.
 
     \begin{subfigure}{.5\textwidth}
         \includegraphics{res/turing_add1_2}
-        \caption{\(δ(s_\text{overflow}, \one) = (s_\text{overflow}, \one, 1)\)}
+        \caption{\(δ(s_\text{overflow}, \one) = (s_\text{overflow}, \zer, 1)\)}
     \end{subfigure}
 
     \begin{subfigure}{.5\textwidth}
         \includegraphics{res/turing_add1_3}
-        \caption{\(δ(s_\text{overflow}, \one) = (s_\text{overflow}, \one, 1)\)}
+        \caption{\(δ(s_\text{overflow}, \one) = (s_\text{overflow}, \zer, 1)\)}
     \end{subfigure}
 
     \begin{subfigure}{.5\textwidth}
@@ -298,12 +302,12 @@ See \cref{app:turing} on how to simulate Turing machines using these listings.
 
     \begin{subfigure}{.5\textwidth}
         \includegraphics{res/turing_add1_5}
-        \caption{\(δ(s_\text{return}, \one) = (s_\text{return}, \one, -1)\)}
+        \caption{\(δ(s_\text{return}, \zer) = (s_\text{return}, \zer, -1)\)}
     \end{subfigure}
 
     \begin{subfigure}{.5\textwidth}
         \includegraphics{res/turing_add1_6}
-        \caption{\(δ(s_\text{return}, \one) = (s_\text{return}, \one, -1)\)}
+        \caption{\(δ(s_\text{return}, \zer) = (s_\text{return}, \zer, -1)\)}
     \end{subfigure}
 
     \begin{subfigure}{.5\textwidth}
@@ -326,10 +330,10 @@ See \cref{app:turing} on how to simulate Turing machines using these listings.
     \begin{thmlist}
         \item
           \(\mathbb A\) \emph{computes} the partial function that maps each
-          \(x\) with a complete run to \(\mathbb A(x)\) and is undefined for all
-          other strings.
+          \(x ∈ ω\) with a complete run to the output \(\mathbb A(x)\) and is
+          undefined for all other strings in \(ω\).
         \item
-          \(\mathbb A\) \emph{accepts} all \(x\) such that
+          \(\mathbb A\) \emph{accepts} all \(x ∈ ω\) such that
           \(\mathbb A(x) = \one\) and \emph{rejects} them if
           \(\mathbb A(x) = \zer\).
         \item
@@ -363,7 +367,8 @@ corresponding set but the machine might not be able to refute membership.
   where \(\sqcup\) denotes the disjoint union. As for the transition function
   \(δ\), we define
   \begin{align*}
-    δ(\sstart, §)        &:= (s_λ, §, 1)\\
+    δ(\sstart, §)        &:= (s_λ, §, 1)
+        & \text{(\(λ\) denotes the empty string as above)}\\
     δ(s_{b_1…b_k}, \one) &:=
       \begin{cases}
         (s_{b_1…b_k\one}, \one, 1) & \text{if } k < n\\
@@ -406,7 +411,7 @@ corresponding set but the machine might not be able to refute membership.
 \end{exam}
 
 Note that the construction above fails if \(Q\) is infinite because in this case
-the set of states \(S\) is infinite. However, if \(Q\) is co-infinite we can
+the set of states \(S\) is infinite. However, if \(Q\) is co-finite we can
 exchange \(\state{accept}\) and \(\state{reject}\) in the construction above to
 obtain a Turing machine deciding \(Q\). In \cref{pro:Posts theorem} we will see
 that the complements of decidable sets are decidable in general.
@@ -465,7 +470,7 @@ computable functions.
         0 & ↦ λ;
       \end{align*}
     \item
-      by its binary representation
+      by its (reversed) binary representation
       \begin{align*}
           n = 2^k + \sum_{i = 0}^{k-1} b_i 2^i & ↦ b_0…b_{k-1}\one,
             \quad \text{if } n > 0\\
@@ -487,16 +492,18 @@ computable functions.
     \end{exlist}
 
     In either case the set obtained by encoding \(ℕ\) is easily seen to be
-    decidable. In the first case, check that the string contains only copies
-    of the bit \(\one\). Indeed, this can be achieved by the Turing machine
+    decidable. In the case of the tally notation (1), check that the string
+    contains only copies of the bit \(\one\). Indeed, this can be achieved by
+    the Turing machine
     \[
       \mathbb A_\text{tally} =
         ( \lbrace \sstart, \shalt, \scheck, \state{accept}, \state{reject},
           \state{rejectMR}, \state{error} \rbrace, δ),
     \]
-    whose transition function is displayed in \cref{lst:tally encoding}. In the
-    second case it suffices to check that the string has length \(1\) or ends in
-    a \(\one\), and in the third case every string is accepted.
+    whose transition function is displayed in \cref{lst:tally encoding}. As for
+    the binary representation (2), it suffices to check that the string has
+    length \(1\) or ends in a \(\one\), and in the third encoding (3) every
+    string is accepted.
 \end{exam}
 
 \lstinputlisting[float, frame=tb,
@@ -506,11 +513,9 @@ computable functions.
 \begin{rem}
   Let \(Q_0\) be a decidable problem and \(Q \subseteq Q_0\) a subset. If there
   exists a Turing machine \(\mathbb{A}\) that upon receiving \(x ∈ Q_0\) as
-  input decides whether \(x ∈ Q\), then \(Q\) is decidable. In other words, if
-  one can decide a problem relative to a decidable problem then the initial
-  problem is globally decidable. To obtain a Turing machine deciding \(Q\) we
-  first run the Turing machine deciding \(Q_0\) and reject \(x\) if \(Q_0(x) =
-  \zer\) otherwise we run \(\mathbb{A}\) on \(x\).
+  input decides whether \(x ∈ Q\), then \(Q\) is decidable. To obtain a Turing
+  machine deciding \(Q\) we first run the Turing machine deciding \(Q_0\) and
+  reject \(x\) if \(Q_0(x) = \zer\) otherwise we run \(\mathbb{A}\) on \(x\).
 \end{rem}
 
 Taking another look at the definition of computability, one sees that only
@@ -536,8 +541,8 @@ is decidable and the projections \(p_i(⟨x_1, x_2⟩) ↦ x_i\) for \(i ∈ \lb
         \underbrace{\one … \one}_{n\text{-times}} \zer
         \underbrace{\one … \one}_{m\text{-times}}.
     \]
-    To test, wether a given string \(x ∈ ω\) encodes a pair of non-negative
-    integer, one only needs to check wether \(x\) contains a single \(\zer\)
+    To test, whether a given string \(x ∈ ω\) encodes a pair of non-negative
+    integer, one only needs to check whether \(x\) contains a single \(\zer\)
     and all other symbols are \(\one\)-s. As for the projections, machine
     \(\mathbb{P}_1\) clears everything after the first \(\zer\) on the tape and
     \(\mathbb{P}_2\) deletes everything up to the first zero and then moves the
@@ -549,7 +554,7 @@ is decidable and the projections \(p_i(⟨x_1, x_2⟩) ↦ x_i\) for \(i ∈ \lb
     \[
       ⟨b_1b_2…b_n, c_1c_2…c_m⟩ = b_1b_1b_2b_2…b_nb_n \; \zer\one \; c_1c_2…c_m.
     \]
-    Again it is easy to check wether a given string encodes a tuple. The second
+    Again it is easy to check whether a given string encodes a tuple. The second
     projection in this encoding is obtained completely analogously as in the
     previous example. As for the first projection, the machine \(\mathbb{P}_1\)
     first moves to the right, deleting every second symbol until it reaches the
@@ -666,9 +671,10 @@ is modelled by a minimization operator.
 
   Starting to count at index \(0\), the cells whose index is congruent \(2\)
   modulo \(3\) encode the empty string \(λ\). We apply a Turing machine that
-  computes \(⟨b_1b_2…b_n, λ⟩\) from the cells whose index is congruent \(1\) or
-  \(2\) modulo \(3\) and writes only to the cells whose index is congruent \(0\)
-  modulo \(3\). Then the tape will read something like
+  computes the pairing \(⟨b_1b_2…b_n, λ⟩\) as in \cref{ex:total pairing} from
+  the cells whose index is congruent \(1\) or \(2\) modulo \(3\) and writes only
+  to the cells whose index is congruent \(0\) modulo \(3\). Then the tape will
+  read something like
   \[
     \sta \; b_1 \emp b_1 \; b_2 \emp b_1 \; b_3 \emp b_2 ….
   \]
@@ -722,7 +728,7 @@ sets.
     \sta b_1 b_1 … b_n b_n \emp ….
   \]
   In a second step, the machine checks by a modification of Turing machine
-  \(\mathbb{A}\) that only uses cells with an even index, wether cells with
+  \(\mathbb{A}\) that only uses cells with an even index, whether cells with
   even index correspond to an element in \(Q\). If \(x\) was indeed contained in
   \(Q\), then the machine will stop after finitely many steps and can transform
   the tape content back to
@@ -745,14 +751,14 @@ sets.
     \mathbb{A} \text{ halts on } x \text{ in at most } n \text{ steps; }
     i,j ≤ n; \text{ and } f(x) = y.
   \]
-  Note that for a fixed integer \(n\) the relation can contain at most \(2^{n +
-  1}\) triples. Thus, \(R\) is decidable for fixed \(n\). However, using
+  Note that for a fixed integer \(n\) the relation can contain at most
+  \(2^{2n}\) triples. Thus, \(R\) is decidable for fixed \(n\). However, using
   induction on \(n\) one sees easily that \(R\) is decidable as a ternary
   relation. (If \(R(n, x, y)\) holds, so does \(R(m, x, y)\) for all \(m ≥ n\).
   If \(R(n, x, y)\) does not hold, then either \(x\) or \(y\) contains more than
   \(n\) bits; or \(\mathbb{A}\) did not halt on \(x\) in \(n\) steps; or
   \(\mathbb{A}(x)\) is not \(y\). In the last two cases, we perform one more
-  step of the computation and can check wether \(\mathbb{A}\) outputs \(y\).)
+  step of the computation and can check whether \(\mathbb{A}\) outputs \(y\).)
   Finally, we obtain
   \[
     y ∈ Q \quad ⇔ \quad ∃ z ∈ ω: R(π_1(z), π_2(z), y),
@@ -770,8 +776,9 @@ sets.
                  label=lst:check one]{./listings/check1.hs}
 
 \begin{rem}
-  The second equivalent property in the proposition above is the reason why
-  semi-decidable sets are also called \emph{listable} sets.
+  The second equivalent property (ii) in the proposition above is the reason why
+  semi-decidable sets are also called \emph{listable} or \emph{computably
+  enummerable} sets.
 \end{rem}
 
 The following proposition---which is sometimes referred to as \emph{Post's
@@ -860,7 +867,7 @@ by Davis quite revealing.} formalizations of computation. It allows one to state
 properties of computability without referring to a specific model.
 
 \begin{quote}
-  \textsc{Churh-Turing thesis.} The class of intuitively computable
+  \textsc{Church-Turing thesis.} The class of intuitively computable
   functions coincides with the class of all Turing computable functions.
 \end{quote}
 
@@ -938,7 +945,7 @@ un burattino.\end{italian} Firenze Bemporad \& Figlio, 1901.
     holds. Now using \(\mathbb B\) construct a Turing machine \(\mathbb B'\)
     that simulates \(\mathbb B(\enc{\mathbb A}, \enc{\mathbb A})\) on its input
     \(\enc{\mathbb A}\) and enters an infinite loop if \(\mathbb B(\enc{\mathbb
-    A}, \enc{\mathbb A}) = \zer\). Expressed more formally this means
+    A}, \enc{\mathbb A}) = \one\). Expressed more formally this means
     \[
       \mathbb B' \text{ halts on } \enc{\mathbb A} \quad ⇔ \quad
       \mathbb A \text{ does not halt on } \enc{\mathbb A}.
@@ -978,7 +985,12 @@ semi-decidable.
 
 We say a problem \(Q\) is \emph{many-one reducible} to a second problem \(Q'\)
 if there exists a total computable function \(f: ω → ω\) as in \eqref{eq:m
-reducibility}. One writes \(Q ≤_m Q'\) in this situation. In the previous remark
+reducibility}, i.e.
+\[
+  x ∈ Q \quad ⇔ \quad
+  f(x) ∈ Q'.
+\]
+One writes \(Q ≤_m Q'\) in this situation. In the previous remark
 we have seen that all semi-decidable sets are many-one reducible to
 \(\mathcal{K}\). The key step in settling Hilbert's tenth problem is proving
 that \(\mathcal{K}\) is many-one reducible to a collection of sets which are
