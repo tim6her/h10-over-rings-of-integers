@@ -115,6 +115,7 @@
             useprefix=true,
             uniquename=full]{biblatex}
 \addbibresource{./references.bib}
+\appto{\bibsetup}{\raggedright}
 
 
 % Math, Operators and Theorems
@@ -273,6 +274,7 @@
 % ██      ██   ██  ██████  ██   ████    ██
 
 % Using Layers in TikZ
+\pagenumbering{roman}
 \pgfdeclarelayer{background}
 \pgfsetlayers{background,main}
 
@@ -290,6 +292,7 @@
 % ██  ██  ██ ██   ██ ██ ██  ██ ██
 % ██      ██ ██   ██ ██ ██   ████
 
+\pagenumbering{arabic}
 \chapter{Prerequisites and central notions}
 
 To tackle Hilbert's tenth problem over rings of algebraic integers we need

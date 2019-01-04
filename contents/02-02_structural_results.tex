@@ -154,7 +154,7 @@ This was shown by \textcite[§11]{Davis1976}.
     & \quad ∃ a_{11}, …, a_{1n}, …, a_{k1}, …, a_{kn},\,
       \seq[m]{β} ∈ ℤ :\\
     & \quad \begin{cases}
-              p(a_{11}, …, a_{1n}, …, a_{k1}, …, a_{kn}, \seq[m]{y}) = 0\\
+              p(a_{11}, …, a_{1n}, …, a_{k1}, …, a_{kn}, \seq[m]{β}) = 0\\
               α_1 = a_{11} ξ_1 + … + a_{1n} ξ_n\\
               \vdots\\
               α_k = a_{k1} ξ_1 + … + a_{kn} ξ_n
@@ -182,7 +182,7 @@ of \cite{Shlapentokh2007}.
 
 \begin{thm}\label{thm:strong vertical method}
   Let \(L/K\) be an extension of number fields and \(n = [L : ℚ]\). If \(x, y ∈
-  \algint[L]\) and \(α ∈ \algint\) satisfy
+  \algint[L]\), \(y ≠ 0\), and \(α ∈ \algint\) satisfy
   \begin{align}
     \label{eq:sigma x and norm of y}
     & |σ_i(x)| < \frac{1}{2} |N_{L/ℚ}(y)|^{\frac{1}{n}}
@@ -199,12 +199,10 @@ of \cite{Shlapentokh2007}.
   \]
 \end{thm}
 \begin{proof}
-  If \(y = 0\), one interprets \eqref{eq:x mod alpha} as \(x = α\) and is
-  done. Hence, we may assume that \(y\) is non-zero. By \eqref{eq:x mod alpha}
-  we know that there exists an integer \(β ∈ \algint[L]\) such that
-  \(x - α = β \, 2 y^{2cn}\). As a consequence, either \(x = α\) or
+  By \eqref{eq:x mod alpha} we know that there exists an integer \(β ∈
+  \algint[L]\) such that \(x - α = βy\). As a consequence, either \(x = α\) or
   \[
-    |N_{L/ℚ}(x - α)| = |N_{L/ℚ}(β \, 2 y^{2cn})| ≥ |N_{L/ℚ}(y)|
+    |N_{L/ℚ}(x - α)| = |N_{L/ℚ}(β y)| ≥ |N_{L/ℚ}(y)|
   \]
   holds. However, \eqref{eq:sigma x and norm of y} and \eqref{eq:sigma alpha and
   norm of y} imply that
@@ -297,28 +295,21 @@ embeddings are easily seen to be Diophantine \cite[cf.][Lem.~8]{Denef1980}.
 
   As for the second case, let us assume that
   \[
-    ∃ j_0 ∈ \set{0, …, n - 1} : ∀ i \set{1, …, n}: |a_i + j_0| ≥ \frac{1}{2}.
+    ∃ j_0 ∈ \set{0, …, n - 1} : ∀ i ∈ \set{1, …, n}: |a_i + j_0| ≥ \frac{1}{2}.
   \]
-  Then we have for all \(i ≤ k ≤ n\) that
+  Then we have for all \(1 ≤ k ≤ n\) that
   \[
-    2^nC ≥ \prod_{i= 1}^n \underbrace{2|a_i + j_0|}_{≥ 1} ≥ 2|a_k + j_0|.
+    C ≥ \prod_{i = 1}^n |a_i + j_0| ≥ \frac{1}{2^{n - 1}} |a_k + j_0|.
   \]
-  Now if we can choose \(j_0 = 0\), we are done. Otherwise, there exists an
-  index \(i_0\) such that \(|a_{i_0}| < 1/2\). But then \(|a_{i_0} + j| > 1/2\)
-  for all \(1 ≤ j ≤ n - 1\). Now we have that
+  From this it is immediate that
   \[
-    C ≥ \prod_{i = 1}^n |a_i + j| ≥
-        \frac{1}{2} \prod_{\substack{i = 1\\i ≠ i_0}}^n |a_i + j|
+    |a_k + j_0 | ≤ C 2^{n - 1}.
   \]
-  is satisfied for all \(1 ≤ j ≤ n - 1\). Set \(b_i := a_i + 1\) for all \(i ≠
-  i_0\). Then we can use the induction hypothesis on the \(b_i\) to obtain that
+  Now a simple application of the triangular inequality yields
   \[
-    |a_i + 1| = |b_i| < 2^n C.
+    |a_k| = |a_k + j_0 - j_0| ≤ |a_k + j_0| + |j_0| ≤ 2^{n - 1} C + n - 1 <
+    2^{n - 1} C + 2^{n - 1} C = 2^n C.
   \]
-  Hence, \(|a_i| < 2^n C + 1\) which is a bit weaker than the claimed result.
-
-  % TODO How do I get rid of the trailing +1?
-  \todo{How do I get rid of the trailing \(+1\)?}
 \end{proof}
 
 If \(σ_i\) is a real embedding, the following lemma
@@ -329,11 +320,24 @@ If \(σ_i\) is a real embedding, the following lemma
   relation \(σ(α) ≥ 0\) is Diophantine over \(\algint\).
 \end{lem}
 \begin{proof}
-  By the strong approximation theorem~(\ref{thm:strong approximation}) we can
-  find an algebraic integer \(c\) such that \(σ(c) > 0\) and \(τ(c) < 0\) for
-  all other real embeddings \(τ\).
-  % TODO: Why an algebraic integer?
-  \todo{Why an algebraic integer?}
+  I claim that there exists an algebraic integer \(c ∈ \algint\) such that
+  \(σ(c) > 0\) and \(τ(c) < 0\) for all other real embeddings \(τ ≠ σ\). Indeed
+  let \(σ = \seq[r_K]{σ}: K → ℝ\) be the real embeddings and \(σ_{r_K + 1},
+  \overline{σ_{r_K + 1}}, …, σ_{r_K + s_K}, \overline{σ_{r_K + s_K}}: K → ℂ\) be
+  the complex embeddings of \(K\). Then the mapping \(\algint → ℝ^n\) (with \(n
+  = r_K + 2 s_K = [K : ℚ]\)) defined by
+  \[
+    x ↦ (σ_1(x), …, σ_{r_K}(x),
+    \Re σ_{r_K + 1} (x), \Im σ_{r_K + 1} (x), …,
+    \Re σ_{r_K + s_K} (x), \Im σ_{r_K + s_K} (x))
+  \]
+  maps \(\algint\) to a lattice \(Λ\) of rank \(n\) in
+  \(ℝ^n\)~\cite[see][Chap.~I, §5]{Neukirch2006}. The claimed conditions on the
+  sign of \(σ(c)\) and \(τ(c)\) respectively correspond directly to the sign of
+  the first \(r_K\) coordinates with respect to the standard basis of \(ℝ^n\).
+  They can clearly be satisfied as all of \(ℝ^n\) can be covered by translating
+  the fundamental parallelepiped of \(Λ\) allong the lattice points of \(Λ\). 
+  
   Let \(α ∈ \algint\) be such that \(σ(α) ≥ 0\). Then by\cref{lem:quadratic
   form} there exist \(z_1, z_2, z_3, z_4 ∈ K\) such that
   \[

@@ -268,8 +268,8 @@ In the lemma above I have considered the polynomial functions
   p_2 : R^2 → R, \; p_2(X_1, X_2) := X_1^2 + 1
 \]
 as the same polynomial function. This can be justified by identifying all
-polynomials in \(ℤ[X_1, X_2, …]\) with functions \(p: R^ℕ → R\) depending only
-on finitely many arguments.
+polynomials in the ring \(ℤ[X_1, X_2, …]\) with functions \(p: R^ℕ → R\)
+depending only on finitely many arguments.
 
 Finally, we have all tools at hand to formally define formulae in a language.
 
@@ -357,7 +357,7 @@ reason we must distinguish between two kinds of appearances of variables.
 \end{defin}
 
 In \cref{ex:formula distributivity} all appearances of \(\mathtt{x_1, x_2}\) and
-\(\mathtt{x_3}\) are bound. In (2) variable \(\mathtt{x_2}\) appears bounded
+\(\mathtt{x_3}\) are bound. In (2) variable \(\mathtt{x_2}\) appears bound\-ed
 while \(\mathtt{x_1}\) is free and in (1) all variables appear freely. For a
 formula \(ϕ\) we will write \(ϕ(\mathtt{\seq{x}})\) to emphasize that at most
 the variables \(\mathtt{\seq{x}}\) appear freely in \(ϕ\).
@@ -365,8 +365,8 @@ the variables \(\mathtt{\seq{x}}\) appear freely in \(ϕ\).
 \begin{defin}
   Let \(\lang\) be a language and let \(\mathfrak{A}\) be model of \(\lang\)
   with universe \(A\). For a formula \(ϕ = ϕ(\mathtt{\seq{x}})\) and elements
-  \(\seq{α} ∈ A\) we say \(ϕ(\seq{α})\) is \emph{true} in \(\mathfrak{A}\) or
-  \(\mathfrak{A}\) \emph{models} \(ϕ(\seq{α})\) and write
+  \(\seq{α} ∈ A\) we say that \(ϕ(\seq{α})\) is \emph{true} in \(\mathfrak{A}\)
+  or \(\mathfrak{A}\) \emph{models} \(ϕ(\seq{α})\) and write
   \[
     \mathfrak{A} \models ϕ(\seq{α})
   \]
@@ -724,7 +724,7 @@ name can be justified by the following lemma.
     \(\set{0, 1}\) thus yielding the different coefficients.
 
     To see the converse inclusion we note that monomials \(α X_{i_1} … X_{i_d} ∈
-    R[X_1, X_2, …]\), with \(\set{\seq[d]{i}} \subseteq ℕ \setminus \set{0}\)
+    R[X_1, X_2, …]\), with indices \(\seq[d]{i} ∈ ℕ \setminus \set{0}\)
     not necessarily distinct, correspond to terms
     \[
       \mathtt{c}_α \cdot \mathtt{x_{i_1} \cdot … \cdot x_{i_d}}.
@@ -1182,7 +1182,7 @@ paper~\cite[Prob.~1.6]{Shore}.
   \(\lang_{R}\)-formulae is decidable.
 
   Let now \(ϕ = \mathtt{∃ x_1: … : ∃ x_n :} ψ(\mathtt{\seq{x}})\) be a fully
-  existentially quantified \(\lang_{R}\)-formula. Then by \cref{thm:Diophantine
+  existentially quantified \(\lang_{R}\)-formula. By \cref{thm:Diophantine
   theory} there exists a polynomial \(p ∈ R[\seq{X}]\) such that for all
   \(\seq{α} ∈ R\) we have that
   \[

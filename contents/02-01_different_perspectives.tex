@@ -70,17 +70,23 @@ a set of strings. In a first approach one could reformulate the tenth problem as
   Turing machine \(\mathbb{A}_p\) that returns \(\one\) if \(p\) has a root and
   \(\zer\) otherwise?
 \end{quote}
-This formalization is however trivially solvable, as the Turing machine in
-question takes no input and thus must always return either \(\one\) or \(\zer\).
-But such machines returning a constant value are easily constructable. We must
-therefore exchange the quantifiers and ask
+This formalization is however trivially solvable. Note that the subset of \(ω\)
+associated with this problem
+\[
+  \set{x ∈ ω : p \text{ has a root}}
+\]
+is either empty (if \(p\) has no roots) or all of \(ω\) (if \(p\) has a root).
+Turing machines with constant output \(\zer\) or \(\one\) respectively compute
+the characteritic function of the problem and thus show that our first
+formulation of Hilbert's problem is decidable.
+
+For this reason we must exchange the quantifiers and ask
 \begin{quote}
   \textsc{H10.} Does there exist a Turing machine \(\mathbb{A}\) and an encoding
   \(\enc{\cdot}\) such that for all polynomials \(p ∈ ℤ[X_1, X_2, …]\) the
   output \(\mathbb{A}(\enc{p})\) is \(\one\), if \(p\) has integral roots, and
   \(\zer\) otherwise.
 \end{quote}
-
 We will see that if we restrict ourselves to encodings \(\enc{\cdot}\) that
 allow to efficiently obtain the evaluation \(\enc{p(\mathbf{α})}\) from
 \(\enc{p}\) and \(\enc{\mathbf{α}}\), then the answer to the question above is
@@ -118,7 +124,7 @@ In this sense a set \(S \subseteq R^i\) is Diophantine if there exists a
 polynomial \(p ∈ R[X_1, …, X_n]\) such that
 \[
   (\seq[i]{α}) ∈ S \quad ⇔ \quad
-  ∃ \seq[n - i]{β} : \rel{p}(\seq[i]{α}, \seq[n - i]{β}).
+  ∃ \seq[n - i]{β} ∈ R: \rel{p}(\seq[i]{α}, \seq[n - i]{β}). 
 \]
 If the ring \(R\) is computable, it is immediate that the relation \(\rel{p}\)
 is computable. Thus, we have the following lemma.
@@ -166,7 +172,7 @@ and is easly seen to be the interval \([-1, 1]\). The situation is depicted in
     and notice that \(q\) has a root \((\seq{α}, α_{n + 1}) ∈ R\) if and only if
     \(p(\seq{α}) = α_{n + 1}\) as claimed.
 
-    \item Let \(R\) be a commutative ring with unit. Then divisibility in \(R\)
+    \item Let \(R\) be a commutative ring with unity. Then divisibility in \(R\)
     is Diophantine. Indeed \(α_1 \mid α_2\) in \(R\) precisely if
     \[
       ∃ β ∈ R : α_1 β = α_2.
@@ -227,7 +233,7 @@ and is easly seen to be the interval \([-1, 1]\). The situation is depicted in
     Let \(R\) be a commutative ring with unity. The set of units \(U\) in \(R\)
     is Diophantine over \(R\). This can be seen by the polynomial equation
     \[
-      x ∈ U \quad ⇔ \quad ∃ y : xy = 1.
+      x ∈ U \quad ⇔ \quad ∃ y ∈ R : xy = 1.
     \]
   \end{exlist}
 \end{exam}
@@ -244,7 +250,7 @@ their relations with subsets of \(ℕ\).
   Diophantine over \(ℤ\) and allow only for witnesses in \(ℕ\). I will show that
   this construction can be carried out in a Diophantine way.
 
-  First, we note that if \(S_1, S_2 ∈ ℤ^n\) are Diophantine over \(ℤ\), then
+  First, we note that if \(S_1, S_2 ⊂ ℤ^n\) are Diophantine over \(ℤ\), then
   their intersection is Diophantine over \(ℤ\) as well. This is because if
   \(p_1 ∈ ℤ[\seq{X}, \seq[m_1]{Y}]\) represents \(S_1\) via
   \[
@@ -318,7 +324,7 @@ their relations with subsets of \(ℕ\).
     \begin{align*}
       ∃ β_1, β_2, & γ_1, …, γ_4, δ_{11}, …, δ_{14}, δ_{21}, …, δ_{24} ∈ ℤ:\\
         & \left(\left(\left(x - (β_1 + 2) (β_2 + 2)\right)^2 +
-          \left(x - (γ_1^2 + γ_2^2 + γ_3^2 + γ_4^2)\right)^2\right)^2 +\right.\\
+          \left(x - (γ_1^2 + γ_2^2 + γ_3^2 + γ_4^2)\right)^2\right)^2 \right.\\
         & \left. +
           \left(
             β_1 - (δ_{11}^2 + δ_{12}^2 + δ_{13}^2 + δ_{14}^2)\right)^2
@@ -415,7 +421,7 @@ again put differently, conjunction \(∧\) and disjunction \(∨\) are
   \(\overline h(T) = T^k h(T^{-1})\) does not have roots in \(\Quot R\) either.
   As if \(α ∈ \Quot R\) is a root of \(\overline h\) then
   \[
-    0 = \overline h(α) = a_k + a_{k-1} α + a_1 α^{-1} + a_0 α^k
+    0 = \overline h(α) = a_k + a_{k-1} α + … + a_1 α^{k -1} + a_0 α^k
   \]
   and \(α = 0\) implies that \(a_k = 0\). Otherwise, \(α^{-1}\) is a root of
   \(α^k h\) and therefore of \(h\).
@@ -425,8 +431,8 @@ again put differently, conjunction \(∧\) and disjunction \(∨\) are
     H(α, β_1, β_2) =
     \sum_{i=0}^k a_i p(α, β_1)^i q(α, β_2)^{k - i}.
   \]
-  I will prove for all \(α, β_1, β_2 ∈ R\) that \(H(α, β_1, β_2) = 0\) precisely
-  if \(p(α, β_1)\) and \(p(α, β_2)\) vanish. Then \(H\) represents the
+  I will prove for all \(α, β_1, β_2 ∈ R\) that \(H(α, β_1, β_2) = 0\) if and
+  only if \(p(α, β_1)\) and \(q(α, β_2)\) vanish. Then \(H\) represents the
   intersection via
   \[
     α ∈ S_1 ∩ S_2 \quad ⇔ \quad
@@ -469,8 +475,8 @@ of conjunctions.
   \[
     H = p^2 + q^2
   \]
-  precisely as in \cref{ex:N is Diophantine over Z}. However, we could have
-  equivalently chosen \(h(X) = X^2 - 2X - 2\) as a polynomial without rational
+  precisely as in \cref{ex:N is Diophantine over Z}. However, we could also have
+  chosen \(h(X) = X^2 - 2X - 2\) as a polynomial without rational
   roots---\(h\) has the irrational roots \(1 ± √3\)---and obtain
   \[
     H = p^2 - 2 pq + 2 q^2.
@@ -479,7 +485,7 @@ of conjunctions.
 
 Using induction and the lemma above, one immediately obtains that arbitrary
 finite unions and intersections of Diophantine sets are Diophantine. For the
-special case that \(R\) is computable, one can thusly deduce that Hilbert's
+special case that \(R\) is computable, one can thus deduce that Hilbert's
 tenth problem is essentially the same as the primitive positive diagram
 \(D_{∃+}(\mathfrak{R})\).
 
@@ -493,11 +499,17 @@ tenth problem is essentially the same as the primitive positive diagram
   Gödelization.
 \end{proof}
 
-Of course one is tempted to consider Hilbert's tenth problem over the complex
-pane \(ℂ\). There is however a technicality in our way, as \(ℂ\) is uncountable.
-Thus, \(ℂ[X_1, X_2, …]\) is uncountable as well and one cannot encode all
-polynomials. For this reason it is sometimes preferable to consider \emph{purely
-Diophantine sets}.
+One is tempted to consider Hilbert's tenth problem over the complex plane \(ℂ\).
+By a corollary of Hilbert's Nullstellensatz we know that for every non-constant
+polynomial \(p ∈ ℂ[\seq{X}] \setminus ℂ\) there exist complex numbers \(\seq{z}
+∈ ℂ\) such that \(p(\seq{z}) = 0\) vanishes. Thus, one might believe that
+Hilbert's tenth problem over \(ℂ\) is decidable. There is however a technicality
+in the way: As \(ℂ\) is uncountable, the ring of polynomials \(ℂ[X_1, X_2, …]\)
+is uncountable as well---even the subset of polynomials with roots is
+uncountable as it contains \(\set{z - X_1 : z ∈ ℂ}\). Hence, the analogue of
+Hilbert's tenth problem over \(ℂ\) cannot be captured by the formalization of
+decision problems we gave in \cref{sec:computability theory}. For this reason it
+we consider \emph{purely Diophantine sets}.
 
 \subsection{Purely Diophantine sets}
 % ██████  ██    ██ ██████  ███████     ██████  ██  ██████  ██████  ██   ██
@@ -543,14 +555,14 @@ is shown in the following lemma.
 At second sight, the construction is even less surprising, as for every ring
 \(R\) with \(1\) there exists exactly one ring-homomorphism \(φ: ℤ → R\) mapping
 \(1 ∈ ℤ\) to \(1 ∈ R\). Looking back at \cref{ex:Diophantine sets}, we note that
-the Diophantine sets of (3), (4), and (5) are in fact purely Diophantine, whilst
-finite sets (1) are in general not. As for polynomial functions \(p: R^n → R\),
-we obtain that they are purely Diophantine if and only if the coefficients of
-\(p\) are rational integers. Note however that a partially evaluated polynomial
-with rational integral coefficients need not be a polynomial in \(ℤ[X_1, X_2,
-…]\). Thus, one needs to be a bit more careful when dealing with purely
-Diophantine sets. However, the analogue of \cref{lem:intersections and unions}
-holds for purely Diophantine sets.
+the Diophantine sets of (3), (4), and (5) are in fact purely Diophantine,
+whereas finite sets (1) are in general not. As for polynomial functions \(p:
+R^n → R\), we obtain that they are purely Diophantine if and only if the
+coefficients of \(p\) are rational integers. Note however that a partially
+evaluated polynomial with rational integral coefficients need not be a
+polynomial in \(ℤ[X_1, X_2, …]\). Thus, one needs to be a bit more careful when
+dealing with purely Diophantine sets. However, the analogue of
+\cref{lem:intersections and unions} holds for purely Diophantine sets.
 \begin{lem}
   Let \(S_1, S_2 ⊂ \algint^n\) be purely Diophantine subsets of a ring of
   algebraic integers of some number field \(K\). Then their union and
@@ -645,7 +657,7 @@ Diophantine sets within Diophantine sets over rings of algebraic integers.
     ∃ β_1, …, β_m ∈ \algint : p(\seq{α}, \seq[m]{β}) = 0.
   \]
   To simplify notation I will assume that \(n = m = 1\) and thus that \(p(X,
-  Y)\) is bivariat. The general case follows analogously.
+  Y)\) is bivariant. The general case follows analogously.
 
   To see the first direction, we assume that \(p\) has in fact rational integral
   coefficients and let \(α\) be in \(S\). Then there exists an integer \(β ∈
@@ -677,8 +689,8 @@ Diophantine sets within Diophantine sets over rings of algebraic integers.
   \]
   Then, we have the following equivalence for all \(α ∈ \algint\)
   \begin{align*}
-    ∃ β ∈ \algint: q(α, β) ⇔ &\\
-    ∃ β, (β_{ij})_{(i,j) ∈ J} ∈ \algint :
+    ∃ β ∈ \algint &: q(α, β) = 0 ⇔\\
+        & ∃ β, (β_{ij})_{(i,j) ∈ J} ∈ \algint :\\
         & \sum_{(i,j) ∈ J} β_{ij} α^i β^j = 0 ∧\\
         & \bigwedge_{(i,j) ∈ J} ∃ γ_{ij} ∈ \algint :
           (P_{a_{ij}}(γ_{ij}) = 0 ∧ Q_{a_{ij}}(γ_{ij}) = β_{ij}).
@@ -686,7 +698,7 @@ Diophantine sets within Diophantine sets over rings of algebraic integers.
 
   All that is left to prove is that \(q\) and \(p\) represent \(S\) i.e.\ that
   \[
-    ∃ β ∈ \algint : p(α, β) \quad ⇔ \quad ∃ β ∈ \algint : q(α, β)
+    ∃ β ∈ \algint : p(α, β) = 0 \quad ⇔ \quad ∃ β ∈ \algint : q(α, β) = 0
   \]
   holds for all algebraic integers \(α ∈ \algint\). To see this, first assume
   that \(p(α, β) = 0\) holds. Then since the identity is an automorphism of
@@ -694,21 +706,20 @@ Diophantine sets within Diophantine sets over rings of algebraic integers.
   \[
     q(α, β) := \prod_{i = 1}^k p_i(α, β)
   \]
-  is zero, and thus that \(q(α, β) = 0\). If on the other hand \(q(α, β) = 0\)
+  is zero, and thus that \(q(α, β) = 0\). If on the other hand, \(q(α, β) = 0\)
   then one of the factors of \(q\) must be zero. Say \(p_i(α, β) = 0\) and let
   \(σ_j\) be the inverse of \(σ_i\). Then we find that
   \[
     0 = σ_j(p_i(α, β)) = p(σ_j(α), σ_j(β))
   \]
-  and therefore \(σ_j(α) ∈ S\). Now since \(S\) is self-conjugate by assumption
-  we can deduce \(α = σ_i(σ_j(α)) ∈ S\) as claimed.
+  and therefore \(σ_j(α) ∈ S\). Now since \(S\) is self-conjugate by assumption,
+  we can deduce that \(α = σ_i(σ_j(α))\) is contained in \(S\) as claimed.
 \end{proof}
 
 The following diagram summarizes all the reducibility relations between the
 theories of rings of algebraic integers that we have proven so far. By the
-transitivity of many-one reducibility (cf.~\cref{pro:m reducibility and
-decidability}) all that is left to prove is many-one reducibility of the
-halting set \(\mathcal{K}\) to the purely Diophantine theory
+transitivity of many-one reducibility all that is left to prove is many-one
+reducibility of the halting set \(\mathcal{K}\) to the purely Diophantine theory
 \(\mathtt{H10}^*(\struc{O}_K)\). Then the diagram collapses as depicted at the
 end of \cref{sec:theories}.
 \begin{center}

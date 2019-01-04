@@ -259,8 +259,6 @@ by the norm and trace, which are defined below.
    exist exactly \(n\) embeddings \(\seq{σ}: L → ℂ\) that fix \(K\) point-wise.
    Furthermore, for all \(x ∈ L\) we have that
    \begin{thmlist}
-     \item \(λ_{K, x}(X) = \prod_{i = 1}^n (X - σ_i(x))\),
-     \todo{Characteristic polynomial: Needed?}
      \item \(Tr_{L/K}(x) = \sum_{i = 1}^n σ_i(x)\), and
      \item \(N_{L_K}(x) = \prod_{i = 1}^n σ_i(x)\).
    \end{thmlist}
@@ -484,7 +482,7 @@ order.
   with their respective principal ideals \((n)\).
 \end{exam}
 
-\begin{thm}
+\begin{thm}\label{thm:prime ideal factorization}
   Let \(\algint\) be the ring of of algebraic integers in some number field
   \(K\) and let \(\mathfrak{a} \subsetneq \algint\) be a non-zero ideal. Then
   there exist up to reordering unique prime ideals \(\seq{\mathfrak{p}} ⊂
@@ -683,9 +681,9 @@ The set of generators \(\set{\seq{e}}\) is called \emph{basis} of \(Λ\). Note
 that \(ℤ + \sqrt{2} ℤ\) is not a lattice in this sense, because \(1\) and
 \(\sqrt{2}\) are linearly dependent over \(ℝ\).
 
-The basis \(\set{\seq{e}}\) of a lattice \(Λ\) is not unique. For instance,
-another basis is given by \(\set{-e_1, e_2, …, e_n}\). However, if
-\(\set{\seq{f}}\) is another basis then the \(n \times n\)-matrix \(C :=
+The basis \(\set{\seq{e}}\) of a lattice \(Λ\) is not unique. For instance, a
+second basis is given by the elements \(\set{e_1 + e_2, e_2, …, e_n}\). However,
+if \(\set{\seq{f}}\) is another basis then the \(n \times n\)-matrix \(C :=
 (c_{ij})_{1 ≤ i, j ≤ n}\) defined by
 \[
   f_{i} = \sum_{j = 1}^n c_{ij} e_j
@@ -776,7 +774,8 @@ proof is presented as in Thm.~4.4 of the textbook~\cite{Neukirch2006}.
 
 Note that the approximation of \(\Vol(T)\) cannot be improved as for instance
 the open square \(\set{(x, y) ∈ ℝ^2 : |x|, |y| < 1}\) has volume \(2^2\) but
-contains no non-zero lattice point of \((1, 0)ℤ + (0, 1)ℤ\).
+contains no non-zero lattice point of the two-di\-men\-sional lattice
+\((1, 0)ℤ + (0, 1)ℤ\).
 
 We will now use Minkowski's theorem to reprove an old result of Lagrange, that
 is of utmost importance to our task of settling Hilbert's tenth problem. The
@@ -838,8 +837,9 @@ vector of the standard basis of \(ℝ^n\).
     m^2 + n^2 + 1 \equiv 0 \mod p.
   \]
 
-  For a fixed solution \((m, n)\) of the above congruence we consider the set
-  \(Λ\) of all solutions \((a, b, c, d) ∈ ℤ^4\) of the simultaneous congruence
+  For a fixed solution \((m, n)\) of the above congruence, we consider the set
+  \(Λ\) of all integral solutions \((a, b, c, d) ∈ ℤ^4\) of the simultaneous
+  congruence
   \[
     c \equiv m a + n b \mod p \quad \text{and} \quad
     d \equiv m b - n a \mod p.
@@ -1001,8 +1001,8 @@ of Dirichlet's approximation theorem.
 
 \begin{thm}[Multidimensional Dirichlet approximation theorem]%
   \label{thm:Dirichlet approximation}%
-  Let \(\seq[k]{α} ∈ ℝ\) be \(k\) real numbers and fix an integer \(N ≥ 1\).
-  Then there exist integers \(\seq[k]{p}, n ∈ ℤ\) with \(0 < n ≤ N^k\) such
+  Given \(k\) real numbers \(\seq[k]{α} ∈ ℝ\) and a fixed integer \(N ≥ 1\).
+  There exist integers \(\seq[k]{p}, n ∈ ℤ\) with \(0 < n ≤ N^k\) such
   that for all \(1 ≤ i ≤ ℓ\) we have that
   \[
     |α_i n - p_i | ≤ \frac{1}{N}
@@ -1175,7 +1175,7 @@ As did \textcite{Hlawka1991} I will present the inductive proof of
   holds true for all collections of less than \(ℓ\) linearly independent real
   numbers.
 
-  We set \(δ := ε/2\) and apply the multidimensional version of Dirichlet's
+  We set \(δ := ε/2\) and apply the multidimensional Dirichlet
   approximation theorem~(\ref{thm:Dirichlet approximation}) to obtain integers
   \(q, \seq[ℓ]{g} ∈ ℤ\) with \(q > 0\) such that
   \[
@@ -1336,6 +1336,26 @@ If \(K = ℚ\) we write \(\ord_{p}\) instead of \(\ord_{(p)}\) for all primes
   \end{exlist}
 \end{exam}
 
+\begin{lem}\label{lem:p adic absolute values}
+  Let \(K\) be a number field and \(x  ∈ K\). Then \(x\) is an algebraic integer
+  if and only if \(|x|_{\mathfrak{p}} ≤ 1\) for all prime ideals \(\mathfrak{p}
+  ⊂ \algint\).
+\end{lem}
+\begin{proof}
+  If \(x ∈ \algint\) is an algebraic integer, then \(x \algint ⊂ \algint\) is a
+  principal ideal. Thus, in the factorization of \(x \algint\) into a product of
+  prime ideals (cf.~\cref{thm:prime ideal factorization}) all exponents are
+  non-negative. In other words \(\ord_{\mathfrak{p}}(x \algint) ≥ 0\) holds for
+  all prime ideals \(\mathfrak{p}\). Since \(ℕ\mathfrak{p} > 1\) for every prime
+  ideal \(\mathfrak{p}\), the \(\mathfrak{p}\)-adic absolute value
+  \(|x|_{\mathfrak{p}}\) can at most equal \(1\).
+  
+  If, on the other hand, \(|x|_{\mathfrak{p}} > 1\) holds for some prime ideal
+  \(\mathfrak{p} ⊂ \algint\), then \(\ord_{\mathfrak{p}}(x \algint)\) must be
+  negative and thus \(x \algint \supsetneq \algint\) is a proper fractional
+  ideal. Hence, \(x\) cannot be an algebraic integer.
+\end{proof}
+
 Note that an absolute value \(|\cdot|\) defines a metric on \(K\) by setting
 \[
   d(x, y) := |x - y|.
@@ -1389,12 +1409,9 @@ field \(K\) we have the following theorem.
 A proof of this theorem can be found in §66 of the textbook~\cite{Meara2000}.
 With regard to universal quadratic forms we have furthermore, that if the
 regular quadratic form \(q\) has at least four indeterminates then \(q\) is
-universal in all non-archimedian completions of \(K\)
-\cite[see][Remark~63:18]{Meara2000}. 
-%TODO
-\todo{Is this really the content of remark?}
-A direct application of the Hasse-Minkowski theorem is the following lemma,
-taken from \cite[Lem.~5.1.1]{Shlapentokh2007}.
+universal in all non-archimedian completions of \(K\). A direct application of
+the Hasse-Minkowski theorem is the following lemma, taken from
+\cite[Lem.~5.1.1]{Shlapentokh2007}.
 
 \begin{lem}\label{lem:quadratic form}
   Let \(K\) be a number field and fix \(x ∈ K\). Furthermore, let \(x =
@@ -1428,11 +1445,11 @@ taken from \cite[Lem.~5.1.1]{Shlapentokh2007}.
 Furthermore, the following theorem will be useful.
 
 \begin{thm}[Strong approximation theorem]\label{thm:strong approximation}
-  Let \(K\) be a number field. Let \(\mathcal{M}_K\) be the set of all the
-  absolute values of \(K\). Let \(\mathcal{F}_K ⊂ \mathcal{M}_K\) be a non-empty
-  finite subset. Let \(\mathcal{F}_K = {|\cdot|_1,… ,|\cdot|_ℓ}\). Let
-  \(a_1,…,a_{ℓ - 1} ∈ K\). Then for any \(ε > 0\) there exists an \(x ∈ K\) such
-  that the following conditions are satisfied.
+  Let \(K\) be a number field, let \(\mathcal{M}_K\) be the set of all the
+  absolute values of \(K\), let \(\mathcal{F}_K = \set{|\cdot|_1,… ,|\cdot|_ℓ}
+  ⊂ \mathcal{M}_K\) be a non-empty finite subset, and let \(a_1,…,a_{ℓ - 1} ∈
+  K\). Then for any \(ε > 0\) there exists an \(x ∈ K\) such that the following
+  conditions are satisfied.
   \begin{thmlist}
     \item For \(1 ≤ i ≤ ℓ - 1\) we have that \(|x − a_i|_i <ε\).
 
