@@ -1,6 +1,6 @@
 ## creative commons
 
-© Tim B. Herbstrith, 2018
+© Tim B. Herbstrith, 2019
 
 # Attribution-NonCommercial-ShareAlike 4.0 International
 
