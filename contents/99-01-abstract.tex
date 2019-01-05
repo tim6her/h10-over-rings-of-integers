@@ -1,0 +1,63 @@
+% !TEX encoding = UTF-8
+% !TEX TS-program = xelatex
+% !TEX spellcheck = en_GB
+% !TEX engine = xelatex
+% !TEX root = ../Herbstrith-H10_over_AI.tex
+
+%  █████  ██████  ███████ ████████ ██████   █████   ██████ ████████
+% ██   ██ ██   ██ ██         ██    ██   ██ ██   ██ ██         ██
+% ███████ ██████  ███████    ██    ██████  ███████ ██         ██
+% ██   ██ ██   ██      ██    ██    ██   ██ ██   ██ ██         ██
+% ██   ██ ██████  ███████    ██    ██   ██ ██   ██  ██████    ██
+
+\begin{german}
+\section{Zusammenfassung}
+
+Hilberts zehntes Problem fragt, ob ein Algorithmus existiert, der zu gegebenen
+multivariaten Polynom mit ganzzahligen Koeffizienten entscheiden kann, ob
+dieses ganzzahlige Nullstellen besitzt. Obwohl das Problem breits im Jahr 1900
+von \textcite{Hilbert1900} formuliert wurde, dauerte es bis 1970, bis
+\textcite{Matijasevic1970} beweisen konnte, dass es keinen solchen Algorithmus
+geben kann. Das Problem lässt sich direkt auf andere kommutative Ringe \(R\) mit
+\(1\) übertragen, indem Koeffizienten aus \(ℤ\) oder \(R\) und Nullstellen aus
+\(R\) gewählt werden. In dieser Masterarbeit werden wir uns vor allem mit dem
+Fall von Ringen ganzalgebraischer Zahlen beschäftigen. Wie eng Hilberts zehntes
+Problem mit anderen Entscheidungsproblemen verwandt ist, kommt allerdings erst
+dann zu Tage, wenn wir Hilberts Problem als die Frage der Entscheidbarkeit einer
+Theorie auffassen. Wir werden zum Beispiel erkennen, dass Matijasevic'
+\textsc{DPRM}-Theorem~(\ref{thm:DPRM}) sehr ähnlich zu Gödels Haupttheorem in
+seinem Beweis \cite{Goedel1931} des ersten Unvollständigkeitssatzes ist.
+
+Um Hilberts Problem in dieser Allgemeinheit verstehen zu können, werden im
+ersten Abschnitt Grundlagen der Berechenbarkeitstheorie und der Modelltheorie
+vorgestellt. Dabei werden wir auf das Halteproblem stoßen, dessen
+Unentscheidbarkeit die Schlüsselzutat für alle unsere Beweise der
+Unentscheidbarkeit sein wird. Weiters werden wir die für uns relevanten Begriffe
+und Resultate der algebraischen Zahlentheorie sowie der Geometrie der Zahlen
+wiederholen und teilweise beweisen.
+
+Nach diesen einführenden Kapiteln werden wir im zweiten Teil der Arbeit Hilberts
+zehntes Problem formalisieren und eine ausführlichere Betrachtung verwandter
+Probleme und der historischen Entwicklung dieser anstellen. Um das Problem
+schließlich negativ für ausgewählte Ringe zu entscheiden, werden wir
+diophantische Mengen über kommutativen Ringen mit \(1\) einführen und
+einige wichtige strukturelle Eigenschaften diphantischer Mengen beweisen. Das
+Hauptresultat dieser Arbeit ist, dass über einem Ring ganzalgebraischer
+Zahlen \(\algint\), über dem die ganzen Zahlen \(ℤ\) eine diophantische Menge
+bilden, unabhängig davon, ob Koeffizienten aus \(ℤ\) oder \(\algint\) gewählt
+werden, das zehnte hilbertsche Problem unentscheidbar ist.
+
+Im letzten Abschnitt der Arbeit werden die Resultate von \textcite{Denef1980}
+sowie \textcite{Pheidas1988} bzw. \textcite{Shlapentokh1989} präsentiert. Diese
+konnten im konkreten Fall von total-reellen algebraischen Zahlkörpern \(K ≠ ℚ\)
+und algebraischen Zahlkörpern \(K\) mit mindestens einer reellen und genau einem
+Paar komplexer Einbettungen zeigen, dass \(ℤ\) über \(\algint\) eine
+diophantische Menge ist. Damit ist Hilberts zehntes Problem über \(\algint\) in
+diesen Fällen unentscheidbar. Für allgemeine Zahlkörper steht noch nicht fest,
+ob Hilberts Problem entscheidbar ist. Die Vermutung von \textcite{Denef1978},
+dass für alle Zahlkörper \(K\) Hilberts zehntes Problem über \(\algint\)
+unentscheidbar ist, ist noch unbewiesen.
+\end{german}
+
+\section{Summary}
+\todo{Write the abstract}

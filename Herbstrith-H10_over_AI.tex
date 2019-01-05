@@ -295,15 +295,22 @@
 \pagenumbering{arabic}
 \chapter{Prerequisites and central notions}
 
-To tackle Hilbert's tenth problem over rings of algebraic integers we need
-to define three central notions. Firstly, we will formalize what we mean by a
-computation; secondly, it will be defined what it means to determine the
-solvability of an equation; and thirdly, we will define the rings we are
-interested in.
+In the year 1900 David Hilbert posed 23 mathematical problems to be solved in
+the twentieth century. The tenth of these problems and its variants are the
+subject of this thesis. In the classical setting it ask to find an algorithm
+that can decide upon receiving a multivariate polynomial \(p\) with integral
+coefficients, whether \(p\) has integral roots. One immediately obtains variants
+of the problem by letting the coefficients and solutions range over different
+commutative rings with unity.
+
+To tackle Hilbert's tenth problem over rings of algebraic integers we need to
+define three central notions. Firstly, we will formalize what we mean by an
+algorithm; secondly, it will be defined what it means to decide a problem; and
+thirdly, we will define the rings we are interested in.
 
 The first section of the preliminaries will settle our first task and give a
 definition of computability. The second section will provide the techniques
-required to encode polynomials with roots and helps us derive natural variants
+required to encode polynomials with roots and helps us derive further variants
 of Hilbert's tenth problem. The third section of the preliminaries is devoted to
 defining algebraic integers and will remind the reader of some of their
 important properties.
@@ -350,8 +357,12 @@ integers \(\set{0, 1, 2, …}\).
 % ██   ██ ██   ██ ██      ██  ██
 % ██████  ██   ██  ██████ ██   ██
 
-\chapter{Appendix}\label{sec:Appendix}
+\chapter{Collected \emph{Haskell} implementations}\label{sec:Appendix}
 \input{./contents/99-99-appendix}
+
+\chapter{Summaries}
+
+\input{./contents/99-01-abstract}
 
 \backmatter
 \vspace{\fill}
