@@ -9,7 +9,10 @@
 % ██   ██ ██    ██ ██    ██    ██
 % ██   ██  ██████   ██████     ██
 %
-\documentclass[12pt, a4paper, numbers=noenddot]{scrbook}
+\documentclass[12pt,
+               a4paper,
+               numbers=noenddot,
+               final]{scrbook}
 
 % ------------------------------------------------------------------------------
 % Only for drafts!
@@ -99,7 +102,7 @@
 \renewcommand{\arraystretch}{1.5}
 
 
-\usepackage{listingsutf8}	% Typeset code.
+\usepackage{listings}	% Typeset code.
 \lstset{extendedchars=true,
         basicstyle=\ttfamily\small,
         commentstyle=\color{gray},
@@ -297,7 +300,7 @@
 
 In the year 1900 David Hilbert posed 23 mathematical problems to be solved in
 the twentieth century. The tenth of these problems and its variants are the
-subject of this thesis. In the classical setting it ask to find an algorithm
+subject of this thesis. In the classical setting it asks to find an algorithm
 that can decide upon receiving a multivariate polynomial \(p\) with integral
 coefficients, whether \(p\) has integral roots. One immediately obtains variants
 of the problem by letting the coefficients and solutions range over different
@@ -368,5 +371,5 @@ integers \(\set{0, 1, 2, …}\).
 \vspace{\fill}
 \printbibliography
 
-\listoftodos
+%\listoftodos
 \end{document}

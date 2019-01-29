@@ -4,11 +4,11 @@
 % !TEX engine = xelatex
 % !TEX root = ../Herbstrith-H10_over_AI.tex
 
-%  █████  ██████  ███████ ████████ ██████   █████   ██████ ████████
-% ██   ██ ██   ██ ██         ██    ██   ██ ██   ██ ██         ██
-% ███████ ██████  ███████    ██    ██████  ███████ ██         ██
-% ██   ██ ██   ██      ██    ██    ██   ██ ██   ██ ██         ██
-% ██   ██ ██████  ███████    ██    ██   ██ ██   ██  ██████    ██
+% ███████ ██    ██ ███    ███ ███    ███  █████  ██████  ██    ██
+% ██      ██    ██ ████  ████ ████  ████ ██   ██ ██   ██  ██  ██
+% ███████ ██    ██ ██ ████ ██ ██ ████ ██ ███████ ██████    ████
+%      ██ ██    ██ ██  ██  ██ ██  ██  ██ ██   ██ ██   ██    ██
+% ███████  ██████  ██      ██ ██      ██ ██   ██ ██   ██    ██
 
 \begin{german}
 \section{Zusammenfassung}
@@ -41,7 +41,7 @@ zehntes Problem formalisieren und eine ausführlichere Betrachtung verwandter
 Probleme und der historischen Entwicklung dieser anstellen. Um das Problem
 schließlich negativ für ausgewählte Ringe zu entscheiden, werden wir
 diophantische Mengen über kommutativen Ringen mit \(1\) einführen und
-einige wichtige strukturelle Eigenschaften diphantischer Mengen beweisen. Das
+einige wichtige strukturelle Eigenschaften diophantischer Mengen beweisen. Das
 Hauptresultat dieser Arbeit ist, dass über einem Ring ganzalgebraischer
 Zahlen \(\algint\), über dem die ganzen Zahlen \(ℤ\) eine diophantische Menge
 bilden, unabhängig davon, ob Koeffizienten aus \(ℤ\) oder \(\algint\) gewählt
@@ -58,6 +58,49 @@ ob Hilberts Problem entscheidbar ist. Die Vermutung von \textcite{Denef1978},
 dass für alle Zahlkörper \(K\) Hilberts zehntes Problem über \(\algint\)
 unentscheidbar ist, ist noch unbewiesen.
 \end{german}
+\clearpage
 
 \section{Summary}
-\todo{Write the abstract}
+
+Hilbert's tenth problem asks, whether there exists an algorithm that can decide
+for a given multivariate polynomial \(p\) with integral coefficients, if \(p\)
+has integral roots. Even though, the problem was already posed in 1900 by
+\textcite{Hilbert1900}, it took until 1970 til \textcite{Matijasevic1970} could
+prove that such an algorithm cannot exist. The problem can be translated
+directly to other commutative rings \(R\) with \(1\) by letting the coefficients
+range over \(ℤ\) or \(R\) and consider roots in \(R\). In this thesis we put
+special interest on the case of \(R\) being a ring of algebraic integers. How
+closely Hilbert's tenth problem is related to other decision problems, will
+however only become apparent, when we consider the problem as a question of
+decidability of a theory. For instance, we will see that Matijasevič'
+\textsc{DPRM}-theorem~(\ref{thm:DPRM}) is very similar to Gödel's central
+theorem in his proof~\cite{Goedel1931} of the first incompleteness theorem.
+
+To understand Hilbert's problem in this general setting, we introduce the basics
+of computability theory and model theory in the first part of this thesis.
+During these introductory sections we will present the halting problem. The
+undecidability of this fundamental problem will be the key ingredient in every
+proof of undecidability we will encounter. Furthermore, we will remind the
+reader of the relevant results of algebraic number theory and geometry of
+numbers.
+
+In a second step we will formalize Hilbert's tenth problem and will extensively
+study related problems and their historical developments. In order to eventually
+answer the problem to the negative for selected rings, we will define
+Diophantine sets over commutative rings with \(1\) and prove some of their
+important structural properties. The main result of this thesis is, that
+Hilbert's tenth problem is unsolvable over a ring of algebraic integers
+\(\algint\) if \(ℤ\) is Diophantine over \(\algint\). This statement remains
+true irrespective of whether we allow the polynomials to have coefficients in
+\(ℤ\) or \(\algint\).
+
+In the final section of this thesis we will present the results of
+\textcite{Denef1980} and \textcite{Pheidas1988} or \textcite{Shlapentokh1989}
+respectively. They where able to prove in the case of totally real number fields
+\(K ≠ ℚ\) and number fields of degree at least \(3\) over \(ℚ\) with exactly one
+pair of non-real embeddings, that \(ℤ\) is Diophantine over \(\algint\). As a
+consequence, Hilbert's tenth problem is undecidable over \(\algint\). For
+general number fields it is not known whether Hilbert's tenth problem is
+decidable over their ring of algebraic integers. The conjecture by
+\textcite{Denef1978}, that Hilbert's tenth problem is undecidable over
+\(\algint\) for all algebraic number fields \(K\), is still unproven.

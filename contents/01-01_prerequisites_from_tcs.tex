@@ -48,7 +48,7 @@ textbook~\cite{Cooper2004}.
 
 \begin{defin}
   We consider the set of finite \(\zer\)-\(\one\)-strings \(ω = \lbrace \zer,
-  \one \rbrace^*\), where we include the empty string \(λ ∈ ω\) and define a
+  \one \rbrace^*\), where we include the empty string \(λ ∈ ω\), and define a
   \emph{(decision) problem} to be a subset of \(ω\). The set \(\lbrace \zer,
   \one \rbrace\) is called \emph{alphabet} and its elements \(\zer\) and
   \(\one\) are called \emph{bits.}
@@ -59,7 +59,8 @@ arise as subsets of these strings. However, such problems \(Q\) are
 captured up to an encoding.
 
 \begin{defin}
-  Let \(\mathcal{Q}\) be a set. An \emph{encoding} of \(\mathcal{Q}\) is an injective function
+  Let \(\mathcal{Q}\) be a set. An \emph{encoding} of \(\mathcal{Q}\) is an
+  injective function
   \[
     \enc{\cdot} : \mathcal{Q} → ω.
   \]
@@ -87,10 +88,10 @@ that will be made precise in \cref{sec:computable structures}.
                &    &          &        & b_{n-1, n},
       \end{array}
   \]
-  of length \(n (n - 1) / 2\). We can consider each \(x ∈ Q\) as the
-  encoding of an undirected graph without loops on \(n\) vertices, where vertex
-  \(i\) and vertex \(j\) are adjacent if and only if \(b_{i, j} = \one\) (for
-  \(1 ≤ i < j ≤ n\)). In other words, \(x\) encodes the right-upper
+  of length \(n (n - 1) / 2\). We can consider each \(x ∈ Q\) as the encoding of
+  an undirected graph without multiedges or loops on \(n\) vertices, where
+  vertex \(i\) and vertex \(j\) are adjacent if and only if \(b_{i, j} = \one\)
+  (for \(1 ≤ i < j ≤ n\)). In other words, \(x\) encodes the right-upper
   triangle of the adjacency matrix.
 
   Note however that two different strings \(x, y ∈ Q\) can
@@ -242,7 +243,7 @@ variables matches more than one pattern, the first matching pattern is chosen.
 This means that
 %
 \begin{lstlisting}
-delta "state" 1 = ("state'", b', m)
+delta "state" 1 = ("state'",   b', m )
 delta "state" b = ("state''", b'', m')
 \end{lstlisting}
 %
@@ -577,26 +578,26 @@ is decidable and the projections \(p_i(⟨x_1, x_2⟩) ↦ x_i\) for \(i ∈ \lb
 \end{exam}
 
 \begin{figure*}
-    \begin{subfigure}{.7\textwidth}
+    \begin{subfigure}{.8\textwidth}
         \includegraphics{res/turing_p1_1}
         \caption{The machine finds the first non-empty cell.}%
         \label{fig:total pairing non empty}
     \end{subfigure}
 
-    \begin{subfigure}{.7\textwidth}
+    \begin{subfigure}{.8\textwidth}
         \includegraphics{res/turing_p1_2}
         \caption{The machine shifts the content of each cell one cell to the
                  left …}%
         \label{fig:total pairing shift left 1}
     \end{subfigure}
 
-    \begin{subfigure}{.7\textwidth}
+    \begin{subfigure}{.8\textwidth}
         \includegraphics{res/turing_p1_3}
         \caption{… until it reaches the end of tape symbol \(\sta\).}%
         \label{fig:total pairing shift left 2}
     \end{subfigure}
 
-    \begin{subfigure}{.7\textwidth}
+    \begin{subfigure}{.8\textwidth}
         \includegraphics{res/turing_p1_4}
         \caption{The machine finds two consecutive blank cells and starts
                  over.}%
