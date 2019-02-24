@@ -619,7 +619,7 @@ pair of complex embeddings and all other morphisms embed \(K\) into the reals
     2^{4 (n + 1)} ≤ 2^{4 (n - s_K + 2)} < |σ_1(b)|^{s_K + 1} < |σ_1(b)|^2.
   \]
   Setting \(a := b\) finishes the proof for the case \(r_K = n - 2\). If all
-  embeddings are real, we set \(a := |b|_ℂ\).
+  embeddings are real, we set \(a := |b|_ℝ\).
 \end{proof}
 
 
@@ -905,7 +905,7 @@ a root of unity \(ζ ∈ \algint[L]\) and an integer \(k\), such that \(η = ζ
 can prove this, we need a lemma.
 
 \begin{lem}
-  Let \(K ≠ ℚ\) be a number field and let \(a ∈ \algint\) satisfy
+  Let \(K ≠ ℚ\) be a number field and let \(a ∈ U_L\) satisfy
   \eqref{eq:approximations of a}. Furthermore, let \(ε_0\) be a generator of the
   torsion free part of \(G\). Then \(2δ \mid (ε_0 - ε_0^{-1})\) and
   \begin{thmlist}
@@ -1135,7 +1135,7 @@ and \((\py_m)_{m ∈ ℕ}\).
     \begin{split}\label{eq:approximation of sigma x and sigma y}
         σ_r(\px_{ℓb}) + σ_{r1}(δ) σ_r(\py_{ℓb}) &= ε_r^{ℓb} =
             \prod_{j ∈ J_0} ε_j^{ℓ c_{rj}} =
-            e^{iπ \sum_{j ∈ J_0} ℓ c_{rj} ϑ_j} =\\
+            e^{iπ \sum_{j ∈ J_0} ℓ c_{rj} ϑ_j} \\
           &= \cos\left(π \sum_{j ∈ J_0} ℓ c_{rj} ϑ_j\right) +
             i \sin\left(π \sum_{j ∈ J_0} ℓ c_{rj} ϑ_j\right).
     \end{split}
@@ -1410,7 +1410,7 @@ As a next step we prove a similar result for \(\px_m\).
   \end{equation}
 
   We know by \cref{lem:approximation of epsilon with a} that \(|ε_1| > 2\). So
-  \(|ε_1|^{r_2} + 1 < 2 |ε_1|^{r_2}\) and which implies that
+  \(|ε_1|^{r_2} + 1 < 2 |ε_1|^{r_2}\) and we have that
   \[
     |ε_1|^m - 1 > ½ |ε_1|^m.
   \]
@@ -1425,7 +1425,7 @@ As a next step we prove a similar result for \(\px_m\).
 
   We will now distinguish two cases. Either \(r_2 < m\) then we have that
   \[
-    2^{2n + 2} < |ε_1|^{s_K + 1} ≤
+    2^{2n + 2} < |a| < |ε_1| ≤ |ε_1|^{s_K + 1} ≤
     |ε_1|^{(m - r_2)(s_K + 1)},
   \]
   which together with the inequalities in \eqref{eq:norm of x m and x r1 plus x

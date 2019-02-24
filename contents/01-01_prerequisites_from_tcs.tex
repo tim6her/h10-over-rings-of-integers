@@ -517,6 +517,12 @@ computable functions.
   input decides whether \(x ∈ Q\), then \(Q\) is decidable. To obtain a Turing
   machine deciding \(Q\) we first run the Turing machine deciding \(Q_0\) and
   reject \(x\) if \(Q_0(x) = \zer\) otherwise we run \(\mathbb{A}\) on \(x\).
+  
+  To see the usefulness of this technique consider the set of even non-negative
+  integers \(Q\) encoded in binary encoding. Taking \(Q_0 \supseteq Q\) to be
+  the set of all non-negative integers \(ℕ\) encoded in binary encoding,
+  \(Q\) is easily seen to be decidable by checking whether the first bit of
+  a given string \(x ∈ Q_0\) is \(\zer\).
 \end{rem}
 
 Taking another look at the definition of computability, one sees that only
@@ -777,7 +783,7 @@ sets.
                  label=lst:check one]{./listings/check1.hs}
 
 \begin{rem}
-  The second equivalent property (ii) in the proposition above is the reason why
+  The third equivalent property (iii) in the proposition above is the reason why
   semi-de\-cid\-able sets are also called \emph{listable} or \emph{computably
   enummerable} sets.
 \end{rem}
