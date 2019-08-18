@@ -124,7 +124,7 @@ In this sense a set \(S \subseteq R^i\) is Diophantine if there exists a
 polynomial \(p ∈ R[X_1, …, X_n]\) such that
 \[
   (\seq[i]{α}) ∈ S \quad ⇔ \quad
-  ∃ \seq[n - i]{β} ∈ R: \rel{p}(\seq[i]{α}, \seq[n - i]{β}). 
+  ∃ \seq[n - i]{β} ∈ R: \rel{p}(\seq[i]{α}, \seq[n - i]{β}).
 \]
 If the ring \(R\) is computable, it is immediate that the relation \(\rel{p}\)
 is computable. Thus, we have the following lemma.
@@ -716,15 +716,20 @@ Diophantine sets within Diophantine sets over rings of algebraic integers.
   we can deduce that \(α = σ_i(σ_j(α))\) is contained in \(S\) as claimed.
 \end{proof}
 
-The following diagram summarizes all the reducibility relations between the
-theories of rings of algebraic integers that we have proven so far. By the
-transitivity of many-one reducibility all that is left to prove is many-one
-reducibility of the halting set \(\mathcal{K}\) to the purely Diophantine theory
-\(\mathtt{H10}^*(\struc{O}_K)\). Then the diagram collapses as depicted at the
-end of \cref{sec:theories}.
-\begin{center}
-  \includegraphics{res/theories_3}
-\end{center}
+The diagram in \cref{fig:theories 3} summarizes all the reducibility relations
+between the theories of rings of algebraic integers that we have proven so far.
+By the transitivity of many-one reducibility all that is left to prove is
+many-one reducibility of the halting set \(\mathcal{K}\) to the purely
+Diophantine theory \(\mathtt{H10}^*(\struc{O}_K)\). Then the diagram collapses
+as depicted in
+\cref{fig:theories 3}.
+
+\begin{figure}
+  \includegraphics[scale=1]{res/theories_3}
+  \caption{Reducibility relations holding between the theories of arbitrary
+  rings of algebraic integers \(\algint\)}
+  \label{fig:theories 3}
+\end{figure}
 
 \subsection{Related problems}
 % ██████  ███████ ██             ██████  ██████   ██████  ██████  ███████

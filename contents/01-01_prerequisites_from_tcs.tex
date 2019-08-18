@@ -269,7 +269,7 @@ See \cref{app:turing} on how to simulate Turing machines using these listings.
     described in \cref{lst:add1}. The last line of the program ensures, that
     \(δ\) is a total function, as it matches all remaining pairs of states and
     characters and lets the machine enter the state \(\state{error}\).
-    
+
     The complete run of \(\mathbb A_\text{add1}\) on \(\one\one\zer\one\)can be
     seen in \cref{fig:complete run}. To ease readability the binary
     representation of natural numbers is reversed. Thus, the string
@@ -517,7 +517,7 @@ computable functions.
   input decides whether \(x ∈ Q\), then \(Q\) is decidable. To obtain a Turing
   machine deciding \(Q\) we first run the Turing machine deciding \(Q_0\) and
   reject \(x\) if \(Q_0(x) = \zer\) otherwise we run \(\mathbb{A}\) on \(x\).
-  
+
   To see the usefulness of this technique consider the set of even non-negative
   integers \(Q\) encoded in binary encoding. Taking \(Q_0 \supseteq Q\) to be
   the set of all non-negative integers \(ℕ\) encoded in binary encoding,
@@ -918,23 +918,6 @@ the idea is best encapsulated by the self-referential nature of the Pinocchio
 paradox, whose illustration by Carlo Chiostri is displayed in
 \cref{fig:Pinocchio}.
 
-\begin{figure}
-  \includegraphics[height=30ex]{res/Pinocchio}
-  \caption{Pinocchio says a lie and stretches his nose. What happens if he says
-           ‘My nose grows now’? Does it grow, or does it
-           shrink?\hspace{1pt}\protect\footnotemark}
-  \label{fig:Pinocchio}
-\end{figure}
-\footnotetext{%
-Own \textsc{SVG}-tracing, derived of an illustration by Carlo Chiostri published
-in Collodi, Carlo. \begin{italian}\itshape Le avventure di Pinocchio~: Storia di
-un burattino.\end{italian} Firenze Bemporad \& Figlio, 1901.
-% As Carlo Chiostri died in 1939, this work is in the public domain
-% in its country of origin (Italy) and other countries and areas where the
-% copyright term is the author's life plus 70 years or less. In particular, it
-% is in the public domain in Austria.
-}
-
 \begin{thm}\label{thm:halting problem}
     The halting problem is undecidable.
 \end{thm}
@@ -959,6 +942,26 @@ un burattino.\end{italian} Firenze Bemporad \& Figlio, 1901.
     \]
     Setting \(\mathbb A = \mathbb B'\) yields the desired contradiction.
 \end{proof}
+
+\begin{figure}
+  \includegraphics[height=30ex]{res/Pinocchio}
+  \caption[Pinocchio says a lie and stretches his nose. What happens if he says
+           ‘My nose grows now’? Does it grow, or does it
+           shrink?]
+          {Pinocchio says a lie and stretches his nose. What happens if he says
+           ‘My nose grows now’? Does it grow, or does it
+           shrink?\hspace{1pt}\protect\footnotemark}
+  \label{fig:Pinocchio}
+\end{figure}
+\footnotetext{%
+Own \textsc{SVG}-tracing, derived of an illustration by Carlo Chiostri published
+in Collodi, Carlo. \begin{italian}\itshape Le avventure di Pinocchio~: Storia di
+un burattino.\end{italian} Firenze Bemporad \& Figlio, 1901.
+% As Carlo Chiostri died in 1939, this work is in the public domain
+% in its country of origin (Italy) and other countries and areas where the
+% copyright term is the author's life plus 70 years or less. In particular, it
+% is in the public domain in Austria.
+}
 
 For a more detailed proof of this theorem and a lot more information on
 computability see \cite{Cooper2004}. As the halting problem is undecidable the

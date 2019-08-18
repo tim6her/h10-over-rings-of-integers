@@ -11,6 +11,8 @@
            BoldFont=STIX Two Text Bold]{STIX Two Math}
 \setmathtt[Scale=MatchUppercase]{Fira Mono}
 
+\newcommand*{\modalgint}[1][K]{\mathfrak{O}_{#1}}
+
 \usepackage{tikz}
 
 \begin{document}
@@ -18,13 +20,13 @@
   \tikzstyle{vertex}=[circle,fill=black!25,minimum size=17pt,inner sep=0pt]
 
   \path
-    (0, 0) node (pdt) {\(\mathtt{H10}^*(\mathfrak{A})\)} --
-    (0, 1) node (the) {\(\mathtt{Th}_{∃+}(\mathfrak{A})\)} --
-    (0, 2) node (cth) {\(\mathtt{Th}(\mathfrak{A})\)} --
-    (4, 0) node (ad) {\(D(\mathfrak{A})\)} --
-    (2, 0.5) node (h10) {\(\mathtt{H10}(\mathfrak{A})\)} --
-    (2, 1.5) node (de) {\(D_{∃+}(\mathfrak{A})\)} --
-    (2, 2.5) node (cd) {\(D^c(\mathfrak{A})\)} --
+    (0, 0) node (pdt) {\(\mathtt{H10}^*(\modalgint)\)} --
+    (0, 1) node (the) {\(\mathtt{Th}_{∃+}(\modalgint)\)} --
+    (0, 2) node (cth) {\(\mathtt{Th}(\modalgint)\)} --
+    (4, 0) node (ad) {\(D(\modalgint)\)} --
+    (2, 0.5) node (h10) {\(\mathtt{H10}(\modalgint)\)} --
+    (2, 1.5) node (de) {\(D_{∃+}(\modalgint)\)} --
+    (2, 2.5) node (cd) {\(D^c(\modalgint)\)} --
     (1, .75) node (K) {\(\mathcal{K}\)};
 
   \foreach \f/\t in {cd/cth, cd/de, cth/the, h10/ad}

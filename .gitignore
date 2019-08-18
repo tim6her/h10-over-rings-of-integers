@@ -6,6 +6,7 @@ old_versions/
 *.bcf
 *.blg
 *.log
+*.lof
 *.nav
 *.out
 *.pdf
