@@ -25,3 +25,4 @@ listings/bin/
 *.hi
 *.o
 *.svg
+diff/
