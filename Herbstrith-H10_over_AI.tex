@@ -80,25 +80,29 @@
 \newlist{thmlist}{enumerate}{1}			% thmlist-s may only be used in theorem environments
 \setlist[thmlist]{label=(\roman{thmlisti}),
                   ref=\thethm.(\roman{thmlisti}),
-                  noitemsep}
+                  noitemsep,
+                  align=right}
 \newlist{exlist}{enumerate}{1}
 \setlist[exlist]{label=(\arabic{exlisti}),
                  ref=\thethm.(\arabic{exlisti}),
                  noitemsep,
-                 wide=\parindent,
-                 listparindent=\parindent}
+                 leftmargin=0cm,
+                 itemindent = \leftmargini,
+                 align=right}
 \newlist{plist}{enumerate}{1}
 \setlist[plist]{label=(\roman{plisti}),
                 ref=(\roman{plisti}),
                 noitemsep,
-                wide=\parindent,
-                listparindent=\parindent}
+                leftmargin=0cm,
+                itemindent = \leftmargini,
+                align=right}
 \newlist{clist}{enumerate}{2}
 \setlist[clist]{label*=(\alph*),
                 ref=(\alph*),
                 noitemsep,
-                wide=\parindent,
-                listparindent=\parindent}
+                leftmargin=0cm,
+                itemindent = \leftmargini,
+                align=right}
 
 \usepackage{setspace}
 \renewcommand{\arraystretch}{1.5}
